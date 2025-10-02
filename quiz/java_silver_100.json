@@ -1,0 +1,1602 @@
+[
+  {
+    "question": "次のJavaコードの出力結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 6;\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "6と7",
+      "7と7",
+      "6と6",
+      "エラーになる",
+      "7と8"
+    ],
+    "answerIndex": 0,
+    "explanation": "後置インクリメントなので最初に元の値が出力され、次の行で増加後の値が出力されます。",
+    "id": 1,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "次のコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 7;\n        System.out.println(++x);\n        System.out.println(x++);\n    }\n}",
+    "choices": [
+      "8と8",
+      "7と7",
+      "8と9",
+      "エラーになる",
+      "7と8"
+    ],
+    "answerIndex": 0,
+    "explanation": "前置で先に加算して出力、後置は出力後に加算されます。",
+    "id": 2,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "オートボクシングとキャッシュに関する次のコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        Integer a = 128;\n        Integer b = 128;\n        System.out.println(a == b);\n    }\n}",
+    "choices": [
+      "false",
+      "true",
+      "エラーになる",
+      "実行時エラー",
+      "常に未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "Integerは-128〜127をキャッシュ。範囲内は==でtrue、それ以外はfalse。",
+    "id": 3,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "文字列の不変性に関する次のコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"Java\";\n        s.concat(\"Silver\");\n        System.out.println(s);\n    }\n}",
+    "choices": [
+      "Java",
+      "JavaSilver",
+      "null",
+      "エラーになる",
+      "Silver"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変。concatは新しい文字列を返すがsへ再代入していないため元の値が出力されます。",
+    "id": 4,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "StringBuilderのequalsの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder a = new StringBuilder(\"Java\");\n        StringBuilder b = new StringBuilder(\"Java\");\n        System.out.println(a.equals(b));\n    }\n}",
+    "choices": [
+      "true",
+      "false",
+      "エラーになる",
+      "実行時エラー",
+      "コンパイルは通るが未定義"
+    ],
+    "answerIndex": 1,
+    "explanation": "StringBuilderはequalsをオーバーライドしておらず、参照比較のため別インスタンス同士はfalseです。",
+    "id": 5,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "Arrays.asListの性質に関するコードの結果は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<String> list = Arrays.asList(\"A\",\"B\",\"C\");\n        list.set(1, \"X\");\n        System.out.println(list);\n        list.add(\"Y\");\n    }\n}",
+    "choices": [
+      "[A, X, C] と表示後、実行時エラー",
+      "[A, X, C] のみ表示して正常終了",
+      "コンパイルエラー",
+      "実行時にNullPointerException",
+      "[A, B, C] のまま"
+    ],
+    "answerIndex": 0,
+    "explanation": "Arrays.asListは固定長。setは可能だがaddはUnsupportedOperationExceptionで実行時エラー。",
+    "id": 6,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "例外処理とfinallyの実行順に関する出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        try {\n            int x = 10 / 0;\n            System.out.println(x);\n        } catch (ArithmeticException e) {\n            System.out.println(\"AE\");\n        } finally {\n            System.out.println(\"F\");\n        }\n    }\n}",
+    "choices": [
+      "AE と F",
+      "F のみ",
+      "AE のみ",
+      "エラーになる",
+      "何も表示されない"
+    ],
+    "answerIndex": 0,
+    "explanation": "例外発生でcatchに入りAE、finallyは必ず実行されFが続く。",
+    "id": 7,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "breakのないswitchの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int n = 2;\n        switch(n) {\n            case 1: System.out.print(\"A\");\n            case 2: System.out.print(\"B\");\n            default: System.out.print(\"D\");\n        }\n    }\n}",
+    "choices": [
+      "BD",
+      "B",
+      "ABD",
+      "AD",
+      "D"
+    ],
+    "answerIndex": 0,
+    "explanation": "case2にマッチ後にbreakがないためB→defaultでDも出力。",
+    "id": 8,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "ビット演算子 >> の結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 13;\n        System.out.println(x >> 1);\n    }\n}",
+    "choices": [
+      "6",
+      "26",
+      "13",
+      "エラーになる",
+      "3"
+    ],
+    "answerIndex": 0,
+    "explanation": "算術右シフトは2での整数除算に相当。",
+    "id": 9,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "substring(begin, end) の出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"abcde\";\n        System.out.println(s.substring(1,4));\n    }\n}",
+    "choices": [
+      "bcd",
+      "abc",
+      "abcd",
+      "bcde",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "beginは含み、endは含まない。1〜3でbcd。",
+    "id": 10,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "charAt の範囲外アクセス時の挙動は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"abc\";\n        System.out.println(s.charAt(3));\n    }\n}",
+    "choices": [
+      "実行時エラー（StringIndexOutOfBoundsException）",
+      "c",
+      "空文字が出力",
+      "エラーにならない",
+      "b"
+    ],
+    "answerIndex": 0,
+    "explanation": "インデックスは0〜2。3は範囲外で実行時例外。",
+    "id": 11,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "オーバーロード解決（拡大変換とボクシング）の出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        print(10);\n    }\n    static void print(long x) { System.out.println(\"long\"); }\n    static void print(Integer x) { System.out.println(\"Integer\"); }\n}",
+    "choices": [
+      "long",
+      "Integer",
+      "コンパイルエラー",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "widening(拡大変換)はboxingより優先。",
+    "id": 12,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "finalフィールドをインスタンス初期化子で初期化した場合の出力は？",
+    "code": "public class Main {\n    final int v;\n    { v = 7; }\n    public static void main(String[] args) {\n        System.out.println(new Main().v);\n    }\n}",
+    "choices": [
+      "7",
+      "0",
+      "コンパイルエラー",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "finalフィールドは初期化子で一度だけ代入すればよい。",
+    "id": 13,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "nullを渡した場合のオーバーロード解決は？",
+    "code": "public class Main {\n    static void print(String s){ System.out.println(\"String\"); }\n    static void print(Object o){ System.out.println(\"Object\"); }\n    public static void main(String[] args) {\n        print(null);\n    }\n}",
+    "choices": [
+      "String",
+      "Object",
+      "コンパイルエラー",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "より具体的な型であるString版が選ばれる。",
+    "id": 14,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "オーバーライドと多態性に関する次のコードの出力は？",
+    "code": "class Super { void f(){ System.out.println(\"Super\"); } }\nclass Sub extends Super { void f(){ System.out.println(\"Sub\"); } }\npublic class Main {\n    public static void main(String[] args) {\n        Super s = new Sub();\n        s.f();\n    }\n}",
+    "choices": [
+      "Sub",
+      "Super",
+      "コンパイルエラー",
+      "実行時エラー",
+      "出力なし"
+    ],
+    "answerIndex": 0,
+    "explanation": "実行時型に基づいてオーバーライド先が呼ばれる。",
+    "id": 15,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "フィールドのシャドウイング時の参照結果は？",
+    "code": "class A { int v = 10; }\nclass B extends A { int v = 20; }\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        System.out.println(a.v);\n    }\n}",
+    "choices": [
+      "10",
+      "20",
+      "コンパイルエラー",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "フィールドは静的束縛で、参照は変数の型(A)に基づく。",
+    "id": 16,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "固定引数と可変長引数の解決で呼ばれるメソッドは？",
+    "code": "public class Main {\n    static void m(int a, int b){ System.out.println(\"two\"); }\n    static void m(int... x){ System.out.println(\"varargs\"); }\n    public static void main(String[] args) {\n        m(1,2,3);\n    }\n}",
+    "choices": [
+      "varargs",
+      "two",
+      "コンパイルエラー",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "3個の引数はvarargsが選ばれる。",
+    "id": 17,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "拡張for文でコレクションを変更した場合の挙動は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<Integer> list = new ArrayList<>(java.util.Arrays.asList(1,2,3));\n        for (Integer n : list) {\n            if (n == 2) list.remove(n);\n        }\n        System.out.println(list);\n    }\n}",
+    "choices": [
+      "実行時エラー（ConcurrentModificationException）",
+      "[1, 3]",
+      "[1, 2, 3]",
+      "コンパイルエラー",
+      "空リストになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "直接removeすると検出され例外が発生する。",
+    "id": 18,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "String#replaceの戻り値を利用しない場合の出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"banana\";\n        s.replace(\"a\",\"o\");\n        System.out.println(s);\n    }\n}",
+    "choices": [
+      "banana",
+      "bonono",
+      "bannna",
+      "エラーになる",
+      "boanana"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変のため、戻り値を再代入しないと変更されない。",
+    "id": 19,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "次のJavaコードの出力結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 5;\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "5と6",
+      "6と6",
+      "5と5",
+      "エラーになる",
+      "6と7"
+    ],
+    "answerIndex": 0,
+    "explanation": "後置インクリメントなので最初に元の値が出力され、次の行で増加後の値が出力されます。",
+    "id": 20,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "次のコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 6;\n        System.out.println(++x);\n        System.out.println(x++);\n    }\n}",
+    "choices": [
+      "7と7",
+      "6と6",
+      "7と8",
+      "エラーになる",
+      "6と7"
+    ],
+    "answerIndex": 0,
+    "explanation": "前置で先に加算して出力、後置は出力後に加算されます。",
+    "id": 21,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "オートボクシングとキャッシュに関する次のコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        Integer a = 127;\n        Integer b = 127;\n        System.out.println(a == b);\n    }\n}",
+    "choices": [
+      "true",
+      "false",
+      "エラーになる",
+      "実行時エラー",
+      "常に未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "Integerは-128〜127をキャッシュ。範囲内は==でtrue、それ以外はfalse。",
+    "id": 22,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "文字列の不変性に関する次のコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"Java\";\n        s.concat(\"Silver\");\n        System.out.println(s);\n    }\n}",
+    "choices": [
+      "Java",
+      "JavaSilver",
+      "null",
+      "エラーになる",
+      "Silver"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変。concatは新しい文字列を返すがsへ再代入していないため元の値が出力されます。",
+    "id": 23,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "StringBuilderのequalsの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder a = new StringBuilder(\"Java\");\n        StringBuilder b = new StringBuilder(\"Java\");\n        System.out.println(a.equals(b));\n    }\n}",
+    "choices": [
+      "true",
+      "false",
+      "エラーになる",
+      "実行時エラー",
+      "コンパイルは通るが未定義"
+    ],
+    "answerIndex": 1,
+    "explanation": "StringBuilderはequalsをオーバーライドしておらず、参照比較のため別インスタンス同士はfalseです。",
+    "id": 24,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "Arrays.asListの性質に関するコードの結果は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<String> list = Arrays.asList(\"A\",\"B\",\"C\");\n        list.set(1, \"X\");\n        System.out.println(list);\n        list.add(\"Y\");\n    }\n}",
+    "choices": [
+      "[A, X, C] と表示後、実行時エラー",
+      "[A, X, C] のみ表示して正常終了",
+      "コンパイルエラー",
+      "実行時にNullPointerException",
+      "[A, B, C] のまま"
+    ],
+    "answerIndex": 0,
+    "explanation": "Arrays.asListは固定長。setは可能だがaddはUnsupportedOperationExceptionで実行時エラー。",
+    "id": 25,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "例外処理とfinallyの実行順に関する出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        try {\n            int x = 10 / 0;\n            System.out.println(x);\n        } catch (ArithmeticException e) {\n            System.out.println(\"AE\");\n        } finally {\n            System.out.println(\"F\");\n        }\n    }\n}",
+    "choices": [
+      "AE と F",
+      "F のみ",
+      "AE のみ",
+      "エラーになる",
+      "何も表示されない"
+    ],
+    "answerIndex": 0,
+    "explanation": "例外発生でcatchに入りAE、finallyは必ず実行されFが続く。",
+    "id": 26,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "breakのないswitchの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int n = 2;\n        switch(n) {\n            case 1: System.out.print(\"A\");\n            case 2: System.out.print(\"B\");\n            default: System.out.print(\"D\");\n        }\n    }\n}",
+    "choices": [
+      "BD",
+      "B",
+      "ABD",
+      "AD",
+      "D"
+    ],
+    "answerIndex": 0,
+    "explanation": "case2にマッチ後にbreakがないためB→defaultでDも出力。",
+    "id": 27,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "ビット演算子 >> の結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 14;\n        System.out.println(x >> 1);\n    }\n}",
+    "choices": [
+      "7",
+      "28",
+      "14",
+      "エラーになる",
+      "3"
+    ],
+    "answerIndex": 0,
+    "explanation": "算術右シフトは2での整数除算に相当。",
+    "id": 28,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "substring(begin, end) の出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"abcde\";\n        System.out.println(s.substring(1,4));\n    }\n}",
+    "choices": [
+      "bcd",
+      "abc",
+      "abcd",
+      "bcde",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "beginは含み、endは含まない。1〜3でbcd。",
+    "id": 29,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "charAt の範囲外アクセス時の挙動は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"abc\";\n        System.out.println(s.charAt(3));\n    }\n}",
+    "choices": [
+      "実行時エラー（StringIndexOutOfBoundsException）",
+      "c",
+      "空文字が出力",
+      "エラーにならない",
+      "b"
+    ],
+    "answerIndex": 0,
+    "explanation": "インデックスは0〜2。3は範囲外で実行時例外。",
+    "id": 30,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "オーバーロード解決（拡大変換とボクシング）の出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        print(10);\n    }\n    static void print(long x) { System.out.println(\"long\"); }\n    static void print(Integer x) { System.out.println(\"Integer\"); }\n}",
+    "choices": [
+      "long",
+      "Integer",
+      "コンパイルエラー",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "widening(拡大変換)はboxingより優先。",
+    "id": 31,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "finalフィールドをインスタンス初期化子で初期化した場合の出力は？",
+    "code": "public class Main {\n    final int v;\n    { v = 7; }\n    public static void main(String[] args) {\n        System.out.println(new Main().v);\n    }\n}",
+    "choices": [
+      "7",
+      "0",
+      "コンパイルエラー",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "finalフィールドは初期化子で一度だけ代入すればよい。",
+    "id": 32,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "nullを渡した場合のオーバーロード解決は？",
+    "code": "public class Main {\n    static void print(String s){ System.out.println(\"String\"); }\n    static void print(Object o){ System.out.println(\"Object\"); }\n    public static void main(String[] args) {\n        print(null);\n    }\n}",
+    "choices": [
+      "String",
+      "Object",
+      "コンパイルエラー",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "より具体的な型であるString版が選ばれる。",
+    "id": 33,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "オーバーライドと多態性に関する次のコードの出力は？",
+    "code": "class Super { void f(){ System.out.println(\"Super\"); } }\nclass Sub extends Super { void f(){ System.out.println(\"Sub\"); } }\npublic class Main {\n    public static void main(String[] args) {\n        Super s = new Sub();\n        s.f();\n    }\n}",
+    "choices": [
+      "Sub",
+      "Super",
+      "コンパイルエラー",
+      "実行時エラー",
+      "出力なし"
+    ],
+    "answerIndex": 0,
+    "explanation": "実行時型に基づいてオーバーライド先が呼ばれる。",
+    "id": 34,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "フィールドのシャドウイング時の参照結果は？",
+    "code": "class A { int v = 10; }\nclass B extends A { int v = 20; }\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        System.out.println(a.v);\n    }\n}",
+    "choices": [
+      "10",
+      "20",
+      "コンパイルエラー",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "フィールドは静的束縛で、参照は変数の型(A)に基づく。",
+    "id": 35,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "固定引数と可変長引数の解決で呼ばれるメソッドは？",
+    "code": "public class Main {\n    static void m(int a, int b){ System.out.println(\"two\"); }\n    static void m(int... x){ System.out.println(\"varargs\"); }\n    public static void main(String[] args) {\n        m(1,2,3);\n    }\n}",
+    "choices": [
+      "varargs",
+      "two",
+      "コンパイルエラー",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "3個の引数はvarargsが選ばれる。",
+    "id": 36,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "拡張for文でコレクションを変更した場合の挙動は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<Integer> list = new ArrayList<>(java.util.Arrays.asList(1,2,3));\n        for (Integer n : list) {\n            if (n == 2) list.remove(n);\n        }\n        System.out.println(list);\n    }\n}",
+    "choices": [
+      "実行時エラー（ConcurrentModificationException）",
+      "[1, 3]",
+      "[1, 2, 3]",
+      "コンパイルエラー",
+      "空リストになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "直接removeすると検出され例外が発生する。",
+    "id": 37,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "String#replaceの戻り値を利用しない場合の出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"banana\";\n        s.replace(\"a\",\"o\");\n        System.out.println(s);\n    }\n}",
+    "choices": [
+      "banana",
+      "bonono",
+      "bannna",
+      "エラーになる",
+      "boanana"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変のため、戻り値を再代入しないと変更されない。",
+    "id": 38,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "次のJavaコードの出力結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 9;\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "9と10",
+      "10と10",
+      "9と9",
+      "エラーになる",
+      "10と11"
+    ],
+    "answerIndex": 0,
+    "explanation": "後置インクリメントなので最初に元の値が出力され、次の行で増加後の値が出力されます。",
+    "id": 39,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "次のコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 5;\n        System.out.println(++x);\n        System.out.println(x++);\n    }\n}",
+    "choices": [
+      "6と6",
+      "5と5",
+      "6と7",
+      "エラーになる",
+      "5と6"
+    ],
+    "answerIndex": 0,
+    "explanation": "前置で先に加算して出力、後置は出力後に加算されます。",
+    "id": 40,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "オートボクシングとキャッシュに関する次のコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        Integer a = 128;\n        Integer b = 128;\n        System.out.println(a == b);\n    }\n}",
+    "choices": [
+      "false",
+      "true",
+      "エラーになる",
+      "実行時エラー",
+      "常に未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "Integerは-128〜127をキャッシュ。範囲内は==でtrue、それ以外はfalse。",
+    "id": 41,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "文字列の不変性に関する次のコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"Java\";\n        s.concat(\"Silver\");\n        System.out.println(s);\n    }\n}",
+    "choices": [
+      "Java",
+      "JavaSilver",
+      "null",
+      "エラーになる",
+      "Silver"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変。concatは新しい文字列を返すがsへ再代入していないため元の値が出力されます。",
+    "id": 42,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "StringBuilderのequalsの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder a = new StringBuilder(\"Java\");\n        StringBuilder b = new StringBuilder(\"Java\");\n        System.out.println(a.equals(b));\n    }\n}",
+    "choices": [
+      "true",
+      "false",
+      "エラーになる",
+      "実行時エラー",
+      "コンパイルは通るが未定義"
+    ],
+    "answerIndex": 1,
+    "explanation": "StringBuilderはequalsをオーバーライドしておらず、参照比較のため別インスタンス同士はfalseです。",
+    "id": 43,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "Arrays.asListの性質に関するコードの結果は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<String> list = Arrays.asList(\"A\",\"B\",\"C\");\n        list.set(1, \"X\");\n        System.out.println(list);\n        list.add(\"Y\");\n    }\n}",
+    "choices": [
+      "[A, X, C] と表示後、実行時エラー",
+      "[A, X, C] のみ表示して正常終了",
+      "コンパイルエラー",
+      "実行時にNullPointerException",
+      "[A, B, C] のまま"
+    ],
+    "answerIndex": 0,
+    "explanation": "Arrays.asListは固定長。setは可能だがaddはUnsupportedOperationExceptionで実行時エラー。",
+    "id": 44,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "例外処理とfinallyの実行順に関する出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        try {\n            int x = 10 / 0;\n            System.out.println(x);\n        } catch (ArithmeticException e) {\n            System.out.println(\"AE\");\n        } finally {\n            System.out.println(\"F\");\n        }\n    }\n}",
+    "choices": [
+      "AE と F",
+      "F のみ",
+      "AE のみ",
+      "エラーになる",
+      "何も表示されない"
+    ],
+    "answerIndex": 0,
+    "explanation": "例外発生でcatchに入りAE、finallyは必ず実行されFが続く。",
+    "id": 45,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "breakのないswitchの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int n = 2;\n        switch(n) {\n            case 1: System.out.print(\"A\");\n            case 2: System.out.print(\"B\");\n            default: System.out.print(\"D\");\n        }\n    }\n}",
+    "choices": [
+      "BD",
+      "B",
+      "ABD",
+      "AD",
+      "D"
+    ],
+    "answerIndex": 0,
+    "explanation": "case2にマッチ後にbreakがないためB→defaultでDも出力。",
+    "id": 46,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "ビット演算子 >> の結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 15;\n        System.out.println(x >> 1);\n    }\n}",
+    "choices": [
+      "7",
+      "30",
+      "15",
+      "エラーになる",
+      "3"
+    ],
+    "answerIndex": 0,
+    "explanation": "算術右シフトは2での整数除算に相当。",
+    "id": 47,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "substring(begin, end) の出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"abcde\";\n        System.out.println(s.substring(1,4));\n    }\n}",
+    "choices": [
+      "bcd",
+      "abc",
+      "abcd",
+      "bcde",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "beginは含み、endは含まない。1〜3でbcd。",
+    "id": 48,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "charAt の範囲外アクセス時の挙動は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"abc\";\n        System.out.println(s.charAt(3));\n    }\n}",
+    "choices": [
+      "実行時エラー（StringIndexOutOfBoundsException）",
+      "c",
+      "空文字が出力",
+      "エラーにならない",
+      "b"
+    ],
+    "answerIndex": 0,
+    "explanation": "インデックスは0〜2。3は範囲外で実行時例外。",
+    "id": 49,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "オーバーロード解決（拡大変換とボクシング）の出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        print(10);\n    }\n    static void print(long x) { System.out.println(\"long\"); }\n    static void print(Integer x) { System.out.println(\"Integer\"); }\n}",
+    "choices": [
+      "long",
+      "Integer",
+      "コンパイルエラー",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "widening(拡大変換)はboxingより優先。",
+    "id": 50,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "finalフィールドをインスタンス初期化子で初期化した場合の出力は？",
+    "code": "public class Main {\n    final int v;\n    { v = 7; }\n    public static void main(String[] args) {\n        System.out.println(new Main().v);\n    }\n}",
+    "choices": [
+      "7",
+      "0",
+      "コンパイルエラー",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "finalフィールドは初期化子で一度だけ代入すればよい。",
+    "id": 51,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "nullを渡した場合のオーバーロード解決は？",
+    "code": "public class Main {\n    static void print(String s){ System.out.println(\"String\"); }\n    static void print(Object o){ System.out.println(\"Object\"); }\n    public static void main(String[] args) {\n        print(null);\n    }\n}",
+    "choices": [
+      "String",
+      "Object",
+      "コンパイルエラー",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "より具体的な型であるString版が選ばれる。",
+    "id": 52,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "オーバーライドと多態性に関する次のコードの出力は？",
+    "code": "class Super { void f(){ System.out.println(\"Super\"); } }\nclass Sub extends Super { void f(){ System.out.println(\"Sub\"); } }\npublic class Main {\n    public static void main(String[] args) {\n        Super s = new Sub();\n        s.f();\n    }\n}",
+    "choices": [
+      "Sub",
+      "Super",
+      "コンパイルエラー",
+      "実行時エラー",
+      "出力なし"
+    ],
+    "answerIndex": 0,
+    "explanation": "実行時型に基づいてオーバーライド先が呼ばれる。",
+    "id": 53,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "フィールドのシャドウイング時の参照結果は？",
+    "code": "class A { int v = 10; }\nclass B extends A { int v = 20; }\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        System.out.println(a.v);\n    }\n}",
+    "choices": [
+      "10",
+      "20",
+      "コンパイルエラー",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "フィールドは静的束縛で、参照は変数の型(A)に基づく。",
+    "id": 54,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "固定引数と可変長引数の解決で呼ばれるメソッドは？",
+    "code": "public class Main {\n    static void m(int a, int b){ System.out.println(\"two\"); }\n    static void m(int... x){ System.out.println(\"varargs\"); }\n    public static void main(String[] args) {\n        m(1,2,3);\n    }\n}",
+    "choices": [
+      "varargs",
+      "two",
+      "コンパイルエラー",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "3個の引数はvarargsが選ばれる。",
+    "id": 55,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "拡張for文でコレクションを変更した場合の挙動は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<Integer> list = new ArrayList<>(java.util.Arrays.asList(1,2,3));\n        for (Integer n : list) {\n            if (n == 2) list.remove(n);\n        }\n        System.out.println(list);\n    }\n}",
+    "choices": [
+      "実行時エラー（ConcurrentModificationException）",
+      "[1, 3]",
+      "[1, 2, 3]",
+      "コンパイルエラー",
+      "空リストになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "直接removeすると検出され例外が発生する。",
+    "id": 56,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "String#replaceの戻り値を利用しない場合の出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"banana\";\n        s.replace(\"a\",\"o\");\n        System.out.println(s);\n    }\n}",
+    "choices": [
+      "banana",
+      "bonono",
+      "bannna",
+      "エラーになる",
+      "boanana"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変のため、戻り値を再代入しないと変更されない。",
+    "id": 57,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "次のJavaコードの出力結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 8;\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "8と9",
+      "9と9",
+      "8と8",
+      "エラーになる",
+      "9と10"
+    ],
+    "answerIndex": 0,
+    "explanation": "後置インクリメントなので最初に元の値が出力され、次の行で増加後の値が出力されます。",
+    "id": 58,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "次のコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 9;\n        System.out.println(++x);\n        System.out.println(x++);\n    }\n}",
+    "choices": [
+      "10と10",
+      "9と9",
+      "10と11",
+      "エラーになる",
+      "9と10"
+    ],
+    "answerIndex": 0,
+    "explanation": "前置で先に加算して出力、後置は出力後に加算されます。",
+    "id": 59,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "オートボクシングとキャッシュに関する次のコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        Integer a = 127;\n        Integer b = 127;\n        System.out.println(a == b);\n    }\n}",
+    "choices": [
+      "true",
+      "false",
+      "エラーになる",
+      "実行時エラー",
+      "常に未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "Integerは-128〜127をキャッシュ。範囲内は==でtrue、それ以外はfalse。",
+    "id": 60,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "文字列の不変性に関する次のコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"Java\";\n        s.concat(\"Silver\");\n        System.out.println(s);\n    }\n}",
+    "choices": [
+      "Java",
+      "JavaSilver",
+      "null",
+      "エラーになる",
+      "Silver"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変。concatは新しい文字列を返すがsへ再代入していないため元の値が出力されます。",
+    "id": 61,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "StringBuilderのequalsの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder a = new StringBuilder(\"Java\");\n        StringBuilder b = new StringBuilder(\"Java\");\n        System.out.println(a.equals(b));\n    }\n}",
+    "choices": [
+      "true",
+      "false",
+      "エラーになる",
+      "実行時エラー",
+      "コンパイルは通るが未定義"
+    ],
+    "answerIndex": 1,
+    "explanation": "StringBuilderはequalsをオーバーライドしておらず、参照比較のため別インスタンス同士はfalseです。",
+    "id": 62,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "Arrays.asListの性質に関するコードの結果は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<String> list = Arrays.asList(\"A\",\"B\",\"C\");\n        list.set(1, \"X\");\n        System.out.println(list);\n        list.add(\"Y\");\n    }\n}",
+    "choices": [
+      "[A, X, C] と表示後、実行時エラー",
+      "[A, X, C] のみ表示して正常終了",
+      "コンパイルエラー",
+      "実行時にNullPointerException",
+      "[A, B, C] のまま"
+    ],
+    "answerIndex": 0,
+    "explanation": "Arrays.asListは固定長。setは可能だがaddはUnsupportedOperationExceptionで実行時エラー。",
+    "id": 63,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "例外処理とfinallyの実行順に関する出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        try {\n            int x = 10 / 0;\n            System.out.println(x);\n        } catch (ArithmeticException e) {\n            System.out.println(\"AE\");\n        } finally {\n            System.out.println(\"F\");\n        }\n    }\n}",
+    "choices": [
+      "AE と F",
+      "F のみ",
+      "AE のみ",
+      "エラーになる",
+      "何も表示されない"
+    ],
+    "answerIndex": 0,
+    "explanation": "例外発生でcatchに入りAE、finallyは必ず実行されFが続く。",
+    "id": 64,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "breakのないswitchの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int n = 2;\n        switch(n) {\n            case 1: System.out.print(\"A\");\n            case 2: System.out.print(\"B\");\n            default: System.out.print(\"D\");\n        }\n    }\n}",
+    "choices": [
+      "BD",
+      "B",
+      "ABD",
+      "AD",
+      "D"
+    ],
+    "answerIndex": 0,
+    "explanation": "case2にマッチ後にbreakがないためB→defaultでDも出力。",
+    "id": 65,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "ビット演算子 >> の結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 10;\n        System.out.println(x >> 1);\n    }\n}",
+    "choices": [
+      "5",
+      "20",
+      "10",
+      "エラーになる",
+      "2"
+    ],
+    "answerIndex": 0,
+    "explanation": "算術右シフトは2での整数除算に相当。",
+    "id": 66,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "substring(begin, end) の出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"abcde\";\n        System.out.println(s.substring(1,4));\n    }\n}",
+    "choices": [
+      "bcd",
+      "abc",
+      "abcd",
+      "bcde",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "beginは含み、endは含まない。1〜3でbcd。",
+    "id": 67,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "charAt の範囲外アクセス時の挙動は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"abc\";\n        System.out.println(s.charAt(3));\n    }\n}",
+    "choices": [
+      "実行時エラー（StringIndexOutOfBoundsException）",
+      "c",
+      "空文字が出力",
+      "エラーにならない",
+      "b"
+    ],
+    "answerIndex": 0,
+    "explanation": "インデックスは0〜2。3は範囲外で実行時例外。",
+    "id": 68,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "オーバーロード解決（拡大変換とボクシング）の出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        print(10);\n    }\n    static void print(long x) { System.out.println(\"long\"); }\n    static void print(Integer x) { System.out.println(\"Integer\"); }\n}",
+    "choices": [
+      "long",
+      "Integer",
+      "コンパイルエラー",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "widening(拡大変換)はboxingより優先。",
+    "id": 69,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "finalフィールドをインスタンス初期化子で初期化した場合の出力は？",
+    "code": "public class Main {\n    final int v;\n    { v = 7; }\n    public static void main(String[] args) {\n        System.out.println(new Main().v);\n    }\n}",
+    "choices": [
+      "7",
+      "0",
+      "コンパイルエラー",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "finalフィールドは初期化子で一度だけ代入すればよい。",
+    "id": 70,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "nullを渡した場合のオーバーロード解決は？",
+    "code": "public class Main {\n    static void print(String s){ System.out.println(\"String\"); }\n    static void print(Object o){ System.out.println(\"Object\"); }\n    public static void main(String[] args) {\n        print(null);\n    }\n}",
+    "choices": [
+      "String",
+      "Object",
+      "コンパイルエラー",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "より具体的な型であるString版が選ばれる。",
+    "id": 71,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "オーバーライドと多態性に関する次のコードの出力は？",
+    "code": "class Super { void f(){ System.out.println(\"Super\"); } }\nclass Sub extends Super { void f(){ System.out.println(\"Sub\"); } }\npublic class Main {\n    public static void main(String[] args) {\n        Super s = new Sub();\n        s.f();\n    }\n}",
+    "choices": [
+      "Sub",
+      "Super",
+      "コンパイルエラー",
+      "実行時エラー",
+      "出力なし"
+    ],
+    "answerIndex": 0,
+    "explanation": "実行時型に基づいてオーバーライド先が呼ばれる。",
+    "id": 72,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "フィールドのシャドウイング時の参照結果は？",
+    "code": "class A { int v = 10; }\nclass B extends A { int v = 20; }\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        System.out.println(a.v);\n    }\n}",
+    "choices": [
+      "10",
+      "20",
+      "コンパイルエラー",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "フィールドは静的束縛で、参照は変数の型(A)に基づく。",
+    "id": 73,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "固定引数と可変長引数の解決で呼ばれるメソッドは？",
+    "code": "public class Main {\n    static void m(int a, int b){ System.out.println(\"two\"); }\n    static void m(int... x){ System.out.println(\"varargs\"); }\n    public static void main(String[] args) {\n        m(1,2,3);\n    }\n}",
+    "choices": [
+      "varargs",
+      "two",
+      "コンパイルエラー",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "3個の引数はvarargsが選ばれる。",
+    "id": 74,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "拡張for文でコレクションを変更した場合の挙動は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<Integer> list = new ArrayList<>(java.util.Arrays.asList(1,2,3));\n        for (Integer n : list) {\n            if (n == 2) list.remove(n);\n        }\n        System.out.println(list);\n    }\n}",
+    "choices": [
+      "実行時エラー（ConcurrentModificationException）",
+      "[1, 3]",
+      "[1, 2, 3]",
+      "コンパイルエラー",
+      "空リストになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "直接removeすると検出され例外が発生する。",
+    "id": 75,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "String#replaceの戻り値を利用しない場合の出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"banana\";\n        s.replace(\"a\",\"o\");\n        System.out.println(s);\n    }\n}",
+    "choices": [
+      "banana",
+      "bonono",
+      "bannna",
+      "エラーになる",
+      "boanana"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変のため、戻り値を再代入しないと変更されない。",
+    "id": 76,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "次のJavaコードの出力結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 7;\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "7と8",
+      "8と8",
+      "7と7",
+      "エラーになる",
+      "8と9"
+    ],
+    "answerIndex": 0,
+    "explanation": "後置インクリメントなので最初に元の値が出力され、次の行で増加後の値が出力されます。",
+    "id": 77,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "次のコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 8;\n        System.out.println(++x);\n        System.out.println(x++);\n    }\n}",
+    "choices": [
+      "9と9",
+      "8と8",
+      "9と10",
+      "エラーになる",
+      "8と9"
+    ],
+    "answerIndex": 0,
+    "explanation": "前置で先に加算して出力、後置は出力後に加算されます。",
+    "id": 78,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "オートボクシングとキャッシュに関する次のコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        Integer a = 128;\n        Integer b = 128;\n        System.out.println(a == b);\n    }\n}",
+    "choices": [
+      "false",
+      "true",
+      "エラーになる",
+      "実行時エラー",
+      "常に未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "Integerは-128〜127をキャッシュ。範囲内は==でtrue、それ以外はfalse。",
+    "id": 79,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "文字列の不変性に関する次のコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"Java\";\n        s.concat(\"Silver\");\n        System.out.println(s);\n    }\n}",
+    "choices": [
+      "Java",
+      "JavaSilver",
+      "null",
+      "エラーになる",
+      "Silver"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変。concatは新しい文字列を返すがsへ再代入していないため元の値が出力されます。",
+    "id": 80,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "StringBuilderのequalsの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder a = new StringBuilder(\"Java\");\n        StringBuilder b = new StringBuilder(\"Java\");\n        System.out.println(a.equals(b));\n    }\n}",
+    "choices": [
+      "true",
+      "false",
+      "エラーになる",
+      "実行時エラー",
+      "コンパイルは通るが未定義"
+    ],
+    "answerIndex": 1,
+    "explanation": "StringBuilderはequalsをオーバーライドしておらず、参照比較のため別インスタンス同士はfalseです。",
+    "id": 81,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "Arrays.asListの性質に関するコードの結果は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<String> list = Arrays.asList(\"A\",\"B\",\"C\");\n        list.set(1, \"X\");\n        System.out.println(list);\n        list.add(\"Y\");\n    }\n}",
+    "choices": [
+      "[A, X, C] と表示後、実行時エラー",
+      "[A, X, C] のみ表示して正常終了",
+      "コンパイルエラー",
+      "実行時にNullPointerException",
+      "[A, B, C] のまま"
+    ],
+    "answerIndex": 0,
+    "explanation": "Arrays.asListは固定長。setは可能だがaddはUnsupportedOperationExceptionで実行時エラー。",
+    "id": 82,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "例外処理とfinallyの実行順に関する出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        try {\n            int x = 10 / 0;\n            System.out.println(x);\n        } catch (ArithmeticException e) {\n            System.out.println(\"AE\");\n        } finally {\n            System.out.println(\"F\");\n        }\n    }\n}",
+    "choices": [
+      "AE と F",
+      "F のみ",
+      "AE のみ",
+      "エラーになる",
+      "何も表示されない"
+    ],
+    "answerIndex": 0,
+    "explanation": "例外発生でcatchに入りAE、finallyは必ず実行されFが続く。",
+    "id": 83,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "breakのないswitchの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int n = 2;\n        switch(n) {\n            case 1: System.out.print(\"A\");\n            case 2: System.out.print(\"B\");\n            default: System.out.print(\"D\");\n        }\n    }\n}",
+    "choices": [
+      "BD",
+      "B",
+      "ABD",
+      "AD",
+      "D"
+    ],
+    "answerIndex": 0,
+    "explanation": "case2にマッチ後にbreakがないためB→defaultでDも出力。",
+    "id": 84,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "ビット演算子 >> の結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 11;\n        System.out.println(x >> 1);\n    }\n}",
+    "choices": [
+      "5",
+      "22",
+      "11",
+      "エラーになる",
+      "2"
+    ],
+    "answerIndex": 0,
+    "explanation": "算術右シフトは2での整数除算に相当。",
+    "id": 85,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "substring(begin, end) の出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"abcde\";\n        System.out.println(s.substring(1,4));\n    }\n}",
+    "choices": [
+      "bcd",
+      "abc",
+      "abcd",
+      "bcde",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "beginは含み、endは含まない。1〜3でbcd。",
+    "id": 86,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "charAt の範囲外アクセス時の挙動は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"abc\";\n        System.out.println(s.charAt(3));\n    }\n}",
+    "choices": [
+      "実行時エラー（StringIndexOutOfBoundsException）",
+      "c",
+      "空文字が出力",
+      "エラーにならない",
+      "b"
+    ],
+    "answerIndex": 0,
+    "explanation": "インデックスは0〜2。3は範囲外で実行時例外。",
+    "id": 87,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "オーバーロード解決（拡大変換とボクシング）の出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        print(10);\n    }\n    static void print(long x) { System.out.println(\"long\"); }\n    static void print(Integer x) { System.out.println(\"Integer\"); }\n}",
+    "choices": [
+      "long",
+      "Integer",
+      "コンパイルエラー",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "widening(拡大変換)はboxingより優先。",
+    "id": 88,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "finalフィールドをインスタンス初期化子で初期化した場合の出力は？",
+    "code": "public class Main {\n    final int v;\n    { v = 7; }\n    public static void main(String[] args) {\n        System.out.println(new Main().v);\n    }\n}",
+    "choices": [
+      "7",
+      "0",
+      "コンパイルエラー",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "finalフィールドは初期化子で一度だけ代入すればよい。",
+    "id": 89,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "nullを渡した場合のオーバーロード解決は？",
+    "code": "public class Main {\n    static void print(String s){ System.out.println(\"String\"); }\n    static void print(Object o){ System.out.println(\"Object\"); }\n    public static void main(String[] args) {\n        print(null);\n    }\n}",
+    "choices": [
+      "String",
+      "Object",
+      "コンパイルエラー",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "より具体的な型であるString版が選ばれる。",
+    "id": 90,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "オーバーライドと多態性に関する次のコードの出力は？",
+    "code": "class Super { void f(){ System.out.println(\"Super\"); } }\nclass Sub extends Super { void f(){ System.out.println(\"Sub\"); } }\npublic class Main {\n    public static void main(String[] args) {\n        Super s = new Sub();\n        s.f();\n    }\n}",
+    "choices": [
+      "Sub",
+      "Super",
+      "コンパイルエラー",
+      "実行時エラー",
+      "出力なし"
+    ],
+    "answerIndex": 0,
+    "explanation": "実行時型に基づいてオーバーライド先が呼ばれる。",
+    "id": 91,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "フィールドのシャドウイング時の参照結果は？",
+    "code": "class A { int v = 10; }\nclass B extends A { int v = 20; }\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        System.out.println(a.v);\n    }\n}",
+    "choices": [
+      "10",
+      "20",
+      "コンパイルエラー",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "フィールドは静的束縛で、参照は変数の型(A)に基づく。",
+    "id": 92,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "固定引数と可変長引数の解決で呼ばれるメソッドは？",
+    "code": "public class Main {\n    static void m(int a, int b){ System.out.println(\"two\"); }\n    static void m(int... x){ System.out.println(\"varargs\"); }\n    public static void main(String[] args) {\n        m(1,2,3);\n    }\n}",
+    "choices": [
+      "varargs",
+      "two",
+      "コンパイルエラー",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "3個の引数はvarargsが選ばれる。",
+    "id": 93,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "拡張for文でコレクションを変更した場合の挙動は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<Integer> list = new ArrayList<>(java.util.Arrays.asList(1,2,3));\n        for (Integer n : list) {\n            if (n == 2) list.remove(n);\n        }\n        System.out.println(list);\n    }\n}",
+    "choices": [
+      "実行時エラー（ConcurrentModificationException）",
+      "[1, 3]",
+      "[1, 2, 3]",
+      "コンパイルエラー",
+      "空リストになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "直接removeすると検出され例外が発生する。",
+    "id": 94,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "String#replaceの戻り値を利用しない場合の出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"banana\";\n        s.replace(\"a\",\"o\");\n        System.out.println(s);\n    }\n}",
+    "choices": [
+      "banana",
+      "bonono",
+      "bannna",
+      "エラーになる",
+      "boanana"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変のため、戻り値を再代入しないと変更されない。",
+    "id": 95,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "次のJavaコードの出力結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 6;\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "6と7",
+      "7と7",
+      "6と6",
+      "エラーになる",
+      "7と8"
+    ],
+    "answerIndex": 0,
+    "explanation": "後置インクリメントなので最初に元の値が出力され、次の行で増加後の値が出力されます。",
+    "id": 96,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "次のコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 7;\n        System.out.println(++x);\n        System.out.println(x++);\n    }\n}",
+    "choices": [
+      "8と8",
+      "7と7",
+      "8と9",
+      "エラーになる",
+      "7と8"
+    ],
+    "answerIndex": 0,
+    "explanation": "前置で先に加算して出力、後置は出力後に加算されます。",
+    "id": 97,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "オートボクシングとキャッシュに関する次のコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        Integer a = 127;\n        Integer b = 127;\n        System.out.println(a == b);\n    }\n}",
+    "choices": [
+      "true",
+      "false",
+      "エラーになる",
+      "実行時エラー",
+      "常に未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "Integerは-128〜127をキャッシュ。範囲内は==でtrue、それ以外はfalse。",
+    "id": 98,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "文字列の不変性に関する次のコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"Java\";\n        s.concat(\"Silver\");\n        System.out.println(s);\n    }\n}",
+    "choices": [
+      "Java",
+      "JavaSilver",
+      "null",
+      "エラーになる",
+      "Silver"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変。concatは新しい文字列を返すがsへ再代入していないため元の値が出力されます。",
+    "id": 99,
+    "category": "Java",
+    "difficulty": "Silver"
+  },
+  {
+    "question": "StringBuilderのequalsの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder a = new StringBuilder(\"Java\");\n        StringBuilder b = new StringBuilder(\"Java\");\n        System.out.println(a.equals(b));\n    }\n}",
+    "choices": [
+      "true",
+      "false",
+      "エラーになる",
+      "実行時エラー",
+      "コンパイルは通るが未定義"
+    ],
+    "answerIndex": 1,
+    "explanation": "StringBuilderはequalsをオーバーライドしておらず、参照比較のため別インスタンス同士はfalseです。",
+    "id": 100,
+    "category": "Java",
+    "difficulty": "Silver"
+  }
+]
