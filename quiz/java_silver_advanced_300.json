@@ -1,0 +1,4802 @@
+[
+  {
+    "id": 1,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "次のJavaコードの出力結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 3;\n        System.out.println(x++);\n        System.out.println(++x);\n        System.out.println(x);\n    }\n}\n// uid:1\n",
+    "choices": [
+      "3と3と4",
+      "3と4と5",
+      "4と4と5",
+      "実行時例外",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 1,
+    "explanation": "x++は元の値、++xは加算後の値。"
+  },
+  {
+    "id": 2,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "次のJavaコードの出力結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 4;\n        System.out.println(x++);\n        System.out.println(++x);\n        System.out.println(x);\n    }\n}\n// uid:2\n",
+    "choices": [
+      "実行時例外",
+      "4と5と6",
+      "4と4と5",
+      "コンパイルエラー",
+      "5と5と6"
+    ],
+    "answerIndex": 1,
+    "explanation": "x++は元の値、++xは加算後の値。"
+  },
+  {
+    "id": 3,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "次のJavaコードの出力結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 5;\n        System.out.println(x++);\n        System.out.println(++x);\n        System.out.println(x);\n    }\n}\n// uid:3\n",
+    "choices": [
+      "5と5と6",
+      "実行時例外",
+      "6と6と7",
+      "コンパイルエラー",
+      "5と6と7"
+    ],
+    "answerIndex": 4,
+    "explanation": "x++は元の値、++xは加算後の値。"
+  },
+  {
+    "id": 4,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "次のJavaコードの出力結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 6;\n        System.out.println(x++);\n        System.out.println(++x);\n        System.out.println(x);\n    }\n}\n// uid:4\n",
+    "choices": [
+      "コンパイルエラー",
+      "7と7と8",
+      "6と6と7",
+      "実行時例外",
+      "6と7と8"
+    ],
+    "answerIndex": 4,
+    "explanation": "x++は元の値、++xは加算後の値。"
+  },
+  {
+    "id": 5,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "次のJavaコードの出力結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 7;\n        System.out.println(x++);\n        System.out.println(++x);\n        System.out.println(x);\n    }\n}\n// uid:5\n",
+    "choices": [
+      "実行時例外",
+      "7と8と9",
+      "7と7と8",
+      "8と8と9",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 1,
+    "explanation": "x++は元の値、++xは加算後の値。"
+  },
+  {
+    "id": 6,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "次のJavaコードの出力結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 8;\n        System.out.println(x++);\n        System.out.println(++x);\n        System.out.println(x);\n    }\n}\n// uid:6\n",
+    "choices": [
+      "9と9と10",
+      "8と8と9",
+      "コンパイルエラー",
+      "8と9と10",
+      "実行時例外"
+    ],
+    "answerIndex": 3,
+    "explanation": "x++は元の値、++xは加算後の値。"
+  },
+  {
+    "id": 7,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "次のJavaコードの出力結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 9;\n        System.out.println(x++);\n        System.out.println(++x);\n        System.out.println(x);\n    }\n}\n// uid:7\n",
+    "choices": [
+      "コンパイルエラー",
+      "9と10と11",
+      "9と9と10",
+      "実行時例外",
+      "10と10と11"
+    ],
+    "answerIndex": 1,
+    "explanation": "x++は元の値、++xは加算後の値。"
+  },
+  {
+    "id": 8,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "次のJavaコードの出力結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 10;\n        System.out.println(x++);\n        System.out.println(++x);\n        System.out.println(x);\n    }\n}\n// uid:8\n",
+    "choices": [
+      "実行時例外",
+      "10と11と12",
+      "11と11と12",
+      "10と10と11",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 1,
+    "explanation": "x++は元の値、++xは加算後の値。"
+  },
+  {
+    "id": 9,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "次のJavaコードの出力結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 11;\n        System.out.println(x++);\n        System.out.println(++x);\n        System.out.println(x);\n    }\n}\n// uid:9\n",
+    "choices": [
+      "11と12と13",
+      "コンパイルエラー",
+      "11と11と12",
+      "12と12と13",
+      "実行時例外"
+    ],
+    "answerIndex": 0,
+    "explanation": "x++は元の値、++xは加算後の値。"
+  },
+  {
+    "id": 10,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "次のJavaコードの出力結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 12;\n        System.out.println(x++);\n        System.out.println(++x);\n        System.out.println(x);\n    }\n}\n// uid:10\n",
+    "choices": [
+      "13と13と14",
+      "実行時例外",
+      "12と12と13",
+      "12と13と14",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 3,
+    "explanation": "x++は元の値、++xは加算後の値。"
+  },
+  {
+    "id": 11,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "短絡評価により例外が発生しないのはどれか（出力）？",
+    "code": "public class Main {\n    static boolean safe(String s){ return s != null && s.length() > 0; }\n    public static void main(String[] args) {\n        String t = null; // case 0\n        System.out.println(safe(t));\n    }\n}\n// uid:11\n",
+    "choices": [
+      "実行時例外",
+      "false",
+      "true",
+      "NullPointerException",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 1,
+    "explanation": "s!=nullがfalseなら右辺は評価されません。"
+  },
+  {
+    "id": 12,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "短絡評価により例外が発生しないのはどれか（出力）？",
+    "code": "public class Main {\n    static boolean safe(String s){ return s != null && s.length() > 0; }\n    public static void main(String[] args) {\n        String t = \"abc\"; // case 1\n        System.out.println(safe(t));\n    }\n}\n// uid:12\n",
+    "choices": [
+      "コンパイルエラー",
+      "false",
+      "true",
+      "実行時例外",
+      "NullPointerException"
+    ],
+    "answerIndex": 2,
+    "explanation": "s!=nullがfalseなら右辺は評価されません。"
+  },
+  {
+    "id": 13,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "短絡評価により例外が発生しないのはどれか（出力）？",
+    "code": "public class Main {\n    static boolean safe(String s){ return s != null && s.length() > 0; }\n    public static void main(String[] args) {\n        String t = \"\"; // case 2\n        System.out.println(safe(t));\n    }\n}\n// uid:13\n",
+    "choices": [
+      "true",
+      "コンパイルエラー",
+      "NullPointerException",
+      "実行時例外",
+      "false"
+    ],
+    "answerIndex": 4,
+    "explanation": "s!=nullがfalseなら右辺は評価されません。"
+  },
+  {
+    "id": 14,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "短絡評価により例外が発生しないのはどれか（出力）？",
+    "code": "public class Main {\n    static boolean safe(String s){ return s != null && s.length() > 0; }\n    public static void main(String[] args) {\n        String t = null; // case 3\n        System.out.println(safe(t));\n    }\n}\n// uid:14\n",
+    "choices": [
+      "実行時例外",
+      "NullPointerException",
+      "true",
+      "false",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 3,
+    "explanation": "s!=nullがfalseなら右辺は評価されません。"
+  },
+  {
+    "id": 15,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "短絡評価により例外が発生しないのはどれか（出力）？",
+    "code": "public class Main {\n    static boolean safe(String s){ return s != null && s.length() > 0; }\n    public static void main(String[] args) {\n        String t = \"xyz\"; // case 4\n        System.out.println(safe(t));\n    }\n}\n// uid:15\n",
+    "choices": [
+      "false",
+      "コンパイルエラー",
+      "NullPointerException",
+      "実行時例外",
+      "true"
+    ],
+    "answerIndex": 4,
+    "explanation": "s!=nullがfalseなら右辺は評価されません。"
+  },
+  {
+    "id": 16,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "短絡評価により例外が発生しないのはどれか（出力）？",
+    "code": "public class Main {\n    static boolean safe(String s){ return s != null && s.length() > 0; }\n    public static void main(String[] args) {\n        String t = null; // case 5\n        System.out.println(safe(t));\n    }\n}\n// uid:16\n",
+    "choices": [
+      "NullPointerException",
+      "コンパイルエラー",
+      "false",
+      "実行時例外",
+      "true"
+    ],
+    "answerIndex": 2,
+    "explanation": "s!=nullがfalseなら右辺は評価されません。"
+  },
+  {
+    "id": 17,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "短絡評価により例外が発生しないのはどれか（出力）？",
+    "code": "public class Main {\n    static boolean safe(String s){ return s != null && s.length() > 0; }\n    public static void main(String[] args) {\n        String t = \"java\"; // case 6\n        System.out.println(safe(t));\n    }\n}\n// uid:17\n",
+    "choices": [
+      "NullPointerException",
+      "true",
+      "false",
+      "実行時例外",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 1,
+    "explanation": "s!=nullがfalseなら右辺は評価されません。"
+  },
+  {
+    "id": 18,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "短絡評価により例外が発生しないのはどれか（出力）？",
+    "code": "public class Main {\n    static boolean safe(String s){ return s != null && s.length() > 0; }\n    public static void main(String[] args) {\n        String t = null; // case 7\n        System.out.println(safe(t));\n    }\n}\n// uid:18\n",
+    "choices": [
+      "false",
+      "コンパイルエラー",
+      "NullPointerException",
+      "true",
+      "実行時例外"
+    ],
+    "answerIndex": 0,
+    "explanation": "s!=nullがfalseなら右辺は評価されません。"
+  },
+  {
+    "id": 19,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "短絡評価により例外が発生しないのはどれか（出力）？",
+    "code": "public class Main {\n    static boolean safe(String s){ return s != null && s.length() > 0; }\n    public static void main(String[] args) {\n        String t = null; // case 8\n        System.out.println(safe(t));\n    }\n}\n// uid:19\n",
+    "choices": [
+      "コンパイルエラー",
+      "実行時例外",
+      "true",
+      "false",
+      "NullPointerException"
+    ],
+    "answerIndex": 3,
+    "explanation": "s!=nullがfalseなら右辺は評価されません。"
+  },
+  {
+    "id": 20,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "短絡評価により例外が発生しないのはどれか（出力）？",
+    "code": "public class Main {\n    static boolean safe(String s){ return s != null && s.length() > 0; }\n    public static void main(String[] args) {\n        String t = \"OCP\"; // case 9\n        System.out.println(safe(t));\n    }\n}\n// uid:20\n",
+    "choices": [
+      "false",
+      "NullPointerException",
+      "実行時例外",
+      "コンパイルエラー",
+      "true"
+    ],
+    "answerIndex": 4,
+    "explanation": "s!=nullがfalseなら右辺は評価されません。"
+  },
+  {
+    "id": 21,
+    "category": "switchと分岐",
+    "difficulty": "上級",
+    "question": "次のコードの出力は？（fall-throughに注意）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int n = 0, a = 0;\n        switch(n) {\n            case 1: a += 1; break;\n            case 2: a += 2;\n            case 3: a += 3;\n            default: a += 4;\n        }\n        System.out.println(a);\n    }\n}\n// uid:21\n",
+    "choices": [
+      "実行時例外",
+      "3",
+      "コンパイルエラー",
+      "4",
+      "5"
+    ],
+    "answerIndex": 3,
+    "explanation": "breakがないcaseはフォールスルーします。"
+  },
+  {
+    "id": 22,
+    "category": "switchと分岐",
+    "difficulty": "上級",
+    "question": "次のコードの出力は？（fall-throughに注意）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int n = 1, a = 0;\n        switch(n) {\n            case 1: a += 1; break;\n            case 2: a += 2;\n            case 3: a += 3;\n            default: a += 4;\n        }\n        System.out.println(a);\n    }\n}\n// uid:22\n",
+    "choices": [
+      "2",
+      "0",
+      "1",
+      "実行時例外",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 2,
+    "explanation": "breakがないcaseはフォールスルーします。"
+  },
+  {
+    "id": 23,
+    "category": "switchと分岐",
+    "difficulty": "上級",
+    "question": "次のコードの出力は？（fall-throughに注意）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int n = 2, a = 0;\n        switch(n) {\n            case 1: a += 1; break;\n            case 2: a += 2;\n            case 3: a += 3;\n            default: a += 4;\n        }\n        System.out.println(a);\n    }\n}\n// uid:23\n",
+    "choices": [
+      "実行時例外",
+      "9",
+      "8",
+      "10",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 1,
+    "explanation": "breakがないcaseはフォールスルーします。"
+  },
+  {
+    "id": 24,
+    "category": "switchと分岐",
+    "difficulty": "上級",
+    "question": "次のコードの出力は？（fall-throughに注意）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int n = 3, a = 0;\n        switch(n) {\n            case 1: a += 1; break;\n            case 2: a += 2;\n            case 3: a += 3;\n            default: a += 4;\n        }\n        System.out.println(a);\n    }\n}\n// uid:24\n",
+    "choices": [
+      "6",
+      "8",
+      "7",
+      "実行時例外",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 2,
+    "explanation": "breakがないcaseはフォールスルーします。"
+  },
+  {
+    "id": 25,
+    "category": "switchと分岐",
+    "difficulty": "上級",
+    "question": "次のコードの出力は？（fall-throughに注意）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int n = 4, a = 0;\n        switch(n) {\n            case 1: a += 1; break;\n            case 2: a += 2;\n            case 3: a += 3;\n            default: a += 4;\n        }\n        System.out.println(a);\n    }\n}\n// uid:25\n",
+    "choices": [
+      "3",
+      "実行時例外",
+      "4",
+      "5",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 2,
+    "explanation": "breakがないcaseはフォールスルーします。"
+  },
+  {
+    "id": 26,
+    "category": "switchと分岐",
+    "difficulty": "上級",
+    "question": "次のコードの出力は？（fall-throughに注意）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int n = 5, a = 0;\n        switch(n) {\n            case 1: a += 1; break;\n            case 2: a += 2;\n            case 3: a += 3;\n            default: a += 4;\n        }\n        System.out.println(a);\n    }\n}\n// uid:26\n",
+    "choices": [
+      "5",
+      "コンパイルエラー",
+      "4",
+      "3",
+      "実行時例外"
+    ],
+    "answerIndex": 2,
+    "explanation": "breakがないcaseはフォールスルーします。"
+  },
+  {
+    "id": 27,
+    "category": "switchと分岐",
+    "difficulty": "上級",
+    "question": "次のコードの出力は？（fall-throughに注意）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int n = 6, a = 0;\n        switch(n) {\n            case 1: a += 1; break;\n            case 2: a += 2;\n            case 3: a += 3;\n            default: a += 4;\n        }\n        System.out.println(a);\n    }\n}\n// uid:27\n",
+    "choices": [
+      "実行時例外",
+      "4",
+      "3",
+      "コンパイルエラー",
+      "5"
+    ],
+    "answerIndex": 1,
+    "explanation": "breakがないcaseはフォールスルーします。"
+  },
+  {
+    "id": 28,
+    "category": "switchと分岐",
+    "difficulty": "上級",
+    "question": "次のコードの出力は？（fall-throughに注意）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int n = 7, a = 0;\n        switch(n) {\n            case 1: a += 1; break;\n            case 2: a += 2;\n            case 3: a += 3;\n            default: a += 4;\n        }\n        System.out.println(a);\n    }\n}\n// uid:28\n",
+    "choices": [
+      "3",
+      "コンパイルエラー",
+      "実行時例外",
+      "5",
+      "4"
+    ],
+    "answerIndex": 4,
+    "explanation": "breakがないcaseはフォールスルーします。"
+  },
+  {
+    "id": 29,
+    "category": "switchと分岐",
+    "difficulty": "上級",
+    "question": "次のコードの出力は？（fall-throughに注意）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int n = 8, a = 0;\n        switch(n) {\n            case 1: a += 1; break;\n            case 2: a += 2;\n            case 3: a += 3;\n            default: a += 4;\n        }\n        System.out.println(a);\n    }\n}\n// uid:29\n",
+    "choices": [
+      "コンパイルエラー",
+      "5",
+      "実行時例外",
+      "4",
+      "3"
+    ],
+    "answerIndex": 3,
+    "explanation": "breakがないcaseはフォールスルーします。"
+  },
+  {
+    "id": 30,
+    "category": "switchと分岐",
+    "difficulty": "上級",
+    "question": "次のコードの出力は？（fall-throughに注意）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int n = 9, a = 0;\n        switch(n) {\n            case 1: a += 1; break;\n            case 2: a += 2;\n            case 3: a += 3;\n            default: a += 4;\n        }\n        System.out.println(a);\n    }\n}\n// uid:30\n",
+    "choices": [
+      "5",
+      "実行時例外",
+      "4",
+      "コンパイルエラー",
+      "3"
+    ],
+    "answerIndex": 2,
+    "explanation": "breakがないcaseはフォールスルーします。"
+  },
+  {
+    "id": 31,
+    "category": "例外処理",
+    "difficulty": "上級",
+    "question": "try/finallyにおけるreturnと出力の順序は？",
+    "code": "public class Main {\n    static int f() {\n        int x = 10;\n        try { return x; }\n        finally { x++; System.out.print(x + \" \"); }\n    }\n    public static void main(String[] args) {\n        System.out.println(f());\n    }\n}\n// uid:31\n",
+    "choices": [
+      "コンパイルエラー",
+      "未定義",
+      "11 11",
+      "10 11",
+      "11 10"
+    ],
+    "answerIndex": 4,
+    "explanation": "return評価後でもfinallyは必ず実行されます。"
+  },
+  {
+    "id": 32,
+    "category": "例外処理",
+    "difficulty": "上級",
+    "question": "try/finallyにおけるreturnと出力の順序は？",
+    "code": "public class Main {\n    static int f() {\n        int x = 11;\n        try { return x; }\n        finally { x++; System.out.print(x + \" \"); }\n    }\n    public static void main(String[] args) {\n        System.out.println(f());\n    }\n}\n// uid:32\n",
+    "choices": [
+      "未定義",
+      "コンパイルエラー",
+      "11 12",
+      "12 12",
+      "12 11"
+    ],
+    "answerIndex": 4,
+    "explanation": "return評価後でもfinallyは必ず実行されます。"
+  },
+  {
+    "id": 33,
+    "category": "例外処理",
+    "difficulty": "上級",
+    "question": "try/finallyにおけるreturnと出力の順序は？",
+    "code": "public class Main {\n    static int f() {\n        int x = 12;\n        try { return x; }\n        finally { x++; System.out.print(x + \" \"); }\n    }\n    public static void main(String[] args) {\n        System.out.println(f());\n    }\n}\n// uid:33\n",
+    "choices": [
+      "未定義",
+      "13 12",
+      "13 13",
+      "コンパイルエラー",
+      "12 13"
+    ],
+    "answerIndex": 1,
+    "explanation": "return評価後でもfinallyは必ず実行されます。"
+  },
+  {
+    "id": 34,
+    "category": "例外処理",
+    "difficulty": "上級",
+    "question": "try/finallyにおけるreturnと出力の順序は？",
+    "code": "public class Main {\n    static int f() {\n        int x = 13;\n        try { return x; }\n        finally { x++; System.out.print(x + \" \"); }\n    }\n    public static void main(String[] args) {\n        System.out.println(f());\n    }\n}\n// uid:34\n",
+    "choices": [
+      "未定義",
+      "14 13",
+      "14 14",
+      "13 14",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 1,
+    "explanation": "return評価後でもfinallyは必ず実行されます。"
+  },
+  {
+    "id": 35,
+    "category": "例外処理",
+    "difficulty": "上級",
+    "question": "try/finallyにおけるreturnと出力の順序は？",
+    "code": "public class Main {\n    static int f() {\n        int x = 14;\n        try { return x; }\n        finally { x++; System.out.print(x + \" \"); }\n    }\n    public static void main(String[] args) {\n        System.out.println(f());\n    }\n}\n// uid:35\n",
+    "choices": [
+      "コンパイルエラー",
+      "15 14",
+      "未定義",
+      "14 15",
+      "15 15"
+    ],
+    "answerIndex": 1,
+    "explanation": "return評価後でもfinallyは必ず実行されます。"
+  },
+  {
+    "id": 36,
+    "category": "例外処理",
+    "difficulty": "上級",
+    "question": "try/finallyにおけるreturnと出力の順序は？",
+    "code": "public class Main {\n    static int f() {\n        int x = 15;\n        try { return x; }\n        finally { x++; System.out.print(x + \" \"); }\n    }\n    public static void main(String[] args) {\n        System.out.println(f());\n    }\n}\n// uid:36\n",
+    "choices": [
+      "コンパイルエラー",
+      "16 15",
+      "16 16",
+      "未定義",
+      "15 16"
+    ],
+    "answerIndex": 1,
+    "explanation": "return評価後でもfinallyは必ず実行されます。"
+  },
+  {
+    "id": 37,
+    "category": "例外処理",
+    "difficulty": "上級",
+    "question": "try/finallyにおけるreturnと出力の順序は？",
+    "code": "public class Main {\n    static int f() {\n        int x = 16;\n        try { return x; }\n        finally { x++; System.out.print(x + \" \"); }\n    }\n    public static void main(String[] args) {\n        System.out.println(f());\n    }\n}\n// uid:37\n",
+    "choices": [
+      "16 17",
+      "17 16",
+      "17 17",
+      "未定義",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 1,
+    "explanation": "return評価後でもfinallyは必ず実行されます。"
+  },
+  {
+    "id": 38,
+    "category": "例外処理",
+    "difficulty": "上級",
+    "question": "try/finallyにおけるreturnと出力の順序は？",
+    "code": "public class Main {\n    static int f() {\n        int x = 17;\n        try { return x; }\n        finally { x++; System.out.print(x + \" \"); }\n    }\n    public static void main(String[] args) {\n        System.out.println(f());\n    }\n}\n// uid:38\n",
+    "choices": [
+      "17 18",
+      "18 18",
+      "未定義",
+      "18 17",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 3,
+    "explanation": "return評価後でもfinallyは必ず実行されます。"
+  },
+  {
+    "id": 39,
+    "category": "例外処理",
+    "difficulty": "上級",
+    "question": "try/finallyにおけるreturnと出力の順序は？",
+    "code": "public class Main {\n    static int f() {\n        int x = 18;\n        try { return x; }\n        finally { x++; System.out.print(x + \" \"); }\n    }\n    public static void main(String[] args) {\n        System.out.println(f());\n    }\n}\n// uid:39\n",
+    "choices": [
+      "コンパイルエラー",
+      "18 19",
+      "未定義",
+      "19 19",
+      "19 18"
+    ],
+    "answerIndex": 4,
+    "explanation": "return評価後でもfinallyは必ず実行されます。"
+  },
+  {
+    "id": 40,
+    "category": "例外処理",
+    "difficulty": "上級",
+    "question": "try/finallyにおけるreturnと出力の順序は？",
+    "code": "public class Main {\n    static int f() {\n        int x = 19;\n        try { return x; }\n        finally { x++; System.out.print(x + \" \"); }\n    }\n    public static void main(String[] args) {\n        System.out.println(f());\n    }\n}\n// uid:40\n",
+    "choices": [
+      "20 19",
+      "19 20",
+      "未定義",
+      "コンパイルエラー",
+      "20 20"
+    ],
+    "answerIndex": 0,
+    "explanation": "return評価後でもfinallyは必ず実行されます。"
+  },
+  {
+    "id": 41,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "次のコードの出力（== 比較）は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String a = new String(\"abc\"); // v0\n        String b = \"abc\";\n        System.out.println(a == b);\n    }\n}\n// uid:41\n",
+    "choices": [
+      "実行時例外",
+      "false",
+      "equals()ならtrue",
+      "true",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 1,
+    "explanation": "new Stringは別インスタンス。リテラル結合はインターンされます。"
+  },
+  {
+    "id": 42,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "次のコードの出力（== 比較）は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String a = \"java\"; // v1\n        String b = \"ja\" + \"va\";\n        System.out.println(a == b);\n    }\n}\n// uid:42\n",
+    "choices": [
+      "コンパイルエラー",
+      "true",
+      "実行時例外",
+      "equals()ならtrue",
+      "false"
+    ],
+    "answerIndex": 1,
+    "explanation": "new Stringは別インスタンス。リテラル結合はインターンされます。"
+  },
+  {
+    "id": 43,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "次のコードの出力（== 比較）は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String a = new String(\"xy\"); // v2\n        String b = new String(\"xy\");\n        System.out.println(a == b);\n    }\n}\n// uid:43\n",
+    "choices": [
+      "実行時例外",
+      "equals()ならtrue",
+      "false",
+      "true",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 2,
+    "explanation": "new Stringは別インスタンス。リテラル結合はインターンされます。"
+  },
+  {
+    "id": 44,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "次のコードの出力（== 比較）は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String a = \"\"; // v3\n        String b = new String(\"\");\n        System.out.println(a == b);\n    }\n}\n// uid:44\n",
+    "choices": [
+      "equals()ならtrue",
+      "実行時例外",
+      "true",
+      "コンパイルエラー",
+      "false"
+    ],
+    "answerIndex": 4,
+    "explanation": "new Stringは別インスタンス。リテラル結合はインターンされます。"
+  },
+  {
+    "id": 45,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "次のコードの出力（== 比較）は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String a = new String(\"abc\"); // v4\n        String b = \"abc\";\n        System.out.println(a == b);\n    }\n}\n// uid:45\n",
+    "choices": [
+      "equals()ならtrue",
+      "コンパイルエラー",
+      "実行時例外",
+      "false",
+      "true"
+    ],
+    "answerIndex": 3,
+    "explanation": "new Stringは別インスタンス。リテラル結合はインターンされます。"
+  },
+  {
+    "id": 46,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "次のコードの出力（== 比較）は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String a = \"java\"; // v5\n        String b = \"ja\" + \"va\";\n        System.out.println(a == b);\n    }\n}\n// uid:46\n",
+    "choices": [
+      "false",
+      "true",
+      "実行時例外",
+      "equals()ならtrue",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 1,
+    "explanation": "new Stringは別インスタンス。リテラル結合はインターンされます。"
+  },
+  {
+    "id": 47,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "次のコードの出力（== 比較）は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String a = new String(\"xy\"); // v6\n        String b = new String(\"xy\");\n        System.out.println(a == b);\n    }\n}\n// uid:47\n",
+    "choices": [
+      "実行時例外",
+      "true",
+      "equals()ならtrue",
+      "コンパイルエラー",
+      "false"
+    ],
+    "answerIndex": 4,
+    "explanation": "new Stringは別インスタンス。リテラル結合はインターンされます。"
+  },
+  {
+    "id": 48,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "次のコードの出力（== 比較）は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String a = \"\"; // v7\n        String b = new String(\"\");\n        System.out.println(a == b);\n    }\n}\n// uid:48\n",
+    "choices": [
+      "実行時例外",
+      "false",
+      "equals()ならtrue",
+      "true",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 1,
+    "explanation": "new Stringは別インスタンス。リテラル結合はインターンされます。"
+  },
+  {
+    "id": 49,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "次のコードの出力（== 比較）は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String a = new String(\"abc\"); // v8\n        String b = \"abc\";\n        System.out.println(a == b);\n    }\n}\n// uid:49\n",
+    "choices": [
+      "equals()ならtrue",
+      "コンパイルエラー",
+      "true",
+      "実行時例外",
+      "false"
+    ],
+    "answerIndex": 4,
+    "explanation": "new Stringは別インスタンス。リテラル結合はインターンされます。"
+  },
+  {
+    "id": 50,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "次のコードの出力（== 比較）は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String a = \"java\"; // v9\n        String b = \"ja\" + \"va\";\n        System.out.println(a == b);\n    }\n}\n// uid:50\n",
+    "choices": [
+      "false",
+      "実行時例外",
+      "コンパイルエラー",
+      "equals()ならtrue",
+      "true"
+    ],
+    "answerIndex": 4,
+    "explanation": "new Stringは別インスタンス。リテラル結合はインターンされます。"
+  },
+  {
+    "id": 51,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "次のコードの出力（== 比較）は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String a = new String(\"xy\"); // v10\n        String b = new String(\"xy\");\n        System.out.println(a == b);\n    }\n}\n// uid:51\n",
+    "choices": [
+      "equals()ならtrue",
+      "true",
+      "コンパイルエラー",
+      "false",
+      "実行時例外"
+    ],
+    "answerIndex": 3,
+    "explanation": "new Stringは別インスタンス。リテラル結合はインターンされます。"
+  },
+  {
+    "id": 52,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "次のコードの出力（== 比較）は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String a = \"\"; // v11\n        String b = new String(\"\");\n        System.out.println(a == b);\n    }\n}\n// uid:52\n",
+    "choices": [
+      "実行時例外",
+      "equals()ならtrue",
+      "false",
+      "true",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 2,
+    "explanation": "new Stringは別インスタンス。リテラル結合はインターンされます。"
+  },
+  {
+    "id": 53,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "次のコードの出力（== 比較）は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String a = new String(\"abc\"); // v12\n        String b = \"abc\";\n        System.out.println(a == b);\n    }\n}\n// uid:53\n",
+    "choices": [
+      "true",
+      "false",
+      "equals()ならtrue",
+      "コンパイルエラー",
+      "実行時例外"
+    ],
+    "answerIndex": 1,
+    "explanation": "new Stringは別インスタンス。リテラル結合はインターンされます。"
+  },
+  {
+    "id": 54,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "次のコードの出力（== 比較）は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String a = \"java\"; // v13\n        String b = \"ja\" + \"va\";\n        System.out.println(a == b);\n    }\n}\n// uid:54\n",
+    "choices": [
+      "実行時例外",
+      "true",
+      "equals()ならtrue",
+      "コンパイルエラー",
+      "false"
+    ],
+    "answerIndex": 1,
+    "explanation": "new Stringは別インスタンス。リテラル結合はインターンされます。"
+  },
+  {
+    "id": 55,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "次のコードの出力（== 比較）は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String a = new String(\"xy\"); // v14\n        String b = new String(\"xy\");\n        System.out.println(a == b);\n    }\n}\n// uid:55\n",
+    "choices": [
+      "コンパイルエラー",
+      "equals()ならtrue",
+      "true",
+      "false",
+      "実行時例外"
+    ],
+    "answerIndex": 3,
+    "explanation": "new Stringは別インスタンス。リテラル結合はインターンされます。"
+  },
+  {
+    "id": 56,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "次のコードの出力（== 比較）は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String a = \"\"; // v15\n        String b = new String(\"\");\n        System.out.println(a == b);\n    }\n}\n// uid:56\n",
+    "choices": [
+      "equals()ならtrue",
+      "true",
+      "コンパイルエラー",
+      "false",
+      "実行時例外"
+    ],
+    "answerIndex": 3,
+    "explanation": "new Stringは別インスタンス。リテラル結合はインターンされます。"
+  },
+  {
+    "id": 57,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "次のコードの出力（== 比較）は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String a = new String(\"abc\"); // v16\n        String b = \"abc\";\n        System.out.println(a == b);\n    }\n}\n// uid:57\n",
+    "choices": [
+      "true",
+      "equals()ならtrue",
+      "コンパイルエラー",
+      "false",
+      "実行時例外"
+    ],
+    "answerIndex": 3,
+    "explanation": "new Stringは別インスタンス。リテラル結合はインターンされます。"
+  },
+  {
+    "id": 58,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "次のコードの出力（== 比較）は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String a = \"java\"; // v17\n        String b = \"ja\" + \"va\";\n        System.out.println(a == b);\n    }\n}\n// uid:58\n",
+    "choices": [
+      "false",
+      "実行時例外",
+      "コンパイルエラー",
+      "equals()ならtrue",
+      "true"
+    ],
+    "answerIndex": 4,
+    "explanation": "new Stringは別インスタンス。リテラル結合はインターンされます。"
+  },
+  {
+    "id": 59,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "次のコードの出力（== 比較）は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String a = new String(\"xy\"); // v18\n        String b = new String(\"xy\");\n        System.out.println(a == b);\n    }\n}\n// uid:59\n",
+    "choices": [
+      "false",
+      "true",
+      "equals()ならtrue",
+      "実行時例外",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 0,
+    "explanation": "new Stringは別インスタンス。リテラル結合はインターンされます。"
+  },
+  {
+    "id": 60,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "次のコードの出力（== 比較）は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String a = \"\"; // v19\n        String b = new String(\"\");\n        System.out.println(a == b);\n    }\n}\n// uid:60\n",
+    "choices": [
+      "false",
+      "コンパイルエラー",
+      "true",
+      "equals()ならtrue",
+      "実行時例外"
+    ],
+    "answerIndex": 0,
+    "explanation": "new Stringは別インスタンス。リテラル結合はインターンされます。"
+  },
+  {
+    "id": 61,
+    "category": "ラッパークラスとオートボクシング",
+    "difficulty": "上級",
+    "question": "次のコードの出力（== 比較）は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        Integer a = -129;\n        Integer b = -129;\n        System.out.println(a == b);\n    }\n}\n// uid:61\n",
+    "choices": [
+      "true",
+      "コンパイルエラー",
+      "equals()ならtrue",
+      "false",
+      "例外"
+    ],
+    "answerIndex": 3,
+    "explanation": "Integerのキャッシュは-128〜127。"
+  },
+  {
+    "id": 62,
+    "category": "ラッパークラスとオートボクシング",
+    "difficulty": "上級",
+    "question": "次のコードの出力（== 比較）は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        Integer a = -128;\n        Integer b = -128;\n        System.out.println(a == b);\n    }\n}\n// uid:62\n",
+    "choices": [
+      "例外",
+      "コンパイルエラー",
+      "false",
+      "true",
+      "equals()ならtrue"
+    ],
+    "answerIndex": 3,
+    "explanation": "Integerのキャッシュは-128〜127。"
+  },
+  {
+    "id": 63,
+    "category": "ラッパークラスとオートボクシング",
+    "difficulty": "上級",
+    "question": "次のコードの出力（== 比較）は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        Integer a = -1;\n        Integer b = -1;\n        System.out.println(a == b);\n    }\n}\n// uid:63\n",
+    "choices": [
+      "コンパイルエラー",
+      "equals()ならtrue",
+      "例外",
+      "true",
+      "false"
+    ],
+    "answerIndex": 3,
+    "explanation": "Integerのキャッシュは-128〜127。"
+  },
+  {
+    "id": 64,
+    "category": "ラッパークラスとオートボクシング",
+    "difficulty": "上級",
+    "question": "次のコードの出力（== 比較）は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        Integer a = 0;\n        Integer b = 0;\n        System.out.println(a == b);\n    }\n}\n// uid:64\n",
+    "choices": [
+      "コンパイルエラー",
+      "例外",
+      "false",
+      "true",
+      "equals()ならtrue"
+    ],
+    "answerIndex": 3,
+    "explanation": "Integerのキャッシュは-128〜127。"
+  },
+  {
+    "id": 65,
+    "category": "ラッパークラスとオートボクシング",
+    "difficulty": "上級",
+    "question": "次のコードの出力（== 比較）は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        Integer a = 1;\n        Integer b = 1;\n        System.out.println(a == b);\n    }\n}\n// uid:65\n",
+    "choices": [
+      "コンパイルエラー",
+      "true",
+      "equals()ならtrue",
+      "例外",
+      "false"
+    ],
+    "answerIndex": 1,
+    "explanation": "Integerのキャッシュは-128〜127。"
+  },
+  {
+    "id": 66,
+    "category": "ラッパークラスとオートボクシング",
+    "difficulty": "上級",
+    "question": "次のコードの出力（== 比較）は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        Integer a = 127;\n        Integer b = 127;\n        System.out.println(a == b);\n    }\n}\n// uid:66\n",
+    "choices": [
+      "例外",
+      "true",
+      "false",
+      "コンパイルエラー",
+      "equals()ならtrue"
+    ],
+    "answerIndex": 1,
+    "explanation": "Integerのキャッシュは-128〜127。"
+  },
+  {
+    "id": 67,
+    "category": "ラッパークラスとオートボクシング",
+    "difficulty": "上級",
+    "question": "次のコードの出力（== 比較）は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        Integer a = 128;\n        Integer b = 128;\n        System.out.println(a == b);\n    }\n}\n// uid:67\n",
+    "choices": [
+      "false",
+      "true",
+      "例外",
+      "コンパイルエラー",
+      "equals()ならtrue"
+    ],
+    "answerIndex": 0,
+    "explanation": "Integerのキャッシュは-128〜127。"
+  },
+  {
+    "id": 68,
+    "category": "ラッパークラスとオートボクシング",
+    "difficulty": "上級",
+    "question": "次のコードの出力（== 比較）は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        Integer a = 129;\n        Integer b = 129;\n        System.out.println(a == b);\n    }\n}\n// uid:68\n",
+    "choices": [
+      "例外",
+      "equals()ならtrue",
+      "false",
+      "コンパイルエラー",
+      "true"
+    ],
+    "answerIndex": 2,
+    "explanation": "Integerのキャッシュは-128〜127。"
+  },
+  {
+    "id": 69,
+    "category": "ラッパークラスとオートボクシング",
+    "difficulty": "上級",
+    "question": "次のコードの出力（== 比較）は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        Integer a = 200;\n        Integer b = 200;\n        System.out.println(a == b);\n    }\n}\n// uid:69\n",
+    "choices": [
+      "false",
+      "例外",
+      "equals()ならtrue",
+      "true",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 0,
+    "explanation": "Integerのキャッシュは-128〜127。"
+  },
+  {
+    "id": 70,
+    "category": "ラッパークラスとオートボクシング",
+    "difficulty": "上級",
+    "question": "次のコードの出力（== 比較）は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        Integer a = 1024;\n        Integer b = 1024;\n        System.out.println(a == b);\n    }\n}\n// uid:70\n",
+    "choices": [
+      "equals()ならtrue",
+      "コンパイルエラー",
+      "false",
+      "例外",
+      "true"
+    ],
+    "answerIndex": 2,
+    "explanation": "Integerのキャッシュは-128〜127。"
+  },
+  {
+    "id": 71,
+    "category": "配列とコレクション",
+    "difficulty": "上級",
+    "question": "配列のlengthと末尾要素の値を出力します。結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int[] a = new int[3];\n        a[2] = 9;\n        System.out.println(a.length + \":\" + a[2]);\n    }\n}\n// uid:71\n",
+    "choices": [
+      "3:8",
+      "コンパイルエラー",
+      "2:9",
+      "3:9",
+      "ArrayIndexOutOfBoundsException"
+    ],
+    "answerIndex": 3,
+    "explanation": "末尾はlength-1。"
+  },
+  {
+    "id": 72,
+    "category": "配列とコレクション",
+    "difficulty": "上級",
+    "question": "配列のlengthと末尾要素の値を出力します。結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int[] a = new int[4];\n        a[3] = 12;\n        System.out.println(a.length + \":\" + a[3]);\n    }\n}\n// uid:72\n",
+    "choices": [
+      "3:12",
+      "コンパイルエラー",
+      "4:12",
+      "4:11",
+      "ArrayIndexOutOfBoundsException"
+    ],
+    "answerIndex": 2,
+    "explanation": "末尾はlength-1。"
+  },
+  {
+    "id": 73,
+    "category": "配列とコレクション",
+    "difficulty": "上級",
+    "question": "配列のlengthと末尾要素の値を出力します。結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int[] a = new int[5];\n        a[4] = 15;\n        System.out.println(a.length + \":\" + a[4]);\n    }\n}\n// uid:73\n",
+    "choices": [
+      "4:15",
+      "5:14",
+      "5:15",
+      "ArrayIndexOutOfBoundsException",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 2,
+    "explanation": "末尾はlength-1。"
+  },
+  {
+    "id": 74,
+    "category": "配列とコレクション",
+    "difficulty": "上級",
+    "question": "配列のlengthと末尾要素の値を出力します。結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int[] a = new int[6];\n        a[5] = 18;\n        System.out.println(a.length + \":\" + a[5]);\n    }\n}\n// uid:74\n",
+    "choices": [
+      "6:18",
+      "6:17",
+      "ArrayIndexOutOfBoundsException",
+      "5:18",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 0,
+    "explanation": "末尾はlength-1。"
+  },
+  {
+    "id": 75,
+    "category": "配列とコレクション",
+    "difficulty": "上級",
+    "question": "配列のlengthと末尾要素の値を出力します。結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int[] a = new int[7];\n        a[6] = 21;\n        System.out.println(a.length + \":\" + a[6]);\n    }\n}\n// uid:75\n",
+    "choices": [
+      "ArrayIndexOutOfBoundsException",
+      "7:21",
+      "7:20",
+      "コンパイルエラー",
+      "6:21"
+    ],
+    "answerIndex": 1,
+    "explanation": "末尾はlength-1。"
+  },
+  {
+    "id": 76,
+    "category": "配列とコレクション",
+    "difficulty": "上級",
+    "question": "配列のlengthと末尾要素の値を出力します。結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int[] a = new int[8];\n        a[7] = 24;\n        System.out.println(a.length + \":\" + a[7]);\n    }\n}\n// uid:76\n",
+    "choices": [
+      "8:23",
+      "7:24",
+      "コンパイルエラー",
+      "ArrayIndexOutOfBoundsException",
+      "8:24"
+    ],
+    "answerIndex": 4,
+    "explanation": "末尾はlength-1。"
+  },
+  {
+    "id": 77,
+    "category": "配列とコレクション",
+    "difficulty": "上級",
+    "question": "配列のlengthと末尾要素の値を出力します。結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int[] a = new int[9];\n        a[8] = 27;\n        System.out.println(a.length + \":\" + a[8]);\n    }\n}\n// uid:77\n",
+    "choices": [
+      "コンパイルエラー",
+      "9:27",
+      "9:26",
+      "8:27",
+      "ArrayIndexOutOfBoundsException"
+    ],
+    "answerIndex": 1,
+    "explanation": "末尾はlength-1。"
+  },
+  {
+    "id": 78,
+    "category": "配列とコレクション",
+    "difficulty": "上級",
+    "question": "配列のlengthと末尾要素の値を出力します。結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int[] a = new int[10];\n        a[9] = 30;\n        System.out.println(a.length + \":\" + a[9]);\n    }\n}\n// uid:78\n",
+    "choices": [
+      "ArrayIndexOutOfBoundsException",
+      "10:30",
+      "9:30",
+      "コンパイルエラー",
+      "10:29"
+    ],
+    "answerIndex": 1,
+    "explanation": "末尾はlength-1。"
+  },
+  {
+    "id": 79,
+    "category": "配列とコレクション",
+    "difficulty": "上級",
+    "question": "配列のlengthと末尾要素の値を出力します。結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int[] a = new int[11];\n        a[10] = 33;\n        System.out.println(a.length + \":\" + a[10]);\n    }\n}\n// uid:79\n",
+    "choices": [
+      "11:32",
+      "コンパイルエラー",
+      "10:33",
+      "ArrayIndexOutOfBoundsException",
+      "11:33"
+    ],
+    "answerIndex": 4,
+    "explanation": "末尾はlength-1。"
+  },
+  {
+    "id": 80,
+    "category": "配列とコレクション",
+    "difficulty": "上級",
+    "question": "配列のlengthと末尾要素の値を出力します。結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int[] a = new int[12];\n        a[11] = 36;\n        System.out.println(a.length + \":\" + a[11]);\n    }\n}\n// uid:80\n",
+    "choices": [
+      "ArrayIndexOutOfBoundsException",
+      "コンパイルエラー",
+      "12:35",
+      "11:36",
+      "12:36"
+    ],
+    "answerIndex": 4,
+    "explanation": "末尾はlength-1。"
+  },
+  {
+    "id": 81,
+    "category": "配列とコレクション",
+    "difficulty": "上級",
+    "question": "次のコードの出力は？",
+    "code": "import java.util.*; public class Main {\n    public static void main(String[] args) {\n        List<Integer> list = new ArrayList<>(Arrays.asList(1,2,3));\n        for (Integer x : list) {\n            if (x % 2 == 0) list.remove(x); // t=0\n        }\n        System.out.println(list.size());\n    }\n}\n// uid:81\n",
+    "choices": [
+      "3",
+      "1",
+      "実行時例外(ConcurrentModificationException)",
+      "2",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 2,
+    "explanation": "for-each中の構造変更はConcurrentModificationException。"
+  },
+  {
+    "id": 82,
+    "category": "配列とコレクション",
+    "difficulty": "上級",
+    "question": "次のコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int[] a = {1,2,3,4};\n        for (int x : a) { x *= 2; } // t=0\n        System.out.println(a[1]);\n    }\n}\n// uid:82\n",
+    "choices": [
+      "0",
+      "2",
+      "コンパイルエラー",
+      "8",
+      "4"
+    ],
+    "answerIndex": 1,
+    "explanation": "拡張forのxはコピー。"
+  },
+  {
+    "id": 83,
+    "category": "配列とコレクション",
+    "difficulty": "上級",
+    "question": "次のコードの出力は？",
+    "code": "import java.util.*; public class Main {\n    public static void main(String[] args) {\n        List<Integer> list = new ArrayList<>(Arrays.asList(2,3,4));\n        for (Integer x : list) {\n            if (x % 2 == 0) list.remove(x); // t=1\n        }\n        System.out.println(list.size());\n    }\n}\n// uid:83\n",
+    "choices": [
+      "3",
+      "コンパイルエラー",
+      "2",
+      "1",
+      "実行時例外(ConcurrentModificationException)"
+    ],
+    "answerIndex": 4,
+    "explanation": "for-each中の構造変更はConcurrentModificationException。"
+  },
+  {
+    "id": 84,
+    "category": "配列とコレクション",
+    "difficulty": "上級",
+    "question": "次のコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int[] a = {1,2,3,4};\n        for (int x : a) { x *= 2; } // t=1\n        System.out.println(a[1]);\n    }\n}\n// uid:84\n",
+    "choices": [
+      "2",
+      "0",
+      "8",
+      "コンパイルエラー",
+      "4"
+    ],
+    "answerIndex": 0,
+    "explanation": "拡張forのxはコピー。"
+  },
+  {
+    "id": 85,
+    "category": "配列とコレクション",
+    "difficulty": "上級",
+    "question": "次のコードの出力は？",
+    "code": "import java.util.*; public class Main {\n    public static void main(String[] args) {\n        List<Integer> list = new ArrayList<>(Arrays.asList(3,4,5));\n        for (Integer x : list) {\n            if (x % 2 == 0) list.remove(x); // t=2\n        }\n        System.out.println(list.size());\n    }\n}\n// uid:85\n",
+    "choices": [
+      "2",
+      "実行時例外(ConcurrentModificationException)",
+      "1",
+      "3",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 1,
+    "explanation": "for-each中の構造変更はConcurrentModificationException。"
+  },
+  {
+    "id": 86,
+    "category": "配列とコレクション",
+    "difficulty": "上級",
+    "question": "次のコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int[] a = {1,2,3,4};\n        for (int x : a) { x *= 2; } // t=2\n        System.out.println(a[1]);\n    }\n}\n// uid:86\n",
+    "choices": [
+      "コンパイルエラー",
+      "4",
+      "0",
+      "8",
+      "2"
+    ],
+    "answerIndex": 4,
+    "explanation": "拡張forのxはコピー。"
+  },
+  {
+    "id": 87,
+    "category": "配列とコレクション",
+    "difficulty": "上級",
+    "question": "次のコードの出力は？",
+    "code": "import java.util.*; public class Main {\n    public static void main(String[] args) {\n        List<Integer> list = new ArrayList<>(Arrays.asList(4,5,6));\n        for (Integer x : list) {\n            if (x % 2 == 0) list.remove(x); // t=3\n        }\n        System.out.println(list.size());\n    }\n}\n// uid:87\n",
+    "choices": [
+      "2",
+      "実行時例外(ConcurrentModificationException)",
+      "コンパイルエラー",
+      "1",
+      "3"
+    ],
+    "answerIndex": 1,
+    "explanation": "for-each中の構造変更はConcurrentModificationException。"
+  },
+  {
+    "id": 88,
+    "category": "配列とコレクション",
+    "difficulty": "上級",
+    "question": "次のコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int[] a = {1,2,3,4};\n        for (int x : a) { x *= 2; } // t=3\n        System.out.println(a[1]);\n    }\n}\n// uid:88\n",
+    "choices": [
+      "コンパイルエラー",
+      "4",
+      "0",
+      "8",
+      "2"
+    ],
+    "answerIndex": 4,
+    "explanation": "拡張forのxはコピー。"
+  },
+  {
+    "id": 89,
+    "category": "配列とコレクション",
+    "difficulty": "上級",
+    "question": "次のコードの出力は？",
+    "code": "import java.util.*; public class Main {\n    public static void main(String[] args) {\n        List<Integer> list = new ArrayList<>(Arrays.asList(5,6,7));\n        for (Integer x : list) {\n            if (x % 2 == 0) list.remove(x); // t=4\n        }\n        System.out.println(list.size());\n    }\n}\n// uid:89\n",
+    "choices": [
+      "3",
+      "実行時例外(ConcurrentModificationException)",
+      "コンパイルエラー",
+      "2",
+      "1"
+    ],
+    "answerIndex": 1,
+    "explanation": "for-each中の構造変更はConcurrentModificationException。"
+  },
+  {
+    "id": 90,
+    "category": "配列とコレクション",
+    "difficulty": "上級",
+    "question": "次のコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int[] a = {1,2,3,4};\n        for (int x : a) { x *= 2; } // t=4\n        System.out.println(a[1]);\n    }\n}\n// uid:90\n",
+    "choices": [
+      "4",
+      "0",
+      "8",
+      "コンパイルエラー",
+      "2"
+    ],
+    "answerIndex": 4,
+    "explanation": "拡張forのxはコピー。"
+  },
+  {
+    "id": 91,
+    "category": "配列とコレクション",
+    "difficulty": "上級",
+    "question": "次のコードの出力は？",
+    "code": "import java.util.*; public class Main {\n    public static void main(String[] args) {\n        List<Integer> list = new ArrayList<>(Arrays.asList(6,7,8));\n        for (Integer x : list) {\n            if (x % 2 == 0) list.remove(x); // t=5\n        }\n        System.out.println(list.size());\n    }\n}\n// uid:91\n",
+    "choices": [
+      "コンパイルエラー",
+      "2",
+      "3",
+      "実行時例外(ConcurrentModificationException)",
+      "1"
+    ],
+    "answerIndex": 3,
+    "explanation": "for-each中の構造変更はConcurrentModificationException。"
+  },
+  {
+    "id": 92,
+    "category": "配列とコレクション",
+    "difficulty": "上級",
+    "question": "次のコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int[] a = {1,2,3,4};\n        for (int x : a) { x *= 2; } // t=5\n        System.out.println(a[1]);\n    }\n}\n// uid:92\n",
+    "choices": [
+      "コンパイルエラー",
+      "8",
+      "4",
+      "2",
+      "0"
+    ],
+    "answerIndex": 3,
+    "explanation": "拡張forのxはコピー。"
+  },
+  {
+    "id": 93,
+    "category": "配列とコレクション",
+    "difficulty": "上級",
+    "question": "次のコードの出力は？",
+    "code": "import java.util.*; public class Main {\n    public static void main(String[] args) {\n        List<Integer> list = new ArrayList<>(Arrays.asList(7,8,9));\n        for (Integer x : list) {\n            if (x % 2 == 0) list.remove(x); // t=6\n        }\n        System.out.println(list.size());\n    }\n}\n// uid:93\n",
+    "choices": [
+      "コンパイルエラー",
+      "2",
+      "3",
+      "1",
+      "実行時例外(ConcurrentModificationException)"
+    ],
+    "answerIndex": 4,
+    "explanation": "for-each中の構造変更はConcurrentModificationException。"
+  },
+  {
+    "id": 94,
+    "category": "配列とコレクション",
+    "difficulty": "上級",
+    "question": "次のコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int[] a = {1,2,3,4};\n        for (int x : a) { x *= 2; } // t=6\n        System.out.println(a[1]);\n    }\n}\n// uid:94\n",
+    "choices": [
+      "4",
+      "コンパイルエラー",
+      "2",
+      "8",
+      "0"
+    ],
+    "answerIndex": 2,
+    "explanation": "拡張forのxはコピー。"
+  },
+  {
+    "id": 95,
+    "category": "配列とコレクション",
+    "difficulty": "上級",
+    "question": "次のコードの出力は？",
+    "code": "import java.util.*; public class Main {\n    public static void main(String[] args) {\n        List<Integer> list = new ArrayList<>(Arrays.asList(8,9,10));\n        for (Integer x : list) {\n            if (x % 2 == 0) list.remove(x); // t=7\n        }\n        System.out.println(list.size());\n    }\n}\n// uid:95\n",
+    "choices": [
+      "3",
+      "2",
+      "コンパイルエラー",
+      "1",
+      "実行時例外(ConcurrentModificationException)"
+    ],
+    "answerIndex": 4,
+    "explanation": "for-each中の構造変更はConcurrentModificationException。"
+  },
+  {
+    "id": 96,
+    "category": "配列とコレクション",
+    "difficulty": "上級",
+    "question": "次のコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int[] a = {1,2,3,4};\n        for (int x : a) { x *= 2; } // t=7\n        System.out.println(a[1]);\n    }\n}\n// uid:96\n",
+    "choices": [
+      "4",
+      "2",
+      "8",
+      "0",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 1,
+    "explanation": "拡張forのxはコピー。"
+  },
+  {
+    "id": 97,
+    "category": "配列とコレクション",
+    "difficulty": "上級",
+    "question": "次のコードの出力は？",
+    "code": "import java.util.*; public class Main {\n    public static void main(String[] args) {\n        List<Integer> list = new ArrayList<>(Arrays.asList(9,10,11));\n        for (Integer x : list) {\n            if (x % 2 == 0) list.remove(x); // t=8\n        }\n        System.out.println(list.size());\n    }\n}\n// uid:97\n",
+    "choices": [
+      "実行時例外(ConcurrentModificationException)",
+      "コンパイルエラー",
+      "2",
+      "3",
+      "1"
+    ],
+    "answerIndex": 0,
+    "explanation": "for-each中の構造変更はConcurrentModificationException。"
+  },
+  {
+    "id": 98,
+    "category": "配列とコレクション",
+    "difficulty": "上級",
+    "question": "次のコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int[] a = {1,2,3,4};\n        for (int x : a) { x *= 2; } // t=8\n        System.out.println(a[1]);\n    }\n}\n// uid:98\n",
+    "choices": [
+      "0",
+      "4",
+      "コンパイルエラー",
+      "2",
+      "8"
+    ],
+    "answerIndex": 3,
+    "explanation": "拡張forのxはコピー。"
+  },
+  {
+    "id": 99,
+    "category": "配列とコレクション",
+    "difficulty": "上級",
+    "question": "次のコードの出力は？",
+    "code": "import java.util.*; public class Main {\n    public static void main(String[] args) {\n        List<Integer> list = new ArrayList<>(Arrays.asList(10,11,12));\n        for (Integer x : list) {\n            if (x % 2 == 0) list.remove(x); // t=9\n        }\n        System.out.println(list.size());\n    }\n}\n// uid:99\n",
+    "choices": [
+      "3",
+      "実行時例外(ConcurrentModificationException)",
+      "1",
+      "2",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 1,
+    "explanation": "for-each中の構造変更はConcurrentModificationException。"
+  },
+  {
+    "id": 100,
+    "category": "配列とコレクション",
+    "difficulty": "上級",
+    "question": "次のコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int[] a = {1,2,3,4};\n        for (int x : a) { x *= 2; } // t=9\n        System.out.println(a[1]);\n    }\n}\n// uid:100\n",
+    "choices": [
+      "2",
+      "8",
+      "4",
+      "0",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 0,
+    "explanation": "拡張forのxはコピー。"
+  },
+  {
+    "id": 101,
+    "category": "例外処理",
+    "difficulty": "上級",
+    "question": "try-with-resourcesでのclose()呼び出し順序は？（出力）",
+    "code": "class R implements AutoCloseable {\n    int id;\n    R(int id){this.id=id;}\n    public void close(){System.out.print(\"C\"+id);}\n}\npublic class Main {\n    public static void main(String[] args) {\n        try (R r1 = new R(1); R r2 = new R(2)) {\n            System.out.print(\"B\");\n        }\n    }\n}\n// uid:101\n",
+    "choices": [
+      "C1C2B",
+      "BC2C1",
+      "コンパイルエラー",
+      "BC1C2",
+      "実行時例外"
+    ],
+    "answerIndex": 1,
+    "explanation": "複数資源は逆順でcloseされます。"
+  },
+  {
+    "id": 102,
+    "category": "例外処理",
+    "difficulty": "上級",
+    "question": "try-with-resourcesでのclose()呼び出し順序は？（出力）",
+    "code": "class R implements AutoCloseable {\n    int id;\n    R(int id){this.id=id;}\n    public void close(){System.out.print(\"C\"+id);}\n}\npublic class Main {\n    public static void main(String[] args) {\n        try (R r2 = new R(2); R r3 = new R(3)) {\n            System.out.print(\"B\");\n        }\n    }\n}\n// uid:102\n",
+    "choices": [
+      "BC3C2",
+      "BC2C3",
+      "コンパイルエラー",
+      "C2C3B",
+      "実行時例外"
+    ],
+    "answerIndex": 0,
+    "explanation": "複数資源は逆順でcloseされます。"
+  },
+  {
+    "id": 103,
+    "category": "例外処理",
+    "difficulty": "上級",
+    "question": "try-with-resourcesでのclose()呼び出し順序は？（出力）",
+    "code": "class R implements AutoCloseable {\n    int id;\n    R(int id){this.id=id;}\n    public void close(){System.out.print(\"C\"+id);}\n}\npublic class Main {\n    public static void main(String[] args) {\n        try (R r3 = new R(3); R r4 = new R(4)) {\n            System.out.print(\"B\");\n        }\n    }\n}\n// uid:103\n",
+    "choices": [
+      "実行時例外",
+      "BC4C3",
+      "C3C4B",
+      "コンパイルエラー",
+      "BC3C4"
+    ],
+    "answerIndex": 1,
+    "explanation": "複数資源は逆順でcloseされます。"
+  },
+  {
+    "id": 104,
+    "category": "例外処理",
+    "difficulty": "上級",
+    "question": "try-with-resourcesでのclose()呼び出し順序は？（出力）",
+    "code": "class R implements AutoCloseable {\n    int id;\n    R(int id){this.id=id;}\n    public void close(){System.out.print(\"C\"+id);}\n}\npublic class Main {\n    public static void main(String[] args) {\n        try (R r4 = new R(4); R r5 = new R(5)) {\n            System.out.print(\"B\");\n        }\n    }\n}\n// uid:104\n",
+    "choices": [
+      "コンパイルエラー",
+      "BC4C5",
+      "C4C5B",
+      "BC5C4",
+      "実行時例外"
+    ],
+    "answerIndex": 3,
+    "explanation": "複数資源は逆順でcloseされます。"
+  },
+  {
+    "id": 105,
+    "category": "例外処理",
+    "difficulty": "上級",
+    "question": "try-with-resourcesでのclose()呼び出し順序は？（出力）",
+    "code": "class R implements AutoCloseable {\n    int id;\n    R(int id){this.id=id;}\n    public void close(){System.out.print(\"C\"+id);}\n}\npublic class Main {\n    public static void main(String[] args) {\n        try (R r5 = new R(5); R r6 = new R(6)) {\n            System.out.print(\"B\");\n        }\n    }\n}\n// uid:105\n",
+    "choices": [
+      "コンパイルエラー",
+      "BC5C6",
+      "C5C6B",
+      "実行時例外",
+      "BC6C5"
+    ],
+    "answerIndex": 4,
+    "explanation": "複数資源は逆順でcloseされます。"
+  },
+  {
+    "id": 106,
+    "category": "例外処理",
+    "difficulty": "上級",
+    "question": "try-with-resourcesでのclose()呼び出し順序は？（出力）",
+    "code": "class R implements AutoCloseable {\n    int id;\n    R(int id){this.id=id;}\n    public void close(){System.out.print(\"C\"+id);}\n}\npublic class Main {\n    public static void main(String[] args) {\n        try (R r6 = new R(6); R r7 = new R(7)) {\n            System.out.print(\"B\");\n        }\n    }\n}\n// uid:106\n",
+    "choices": [
+      "C6C7B",
+      "コンパイルエラー",
+      "BC6C7",
+      "BC7C6",
+      "実行時例外"
+    ],
+    "answerIndex": 3,
+    "explanation": "複数資源は逆順でcloseされます。"
+  },
+  {
+    "id": 107,
+    "category": "例外処理",
+    "difficulty": "上級",
+    "question": "try-with-resourcesでのclose()呼び出し順序は？（出力）",
+    "code": "class R implements AutoCloseable {\n    int id;\n    R(int id){this.id=id;}\n    public void close(){System.out.print(\"C\"+id);}\n}\npublic class Main {\n    public static void main(String[] args) {\n        try (R r7 = new R(7); R r8 = new R(8)) {\n            System.out.print(\"B\");\n        }\n    }\n}\n// uid:107\n",
+    "choices": [
+      "コンパイルエラー",
+      "実行時例外",
+      "C7C8B",
+      "BC8C7",
+      "BC7C8"
+    ],
+    "answerIndex": 3,
+    "explanation": "複数資源は逆順でcloseされます。"
+  },
+  {
+    "id": 108,
+    "category": "例外処理",
+    "difficulty": "上級",
+    "question": "try-with-resourcesでのclose()呼び出し順序は？（出力）",
+    "code": "class R implements AutoCloseable {\n    int id;\n    R(int id){this.id=id;}\n    public void close(){System.out.print(\"C\"+id);}\n}\npublic class Main {\n    public static void main(String[] args) {\n        try (R r8 = new R(8); R r9 = new R(9)) {\n            System.out.print(\"B\");\n        }\n    }\n}\n// uid:108\n",
+    "choices": [
+      "C8C9B",
+      "BC9C8",
+      "BC8C9",
+      "実行時例外",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 1,
+    "explanation": "複数資源は逆順でcloseされます。"
+  },
+  {
+    "id": 109,
+    "category": "例外処理",
+    "difficulty": "上級",
+    "question": "try-with-resourcesでのclose()呼び出し順序は？（出力）",
+    "code": "class R implements AutoCloseable {\n    int id;\n    R(int id){this.id=id;}\n    public void close(){System.out.print(\"C\"+id);}\n}\npublic class Main {\n    public static void main(String[] args) {\n        try (R r9 = new R(9); R r10 = new R(10)) {\n            System.out.print(\"B\");\n        }\n    }\n}\n// uid:109\n",
+    "choices": [
+      "C9C10B",
+      "BC9C10",
+      "BC10C9",
+      "実行時例外",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 2,
+    "explanation": "複数資源は逆順でcloseされます。"
+  },
+  {
+    "id": 110,
+    "category": "例外処理",
+    "difficulty": "上級",
+    "question": "try-with-resourcesでのclose()呼び出し順序は？（出力）",
+    "code": "class R implements AutoCloseable {\n    int id;\n    R(int id){this.id=id;}\n    public void close(){System.out.print(\"C\"+id);}\n}\npublic class Main {\n    public static void main(String[] args) {\n        try (R r10 = new R(10); R r11 = new R(11)) {\n            System.out.print(\"B\");\n        }\n    }\n}\n// uid:110\n",
+    "choices": [
+      "BC11C10",
+      "BC10C11",
+      "C10C11B",
+      "実行時例外",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 0,
+    "explanation": "複数資源は逆順でcloseされます。"
+  },
+  {
+    "id": 111,
+    "category": "多態性とオーバーライド",
+    "difficulty": "上級",
+    "question": "オーバーロード/オーバーライドの解決規則に基づく出力は？",
+    "code": "class A {\n    String f(Number n) { return \"A\"; }\n}\nclass B extends A {\n    String f(Integer n) { return \"B\"; }\n}\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        System.out.println(a.f(10));\n    }\n}\n// uid:111\n",
+    "choices": [
+      "コンパイルエラー",
+      "不定",
+      "実行時例外",
+      "B",
+      "A"
+    ],
+    "answerIndex": 4,
+    "explanation": "参照型Aで解決。"
+  },
+  {
+    "id": 112,
+    "category": "多態性とオーバーライド",
+    "difficulty": "上級",
+    "question": "オーバーロード/オーバーライドの解決規則に基づく出力は？",
+    "code": "class A {\n    String f(Number n) { return \"A\"; }\n}\nclass B extends A {\n    String f(Integer n) { return \"B\"; }\n}\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        System.out.println(a.f((Number)10));\n    }\n}\n// uid:112\n",
+    "choices": [
+      "実行時例外",
+      "A",
+      "不定",
+      "B",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 1,
+    "explanation": "参照型Aで解決。"
+  },
+  {
+    "id": 113,
+    "category": "多態性とオーバーライド",
+    "difficulty": "上級",
+    "question": "オーバーロード/オーバーライドの解決規則に基づく出力は？",
+    "code": "class A {\n    String f(Number n) { return \"A\"; }\n}\nclass B extends A {\n    String f(Integer n) { return \"B\"; }\n}\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        System.out.println(a.f((Integer)10));\n    }\n}\n// uid:113\n",
+    "choices": [
+      "実行時例外",
+      "コンパイルエラー",
+      "不定",
+      "B",
+      "A"
+    ],
+    "answerIndex": 4,
+    "explanation": "参照型Aで解決。"
+  },
+  {
+    "id": 114,
+    "category": "多態性とオーバーライド",
+    "difficulty": "上級",
+    "question": "オーバーロード/オーバーライドの解決規則に基づく出力は？",
+    "code": "class A {\n    String f(Number n) { return \"A\"; }\n}\nclass B extends A {\n    String f(Integer n) { return \"B\"; }\n}\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        System.out.println(a.f((Double)10.0));\n    }\n}\n// uid:114\n",
+    "choices": [
+      "不定",
+      "実行時例外",
+      "B",
+      "コンパイルエラー",
+      "A"
+    ],
+    "answerIndex": 4,
+    "explanation": "参照型Aで解決。"
+  },
+  {
+    "id": 115,
+    "category": "多態性とオーバーライド",
+    "difficulty": "上級",
+    "question": "オーバーロード/オーバーライドの解決規則に基づく出力は？",
+    "code": "class A {\n    String f(Number n) { return \"A\"; }\n}\nclass B extends A {\n    String f(Integer n) { return \"B\"; }\n}\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        System.out.println(a.f((Short)10));\n    }\n}\n// uid:115\n",
+    "choices": [
+      "コンパイルエラー",
+      "不定",
+      "A",
+      "実行時例外",
+      "B"
+    ],
+    "answerIndex": 2,
+    "explanation": "参照型Aで解決。"
+  },
+  {
+    "id": 116,
+    "category": "多態性とオーバーライド",
+    "difficulty": "上級",
+    "question": "オーバーロード/オーバーライドの解決規則に基づく出力は？",
+    "code": "class A {\n    String f(Number n) { return \"A\"; }\n}\nclass B extends A {\n    String f(Integer n) { return \"B\"; }\n}\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        System.out.println(a.f((Long)10L));\n    }\n}\n// uid:116\n",
+    "choices": [
+      "実行時例外",
+      "B",
+      "コンパイルエラー",
+      "A",
+      "不定"
+    ],
+    "answerIndex": 3,
+    "explanation": "参照型Aで解決。"
+  },
+  {
+    "id": 117,
+    "category": "多態性とオーバーライド",
+    "difficulty": "上級",
+    "question": "オーバーロード/オーバーライドの解決規則に基づく出力は？",
+    "code": "class A {\n    String f(Number n) { return \"A\"; }\n}\nclass B extends A {\n    String f(Integer n) { return \"B\"; }\n}\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        System.out.println(a.f((Float)10f));\n    }\n}\n// uid:117\n",
+    "choices": [
+      "コンパイルエラー",
+      "不定",
+      "A",
+      "実行時例外",
+      "B"
+    ],
+    "answerIndex": 2,
+    "explanation": "参照型Aで解決。"
+  },
+  {
+    "id": 118,
+    "category": "多態性とオーバーライド",
+    "difficulty": "上級",
+    "question": "オーバーロード/オーバーライドの解決規則に基づく出力は？",
+    "code": "class A {\n    String f(Number n) { return \"A\"; }\n}\nclass B extends A {\n    String f(Integer n) { return \"B\"; }\n}\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        System.out.println(a.f((Byte)10));\n    }\n}\n// uid:118\n",
+    "choices": [
+      "不定",
+      "A",
+      "コンパイルエラー",
+      "B",
+      "実行時例外"
+    ],
+    "answerIndex": 1,
+    "explanation": "参照型Aで解決。"
+  },
+  {
+    "id": 119,
+    "category": "初期化とライフサイクル",
+    "difficulty": "上級",
+    "question": "クラス/インスタンス初期化子の実行順序（出力）は？",
+    "code": "public class Main {\n    static { System.out.print(\"S\"); }\n    { System.out.print(\"I\"); }\n    public Main() { System.out.print(\"C\"); }\n    public static void main(String[] args) {\n        new Main();\n    }\n}\n// uid:119\n",
+    "choices": [
+      "コンパイルエラー",
+      "SIC",
+      "SCI",
+      "SIIC",
+      "不定(4)"
+    ],
+    "answerIndex": 1,
+    "explanation": "初回でS、インスタンス毎にI→C。"
+  },
+  {
+    "id": 120,
+    "category": "初期化とライフサイクル",
+    "difficulty": "上級",
+    "question": "クラス/インスタンス初期化子の実行順序（出力）は？",
+    "code": "public class Main {\n    static { System.out.print(\"S\"); }\n    { System.out.print(\"I\"); }\n    public Main() { System.out.print(\"C\"); }\n    public static void main(String[] args) {\n        new Main();\n        new Main();\n    }\n}\n// uid:120\n",
+    "choices": [
+      "SIIC",
+      "SCI",
+      "SICIC",
+      "SIC",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 2,
+    "explanation": "初回でS、インスタンス毎にI→C。"
+  },
+  {
+    "id": 121,
+    "category": "初期化とライフサイクル",
+    "difficulty": "上級",
+    "question": "クラス/インスタンス初期化子の実行順序（出力）は？",
+    "code": "public class Main {\n    static { System.out.print(\"S\"); }\n    { System.out.print(\"I\"); }\n    public Main() { System.out.print(\"C\"); }\n    public static void main(String[] args) {\n        new Main();\n        new Main();\n        new Main();\n    }\n}\n// uid:121\n",
+    "choices": [
+      "SICICIC",
+      "コンパイルエラー",
+      "SCI",
+      "SIIC",
+      "SIC"
+    ],
+    "answerIndex": 0,
+    "explanation": "初回でS、インスタンス毎にI→C。"
+  },
+  {
+    "id": 122,
+    "category": "初期化とライフサイクル",
+    "difficulty": "上級",
+    "question": "クラス/インスタンス初期化子の実行順序（出力）は？",
+    "code": "public class Main {\n    static { System.out.print(\"S\"); }\n    { System.out.print(\"I\"); }\n    public Main() { System.out.print(\"C\"); }\n    public static void main(String[] args) {\n        new Main();\n        new Main();\n    }\n}\n// uid:122\n",
+    "choices": [
+      "SCI",
+      "SIIC",
+      "SICIC",
+      "コンパイルエラー",
+      "SIC"
+    ],
+    "answerIndex": 2,
+    "explanation": "初回でS、インスタンス毎にI→C。"
+  },
+  {
+    "id": 123,
+    "category": "初期化とライフサイクル",
+    "difficulty": "上級",
+    "question": "クラス/インスタンス初期化子の実行順序（出力）は？",
+    "code": "public class Main {\n    static { System.out.print(\"S\"); }\n    { System.out.print(\"I\"); }\n    public Main() { System.out.print(\"C\"); }\n    public static void main(String[] args) {\n        new Main();\n    }\n}\n// uid:123\n",
+    "choices": [
+      "コンパイルエラー",
+      "SCI",
+      "SIC",
+      "不定(4)",
+      "SIIC"
+    ],
+    "answerIndex": 2,
+    "explanation": "初回でS、インスタンス毎にI→C。"
+  },
+  {
+    "id": 124,
+    "category": "初期化とライフサイクル",
+    "difficulty": "上級",
+    "question": "クラス/インスタンス初期化子の実行順序（出力）は？",
+    "code": "public class Main {\n    static { System.out.print(\"S\"); }\n    { System.out.print(\"I\"); }\n    public Main() { System.out.print(\"C\"); }\n    public static void main(String[] args) {\n        new Main();\n        new Main();\n        new Main();\n    }\n}\n// uid:124\n",
+    "choices": [
+      "コンパイルエラー",
+      "SIC",
+      "SICICIC",
+      "SCI",
+      "SIIC"
+    ],
+    "answerIndex": 2,
+    "explanation": "初回でS、インスタンス毎にI→C。"
+  },
+  {
+    "id": 125,
+    "category": "アクセス修飾子とカプセル化",
+    "difficulty": "上級",
+    "question": "デフォルト(パッケージプライベート)メンバへのアクセスに関するコンパイル結果は？",
+    "code": "package p1;\nclass X { int v = 1; }\npublic class Main {\n    public static void main(String[] args) {\n        p1.X x = new p1.X();\n        System.out.println(x.v);\n    }\n}\n// uid:125\n",
+    "choices": [
+      "実行時例外",
+      "未定義",
+      "コンパイルエラー",
+      "1",
+      "0"
+    ],
+    "answerIndex": 2,
+    "explanation": "package-privateは同一パッケージ外から不可。"
+  },
+  {
+    "id": 126,
+    "category": "アクセス修飾子とカプセル化",
+    "difficulty": "上級",
+    "question": "デフォルト(パッケージプライベート)メンバへのアクセスに関するコンパイル結果は？",
+    "code": "package p2;\nclass X { int v = 1; }\npublic class Main {\n    public static void main(String[] args) {\n        p2.X x = new p2.X();\n        System.out.println(x.v);\n    }\n}\n// uid:126\n",
+    "choices": [
+      "実行時例外",
+      "1",
+      "0",
+      "未定義",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 4,
+    "explanation": "package-privateは同一パッケージ外から不可。"
+  },
+  {
+    "id": 127,
+    "category": "アクセス修飾子とカプセル化",
+    "difficulty": "上級",
+    "question": "デフォルト(パッケージプライベート)メンバへのアクセスに関するコンパイル結果は？",
+    "code": "package pkg;\nclass X { int v = 1; }\npublic class Main {\n    public static void main(String[] args) {\n        pkg.X x = new pkg.X();\n        System.out.println(x.v);\n    }\n}\n// uid:127\n",
+    "choices": [
+      "0",
+      "1",
+      "未定義",
+      "コンパイルエラー",
+      "実行時例外"
+    ],
+    "answerIndex": 3,
+    "explanation": "package-privateは同一パッケージ外から不可。"
+  },
+  {
+    "id": 128,
+    "category": "アクセス修飾子とカプセル化",
+    "difficulty": "上級",
+    "question": "デフォルト(パッケージプライベート)メンバへのアクセスに関するコンパイル結果は？",
+    "code": "package sample;\nclass X { int v = 1; }\npublic class Main {\n    public static void main(String[] args) {\n        sample.X x = new sample.X();\n        System.out.println(x.v);\n    }\n}\n// uid:128\n",
+    "choices": [
+      "実行時例外",
+      "0",
+      "コンパイルエラー",
+      "1",
+      "未定義"
+    ],
+    "answerIndex": 2,
+    "explanation": "package-privateは同一パッケージ外から不可。"
+  },
+  {
+    "id": 129,
+    "category": "アクセス修飾子とカプセル化",
+    "difficulty": "上級",
+    "question": "デフォルト(パッケージプライベート)メンバへのアクセスに関するコンパイル結果は？",
+    "code": "package app;\nclass X { int v = 1; }\npublic class Main {\n    public static void main(String[] args) {\n        app.X x = new app.X();\n        System.out.println(x.v);\n    }\n}\n// uid:129\n",
+    "choices": [
+      "実行時例外",
+      "1",
+      "0",
+      "未定義",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 4,
+    "explanation": "package-privateは同一パッケージ外から不可。"
+  },
+  {
+    "id": 130,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "逆順ソート後の先頭要素は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<String> list = Arrays.asList(\"b\",\"a\",\"c\");\n        Collections.sort(list, Comparator.reverseOrder());\n        System.out.println(list.get(0));\n    }\n}\n// uid:130\n",
+    "choices": [
+      "コンパイルエラー",
+      "a",
+      "c",
+      "実行時例外",
+      "b"
+    ],
+    "answerIndex": 2,
+    "explanation": "reverseOrderは降順。"
+  },
+  {
+    "id": 131,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "逆順ソート後の先頭要素は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<String> list = Arrays.asList(\"d\",\"a\",\"b\");\n        Collections.sort(list, Comparator.reverseOrder());\n        System.out.println(list.get(0));\n    }\n}\n// uid:131\n",
+    "choices": [
+      "コンパイルエラー",
+      "実行時例外",
+      "d",
+      "不定(4)",
+      "a"
+    ],
+    "answerIndex": 2,
+    "explanation": "reverseOrderは降順。"
+  },
+  {
+    "id": 132,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "逆順ソート後の先頭要素は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<String> list = Arrays.asList(\"x\",\"m\",\"z\");\n        Collections.sort(list, Comparator.reverseOrder());\n        System.out.println(list.get(0));\n    }\n}\n// uid:132\n",
+    "choices": [
+      "m",
+      "x",
+      "コンパイルエラー",
+      "実行時例外",
+      "z"
+    ],
+    "answerIndex": 4,
+    "explanation": "reverseOrderは降順。"
+  },
+  {
+    "id": 133,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "逆順ソート後の先頭要素は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<String> list = Arrays.asList(\"k\",\"j\",\"l\");\n        Collections.sort(list, Comparator.reverseOrder());\n        System.out.println(list.get(0));\n    }\n}\n// uid:133\n",
+    "choices": [
+      "コンパイルエラー",
+      "j",
+      "k",
+      "実行時例外",
+      "l"
+    ],
+    "answerIndex": 4,
+    "explanation": "reverseOrderは降順。"
+  },
+  {
+    "id": 134,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "逆順ソート後の先頭要素は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<String> list = Arrays.asList(\"q\",\"s\",\"r\");\n        Collections.sort(list, Comparator.reverseOrder());\n        System.out.println(list.get(0));\n    }\n}\n// uid:134\n",
+    "choices": [
+      "s",
+      "q",
+      "コンパイルエラー",
+      "不定(4)",
+      "実行時例外"
+    ],
+    "answerIndex": 0,
+    "explanation": "reverseOrderは降順。"
+  },
+  {
+    "id": 135,
+    "category": "日付と時間API",
+    "difficulty": "上級",
+    "question": "うるう年の加算結果は？",
+    "code": "import java.time.*;\npublic class Main {\n    public static void main(String[] args) {\n        LocalDate d = LocalDate.of(2020, 2, 28).plusDays(1);\n        System.out.println(d);\n    }\n}\n// uid:135\n",
+    "choices": [
+      "2020-02-29",
+      "不定(4)",
+      "コンパイルエラー",
+      "2020-03-01",
+      "実行時例外"
+    ],
+    "answerIndex": 0,
+    "explanation": "2020年はうるう年。"
+  },
+  {
+    "id": 136,
+    "category": "日付と時間API",
+    "difficulty": "上級",
+    "question": "うるう年の加算結果は？",
+    "code": "import java.time.*;\npublic class Main {\n    public static void main(String[] args) {\n        LocalDate d = LocalDate.of(2020, 2, 28).plusDays(2);\n        System.out.println(d);\n    }\n}\n// uid:136\n",
+    "choices": [
+      "2020-03-02",
+      "2020-02-29",
+      "コンパイルエラー",
+      "実行時例外",
+      "2020-03-01"
+    ],
+    "answerIndex": 4,
+    "explanation": "2020年はうるう年。"
+  },
+  {
+    "id": 137,
+    "category": "日付と時間API",
+    "difficulty": "上級",
+    "question": "うるう年の加算結果は？",
+    "code": "import java.time.*;\npublic class Main {\n    public static void main(String[] args) {\n        LocalDate d = LocalDate.of(2020, 2, 28).plusDays(5);\n        System.out.println(d);\n    }\n}\n// uid:137\n",
+    "choices": [
+      "2020-03-04",
+      "2020-02-29",
+      "2020-03-05",
+      "実行時例外",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 0,
+    "explanation": "2020年はうるう年。"
+  },
+  {
+    "id": 138,
+    "category": "日付と時間API",
+    "difficulty": "上級",
+    "question": "うるう年の加算結果は？",
+    "code": "import java.time.*;\npublic class Main {\n    public static void main(String[] args) {\n        LocalDate d = LocalDate.of(2020, 2, 28).plusDays(7);\n        System.out.println(d);\n    }\n}\n// uid:138\n",
+    "choices": [
+      "実行時例外",
+      "2020-03-06",
+      "2020-02-29",
+      "2020-03-07",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 1,
+    "explanation": "2020年はうるう年。"
+  },
+  {
+    "id": 139,
+    "category": "日付と時間API",
+    "difficulty": "上級",
+    "question": "うるう年の加算結果は？",
+    "code": "import java.time.*;\npublic class Main {\n    public static void main(String[] args) {\n        LocalDate d = LocalDate.of(2020, 2, 28).plusDays(10);\n        System.out.println(d);\n    }\n}\n// uid:139\n",
+    "choices": [
+      "2020-02-29",
+      "コンパイルエラー",
+      "2020-03-010",
+      "実行時例外",
+      "2020-03-09"
+    ],
+    "answerIndex": 4,
+    "explanation": "2020年はうるう年。"
+  },
+  {
+    "id": 140,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "Stringは不変、StringBuilderは可変。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder sb = new StringBuilder(\"abc\");\n        String s1 = sb.toString();\n        sb.append(\"!\");\n        System.out.println(s1 + \" / \" + sb.toString());\n    }\n}\n// uid:140\n",
+    "choices": [
+      "abc / abc!",
+      "実行時例外",
+      "abc! / abc",
+      "abc! / abc!",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 0,
+    "explanation": "toStringの結果は以後の変更の影響を受けません。"
+  },
+  {
+    "id": 141,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "Stringは不変、StringBuilderは可変。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder sb = new StringBuilder(\"xyz\");\n        String s1 = sb.toString();\n        sb.append(\"!\");\n        System.out.println(s1 + \" / \" + sb.toString());\n    }\n}\n// uid:141\n",
+    "choices": [
+      "xyz! / xyz!",
+      "コンパイルエラー",
+      "xyz / xyz!",
+      "実行時例外",
+      "xyz! / xyz"
+    ],
+    "answerIndex": 2,
+    "explanation": "toStringの結果は以後の変更の影響を受けません。"
+  },
+  {
+    "id": 142,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "Stringは不変、StringBuilderは可変。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder sb = new StringBuilder(\"java\");\n        String s1 = sb.toString();\n        sb.append(\"!\");\n        System.out.println(s1 + \" / \" + sb.toString());\n    }\n}\n// uid:142\n",
+    "choices": [
+      "java / java!",
+      "java! / java",
+      "実行時例外",
+      "java! / java!",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 0,
+    "explanation": "toStringの結果は以後の変更の影響を受けません。"
+  },
+  {
+    "id": 143,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "Stringは不変、StringBuilderは可変。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder sb = new StringBuilder(\"ocp\");\n        String s1 = sb.toString();\n        sb.append(\"!\");\n        System.out.println(s1 + \" / \" + sb.toString());\n    }\n}\n// uid:143\n",
+    "choices": [
+      "ocp! / ocp",
+      "ocp / ocp!",
+      "実行時例外",
+      "ocp! / ocp!",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 1,
+    "explanation": "toStringの結果は以後の変更の影響を受けません。"
+  },
+  {
+    "id": 144,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "Stringは不変、StringBuilderは可変。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder sb = new StringBuilder(\"zx\");\n        String s1 = sb.toString();\n        sb.append(\"!\");\n        System.out.println(s1 + \" / \" + sb.toString());\n    }\n}\n// uid:144\n",
+    "choices": [
+      "コンパイルエラー",
+      "zx! / zx",
+      "実行時例外",
+      "zx / zx!",
+      "zx! / zx!"
+    ],
+    "answerIndex": 3,
+    "explanation": "toStringの結果は以後の変更の影響を受けません。"
+  },
+  {
+    "id": 145,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "do-while文は最低1回実行されます。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int i = 0, c = 0;\n        do { c++; i--; } while(i > 0);\n        System.out.println(c);\n    }\n}\n// uid:145\n",
+    "choices": [
+      "コンパイルエラー",
+      "0",
+      "不定(4)",
+      "1",
+      "実行時例外"
+    ],
+    "answerIndex": 3,
+    "explanation": "条件判定が後なので0からでも1回実行。"
+  },
+  {
+    "id": 146,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "do-while文は最低1回実行されます。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int i = 1, c = 0;\n        do { c++; i--; } while(i > 0);\n        System.out.println(c);\n    }\n}\n// uid:146\n",
+    "choices": [
+      "コンパイルエラー",
+      "0",
+      "実行時例外",
+      "1",
+      "不定(4)"
+    ],
+    "answerIndex": 3,
+    "explanation": "条件判定が後なので0からでも1回実行。"
+  },
+  {
+    "id": 147,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "do-while文は最低1回実行されます。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int i = 2, c = 0;\n        do { c++; i--; } while(i > 0);\n        System.out.println(c);\n    }\n}\n// uid:147\n",
+    "choices": [
+      "コンパイルエラー",
+      "1",
+      "2",
+      "実行時例外",
+      "0"
+    ],
+    "answerIndex": 2,
+    "explanation": "条件判定が後なので0からでも1回実行。"
+  },
+  {
+    "id": 148,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "do-while文は最低1回実行されます。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int i = 3, c = 0;\n        do { c++; i--; } while(i > 0);\n        System.out.println(c);\n    }\n}\n// uid:148\n",
+    "choices": [
+      "コンパイルエラー",
+      "3",
+      "0",
+      "2",
+      "実行時例外"
+    ],
+    "answerIndex": 1,
+    "explanation": "条件判定が後なので0からでも1回実行。"
+  },
+  {
+    "id": 149,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "do-while文は最低1回実行されます。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int i = 4, c = 0;\n        do { c++; i--; } while(i > 0);\n        System.out.println(c);\n    }\n}\n// uid:149\n",
+    "choices": [
+      "3",
+      "4",
+      "0",
+      "実行時例外",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 1,
+    "explanation": "条件判定が後なので0からでも1回実行。"
+  },
+  {
+    "id": 150,
+    "category": "配列とコレクション",
+    "difficulty": "上級",
+    "question": "二次元配列のlengthの意味に関する出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int[][] m = new int[2][3];\n        System.out.println(m.length + \":\" + m[0].length);\n    }\n}\n// uid:150\n",
+    "choices": [
+      "6:1",
+      "2:2",
+      "3:2",
+      "コンパイルエラー",
+      "2:3"
+    ],
+    "answerIndex": 4,
+    "explanation": "m.lengthは行数、m[0].lengthは列数。"
+  },
+  {
+    "id": 151,
+    "category": "配列とコレクション",
+    "difficulty": "上級",
+    "question": "二次元配列のlengthの意味に関する出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int[][] m = new int[3][2];\n        System.out.println(m.length + \":\" + m[0].length);\n    }\n}\n// uid:151\n",
+    "choices": [
+      "6:1",
+      "コンパイルエラー",
+      "2:3",
+      "3:1",
+      "3:2"
+    ],
+    "answerIndex": 4,
+    "explanation": "m.lengthは行数、m[0].lengthは列数。"
+  },
+  {
+    "id": 152,
+    "category": "配列とコレクション",
+    "difficulty": "上級",
+    "question": "二次元配列のlengthの意味に関する出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int[][] m = new int[1][4];\n        System.out.println(m.length + \":\" + m[0].length);\n    }\n}\n// uid:152\n",
+    "choices": [
+      "不定(4)",
+      "1:4",
+      "4:1",
+      "1:3",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 1,
+    "explanation": "m.lengthは行数、m[0].lengthは列数。"
+  },
+  {
+    "id": 153,
+    "category": "配列とコレクション",
+    "difficulty": "上級",
+    "question": "二次元配列のlengthの意味に関する出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int[][] m = new int[4][1];\n        System.out.println(m.length + \":\" + m[0].length);\n    }\n}\n// uid:153\n",
+    "choices": [
+      "不定(4)",
+      "コンパイルエラー",
+      "4:1",
+      "4:0",
+      "1:4"
+    ],
+    "answerIndex": 2,
+    "explanation": "m.lengthは行数、m[0].lengthは列数。"
+  },
+  {
+    "id": 154,
+    "category": "配列とコレクション",
+    "difficulty": "上級",
+    "question": "二次元配列のlengthの意味に関する出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int[][] m = new int[5][2];\n        System.out.println(m.length + \":\" + m[0].length);\n    }\n}\n// uid:154\n",
+    "choices": [
+      "5:2",
+      "コンパイルエラー",
+      "10:1",
+      "5:1",
+      "2:5"
+    ],
+    "answerIndex": 0,
+    "explanation": "m.lengthは行数、m[0].lengthは列数。"
+  },
+  {
+    "id": 155,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "明示的キャスト時のオーバーフロー結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 130;\n        byte b = (byte)x;\n        System.out.println(b);\n    }\n}\n// uid:155\n",
+    "choices": [
+      "-127",
+      "-126",
+      "コンパイルエラー",
+      "実行時例外",
+      "未定義"
+    ],
+    "answerIndex": 1,
+    "explanation": "下位8bitを取り、-128〜127に丸められます。"
+  },
+  {
+    "id": 156,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "明示的キャスト時のオーバーフロー結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 255;\n        byte b = (byte)x;\n        System.out.println(b);\n    }\n}\n// uid:156\n",
+    "choices": [
+      "-2",
+      "未定義",
+      "コンパイルエラー",
+      "-1",
+      "実行時例外"
+    ],
+    "answerIndex": 3,
+    "explanation": "下位8bitを取り、-128〜127に丸められます。"
+  },
+  {
+    "id": 157,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "明示的キャスト時のオーバーフロー結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 256;\n        byte b = (byte)x;\n        System.out.println(b);\n    }\n}\n// uid:157\n",
+    "choices": [
+      "0",
+      "コンパイルエラー",
+      "未定義",
+      "-1",
+      "実行時例外"
+    ],
+    "answerIndex": 0,
+    "explanation": "下位8bitを取り、-128〜127に丸められます。"
+  },
+  {
+    "id": 158,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "明示的キャスト時のオーバーフロー結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 1024;\n        byte b = (byte)x;\n        System.out.println(b);\n    }\n}\n// uid:158\n",
+    "choices": [
+      "未定義",
+      "0",
+      "コンパイルエラー",
+      "実行時例外",
+      "-1"
+    ],
+    "answerIndex": 1,
+    "explanation": "下位8bitを取り、-128〜127に丸められます。"
+  },
+  {
+    "id": 159,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "明示的キャスト時のオーバーフロー結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = -129;\n        byte b = (byte)x;\n        System.out.println(b);\n    }\n}\n// uid:159\n",
+    "choices": [
+      "127",
+      "コンパイルエラー",
+      "126",
+      "未定義",
+      "実行時例外"
+    ],
+    "answerIndex": 0,
+    "explanation": "下位8bitを取り、-128〜127に丸められます。"
+  },
+  {
+    "id": 160,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "明示的キャスト時のオーバーフロー結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = -130;\n        byte b = (byte)x;\n        System.out.println(b);\n    }\n}\n// uid:160\n",
+    "choices": [
+      "126",
+      "125",
+      "コンパイルエラー",
+      "実行時例外",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "下位8bitを取り、-128〜127に丸められます。"
+  },
+  {
+    "id": 161,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "equalsは実装しているがhashCode未実装の場合、HashSetの要素数は？",
+    "code": "import java.util.*;\nclass P {\n    int x;\n    P(int x){ this.x=x; }\n    public boolean equals(Object o){\n        return (o instanceof P) && ((P)o).x == this.x;\n    }\n    // hashCode未実装\n}\npublic class Main {\n    public static void main(String[] args) {\n        Set<P> s = new HashSet<>();\n        s.add(new P(1));\n        s.add(new P(1));\n        System.out.println(s.size());\n    }\n}\n// uid:161\n",
+    "choices": [
+      "2",
+      "コンパイルエラー",
+      "1",
+      "実行時例外",
+      "0"
+    ],
+    "answerIndex": 0,
+    "explanation": "hashCode未実装では重複検出できず2。"
+  },
+  {
+    "id": 162,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "equalsは実装しているがhashCode未実装の場合、HashSetの要素数は？",
+    "code": "import java.util.*;\nclass P {\n    int x;\n    P(int x){ this.x=x; }\n    public boolean equals(Object o){\n        return (o instanceof P) && ((P)o).x == this.x;\n    }\n    // hashCode未実装\n}\npublic class Main {\n    public static void main(String[] args) {\n        Set<P> s = new HashSet<>();\n        s.add(new P(1));\n        s.add(new P(1));\n        System.out.println(s.size());\n    }\n}\n// uid:162\n",
+    "choices": [
+      "2",
+      "1",
+      "コンパイルエラー",
+      "0",
+      "実行時例外"
+    ],
+    "answerIndex": 0,
+    "explanation": "hashCode未実装では重複検出できず2。"
+  },
+  {
+    "id": 163,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "equalsは実装しているがhashCode未実装の場合、HashSetの要素数は？",
+    "code": "import java.util.*;\nclass P {\n    int x;\n    P(int x){ this.x=x; }\n    public boolean equals(Object o){\n        return (o instanceof P) && ((P)o).x == this.x;\n    }\n    // hashCode未実装\n}\npublic class Main {\n    public static void main(String[] args) {\n        Set<P> s = new HashSet<>();\n        s.add(new P(2));\n        s.add(new P(2));\n        System.out.println(s.size());\n    }\n}\n// uid:163\n",
+    "choices": [
+      "1",
+      "0",
+      "コンパイルエラー",
+      "実行時例外",
+      "2"
+    ],
+    "answerIndex": 4,
+    "explanation": "hashCode未実装では重複検出できず2。"
+  },
+  {
+    "id": 164,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "equalsは実装しているがhashCode未実装の場合、HashSetの要素数は？",
+    "code": "import java.util.*;\nclass P {\n    int x;\n    P(int x){ this.x=x; }\n    public boolean equals(Object o){\n        return (o instanceof P) && ((P)o).x == this.x;\n    }\n    // hashCode未実装\n}\npublic class Main {\n    public static void main(String[] args) {\n        Set<P> s = new HashSet<>();\n        s.add(new P(3));\n        s.add(new P(3));\n        System.out.println(s.size());\n    }\n}\n// uid:164\n",
+    "choices": [
+      "2",
+      "実行時例外",
+      "0",
+      "コンパイルエラー",
+      "1"
+    ],
+    "answerIndex": 0,
+    "explanation": "hashCode未実装では重複検出できず2。"
+  },
+  {
+    "id": 165,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "equalsは実装しているがhashCode未実装の場合、HashSetの要素数は？",
+    "code": "import java.util.*;\nclass P {\n    int x;\n    P(int x){ this.x=x; }\n    public boolean equals(Object o){\n        return (o instanceof P) && ((P)o).x == this.x;\n    }\n    // hashCode未実装\n}\npublic class Main {\n    public static void main(String[] args) {\n        Set<P> s = new HashSet<>();\n        s.add(new P(3));\n        s.add(new P(3));\n        System.out.println(s.size());\n    }\n}\n// uid:165\n",
+    "choices": [
+      "実行時例外",
+      "1",
+      "コンパイルエラー",
+      "0",
+      "2"
+    ],
+    "answerIndex": 4,
+    "explanation": "hashCode未実装では重複検出できず2。"
+  },
+  {
+    "id": 166,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ラベル付きbreakの到達回数は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int c=0;\n        outer:\n        for(int i=0;i<3;i++){\n            for(int j=0;j<3;j++){\n                if(i==1 && j==1) break outer;\n                c++;\n            }\n        }\n        System.out.println(c);\n    }\n}\n// uid:166\n",
+    "choices": [
+      "5",
+      "コンパイルエラー",
+      "実行時例外",
+      "3",
+      "4"
+    ],
+    "answerIndex": 4,
+    "explanation": "break outerで外側ループを脱出。"
+  },
+  {
+    "id": 167,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ラベル付きbreakの到達回数は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int c=0;\n        outer:\n        for(int i=0;i<4;i++){\n            for(int j=0;j<4;j++){\n                if(i==1 && j==1) break outer;\n                c++;\n            }\n        }\n        System.out.println(c);\n    }\n}\n// uid:167\n",
+    "choices": [
+      "4",
+      "5",
+      "6",
+      "実行時例外",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 1,
+    "explanation": "break outerで外側ループを脱出。"
+  },
+  {
+    "id": 168,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ラベル付きbreakの到達回数は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int c=0;\n        outer:\n        for(int i=0;i<5;i++){\n            for(int j=0;j<5;j++){\n                if(i==1 && j==1) break outer;\n                c++;\n            }\n        }\n        System.out.println(c);\n    }\n}\n// uid:168\n",
+    "choices": [
+      "コンパイルエラー",
+      "7",
+      "5",
+      "実行時例外",
+      "6"
+    ],
+    "answerIndex": 4,
+    "explanation": "break outerで外側ループを脱出。"
+  },
+  {
+    "id": 169,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ラベル付きbreakの到達回数は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int c=0;\n        outer:\n        for(int i=0;i<3;i++){\n            for(int j=0;j<3;j++){\n                if(i==1 && j==1) break outer;\n                c++;\n            }\n        }\n        System.out.println(c);\n    }\n}\n// uid:169\n",
+    "choices": [
+      "コンパイルエラー",
+      "4",
+      "3",
+      "実行時例外",
+      "5"
+    ],
+    "answerIndex": 1,
+    "explanation": "break outerで外側ループを脱出。"
+  },
+  {
+    "id": 170,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ラベル付きbreakの到達回数は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int c=0;\n        outer:\n        for(int i=0;i<4;i++){\n            for(int j=0;j<4;j++){\n                if(i==1 && j==1) break outer;\n                c++;\n            }\n        }\n        System.out.println(c);\n    }\n}\n// uid:170\n",
+    "choices": [
+      "4",
+      "実行時例外",
+      "6",
+      "コンパイルエラー",
+      "5"
+    ],
+    "answerIndex": 4,
+    "explanation": "break outerで外側ループを脱出。"
+  },
+  {
+    "id": 171,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "Optional#get の挙動は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        Optional<String> o = Optional.ofNullable(null); // t=0\n        System.out.println(o.get());\n    }\n}\n// uid:171\n",
+    "choices": [
+      "空文字が出力される",
+      "コンパイルエラー",
+      "何も出力されない",
+      "NoSuchElementException がスローされる",
+      "null と出力される"
+    ],
+    "answerIndex": 3,
+    "explanation": "空のOptionalでget()はNoSuchElementException。"
+  },
+  {
+    "id": 172,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "Optional#get の挙動は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        Optional<String> o = Optional.ofNullable(null); // t=1\n        System.out.println(o.get());\n    }\n}\n// uid:172\n",
+    "choices": [
+      "コンパイルエラー",
+      "何も出力されない",
+      "null と出力される",
+      "空文字が出力される",
+      "NoSuchElementException がスローされる"
+    ],
+    "answerIndex": 4,
+    "explanation": "空のOptionalでget()はNoSuchElementException。"
+  },
+  {
+    "id": 173,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "Optional#get の挙動は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        Optional<String> o = Optional.ofNullable(null); // t=2\n        System.out.println(o.get());\n    }\n}\n// uid:173\n",
+    "choices": [
+      "NoSuchElementException がスローされる",
+      "null と出力される",
+      "空文字が出力される",
+      "何も出力されない",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 0,
+    "explanation": "空のOptionalでget()はNoSuchElementException。"
+  },
+  {
+    "id": 174,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "Optional#get の挙動は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        Optional<String> o = Optional.ofNullable(null); // t=3\n        System.out.println(o.get());\n    }\n}\n// uid:174\n",
+    "choices": [
+      "空文字が出力される",
+      "NoSuchElementException がスローされる",
+      "null と出力される",
+      "コンパイルエラー",
+      "何も出力されない"
+    ],
+    "answerIndex": 1,
+    "explanation": "空のOptionalでget()はNoSuchElementException。"
+  },
+  {
+    "id": 175,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "Optional#get の挙動は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        Optional<String> o = Optional.ofNullable(null); // t=4\n        System.out.println(o.get());\n    }\n}\n// uid:175\n",
+    "choices": [
+      "何も出力されない",
+      "コンパイルエラー",
+      "NoSuchElementException がスローされる",
+      "null と出力される",
+      "空文字が出力される"
+    ],
+    "answerIndex": 2,
+    "explanation": "空のOptionalでget()はNoSuchElementException。"
+  },
+  {
+    "id": 176,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "substringの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"abcdef\";\n        System.out.println(s.substring(0, 4));\n    }\n}\n// uid:176\n",
+    "choices": [
+      "不定(4)",
+      "abcde",
+      "コンパイルエラー",
+      "StringIndexOutOfBoundsException",
+      "abcd"
+    ],
+    "answerIndex": 4,
+    "explanation": "endIndexは排他的。"
+  },
+  {
+    "id": 177,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "substringの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"abcdef\";\n        System.out.println(s.substring(1, 4));\n    }\n}\n// uid:177\n",
+    "choices": [
+      "bcde",
+      "bcd",
+      "StringIndexOutOfBoundsException",
+      "コンパイルエラー",
+      "abcd"
+    ],
+    "answerIndex": 1,
+    "explanation": "endIndexは排他的。"
+  },
+  {
+    "id": 178,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "substringの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"abcdef\";\n        System.out.println(s.substring(2, 4));\n    }\n}\n// uid:178\n",
+    "choices": [
+      "StringIndexOutOfBoundsException",
+      "コンパイルエラー",
+      "cd",
+      "cde",
+      "abcd"
+    ],
+    "answerIndex": 2,
+    "explanation": "endIndexは排他的。"
+  },
+  {
+    "id": 179,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "substringの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"abcdef\";\n        System.out.println(s.substring(0, 4));\n    }\n}\n// uid:179\n",
+    "choices": [
+      "コンパイルエラー",
+      "abcd",
+      "StringIndexOutOfBoundsException",
+      "abcde",
+      "不定(4)"
+    ],
+    "answerIndex": 1,
+    "explanation": "endIndexは排他的。"
+  },
+  {
+    "id": 180,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "substringの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"abcdef\";\n        System.out.println(s.substring(1, 4));\n    }\n}\n// uid:180\n",
+    "choices": [
+      "StringIndexOutOfBoundsException",
+      "abcd",
+      "bcde",
+      "コンパイルエラー",
+      "bcd"
+    ],
+    "answerIndex": 4,
+    "explanation": "endIndexは排他的。"
+  },
+  {
+    "id": 181,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "substringの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"abcdef\";\n        System.out.println(s.substring(2, 4));\n    }\n}\n// uid:181\n",
+    "choices": [
+      "cde",
+      "コンパイルエラー",
+      "abcd",
+      "cd",
+      "StringIndexOutOfBoundsException"
+    ],
+    "answerIndex": 3,
+    "explanation": "endIndexは排他的。"
+  },
+  {
+    "id": 182,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "Math.roundの戻り値は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        System.out.println(Math.round(1.4));\n    }\n}\n// uid:182\n",
+    "choices": [
+      "不定(4)",
+      "実行時例外",
+      "コンパイルエラー",
+      "2",
+      "1"
+    ],
+    "answerIndex": 4,
+    "explanation": "Math.round(x)=floor(x+0.5)。"
+  },
+  {
+    "id": 183,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "Math.roundの戻り値は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        System.out.println(Math.round(1.5));\n    }\n}\n// uid:183\n",
+    "choices": [
+      "1",
+      "実行時例外",
+      "コンパイルエラー",
+      "不定(4)",
+      "2"
+    ],
+    "answerIndex": 4,
+    "explanation": "Math.round(x)=floor(x+0.5)。"
+  },
+  {
+    "id": 184,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "Math.roundの戻り値は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        System.out.println(Math.round(1.6));\n    }\n}\n// uid:184\n",
+    "choices": [
+      "2",
+      "実行時例外",
+      "コンパイルエラー",
+      "1",
+      "不定(4)"
+    ],
+    "answerIndex": 0,
+    "explanation": "Math.round(x)=floor(x+0.5)。"
+  },
+  {
+    "id": 185,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "Math.roundの戻り値は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        System.out.println(Math.round(-1.4));\n    }\n}\n// uid:185\n",
+    "choices": [
+      "実行時例外",
+      "-1",
+      "コンパイルエラー",
+      "不定(4)",
+      "不定(3)"
+    ],
+    "answerIndex": 1,
+    "explanation": "Math.round(x)=floor(x+0.5)。"
+  },
+  {
+    "id": 186,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "Math.roundの戻り値は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        System.out.println(Math.round(-1.5));\n    }\n}\n// uid:186\n",
+    "choices": [
+      "不定(3)",
+      "-1",
+      "コンパイルエラー",
+      "不定(4)",
+      "実行時例外"
+    ],
+    "answerIndex": 1,
+    "explanation": "Math.round(x)=floor(x+0.5)。"
+  },
+  {
+    "id": 187,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "Math.roundの戻り値は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        System.out.println(Math.round(-1.6));\n    }\n}\n// uid:187\n",
+    "choices": [
+      "コンパイルエラー",
+      "実行時例外",
+      "-1",
+      "不定(4)",
+      "-2"
+    ],
+    "answerIndex": 4,
+    "explanation": "Math.round(x)=floor(x+0.5)。"
+  },
+  {
+    "id": 188,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "insertの挙動は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder sb = new StringBuilder(\"ace\");\n        sb.insert(0, \"b\");\n        System.out.println(sb.toString());\n    }\n}\n// uid:188\n",
+    "choices": [
+      "bace",
+      "abce",
+      "aceb",
+      "実行時例外",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 0,
+    "explanation": "指定位置に挿入します。"
+  },
+  {
+    "id": 189,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "insertの挙動は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder sb = new StringBuilder(\"ace\");\n        sb.insert(1, \"b\");\n        System.out.println(sb.toString());\n    }\n}\n// uid:189\n",
+    "choices": [
+      "コンパイルエラー",
+      "abce",
+      "不定(4)",
+      "aceb",
+      "実行時例外"
+    ],
+    "answerIndex": 1,
+    "explanation": "指定位置に挿入します。"
+  },
+  {
+    "id": 190,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "insertの挙動は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder sb = new StringBuilder(\"ace\");\n        sb.insert(2, \"b\");\n        System.out.println(sb.toString());\n    }\n}\n// uid:190\n",
+    "choices": [
+      "コンパイルエラー",
+      "acbe",
+      "abce",
+      "aceb",
+      "実行時例外"
+    ],
+    "answerIndex": 1,
+    "explanation": "指定位置に挿入します。"
+  },
+  {
+    "id": 191,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "insertの挙動は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder sb = new StringBuilder(\"ace\");\n        sb.insert(3, \"b\");\n        System.out.println(sb.toString());\n    }\n}\n// uid:191\n",
+    "choices": [
+      "abce",
+      "aceb",
+      "不定(4)",
+      "コンパイルエラー",
+      "実行時例外"
+    ],
+    "answerIndex": 1,
+    "explanation": "指定位置に挿入します。"
+  },
+  {
+    "id": 192,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "insertの挙動は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder sb = new StringBuilder(\"ace\");\n        sb.insert(1, \"b\");\n        System.out.println(sb.toString());\n    }\n}\n// uid:192\n",
+    "choices": [
+      "aceb",
+      "不定(4)",
+      "abce",
+      "コンパイルエラー",
+      "実行時例外"
+    ],
+    "answerIndex": 2,
+    "explanation": "指定位置に挿入します。"
+  },
+  {
+    "id": 193,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "insertの挙動は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder sb = new StringBuilder(\"ace\");\n        sb.insert(3, \"b\");\n        System.out.println(sb.toString());\n    }\n}\n// uid:193\n",
+    "choices": [
+      "aceb",
+      "abce",
+      "コンパイルエラー",
+      "不定(4)",
+      "実行時例外"
+    ],
+    "answerIndex": 0,
+    "explanation": "指定位置に挿入します。"
+  },
+  {
+    "id": 194,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 20;\n        int y = 1;\n        System.out.println(x << y);\n    }\n}\n// uid:194\n",
+    "choices": [
+      "20",
+      "コンパイルエラー",
+      "実行時例外",
+      "41",
+      "40"
+    ],
+    "answerIndex": 4,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 195,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 45;\n        int y = 3;\n        System.out.println(x << y);\n    }\n}\n// uid:195\n",
+    "choices": [
+      "実行時例外",
+      "360",
+      "180",
+      "361",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 1,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 196,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 15;\n        int y = 3;\n        System.out.println(x << y);\n    }\n}\n// uid:196\n",
+    "choices": [
+      "コンパイルエラー",
+      "60",
+      "120",
+      "実行時例外",
+      "121"
+    ],
+    "answerIndex": 2,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 197,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 46;\n        int y = 4;\n        System.out.println(x << y);\n    }\n}\n// uid:197\n",
+    "choices": [
+      "736",
+      "コンパイルエラー",
+      "368",
+      "737",
+      "実行時例外"
+    ],
+    "answerIndex": 0,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 198,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 30;\n        int y = 3;\n        System.out.println(x << y);\n    }\n}\n// uid:198\n",
+    "choices": [
+      "実行時例外",
+      "240",
+      "241",
+      "コンパイルエラー",
+      "120"
+    ],
+    "answerIndex": 1,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 199,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 6;\n        int y = 3;\n        System.out.println(x << y);\n    }\n}\n// uid:199\n",
+    "choices": [
+      "コンパイルエラー",
+      "実行時例外",
+      "24",
+      "48",
+      "49"
+    ],
+    "answerIndex": 3,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 200,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 38;\n        int y = 4;\n        System.out.println(x << y);\n    }\n}\n// uid:200\n",
+    "choices": [
+      "コンパイルエラー",
+      "608",
+      "実行時例外",
+      "609",
+      "304"
+    ],
+    "answerIndex": 1,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 201,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 38;\n        int y = 5;\n        System.out.println(x << y);\n    }\n}\n// uid:201\n",
+    "choices": [
+      "1217",
+      "コンパイルエラー",
+      "1216",
+      "実行時例外",
+      "608"
+    ],
+    "answerIndex": 2,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 202,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 19;\n        int y = 1;\n        System.out.println(x << y);\n    }\n}\n// uid:202\n",
+    "choices": [
+      "実行時例外",
+      "コンパイルエラー",
+      "39",
+      "38",
+      "19"
+    ],
+    "answerIndex": 3,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 203,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 37;\n        int y = 3;\n        System.out.println(x << y);\n    }\n}\n// uid:203\n",
+    "choices": [
+      "297",
+      "148",
+      "実行時例外",
+      "コンパイルエラー",
+      "296"
+    ],
+    "answerIndex": 4,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 204,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 35;\n        int y = 1;\n        System.out.println(x << y);\n    }\n}\n// uid:204\n",
+    "choices": [
+      "実行時例外",
+      "コンパイルエラー",
+      "35",
+      "70",
+      "71"
+    ],
+    "answerIndex": 3,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 205,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 21;\n        int y = 1;\n        System.out.println(x << y);\n    }\n}\n// uid:205\n",
+    "choices": [
+      "43",
+      "コンパイルエラー",
+      "実行時例外",
+      "21",
+      "42"
+    ],
+    "answerIndex": 4,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 206,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 16;\n        int y = 2;\n        System.out.println(x << y);\n    }\n}\n// uid:206\n",
+    "choices": [
+      "64",
+      "実行時例外",
+      "32",
+      "65",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 0,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 207,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 23;\n        int y = 3;\n        System.out.println(x << y);\n    }\n}\n// uid:207\n",
+    "choices": [
+      "184",
+      "実行時例外",
+      "コンパイルエラー",
+      "92",
+      "185"
+    ],
+    "answerIndex": 0,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 208,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 35;\n        int y = 1;\n        System.out.println(x << y);\n    }\n}\n// uid:208\n",
+    "choices": [
+      "コンパイルエラー",
+      "71",
+      "35",
+      "70",
+      "実行時例外"
+    ],
+    "answerIndex": 3,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 209,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 1;\n        int y = 4;\n        System.out.println(x << y);\n    }\n}\n// uid:209\n",
+    "choices": [
+      "8",
+      "実行時例外",
+      "17",
+      "コンパイルエラー",
+      "16"
+    ],
+    "answerIndex": 4,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 210,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 34;\n        int y = 3;\n        System.out.println(x << y);\n    }\n}\n// uid:210\n",
+    "choices": [
+      "コンパイルエラー",
+      "273",
+      "136",
+      "実行時例外",
+      "272"
+    ],
+    "answerIndex": 4,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 211,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 10;\n        int y = 2;\n        System.out.println(x << y);\n    }\n}\n// uid:211\n",
+    "choices": [
+      "実行時例外",
+      "40",
+      "41",
+      "コンパイルエラー",
+      "20"
+    ],
+    "answerIndex": 1,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 212,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 21;\n        int y = 2;\n        System.out.println(x << y);\n    }\n}\n// uid:212\n",
+    "choices": [
+      "84",
+      "42",
+      "85",
+      "実行時例外",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 0,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 213,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 18;\n        int y = 1;\n        System.out.println(x << y);\n    }\n}\n// uid:213\n",
+    "choices": [
+      "18",
+      "36",
+      "実行時例外",
+      "37",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 1,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 214,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 20;\n        int y = 2;\n        System.out.println(x << y);\n    }\n}\n// uid:214\n",
+    "choices": [
+      "81",
+      "コンパイルエラー",
+      "実行時例外",
+      "80",
+      "40"
+    ],
+    "answerIndex": 3,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 215,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 38;\n        int y = 4;\n        System.out.println(x << y);\n    }\n}\n// uid:215\n",
+    "choices": [
+      "304",
+      "コンパイルエラー",
+      "実行時例外",
+      "609",
+      "608"
+    ],
+    "answerIndex": 4,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 216,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 12;\n        int y = 3;\n        System.out.println(x << y);\n    }\n}\n// uid:216\n",
+    "choices": [
+      "96",
+      "コンパイルエラー",
+      "97",
+      "実行時例外",
+      "48"
+    ],
+    "answerIndex": 0,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 217,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 39;\n        int y = 5;\n        System.out.println(x << y);\n    }\n}\n// uid:217\n",
+    "choices": [
+      "1249",
+      "実行時例外",
+      "1248",
+      "コンパイルエラー",
+      "624"
+    ],
+    "answerIndex": 2,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 218,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 26;\n        int y = 2;\n        System.out.println(x << y);\n    }\n}\n// uid:218\n",
+    "choices": [
+      "104",
+      "実行時例外",
+      "52",
+      "コンパイルエラー",
+      "105"
+    ],
+    "answerIndex": 0,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 219,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 26;\n        int y = 3;\n        System.out.println(x << y);\n    }\n}\n// uid:219\n",
+    "choices": [
+      "209",
+      "コンパイルエラー",
+      "104",
+      "208",
+      "実行時例外"
+    ],
+    "answerIndex": 3,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 220,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 26;\n        int y = 1;\n        System.out.println(x << y);\n    }\n}\n// uid:220\n",
+    "choices": [
+      "52",
+      "53",
+      "コンパイルエラー",
+      "実行時例外",
+      "26"
+    ],
+    "answerIndex": 0,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 221,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 4;\n        int y = 2;\n        System.out.println(x << y);\n    }\n}\n// uid:221\n",
+    "choices": [
+      "実行時例外",
+      "17",
+      "8",
+      "コンパイルエラー",
+      "16"
+    ],
+    "answerIndex": 4,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 222,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 16;\n        int y = 4;\n        System.out.println(x << y);\n    }\n}\n// uid:222\n",
+    "choices": [
+      "257",
+      "256",
+      "コンパイルエラー",
+      "128",
+      "実行時例外"
+    ],
+    "answerIndex": 1,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 223,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 50;\n        int y = 3;\n        System.out.println(x << y);\n    }\n}\n// uid:223\n",
+    "choices": [
+      "実行時例外",
+      "400",
+      "コンパイルエラー",
+      "401",
+      "200"
+    ],
+    "answerIndex": 1,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 224,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 41;\n        int y = 5;\n        System.out.println(x << y);\n    }\n}\n// uid:224\n",
+    "choices": [
+      "656",
+      "実行時例外",
+      "コンパイルエラー",
+      "1312",
+      "1313"
+    ],
+    "answerIndex": 3,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 225,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 1;\n        int y = 2;\n        System.out.println(x << y);\n    }\n}\n// uid:225\n",
+    "choices": [
+      "5",
+      "コンパイルエラー",
+      "4",
+      "実行時例外",
+      "2"
+    ],
+    "answerIndex": 2,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 226,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 18;\n        int y = 5;\n        System.out.println(x << y);\n    }\n}\n// uid:226\n",
+    "choices": [
+      "コンパイルエラー",
+      "577",
+      "288",
+      "576",
+      "実行時例外"
+    ],
+    "answerIndex": 3,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 227,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 6;\n        int y = 5;\n        System.out.println(x << y);\n    }\n}\n// uid:227\n",
+    "choices": [
+      "96",
+      "コンパイルエラー",
+      "192",
+      "193",
+      "実行時例外"
+    ],
+    "answerIndex": 2,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 228,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 27;\n        int y = 2;\n        System.out.println(x << y);\n    }\n}\n// uid:228\n",
+    "choices": [
+      "54",
+      "109",
+      "実行時例外",
+      "コンパイルエラー",
+      "108"
+    ],
+    "answerIndex": 4,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 229,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 35;\n        int y = 4;\n        System.out.println(x << y);\n    }\n}\n// uid:229\n",
+    "choices": [
+      "561",
+      "280",
+      "560",
+      "コンパイルエラー",
+      "実行時例外"
+    ],
+    "answerIndex": 2,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 230,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 21;\n        int y = 3;\n        System.out.println(x << y);\n    }\n}\n// uid:230\n",
+    "choices": [
+      "実行時例外",
+      "84",
+      "169",
+      "168",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 3,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 231,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 30;\n        int y = 1;\n        System.out.println(x << y);\n    }\n}\n// uid:231\n",
+    "choices": [
+      "30",
+      "コンパイルエラー",
+      "実行時例外",
+      "60",
+      "61"
+    ],
+    "answerIndex": 3,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 232,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 7;\n        int y = 4;\n        System.out.println(x << y);\n    }\n}\n// uid:232\n",
+    "choices": [
+      "実行時例外",
+      "56",
+      "113",
+      "112",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 3,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 233,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 1;\n        int y = 4;\n        System.out.println(x << y);\n    }\n}\n// uid:233\n",
+    "choices": [
+      "17",
+      "16",
+      "実行時例外",
+      "8",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 1,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 234,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 30;\n        int y = 1;\n        System.out.println(x << y);\n    }\n}\n// uid:234\n",
+    "choices": [
+      "60",
+      "61",
+      "コンパイルエラー",
+      "実行時例外",
+      "30"
+    ],
+    "answerIndex": 0,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 235,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 35;\n        int y = 3;\n        System.out.println(x << y);\n    }\n}\n// uid:235\n",
+    "choices": [
+      "140",
+      "280",
+      "実行時例外",
+      "コンパイルエラー",
+      "281"
+    ],
+    "answerIndex": 1,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 236,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 17;\n        int y = 2;\n        System.out.println(x << y);\n    }\n}\n// uid:236\n",
+    "choices": [
+      "実行時例外",
+      "68",
+      "69",
+      "コンパイルエラー",
+      "34"
+    ],
+    "answerIndex": 1,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 237,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 22;\n        int y = 3;\n        System.out.println(x << y);\n    }\n}\n// uid:237\n",
+    "choices": [
+      "176",
+      "88",
+      "実行時例外",
+      "コンパイルエラー",
+      "177"
+    ],
+    "answerIndex": 0,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 238,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 29;\n        int y = 4;\n        System.out.println(x << y);\n    }\n}\n// uid:238\n",
+    "choices": [
+      "232",
+      "465",
+      "コンパイルエラー",
+      "実行時例外",
+      "464"
+    ],
+    "answerIndex": 4,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 239,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 9;\n        int y = 2;\n        System.out.println(x << y);\n    }\n}\n// uid:239\n",
+    "choices": [
+      "37",
+      "36",
+      "コンパイルエラー",
+      "実行時例外",
+      "18"
+    ],
+    "answerIndex": 1,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 240,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 30;\n        int y = 5;\n        System.out.println(x << y);\n    }\n}\n// uid:240\n",
+    "choices": [
+      "480",
+      "961",
+      "コンパイルエラー",
+      "実行時例外",
+      "960"
+    ],
+    "answerIndex": 4,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 241,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 11;\n        int y = 1;\n        System.out.println(x << y);\n    }\n}\n// uid:241\n",
+    "choices": [
+      "23",
+      "11",
+      "22",
+      "実行時例外",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 2,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 242,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 28;\n        int y = 5;\n        System.out.println(x << y);\n    }\n}\n// uid:242\n",
+    "choices": [
+      "897",
+      "コンパイルエラー",
+      "896",
+      "実行時例外",
+      "448"
+    ],
+    "answerIndex": 2,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 243,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 31;\n        int y = 3;\n        System.out.println(x << y);\n    }\n}\n// uid:243\n",
+    "choices": [
+      "実行時例外",
+      "124",
+      "249",
+      "248",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 3,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 244,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 40;\n        int y = 3;\n        System.out.println(x << y);\n    }\n}\n// uid:244\n",
+    "choices": [
+      "コンパイルエラー",
+      "321",
+      "実行時例外",
+      "320",
+      "160"
+    ],
+    "answerIndex": 3,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 245,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 13;\n        int y = 3;\n        System.out.println(x << y);\n    }\n}\n// uid:245\n",
+    "choices": [
+      "実行時例外",
+      "52",
+      "104",
+      "コンパイルエラー",
+      "105"
+    ],
+    "answerIndex": 2,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 246,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 14;\n        int y = 5;\n        System.out.println(x << y);\n    }\n}\n// uid:246\n",
+    "choices": [
+      "224",
+      "コンパイルエラー",
+      "448",
+      "実行時例外",
+      "449"
+    ],
+    "answerIndex": 2,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 247,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 17;\n        int y = 5;\n        System.out.println(x << y);\n    }\n}\n// uid:247\n",
+    "choices": [
+      "実行時例外",
+      "544",
+      "コンパイルエラー",
+      "272",
+      "545"
+    ],
+    "answerIndex": 1,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 248,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 37;\n        int y = 2;\n        System.out.println(x << y);\n    }\n}\n// uid:248\n",
+    "choices": [
+      "コンパイルエラー",
+      "148",
+      "149",
+      "74",
+      "実行時例外"
+    ],
+    "answerIndex": 1,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 249,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 41;\n        int y = 2;\n        System.out.println(x << y);\n    }\n}\n// uid:249\n",
+    "choices": [
+      "165",
+      "コンパイルエラー",
+      "実行時例外",
+      "82",
+      "164"
+    ],
+    "answerIndex": 4,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 250,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 37;\n        int y = 4;\n        System.out.println(x << y);\n    }\n}\n// uid:250\n",
+    "choices": [
+      "コンパイルエラー",
+      "296",
+      "592",
+      "実行時例外",
+      "593"
+    ],
+    "answerIndex": 2,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 251,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 18;\n        int y = 4;\n        System.out.println(x << y);\n    }\n}\n// uid:251\n",
+    "choices": [
+      "144",
+      "実行時例外",
+      "289",
+      "コンパイルエラー",
+      "288"
+    ],
+    "answerIndex": 4,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 252,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 16;\n        int y = 5;\n        System.out.println(x << y);\n    }\n}\n// uid:252\n",
+    "choices": [
+      "コンパイルエラー",
+      "256",
+      "513",
+      "512",
+      "実行時例外"
+    ],
+    "answerIndex": 3,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 253,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 11;\n        int y = 3;\n        System.out.println(x << y);\n    }\n}\n// uid:253\n",
+    "choices": [
+      "コンパイルエラー",
+      "89",
+      "88",
+      "44",
+      "実行時例外"
+    ],
+    "answerIndex": 2,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 254,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 19;\n        int y = 3;\n        System.out.println(x << y);\n    }\n}\n// uid:254\n",
+    "choices": [
+      "実行時例外",
+      "コンパイルエラー",
+      "152",
+      "153",
+      "76"
+    ],
+    "answerIndex": 2,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 255,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 39;\n        int y = 5;\n        System.out.println(x << y);\n    }\n}\n// uid:255\n",
+    "choices": [
+      "1249",
+      "624",
+      "実行時例外",
+      "コンパイルエラー",
+      "1248"
+    ],
+    "answerIndex": 4,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 256,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 12;\n        int y = 2;\n        System.out.println(x << y);\n    }\n}\n// uid:256\n",
+    "choices": [
+      "24",
+      "48",
+      "実行時例外",
+      "コンパイルエラー",
+      "49"
+    ],
+    "answerIndex": 1,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 257,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 11;\n        int y = 2;\n        System.out.println(x << y);\n    }\n}\n// uid:257\n",
+    "choices": [
+      "22",
+      "45",
+      "44",
+      "実行時例外",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 2,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 258,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 34;\n        int y = 4;\n        System.out.println(x << y);\n    }\n}\n// uid:258\n",
+    "choices": [
+      "545",
+      "272",
+      "実行時例外",
+      "コンパイルエラー",
+      "544"
+    ],
+    "answerIndex": 4,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 259,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 34;\n        int y = 2;\n        System.out.println(x << y);\n    }\n}\n// uid:259\n",
+    "choices": [
+      "136",
+      "コンパイルエラー",
+      "実行時例外",
+      "68",
+      "137"
+    ],
+    "answerIndex": 0,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 260,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 4;\n        int y = 1;\n        System.out.println(x << y);\n    }\n}\n// uid:260\n",
+    "choices": [
+      "9",
+      "8",
+      "実行時例外",
+      "コンパイルエラー",
+      "4"
+    ],
+    "answerIndex": 1,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 261,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 31;\n        int y = 3;\n        System.out.println(x << y);\n    }\n}\n// uid:261\n",
+    "choices": [
+      "248",
+      "249",
+      "124",
+      "実行時例外",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 0,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 262,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 30;\n        int y = 4;\n        System.out.println(x << y);\n    }\n}\n// uid:262\n",
+    "choices": [
+      "240",
+      "実行時例外",
+      "481",
+      "480",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 3,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 263,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 34;\n        int y = 3;\n        System.out.println(x << y);\n    }\n}\n// uid:263\n",
+    "choices": [
+      "273",
+      "272",
+      "136",
+      "コンパイルエラー",
+      "実行時例外"
+    ],
+    "answerIndex": 1,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 264,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 21;\n        int y = 1;\n        System.out.println(x << y);\n    }\n}\n// uid:264\n",
+    "choices": [
+      "42",
+      "21",
+      "実行時例外",
+      "コンパイルエラー",
+      "43"
+    ],
+    "answerIndex": 0,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 265,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 39;\n        int y = 3;\n        System.out.println(x << y);\n    }\n}\n// uid:265\n",
+    "choices": [
+      "156",
+      "実行時例外",
+      "コンパイルエラー",
+      "312",
+      "313"
+    ],
+    "answerIndex": 3,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 266,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 29;\n        int y = 2;\n        System.out.println(x << y);\n    }\n}\n// uid:266\n",
+    "choices": [
+      "117",
+      "58",
+      "116",
+      "コンパイルエラー",
+      "実行時例外"
+    ],
+    "answerIndex": 2,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 267,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 45;\n        int y = 1;\n        System.out.println(x << y);\n    }\n}\n// uid:267\n",
+    "choices": [
+      "90",
+      "コンパイルエラー",
+      "91",
+      "45",
+      "実行時例外"
+    ],
+    "answerIndex": 0,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 268,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 43;\n        int y = 4;\n        System.out.println(x << y);\n    }\n}\n// uid:268\n",
+    "choices": [
+      "コンパイルエラー",
+      "実行時例外",
+      "689",
+      "688",
+      "344"
+    ],
+    "answerIndex": 3,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 269,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 35;\n        int y = 4;\n        System.out.println(x << y);\n    }\n}\n// uid:269\n",
+    "choices": [
+      "561",
+      "コンパイルエラー",
+      "560",
+      "280",
+      "実行時例外"
+    ],
+    "answerIndex": 2,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 270,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 37;\n        int y = 1;\n        System.out.println(x << y);\n    }\n}\n// uid:270\n",
+    "choices": [
+      "37",
+      "コンパイルエラー",
+      "75",
+      "実行時例外",
+      "74"
+    ],
+    "answerIndex": 4,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 271,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 8;\n        int y = 5;\n        System.out.println(x << y);\n    }\n}\n// uid:271\n",
+    "choices": [
+      "257",
+      "128",
+      "256",
+      "コンパイルエラー",
+      "実行時例外"
+    ],
+    "answerIndex": 2,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 272,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 16;\n        int y = 3;\n        System.out.println(x << y);\n    }\n}\n// uid:272\n",
+    "choices": [
+      "64",
+      "コンパイルエラー",
+      "実行時例外",
+      "129",
+      "128"
+    ],
+    "answerIndex": 4,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 273,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 29;\n        int y = 4;\n        System.out.println(x << y);\n    }\n}\n// uid:273\n",
+    "choices": [
+      "465",
+      "232",
+      "464",
+      "コンパイルエラー",
+      "実行時例外"
+    ],
+    "answerIndex": 2,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 274,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 45;\n        int y = 5;\n        System.out.println(x << y);\n    }\n}\n// uid:274\n",
+    "choices": [
+      "1441",
+      "コンパイルエラー",
+      "実行時例外",
+      "1440",
+      "720"
+    ],
+    "answerIndex": 3,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 275,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 30;\n        int y = 3;\n        System.out.println(x << y);\n    }\n}\n// uid:275\n",
+    "choices": [
+      "コンパイルエラー",
+      "240",
+      "120",
+      "実行時例外",
+      "241"
+    ],
+    "answerIndex": 1,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 276,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 50;\n        int y = 4;\n        System.out.println(x << y);\n    }\n}\n// uid:276\n",
+    "choices": [
+      "801",
+      "800",
+      "コンパイルエラー",
+      "実行時例外",
+      "400"
+    ],
+    "answerIndex": 1,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 277,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 13;\n        int y = 3;\n        System.out.println(x << y);\n    }\n}\n// uid:277\n",
+    "choices": [
+      "52",
+      "実行時例外",
+      "104",
+      "コンパイルエラー",
+      "105"
+    ],
+    "answerIndex": 2,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 278,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 41;\n        int y = 5;\n        System.out.println(x << y);\n    }\n}\n// uid:278\n",
+    "choices": [
+      "コンパイルエラー",
+      "1313",
+      "1312",
+      "実行時例外",
+      "656"
+    ],
+    "answerIndex": 2,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 279,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 42;\n        int y = 1;\n        System.out.println(x << y);\n    }\n}\n// uid:279\n",
+    "choices": [
+      "84",
+      "コンパイルエラー",
+      "42",
+      "実行時例外",
+      "85"
+    ],
+    "answerIndex": 0,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 280,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 46;\n        int y = 2;\n        System.out.println(x << y);\n    }\n}\n// uid:280\n",
+    "choices": [
+      "実行時例外",
+      "184",
+      "92",
+      "コンパイルエラー",
+      "185"
+    ],
+    "answerIndex": 1,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 281,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 11;\n        int y = 2;\n        System.out.println(x << y);\n    }\n}\n// uid:281\n",
+    "choices": [
+      "22",
+      "コンパイルエラー",
+      "実行時例外",
+      "44",
+      "45"
+    ],
+    "answerIndex": 3,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 282,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 18;\n        int y = 2;\n        System.out.println(x << y);\n    }\n}\n// uid:282\n",
+    "choices": [
+      "72",
+      "コンパイルエラー",
+      "実行時例外",
+      "73",
+      "36"
+    ],
+    "answerIndex": 0,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 283,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 43;\n        int y = 5;\n        System.out.println(x << y);\n    }\n}\n// uid:283\n",
+    "choices": [
+      "1377",
+      "実行時例外",
+      "コンパイルエラー",
+      "688",
+      "1376"
+    ],
+    "answerIndex": 4,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 284,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 43;\n        int y = 2;\n        System.out.println(x << y);\n    }\n}\n// uid:284\n",
+    "choices": [
+      "コンパイルエラー",
+      "172",
+      "実行時例外",
+      "86",
+      "173"
+    ],
+    "answerIndex": 1,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 285,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 30;\n        int y = 1;\n        System.out.println(x << y);\n    }\n}\n// uid:285\n",
+    "choices": [
+      "30",
+      "実行時例外",
+      "61",
+      "60",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 3,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 286,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 1;\n        int y = 5;\n        System.out.println(x << y);\n    }\n}\n// uid:286\n",
+    "choices": [
+      "32",
+      "16",
+      "コンパイルエラー",
+      "33",
+      "実行時例外"
+    ],
+    "answerIndex": 0,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 287,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 28;\n        int y = 5;\n        System.out.println(x << y);\n    }\n}\n// uid:287\n",
+    "choices": [
+      "897",
+      "実行時例外",
+      "コンパイルエラー",
+      "448",
+      "896"
+    ],
+    "answerIndex": 4,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 288,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 16;\n        int y = 2;\n        System.out.println(x << y);\n    }\n}\n// uid:288\n",
+    "choices": [
+      "32",
+      "実行時例外",
+      "コンパイルエラー",
+      "64",
+      "65"
+    ],
+    "answerIndex": 3,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 289,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 3;\n        int y = 5;\n        System.out.println(x << y);\n    }\n}\n// uid:289\n",
+    "choices": [
+      "97",
+      "48",
+      "96",
+      "実行時例外",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 2,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 290,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 4;\n        int y = 2;\n        System.out.println(x << y);\n    }\n}\n// uid:290\n",
+    "choices": [
+      "実行時例外",
+      "コンパイルエラー",
+      "8",
+      "17",
+      "16"
+    ],
+    "answerIndex": 4,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 291,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 3;\n        int y = 5;\n        System.out.println(x << y);\n    }\n}\n// uid:291\n",
+    "choices": [
+      "コンパイルエラー",
+      "96",
+      "実行時例外",
+      "48",
+      "97"
+    ],
+    "answerIndex": 1,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 292,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 8;\n        int y = 5;\n        System.out.println(x << y);\n    }\n}\n// uid:292\n",
+    "choices": [
+      "256",
+      "実行時例外",
+      "257",
+      "128",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 0,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 293,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 36;\n        int y = 3;\n        System.out.println(x << y);\n    }\n}\n// uid:293\n",
+    "choices": [
+      "コンパイルエラー",
+      "288",
+      "実行時例外",
+      "289",
+      "144"
+    ],
+    "answerIndex": 1,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 294,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 38;\n        int y = 5;\n        System.out.println(x << y);\n    }\n}\n// uid:294\n",
+    "choices": [
+      "608",
+      "実行時例外",
+      "1216",
+      "1217",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 2,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 295,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 39;\n        int y = 1;\n        System.out.println(x << y);\n    }\n}\n// uid:295\n",
+    "choices": [
+      "79",
+      "39",
+      "78",
+      "コンパイルエラー",
+      "実行時例外"
+    ],
+    "answerIndex": 2,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 296,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 10;\n        int y = 5;\n        System.out.println(x << y);\n    }\n}\n// uid:296\n",
+    "choices": [
+      "実行時例外",
+      "321",
+      "160",
+      "コンパイルエラー",
+      "320"
+    ],
+    "answerIndex": 4,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 297,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 47;\n        int y = 3;\n        System.out.println(x << y);\n    }\n}\n// uid:297\n",
+    "choices": [
+      "188",
+      "377",
+      "コンパイルエラー",
+      "実行時例外",
+      "376"
+    ],
+    "answerIndex": 4,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 298,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 37;\n        int y = 5;\n        System.out.println(x << y);\n    }\n}\n// uid:298\n",
+    "choices": [
+      "コンパイルエラー",
+      "1184",
+      "1185",
+      "592",
+      "実行時例外"
+    ],
+    "answerIndex": 1,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 299,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 4;\n        int y = 3;\n        System.out.println(x << y);\n    }\n}\n// uid:299\n",
+    "choices": [
+      "実行時例外",
+      "16",
+      "33",
+      "32",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 3,
+    "explanation": "左シフトは2^y倍。"
+  },
+  {
+    "id": 300,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "ビットシフトの結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 40;\n        int y = 5;\n        System.out.println(x << y);\n    }\n}\n// uid:300\n",
+    "choices": [
+      "640",
+      "実行時例外",
+      "1280",
+      "コンパイルエラー",
+      "1281"
+    ],
+    "answerIndex": 2,
+    "explanation": "左シフトは2^y倍。"
+  }
+]

@@ -43,8 +43,11 @@ h2 {
 .controls input[type="number"] {
   border: 1px solid var(--border);
 }
+.controls input[type="file"] {
+  width: 400px;
+}
 .controls select {
-  width: 180px;
+  width: 280px;
 }
 .controls input,
 .controls select {
