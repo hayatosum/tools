@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "category": "Java",
+    "difficulty": "Silver",
+    "question": "次のJavaコードの出力結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 5;\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": ["5と6", "6と6", "5と5", "エラーになる"],
+    "answerIndex": 0,
+    "explanation": "後置インクリメントなので最初は5が出力され、その後xが6になる。"
+  }
+]

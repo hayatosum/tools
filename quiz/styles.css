@@ -38,3 +38,14 @@ button:disabled{opacity:.5;cursor:not-allowed}
 .result-area{margin-top:20px;border-top:1px solid var(--border);padding-top:16px}
 .explanation{border-left:4px solid var(--border);padding:8px 12px;margin:8px 0;color:#333;background:#fafafa;border-radius:8px}
 .footer{color:var(--muted);text-align:center;border-top:1px solid var(--border)}
+
+.question-text pre {
+  background: #f8f9fa;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-family: Consolas, 'Courier New', monospace;
+  font-size: 0.9em;
+  margin-top: 6px;
+}

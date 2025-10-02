@@ -50,8 +50,33 @@ function renderQuiz(questions) {
   questions.forEach((q, idx) => {
     const card = document.createElement('article');
     card.className = 'card';
+
+    // --- 問題文の描画 ---
     const title = document.createElement('h3');
-    title.textContent = `Q${idx + 1}. ${q.question}`;
+    title.textContent = `Q${idx + 1}.`;
+
+    const questionText = document.createElement('div');
+    questionText.className = 'question-text';
+
+    // コードを含む場合はpre/codeで表示
+    if (q.code) {
+      // 通常文
+      if (q.question) {
+        const p = document.createElement('p');
+        p.textContent = q.question;
+        questionText.appendChild(p);
+      }
+      // ソースコード部分
+      const pre = document.createElement('pre');
+      const code = document.createElement('code');
+      code.textContent = q.code; // ← escape不要。textContentで安全
+      pre.appendChild(code);
+      questionText.appendChild(pre);
+    } else {
+      // 通常テキスト問題
+      questionText.textContent = q.question;
+    }
+
     const meta = document.createElement('div');
     meta.className = 'meta';
     const cat = q.category ? `カテゴリ: ${q.category}` : 'カテゴリ: -';
@@ -89,6 +114,7 @@ function renderQuiz(questions) {
     });
 
     card.appendChild(title);
+    card.appendChild(questionText);
     card.appendChild(meta);
     card.appendChild(choicesWrap);
     quizArea.appendChild(card);
