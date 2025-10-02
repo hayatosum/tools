@@ -1,12 +1,14 @@
 // --- 設定 ---
-const QUESTIONS_URL = './questions.json'; // 同じフォルダに配置
+// const QUESTIONS_URL = './questions.json'; // 同じフォルダに配置
 
 // --- 状態管理 ---
 let allQuestions = [];
 let currentQuestions = []; // 出題中の問題
 let userAnswers = new Map(); // key: q.id, value: choice index
+let currentFile = 'questions.json'; // デフォルト
 
 // --- 要素参照 ---
+const fileSelect = document.getElementById('fileSelect');
 const countInput = document.getElementById('questionCount');
 const loadBtn = document.getElementById('loadBtn');
 const gradeBtn = document.getElementById('gradeBtn');
@@ -16,6 +18,11 @@ const quizArea = document.getElementById('quizArea');
 const resultArea = document.getElementById('resultArea');
 const scoreText = document.getElementById('scoreText');
 const explanationsEl = document.getElementById('explanations');
+
+// --- ファイル切り替え ---
+fileSelect.addEventListener('change', () => {
+  currentFile = fileSelect.value;
+});
 
 // --- ユーティリティ ---
 const shuffle = (arr) => arr.map(v=>[Math.random(),v]).sort((a,b)=>a[0]-b[0]).map(v=>v[1]);
@@ -146,19 +153,14 @@ function showResults() {
   resultArea.hidden = false;
 }
 
-// --- 主要フロー ---
+// --- 問題ロード ---
 async function loadAllQuestions() {
-  if (allQuestions.length > 0) return; // 既にロード済み
-  const res = await fetch(QUESTIONS_URL, { cache: 'no-store' });
+  const res = await fetch(currentFile, { cache: 'no-store' });
   if (!res.ok) throw new Error(`問題の取得に失敗しました: ${res.status}`);
   const data = await res.json();
-  if (!Array.isArray(data)) throw new Error('questions.json は配列である必要があります');
-  // 軽い検証
+  if (!Array.isArray(data)) throw new Error('問題ファイルは配列である必要があります');
   data.forEach((q, i) => {
     if (typeof q.id === 'undefined') q.id = i + 1;
-    if (!q.question || !Array.isArray(q.choices) || typeof q.answerIndex !== 'number') {
-      throw new Error(`不正な問題形式があります (index: ${i})`);
-    }
   });
   allQuestions = data;
 }

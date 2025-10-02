@@ -2,20 +2,26 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <title>資格試験 学習用クイズ</title>
+  <title>Java Silver & Gold 模擬問題</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
   <header class="container">
-    <h1>資格試験 学習用クイズ</h1>
-    <p class="sub">外部JSONから問題を読み込みます</p>
+    <h1>Java Silver & Gold 模擬問題</h1>
   </header>
 
   <main class="container">
     <section class="controls">
+      <label for="fileSelect">問題ファイル：</label>
+      <select id="fileSelect">
+        <option value="questions_basic.json">初級問題</option>
+        <option value="questions_advanced.json">応用問題</option>
+        <option value="questions.json">サンプル問題</option>
+      </select>
+
       <label for="questionCount">出題数：</label>
-      <input id="questionCount" type="number" min="1" step="1" value="5" />
+      <input id="questionCount" type="number" min="1" max="100" step="1" value="5" />
       <button id="loadBtn" class="primary">出題</button>
       <button id="gradeBtn" class="secondary" disabled>採点</button>
       <button id="resetBtn" class="ghost" disabled>リセット</button>

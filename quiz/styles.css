@@ -14,7 +14,7 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);font-family:sy
 header h1{margin:.2em 0}
 .sub{color:var(--muted);margin-top:-6px}
 .controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0 16px}
-.controls input{width:100px;padding:8px;border:1px solid var(--border);border-radius:8px}
+.controls input{width:80px;padding:8px;border:1px solid var(--border);border-radius:8px}
 button{cursor:pointer;border:1px solid var(--border);background:#f8f9fb;border-radius:10px;padding:10px 14px;font-weight:600}
 button.primary{background:var(--primary);color:#fff;border-color:var(--primary)}
 button.secondary{background:#fff}
