@@ -5,7 +5,7 @@
 let allQuestions = [];
 let currentQuestions = []; // 出題中の問題
 let userAnswers = new Map(); // key: q.id, value: choice index
-let currentFile = 'questions.json'; // デフォルト
+let currentFile = 'java_silver_100.json'; // デフォルト
 
 // --- 要素参照 ---
 const fileSelect = document.getElementById('fileSelect');
