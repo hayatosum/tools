@@ -59,6 +59,11 @@ button.primary {
   color: #fff;
   border-color: var(--primary);
 }
+button.ok {
+  background: var(--ok);
+  color: #fff;
+  border-color: var(--ok);
+}
 button.secondary {
   background: #fff;
 }
@@ -149,7 +154,7 @@ button:disabled {
 }
 .footer {
   color: var(--muted);
-  text-align: center;
+  text-align: left;
   border-top: 1px solid var(--border);
 }
 
