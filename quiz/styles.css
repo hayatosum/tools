@@ -40,7 +40,7 @@ header h1 {
   align-items: center;
   margin: 8px 0 16px;
 }
-.controls input[type="text"] {
+.controls input[type="number"] {
   border: 1px solid var(--border);
 }
 .controls input,
@@ -141,10 +141,11 @@ button:disabled {
   border: 1px solid #fecaca;
 }
 
-.result-area {
+.result-area, .grade-area {
   margin-top: 20px;
   border-top: 1px solid var(--border);
   padding-top: 16px;
+  margin-bottom: 40px;
 }
 .explanation {
   border-left: 4px solid var(--border);
