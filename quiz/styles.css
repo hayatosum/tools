@@ -88,6 +88,7 @@ button:disabled {
 .quiz-area {
   display: grid;
   gap: 16px;
+  padding-top: 8px;
 }
 .card {
   border: 1px solid var(--border);
