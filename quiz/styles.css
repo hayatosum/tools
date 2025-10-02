@@ -24,24 +24,27 @@ body {
 .container {
   max-width: 960px;
   margin: auto;
-  padding: 16px;
+  padding: 8px 16px;
 }
-header h1 {
-  margin: 0.2em 0;
+h2 {
+  margin: 0;
 }
 .sub {
   color: var(--muted);
-  margin-top: -6px;
+  margin: 0;
 }
 .controls {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
   align-items: center;
-  margin: 8px 0 16px;
+  margin: 8px 0px;
 }
 .controls input[type="number"] {
   border: 1px solid var(--border);
+}
+.controls select {
+  width: 150px;
 }
 .controls input,
 .controls select {

@@ -7,20 +7,23 @@
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <header class="container">
-      <h1>Java Silver & Gold 模擬問題</h1>
-    </header>
-
+    <!-- <header class="container">
+      <h2>Java Silver & Gold 模擬問題</h2>
+    </header> -->
     <main class="container">
       <section class="controls">
-        <label for="fileSelect">問題ファイル：</label>
+        <h2>Java Silver & Gold 模擬問題</h2>
+      </section>
+      <section class="controls">
+        <label for="fileSelect">出題ファイル：</label>
         <select id="fileSelect">
-          <option value="java_silver_100.json">
-            java_silver_100.json
+          <option value="java_silver_300.json">
+            v001_20251002
           </option>
         </select>
         <input type="file" id="fileInput" accept=".json" />
-
+      </section>
+      <section class="controls">
         <label for="questionCount">出題数：</label>
         <input
           id="questionCount"
@@ -30,6 +33,9 @@
           step="1"
           value="5"
         />
+        <p class="sub">1～100まで指定可能</p>
+      </section>
+      <section class="controls">
         <button id="loadBtn" class="primary">出題</button>
         <button id="resetBtn" class="ghost" disabled>リセット</button>
         <span id="status" class="status" aria-live="polite"></span>

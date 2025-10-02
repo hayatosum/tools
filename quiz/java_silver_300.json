@@ -1,0 +1,4802 @@
+[
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（後置インクリメント）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 2;\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "2と3",
+      "3と3",
+      "2と2",
+      "エラーになる",
+      "3と4"
+    ],
+    "answerIndex": 0,
+    "explanation": "後置インクリメントは評価後に加算されるため、1行目は元の値、2行目は加算後の値が出力される。",
+    "id": 1
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（後置インクリメント）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 4;\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "4と5",
+      "5と5",
+      "4と4",
+      "エラーになる",
+      "5と6"
+    ],
+    "answerIndex": 0,
+    "explanation": "後置インクリメントは評価後に加算されるため、1行目は元の値、2行目は加算後の値が出力される。",
+    "id": 2
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（後置インクリメント）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 6;\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "6と7",
+      "7と7",
+      "6と6",
+      "エラーになる",
+      "7と8"
+    ],
+    "answerIndex": 0,
+    "explanation": "後置インクリメントは評価後に加算されるため、1行目は元の値、2行目は加算後の値が出力される。",
+    "id": 3
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（後置インクリメント）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 8;\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "8と9",
+      "9と9",
+      "8と8",
+      "エラーになる",
+      "9と10"
+    ],
+    "answerIndex": 0,
+    "explanation": "後置インクリメントは評価後に加算されるため、1行目は元の値、2行目は加算後の値が出力される。",
+    "id": 4
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（後置インクリメント）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 10;\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "10と11",
+      "11と11",
+      "10と10",
+      "エラーになる",
+      "11と12"
+    ],
+    "answerIndex": 0,
+    "explanation": "後置インクリメントは評価後に加算されるため、1行目は元の値、2行目は加算後の値が出力される。",
+    "id": 5
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（後置インクリメント）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 12;\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "12と13",
+      "13と13",
+      "12と12",
+      "エラーになる",
+      "13と14"
+    ],
+    "answerIndex": 0,
+    "explanation": "後置インクリメントは評価後に加算されるため、1行目は元の値、2行目は加算後の値が出力される。",
+    "id": 6
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（後置インクリメント）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 14;\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "14と15",
+      "15と15",
+      "14と14",
+      "エラーになる",
+      "15と16"
+    ],
+    "answerIndex": 0,
+    "explanation": "後置インクリメントは評価後に加算されるため、1行目は元の値、2行目は加算後の値が出力される。",
+    "id": 7
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（後置インクリメント）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 16;\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "16と17",
+      "17と17",
+      "16と16",
+      "エラーになる",
+      "17と18"
+    ],
+    "answerIndex": 0,
+    "explanation": "後置インクリメントは評価後に加算されるため、1行目は元の値、2行目は加算後の値が出力される。",
+    "id": 8
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（後置インクリメント）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 18;\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "18と19",
+      "19と19",
+      "18と18",
+      "エラーになる",
+      "19と20"
+    ],
+    "answerIndex": 0,
+    "explanation": "後置インクリメントは評価後に加算されるため、1行目は元の値、2行目は加算後の値が出力される。",
+    "id": 9
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（後置インクリメント）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 20;\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "20と21",
+      "21と21",
+      "20と20",
+      "エラーになる",
+      "21と22"
+    ],
+    "answerIndex": 0,
+    "explanation": "後置インクリメントは評価後に加算されるため、1行目は元の値、2行目は加算後の値が出力される。",
+    "id": 10
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（後置インクリメント）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 22;\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "22と23",
+      "23と23",
+      "22と22",
+      "エラーになる",
+      "23と24"
+    ],
+    "answerIndex": 0,
+    "explanation": "後置インクリメントは評価後に加算されるため、1行目は元の値、2行目は加算後の値が出力される。",
+    "id": 11
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（後置インクリメント）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 24;\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "24と25",
+      "25と25",
+      "24と24",
+      "エラーになる",
+      "25と26"
+    ],
+    "answerIndex": 0,
+    "explanation": "後置インクリメントは評価後に加算されるため、1行目は元の値、2行目は加算後の値が出力される。",
+    "id": 12
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（後置インクリメント）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 26;\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "26と27",
+      "27と27",
+      "26と26",
+      "エラーになる",
+      "27と28"
+    ],
+    "answerIndex": 0,
+    "explanation": "後置インクリメントは評価後に加算されるため、1行目は元の値、2行目は加算後の値が出力される。",
+    "id": 13
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（後置インクリメント）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 28;\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "28と29",
+      "29と29",
+      "28と28",
+      "エラーになる",
+      "29と30"
+    ],
+    "answerIndex": 0,
+    "explanation": "後置インクリメントは評価後に加算されるため、1行目は元の値、2行目は加算後の値が出力される。",
+    "id": 14
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（後置インクリメント）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 30;\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "30と31",
+      "31と31",
+      "30と30",
+      "エラーになる",
+      "31と32"
+    ],
+    "answerIndex": 0,
+    "explanation": "後置インクリメントは評価後に加算されるため、1行目は元の値、2行目は加算後の値が出力される。",
+    "id": 15
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（後置インクリメント）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 32;\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "32と33",
+      "33と33",
+      "32と32",
+      "エラーになる",
+      "33と34"
+    ],
+    "answerIndex": 0,
+    "explanation": "後置インクリメントは評価後に加算されるため、1行目は元の値、2行目は加算後の値が出力される。",
+    "id": 16
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（後置インクリメント）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 34;\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "34と35",
+      "35と35",
+      "34と34",
+      "エラーになる",
+      "35と36"
+    ],
+    "answerIndex": 0,
+    "explanation": "後置インクリメントは評価後に加算されるため、1行目は元の値、2行目は加算後の値が出力される。",
+    "id": 17
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（後置インクリメント）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 36;\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "36と37",
+      "37と37",
+      "36と36",
+      "エラーになる",
+      "37と38"
+    ],
+    "answerIndex": 0,
+    "explanation": "後置インクリメントは評価後に加算されるため、1行目は元の値、2行目は加算後の値が出力される。",
+    "id": 18
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（後置インクリメント）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 38;\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "38と39",
+      "39と39",
+      "38と38",
+      "エラーになる",
+      "39と40"
+    ],
+    "answerIndex": 0,
+    "explanation": "後置インクリメントは評価後に加算されるため、1行目は元の値、2行目は加算後の値が出力される。",
+    "id": 19
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（後置インクリメント）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 40;\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "40と41",
+      "41と41",
+      "40と40",
+      "エラーになる",
+      "41と42"
+    ],
+    "answerIndex": 0,
+    "explanation": "後置インクリメントは評価後に加算されるため、1行目は元の値、2行目は加算後の値が出力される。",
+    "id": 20
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（後置インクリメント）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 42;\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "42と43",
+      "43と43",
+      "42と42",
+      "エラーになる",
+      "43と44"
+    ],
+    "answerIndex": 0,
+    "explanation": "後置インクリメントは評価後に加算されるため、1行目は元の値、2行目は加算後の値が出力される。",
+    "id": 21
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（後置インクリメント）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 44;\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "44と45",
+      "45と45",
+      "44と44",
+      "エラーになる",
+      "45と46"
+    ],
+    "answerIndex": 0,
+    "explanation": "後置インクリメントは評価後に加算されるため、1行目は元の値、2行目は加算後の値が出力される。",
+    "id": 22
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（後置インクリメント）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 46;\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "46と47",
+      "47と47",
+      "46と46",
+      "エラーになる",
+      "47と48"
+    ],
+    "answerIndex": 0,
+    "explanation": "後置インクリメントは評価後に加算されるため、1行目は元の値、2行目は加算後の値が出力される。",
+    "id": 23
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（後置インクリメント）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 48;\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "48と49",
+      "49と49",
+      "48と48",
+      "エラーになる",
+      "49と50"
+    ],
+    "answerIndex": 0,
+    "explanation": "後置インクリメントは評価後に加算されるため、1行目は元の値、2行目は加算後の値が出力される。",
+    "id": 24
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（後置インクリメント）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 50;\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "50と51",
+      "51と51",
+      "50と50",
+      "エラーになる",
+      "51と52"
+    ],
+    "answerIndex": 0,
+    "explanation": "後置インクリメントは評価後に加算されるため、1行目は元の値、2行目は加算後の値が出力される。",
+    "id": 25
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（後置インクリメント）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 52;\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "52と53",
+      "53と53",
+      "52と52",
+      "エラーになる",
+      "53と54"
+    ],
+    "answerIndex": 0,
+    "explanation": "後置インクリメントは評価後に加算されるため、1行目は元の値、2行目は加算後の値が出力される。",
+    "id": 26
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（後置インクリメント）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 54;\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "54と55",
+      "55と55",
+      "54と54",
+      "エラーになる",
+      "55と56"
+    ],
+    "answerIndex": 0,
+    "explanation": "後置インクリメントは評価後に加算されるため、1行目は元の値、2行目は加算後の値が出力される。",
+    "id": 27
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（後置インクリメント）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 56;\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "56と57",
+      "57と57",
+      "56と56",
+      "エラーになる",
+      "57と58"
+    ],
+    "answerIndex": 0,
+    "explanation": "後置インクリメントは評価後に加算されるため、1行目は元の値、2行目は加算後の値が出力される。",
+    "id": 28
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（後置インクリメント）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 58;\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "58と59",
+      "59と59",
+      "58と58",
+      "エラーになる",
+      "59と60"
+    ],
+    "answerIndex": 0,
+    "explanation": "後置インクリメントは評価後に加算されるため、1行目は元の値、2行目は加算後の値が出力される。",
+    "id": 29
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（後置インクリメント）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 60;\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "60と61",
+      "61と61",
+      "60と60",
+      "エラーになる",
+      "61と62"
+    ],
+    "answerIndex": 0,
+    "explanation": "後置インクリメントは評価後に加算されるため、1行目は元の値、2行目は加算後の値が出力される。",
+    "id": 30
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（後置インクリメント）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 62;\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "62と63",
+      "63と63",
+      "62と62",
+      "エラーになる",
+      "63と64"
+    ],
+    "answerIndex": 0,
+    "explanation": "後置インクリメントは評価後に加算されるため、1行目は元の値、2行目は加算後の値が出力される。",
+    "id": 31
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（後置インクリメント）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 64;\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "64と65",
+      "65と65",
+      "64と64",
+      "エラーになる",
+      "65と66"
+    ],
+    "answerIndex": 0,
+    "explanation": "後置インクリメントは評価後に加算されるため、1行目は元の値、2行目は加算後の値が出力される。",
+    "id": 32
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（後置インクリメント）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 66;\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "66と67",
+      "67と67",
+      "66と66",
+      "エラーになる",
+      "67と68"
+    ],
+    "answerIndex": 0,
+    "explanation": "後置インクリメントは評価後に加算されるため、1行目は元の値、2行目は加算後の値が出力される。",
+    "id": 33
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（後置インクリメント）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 68;\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "68と69",
+      "69と69",
+      "68と68",
+      "エラーになる",
+      "69と70"
+    ],
+    "answerIndex": 0,
+    "explanation": "後置インクリメントは評価後に加算されるため、1行目は元の値、2行目は加算後の値が出力される。",
+    "id": 34
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（後置インクリメント）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 70;\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "70と71",
+      "71と71",
+      "70と70",
+      "エラーになる",
+      "71と72"
+    ],
+    "answerIndex": 0,
+    "explanation": "後置インクリメントは評価後に加算されるため、1行目は元の値、2行目は加算後の値が出力される。",
+    "id": 35
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（後置インクリメント）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 72;\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "72と73",
+      "73と73",
+      "72と72",
+      "エラーになる",
+      "73と74"
+    ],
+    "answerIndex": 0,
+    "explanation": "後置インクリメントは評価後に加算されるため、1行目は元の値、2行目は加算後の値が出力される。",
+    "id": 36
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（後置インクリメント）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 74;\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "74と75",
+      "75と75",
+      "74と74",
+      "エラーになる",
+      "75と76"
+    ],
+    "answerIndex": 0,
+    "explanation": "後置インクリメントは評価後に加算されるため、1行目は元の値、2行目は加算後の値が出力される。",
+    "id": 37
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（後置インクリメント）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 76;\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "76と77",
+      "77と77",
+      "76と76",
+      "エラーになる",
+      "77と78"
+    ],
+    "answerIndex": 0,
+    "explanation": "後置インクリメントは評価後に加算されるため、1行目は元の値、2行目は加算後の値が出力される。",
+    "id": 38
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（後置インクリメント）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 78;\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "78と79",
+      "79と79",
+      "78と78",
+      "エラーになる",
+      "79と80"
+    ],
+    "answerIndex": 0,
+    "explanation": "後置インクリメントは評価後に加算されるため、1行目は元の値、2行目は加算後の値が出力される。",
+    "id": 39
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（後置インクリメント）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 80;\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "80と81",
+      "81と81",
+      "80と80",
+      "エラーになる",
+      "81と82"
+    ],
+    "answerIndex": 0,
+    "explanation": "後置インクリメントは評価後に加算されるため、1行目は元の値、2行目は加算後の値が出力される。",
+    "id": 40
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（前置と後置の組み合わせ）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 3;\n        System.out.println(++x);\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "4と4と5",
+      "3と3と4",
+      "4と5と5",
+      "エラーになる",
+      "3と4と4"
+    ],
+    "answerIndex": 0,
+    "explanation": "前置は出力前に加算、後置は出力後に加算される。よって順に start+1, start+1, start+2。",
+    "id": 41
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（前置と後置の組み合わせ）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 5;\n        System.out.println(++x);\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "6と6と7",
+      "5と5と6",
+      "6と7と7",
+      "エラーになる",
+      "5と6と6"
+    ],
+    "answerIndex": 0,
+    "explanation": "前置は出力前に加算、後置は出力後に加算される。よって順に start+1, start+1, start+2。",
+    "id": 42
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（前置と後置の組み合わせ）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 7;\n        System.out.println(++x);\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "8と8と9",
+      "7と7と8",
+      "8と9と9",
+      "エラーになる",
+      "7と8と8"
+    ],
+    "answerIndex": 0,
+    "explanation": "前置は出力前に加算、後置は出力後に加算される。よって順に start+1, start+1, start+2。",
+    "id": 43
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（前置と後置の組み合わせ）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 9;\n        System.out.println(++x);\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "10と10と11",
+      "9と9と10",
+      "10と11と11",
+      "エラーになる",
+      "9と10と10"
+    ],
+    "answerIndex": 0,
+    "explanation": "前置は出力前に加算、後置は出力後に加算される。よって順に start+1, start+1, start+2。",
+    "id": 44
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（前置と後置の組み合わせ）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 11;\n        System.out.println(++x);\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "12と12と13",
+      "11と11と12",
+      "12と13と13",
+      "エラーになる",
+      "11と12と12"
+    ],
+    "answerIndex": 0,
+    "explanation": "前置は出力前に加算、後置は出力後に加算される。よって順に start+1, start+1, start+2。",
+    "id": 45
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（前置と後置の組み合わせ）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 13;\n        System.out.println(++x);\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "14と14と15",
+      "13と13と14",
+      "14と15と15",
+      "エラーになる",
+      "13と14と14"
+    ],
+    "answerIndex": 0,
+    "explanation": "前置は出力前に加算、後置は出力後に加算される。よって順に start+1, start+1, start+2。",
+    "id": 46
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（前置と後置の組み合わせ）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 15;\n        System.out.println(++x);\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "16と16と17",
+      "15と15と16",
+      "16と17と17",
+      "エラーになる",
+      "15と16と16"
+    ],
+    "answerIndex": 0,
+    "explanation": "前置は出力前に加算、後置は出力後に加算される。よって順に start+1, start+1, start+2。",
+    "id": 47
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（前置と後置の組み合わせ）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 17;\n        System.out.println(++x);\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "18と18と19",
+      "17と17と18",
+      "18と19と19",
+      "エラーになる",
+      "17と18と18"
+    ],
+    "answerIndex": 0,
+    "explanation": "前置は出力前に加算、後置は出力後に加算される。よって順に start+1, start+1, start+2。",
+    "id": 48
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（前置と後置の組み合わせ）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 19;\n        System.out.println(++x);\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "20と20と21",
+      "19と19と20",
+      "20と21と21",
+      "エラーになる",
+      "19と20と20"
+    ],
+    "answerIndex": 0,
+    "explanation": "前置は出力前に加算、後置は出力後に加算される。よって順に start+1, start+1, start+2。",
+    "id": 49
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（前置と後置の組み合わせ）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 21;\n        System.out.println(++x);\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "22と22と23",
+      "21と21と22",
+      "22と23と23",
+      "エラーになる",
+      "21と22と22"
+    ],
+    "answerIndex": 0,
+    "explanation": "前置は出力前に加算、後置は出力後に加算される。よって順に start+1, start+1, start+2。",
+    "id": 50
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（前置と後置の組み合わせ）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 23;\n        System.out.println(++x);\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "24と24と25",
+      "23と23と24",
+      "24と25と25",
+      "エラーになる",
+      "23と24と24"
+    ],
+    "answerIndex": 0,
+    "explanation": "前置は出力前に加算、後置は出力後に加算される。よって順に start+1, start+1, start+2。",
+    "id": 51
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（前置と後置の組み合わせ）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 25;\n        System.out.println(++x);\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "26と26と27",
+      "25と25と26",
+      "26と27と27",
+      "エラーになる",
+      "25と26と26"
+    ],
+    "answerIndex": 0,
+    "explanation": "前置は出力前に加算、後置は出力後に加算される。よって順に start+1, start+1, start+2。",
+    "id": 52
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（前置と後置の組み合わせ）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 27;\n        System.out.println(++x);\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "28と28と29",
+      "27と27と28",
+      "28と29と29",
+      "エラーになる",
+      "27と28と28"
+    ],
+    "answerIndex": 0,
+    "explanation": "前置は出力前に加算、後置は出力後に加算される。よって順に start+1, start+1, start+2。",
+    "id": 53
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（前置と後置の組み合わせ）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 29;\n        System.out.println(++x);\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "30と30と31",
+      "29と29と30",
+      "30と31と31",
+      "エラーになる",
+      "29と30と30"
+    ],
+    "answerIndex": 0,
+    "explanation": "前置は出力前に加算、後置は出力後に加算される。よって順に start+1, start+1, start+2。",
+    "id": 54
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（前置と後置の組み合わせ）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 31;\n        System.out.println(++x);\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "32と32と33",
+      "31と31と32",
+      "32と33と33",
+      "エラーになる",
+      "31と32と32"
+    ],
+    "answerIndex": 0,
+    "explanation": "前置は出力前に加算、後置は出力後に加算される。よって順に start+1, start+1, start+2。",
+    "id": 55
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（前置と後置の組み合わせ）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 33;\n        System.out.println(++x);\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "34と34と35",
+      "33と33と34",
+      "34と35と35",
+      "エラーになる",
+      "33と34と34"
+    ],
+    "answerIndex": 0,
+    "explanation": "前置は出力前に加算、後置は出力後に加算される。よって順に start+1, start+1, start+2。",
+    "id": 56
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（前置と後置の組み合わせ）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 35;\n        System.out.println(++x);\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "36と36と37",
+      "35と35と36",
+      "36と37と37",
+      "エラーになる",
+      "35と36と36"
+    ],
+    "answerIndex": 0,
+    "explanation": "前置は出力前に加算、後置は出力後に加算される。よって順に start+1, start+1, start+2。",
+    "id": 57
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（前置と後置の組み合わせ）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 37;\n        System.out.println(++x);\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "38と38と39",
+      "37と37と38",
+      "38と39と39",
+      "エラーになる",
+      "37と38と38"
+    ],
+    "answerIndex": 0,
+    "explanation": "前置は出力前に加算、後置は出力後に加算される。よって順に start+1, start+1, start+2。",
+    "id": 58
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（前置と後置の組み合わせ）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 39;\n        System.out.println(++x);\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "40と40と41",
+      "39と39と40",
+      "40と41と41",
+      "エラーになる",
+      "39と40と40"
+    ],
+    "answerIndex": 0,
+    "explanation": "前置は出力前に加算、後置は出力後に加算される。よって順に start+1, start+1, start+2。",
+    "id": 59
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（前置と後置の組み合わせ）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 41;\n        System.out.println(++x);\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "42と42と43",
+      "41と41と42",
+      "42と43と43",
+      "エラーになる",
+      "41と42と42"
+    ],
+    "answerIndex": 0,
+    "explanation": "前置は出力前に加算、後置は出力後に加算される。よって順に start+1, start+1, start+2。",
+    "id": 60
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（前置と後置の組み合わせ）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 43;\n        System.out.println(++x);\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "44と44と45",
+      "43と43と44",
+      "44と45と45",
+      "エラーになる",
+      "43と44と44"
+    ],
+    "answerIndex": 0,
+    "explanation": "前置は出力前に加算、後置は出力後に加算される。よって順に start+1, start+1, start+2。",
+    "id": 61
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（前置と後置の組み合わせ）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 45;\n        System.out.println(++x);\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "46と46と47",
+      "45と45と46",
+      "46と47と47",
+      "エラーになる",
+      "45と46と46"
+    ],
+    "answerIndex": 0,
+    "explanation": "前置は出力前に加算、後置は出力後に加算される。よって順に start+1, start+1, start+2。",
+    "id": 62
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（前置と後置の組み合わせ）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 47;\n        System.out.println(++x);\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "48と48と49",
+      "47と47と48",
+      "48と49と49",
+      "エラーになる",
+      "47と48と48"
+    ],
+    "answerIndex": 0,
+    "explanation": "前置は出力前に加算、後置は出力後に加算される。よって順に start+1, start+1, start+2。",
+    "id": 63
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（前置と後置の組み合わせ）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 49;\n        System.out.println(++x);\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "50と50と51",
+      "49と49と50",
+      "50と51と51",
+      "エラーになる",
+      "49と50と50"
+    ],
+    "answerIndex": 0,
+    "explanation": "前置は出力前に加算、後置は出力後に加算される。よって順に start+1, start+1, start+2。",
+    "id": 64
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（前置と後置の組み合わせ）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 51;\n        System.out.println(++x);\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "52と52と53",
+      "51と51と52",
+      "52と53と53",
+      "エラーになる",
+      "51と52と52"
+    ],
+    "answerIndex": 0,
+    "explanation": "前置は出力前に加算、後置は出力後に加算される。よって順に start+1, start+1, start+2。",
+    "id": 65
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（前置と後置の組み合わせ）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 53;\n        System.out.println(++x);\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "54と54と55",
+      "53と53と54",
+      "54と55と55",
+      "エラーになる",
+      "53と54と54"
+    ],
+    "answerIndex": 0,
+    "explanation": "前置は出力前に加算、後置は出力後に加算される。よって順に start+1, start+1, start+2。",
+    "id": 66
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（前置と後置の組み合わせ）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 55;\n        System.out.println(++x);\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "56と56と57",
+      "55と55と56",
+      "56と57と57",
+      "エラーになる",
+      "55と56と56"
+    ],
+    "answerIndex": 0,
+    "explanation": "前置は出力前に加算、後置は出力後に加算される。よって順に start+1, start+1, start+2。",
+    "id": 67
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（前置と後置の組み合わせ）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 57;\n        System.out.println(++x);\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "58と58と59",
+      "57と57と58",
+      "58と59と59",
+      "エラーになる",
+      "57と58と58"
+    ],
+    "answerIndex": 0,
+    "explanation": "前置は出力前に加算、後置は出力後に加算される。よって順に start+1, start+1, start+2。",
+    "id": 68
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（前置と後置の組み合わせ）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 59;\n        System.out.println(++x);\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "60と60と61",
+      "59と59と60",
+      "60と61と61",
+      "エラーになる",
+      "59と60と60"
+    ],
+    "answerIndex": 0,
+    "explanation": "前置は出力前に加算、後置は出力後に加算される。よって順に start+1, start+1, start+2。",
+    "id": 69
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（前置と後置の組み合わせ）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 61;\n        System.out.println(++x);\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "62と62と63",
+      "61と61と62",
+      "62と63と63",
+      "エラーになる",
+      "61と62と62"
+    ],
+    "answerIndex": 0,
+    "explanation": "前置は出力前に加算、後置は出力後に加算される。よって順に start+1, start+1, start+2。",
+    "id": 70
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（前置と後置の組み合わせ）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 63;\n        System.out.println(++x);\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "64と64と65",
+      "63と63と64",
+      "64と65と65",
+      "エラーになる",
+      "63と64と64"
+    ],
+    "answerIndex": 0,
+    "explanation": "前置は出力前に加算、後置は出力後に加算される。よって順に start+1, start+1, start+2。",
+    "id": 71
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（前置と後置の組み合わせ）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 65;\n        System.out.println(++x);\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "66と66と67",
+      "65と65と66",
+      "66と67と67",
+      "エラーになる",
+      "65と66と66"
+    ],
+    "answerIndex": 0,
+    "explanation": "前置は出力前に加算、後置は出力後に加算される。よって順に start+1, start+1, start+2。",
+    "id": 72
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（前置と後置の組み合わせ）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 67;\n        System.out.println(++x);\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "68と68と69",
+      "67と67と68",
+      "68と69と69",
+      "エラーになる",
+      "67と68と68"
+    ],
+    "answerIndex": 0,
+    "explanation": "前置は出力前に加算、後置は出力後に加算される。よって順に start+1, start+1, start+2。",
+    "id": 73
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（前置と後置の組み合わせ）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 69;\n        System.out.println(++x);\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "70と70と71",
+      "69と69と70",
+      "70と71と71",
+      "エラーになる",
+      "69と70と70"
+    ],
+    "answerIndex": 0,
+    "explanation": "前置は出力前に加算、後置は出力後に加算される。よって順に start+1, start+1, start+2。",
+    "id": 74
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（前置と後置の組み合わせ）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 71;\n        System.out.println(++x);\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "72と72と73",
+      "71と71と72",
+      "72と73と73",
+      "エラーになる",
+      "71と72と72"
+    ],
+    "answerIndex": 0,
+    "explanation": "前置は出力前に加算、後置は出力後に加算される。よって順に start+1, start+1, start+2。",
+    "id": 75
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（前置と後置の組み合わせ）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 73;\n        System.out.println(++x);\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "74と74と75",
+      "73と73と74",
+      "74と75と75",
+      "エラーになる",
+      "73と74と74"
+    ],
+    "answerIndex": 0,
+    "explanation": "前置は出力前に加算、後置は出力後に加算される。よって順に start+1, start+1, start+2。",
+    "id": 76
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（前置と後置の組み合わせ）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 75;\n        System.out.println(++x);\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "76と76と77",
+      "75と75と76",
+      "76と77と77",
+      "エラーになる",
+      "75と76と76"
+    ],
+    "answerIndex": 0,
+    "explanation": "前置は出力前に加算、後置は出力後に加算される。よって順に start+1, start+1, start+2。",
+    "id": 77
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（前置と後置の組み合わせ）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 77;\n        System.out.println(++x);\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "78と78と79",
+      "77と77と78",
+      "78と79と79",
+      "エラーになる",
+      "77と78と78"
+    ],
+    "answerIndex": 0,
+    "explanation": "前置は出力前に加算、後置は出力後に加算される。よって順に start+1, start+1, start+2。",
+    "id": 78
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（前置と後置の組み合わせ）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 79;\n        System.out.println(++x);\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "80と80と81",
+      "79と79と80",
+      "80と81と81",
+      "エラーになる",
+      "79と80と80"
+    ],
+    "answerIndex": 0,
+    "explanation": "前置は出力前に加算、後置は出力後に加算される。よって順に start+1, start+1, start+2。",
+    "id": 79
+  },
+  {
+    "category": "Java Silver/基本文法",
+    "difficulty": "中級",
+    "question": "次のJavaコードの出力結果は？（前置と後置の組み合わせ）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 81;\n        System.out.println(++x);\n        System.out.println(x++);\n        System.out.println(x);\n    }\n}",
+    "choices": [
+      "82と82と83",
+      "81と81と82",
+      "82と83と83",
+      "エラーになる",
+      "81と82と82"
+    ],
+    "answerIndex": 0,
+    "explanation": "前置は出力前に加算、後置は出力後に加算される。よって順に start+1, start+1, start+2。",
+    "id": 80
+  },
+  {
+    "category": "Java Silver/標準APIの利用（String）",
+    "difficulty": "中級",
+    "question": "substring(begin, end) の出力として正しいものを選んでください。",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"abcdef\";\n        System.out.println(s.substring(0,3));\n    }\n}",
+    "choices": [
+      "abc",
+      "abc",
+      "def",
+      "bcde",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "substringはbeginを含みendを含まない。",
+    "id": 81
+  },
+  {
+    "category": "Java Silver/標準APIの利用（String）",
+    "difficulty": "中級",
+    "question": "substring(begin, end) の出力として正しいものを選んでください。",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"abcdef\";\n        System.out.println(s.substring(1,4));\n    }\n}",
+    "choices": [
+      "bcd",
+      "abc",
+      "def",
+      "bcde",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "substringはbeginを含みendを含まない。",
+    "id": 82
+  },
+  {
+    "category": "Java Silver/標準APIの利用（String）",
+    "difficulty": "中級",
+    "question": "substring(begin, end) の出力として正しいものを選んでください。",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"abcdef\";\n        System.out.println(s.substring(2,5));\n    }\n}",
+    "choices": [
+      "cde",
+      "abc",
+      "def",
+      "bcde",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "substringはbeginを含みendを含まない。",
+    "id": 83
+  },
+  {
+    "category": "Java Silver/標準APIの利用（String）",
+    "difficulty": "中級",
+    "question": "substring(begin, end) の出力として正しいものを選んでください。",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"abcdef\";\n        System.out.println(s.substring(0,3));\n    }\n}",
+    "choices": [
+      "abc",
+      "abc",
+      "def",
+      "bcde",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "substringはbeginを含みendを含まない。",
+    "id": 84
+  },
+  {
+    "category": "Java Silver/標準APIの利用（String）",
+    "difficulty": "中級",
+    "question": "substring(begin, end) の出力として正しいものを選んでください。",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"abcdef\";\n        System.out.println(s.substring(1,4));\n    }\n}",
+    "choices": [
+      "bcd",
+      "abc",
+      "def",
+      "bcde",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "substringはbeginを含みendを含まない。",
+    "id": 85
+  },
+  {
+    "category": "Java Silver/標準APIの利用（String）",
+    "difficulty": "中級",
+    "question": "substring(begin, end) の出力として正しいものを選んでください。",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"abcdef\";\n        System.out.println(s.substring(2,5));\n    }\n}",
+    "choices": [
+      "cde",
+      "abc",
+      "def",
+      "bcde",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "substringはbeginを含みendを含まない。",
+    "id": 86
+  },
+  {
+    "category": "Java Silver/標準APIの利用（String）",
+    "difficulty": "中級",
+    "question": "substring(begin, end) の出力として正しいものを選んでください。",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"abcdef\";\n        System.out.println(s.substring(0,3));\n    }\n}",
+    "choices": [
+      "abc",
+      "abc",
+      "def",
+      "bcde",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "substringはbeginを含みendを含まない。",
+    "id": 87
+  },
+  {
+    "category": "Java Silver/標準APIの利用（String）",
+    "difficulty": "中級",
+    "question": "substring(begin, end) の出力として正しいものを選んでください。",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"abcdef\";\n        System.out.println(s.substring(1,4));\n    }\n}",
+    "choices": [
+      "bcd",
+      "abc",
+      "def",
+      "bcde",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "substringはbeginを含みendを含まない。",
+    "id": 88
+  },
+  {
+    "category": "Java Silver/標準APIの利用（String）",
+    "difficulty": "中級",
+    "question": "substring(begin, end) の出力として正しいものを選んでください。",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"abcdef\";\n        System.out.println(s.substring(2,5));\n    }\n}",
+    "choices": [
+      "cde",
+      "abc",
+      "def",
+      "bcde",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "substringはbeginを含みendを含まない。",
+    "id": 89
+  },
+  {
+    "category": "Java Silver/標準APIの利用（String）",
+    "difficulty": "中級",
+    "question": "substring(begin, end) の出力として正しいものを選んでください。",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"abcdef\";\n        System.out.println(s.substring(0,3));\n    }\n}",
+    "choices": [
+      "abc",
+      "abc",
+      "def",
+      "bcde",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "substringはbeginを含みendを含まない。",
+    "id": 90
+  },
+  {
+    "category": "Java Silver/標準APIの利用（String）",
+    "difficulty": "中級",
+    "question": "substring(begin, end) の出力として正しいものを選んでください。",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"abcdef\";\n        System.out.println(s.substring(1,4));\n    }\n}",
+    "choices": [
+      "bcd",
+      "abc",
+      "def",
+      "bcde",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "substringはbeginを含みendを含まない。",
+    "id": 91
+  },
+  {
+    "category": "Java Silver/標準APIの利用（String）",
+    "difficulty": "中級",
+    "question": "substring(begin, end) の出力として正しいものを選んでください。",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"abcdef\";\n        System.out.println(s.substring(2,5));\n    }\n}",
+    "choices": [
+      "cde",
+      "abc",
+      "def",
+      "bcde",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "substringはbeginを含みendを含まない。",
+    "id": 92
+  },
+  {
+    "category": "Java Silver/標準APIの利用（String）",
+    "difficulty": "中級",
+    "question": "substring(begin, end) の出力として正しいものを選んでください。",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"abcdef\";\n        System.out.println(s.substring(0,3));\n    }\n}",
+    "choices": [
+      "abc",
+      "abc",
+      "def",
+      "bcde",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "substringはbeginを含みendを含まない。",
+    "id": 93
+  },
+  {
+    "category": "Java Silver/標準APIの利用（String）",
+    "difficulty": "中級",
+    "question": "substring(begin, end) の出力として正しいものを選んでください。",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"abcdef\";\n        System.out.println(s.substring(1,4));\n    }\n}",
+    "choices": [
+      "bcd",
+      "abc",
+      "def",
+      "bcde",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "substringはbeginを含みendを含まない。",
+    "id": 94
+  },
+  {
+    "category": "Java Silver/標準APIの利用（String）",
+    "difficulty": "中級",
+    "question": "substring(begin, end) の出力として正しいものを選んでください。",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"abcdef\";\n        System.out.println(s.substring(2,5));\n    }\n}",
+    "choices": [
+      "cde",
+      "abc",
+      "def",
+      "bcde",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "substringはbeginを含みendを含まない。",
+    "id": 95
+  },
+  {
+    "category": "Java Silver/標準APIの利用（String）",
+    "difficulty": "中級",
+    "question": "substring(begin, end) の出力として正しいものを選んでください。",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"abcdef\";\n        System.out.println(s.substring(0,3));\n    }\n}",
+    "choices": [
+      "abc",
+      "abc",
+      "def",
+      "bcde",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "substringはbeginを含みendを含まない。",
+    "id": 96
+  },
+  {
+    "category": "Java Silver/標準APIの利用（String）",
+    "difficulty": "中級",
+    "question": "substring(begin, end) の出力として正しいものを選んでください。",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"abcdef\";\n        System.out.println(s.substring(1,4));\n    }\n}",
+    "choices": [
+      "bcd",
+      "abc",
+      "def",
+      "bcde",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "substringはbeginを含みendを含まない。",
+    "id": 97
+  },
+  {
+    "category": "Java Silver/標準APIの利用（String）",
+    "difficulty": "中級",
+    "question": "substring(begin, end) の出力として正しいものを選んでください。",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"abcdef\";\n        System.out.println(s.substring(2,5));\n    }\n}",
+    "choices": [
+      "cde",
+      "abc",
+      "def",
+      "bcde",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "substringはbeginを含みendを含まない。",
+    "id": 98
+  },
+  {
+    "category": "Java Silver/標準APIの利用（String）",
+    "difficulty": "中級",
+    "question": "substring(begin, end) の出力として正しいものを選んでください。",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"abcdef\";\n        System.out.println(s.substring(0,3));\n    }\n}",
+    "choices": [
+      "abc",
+      "abc",
+      "def",
+      "bcde",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "substringはbeginを含みendを含まない。",
+    "id": 99
+  },
+  {
+    "category": "Java Silver/標準APIの利用（String）",
+    "difficulty": "中級",
+    "question": "substring(begin, end) の出力として正しいものを選んでください。",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"abcdef\";\n        System.out.println(s.substring(1,4));\n    }\n}",
+    "choices": [
+      "bcd",
+      "abc",
+      "def",
+      "bcde",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "substringはbeginを含みendを含まない。",
+    "id": 100
+  },
+  {
+    "category": "Java Silver/標準APIの利用（String）",
+    "difficulty": "中級",
+    "question": "substring(begin, end) の出力として正しいものを選んでください。",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"abcdef\";\n        System.out.println(s.substring(2,5));\n    }\n}",
+    "choices": [
+      "cde",
+      "abc",
+      "def",
+      "bcde",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "substringはbeginを含みendを含まない。",
+    "id": 101
+  },
+  {
+    "category": "Java Silver/標準APIの利用（String）",
+    "difficulty": "中級",
+    "question": "substring(begin, end) の出力として正しいものを選んでください。",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"abcdef\";\n        System.out.println(s.substring(0,3));\n    }\n}",
+    "choices": [
+      "abc",
+      "abc",
+      "def",
+      "bcde",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "substringはbeginを含みendを含まない。",
+    "id": 102
+  },
+  {
+    "category": "Java Silver/標準APIの利用（String）",
+    "difficulty": "中級",
+    "question": "substring(begin, end) の出力として正しいものを選んでください。",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"abcdef\";\n        System.out.println(s.substring(1,4));\n    }\n}",
+    "choices": [
+      "bcd",
+      "abc",
+      "def",
+      "bcde",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "substringはbeginを含みendを含まない。",
+    "id": 103
+  },
+  {
+    "category": "Java Silver/標準APIの利用（String）",
+    "difficulty": "中級",
+    "question": "substring(begin, end) の出力として正しいものを選んでください。",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"abcdef\";\n        System.out.println(s.substring(2,5));\n    }\n}",
+    "choices": [
+      "cde",
+      "abc",
+      "def",
+      "bcde",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "substringはbeginを含みendを含まない。",
+    "id": 104
+  },
+  {
+    "category": "Java Silver/標準APIの利用（String）",
+    "difficulty": "中級",
+    "question": "substring(begin, end) の出力として正しいものを選んでください。",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"abcdef\";\n        System.out.println(s.substring(0,3));\n    }\n}",
+    "choices": [
+      "abc",
+      "abc",
+      "def",
+      "bcde",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "substringはbeginを含みendを含まない。",
+    "id": 105
+  },
+  {
+    "category": "Java Silver/標準APIの利用（String）",
+    "difficulty": "中級",
+    "question": "substring(begin, end) の出力として正しいものを選んでください。",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"abcdef\";\n        System.out.println(s.substring(1,4));\n    }\n}",
+    "choices": [
+      "bcd",
+      "abc",
+      "def",
+      "bcde",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "substringはbeginを含みendを含まない。",
+    "id": 106
+  },
+  {
+    "category": "Java Silver/標準APIの利用（String）",
+    "difficulty": "中級",
+    "question": "substring(begin, end) の出力として正しいものを選んでください。",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"abcdef\";\n        System.out.println(s.substring(2,5));\n    }\n}",
+    "choices": [
+      "cde",
+      "abc",
+      "def",
+      "bcde",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "substringはbeginを含みendを含まない。",
+    "id": 107
+  },
+  {
+    "category": "Java Silver/標準APIの利用（String）",
+    "difficulty": "中級",
+    "question": "substring(begin, end) の出力として正しいものを選んでください。",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"abcdef\";\n        System.out.println(s.substring(0,3));\n    }\n}",
+    "choices": [
+      "abc",
+      "abc",
+      "def",
+      "bcde",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "substringはbeginを含みendを含まない。",
+    "id": 108
+  },
+  {
+    "category": "Java Silver/標準APIの利用（String）",
+    "difficulty": "中級",
+    "question": "substring(begin, end) の出力として正しいものを選んでください。",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"abcdef\";\n        System.out.println(s.substring(1,4));\n    }\n}",
+    "choices": [
+      "bcd",
+      "abc",
+      "def",
+      "bcde",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "substringはbeginを含みendを含まない。",
+    "id": 109
+  },
+  {
+    "category": "Java Silver/標準APIの利用（String）",
+    "difficulty": "中級",
+    "question": "substring(begin, end) の出力として正しいものを選んでください。",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"abcdef\";\n        System.out.println(s.substring(2,5));\n    }\n}",
+    "choices": [
+      "cde",
+      "abc",
+      "def",
+      "bcde",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "substringはbeginを含みendを含まない。",
+    "id": 110
+  },
+  {
+    "category": "Java Silver/標準APIの利用（String）",
+    "difficulty": "中級",
+    "question": "Stringの不変性に関するコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"Java\";\n        s.replace(\"a\",\"A\");\n        System.out.println(s);\n    }\n}",
+    "choices": [
+      "Java",
+      "JAvA",
+      "null",
+      "エラーになる",
+      "AJava"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変。変更系メソッドは新しい文字列を返すため、再代入しない限り元の値が残る。",
+    "id": 111
+  },
+  {
+    "category": "Java Silver/標準APIの利用（String）",
+    "difficulty": "中級",
+    "question": "Stringの不変性に関するコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"Silver\";\n        s.replace(\"a\",\"A\");\n        System.out.println(s);\n    }\n}",
+    "choices": [
+      "Silver",
+      "Silver",
+      "null",
+      "エラーになる",
+      "ASilver"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変。変更系メソッドは新しい文字列を返すため、再代入しない限り元の値が残る。",
+    "id": 112
+  },
+  {
+    "category": "Java Silver/標準APIの利用（String）",
+    "difficulty": "中級",
+    "question": "Stringの不変性に関するコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"Gold\";\n        s.replace(\"a\",\"A\");\n        System.out.println(s);\n    }\n}",
+    "choices": [
+      "Gold",
+      "Gold",
+      "null",
+      "エラーになる",
+      "AGold"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変。変更系メソッドは新しい文字列を返すため、再代入しない限り元の値が残る。",
+    "id": 113
+  },
+  {
+    "category": "Java Silver/標準APIの利用（String）",
+    "difficulty": "中級",
+    "question": "Stringの不変性に関するコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"Test\";\n        s.replace(\"a\",\"A\");\n        System.out.println(s);\n    }\n}",
+    "choices": [
+      "Test",
+      "Test",
+      "null",
+      "エラーになる",
+      "ATest"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変。変更系メソッドは新しい文字列を返すため、再代入しない限り元の値が残る。",
+    "id": 114
+  },
+  {
+    "category": "Java Silver/標準APIの利用（String）",
+    "difficulty": "中級",
+    "question": "Stringの不変性に関するコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"Hello\";\n        s.replace(\"a\",\"A\");\n        System.out.println(s);\n    }\n}",
+    "choices": [
+      "Hello",
+      "Hello",
+      "null",
+      "エラーになる",
+      "AHello"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変。変更系メソッドは新しい文字列を返すため、再代入しない限り元の値が残る。",
+    "id": 115
+  },
+  {
+    "category": "Java Silver/標準APIの利用（String）",
+    "difficulty": "中級",
+    "question": "Stringの不変性に関するコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"World\";\n        s.replace(\"a\",\"A\");\n        System.out.println(s);\n    }\n}",
+    "choices": [
+      "World",
+      "World",
+      "null",
+      "エラーになる",
+      "AWorld"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変。変更系メソッドは新しい文字列を返すため、再代入しない限り元の値が残る。",
+    "id": 116
+  },
+  {
+    "category": "Java Silver/標準APIの利用（String）",
+    "difficulty": "中級",
+    "question": "Stringの不変性に関するコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"Apple\";\n        s.replace(\"a\",\"A\");\n        System.out.println(s);\n    }\n}",
+    "choices": [
+      "Apple",
+      "Apple",
+      "null",
+      "エラーになる",
+      "AApple"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変。変更系メソッドは新しい文字列を返すため、再代入しない限り元の値が残る。",
+    "id": 117
+  },
+  {
+    "category": "Java Silver/標準APIの利用（String）",
+    "difficulty": "中級",
+    "question": "Stringの不変性に関するコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"Banana\";\n        s.replace(\"a\",\"A\");\n        System.out.println(s);\n    }\n}",
+    "choices": [
+      "Banana",
+      "BAnAnA",
+      "null",
+      "エラーになる",
+      "ABanana"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変。変更系メソッドは新しい文字列を返すため、再代入しない限り元の値が残る。",
+    "id": 118
+  },
+  {
+    "category": "Java Silver/標準APIの利用（String）",
+    "difficulty": "中級",
+    "question": "Stringの不変性に関するコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"Orange\";\n        s.replace(\"a\",\"A\");\n        System.out.println(s);\n    }\n}",
+    "choices": [
+      "Orange",
+      "OrAnge",
+      "null",
+      "エラーになる",
+      "AOrange"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変。変更系メソッドは新しい文字列を返すため、再代入しない限り元の値が残る。",
+    "id": 119
+  },
+  {
+    "category": "Java Silver/標準APIの利用（String）",
+    "difficulty": "中級",
+    "question": "Stringの不変性に関するコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"Lemon\";\n        s.replace(\"a\",\"A\");\n        System.out.println(s);\n    }\n}",
+    "choices": [
+      "Lemon",
+      "Lemon",
+      "null",
+      "エラーになる",
+      "ALemon"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変。変更系メソッドは新しい文字列を返すため、再代入しない限り元の値が残る。",
+    "id": 120
+  },
+  {
+    "category": "Java Silver/標準APIの利用（String）",
+    "difficulty": "中級",
+    "question": "Stringの不変性に関するコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"Java\";\n        s.replace(\"a\",\"A\");\n        System.out.println(s);\n    }\n}",
+    "choices": [
+      "Java",
+      "JAvA",
+      "null",
+      "エラーになる",
+      "AJava"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変。変更系メソッドは新しい文字列を返すため、再代入しない限り元の値が残る。",
+    "id": 121
+  },
+  {
+    "category": "Java Silver/標準APIの利用（String）",
+    "difficulty": "中級",
+    "question": "Stringの不変性に関するコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"Silver\";\n        s.replace(\"a\",\"A\");\n        System.out.println(s);\n    }\n}",
+    "choices": [
+      "Silver",
+      "Silver",
+      "null",
+      "エラーになる",
+      "ASilver"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変。変更系メソッドは新しい文字列を返すため、再代入しない限り元の値が残る。",
+    "id": 122
+  },
+  {
+    "category": "Java Silver/標準APIの利用（String）",
+    "difficulty": "中級",
+    "question": "Stringの不変性に関するコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"Gold\";\n        s.replace(\"a\",\"A\");\n        System.out.println(s);\n    }\n}",
+    "choices": [
+      "Gold",
+      "Gold",
+      "null",
+      "エラーになる",
+      "AGold"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変。変更系メソッドは新しい文字列を返すため、再代入しない限り元の値が残る。",
+    "id": 123
+  },
+  {
+    "category": "Java Silver/標準APIの利用（String）",
+    "difficulty": "中級",
+    "question": "Stringの不変性に関するコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"Test\";\n        s.replace(\"a\",\"A\");\n        System.out.println(s);\n    }\n}",
+    "choices": [
+      "Test",
+      "Test",
+      "null",
+      "エラーになる",
+      "ATest"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変。変更系メソッドは新しい文字列を返すため、再代入しない限り元の値が残る。",
+    "id": 124
+  },
+  {
+    "category": "Java Silver/標準APIの利用（String）",
+    "difficulty": "中級",
+    "question": "Stringの不変性に関するコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"Hello\";\n        s.replace(\"a\",\"A\");\n        System.out.println(s);\n    }\n}",
+    "choices": [
+      "Hello",
+      "Hello",
+      "null",
+      "エラーになる",
+      "AHello"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変。変更系メソッドは新しい文字列を返すため、再代入しない限り元の値が残る。",
+    "id": 125
+  },
+  {
+    "category": "Java Silver/標準APIの利用（String）",
+    "difficulty": "中級",
+    "question": "Stringの不変性に関するコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"World\";\n        s.replace(\"a\",\"A\");\n        System.out.println(s);\n    }\n}",
+    "choices": [
+      "World",
+      "World",
+      "null",
+      "エラーになる",
+      "AWorld"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変。変更系メソッドは新しい文字列を返すため、再代入しない限り元の値が残る。",
+    "id": 126
+  },
+  {
+    "category": "Java Silver/標準APIの利用（String）",
+    "difficulty": "中級",
+    "question": "Stringの不変性に関するコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"Apple\";\n        s.replace(\"a\",\"A\");\n        System.out.println(s);\n    }\n}",
+    "choices": [
+      "Apple",
+      "Apple",
+      "null",
+      "エラーになる",
+      "AApple"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変。変更系メソッドは新しい文字列を返すため、再代入しない限り元の値が残る。",
+    "id": 127
+  },
+  {
+    "category": "Java Silver/標準APIの利用（String）",
+    "difficulty": "中級",
+    "question": "Stringの不変性に関するコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"Banana\";\n        s.replace(\"a\",\"A\");\n        System.out.println(s);\n    }\n}",
+    "choices": [
+      "Banana",
+      "BAnAnA",
+      "null",
+      "エラーになる",
+      "ABanana"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変。変更系メソッドは新しい文字列を返すため、再代入しない限り元の値が残る。",
+    "id": 128
+  },
+  {
+    "category": "Java Silver/標準APIの利用（String）",
+    "difficulty": "中級",
+    "question": "Stringの不変性に関するコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"Orange\";\n        s.replace(\"a\",\"A\");\n        System.out.println(s);\n    }\n}",
+    "choices": [
+      "Orange",
+      "OrAnge",
+      "null",
+      "エラーになる",
+      "AOrange"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変。変更系メソッドは新しい文字列を返すため、再代入しない限り元の値が残る。",
+    "id": 129
+  },
+  {
+    "category": "Java Silver/標準APIの利用（String）",
+    "difficulty": "中級",
+    "question": "Stringの不変性に関するコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"Lemon\";\n        s.replace(\"a\",\"A\");\n        System.out.println(s);\n    }\n}",
+    "choices": [
+      "Lemon",
+      "Lemon",
+      "null",
+      "エラーになる",
+      "ALemon"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変。変更系メソッドは新しい文字列を返すため、再代入しない限り元の値が残る。",
+    "id": 130
+  },
+  {
+    "category": "Java Silver/標準APIの利用（StringBuilder）",
+    "difficulty": "上級",
+    "question": "StringBuilderのequalsと==の組み合わせ出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder a = new StringBuilder(\"ABC\");\n        StringBuilder b = new StringBuilder(\"ABC\");\n        System.out.println(a.equals(b) + \" \" + (a == b));\n    }\n}",
+    "choices": [
+      "false false",
+      "true false",
+      "false true",
+      "true true",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "StringBuilderはequals未オーバーライドのため参照比較と同義。別インスタンス同士はequalsも==もfalse。",
+    "id": 131
+  },
+  {
+    "category": "Java Silver/標準APIの利用（StringBuilder）",
+    "difficulty": "上級",
+    "question": "StringBuilderのequalsと==の組み合わせ出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder a = new StringBuilder(\"XYZ\");\n        StringBuilder b = new StringBuilder(\"XYZ\");\n        System.out.println(a.equals(b) + \" \" + (a == b));\n    }\n}",
+    "choices": [
+      "false false",
+      "true false",
+      "false true",
+      "true true",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "StringBuilderはequals未オーバーライドのため参照比較と同義。別インスタンス同士はequalsも==もfalse。",
+    "id": 132
+  },
+  {
+    "category": "Java Silver/標準APIの利用（StringBuilder）",
+    "difficulty": "上級",
+    "question": "StringBuilderのequalsと==の組み合わせ出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder a = new StringBuilder(\"HELLO\");\n        StringBuilder b = new StringBuilder(\"HELLO\");\n        System.out.println(a.equals(b) + \" \" + (a == b));\n    }\n}",
+    "choices": [
+      "false false",
+      "true false",
+      "false true",
+      "true true",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "StringBuilderはequals未オーバーライドのため参照比較と同義。別インスタンス同士はequalsも==もfalse。",
+    "id": 133
+  },
+  {
+    "category": "Java Silver/標準APIの利用（StringBuilder）",
+    "difficulty": "上級",
+    "question": "StringBuilderのequalsと==の組み合わせ出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder a = new StringBuilder(\"WORLD\");\n        StringBuilder b = new StringBuilder(\"WORLD\");\n        System.out.println(a.equals(b) + \" \" + (a == b));\n    }\n}",
+    "choices": [
+      "false false",
+      "true false",
+      "false true",
+      "true true",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "StringBuilderはequals未オーバーライドのため参照比較と同義。別インスタンス同士はequalsも==もfalse。",
+    "id": 134
+  },
+  {
+    "category": "Java Silver/標準APIの利用（StringBuilder）",
+    "difficulty": "上級",
+    "question": "StringBuilderのequalsと==の組み合わせ出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder a = new StringBuilder(\"JAVA\");\n        StringBuilder b = new StringBuilder(\"JAVA\");\n        System.out.println(a.equals(b) + \" \" + (a == b));\n    }\n}",
+    "choices": [
+      "false false",
+      "true false",
+      "false true",
+      "true true",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "StringBuilderはequals未オーバーライドのため参照比較と同義。別インスタンス同士はequalsも==もfalse。",
+    "id": 135
+  },
+  {
+    "category": "Java Silver/標準APIの利用（StringBuilder）",
+    "difficulty": "上級",
+    "question": "StringBuilderのequalsと==の組み合わせ出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder a = new StringBuilder(\"CODE\");\n        StringBuilder b = new StringBuilder(\"CODE\");\n        System.out.println(a.equals(b) + \" \" + (a == b));\n    }\n}",
+    "choices": [
+      "false false",
+      "true false",
+      "false true",
+      "true true",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "StringBuilderはequals未オーバーライドのため参照比較と同義。別インスタンス同士はequalsも==もfalse。",
+    "id": 136
+  },
+  {
+    "category": "Java Silver/標準APIの利用（StringBuilder）",
+    "difficulty": "上級",
+    "question": "StringBuilderのequalsと==の組み合わせ出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder a = new StringBuilder(\"TEST\");\n        StringBuilder b = new StringBuilder(\"TEST\");\n        System.out.println(a.equals(b) + \" \" + (a == b));\n    }\n}",
+    "choices": [
+      "false false",
+      "true false",
+      "false true",
+      "true true",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "StringBuilderはequals未オーバーライドのため参照比較と同義。別インスタンス同士はequalsも==もfalse。",
+    "id": 137
+  },
+  {
+    "category": "Java Silver/標準APIの利用（StringBuilder）",
+    "difficulty": "上級",
+    "question": "StringBuilderのequalsと==の組み合わせ出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder a = new StringBuilder(\"FOO\");\n        StringBuilder b = new StringBuilder(\"FOO\");\n        System.out.println(a.equals(b) + \" \" + (a == b));\n    }\n}",
+    "choices": [
+      "false false",
+      "true false",
+      "false true",
+      "true true",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "StringBuilderはequals未オーバーライドのため参照比較と同義。別インスタンス同士はequalsも==もfalse。",
+    "id": 138
+  },
+  {
+    "category": "Java Silver/標準APIの利用（StringBuilder）",
+    "difficulty": "上級",
+    "question": "StringBuilderのequalsと==の組み合わせ出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder a = new StringBuilder(\"BAR\");\n        StringBuilder b = new StringBuilder(\"BAR\");\n        System.out.println(a.equals(b) + \" \" + (a == b));\n    }\n}",
+    "choices": [
+      "false false",
+      "true false",
+      "false true",
+      "true true",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "StringBuilderはequals未オーバーライドのため参照比較と同義。別インスタンス同士はequalsも==もfalse。",
+    "id": 139
+  },
+  {
+    "category": "Java Silver/標準APIの利用（StringBuilder）",
+    "difficulty": "上級",
+    "question": "StringBuilderのequalsと==の組み合わせ出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder a = new StringBuilder(\"BUZZ\");\n        StringBuilder b = new StringBuilder(\"BUZZ\");\n        System.out.println(a.equals(b) + \" \" + (a == b));\n    }\n}",
+    "choices": [
+      "false false",
+      "true false",
+      "false true",
+      "true true",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "StringBuilderはequals未オーバーライドのため参照比較と同義。別インスタンス同士はequalsも==もfalse。",
+    "id": 140
+  },
+  {
+    "category": "Java Silver/標準APIの利用（StringBuilder）",
+    "difficulty": "上級",
+    "question": "StringBuilderのequalsと==の組み合わせ出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder a = new StringBuilder(\"ABC\");\n        StringBuilder b = new StringBuilder(\"ABC\");\n        System.out.println(a.equals(b) + \" \" + (a == b));\n    }\n}",
+    "choices": [
+      "false false",
+      "true false",
+      "false true",
+      "true true",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "StringBuilderはequals未オーバーライドのため参照比較と同義。別インスタンス同士はequalsも==もfalse。",
+    "id": 141
+  },
+  {
+    "category": "Java Silver/標準APIの利用（StringBuilder）",
+    "difficulty": "上級",
+    "question": "StringBuilderのequalsと==の組み合わせ出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder a = new StringBuilder(\"XYZ\");\n        StringBuilder b = new StringBuilder(\"XYZ\");\n        System.out.println(a.equals(b) + \" \" + (a == b));\n    }\n}",
+    "choices": [
+      "false false",
+      "true false",
+      "false true",
+      "true true",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "StringBuilderはequals未オーバーライドのため参照比較と同義。別インスタンス同士はequalsも==もfalse。",
+    "id": 142
+  },
+  {
+    "category": "Java Silver/標準APIの利用（StringBuilder）",
+    "difficulty": "上級",
+    "question": "StringBuilderのequalsと==の組み合わせ出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder a = new StringBuilder(\"HELLO\");\n        StringBuilder b = new StringBuilder(\"HELLO\");\n        System.out.println(a.equals(b) + \" \" + (a == b));\n    }\n}",
+    "choices": [
+      "false false",
+      "true false",
+      "false true",
+      "true true",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "StringBuilderはequals未オーバーライドのため参照比較と同義。別インスタンス同士はequalsも==もfalse。",
+    "id": 143
+  },
+  {
+    "category": "Java Silver/標準APIの利用（StringBuilder）",
+    "difficulty": "上級",
+    "question": "StringBuilderのequalsと==の組み合わせ出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder a = new StringBuilder(\"WORLD\");\n        StringBuilder b = new StringBuilder(\"WORLD\");\n        System.out.println(a.equals(b) + \" \" + (a == b));\n    }\n}",
+    "choices": [
+      "false false",
+      "true false",
+      "false true",
+      "true true",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "StringBuilderはequals未オーバーライドのため参照比較と同義。別インスタンス同士はequalsも==もfalse。",
+    "id": 144
+  },
+  {
+    "category": "Java Silver/標準APIの利用（StringBuilder）",
+    "difficulty": "上級",
+    "question": "StringBuilderのequalsと==の組み合わせ出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder a = new StringBuilder(\"JAVA\");\n        StringBuilder b = new StringBuilder(\"JAVA\");\n        System.out.println(a.equals(b) + \" \" + (a == b));\n    }\n}",
+    "choices": [
+      "false false",
+      "true false",
+      "false true",
+      "true true",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "StringBuilderはequals未オーバーライドのため参照比較と同義。別インスタンス同士はequalsも==もfalse。",
+    "id": 145
+  },
+  {
+    "category": "Java Silver/標準APIの利用（StringBuilder）",
+    "difficulty": "上級",
+    "question": "StringBuilderのequalsと==の組み合わせ出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder a = new StringBuilder(\"CODE\");\n        StringBuilder b = new StringBuilder(\"CODE\");\n        System.out.println(a.equals(b) + \" \" + (a == b));\n    }\n}",
+    "choices": [
+      "false false",
+      "true false",
+      "false true",
+      "true true",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "StringBuilderはequals未オーバーライドのため参照比較と同義。別インスタンス同士はequalsも==もfalse。",
+    "id": 146
+  },
+  {
+    "category": "Java Silver/標準APIの利用（StringBuilder）",
+    "difficulty": "上級",
+    "question": "StringBuilderのequalsと==の組み合わせ出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder a = new StringBuilder(\"TEST\");\n        StringBuilder b = new StringBuilder(\"TEST\");\n        System.out.println(a.equals(b) + \" \" + (a == b));\n    }\n}",
+    "choices": [
+      "false false",
+      "true false",
+      "false true",
+      "true true",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "StringBuilderはequals未オーバーライドのため参照比較と同義。別インスタンス同士はequalsも==もfalse。",
+    "id": 147
+  },
+  {
+    "category": "Java Silver/標準APIの利用（StringBuilder）",
+    "difficulty": "上級",
+    "question": "StringBuilderのequalsと==の組み合わせ出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder a = new StringBuilder(\"FOO\");\n        StringBuilder b = new StringBuilder(\"FOO\");\n        System.out.println(a.equals(b) + \" \" + (a == b));\n    }\n}",
+    "choices": [
+      "false false",
+      "true false",
+      "false true",
+      "true true",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "StringBuilderはequals未オーバーライドのため参照比較と同義。別インスタンス同士はequalsも==もfalse。",
+    "id": 148
+  },
+  {
+    "category": "Java Silver/標準APIの利用（StringBuilder）",
+    "difficulty": "上級",
+    "question": "StringBuilderのequalsと==の組み合わせ出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder a = new StringBuilder(\"BAR\");\n        StringBuilder b = new StringBuilder(\"BAR\");\n        System.out.println(a.equals(b) + \" \" + (a == b));\n    }\n}",
+    "choices": [
+      "false false",
+      "true false",
+      "false true",
+      "true true",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "StringBuilderはequals未オーバーライドのため参照比較と同義。別インスタンス同士はequalsも==もfalse。",
+    "id": 149
+  },
+  {
+    "category": "Java Silver/標準APIの利用（StringBuilder）",
+    "difficulty": "上級",
+    "question": "StringBuilderのequalsと==の組み合わせ出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder a = new StringBuilder(\"BUZZ\");\n        StringBuilder b = new StringBuilder(\"BUZZ\");\n        System.out.println(a.equals(b) + \" \" + (a == b));\n    }\n}",
+    "choices": [
+      "false false",
+      "true false",
+      "false true",
+      "true true",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "StringBuilderはequals未オーバーライドのため参照比較と同義。別インスタンス同士はequalsも==もfalse。",
+    "id": 150
+  },
+  {
+    "category": "Java Silver/標準APIの利用（ラッパー）",
+    "difficulty": "中級",
+    "question": "オートボクシングとキャッシュに関する次のコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        Integer a = -200;\n        Integer b = -200;\n        System.out.println(a == b);\n    }\n}",
+    "choices": [
+      "true",
+      "false",
+      "エラーになる",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 1,
+    "explanation": "Integerは-128〜127をキャッシュ。同一値リテラルはその範囲内なら==でtrue。",
+    "id": 151
+  },
+  {
+    "category": "Java Silver/標準APIの利用（ラッパー）",
+    "difficulty": "中級",
+    "question": "オートボクシングとキャッシュに関する次のコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        Integer a = -129;\n        Integer b = -129;\n        System.out.println(a == b);\n    }\n}",
+    "choices": [
+      "true",
+      "false",
+      "エラーになる",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 1,
+    "explanation": "Integerは-128〜127をキャッシュ。同一値リテラルはその範囲内なら==でtrue。",
+    "id": 152
+  },
+  {
+    "category": "Java Silver/標準APIの利用（ラッパー）",
+    "difficulty": "中級",
+    "question": "オートボクシングとキャッシュに関する次のコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        Integer a = -128;\n        Integer b = -128;\n        System.out.println(a == b);\n    }\n}",
+    "choices": [
+      "true",
+      "false",
+      "エラーになる",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "Integerは-128〜127をキャッシュ。同一値リテラルはその範囲内なら==でtrue。",
+    "id": 153
+  },
+  {
+    "category": "Java Silver/標準APIの利用（ラッパー）",
+    "difficulty": "中級",
+    "question": "オートボクシングとキャッシュに関する次のコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        Integer a = -50;\n        Integer b = -50;\n        System.out.println(a == b);\n    }\n}",
+    "choices": [
+      "true",
+      "false",
+      "エラーになる",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "Integerは-128〜127をキャッシュ。同一値リテラルはその範囲内なら==でtrue。",
+    "id": 154
+  },
+  {
+    "category": "Java Silver/標準APIの利用（ラッパー）",
+    "difficulty": "中級",
+    "question": "オートボクシングとキャッシュに関する次のコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        Integer a = -1;\n        Integer b = -1;\n        System.out.println(a == b);\n    }\n}",
+    "choices": [
+      "true",
+      "false",
+      "エラーになる",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "Integerは-128〜127をキャッシュ。同一値リテラルはその範囲内なら==でtrue。",
+    "id": 155
+  },
+  {
+    "category": "Java Silver/標準APIの利用（ラッパー）",
+    "difficulty": "中級",
+    "question": "オートボクシングとキャッシュに関する次のコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        Integer a = 0;\n        Integer b = 0;\n        System.out.println(a == b);\n    }\n}",
+    "choices": [
+      "true",
+      "false",
+      "エラーになる",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "Integerは-128〜127をキャッシュ。同一値リテラルはその範囲内なら==でtrue。",
+    "id": 156
+  },
+  {
+    "category": "Java Silver/標準APIの利用（ラッパー）",
+    "difficulty": "中級",
+    "question": "オートボクシングとキャッシュに関する次のコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        Integer a = 1;\n        Integer b = 1;\n        System.out.println(a == b);\n    }\n}",
+    "choices": [
+      "true",
+      "false",
+      "エラーになる",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "Integerは-128〜127をキャッシュ。同一値リテラルはその範囲内なら==でtrue。",
+    "id": 157
+  },
+  {
+    "category": "Java Silver/標準APIの利用（ラッパー）",
+    "difficulty": "中級",
+    "question": "オートボクシングとキャッシュに関する次のコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        Integer a = 50;\n        Integer b = 50;\n        System.out.println(a == b);\n    }\n}",
+    "choices": [
+      "true",
+      "false",
+      "エラーになる",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "Integerは-128〜127をキャッシュ。同一値リテラルはその範囲内なら==でtrue。",
+    "id": 158
+  },
+  {
+    "category": "Java Silver/標準APIの利用（ラッパー）",
+    "difficulty": "中級",
+    "question": "オートボクシングとキャッシュに関する次のコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        Integer a = 100;\n        Integer b = 100;\n        System.out.println(a == b);\n    }\n}",
+    "choices": [
+      "true",
+      "false",
+      "エラーになる",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "Integerは-128〜127をキャッシュ。同一値リテラルはその範囲内なら==でtrue。",
+    "id": 159
+  },
+  {
+    "category": "Java Silver/標準APIの利用（ラッパー）",
+    "difficulty": "中級",
+    "question": "オートボクシングとキャッシュに関する次のコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        Integer a = 127;\n        Integer b = 127;\n        System.out.println(a == b);\n    }\n}",
+    "choices": [
+      "true",
+      "false",
+      "エラーになる",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "Integerは-128〜127をキャッシュ。同一値リテラルはその範囲内なら==でtrue。",
+    "id": 160
+  },
+  {
+    "category": "Java Silver/標準APIの利用（ラッパー）",
+    "difficulty": "中級",
+    "question": "オートボクシングとキャッシュに関する次のコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        Integer a = 128;\n        Integer b = 128;\n        System.out.println(a == b);\n    }\n}",
+    "choices": [
+      "true",
+      "false",
+      "エラーになる",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 1,
+    "explanation": "Integerは-128〜127をキャッシュ。同一値リテラルはその範囲内なら==でtrue。",
+    "id": 161
+  },
+  {
+    "category": "Java Silver/標準APIの利用（ラッパー）",
+    "difficulty": "中級",
+    "question": "オートボクシングとキャッシュに関する次のコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        Integer a = 200;\n        Integer b = 200;\n        System.out.println(a == b);\n    }\n}",
+    "choices": [
+      "true",
+      "false",
+      "エラーになる",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 1,
+    "explanation": "Integerは-128〜127をキャッシュ。同一値リテラルはその範囲内なら==でtrue。",
+    "id": 162
+  },
+  {
+    "category": "Java Silver/標準APIの利用（ラッパー）",
+    "difficulty": "中級",
+    "question": "オートボクシングとキャッシュに関する次のコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        Integer a = 256;\n        Integer b = 256;\n        System.out.println(a == b);\n    }\n}",
+    "choices": [
+      "true",
+      "false",
+      "エラーになる",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 1,
+    "explanation": "Integerは-128〜127をキャッシュ。同一値リテラルはその範囲内なら==でtrue。",
+    "id": 163
+  },
+  {
+    "category": "Java Silver/標準APIの利用（ラッパー）",
+    "difficulty": "中級",
+    "question": "オートボクシングとキャッシュに関する次のコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        Integer a = 512;\n        Integer b = 512;\n        System.out.println(a == b);\n    }\n}",
+    "choices": [
+      "true",
+      "false",
+      "エラーになる",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 1,
+    "explanation": "Integerは-128〜127をキャッシュ。同一値リテラルはその範囲内なら==でtrue。",
+    "id": 164
+  },
+  {
+    "category": "Java Silver/標準APIの利用（ラッパー）",
+    "difficulty": "中級",
+    "question": "オートボクシングとキャッシュに関する次のコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        Integer a = 1024;\n        Integer b = 1024;\n        System.out.println(a == b);\n    }\n}",
+    "choices": [
+      "true",
+      "false",
+      "エラーになる",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 1,
+    "explanation": "Integerは-128〜127をキャッシュ。同一値リテラルはその範囲内なら==でtrue。",
+    "id": 165
+  },
+  {
+    "category": "Java Silver/標準APIの利用（ラッパー）",
+    "difficulty": "中級",
+    "question": "オートボクシングとキャッシュに関する次のコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        Integer a = -300;\n        Integer b = -300;\n        System.out.println(a == b);\n    }\n}",
+    "choices": [
+      "true",
+      "false",
+      "エラーになる",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 1,
+    "explanation": "Integerは-128〜127をキャッシュ。同一値リテラルはその範囲内なら==でtrue。",
+    "id": 166
+  },
+  {
+    "category": "Java Silver/標準APIの利用（ラッパー）",
+    "difficulty": "中級",
+    "question": "オートボクシングとキャッシュに関する次のコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        Integer a = -400;\n        Integer b = -400;\n        System.out.println(a == b);\n    }\n}",
+    "choices": [
+      "true",
+      "false",
+      "エラーになる",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 1,
+    "explanation": "Integerは-128〜127をキャッシュ。同一値リテラルはその範囲内なら==でtrue。",
+    "id": 167
+  },
+  {
+    "category": "Java Silver/標準APIの利用（ラッパー）",
+    "difficulty": "中級",
+    "question": "オートボクシングとキャッシュに関する次のコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        Integer a = 300;\n        Integer b = 300;\n        System.out.println(a == b);\n    }\n}",
+    "choices": [
+      "true",
+      "false",
+      "エラーになる",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 1,
+    "explanation": "Integerは-128〜127をキャッシュ。同一値リテラルはその範囲内なら==でtrue。",
+    "id": 168
+  },
+  {
+    "category": "Java Silver/標準APIの利用（ラッパー）",
+    "difficulty": "中級",
+    "question": "オートボクシングとキャッシュに関する次のコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        Integer a = 700;\n        Integer b = 700;\n        System.out.println(a == b);\n    }\n}",
+    "choices": [
+      "true",
+      "false",
+      "エラーになる",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 1,
+    "explanation": "Integerは-128〜127をキャッシュ。同一値リテラルはその範囲内なら==でtrue。",
+    "id": 169
+  },
+  {
+    "category": "Java Silver/標準APIの利用（ラッパー）",
+    "difficulty": "中級",
+    "question": "オートボクシングとキャッシュに関する次のコードの出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        Integer a = 42;\n        Integer b = 42;\n        System.out.println(a == b);\n    }\n}",
+    "choices": [
+      "true",
+      "false",
+      "エラーになる",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "Integerは-128〜127をキャッシュ。同一値リテラルはその範囲内なら==でtrue。",
+    "id": 170
+  },
+  {
+    "category": "Java Silver/標準APIの利用（コレクション）",
+    "difficulty": "中級",
+    "question": "Arrays.asListで生成したリストを変更するコードの出力は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<String> list = Arrays.asList(\"A\",\"B\",\"C\");\n        list.set(1, \"K\");\n        System.out.println(list);\n        list.add(\"T\");\n    }\n}",
+    "choices": [
+      "[A, K, C] と表示後、実行時エラー",
+      "[A, K, C] のみ表示",
+      "コンパイルエラー",
+      "実行時にNullPointerException",
+      "[A, B, C] のまま"
+    ],
+    "answerIndex": 0,
+    "explanation": "setは可能だが可変長操作(add/remove)はUnsupportedOperationExceptionで失敗。",
+    "id": 171
+  },
+  {
+    "category": "Java Silver/標準APIの利用（コレクション）",
+    "difficulty": "中級",
+    "question": "Arrays.asListで生成したリストを変更するコードの出力は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<String> list = Arrays.asList(\"X\",\"Y\",\"Z\");\n        list.set(1, \"K\");\n        System.out.println(list);\n        list.add(\"T\");\n    }\n}",
+    "choices": [
+      "[X, K, Z] と表示後、実行時エラー",
+      "[X, K, Z] のみ表示",
+      "コンパイルエラー",
+      "実行時にNullPointerException",
+      "[X, Y, Z] のまま"
+    ],
+    "answerIndex": 0,
+    "explanation": "setは可能だが可変長操作(add/remove)はUnsupportedOperationExceptionで失敗。",
+    "id": 172
+  },
+  {
+    "category": "Java Silver/標準APIの利用（コレクション）",
+    "difficulty": "中級",
+    "question": "Arrays.asListで生成したリストを変更するコードの出力は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<String> list = Arrays.asList(\"1\",\"2\",\"3\");\n        list.set(1, \"K\");\n        System.out.println(list);\n        list.add(\"T\");\n    }\n}",
+    "choices": [
+      "[1, K, 3] と表示後、実行時エラー",
+      "[1, K, 3] のみ表示",
+      "コンパイルエラー",
+      "実行時にNullPointerException",
+      "[1, 2, 3] のまま"
+    ],
+    "answerIndex": 0,
+    "explanation": "setは可能だが可変長操作(add/remove)はUnsupportedOperationExceptionで失敗。",
+    "id": 173
+  },
+  {
+    "category": "Java Silver/標準APIの利用（コレクション）",
+    "difficulty": "中級",
+    "question": "Arrays.asListで生成したリストを変更するコードの出力は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<String> list = Arrays.asList(\"p\",\"q\",\"r\");\n        list.set(1, \"K\");\n        System.out.println(list);\n        list.add(\"T\");\n    }\n}",
+    "choices": [
+      "[p, K, r] と表示後、実行時エラー",
+      "[p, K, r] のみ表示",
+      "コンパイルエラー",
+      "実行時にNullPointerException",
+      "[p, q, r] のまま"
+    ],
+    "answerIndex": 0,
+    "explanation": "setは可能だが可変長操作(add/remove)はUnsupportedOperationExceptionで失敗。",
+    "id": 174
+  },
+  {
+    "category": "Java Silver/標準APIの利用（コレクション）",
+    "difficulty": "中級",
+    "question": "Arrays.asListで生成したリストを変更するコードの出力は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<String> list = Arrays.asList(\"L\",\"M\",\"N\");\n        list.set(1, \"K\");\n        System.out.println(list);\n        list.add(\"T\");\n    }\n}",
+    "choices": [
+      "[L, K, N] と表示後、実行時エラー",
+      "[L, K, N] のみ表示",
+      "コンパイルエラー",
+      "実行時にNullPointerException",
+      "[L, M, N] のまま"
+    ],
+    "answerIndex": 0,
+    "explanation": "setは可能だが可変長操作(add/remove)はUnsupportedOperationExceptionで失敗。",
+    "id": 175
+  },
+  {
+    "category": "Java Silver/標準APIの利用（コレクション）",
+    "difficulty": "中級",
+    "question": "Arrays.asListで生成したリストを変更するコードの出力は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<String> list = Arrays.asList(\"A\",\"B\",\"C\");\n        list.set(1, \"K\");\n        System.out.println(list);\n        list.add(\"T\");\n    }\n}",
+    "choices": [
+      "[A, K, C] と表示後、実行時エラー",
+      "[A, K, C] のみ表示",
+      "コンパイルエラー",
+      "実行時にNullPointerException",
+      "[A, B, C] のまま"
+    ],
+    "answerIndex": 0,
+    "explanation": "setは可能だが可変長操作(add/remove)はUnsupportedOperationExceptionで失敗。",
+    "id": 176
+  },
+  {
+    "category": "Java Silver/標準APIの利用（コレクション）",
+    "difficulty": "中級",
+    "question": "Arrays.asListで生成したリストを変更するコードの出力は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<String> list = Arrays.asList(\"X\",\"Y\",\"Z\");\n        list.set(1, \"K\");\n        System.out.println(list);\n        list.add(\"T\");\n    }\n}",
+    "choices": [
+      "[X, K, Z] と表示後、実行時エラー",
+      "[X, K, Z] のみ表示",
+      "コンパイルエラー",
+      "実行時にNullPointerException",
+      "[X, Y, Z] のまま"
+    ],
+    "answerIndex": 0,
+    "explanation": "setは可能だが可変長操作(add/remove)はUnsupportedOperationExceptionで失敗。",
+    "id": 177
+  },
+  {
+    "category": "Java Silver/標準APIの利用（コレクション）",
+    "difficulty": "中級",
+    "question": "Arrays.asListで生成したリストを変更するコードの出力は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<String> list = Arrays.asList(\"1\",\"2\",\"3\");\n        list.set(1, \"K\");\n        System.out.println(list);\n        list.add(\"T\");\n    }\n}",
+    "choices": [
+      "[1, K, 3] と表示後、実行時エラー",
+      "[1, K, 3] のみ表示",
+      "コンパイルエラー",
+      "実行時にNullPointerException",
+      "[1, 2, 3] のまま"
+    ],
+    "answerIndex": 0,
+    "explanation": "setは可能だが可変長操作(add/remove)はUnsupportedOperationExceptionで失敗。",
+    "id": 178
+  },
+  {
+    "category": "Java Silver/標準APIの利用（コレクション）",
+    "difficulty": "中級",
+    "question": "Arrays.asListで生成したリストを変更するコードの出力は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<String> list = Arrays.asList(\"p\",\"q\",\"r\");\n        list.set(1, \"K\");\n        System.out.println(list);\n        list.add(\"T\");\n    }\n}",
+    "choices": [
+      "[p, K, r] と表示後、実行時エラー",
+      "[p, K, r] のみ表示",
+      "コンパイルエラー",
+      "実行時にNullPointerException",
+      "[p, q, r] のまま"
+    ],
+    "answerIndex": 0,
+    "explanation": "setは可能だが可変長操作(add/remove)はUnsupportedOperationExceptionで失敗。",
+    "id": 179
+  },
+  {
+    "category": "Java Silver/標準APIの利用（コレクション）",
+    "difficulty": "中級",
+    "question": "Arrays.asListで生成したリストを変更するコードの出力は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<String> list = Arrays.asList(\"L\",\"M\",\"N\");\n        list.set(1, \"K\");\n        System.out.println(list);\n        list.add(\"T\");\n    }\n}",
+    "choices": [
+      "[L, K, N] と表示後、実行時エラー",
+      "[L, K, N] のみ表示",
+      "コンパイルエラー",
+      "実行時にNullPointerException",
+      "[L, M, N] のまま"
+    ],
+    "answerIndex": 0,
+    "explanation": "setは可能だが可変長操作(add/remove)はUnsupportedOperationExceptionで失敗。",
+    "id": 180
+  },
+  {
+    "category": "Java Silver/標準APIの利用（コレクション）",
+    "difficulty": "中級",
+    "question": "Arrays.asListで生成したリストを変更するコードの出力は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<String> list = Arrays.asList(\"A\",\"B\",\"C\");\n        list.set(1, \"K\");\n        System.out.println(list);\n        list.add(\"T\");\n    }\n}",
+    "choices": [
+      "[A, K, C] と表示後、実行時エラー",
+      "[A, K, C] のみ表示",
+      "コンパイルエラー",
+      "実行時にNullPointerException",
+      "[A, B, C] のまま"
+    ],
+    "answerIndex": 0,
+    "explanation": "setは可能だが可変長操作(add/remove)はUnsupportedOperationExceptionで失敗。",
+    "id": 181
+  },
+  {
+    "category": "Java Silver/標準APIの利用（コレクション）",
+    "difficulty": "中級",
+    "question": "Arrays.asListで生成したリストを変更するコードの出力は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<String> list = Arrays.asList(\"X\",\"Y\",\"Z\");\n        list.set(1, \"K\");\n        System.out.println(list);\n        list.add(\"T\");\n    }\n}",
+    "choices": [
+      "[X, K, Z] と表示後、実行時エラー",
+      "[X, K, Z] のみ表示",
+      "コンパイルエラー",
+      "実行時にNullPointerException",
+      "[X, Y, Z] のまま"
+    ],
+    "answerIndex": 0,
+    "explanation": "setは可能だが可変長操作(add/remove)はUnsupportedOperationExceptionで失敗。",
+    "id": 182
+  },
+  {
+    "category": "Java Silver/標準APIの利用（コレクション）",
+    "difficulty": "中級",
+    "question": "Arrays.asListで生成したリストを変更するコードの出力は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<String> list = Arrays.asList(\"1\",\"2\",\"3\");\n        list.set(1, \"K\");\n        System.out.println(list);\n        list.add(\"T\");\n    }\n}",
+    "choices": [
+      "[1, K, 3] と表示後、実行時エラー",
+      "[1, K, 3] のみ表示",
+      "コンパイルエラー",
+      "実行時にNullPointerException",
+      "[1, 2, 3] のまま"
+    ],
+    "answerIndex": 0,
+    "explanation": "setは可能だが可変長操作(add/remove)はUnsupportedOperationExceptionで失敗。",
+    "id": 183
+  },
+  {
+    "category": "Java Silver/標準APIの利用（コレクション）",
+    "difficulty": "中級",
+    "question": "Arrays.asListで生成したリストを変更するコードの出力は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<String> list = Arrays.asList(\"p\",\"q\",\"r\");\n        list.set(1, \"K\");\n        System.out.println(list);\n        list.add(\"T\");\n    }\n}",
+    "choices": [
+      "[p, K, r] と表示後、実行時エラー",
+      "[p, K, r] のみ表示",
+      "コンパイルエラー",
+      "実行時にNullPointerException",
+      "[p, q, r] のまま"
+    ],
+    "answerIndex": 0,
+    "explanation": "setは可能だが可変長操作(add/remove)はUnsupportedOperationExceptionで失敗。",
+    "id": 184
+  },
+  {
+    "category": "Java Silver/標準APIの利用（コレクション）",
+    "difficulty": "中級",
+    "question": "Arrays.asListで生成したリストを変更するコードの出力は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<String> list = Arrays.asList(\"L\",\"M\",\"N\");\n        list.set(1, \"K\");\n        System.out.println(list);\n        list.add(\"T\");\n    }\n}",
+    "choices": [
+      "[L, K, N] と表示後、実行時エラー",
+      "[L, K, N] のみ表示",
+      "コンパイルエラー",
+      "実行時にNullPointerException",
+      "[L, M, N] のまま"
+    ],
+    "answerIndex": 0,
+    "explanation": "setは可能だが可変長操作(add/remove)はUnsupportedOperationExceptionで失敗。",
+    "id": 185
+  },
+  {
+    "category": "Java Silver/標準APIの利用（コレクション）",
+    "difficulty": "上級",
+    "question": "拡張for文でコレクションから要素を削除した場合の挙動は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<Integer> list = new ArrayList<>(Arrays.asList(1, 2, 3, 4));\n        for (Integer n : list) {\n            if (n % 2 == 0) list.remove(n);\n        }\n        System.out.println(list);\n    }\n}",
+    "choices": [
+      "実行時エラー（ConcurrentModificationException）",
+      "偶数が消えたリストが表示される",
+      "コンパイルエラー",
+      "何も出力されない",
+      "[] が出力される"
+    ],
+    "answerIndex": 0,
+    "explanation": "拡張forは内部Iteratorの期待と不一致な変更を検出し、ConcurrentModificationExceptionを投げる。",
+    "id": 186
+  },
+  {
+    "category": "Java Silver/標準APIの利用（コレクション）",
+    "difficulty": "上級",
+    "question": "拡張for文でコレクションから要素を削除した場合の挙動は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<Integer> list = new ArrayList<>(Arrays.asList(2, 4, 6, 8));\n        for (Integer n : list) {\n            if (n % 2 == 0) list.remove(n);\n        }\n        System.out.println(list);\n    }\n}",
+    "choices": [
+      "実行時エラー（ConcurrentModificationException）",
+      "偶数が消えたリストが表示される",
+      "コンパイルエラー",
+      "何も出力されない",
+      "[] が出力される"
+    ],
+    "answerIndex": 0,
+    "explanation": "拡張forは内部Iteratorの期待と不一致な変更を検出し、ConcurrentModificationExceptionを投げる。",
+    "id": 187
+  },
+  {
+    "category": "Java Silver/標準APIの利用（コレクション）",
+    "difficulty": "上級",
+    "question": "拡張for文でコレクションから要素を削除した場合の挙動は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<Integer> list = new ArrayList<>(Arrays.asList(1, 3, 5, 7));\n        for (Integer n : list) {\n            if (n % 2 == 0) list.remove(n);\n        }\n        System.out.println(list);\n    }\n}",
+    "choices": [
+      "実行時エラー（ConcurrentModificationException）",
+      "偶数が消えたリストが表示される",
+      "コンパイルエラー",
+      "何も出力されない",
+      "[] が出力される"
+    ],
+    "answerIndex": 0,
+    "explanation": "拡張forは内部Iteratorの期待と不一致な変更を検出し、ConcurrentModificationExceptionを投げる。",
+    "id": 188
+  },
+  {
+    "category": "Java Silver/標準APIの利用（コレクション）",
+    "difficulty": "上級",
+    "question": "拡張for文でコレクションから要素を削除した場合の挙動は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<Integer> list = new ArrayList<>(Arrays.asList(10, 20, 30));\n        for (Integer n : list) {\n            if (n % 2 == 0) list.remove(n);\n        }\n        System.out.println(list);\n    }\n}",
+    "choices": [
+      "実行時エラー（ConcurrentModificationException）",
+      "偶数が消えたリストが表示される",
+      "コンパイルエラー",
+      "何も出力されない",
+      "[] が出力される"
+    ],
+    "answerIndex": 0,
+    "explanation": "拡張forは内部Iteratorの期待と不一致な変更を検出し、ConcurrentModificationExceptionを投げる。",
+    "id": 189
+  },
+  {
+    "category": "Java Silver/標準APIの利用（コレクション）",
+    "difficulty": "上級",
+    "question": "拡張for文でコレクションから要素を削除した場合の挙動は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<Integer> list = new ArrayList<>(Arrays.asList(1, 1, 2, 2));\n        for (Integer n : list) {\n            if (n % 2 == 0) list.remove(n);\n        }\n        System.out.println(list);\n    }\n}",
+    "choices": [
+      "実行時エラー（ConcurrentModificationException）",
+      "偶数が消えたリストが表示される",
+      "コンパイルエラー",
+      "何も出力されない",
+      "[] が出力される"
+    ],
+    "answerIndex": 0,
+    "explanation": "拡張forは内部Iteratorの期待と不一致な変更を検出し、ConcurrentModificationExceptionを投げる。",
+    "id": 190
+  },
+  {
+    "category": "Java Silver/標準APIの利用（コレクション）",
+    "difficulty": "上級",
+    "question": "拡張for文でコレクションから要素を削除した場合の挙動は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<Integer> list = new ArrayList<>(Arrays.asList(9, 8, 7, 6));\n        for (Integer n : list) {\n            if (n % 2 == 0) list.remove(n);\n        }\n        System.out.println(list);\n    }\n}",
+    "choices": [
+      "実行時エラー（ConcurrentModificationException）",
+      "偶数が消えたリストが表示される",
+      "コンパイルエラー",
+      "何も出力されない",
+      "[] が出力される"
+    ],
+    "answerIndex": 0,
+    "explanation": "拡張forは内部Iteratorの期待と不一致な変更を検出し、ConcurrentModificationExceptionを投げる。",
+    "id": 191
+  },
+  {
+    "category": "Java Silver/標準APIの利用（コレクション）",
+    "difficulty": "上級",
+    "question": "拡張for文でコレクションから要素を削除した場合の挙動は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<Integer> list = new ArrayList<>(Arrays.asList(5, 4, 3, 2, 1));\n        for (Integer n : list) {\n            if (n % 2 == 0) list.remove(n);\n        }\n        System.out.println(list);\n    }\n}",
+    "choices": [
+      "実行時エラー（ConcurrentModificationException）",
+      "偶数が消えたリストが表示される",
+      "コンパイルエラー",
+      "何も出力されない",
+      "[] が出力される"
+    ],
+    "answerIndex": 0,
+    "explanation": "拡張forは内部Iteratorの期待と不一致な変更を検出し、ConcurrentModificationExceptionを投げる。",
+    "id": 192
+  },
+  {
+    "category": "Java Silver/標準APIの利用（コレクション）",
+    "difficulty": "上級",
+    "question": "拡張for文でコレクションから要素を削除した場合の挙動は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<Integer> list = new ArrayList<>(Arrays.asList(1, 2));\n        for (Integer n : list) {\n            if (n % 2 == 0) list.remove(n);\n        }\n        System.out.println(list);\n    }\n}",
+    "choices": [
+      "実行時エラー（ConcurrentModificationException）",
+      "偶数が消えたリストが表示される",
+      "コンパイルエラー",
+      "何も出力されない",
+      "[] が出力される"
+    ],
+    "answerIndex": 0,
+    "explanation": "拡張forは内部Iteratorの期待と不一致な変更を検出し、ConcurrentModificationExceptionを投げる。",
+    "id": 193
+  },
+  {
+    "category": "Java Silver/標準APIの利用（コレクション）",
+    "difficulty": "上級",
+    "question": "拡張for文でコレクションから要素を削除した場合の挙動は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<Integer> list = new ArrayList<>(Arrays.asList(2, 3, 4, 5, 6));\n        for (Integer n : list) {\n            if (n % 2 == 0) list.remove(n);\n        }\n        System.out.println(list);\n    }\n}",
+    "choices": [
+      "実行時エラー（ConcurrentModificationException）",
+      "偶数が消えたリストが表示される",
+      "コンパイルエラー",
+      "何も出力されない",
+      "[] が出力される"
+    ],
+    "answerIndex": 0,
+    "explanation": "拡張forは内部Iteratorの期待と不一致な変更を検出し、ConcurrentModificationExceptionを投げる。",
+    "id": 194
+  },
+  {
+    "category": "Java Silver/標準APIの利用（コレクション）",
+    "difficulty": "上級",
+    "question": "拡張for文でコレクションから要素を削除した場合の挙動は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<Integer> list = new ArrayList<>(Arrays.asList(100, 200, 300));\n        for (Integer n : list) {\n            if (n % 2 == 0) list.remove(n);\n        }\n        System.out.println(list);\n    }\n}",
+    "choices": [
+      "実行時エラー（ConcurrentModificationException）",
+      "偶数が消えたリストが表示される",
+      "コンパイルエラー",
+      "何も出力されない",
+      "[] が出力される"
+    ],
+    "answerIndex": 0,
+    "explanation": "拡張forは内部Iteratorの期待と不一致な変更を検出し、ConcurrentModificationExceptionを投げる。",
+    "id": 195
+  },
+  {
+    "category": "Java Silver/オブジェクト指向の基礎（メソッド）",
+    "difficulty": "上級",
+    "question": "オーバーロード解決（拡大変換とボクシング）の結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        print(5);\n    }\n    static void print(long x) { System.out.println(\"long\"); }\n    static void print(Integer x) { System.out.println(\"Integer\"); }\n}",
+    "choices": [
+      "long",
+      "Integer",
+      "コンパイルエラー",
+      "実行時エラー",
+      "不定"
+    ],
+    "answerIndex": 0,
+    "explanation": "widening（int→long）はboxing（int→Integer）より優先される。",
+    "id": 196
+  },
+  {
+    "category": "Java Silver/オブジェクト指向の基礎（メソッド）",
+    "difficulty": "上級",
+    "question": "オーバーロード解決（拡大変換とボクシング）の結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        print(7);\n    }\n    static void print(long x) { System.out.println(\"long\"); }\n    static void print(Integer x) { System.out.println(\"Integer\"); }\n}",
+    "choices": [
+      "long",
+      "Integer",
+      "コンパイルエラー",
+      "実行時エラー",
+      "不定"
+    ],
+    "answerIndex": 0,
+    "explanation": "widening（int→long）はboxing（int→Integer）より優先される。",
+    "id": 197
+  },
+  {
+    "category": "Java Silver/オブジェクト指向の基礎（メソッド）",
+    "difficulty": "上級",
+    "question": "オーバーロード解決（拡大変換とボクシング）の結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        print(9);\n    }\n    static void print(long x) { System.out.println(\"long\"); }\n    static void print(Integer x) { System.out.println(\"Integer\"); }\n}",
+    "choices": [
+      "long",
+      "Integer",
+      "コンパイルエラー",
+      "実行時エラー",
+      "不定"
+    ],
+    "answerIndex": 0,
+    "explanation": "widening（int→long）はboxing（int→Integer）より優先される。",
+    "id": 198
+  },
+  {
+    "category": "Java Silver/オブジェクト指向の基礎（メソッド）",
+    "difficulty": "上級",
+    "question": "オーバーロード解決（拡大変換とボクシング）の結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        print(11);\n    }\n    static void print(long x) { System.out.println(\"long\"); }\n    static void print(Integer x) { System.out.println(\"Integer\"); }\n}",
+    "choices": [
+      "long",
+      "Integer",
+      "コンパイルエラー",
+      "実行時エラー",
+      "不定"
+    ],
+    "answerIndex": 0,
+    "explanation": "widening（int→long）はboxing（int→Integer）より優先される。",
+    "id": 199
+  },
+  {
+    "category": "Java Silver/オブジェクト指向の基礎（メソッド）",
+    "difficulty": "上級",
+    "question": "オーバーロード解決（拡大変換とボクシング）の結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        print(13);\n    }\n    static void print(long x) { System.out.println(\"long\"); }\n    static void print(Integer x) { System.out.println(\"Integer\"); }\n}",
+    "choices": [
+      "long",
+      "Integer",
+      "コンパイルエラー",
+      "実行時エラー",
+      "不定"
+    ],
+    "answerIndex": 0,
+    "explanation": "widening（int→long）はboxing（int→Integer）より優先される。",
+    "id": 200
+  },
+  {
+    "category": "Java Silver/オブジェクト指向の基礎（メソッド）",
+    "difficulty": "上級",
+    "question": "オーバーロード解決（拡大変換とボクシング）の結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        print(15);\n    }\n    static void print(long x) { System.out.println(\"long\"); }\n    static void print(Integer x) { System.out.println(\"Integer\"); }\n}",
+    "choices": [
+      "long",
+      "Integer",
+      "コンパイルエラー",
+      "実行時エラー",
+      "不定"
+    ],
+    "answerIndex": 0,
+    "explanation": "widening（int→long）はboxing（int→Integer）より優先される。",
+    "id": 201
+  },
+  {
+    "category": "Java Silver/オブジェクト指向の基礎（メソッド）",
+    "difficulty": "上級",
+    "question": "オーバーロード解決（拡大変換とボクシング）の結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        print(17);\n    }\n    static void print(long x) { System.out.println(\"long\"); }\n    static void print(Integer x) { System.out.println(\"Integer\"); }\n}",
+    "choices": [
+      "long",
+      "Integer",
+      "コンパイルエラー",
+      "実行時エラー",
+      "不定"
+    ],
+    "answerIndex": 0,
+    "explanation": "widening（int→long）はboxing（int→Integer）より優先される。",
+    "id": 202
+  },
+  {
+    "category": "Java Silver/オブジェクト指向の基礎（メソッド）",
+    "difficulty": "上級",
+    "question": "オーバーロード解決（拡大変換とボクシング）の結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        print(19);\n    }\n    static void print(long x) { System.out.println(\"long\"); }\n    static void print(Integer x) { System.out.println(\"Integer\"); }\n}",
+    "choices": [
+      "long",
+      "Integer",
+      "コンパイルエラー",
+      "実行時エラー",
+      "不定"
+    ],
+    "answerIndex": 0,
+    "explanation": "widening（int→long）はboxing（int→Integer）より優先される。",
+    "id": 203
+  },
+  {
+    "category": "Java Silver/オブジェクト指向の基礎（メソッド）",
+    "difficulty": "上級",
+    "question": "オーバーロード解決（拡大変換とボクシング）の結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        print(21);\n    }\n    static void print(long x) { System.out.println(\"long\"); }\n    static void print(Integer x) { System.out.println(\"Integer\"); }\n}",
+    "choices": [
+      "long",
+      "Integer",
+      "コンパイルエラー",
+      "実行時エラー",
+      "不定"
+    ],
+    "answerIndex": 0,
+    "explanation": "widening（int→long）はboxing（int→Integer）より優先される。",
+    "id": 204
+  },
+  {
+    "category": "Java Silver/オブジェクト指向の基礎（メソッド）",
+    "difficulty": "上級",
+    "question": "オーバーロード解決（拡大変換とボクシング）の結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        print(23);\n    }\n    static void print(long x) { System.out.println(\"long\"); }\n    static void print(Integer x) { System.out.println(\"Integer\"); }\n}",
+    "choices": [
+      "long",
+      "Integer",
+      "コンパイルエラー",
+      "実行時エラー",
+      "不定"
+    ],
+    "answerIndex": 0,
+    "explanation": "widening（int→long）はboxing（int→Integer）より優先される。",
+    "id": 205
+  },
+  {
+    "category": "Java Silver/オブジェクト指向の基礎（継承・多態性）",
+    "difficulty": "中級",
+    "question": "オーバーライドと多態性に関する次のコードの出力は？",
+    "code": "class Super{ void f(){ System.out.println(\"S0\"); } }\nclass Sub extends Super{ void f(){ System.out.println(\"T0\"); } }\npublic class Main{\n    public static void main(String[] args){\n        Super s = new Sub();\n        s.f();\n    }\n}",
+    "choices": [
+      "T0",
+      "S0",
+      "コンパイルエラー",
+      "実行時エラー",
+      "出力なし"
+    ],
+    "answerIndex": 0,
+    "explanation": "動的バインディングにより、実行時型Subのメソッドが呼ばれる。",
+    "id": 206
+  },
+  {
+    "category": "Java Silver/オブジェクト指向の基礎（継承・多態性）",
+    "difficulty": "中級",
+    "question": "オーバーライドと多態性に関する次のコードの出力は？",
+    "code": "class Super{ void f(){ System.out.println(\"S1\"); } }\nclass Sub extends Super{ void f(){ System.out.println(\"T1\"); } }\npublic class Main{\n    public static void main(String[] args){\n        Super s = new Sub();\n        s.f();\n    }\n}",
+    "choices": [
+      "T1",
+      "S1",
+      "コンパイルエラー",
+      "実行時エラー",
+      "出力なし"
+    ],
+    "answerIndex": 0,
+    "explanation": "動的バインディングにより、実行時型Subのメソッドが呼ばれる。",
+    "id": 207
+  },
+  {
+    "category": "Java Silver/オブジェクト指向の基礎（継承・多態性）",
+    "difficulty": "中級",
+    "question": "オーバーライドと多態性に関する次のコードの出力は？",
+    "code": "class Super{ void f(){ System.out.println(\"S2\"); } }\nclass Sub extends Super{ void f(){ System.out.println(\"T2\"); } }\npublic class Main{\n    public static void main(String[] args){\n        Super s = new Sub();\n        s.f();\n    }\n}",
+    "choices": [
+      "T2",
+      "S2",
+      "コンパイルエラー",
+      "実行時エラー",
+      "出力なし"
+    ],
+    "answerIndex": 0,
+    "explanation": "動的バインディングにより、実行時型Subのメソッドが呼ばれる。",
+    "id": 208
+  },
+  {
+    "category": "Java Silver/オブジェクト指向の基礎（継承・多態性）",
+    "difficulty": "中級",
+    "question": "オーバーライドと多態性に関する次のコードの出力は？",
+    "code": "class Super{ void f(){ System.out.println(\"S3\"); } }\nclass Sub extends Super{ void f(){ System.out.println(\"T3\"); } }\npublic class Main{\n    public static void main(String[] args){\n        Super s = new Sub();\n        s.f();\n    }\n}",
+    "choices": [
+      "T3",
+      "S3",
+      "コンパイルエラー",
+      "実行時エラー",
+      "出力なし"
+    ],
+    "answerIndex": 0,
+    "explanation": "動的バインディングにより、実行時型Subのメソッドが呼ばれる。",
+    "id": 209
+  },
+  {
+    "category": "Java Silver/オブジェクト指向の基礎（継承・多態性）",
+    "difficulty": "中級",
+    "question": "オーバーライドと多態性に関する次のコードの出力は？",
+    "code": "class Super{ void f(){ System.out.println(\"S4\"); } }\nclass Sub extends Super{ void f(){ System.out.println(\"T4\"); } }\npublic class Main{\n    public static void main(String[] args){\n        Super s = new Sub();\n        s.f();\n    }\n}",
+    "choices": [
+      "T4",
+      "S4",
+      "コンパイルエラー",
+      "実行時エラー",
+      "出力なし"
+    ],
+    "answerIndex": 0,
+    "explanation": "動的バインディングにより、実行時型Subのメソッドが呼ばれる。",
+    "id": 210
+  },
+  {
+    "category": "Java Silver/オブジェクト指向の基礎（継承・多態性）",
+    "difficulty": "中級",
+    "question": "オーバーライドと多態性に関する次のコードの出力は？",
+    "code": "class Super{ void f(){ System.out.println(\"S5\"); } }\nclass Sub extends Super{ void f(){ System.out.println(\"T5\"); } }\npublic class Main{\n    public static void main(String[] args){\n        Super s = new Sub();\n        s.f();\n    }\n}",
+    "choices": [
+      "T5",
+      "S5",
+      "コンパイルエラー",
+      "実行時エラー",
+      "出力なし"
+    ],
+    "answerIndex": 0,
+    "explanation": "動的バインディングにより、実行時型Subのメソッドが呼ばれる。",
+    "id": 211
+  },
+  {
+    "category": "Java Silver/オブジェクト指向の基礎（継承・多態性）",
+    "difficulty": "中級",
+    "question": "オーバーライドと多態性に関する次のコードの出力は？",
+    "code": "class Super{ void f(){ System.out.println(\"S6\"); } }\nclass Sub extends Super{ void f(){ System.out.println(\"T6\"); } }\npublic class Main{\n    public static void main(String[] args){\n        Super s = new Sub();\n        s.f();\n    }\n}",
+    "choices": [
+      "T6",
+      "S6",
+      "コンパイルエラー",
+      "実行時エラー",
+      "出力なし"
+    ],
+    "answerIndex": 0,
+    "explanation": "動的バインディングにより、実行時型Subのメソッドが呼ばれる。",
+    "id": 212
+  },
+  {
+    "category": "Java Silver/オブジェクト指向の基礎（継承・多態性）",
+    "difficulty": "中級",
+    "question": "オーバーライドと多態性に関する次のコードの出力は？",
+    "code": "class Super{ void f(){ System.out.println(\"S7\"); } }\nclass Sub extends Super{ void f(){ System.out.println(\"T7\"); } }\npublic class Main{\n    public static void main(String[] args){\n        Super s = new Sub();\n        s.f();\n    }\n}",
+    "choices": [
+      "T7",
+      "S7",
+      "コンパイルエラー",
+      "実行時エラー",
+      "出力なし"
+    ],
+    "answerIndex": 0,
+    "explanation": "動的バインディングにより、実行時型Subのメソッドが呼ばれる。",
+    "id": 213
+  },
+  {
+    "category": "Java Silver/オブジェクト指向の基礎（継承・多態性）",
+    "difficulty": "中級",
+    "question": "オーバーライドと多態性に関する次のコードの出力は？",
+    "code": "class Super{ void f(){ System.out.println(\"S8\"); } }\nclass Sub extends Super{ void f(){ System.out.println(\"T8\"); } }\npublic class Main{\n    public static void main(String[] args){\n        Super s = new Sub();\n        s.f();\n    }\n}",
+    "choices": [
+      "T8",
+      "S8",
+      "コンパイルエラー",
+      "実行時エラー",
+      "出力なし"
+    ],
+    "answerIndex": 0,
+    "explanation": "動的バインディングにより、実行時型Subのメソッドが呼ばれる。",
+    "id": 214
+  },
+  {
+    "category": "Java Silver/オブジェクト指向の基礎（継承・多態性）",
+    "difficulty": "中級",
+    "question": "オーバーライドと多態性に関する次のコードの出力は？",
+    "code": "class Super{ void f(){ System.out.println(\"S9\"); } }\nclass Sub extends Super{ void f(){ System.out.println(\"T9\"); } }\npublic class Main{\n    public static void main(String[] args){\n        Super s = new Sub();\n        s.f();\n    }\n}",
+    "choices": [
+      "T9",
+      "S9",
+      "コンパイルエラー",
+      "実行時エラー",
+      "出力なし"
+    ],
+    "answerIndex": 0,
+    "explanation": "動的バインディングにより、実行時型Subのメソッドが呼ばれる。",
+    "id": 215
+  },
+  {
+    "category": "Java Silver/オブジェクト指向の基礎（フィールド）",
+    "difficulty": "中級",
+    "question": "フィールドシャドウイング時に参照される値は？",
+    "code": "class A { int v = 0; }\nclass B extends A { int v = 100; }\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        System.out.println(a.v);\n    }\n}",
+    "choices": [
+      "0",
+      "100",
+      "コンパイルエラー",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "フィールド参照は静的型に基づく（A型のv）。",
+    "id": 216
+  },
+  {
+    "category": "Java Silver/オブジェクト指向の基礎（フィールド）",
+    "difficulty": "中級",
+    "question": "フィールドシャドウイング時に参照される値は？",
+    "code": "class A { int v = 1; }\nclass B extends A { int v = 101; }\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        System.out.println(a.v);\n    }\n}",
+    "choices": [
+      "1",
+      "101",
+      "コンパイルエラー",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "フィールド参照は静的型に基づく（A型のv）。",
+    "id": 217
+  },
+  {
+    "category": "Java Silver/オブジェクト指向の基礎（フィールド）",
+    "difficulty": "中級",
+    "question": "フィールドシャドウイング時に参照される値は？",
+    "code": "class A { int v = 2; }\nclass B extends A { int v = 102; }\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        System.out.println(a.v);\n    }\n}",
+    "choices": [
+      "2",
+      "102",
+      "コンパイルエラー",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "フィールド参照は静的型に基づく（A型のv）。",
+    "id": 218
+  },
+  {
+    "category": "Java Silver/オブジェクト指向の基礎（フィールド）",
+    "difficulty": "中級",
+    "question": "フィールドシャドウイング時に参照される値は？",
+    "code": "class A { int v = 3; }\nclass B extends A { int v = 103; }\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        System.out.println(a.v);\n    }\n}",
+    "choices": [
+      "3",
+      "103",
+      "コンパイルエラー",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "フィールド参照は静的型に基づく（A型のv）。",
+    "id": 219
+  },
+  {
+    "category": "Java Silver/オブジェクト指向の基礎（フィールド）",
+    "difficulty": "中級",
+    "question": "フィールドシャドウイング時に参照される値は？",
+    "code": "class A { int v = 4; }\nclass B extends A { int v = 104; }\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        System.out.println(a.v);\n    }\n}",
+    "choices": [
+      "4",
+      "104",
+      "コンパイルエラー",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "フィールド参照は静的型に基づく（A型のv）。",
+    "id": 220
+  },
+  {
+    "category": "Java Silver/オブジェクト指向の基礎（フィールド）",
+    "difficulty": "中級",
+    "question": "フィールドシャドウイング時に参照される値は？",
+    "code": "class A { int v = 5; }\nclass B extends A { int v = 105; }\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        System.out.println(a.v);\n    }\n}",
+    "choices": [
+      "5",
+      "105",
+      "コンパイルエラー",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "フィールド参照は静的型に基づく（A型のv）。",
+    "id": 221
+  },
+  {
+    "category": "Java Silver/オブジェクト指向の基礎（フィールド）",
+    "difficulty": "中級",
+    "question": "フィールドシャドウイング時に参照される値は？",
+    "code": "class A { int v = 6; }\nclass B extends A { int v = 106; }\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        System.out.println(a.v);\n    }\n}",
+    "choices": [
+      "6",
+      "106",
+      "コンパイルエラー",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "フィールド参照は静的型に基づく（A型のv）。",
+    "id": 222
+  },
+  {
+    "category": "Java Silver/オブジェクト指向の基礎（フィールド）",
+    "difficulty": "中級",
+    "question": "フィールドシャドウイング時に参照される値は？",
+    "code": "class A { int v = 7; }\nclass B extends A { int v = 107; }\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        System.out.println(a.v);\n    }\n}",
+    "choices": [
+      "7",
+      "107",
+      "コンパイルエラー",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "フィールド参照は静的型に基づく（A型のv）。",
+    "id": 223
+  },
+  {
+    "category": "Java Silver/オブジェクト指向の基礎（フィールド）",
+    "difficulty": "中級",
+    "question": "フィールドシャドウイング時に参照される値は？",
+    "code": "class A { int v = 8; }\nclass B extends A { int v = 108; }\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        System.out.println(a.v);\n    }\n}",
+    "choices": [
+      "8",
+      "108",
+      "コンパイルエラー",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "フィールド参照は静的型に基づく（A型のv）。",
+    "id": 224
+  },
+  {
+    "category": "Java Silver/オブジェクト指向の基礎（フィールド）",
+    "difficulty": "中級",
+    "question": "フィールドシャドウイング時に参照される値は？",
+    "code": "class A { int v = 9; }\nclass B extends A { int v = 109; }\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        System.out.println(a.v);\n    }\n}",
+    "choices": [
+      "9",
+      "109",
+      "コンパイルエラー",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "フィールド参照は静的型に基づく（A型のv）。",
+    "id": 225
+  },
+  {
+    "category": "Java Silver/オブジェクト指向の基礎（static）",
+    "difficulty": "中級",
+    "question": "staticメソッドの呼び出し結果は？",
+    "code": "class A { static void m(){ System.out.println(\"A10\"); } }\nclass B extends A { static void m(){ System.out.println(\"B10\"); } }\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        a.m();\n    }\n}",
+    "choices": [
+      "A10",
+      "B10",
+      "コンパイルエラー",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "staticはオーバーライドではなく隠蔽。参照の静的型Aに結びつく。",
+    "id": 226
+  },
+  {
+    "category": "Java Silver/オブジェクト指向の基礎（static）",
+    "difficulty": "中級",
+    "question": "staticメソッドの呼び出し結果は？",
+    "code": "class A { static void m(){ System.out.println(\"A11\"); } }\nclass B extends A { static void m(){ System.out.println(\"B11\"); } }\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        a.m();\n    }\n}",
+    "choices": [
+      "A11",
+      "B11",
+      "コンパイルエラー",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "staticはオーバーライドではなく隠蔽。参照の静的型Aに結びつく。",
+    "id": 227
+  },
+  {
+    "category": "Java Silver/オブジェクト指向の基礎（static）",
+    "difficulty": "中級",
+    "question": "staticメソッドの呼び出し結果は？",
+    "code": "class A { static void m(){ System.out.println(\"A12\"); } }\nclass B extends A { static void m(){ System.out.println(\"B12\"); } }\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        a.m();\n    }\n}",
+    "choices": [
+      "A12",
+      "B12",
+      "コンパイルエラー",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "staticはオーバーライドではなく隠蔽。参照の静的型Aに結びつく。",
+    "id": 228
+  },
+  {
+    "category": "Java Silver/オブジェクト指向の基礎（static）",
+    "difficulty": "中級",
+    "question": "staticメソッドの呼び出し結果は？",
+    "code": "class A { static void m(){ System.out.println(\"A13\"); } }\nclass B extends A { static void m(){ System.out.println(\"B13\"); } }\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        a.m();\n    }\n}",
+    "choices": [
+      "A13",
+      "B13",
+      "コンパイルエラー",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "staticはオーバーライドではなく隠蔽。参照の静的型Aに結びつく。",
+    "id": 229
+  },
+  {
+    "category": "Java Silver/オブジェクト指向の基礎（static）",
+    "difficulty": "中級",
+    "question": "staticメソッドの呼び出し結果は？",
+    "code": "class A { static void m(){ System.out.println(\"A14\"); } }\nclass B extends A { static void m(){ System.out.println(\"B14\"); } }\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        a.m();\n    }\n}",
+    "choices": [
+      "A14",
+      "B14",
+      "コンパイルエラー",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "staticはオーバーライドではなく隠蔽。参照の静的型Aに結びつく。",
+    "id": 230
+  },
+  {
+    "category": "Java Silver/オブジェクト指向の基礎（static）",
+    "difficulty": "中級",
+    "question": "staticメソッドの呼び出し結果は？",
+    "code": "class A { static void m(){ System.out.println(\"A15\"); } }\nclass B extends A { static void m(){ System.out.println(\"B15\"); } }\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        a.m();\n    }\n}",
+    "choices": [
+      "A15",
+      "B15",
+      "コンパイルエラー",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "staticはオーバーライドではなく隠蔽。参照の静的型Aに結びつく。",
+    "id": 231
+  },
+  {
+    "category": "Java Silver/オブジェクト指向の基礎（static）",
+    "difficulty": "中級",
+    "question": "staticメソッドの呼び出し結果は？",
+    "code": "class A { static void m(){ System.out.println(\"A16\"); } }\nclass B extends A { static void m(){ System.out.println(\"B16\"); } }\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        a.m();\n    }\n}",
+    "choices": [
+      "A16",
+      "B16",
+      "コンパイルエラー",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "staticはオーバーライドではなく隠蔽。参照の静的型Aに結びつく。",
+    "id": 232
+  },
+  {
+    "category": "Java Silver/オブジェクト指向の基礎（static）",
+    "difficulty": "中級",
+    "question": "staticメソッドの呼び出し結果は？",
+    "code": "class A { static void m(){ System.out.println(\"A17\"); } }\nclass B extends A { static void m(){ System.out.println(\"B17\"); } }\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        a.m();\n    }\n}",
+    "choices": [
+      "A17",
+      "B17",
+      "コンパイルエラー",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "staticはオーバーライドではなく隠蔽。参照の静的型Aに結びつく。",
+    "id": 233
+  },
+  {
+    "category": "Java Silver/オブジェクト指向の基礎（static）",
+    "difficulty": "中級",
+    "question": "staticメソッドの呼び出し結果は？",
+    "code": "class A { static void m(){ System.out.println(\"A18\"); } }\nclass B extends A { static void m(){ System.out.println(\"B18\"); } }\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        a.m();\n    }\n}",
+    "choices": [
+      "A18",
+      "B18",
+      "コンパイルエラー",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "staticはオーバーライドではなく隠蔽。参照の静的型Aに結びつく。",
+    "id": 234
+  },
+  {
+    "category": "Java Silver/オブジェクト指向の基礎（static）",
+    "difficulty": "中級",
+    "question": "staticメソッドの呼び出し結果は？",
+    "code": "class A { static void m(){ System.out.println(\"A19\"); } }\nclass B extends A { static void m(){ System.out.println(\"B19\"); } }\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        a.m();\n    }\n}",
+    "choices": [
+      "A19",
+      "B19",
+      "コンパイルエラー",
+      "実行時エラー",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "staticはオーバーライドではなく隠蔽。参照の静的型Aに結びつく。",
+    "id": 235
+  },
+  {
+    "category": "Java Silver/例外処理",
+    "difficulty": "中級",
+    "question": "例外発生時のcatch/finallyの出力順は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        try {\n            int x = 1 / 0;\n        } catch (ArithmeticException e) {\n            System.out.println(\"CATCH\");\n        } finally {\n            System.out.println(\"FINALLY\");\n        }\n    }\n}",
+    "choices": [
+      "CATCH と FINALLY",
+      "FINALLY のみ",
+      "CATCH のみ",
+      "エラーになる",
+      "出力なし"
+    ],
+    "answerIndex": 0,
+    "explanation": "例外をcatch後、finallyは必ず実行される。",
+    "id": 236
+  },
+  {
+    "category": "Java Silver/例外処理",
+    "difficulty": "中級",
+    "question": "例外発生時のcatch/finallyの出力順は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        try {\n            int x = 1 / 0;\n        } catch (ArithmeticException e) {\n            System.out.println(\"CATCH\");\n        } finally {\n            System.out.println(\"FINALLY\");\n        }\n    }\n}",
+    "choices": [
+      "CATCH と FINALLY",
+      "FINALLY のみ",
+      "CATCH のみ",
+      "エラーになる",
+      "出力なし"
+    ],
+    "answerIndex": 0,
+    "explanation": "例外をcatch後、finallyは必ず実行される。",
+    "id": 237
+  },
+  {
+    "category": "Java Silver/例外処理",
+    "difficulty": "中級",
+    "question": "例外発生時のcatch/finallyの出力順は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        try {\n            int x = 1 / 0;\n        } catch (ArithmeticException e) {\n            System.out.println(\"CATCH\");\n        } finally {\n            System.out.println(\"FINALLY\");\n        }\n    }\n}",
+    "choices": [
+      "CATCH と FINALLY",
+      "FINALLY のみ",
+      "CATCH のみ",
+      "エラーになる",
+      "出力なし"
+    ],
+    "answerIndex": 0,
+    "explanation": "例外をcatch後、finallyは必ず実行される。",
+    "id": 238
+  },
+  {
+    "category": "Java Silver/例外処理",
+    "difficulty": "中級",
+    "question": "例外発生時のcatch/finallyの出力順は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        try {\n            int x = 1 / 0;\n        } catch (ArithmeticException e) {\n            System.out.println(\"CATCH\");\n        } finally {\n            System.out.println(\"FINALLY\");\n        }\n    }\n}",
+    "choices": [
+      "CATCH と FINALLY",
+      "FINALLY のみ",
+      "CATCH のみ",
+      "エラーになる",
+      "出力なし"
+    ],
+    "answerIndex": 0,
+    "explanation": "例外をcatch後、finallyは必ず実行される。",
+    "id": 239
+  },
+  {
+    "category": "Java Silver/例外処理",
+    "difficulty": "中級",
+    "question": "例外発生時のcatch/finallyの出力順は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        try {\n            int x = 1 / 0;\n        } catch (ArithmeticException e) {\n            System.out.println(\"CATCH\");\n        } finally {\n            System.out.println(\"FINALLY\");\n        }\n    }\n}",
+    "choices": [
+      "CATCH と FINALLY",
+      "FINALLY のみ",
+      "CATCH のみ",
+      "エラーになる",
+      "出力なし"
+    ],
+    "answerIndex": 0,
+    "explanation": "例外をcatch後、finallyは必ず実行される。",
+    "id": 240
+  },
+  {
+    "category": "Java Silver/例外処理",
+    "difficulty": "中級",
+    "question": "例外発生時のcatch/finallyの出力順は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        try {\n            int x = 1 / 0;\n        } catch (ArithmeticException e) {\n            System.out.println(\"CATCH\");\n        } finally {\n            System.out.println(\"FINALLY\");\n        }\n    }\n}",
+    "choices": [
+      "CATCH と FINALLY",
+      "FINALLY のみ",
+      "CATCH のみ",
+      "エラーになる",
+      "出力なし"
+    ],
+    "answerIndex": 0,
+    "explanation": "例外をcatch後、finallyは必ず実行される。",
+    "id": 241
+  },
+  {
+    "category": "Java Silver/例外処理",
+    "difficulty": "中級",
+    "question": "例外発生時のcatch/finallyの出力順は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        try {\n            int x = 1 / 0;\n        } catch (ArithmeticException e) {\n            System.out.println(\"CATCH\");\n        } finally {\n            System.out.println(\"FINALLY\");\n        }\n    }\n}",
+    "choices": [
+      "CATCH と FINALLY",
+      "FINALLY のみ",
+      "CATCH のみ",
+      "エラーになる",
+      "出力なし"
+    ],
+    "answerIndex": 0,
+    "explanation": "例外をcatch後、finallyは必ず実行される。",
+    "id": 242
+  },
+  {
+    "category": "Java Silver/例外処理",
+    "difficulty": "中級",
+    "question": "例外発生時のcatch/finallyの出力順は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        try {\n            int x = 1 / 0;\n        } catch (ArithmeticException e) {\n            System.out.println(\"CATCH\");\n        } finally {\n            System.out.println(\"FINALLY\");\n        }\n    }\n}",
+    "choices": [
+      "CATCH と FINALLY",
+      "FINALLY のみ",
+      "CATCH のみ",
+      "エラーになる",
+      "出力なし"
+    ],
+    "answerIndex": 0,
+    "explanation": "例外をcatch後、finallyは必ず実行される。",
+    "id": 243
+  },
+  {
+    "category": "Java Silver/例外処理",
+    "difficulty": "中級",
+    "question": "例外発生時のcatch/finallyの出力順は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        try {\n            int x = 1 / 0;\n        } catch (ArithmeticException e) {\n            System.out.println(\"CATCH\");\n        } finally {\n            System.out.println(\"FINALLY\");\n        }\n    }\n}",
+    "choices": [
+      "CATCH と FINALLY",
+      "FINALLY のみ",
+      "CATCH のみ",
+      "エラーになる",
+      "出力なし"
+    ],
+    "answerIndex": 0,
+    "explanation": "例外をcatch後、finallyは必ず実行される。",
+    "id": 244
+  },
+  {
+    "category": "Java Silver/例外処理",
+    "difficulty": "中級",
+    "question": "例外発生時のcatch/finallyの出力順は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        try {\n            int x = 1 / 0;\n        } catch (ArithmeticException e) {\n            System.out.println(\"CATCH\");\n        } finally {\n            System.out.println(\"FINALLY\");\n        }\n    }\n}",
+    "choices": [
+      "CATCH と FINALLY",
+      "FINALLY のみ",
+      "CATCH のみ",
+      "エラーになる",
+      "出力なし"
+    ],
+    "answerIndex": 0,
+    "explanation": "例外をcatch後、finallyは必ず実行される。",
+    "id": 245
+  },
+  {
+    "category": "Java Silver/標準APIの利用（IO基礎）",
+    "difficulty": "上級",
+    "question": "try-with-resourcesのクローズ順を考えると、出力は？",
+    "code": "class R implements AutoCloseable {\n    public void close(){ System.out.print(\"C0\"); }\n    void work(){ System.out.print(\"W0\"); }\n}\npublic class Main {\n    public static void main(String[] args) {\n        try(R r = new R()){\n            r.work();\n        }\n    }\n}",
+    "choices": [
+      "W0C0",
+      "C0W0",
+      "C0 のみ",
+      "W0 のみ",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "本体でW、その後自動でclose()が呼ばれCが続く。",
+    "id": 246
+  },
+  {
+    "category": "Java Silver/標準APIの利用（IO基礎）",
+    "difficulty": "上級",
+    "question": "try-with-resourcesのクローズ順を考えると、出力は？",
+    "code": "class R implements AutoCloseable {\n    public void close(){ System.out.print(\"C1\"); }\n    void work(){ System.out.print(\"W1\"); }\n}\npublic class Main {\n    public static void main(String[] args) {\n        try(R r = new R()){\n            r.work();\n        }\n    }\n}",
+    "choices": [
+      "W1C1",
+      "C1W1",
+      "C1 のみ",
+      "W1 のみ",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "本体でW、その後自動でclose()が呼ばれCが続く。",
+    "id": 247
+  },
+  {
+    "category": "Java Silver/標準APIの利用（IO基礎）",
+    "difficulty": "上級",
+    "question": "try-with-resourcesのクローズ順を考えると、出力は？",
+    "code": "class R implements AutoCloseable {\n    public void close(){ System.out.print(\"C2\"); }\n    void work(){ System.out.print(\"W2\"); }\n}\npublic class Main {\n    public static void main(String[] args) {\n        try(R r = new R()){\n            r.work();\n        }\n    }\n}",
+    "choices": [
+      "W2C2",
+      "C2W2",
+      "C2 のみ",
+      "W2 のみ",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "本体でW、その後自動でclose()が呼ばれCが続く。",
+    "id": 248
+  },
+  {
+    "category": "Java Silver/標準APIの利用（IO基礎）",
+    "difficulty": "上級",
+    "question": "try-with-resourcesのクローズ順を考えると、出力は？",
+    "code": "class R implements AutoCloseable {\n    public void close(){ System.out.print(\"C3\"); }\n    void work(){ System.out.print(\"W3\"); }\n}\npublic class Main {\n    public static void main(String[] args) {\n        try(R r = new R()){\n            r.work();\n        }\n    }\n}",
+    "choices": [
+      "W3C3",
+      "C3W3",
+      "C3 のみ",
+      "W3 のみ",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "本体でW、その後自動でclose()が呼ばれCが続く。",
+    "id": 249
+  },
+  {
+    "category": "Java Silver/標準APIの利用（IO基礎）",
+    "difficulty": "上級",
+    "question": "try-with-resourcesのクローズ順を考えると、出力は？",
+    "code": "class R implements AutoCloseable {\n    public void close(){ System.out.print(\"C4\"); }\n    void work(){ System.out.print(\"W4\"); }\n}\npublic class Main {\n    public static void main(String[] args) {\n        try(R r = new R()){\n            r.work();\n        }\n    }\n}",
+    "choices": [
+      "W4C4",
+      "C4W4",
+      "C4 のみ",
+      "W4 のみ",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "本体でW、その後自動でclose()が呼ばれCが続く。",
+    "id": 250
+  },
+  {
+    "category": "Java Silver/標準APIの利用（IO基礎）",
+    "difficulty": "上級",
+    "question": "try-with-resourcesのクローズ順を考えると、出力は？",
+    "code": "class R implements AutoCloseable {\n    public void close(){ System.out.print(\"C5\"); }\n    void work(){ System.out.print(\"W5\"); }\n}\npublic class Main {\n    public static void main(String[] args) {\n        try(R r = new R()){\n            r.work();\n        }\n    }\n}",
+    "choices": [
+      "W5C5",
+      "C5W5",
+      "C5 のみ",
+      "W5 のみ",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "本体でW、その後自動でclose()が呼ばれCが続く。",
+    "id": 251
+  },
+  {
+    "category": "Java Silver/標準APIの利用（IO基礎）",
+    "difficulty": "上級",
+    "question": "try-with-resourcesのクローズ順を考えると、出力は？",
+    "code": "class R implements AutoCloseable {\n    public void close(){ System.out.print(\"C6\"); }\n    void work(){ System.out.print(\"W6\"); }\n}\npublic class Main {\n    public static void main(String[] args) {\n        try(R r = new R()){\n            r.work();\n        }\n    }\n}",
+    "choices": [
+      "W6C6",
+      "C6W6",
+      "C6 のみ",
+      "W6 のみ",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "本体でW、その後自動でclose()が呼ばれCが続く。",
+    "id": 252
+  },
+  {
+    "category": "Java Silver/標準APIの利用（IO基礎）",
+    "difficulty": "上級",
+    "question": "try-with-resourcesのクローズ順を考えると、出力は？",
+    "code": "class R implements AutoCloseable {\n    public void close(){ System.out.print(\"C7\"); }\n    void work(){ System.out.print(\"W7\"); }\n}\npublic class Main {\n    public static void main(String[] args) {\n        try(R r = new R()){\n            r.work();\n        }\n    }\n}",
+    "choices": [
+      "W7C7",
+      "C7W7",
+      "C7 のみ",
+      "W7 のみ",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "本体でW、その後自動でclose()が呼ばれCが続く。",
+    "id": 253
+  },
+  {
+    "category": "Java Silver/標準APIの利用（IO基礎）",
+    "difficulty": "上級",
+    "question": "try-with-resourcesのクローズ順を考えると、出力は？",
+    "code": "class R implements AutoCloseable {\n    public void close(){ System.out.print(\"C8\"); }\n    void work(){ System.out.print(\"W8\"); }\n}\npublic class Main {\n    public static void main(String[] args) {\n        try(R r = new R()){\n            r.work();\n        }\n    }\n}",
+    "choices": [
+      "W8C8",
+      "C8W8",
+      "C8 のみ",
+      "W8 のみ",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "本体でW、その後自動でclose()が呼ばれCが続く。",
+    "id": 254
+  },
+  {
+    "category": "Java Silver/標準APIの利用（IO基礎）",
+    "difficulty": "上級",
+    "question": "try-with-resourcesのクローズ順を考えると、出力は？",
+    "code": "class R implements AutoCloseable {\n    public void close(){ System.out.print(\"C9\"); }\n    void work(){ System.out.print(\"W9\"); }\n}\npublic class Main {\n    public static void main(String[] args) {\n        try(R r = new R()){\n            r.work();\n        }\n    }\n}",
+    "choices": [
+      "W9C9",
+      "C9W9",
+      "C9 のみ",
+      "W9 のみ",
+      "エラーになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "本体でW、その後自動でclose()が呼ばれCが続く。",
+    "id": 255
+  },
+  {
+    "category": "Java Silver/配列",
+    "difficulty": "中級",
+    "question": "配列アクセスの結果として正しいものは？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int[] a = {10,20,30};\n        System.out.println(a[0]);\n    }\n}",
+    "choices": [
+      "10",
+      "20",
+      "30",
+      "実行時エラー（ArrayIndexOutOfBoundsException）",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 0,
+    "explanation": "インデックスは0〜length-1。範囲外は実行時例外。",
+    "id": 256
+  },
+  {
+    "category": "Java Silver/配列",
+    "difficulty": "中級",
+    "question": "配列アクセスの結果として正しいものは？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int[] a = {10,20,30};\n        System.out.println(a[1]);\n    }\n}",
+    "choices": [
+      "10",
+      "20",
+      "30",
+      "実行時エラー（ArrayIndexOutOfBoundsException）",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 1,
+    "explanation": "インデックスは0〜length-1。範囲外は実行時例外。",
+    "id": 257
+  },
+  {
+    "category": "Java Silver/配列",
+    "difficulty": "中級",
+    "question": "配列アクセスの結果として正しいものは？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int[] a = {10,20,30};\n        System.out.println(a[2]);\n    }\n}",
+    "choices": [
+      "10",
+      "20",
+      "30",
+      "実行時エラー（ArrayIndexOutOfBoundsException）",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 2,
+    "explanation": "インデックスは0〜length-1。範囲外は実行時例外。",
+    "id": 258
+  },
+  {
+    "category": "Java Silver/配列",
+    "difficulty": "中級",
+    "question": "配列アクセスの結果として正しいものは？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int[] a = {10,20,30};\n        System.out.println(a[3]);\n    }\n}",
+    "choices": [
+      "10",
+      "20",
+      "30",
+      "実行時エラー（ArrayIndexOutOfBoundsException）",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 3,
+    "explanation": "インデックスは0〜length-1。範囲外は実行時例外。",
+    "id": 259
+  },
+  {
+    "category": "Java Silver/配列",
+    "difficulty": "中級",
+    "question": "配列アクセスの結果として正しいものは？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int[] a = {10,20,30};\n        System.out.println(a[0]);\n    }\n}",
+    "choices": [
+      "10",
+      "20",
+      "30",
+      "実行時エラー（ArrayIndexOutOfBoundsException）",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 0,
+    "explanation": "インデックスは0〜length-1。範囲外は実行時例外。",
+    "id": 260
+  },
+  {
+    "category": "Java Silver/配列",
+    "difficulty": "中級",
+    "question": "配列アクセスの結果として正しいものは？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int[] a = {10,20,30};\n        System.out.println(a[1]);\n    }\n}",
+    "choices": [
+      "10",
+      "20",
+      "30",
+      "実行時エラー（ArrayIndexOutOfBoundsException）",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 1,
+    "explanation": "インデックスは0〜length-1。範囲外は実行時例外。",
+    "id": 261
+  },
+  {
+    "category": "Java Silver/配列",
+    "difficulty": "中級",
+    "question": "配列アクセスの結果として正しいものは？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int[] a = {10,20,30};\n        System.out.println(a[2]);\n    }\n}",
+    "choices": [
+      "10",
+      "20",
+      "30",
+      "実行時エラー（ArrayIndexOutOfBoundsException）",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 2,
+    "explanation": "インデックスは0〜length-1。範囲外は実行時例外。",
+    "id": 262
+  },
+  {
+    "category": "Java Silver/配列",
+    "difficulty": "中級",
+    "question": "配列アクセスの結果として正しいものは？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int[] a = {10,20,30};\n        System.out.println(a[3]);\n    }\n}",
+    "choices": [
+      "10",
+      "20",
+      "30",
+      "実行時エラー（ArrayIndexOutOfBoundsException）",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 3,
+    "explanation": "インデックスは0〜length-1。範囲外は実行時例外。",
+    "id": 263
+  },
+  {
+    "category": "Java Silver/ラムダ式/関数型",
+    "difficulty": "上級",
+    "question": "コメント行を有効にするとコンパイルはどうなる？（effectively final）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String msg = \"Hello\";\n        Runnable r = () -> System.out.println(msg);\n        // msg = \"World\"; // これを有効にすると？\n        r.run();\n    }\n}",
+    "choices": [
+      "コンパイルエラー",
+      "正常にコンパイル・実行",
+      "実行時例外",
+      "出力はHelloになる",
+      "出力はWorldになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "ラムダがキャプチャするローカル変数は実質finalでなければならない。",
+    "id": 264
+  },
+  {
+    "category": "Java Silver/ラムダ式/関数型",
+    "difficulty": "上級",
+    "question": "コメント行を有効にするとコンパイルはどうなる？（effectively final）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String msg = \"Hello\";\n        Runnable r = () -> System.out.println(msg);\n        // msg = \"World\"; // これを有効にすると？\n        r.run();\n    }\n}",
+    "choices": [
+      "コンパイルエラー",
+      "正常にコンパイル・実行",
+      "実行時例外",
+      "出力はHelloになる",
+      "出力はWorldになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "ラムダがキャプチャするローカル変数は実質finalでなければならない。",
+    "id": 265
+  },
+  {
+    "category": "Java Silver/ラムダ式/関数型",
+    "difficulty": "上級",
+    "question": "コメント行を有効にするとコンパイルはどうなる？（effectively final）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String msg = \"Hello\";\n        Runnable r = () -> System.out.println(msg);\n        // msg = \"World\"; // これを有効にすると？\n        r.run();\n    }\n}",
+    "choices": [
+      "コンパイルエラー",
+      "正常にコンパイル・実行",
+      "実行時例外",
+      "出力はHelloになる",
+      "出力はWorldになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "ラムダがキャプチャするローカル変数は実質finalでなければならない。",
+    "id": 266
+  },
+  {
+    "category": "Java Silver/ラムダ式/関数型",
+    "difficulty": "上級",
+    "question": "コメント行を有効にするとコンパイルはどうなる？（effectively final）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String msg = \"Hello\";\n        Runnable r = () -> System.out.println(msg);\n        // msg = \"World\"; // これを有効にすると？\n        r.run();\n    }\n}",
+    "choices": [
+      "コンパイルエラー",
+      "正常にコンパイル・実行",
+      "実行時例外",
+      "出力はHelloになる",
+      "出力はWorldになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "ラムダがキャプチャするローカル変数は実質finalでなければならない。",
+    "id": 267
+  },
+  {
+    "category": "Java Silver/ラムダ式/関数型",
+    "difficulty": "上級",
+    "question": "コメント行を有効にするとコンパイルはどうなる？（effectively final）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String msg = \"Hello\";\n        Runnable r = () -> System.out.println(msg);\n        // msg = \"World\"; // これを有効にすると？\n        r.run();\n    }\n}",
+    "choices": [
+      "コンパイルエラー",
+      "正常にコンパイル・実行",
+      "実行時例外",
+      "出力はHelloになる",
+      "出力はWorldになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "ラムダがキャプチャするローカル変数は実質finalでなければならない。",
+    "id": 268
+  },
+  {
+    "category": "Java Silver/ラムダ式/関数型",
+    "difficulty": "上級",
+    "question": "コメント行を有効にするとコンパイルはどうなる？（effectively final）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String msg = \"Hello\";\n        Runnable r = () -> System.out.println(msg);\n        // msg = \"World\"; // これを有効にすると？\n        r.run();\n    }\n}",
+    "choices": [
+      "コンパイルエラー",
+      "正常にコンパイル・実行",
+      "実行時例外",
+      "出力はHelloになる",
+      "出力はWorldになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "ラムダがキャプチャするローカル変数は実質finalでなければならない。",
+    "id": 269
+  },
+  {
+    "category": "Java Silver/ラムダ式/関数型",
+    "difficulty": "上級",
+    "question": "コメント行を有効にするとコンパイルはどうなる？（effectively final）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String msg = \"Hello\";\n        Runnable r = () -> System.out.println(msg);\n        // msg = \"World\"; // これを有効にすると？\n        r.run();\n    }\n}",
+    "choices": [
+      "コンパイルエラー",
+      "正常にコンパイル・実行",
+      "実行時例外",
+      "出力はHelloになる",
+      "出力はWorldになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "ラムダがキャプチャするローカル変数は実質finalでなければならない。",
+    "id": 270
+  },
+  {
+    "category": "Java Silver/ラムダ式/関数型",
+    "difficulty": "上級",
+    "question": "コメント行を有効にするとコンパイルはどうなる？（effectively final）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String msg = \"Hello\";\n        Runnable r = () -> System.out.println(msg);\n        // msg = \"World\"; // これを有効にすると？\n        r.run();\n    }\n}",
+    "choices": [
+      "コンパイルエラー",
+      "正常にコンパイル・実行",
+      "実行時例外",
+      "出力はHelloになる",
+      "出力はWorldになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "ラムダがキャプチャするローカル変数は実質finalでなければならない。",
+    "id": 271
+  },
+  {
+    "category": "Java Silver/ラムダ式/関数型",
+    "difficulty": "上級",
+    "question": "コメント行を有効にするとコンパイルはどうなる？（effectively final）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String msg = \"Hello\";\n        Runnable r = () -> System.out.println(msg);\n        // msg = \"World\"; // これを有効にすると？\n        r.run();\n    }\n}",
+    "choices": [
+      "コンパイルエラー",
+      "正常にコンパイル・実行",
+      "実行時例外",
+      "出力はHelloになる",
+      "出力はWorldになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "ラムダがキャプチャするローカル変数は実質finalでなければならない。",
+    "id": 272
+  },
+  {
+    "category": "Java Silver/ラムダ式/関数型",
+    "difficulty": "上級",
+    "question": "コメント行を有効にするとコンパイルはどうなる？（effectively final）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String msg = \"Hello\";\n        Runnable r = () -> System.out.println(msg);\n        // msg = \"World\"; // これを有効にすると？\n        r.run();\n    }\n}",
+    "choices": [
+      "コンパイルエラー",
+      "正常にコンパイル・実行",
+      "実行時例外",
+      "出力はHelloになる",
+      "出力はWorldになる"
+    ],
+    "answerIndex": 0,
+    "explanation": "ラムダがキャプチャするローカル変数は実質finalでなければならない。",
+    "id": 273
+  },
+  {
+    "category": "Java Silver/制御構文",
+    "difficulty": "上級",
+    "question": "switch式とyieldの挙動として正しい出力を選んでください。",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int r = switch (\"A\") {\n            case \"A\" -> 1;\n            case \"B\", \"C\" -> { yield 2; }\n            default -> 0;\n        };\n        System.out.println(r);\n    }\n}",
+    "choices": [
+      "1",
+      "2",
+      "0",
+      "コンパイルエラー",
+      "実行時エラー"
+    ],
+    "answerIndex": 0,
+    "explanation": "switch式は各ケースで値を返す。ブロックではyieldで返す。",
+    "id": 274
+  },
+  {
+    "category": "Java Silver/制御構文",
+    "difficulty": "上級",
+    "question": "switch式とyieldの挙動として正しい出力を選んでください。",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int r = switch (\"B\") {\n            case \"A\" -> 1;\n            case \"B\", \"C\" -> { yield 2; }\n            default -> 0;\n        };\n        System.out.println(r);\n    }\n}",
+    "choices": [
+      "1",
+      "2",
+      "0",
+      "コンパイルエラー",
+      "実行時エラー"
+    ],
+    "answerIndex": 1,
+    "explanation": "switch式は各ケースで値を返す。ブロックではyieldで返す。",
+    "id": 275
+  },
+  {
+    "category": "Java Silver/制御構文",
+    "difficulty": "上級",
+    "question": "switch式とyieldの挙動として正しい出力を選んでください。",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int r = switch (\"C\") {\n            case \"A\" -> 1;\n            case \"B\", \"C\" -> { yield 2; }\n            default -> 0;\n        };\n        System.out.println(r);\n    }\n}",
+    "choices": [
+      "1",
+      "2",
+      "0",
+      "コンパイルエラー",
+      "実行時エラー"
+    ],
+    "answerIndex": 1,
+    "explanation": "switch式は各ケースで値を返す。ブロックではyieldで返す。",
+    "id": 276
+  },
+  {
+    "category": "Java Silver/制御構文",
+    "difficulty": "上級",
+    "question": "switch式とyieldの挙動として正しい出力を選んでください。",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int r = switch (\"Z\") {\n            case \"A\" -> 1;\n            case \"B\", \"C\" -> { yield 2; }\n            default -> 0;\n        };\n        System.out.println(r);\n    }\n}",
+    "choices": [
+      "1",
+      "2",
+      "0",
+      "コンパイルエラー",
+      "実行時エラー"
+    ],
+    "answerIndex": 2,
+    "explanation": "switch式は各ケースで値を返す。ブロックではyieldで返す。",
+    "id": 277
+  },
+  {
+    "category": "Java Silver/制御構文",
+    "difficulty": "上級",
+    "question": "switch式とyieldの挙動として正しい出力を選んでください。",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int r = switch (\"A\") {\n            case \"A\" -> 1;\n            case \"B\", \"C\" -> { yield 2; }\n            default -> 0;\n        };\n        System.out.println(r);\n    }\n}",
+    "choices": [
+      "1",
+      "2",
+      "0",
+      "コンパイルエラー",
+      "実行時エラー"
+    ],
+    "answerIndex": 0,
+    "explanation": "switch式は各ケースで値を返す。ブロックではyieldで返す。",
+    "id": 278
+  },
+  {
+    "category": "Java Silver/制御構文",
+    "difficulty": "上級",
+    "question": "switch式とyieldの挙動として正しい出力を選んでください。",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int r = switch (\"B\") {\n            case \"A\" -> 1;\n            case \"B\", \"C\" -> { yield 2; }\n            default -> 0;\n        };\n        System.out.println(r);\n    }\n}",
+    "choices": [
+      "1",
+      "2",
+      "0",
+      "コンパイルエラー",
+      "実行時エラー"
+    ],
+    "answerIndex": 1,
+    "explanation": "switch式は各ケースで値を返す。ブロックではyieldで返す。",
+    "id": 279
+  },
+  {
+    "category": "Java Silver/制御構文",
+    "difficulty": "上級",
+    "question": "switch式とyieldの挙動として正しい出力を選んでください。",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int r = switch (\"C\") {\n            case \"A\" -> 1;\n            case \"B\", \"C\" -> { yield 2; }\n            default -> 0;\n        };\n        System.out.println(r);\n    }\n}",
+    "choices": [
+      "1",
+      "2",
+      "0",
+      "コンパイルエラー",
+      "実行時エラー"
+    ],
+    "answerIndex": 1,
+    "explanation": "switch式は各ケースで値を返す。ブロックではyieldで返す。",
+    "id": 280
+  },
+  {
+    "category": "Java Silver/制御構文",
+    "difficulty": "上級",
+    "question": "switch式とyieldの挙動として正しい出力を選んでください。",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int r = switch (\"Z\") {\n            case \"A\" -> 1;\n            case \"B\", \"C\" -> { yield 2; }\n            default -> 0;\n        };\n        System.out.println(r);\n    }\n}",
+    "choices": [
+      "1",
+      "2",
+      "0",
+      "コンパイルエラー",
+      "実行時エラー"
+    ],
+    "answerIndex": 2,
+    "explanation": "switch式は各ケースで値を返す。ブロックではyieldで返す。",
+    "id": 281
+  },
+  {
+    "category": "Java Silver/標準APIの利用（Optional）",
+    "difficulty": "中級",
+    "question": "OptionalのisPresentの出力として正しいものは？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        java.util.Optional<String> o = java.util.Optional.of(\"X\"); System.out.println(o.isPresent());\n    }\n}",
+    "choices": [
+      "true",
+      "false",
+      "null",
+      "エラーになる",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "ofは非null値を包み、emptyは空を表す。",
+    "id": 282
+  },
+  {
+    "category": "Java Silver/標準APIの利用（Optional）",
+    "difficulty": "中級",
+    "question": "OptionalのisPresentの出力として正しいものは？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        java.util.Optional<String> o = java.util.Optional.empty(); System.out.println(o.isPresent());\n    }\n}",
+    "choices": [
+      "true",
+      "false",
+      "null",
+      "エラーになる",
+      "未定義"
+    ],
+    "answerIndex": 1,
+    "explanation": "ofは非null値を包み、emptyは空を表す。",
+    "id": 283
+  },
+  {
+    "category": "Java Silver/標準APIの利用（Optional）",
+    "difficulty": "中級",
+    "question": "OptionalのisPresentの出力として正しいものは？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        java.util.Optional<String> o = java.util.Optional.of(\"X\"); System.out.println(o.isPresent());\n    }\n}",
+    "choices": [
+      "true",
+      "false",
+      "null",
+      "エラーになる",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "ofは非null値を包み、emptyは空を表す。",
+    "id": 284
+  },
+  {
+    "category": "Java Silver/標準APIの利用（Optional）",
+    "difficulty": "中級",
+    "question": "OptionalのisPresentの出力として正しいものは？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        java.util.Optional<String> o = java.util.Optional.empty(); System.out.println(o.isPresent());\n    }\n}",
+    "choices": [
+      "true",
+      "false",
+      "null",
+      "エラーになる",
+      "未定義"
+    ],
+    "answerIndex": 1,
+    "explanation": "ofは非null値を包み、emptyは空を表す。",
+    "id": 285
+  },
+  {
+    "category": "Java Silver/標準APIの利用（Optional）",
+    "difficulty": "中級",
+    "question": "OptionalのisPresentの出力として正しいものは？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        java.util.Optional<String> o = java.util.Optional.of(\"X\"); System.out.println(o.isPresent());\n    }\n}",
+    "choices": [
+      "true",
+      "false",
+      "null",
+      "エラーになる",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "ofは非null値を包み、emptyは空を表す。",
+    "id": 286
+  },
+  {
+    "category": "Java Silver/標準APIの利用（Optional）",
+    "difficulty": "中級",
+    "question": "OptionalのisPresentの出力として正しいものは？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        java.util.Optional<String> o = java.util.Optional.empty(); System.out.println(o.isPresent());\n    }\n}",
+    "choices": [
+      "true",
+      "false",
+      "null",
+      "エラーになる",
+      "未定義"
+    ],
+    "answerIndex": 1,
+    "explanation": "ofは非null値を包み、emptyは空を表す。",
+    "id": 287
+  },
+  {
+    "category": "Java Silver/標準APIの利用（Optional）",
+    "difficulty": "中級",
+    "question": "OptionalのisPresentの出力として正しいものは？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        java.util.Optional<String> o = java.util.Optional.of(\"X\"); System.out.println(o.isPresent());\n    }\n}",
+    "choices": [
+      "true",
+      "false",
+      "null",
+      "エラーになる",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "ofは非null値を包み、emptyは空を表す。",
+    "id": 288
+  },
+  {
+    "category": "Java Silver/標準APIの利用（Optional）",
+    "difficulty": "中級",
+    "question": "OptionalのisPresentの出力として正しいものは？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        java.util.Optional<String> o = java.util.Optional.empty(); System.out.println(o.isPresent());\n    }\n}",
+    "choices": [
+      "true",
+      "false",
+      "null",
+      "エラーになる",
+      "未定義"
+    ],
+    "answerIndex": 1,
+    "explanation": "ofは非null値を包み、emptyは空を表す。",
+    "id": 289
+  },
+  {
+    "category": "Java Silver/標準APIの利用（配列）",
+    "difficulty": "中級",
+    "question": "Arrays.sortで整列後の出力として正しいものは？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        int[] a = new int[]{3,1,2};\n        java.util.Arrays.sort(a);\n        System.out.println(java.util.Arrays.toString(a));\n    }\n}",
+    "choices": [
+      "[1, 2, 3]",
+      "[3, 1, 2]",
+      "[3, 2, 1]",
+      "コンパイルエラー",
+      "[]"
+    ],
+    "answerIndex": 0,
+    "explanation": "プリミティブ配列は昇順の自然順序。",
+    "id": 290
+  },
+  {
+    "category": "Java Silver/標準APIの利用（配列）",
+    "difficulty": "中級",
+    "question": "Arrays.sortで整列後の出力として正しいものは？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        int[] a = new int[]{9,7,8};\n        java.util.Arrays.sort(a);\n        System.out.println(java.util.Arrays.toString(a));\n    }\n}",
+    "choices": [
+      "[7, 8, 9]",
+      "[9, 7, 8]",
+      "[3, 2, 1]",
+      "コンパイルエラー",
+      "[]"
+    ],
+    "answerIndex": 0,
+    "explanation": "プリミティブ配列は昇順の自然順序。",
+    "id": 291
+  },
+  {
+    "category": "Java Silver/標準APIの利用（配列）",
+    "difficulty": "中級",
+    "question": "Arrays.sortで整列後の出力として正しいものは？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        int[] a = new int[]{5,4,6};\n        java.util.Arrays.sort(a);\n        System.out.println(java.util.Arrays.toString(a));\n    }\n}",
+    "choices": [
+      "[4, 5, 6]",
+      "[5, 4, 6]",
+      "[3, 2, 1]",
+      "コンパイルエラー",
+      "[]"
+    ],
+    "answerIndex": 0,
+    "explanation": "プリミティブ配列は昇順の自然順序。",
+    "id": 292
+  },
+  {
+    "category": "Java Silver/標準APIの利用（配列）",
+    "difficulty": "中級",
+    "question": "Arrays.sortで整列後の出力として正しいものは？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        int[] a = new int[]{2,2,1};\n        java.util.Arrays.sort(a);\n        System.out.println(java.util.Arrays.toString(a));\n    }\n}",
+    "choices": [
+      "[1, 2, 2]",
+      "[2, 2, 1]",
+      "[3, 2, 1]",
+      "コンパイルエラー",
+      "[]"
+    ],
+    "answerIndex": 0,
+    "explanation": "プリミティブ配列は昇順の自然順序。",
+    "id": 293
+  },
+  {
+    "category": "Java Silver/標準APIの利用（配列）",
+    "difficulty": "中級",
+    "question": "Arrays.sortで整列後の出力として正しいものは？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        int[] a = new int[]{1,0,-1};\n        java.util.Arrays.sort(a);\n        System.out.println(java.util.Arrays.toString(a));\n    }\n}",
+    "choices": [
+      "[-1, 0, 1]",
+      "[1, 0, -1]",
+      "[3, 2, 1]",
+      "コンパイルエラー",
+      "[]"
+    ],
+    "answerIndex": 0,
+    "explanation": "プリミティブ配列は昇順の自然順序。",
+    "id": 294
+  },
+  {
+    "category": "Java Silver/標準APIの利用（配列）",
+    "difficulty": "中級",
+    "question": "Arrays.sortで整列後の出力として正しいものは？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        int[] a = new int[]{10,3,3};\n        java.util.Arrays.sort(a);\n        System.out.println(java.util.Arrays.toString(a));\n    }\n}",
+    "choices": [
+      "[3, 3, 10]",
+      "[10, 3, 3]",
+      "[3, 2, 1]",
+      "コンパイルエラー",
+      "[]"
+    ],
+    "answerIndex": 0,
+    "explanation": "プリミティブ配列は昇順の自然順序。",
+    "id": 295
+  },
+  {
+    "category": "Java Silver/標準APIの利用（配列）",
+    "difficulty": "中級",
+    "question": "Arrays.sortで整列後の出力として正しいものは？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        int[] a = new int[]{7,7,1};\n        java.util.Arrays.sort(a);\n        System.out.println(java.util.Arrays.toString(a));\n    }\n}",
+    "choices": [
+      "[1, 7, 7]",
+      "[7, 7, 1]",
+      "[3, 2, 1]",
+      "コンパイルエラー",
+      "[]"
+    ],
+    "answerIndex": 0,
+    "explanation": "プリミティブ配列は昇順の自然順序。",
+    "id": 296
+  },
+  {
+    "category": "Java Silver/標準APIの利用（配列）",
+    "difficulty": "中級",
+    "question": "Arrays.sortで整列後の出力として正しいものは？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        int[] a = new int[]{4,9,0};\n        java.util.Arrays.sort(a);\n        System.out.println(java.util.Arrays.toString(a));\n    }\n}",
+    "choices": [
+      "[0, 4, 9]",
+      "[4, 9, 0]",
+      "[3, 2, 1]",
+      "コンパイルエラー",
+      "[]"
+    ],
+    "answerIndex": 0,
+    "explanation": "プリミティブ配列は昇順の自然順序。",
+    "id": 297
+  },
+  {
+    "category": "Java Silver/アクセス制御",
+    "difficulty": "中級",
+    "question": "private フィールドvの可視性に関して正しい説明はどれ？",
+    "code": "class A { private int v = 10; int get(){ return v; } }\nclass B extends A {\n    // int x = v; // これは？\n}\npublic class Main { public static void main(String[] args){ System.out.println(new A().get()); } }",
+    "choices": [
+      "同一クラスのみアクセス可能",
+      "同一パッケージ内ならアクセス可能",
+      "サブクラスならアクセス可能",
+      "どこからでもアクセス可能",
+      "リフレクションなら常に可能"
+    ],
+    "answerIndex": 0,
+    "explanation": "privateは宣言クラス内のみに可視。サブクラスや同一パッケージでも不可。",
+    "id": 298
+  },
+  {
+    "category": "Java Silver/アクセス制御",
+    "difficulty": "中級",
+    "question": "private フィールドvの可視性に関して正しい説明はどれ？",
+    "code": "class A { private int v = 10; int get(){ return v; } }\nclass B extends A {\n    // int x = v; // これは？\n}\npublic class Main { public static void main(String[] args){ System.out.println(new A().get()); } }",
+    "choices": [
+      "同一クラスのみアクセス可能",
+      "同一パッケージ内ならアクセス可能",
+      "サブクラスならアクセス可能",
+      "どこからでもアクセス可能",
+      "リフレクションなら常に可能"
+    ],
+    "answerIndex": 0,
+    "explanation": "privateは宣言クラス内のみに可視。サブクラスや同一パッケージでも不可。",
+    "id": 299
+  },
+  {
+    "category": "Java Silver/アクセス制御",
+    "difficulty": "中級",
+    "question": "private フィールドvの可視性に関して正しい説明はどれ？",
+    "code": "class A { private int v = 10; int get(){ return v; } }\nclass B extends A {\n    // int x = v; // これは？\n}\npublic class Main { public static void main(String[] args){ System.out.println(new A().get()); } }",
+    "choices": [
+      "同一クラスのみアクセス可能",
+      "同一パッケージ内ならアクセス可能",
+      "サブクラスならアクセス可能",
+      "どこからでもアクセス可能",
+      "リフレクションなら常に可能"
+    ],
+    "answerIndex": 0,
+    "explanation": "privateは宣言クラス内のみに可視。サブクラスや同一パッケージでも不可。",
+    "id": 300
+  }
+]
