@@ -9,6 +9,7 @@ let currentFile = 'java_silver_100.json'; // デフォルト
 
 // --- 要素参照 ---
 const fileSelect = document.getElementById('fileSelect');
+const fileInput  = document.getElementById('fileInput');
 const countInput = document.getElementById('questionCount');
 const loadBtn = document.getElementById('loadBtn');
 const gradeBtn = document.getElementById('gradeBtn');
@@ -204,14 +205,32 @@ function showResults() {
 
 // --- 問題ロード ---
 async function loadAllQuestions() {
+  // ローカルファイルが選ばれていればそれを優先
+  if (fileInput.files && fileInput.files[0]) {
+    const file = fileInput.files[0];
+    const text = await file.text();
+    const data = JSON.parse(text);
+    validateQuestions(data);
+    allQuestions = data;
+    return;
+  }
+
+  // 未選択ならセレクトボックスのファイルを fetch
   const res = await fetch(currentFile, { cache: 'no-store' });
   if (!res.ok) throw new Error(`問題の取得に失敗しました: ${res.status}`);
   const data = await res.json();
+  validateQuestions(data);
+  allQuestions = data;
+}
+
+function validateQuestions(data) {
   if (!Array.isArray(data)) throw new Error('問題ファイルは配列である必要があります');
   data.forEach((q, i) => {
     if (typeof q.id === 'undefined') q.id = i + 1;
+    if (!q.question || !Array.isArray(q.choices) || typeof q.answerIndex !== 'number') {
+      throw new Error(`不正な問題形式があります (index: ${i})`);
+    }
   });
-  allQuestions = data;
 }
 
 function pickQuestions(n) {
