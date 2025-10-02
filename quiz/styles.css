@@ -40,18 +40,20 @@ header h1 {
   align-items: center;
   margin: 8px 0 16px;
 }
-.controls input {
-  width: 80px;
-  padding: 8px;
+.controls input[type="text"] {
   border: 1px solid var(--border);
-  border-radius: 8px;
+}
+.controls input,
+.controls select {
+  padding: 4px;
+  border-radius: 4px;
 }
 button {
   cursor: pointer;
   border: 1px solid var(--border);
   background: #f8f9fb;
-  border-radius: 10px;
-  padding: 10px 14px;
+  border-radius: 4px;
+  padding: 8px 14px;
   font-weight: 600;
 }
 button.primary {
