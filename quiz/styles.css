@@ -154,7 +154,7 @@ button:disabled {
 }
 .footer {
   color: var(--muted);
-  text-align: left;
+  text-align: center;
   border-top: 1px solid var(--border);
 }
 

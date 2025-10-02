@@ -16,6 +16,7 @@ const gradeBtn = document.getElementById('gradeBtn');
 const resetBtn = document.getElementById('resetBtn');
 const statusEl = document.getElementById('status');
 const quizArea = document.getElementById('quizArea');
+const gradeArea = document.getElementById('gradeArea');
 const resultArea = document.getElementById('resultArea');
 const scoreText = document.getElementById('scoreText');
 const explanationsEl = document.getElementById('explanations');
@@ -43,6 +44,7 @@ function setStatus(msg, timeoutMs = 2000) {
 function validateAllAnswered() {
   const allAnswered = currentQuestions.every(q => userAnswers.has(q.id));
   gradeBtn.disabled = !allAnswered;
+  gradeArea.hidden = !allAnswered;
 }
 
 // --- 描画 ---
@@ -201,6 +203,7 @@ function showResults() {
   const rate = Math.round((correctCount / total) * 100);
   scoreText.textContent = `正解数: ${correctCount} / ${total}（正答率 ${rate}%）`;
   resultArea.hidden = false;
+  gradeArea.hidden = true;
 }
 
 // --- 問題ロード ---
