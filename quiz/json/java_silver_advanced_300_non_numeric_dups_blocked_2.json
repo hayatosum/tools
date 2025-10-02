@@ -1,0 +1,5026 @@
+[
+  {
+    "id": 1,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "三項演算子の結果型と実行時型。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        Object o = true ? \"b\" : new Object();\n        System.out.println(o.getClass().getSimpleName());\n    }\n}\n// uid:1\n",
+    "choices": [
+      "Object",
+      "実行時例外",
+      "Serializable",
+      "コンパイルエラー",
+      "String"
+    ],
+    "answerIndex": 4,
+    "explanation": "実体はStringなので実行時型名はString。"
+  },
+  {
+    "id": 2,
+    "category": "初期化とライフサイクル",
+    "difficulty": "上級",
+    "question": "初期化子とコンストラクタの順序。出力は？",
+    "code": "public class Main {\n    static { System.out.print(\"S\"); }\n    { System.out.print(\"I\"); }\n    public Main(){ System.out.print(\"C\"); }\n    public static void main(String[] args) {\n        new Main(); new Main();\n    }\n}\n// uid:2\n",
+    "choices": [
+      "SICIIC",
+      "ICSIIC",
+      "SCCII",
+      "SICIC",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 3,
+    "explanation": "最初にS、その後各生成でI→C。"
+  },
+  {
+    "id": 3,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "三項演算子の結果型と実行時型。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        Object o = true ? \"f\" : new Object();\n        System.out.println(o.getClass().getSimpleName());\n    }\n}\n// uid:3\n",
+    "choices": [
+      "Serializable",
+      "String",
+      "Object",
+      "実行時例外",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 1,
+    "explanation": "実体はStringなので実行時型名はString。"
+  },
+  {
+    "id": 4,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "nullセーフなequals呼び出し。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String a = null;\n        System.out.println(\"a\".equals(a));\n    }\n}\n// uid:4\n",
+    "choices": [
+      "実行時例外",
+      "true",
+      "コンパイルエラー",
+      "NullPointerException",
+      "false"
+    ],
+    "answerIndex": 4,
+    "explanation": "リテラル側から呼べばNPEにならない。"
+  },
+  {
+    "id": 5,
+    "category": "switchと分岐",
+    "difficulty": "上級",
+    "question": "どのcaseにも一致しない場合。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"x\";\n        switch(s){\n            case \"red\": System.out.print(\"R\"); break;\n            case \"green\": System.out.print(\"G\"); break;\n            default: System.out.print(\"X\");\n        }\n    }\n}\n// uid:5\n",
+    "choices": [
+      "R",
+      "X",
+      "コンパイルエラー",
+      "実行時例外",
+      "G"
+    ],
+    "answerIndex": 1,
+    "explanation": "defaultが実行される。"
+  },
+  {
+    "id": 6,
+    "category": "配列とコレクション",
+    "difficulty": "上級",
+    "question": "配列共変性の格納。結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        Object[] arr = new String[2];\n        arr[0] = new StringBuilder(\"b\");\n        System.out.println(\"OK\");\n    }\n}\n// uid:6\n",
+    "choices": [
+      "実行されない",
+      "OK",
+      "ArrayStoreException が発生する",
+      "コンパイルエラー",
+      "ClassCastException"
+    ],
+    "answerIndex": 2,
+    "explanation": "実行時チェックで例外。"
+  },
+  {
+    "id": 7,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "三項演算子の結果型と実行時型。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        Object o = true ? \"a\" : new Object();\n        System.out.println(o.getClass().getSimpleName());\n    }\n}\n// uid:7\n",
+    "choices": [
+      "実行時例外",
+      "String",
+      "Serializable",
+      "コンパイルエラー",
+      "Object"
+    ],
+    "answerIndex": 1,
+    "explanation": "実体はStringなので実行時型名はString。"
+  },
+  {
+    "id": 8,
+    "category": "クラス設計と継承",
+    "difficulty": "上級",
+    "question": "フィールドの隠蔽（多態性なし）。出力は？",
+    "code": "class A { String v = \"L\"; }\nclass B extends A { String v = \"R\"; }\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        System.out.println(a.v);\n    }\n}\n// uid:8\n",
+    "choices": [
+      "R",
+      "コンパイルエラー",
+      "未定義",
+      "実行時例外",
+      "L"
+    ],
+    "answerIndex": 4,
+    "explanation": "フィールドは参照型で解決される。"
+  },
+  {
+    "id": 9,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "Math.round の負の端数。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        System.out.println(Math.round(-1.5));\n    }\n}\n// uid:9\n",
+    "choices": [
+      "実行時例外",
+      "-1",
+      "コンパイルエラー",
+      "未定義",
+      "-2"
+    ],
+    "answerIndex": 1,
+    "explanation": "floor(x+0.5)で-1。"
+  },
+  {
+    "id": 10,
+    "category": "アクセス修飾子とカプセル化",
+    "difficulty": "上級",
+    "question": "package-privateメンバの可視性。結果は？",
+    "code": "package p1;\nclass X { int v = 1; }\npublic class Main {\n    public static void main(String[] args) {\n        p1.X x = new p1.X();\n        System.out.println(x.v);\n    }\n}\n// uid:10\n",
+    "choices": [
+      "未定義",
+      "1",
+      "コンパイルエラー",
+      "実行時例外",
+      "0"
+    ],
+    "answerIndex": 2,
+    "explanation": "package-privateは同一パッケージ外からアクセス不可。"
+  },
+  {
+    "id": 11,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "三項演算子の結果型と実行時型。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        Object o = true ? \"e\" : new Object();\n        System.out.println(o.getClass().getSimpleName());\n    }\n}\n// uid:11\n",
+    "choices": [
+      "Object",
+      "コンパイルエラー",
+      "Serializable",
+      "String",
+      "実行時例外"
+    ],
+    "answerIndex": 3,
+    "explanation": "実体はStringなので実行時型名はString。"
+  },
+  {
+    "id": 12,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "符号なし右シフトの符号。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = -1;\n        System.out.println(x >>> 1 < 0);\n    }\n}\n// uid:12\n",
+    "choices": [
+      "true",
+      "未定義",
+      "コンパイルエラー",
+      "実行時例外",
+      "false"
+    ],
+    "answerIndex": 4,
+    "explanation": ">>> は0埋めされ非負になる。"
+  },
+  {
+    "id": 13,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "コンパイル時結合は同一参照。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"ru\" + \"by\";\n        System.out.println(s == \"ruby\");\n    }\n}\n// uid:13\n",
+    "choices": [
+      "equals()ならfalse",
+      "false",
+      "true",
+      "コンパイルエラー",
+      "実行時例外"
+    ],
+    "answerIndex": 2,
+    "explanation": "リテラルの結合はコンパイル時に一体化される。"
+  },
+  {
+    "id": 14,
+    "category": "アクセス修飾子とカプセル化",
+    "difficulty": "上級",
+    "question": "package-privateメンバの可視性。結果は？",
+    "code": "package app;\nclass X { int v = 1; }\npublic class Main {\n    public static void main(String[] args) {\n        app.X x = new app.X();\n        System.out.println(x.v);\n    }\n}\n// uid:14\n",
+    "choices": [
+      "コンパイルエラー",
+      "0",
+      "未定義",
+      "実行時例外",
+      "1"
+    ],
+    "answerIndex": 0,
+    "explanation": "package-privateは同一パッケージ外からアクセス不可。"
+  },
+  {
+    "id": 15,
+    "category": "配列とコレクション",
+    "difficulty": "上級",
+    "question": "Arrays.asListでのサイズ変更。結果は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<String> l = Arrays.asList(\"dog\",\"cat\",\"fox\");\n        l.add(\"x\");\n        System.out.println(l);\n    }\n}\n// uid:15\n",
+    "choices": [
+      "実行時例外(ClassCastException)",
+      "コンパイルエラー",
+      "[dog, cat, fox]",
+      "実行時例外(UnsupportedOperationException)",
+      "[dog, cat, fox, x]"
+    ],
+    "answerIndex": 3,
+    "explanation": "固定サイズのためadd不可。"
+  },
+  {
+    "id": 16,
+    "category": "配列とコレクション",
+    "difficulty": "上級",
+    "question": "拡張for中の構造変更でどうなる？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<String> list = new ArrayList<>(Arrays.asList(\"a\",\"b\",\"c\")); // caseX\n        for(String x : list) {\n            if(x.equals(\"b\")) list.remove(x);\n        }\n        System.out.println(list.size());\n    }\n}\n// uid:16\n",
+    "choices": [
+      "コンパイルエラー",
+      "2",
+      "3",
+      "1",
+      "実行時例外(ConcurrentModificationException)"
+    ],
+    "answerIndex": 4,
+    "explanation": "Iteratorを介さない構造変更は例外。"
+  },
+  {
+    "id": 17,
+    "category": "switchと分岐",
+    "difficulty": "上級",
+    "question": "どのcaseにも一致しない場合。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"z\";\n        switch(s){\n            case \"red\": System.out.print(\"R\"); break;\n            case \"green\": System.out.print(\"G\"); break;\n            default: System.out.print(\"X\");\n        }\n    }\n}\n// uid:17\n",
+    "choices": [
+      "コンパイルエラー",
+      "X",
+      "実行時例外",
+      "G",
+      "R"
+    ],
+    "answerIndex": 1,
+    "explanation": "defaultが実行される。"
+  },
+  {
+    "id": 18,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "三項演算子の結果型と実行時型。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        Object o = true ? \"d\" : new Object();\n        System.out.println(o.getClass().getSimpleName());\n    }\n}\n// uid:18\n",
+    "choices": [
+      "コンパイルエラー",
+      "実行時例外",
+      "Serializable",
+      "Object",
+      "String"
+    ],
+    "answerIndex": 4,
+    "explanation": "実体はStringなので実行時型名はString。"
+  },
+  {
+    "id": 19,
+    "category": "例外処理",
+    "difficulty": "上級",
+    "question": "try-with-resourcesのclose順序。出力は？",
+    "code": "class R implements AutoCloseable {\n    String n; R(String n){this.n=n;}\n    public void close(){ System.out.print(\"C\"+n); }\n}\npublic class Main {\n    public static void main(String[] args) {\n        try(R a=new R(\"L\"); R b=new R(\"R\")){\n            System.out.print(\"B\");\n        }\n    }\n}\n// uid:19\n",
+    "choices": [
+      "実行時例外",
+      "BCRCL",
+      "CLCRB",
+      "BCLCR",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 1,
+    "explanation": "closeは宣言の逆順で呼ばれる。"
+  },
+  {
+    "id": 20,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "nullセーフなequals呼び出し。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String a = null;\n        System.out.println(\"b\".equals(a));\n    }\n}\n// uid:20\n",
+    "choices": [
+      "実行時例外",
+      "NullPointerException",
+      "コンパイルエラー",
+      "false",
+      "true"
+    ],
+    "answerIndex": 3,
+    "explanation": "リテラル側から呼べばNPEにならない。"
+  },
+  {
+    "id": 21,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "insertの挙動。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder sb = new StringBuilder(\"bd\");\n        sb.insert(1, \"-\");\n        System.out.println(sb.toString());\n    }\n}\n// uid:21\n",
+    "choices": [
+      "実行時例外",
+      "コンパイルエラー",
+      "-bd",
+      "b-d",
+      "bd-"
+    ],
+    "answerIndex": 3,
+    "explanation": "位置1に挿入される。"
+  },
+  {
+    "id": 22,
+    "category": "配列とコレクション",
+    "difficulty": "上級",
+    "question": "cloneは独立配列。出力は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        String[] a = new String[]{\"x\",\"y\",\"z\"};\n        String[] b = a.clone(); // loopB\n        a[0] = \"q\";\n        System.out.println(b[0]);\n    }\n}\n// uid:22\n",
+    "choices": [
+      "コンパイルエラー",
+      "x",
+      "y",
+      "q",
+      "実行時例外"
+    ],
+    "answerIndex": 1,
+    "explanation": "クローンは別配列のため影響しない。"
+  },
+  {
+    "id": 23,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "insertの挙動。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder sb = new StringBuilder(\"ac\");\n        sb.insert(1, \"-\");\n        System.out.println(sb.toString());\n    }\n}\n// uid:23\n",
+    "choices": [
+      "ac-",
+      "コンパイルエラー",
+      "-ac",
+      "a-c",
+      "実行時例外"
+    ],
+    "answerIndex": 3,
+    "explanation": "位置1に挿入される。"
+  },
+  {
+    "id": 24,
+    "category": "例外処理",
+    "difficulty": "上級",
+    "question": "tryのreturnとfinallyの実行順序。出力は？",
+    "code": "public class Main {\n    static String f() {\n        try { return \"OK\"; }\n        finally { System.out.print(\"FIN \"); }\n    }\n    public static void main(String[] args) { System.out.println(f()); }\n}\n// uid:24\n",
+    "choices": [
+      "FIN OK",
+      "未定義",
+      "FIN FIN",
+      "OK FIN",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 0,
+    "explanation": "finallyの出力が先、最後にreturn値がprintlnされる。"
+  },
+  {
+    "id": 25,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "同一リテラルはプール共有。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String a = \"fred\";\n        String b = \"fred\";\n        System.out.println(a == b);\n    }\n}\n// uid:25\n",
+    "choices": [
+      "true",
+      "equals()ならfalse",
+      "false",
+      "実行時例外",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 0,
+    "explanation": "同一リテラルは同じ参照を指す。"
+  },
+  {
+    "id": 26,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "Optional#getを空で呼ぶと？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        Optional<String> o = Optional.ofNullable(null); // D\n        System.out.println(o.get());\n    }\n}\n// uid:26\n",
+    "choices": [
+      "コンパイルエラー",
+      "何も出ない",
+      "空文字と出力",
+      "null と出力",
+      "NoSuchElementException がスローされる"
+    ],
+    "answerIndex": 4,
+    "explanation": "空のOptionalでgetは例外。"
+  },
+  {
+    "id": 27,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "nullと文字列連結の挙動。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = null;\n        System.out.println(s + \"T\");\n    }\n}\n// uid:27\n",
+    "choices": [
+      "T",
+      "コンパイルエラー",
+      "NullPointerException",
+      "nullT",
+      "実行時例外"
+    ],
+    "answerIndex": 3,
+    "explanation": "連結は左辺がnullでも\"null\"文字列として扱われる。"
+  },
+  {
+    "id": 28,
+    "category": "switchと分岐",
+    "difficulty": "上級",
+    "question": "どのcaseにも一致しない場合。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"y\";\n        switch(s){\n            case \"red\": System.out.print(\"R\"); break;\n            case \"green\": System.out.print(\"G\"); break;\n            default: System.out.print(\"X\");\n        }\n    }\n}\n// uid:28\n",
+    "choices": [
+      "X",
+      "コンパイルエラー",
+      "実行時例外",
+      "G",
+      "R"
+    ],
+    "answerIndex": 0,
+    "explanation": "defaultが実行される。"
+  },
+  {
+    "id": 29,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "nullと文字列連結の挙動。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = null;\n        System.out.println(s + \"F\");\n    }\n}\n// uid:29\n",
+    "choices": [
+      "NullPointerException",
+      "nullT",
+      "実行時例外",
+      "コンパイルエラー",
+      "T"
+    ],
+    "answerIndex": 1,
+    "explanation": "連結は左辺がnullでも\"null\"文字列として扱われる。"
+  },
+  {
+    "id": 30,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "同一リテラルはプール共有。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String a = \"quux\";\n        String b = \"quux\";\n        System.out.println(a == b);\n    }\n}\n// uid:30\n",
+    "choices": [
+      "true",
+      "equals()ならfalse",
+      "コンパイルエラー",
+      "false",
+      "実行時例外"
+    ],
+    "answerIndex": 0,
+    "explanation": "同一リテラルは同じ参照を指す。"
+  },
+  {
+    "id": 31,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "nullと文字列連結の挙動。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = null;\n        System.out.println(s + \"N\");\n    }\n}\n// uid:31\n",
+    "choices": [
+      "nullT",
+      "NullPointerException",
+      "T",
+      "コンパイルエラー",
+      "実行時例外"
+    ],
+    "answerIndex": 0,
+    "explanation": "連結は左辺がnullでも\"null\"文字列として扱われる。"
+  },
+  {
+    "id": 32,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "equalsのみ実装でHashSetに追加。サイズは？",
+    "code": "import java.util.*;\nclass P {\n    String x;\n    P(String x){ this.x=x; }\n    public boolean equals(Object o){\n        return (o instanceof P) && ((P)o).x.equals(this.x);\n    }\n    // hashCode未実装 // C\n}\npublic class Main {\n    public static void main(String[] args) {\n        Set<P> s = new HashSet<>();\n        s.add(new P(\"k\"));\n        s.add(new P(\"k\"));\n        System.out.println(s.size());\n    }\n}\n// uid:32\n",
+    "choices": [
+      "1",
+      "実行時例外",
+      "2",
+      "0",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 2,
+    "explanation": "hashCode未実装で重複検出されず2。"
+  },
+  {
+    "id": 33,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "new String とリテラル比較。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String a = new String(\"foo\");\n        String b = \"foo\";\n        System.out.println(a == b);\n    }\n}\n// uid:33\n",
+    "choices": [
+      "equals()ならtrue",
+      "false",
+      "実行時例外",
+      "true",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 1,
+    "explanation": "'=='は参照比較。newは別インスタンス。"
+  },
+  {
+    "id": 34,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "insertの挙動。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder sb = new StringBuilder(\"df\");\n        sb.insert(1, \"-\");\n        System.out.println(sb.toString());\n    }\n}\n// uid:34\n",
+    "choices": [
+      "コンパイルエラー",
+      "-df",
+      "df-",
+      "d-f",
+      "実行時例外"
+    ],
+    "answerIndex": 3,
+    "explanation": "位置1に挿入される。"
+  },
+  {
+    "id": 35,
+    "category": "ラッパークラスとオートボクシング",
+    "difficulty": "上級",
+    "question": "Integerのキャッシュ判定。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        Integer a = 200;\n        Integer b = 200;\n        System.out.println(a == b);\n    }\n}\n// uid:35\n",
+    "choices": [
+      "true",
+      "例外",
+      "コンパイルエラー",
+      "false",
+      "equals()ならtrue"
+    ],
+    "answerIndex": 3,
+    "explanation": "Integerは-128〜127をキャッシュ。"
+  },
+  {
+    "id": 36,
+    "category": "ラッパークラスとオートボクシング",
+    "difficulty": "上級",
+    "question": "Integerのキャッシュ判定。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        Integer a = -128;\n        Integer b = -128;\n        System.out.println(a == b);\n    }\n}\n// uid:36\n",
+    "choices": [
+      "コンパイルエラー",
+      "例外",
+      "false",
+      "true",
+      "equals()ならtrue"
+    ],
+    "answerIndex": 3,
+    "explanation": "Integerは-128〜127をキャッシュ。"
+  },
+  {
+    "id": 37,
+    "category": "例外処理",
+    "difficulty": "上級",
+    "question": "try-with-resourcesのclose順序。出力は？",
+    "code": "class R implements AutoCloseable {\n    String n; R(String n){this.n=n;}\n    public void close(){ System.out.print(\"C\"+n); }\n}\npublic class Main {\n    public static void main(String[] args) {\n        try(R a=new R(\"left\"); R b=new R(\"right\")){\n            System.out.print(\"B\");\n        }\n    }\n}\n// uid:37\n",
+    "choices": [
+      "コンパイルエラー",
+      "CleftCrightB",
+      "BCrightCleft",
+      "実行時例外",
+      "BCleftCright"
+    ],
+    "answerIndex": 2,
+    "explanation": "closeは宣言の逆順で呼ばれる。"
+  },
+  {
+    "id": 38,
+    "category": "配列とコレクション",
+    "difficulty": "上級",
+    "question": "拡張for中の構造変更でどうなる？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<String> list = new ArrayList<>(Arrays.asList(\"a\",\"b\",\"c\")); // loopA\n        for(String x : list) {\n            if(x.equals(\"b\")) list.remove(x);\n        }\n        System.out.println(list.size());\n    }\n}\n// uid:38\n",
+    "choices": [
+      "コンパイルエラー",
+      "2",
+      "3",
+      "1",
+      "実行時例外(ConcurrentModificationException)"
+    ],
+    "answerIndex": 4,
+    "explanation": "Iteratorを介さない構造変更は例外。"
+  },
+  {
+    "id": 39,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "コンパイル時結合は同一参照。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"py\" + \"thon\";\n        System.out.println(s == \"python\");\n    }\n}\n// uid:39\n",
+    "choices": [
+      "実行時例外",
+      "false",
+      "コンパイルエラー",
+      "true",
+      "equals()ならfalse"
+    ],
+    "answerIndex": 3,
+    "explanation": "リテラルの結合はコンパイル時に一体化される。"
+  },
+  {
+    "id": 40,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "insertの挙動。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder sb = new StringBuilder(\"ce\");\n        sb.insert(1, \"-\");\n        System.out.println(sb.toString());\n    }\n}\n// uid:40\n",
+    "choices": [
+      "実行時例外",
+      "コンパイルエラー",
+      "c-e",
+      "-ce",
+      "ce-"
+    ],
+    "answerIndex": 2,
+    "explanation": "位置1に挿入される。"
+  },
+  {
+    "id": 41,
+    "category": "配列とコレクション",
+    "difficulty": "上級",
+    "question": "cloneは独立配列。出力は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        String[] a = new String[]{\"x\",\"y\",\"z\"};\n        String[] b = a.clone(); // caseY\n        a[0] = \"q\";\n        System.out.println(b[0]);\n    }\n}\n// uid:41\n",
+    "choices": [
+      "y",
+      "コンパイルエラー",
+      "q",
+      "実行時例外",
+      "x"
+    ],
+    "answerIndex": 4,
+    "explanation": "クローンは別配列のため影響しない。"
+  },
+  {
+    "id": 42,
+    "category": "クラス設計と継承",
+    "difficulty": "上級",
+    "question": "フィールドの隠蔽（多態性なし）。出力は？",
+    "code": "class A { String v = \"up\"; }\nclass B extends A { String v = \"down\"; }\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        System.out.println(a.v);\n    }\n}\n// uid:42\n",
+    "choices": [
+      "コンパイルエラー",
+      "未定義",
+      "down",
+      "up",
+      "実行時例外"
+    ],
+    "answerIndex": 3,
+    "explanation": "フィールドは参照型で解決される。"
+  },
+  {
+    "id": 43,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "同一リテラルはプール共有。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String a = \"foo\";\n        String b = \"foo\";\n        System.out.println(a == b);\n    }\n}\n// uid:43\n",
+    "choices": [
+      "true",
+      "実行時例外",
+      "false",
+      "equals()ならfalse",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 0,
+    "explanation": "同一リテラルは同じ参照を指す。"
+  },
+  {
+    "id": 44,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "nullセーフなequals呼び出し。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String a = null;\n        System.out.println(\"e\".equals(a));\n    }\n}\n// uid:44\n",
+    "choices": [
+      "true",
+      "コンパイルエラー",
+      "NullPointerException",
+      "false",
+      "実行時例外"
+    ],
+    "answerIndex": 3,
+    "explanation": "リテラル側から呼べばNPEにならない。"
+  },
+  {
+    "id": 45,
+    "category": "配列とコレクション",
+    "difficulty": "上級",
+    "question": "Arrays.asListでのサイズ変更。結果は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<String> l = Arrays.asList(\"x\",\"y\",\"z\");\n        l.add(\"x\");\n        System.out.println(l);\n    }\n}\n// uid:45\n",
+    "choices": [
+      "[x, y, z]",
+      "実行時例外(ClassCastException)",
+      "実行時例外(UnsupportedOperationException)",
+      "[x, y, z, x]",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 2,
+    "explanation": "固定サイズのためadd不可。"
+  },
+  {
+    "id": 46,
+    "category": "配列とコレクション",
+    "difficulty": "上級",
+    "question": "Arrays.asListでのサイズ変更。結果は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<String> l = Arrays.asList(\"red\",\"green\",\"blue\");\n        l.add(\"x\");\n        System.out.println(l);\n    }\n}\n// uid:46\n",
+    "choices": [
+      "[red, green, blue]",
+      "実行時例外(ClassCastException)",
+      "[red, green, blue, x]",
+      "コンパイルエラー",
+      "実行時例外(UnsupportedOperationException)"
+    ],
+    "answerIndex": 4,
+    "explanation": "固定サイズのためadd不可。"
+  },
+  {
+    "id": 47,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "equalsのみ実装でHashSetに追加。サイズは？",
+    "code": "import java.util.*;\nclass P {\n    String x;\n    P(String x){ this.x=x; }\n    public boolean equals(Object o){\n        return (o instanceof P) && ((P)o).x.equals(this.x);\n    }\n    // hashCode未実装 // D\n}\npublic class Main {\n    public static void main(String[] args) {\n        Set<P> s = new HashSet<>();\n        s.add(new P(\"k\"));\n        s.add(new P(\"k\"));\n        System.out.println(s.size());\n    }\n}\n// uid:47\n",
+    "choices": [
+      "2",
+      "0",
+      "実行時例外",
+      "1",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 0,
+    "explanation": "hashCode未実装で重複検出されず2。"
+  },
+  {
+    "id": 48,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "同一リテラルはプール共有。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String a = \"garply\";\n        String b = \"garply\";\n        System.out.println(a == b);\n    }\n}\n// uid:48\n",
+    "choices": [
+      "equals()ならfalse",
+      "実行時例外",
+      "コンパイルエラー",
+      "true",
+      "false"
+    ],
+    "answerIndex": 3,
+    "explanation": "同一リテラルは同じ参照を指す。"
+  },
+  {
+    "id": 49,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "nullと文字列連結の挙動。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = null;\n        System.out.println(s + \"Y\");\n    }\n}\n// uid:49\n",
+    "choices": [
+      "T",
+      "NullPointerException",
+      "nullT",
+      "実行時例外",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 2,
+    "explanation": "連結は左辺がnullでも\"null\"文字列として扱われる。"
+  },
+  {
+    "id": 50,
+    "category": "配列とコレクション",
+    "difficulty": "上級",
+    "question": "Arrays.asListでのサイズ変更。結果は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<String> l = Arrays.asList(\"a\",\"b\",\"c\");\n        l.add(\"x\");\n        System.out.println(l);\n    }\n}\n// uid:50\n",
+    "choices": [
+      "[a, b, c]",
+      "実行時例外(ClassCastException)",
+      "[a, b, c, x]",
+      "実行時例外(UnsupportedOperationException)",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 3,
+    "explanation": "固定サイズのためadd不可。"
+  },
+  {
+    "id": 51,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "Stringは不変、SBは可変。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder sb = new StringBuilder(\"beta\");\n        String s = sb.toString();\n        sb.append(\"!\");\n        System.out.println(s + \" / \" + sb.toString());\n    }\n}\n// uid:51\n",
+    "choices": [
+      "beta! / beta",
+      "コンパイルエラー",
+      "beta / beta!",
+      "beta! / beta!",
+      "実行時例外"
+    ],
+    "answerIndex": 2,
+    "explanation": "toStringで得たStringは以後の変更に影響しない。"
+  },
+  {
+    "id": 52,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "Stringは不変、SBは可変。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder sb = new StringBuilder(\"alpha\");\n        String s = sb.toString();\n        sb.append(\"!\");\n        System.out.println(s + \" / \" + sb.toString());\n    }\n}\n// uid:52\n",
+    "choices": [
+      "実行時例外",
+      "alpha / alpha!",
+      "alpha! / alpha!",
+      "コンパイルエラー",
+      "alpha! / alpha"
+    ],
+    "answerIndex": 1,
+    "explanation": "toStringで得たStringは以後の変更に影響しない。"
+  },
+  {
+    "id": 53,
+    "category": "アクセス修飾子とカプセル化",
+    "difficulty": "上級",
+    "question": "package-privateメンバの可視性。結果は？",
+    "code": "package pkg;\nclass X { int v = 1; }\npublic class Main {\n    public static void main(String[] args) {\n        pkg.X x = new pkg.X();\n        System.out.println(x.v);\n    }\n}\n// uid:53\n",
+    "choices": [
+      "未定義",
+      "0",
+      "実行時例外",
+      "1",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 4,
+    "explanation": "package-privateは同一パッケージ外からアクセス不可。"
+  },
+  {
+    "id": 54,
+    "category": "多態性とオーバーライド",
+    "difficulty": "上級",
+    "question": "実行時バインディングの結果。出力は？",
+    "code": "class A { String f(){ return \"A\"; } }\nclass B extends A { String f(){ return \"B\"; } }\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        System.out.println(a.f());\n    }\n}\n// uid:54\n",
+    "choices": [
+      "不定",
+      "実行時例外",
+      "B",
+      "コンパイルエラー",
+      "A"
+    ],
+    "answerIndex": 2,
+    "explanation": "オーバーライドは動的ディスパッチ。"
+  },
+  {
+    "id": 55,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "Optional#getを空で呼ぶと？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        Optional<String> o = Optional.ofNullable(null); // A\n        System.out.println(o.get());\n    }\n}\n// uid:55\n",
+    "choices": [
+      "何も出ない",
+      "null と出力",
+      "コンパイルエラー",
+      "空文字と出力",
+      "NoSuchElementException がスローされる"
+    ],
+    "answerIndex": 4,
+    "explanation": "空のOptionalでgetは例外。"
+  },
+  {
+    "id": 56,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "nullセーフなequals呼び出し。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String a = null;\n        System.out.println(\"f\".equals(a));\n    }\n}\n// uid:56\n",
+    "choices": [
+      "true",
+      "実行時例外",
+      "false",
+      "コンパイルエラー",
+      "NullPointerException"
+    ],
+    "answerIndex": 2,
+    "explanation": "リテラル側から呼べばNPEにならない。"
+  },
+  {
+    "id": 57,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "new String とリテラル比較。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String a = new String(\"qux\");\n        String b = \"qux\";\n        System.out.println(a == b);\n    }\n}\n// uid:57\n",
+    "choices": [
+      "実行時例外",
+      "true",
+      "コンパイルエラー",
+      "equals()ならtrue",
+      "false"
+    ],
+    "answerIndex": 4,
+    "explanation": "'=='は参照比較。newは別インスタンス。"
+  },
+  {
+    "id": 58,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "同一リテラルはプール共有。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String a = \"baz\";\n        String b = \"baz\";\n        System.out.println(a == b);\n    }\n}\n// uid:58\n",
+    "choices": [
+      "equals()ならfalse",
+      "実行時例外",
+      "false",
+      "true",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 3,
+    "explanation": "同一リテラルは同じ参照を指す。"
+  },
+  {
+    "id": 59,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "nullセーフなequals呼び出し。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String a = null;\n        System.out.println(\"c\".equals(a));\n    }\n}\n// uid:59\n",
+    "choices": [
+      "true",
+      "false",
+      "実行時例外",
+      "NullPointerException",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 1,
+    "explanation": "リテラル側から呼べばNPEにならない。"
+  },
+  {
+    "id": 60,
+    "category": "クラス設計と継承",
+    "difficulty": "上級",
+    "question": "フィールドの隠蔽（多態性なし）。出力は？",
+    "code": "class A { String v = \"cat\"; }\nclass B extends A { String v = \"dog\"; }\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        System.out.println(a.v);\n    }\n}\n// uid:60\n",
+    "choices": [
+      "cat",
+      "dog",
+      "実行時例外",
+      "未定義",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 0,
+    "explanation": "フィールドは参照型で解決される。"
+  },
+  {
+    "id": 61,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "new String とリテラル比較。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String a = new String(\"grault\");\n        String b = \"grault\";\n        System.out.println(a == b);\n    }\n}\n// uid:61\n",
+    "choices": [
+      "false",
+      "実行時例外",
+      "true",
+      "コンパイルエラー",
+      "equals()ならtrue"
+    ],
+    "answerIndex": 0,
+    "explanation": "'=='は参照比較。newは別インスタンス。"
+  },
+  {
+    "id": 62,
+    "category": "例外処理",
+    "difficulty": "上級",
+    "question": "try-with-resourcesのclose順序。出力は？",
+    "code": "class R implements AutoCloseable {\n    String n; R(String n){this.n=n;}\n    public void close(){ System.out.print(\"C\"+n); }\n}\npublic class Main {\n    public static void main(String[] args) {\n        try(R a=new R(\"A\"); R b=new R(\"B\")){\n            System.out.print(\"B\");\n        }\n    }\n}\n// uid:62\n",
+    "choices": [
+      "コンパイルエラー",
+      "CACBB",
+      "実行時例外",
+      "BCACB",
+      "BCBCA"
+    ],
+    "answerIndex": 4,
+    "explanation": "closeは宣言の逆順で呼ばれる。"
+  },
+  {
+    "id": 63,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "Stringは不変、SBは可変。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder sb = new StringBuilder(\"omega\");\n        String s = sb.toString();\n        sb.append(\"!\");\n        System.out.println(s + \" / \" + sb.toString());\n    }\n}\n// uid:63\n",
+    "choices": [
+      "実行時例外",
+      "omega! / omega!",
+      "omega / omega!",
+      "omega! / omega",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 2,
+    "explanation": "toStringで得たStringは以後の変更に影響しない。"
+  },
+  {
+    "id": 64,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "コンパイル時結合は同一参照。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"ja\" + \"va\";\n        System.out.println(s == \"java\");\n    }\n}\n// uid:64\n",
+    "choices": [
+      "equals()ならfalse",
+      "コンパイルエラー",
+      "false",
+      "true",
+      "実行時例外"
+    ],
+    "answerIndex": 3,
+    "explanation": "リテラルの結合はコンパイル時に一体化される。"
+  },
+  {
+    "id": 65,
+    "category": "配列とコレクション",
+    "difficulty": "上級",
+    "question": "拡張for中の構造変更でどうなる？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<String> list = new ArrayList<>(Arrays.asList(\"a\",\"b\",\"c\")); // loopB\n        for(String x : list) {\n            if(x.equals(\"b\")) list.remove(x);\n        }\n        System.out.println(list.size());\n    }\n}\n// uid:65\n",
+    "choices": [
+      "2",
+      "コンパイルエラー",
+      "実行時例外(ConcurrentModificationException)",
+      "1",
+      "3"
+    ],
+    "answerIndex": 2,
+    "explanation": "Iteratorを介さない構造変更は例外。"
+  },
+  {
+    "id": 66,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "new String とリテラル比較。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String a = new String(\"corge\");\n        String b = \"corge\";\n        System.out.println(a == b);\n    }\n}\n// uid:66\n",
+    "choices": [
+      "false",
+      "実行時例外",
+      "コンパイルエラー",
+      "equals()ならtrue",
+      "true"
+    ],
+    "answerIndex": 0,
+    "explanation": "'=='は参照比較。newは別インスタンス。"
+  },
+  {
+    "id": 67,
+    "category": "多態性とオーバーライド",
+    "difficulty": "上級",
+    "question": "実行時バインディングの結果。出力は？",
+    "code": "class A { String f(){ return \"super\"; } }\nclass B extends A { String f(){ return \"sub\"; } }\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        System.out.println(a.f());\n    }\n}\n// uid:67\n",
+    "choices": [
+      "不定",
+      "実行時例外",
+      "コンパイルエラー",
+      "sub",
+      "super"
+    ],
+    "answerIndex": 3,
+    "explanation": "オーバーライドは動的ディスパッチ。"
+  },
+  {
+    "id": 68,
+    "category": "配列とコレクション",
+    "difficulty": "上級",
+    "question": "cloneは独立配列。出力は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        String[] a = new String[]{\"x\",\"y\",\"z\"};\n        String[] b = a.clone(); // loopA\n        a[0] = \"q\";\n        System.out.println(b[0]);\n    }\n}\n// uid:68\n",
+    "choices": [
+      "y",
+      "実行時例外",
+      "q",
+      "x",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 3,
+    "explanation": "クローンは別配列のため影響しない。"
+  },
+  {
+    "id": 69,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "Optional#getを空で呼ぶと？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        Optional<String> o = Optional.ofNullable(null); // B\n        System.out.println(o.get());\n    }\n}\n// uid:69\n",
+    "choices": [
+      "何も出ない",
+      "null と出力",
+      "NoSuchElementException がスローされる",
+      "コンパイルエラー",
+      "空文字と出力"
+    ],
+    "answerIndex": 2,
+    "explanation": "空のOptionalでgetは例外。"
+  },
+  {
+    "id": 70,
+    "category": "switchと分岐",
+    "difficulty": "上級",
+    "question": "Stringのswitchの挙動。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"zero\";\n        switch(s){\n            case \"one\": System.out.print(\"1\"); break;\n            case \"two\": System.out.print(\"2\"); break;\n            case \"three\": System.out.print(\"3\"); break;\n            default: System.out.print(\"D\");\n        }\n    }\n}\n// uid:70\n",
+    "choices": [
+      "不定(4)",
+      "2",
+      "D",
+      "1",
+      "3"
+    ],
+    "answerIndex": 2,
+    "explanation": "一致するcaseのラベルが実行される。"
+  },
+  {
+    "id": 71,
+    "category": "switchと分岐",
+    "difficulty": "上級",
+    "question": "Stringのswitchの挙動。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"x\";\n        switch(s){\n            case \"m\": System.out.print(\"1\"); break;\n            case \"n\": System.out.print(\"2\"); break;\n            case \"x\": System.out.print(\"3\"); break;\n            default: System.out.print(\"D\");\n        }\n    }\n}\n// uid:71\n",
+    "choices": [
+      "3",
+      "2",
+      "1",
+      "コンパイルエラー",
+      "D"
+    ],
+    "answerIndex": 0,
+    "explanation": "一致するcaseのラベルが実行される。"
+  },
+  {
+    "id": 72,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "同一リテラルはプール共有。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String a = \"qux\";\n        String b = \"qux\";\n        System.out.println(a == b);\n    }\n}\n// uid:72\n",
+    "choices": [
+      "コンパイルエラー",
+      "true",
+      "実行時例外",
+      "false",
+      "equals()ならfalse"
+    ],
+    "answerIndex": 1,
+    "explanation": "同一リテラルは同じ参照を指す。"
+  },
+  {
+    "id": 73,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "new String とリテラル比較。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String a = new String(\"quux\");\n        String b = \"quux\";\n        System.out.println(a == b);\n    }\n}\n// uid:73\n",
+    "choices": [
+      "equals()ならtrue",
+      "実行時例外",
+      "true",
+      "false",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 3,
+    "explanation": "'=='は参照比較。newは別インスタンス。"
+  },
+  {
+    "id": 74,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "Stringは不変、SBは可変。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder sb = new StringBuilder(\"delta\");\n        String s = sb.toString();\n        sb.append(\"!\");\n        System.out.println(s + \" / \" + sb.toString());\n    }\n}\n// uid:74\n",
+    "choices": [
+      "delta! / delta!",
+      "delta! / delta",
+      "コンパイルエラー",
+      "delta / delta!",
+      "実行時例外"
+    ],
+    "answerIndex": 3,
+    "explanation": "toStringで得たStringは以後の変更に影響しない。"
+  },
+  {
+    "id": 75,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "equalsのみ実装でHashSetに追加。サイズは？",
+    "code": "import java.util.*;\nclass P {\n    String x;\n    P(String x){ this.x=x; }\n    public boolean equals(Object o){\n        return (o instanceof P) && ((P)o).x.equals(this.x);\n    }\n    // hashCode未実装 // B\n}\npublic class Main {\n    public static void main(String[] args) {\n        Set<P> s = new HashSet<>();\n        s.add(new P(\"k\"));\n        s.add(new P(\"k\"));\n        System.out.println(s.size());\n    }\n}\n// uid:75\n",
+    "choices": [
+      "1",
+      "コンパイルエラー",
+      "2",
+      "実行時例外",
+      "0"
+    ],
+    "answerIndex": 2,
+    "explanation": "hashCode未実装で重複検出されず2。"
+  },
+  {
+    "id": 76,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "同一リテラルはプール共有。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String a = \"bar\";\n        String b = \"bar\";\n        System.out.println(a == b);\n    }\n}\n// uid:76\n",
+    "choices": [
+      "true",
+      "コンパイルエラー",
+      "実行時例外",
+      "equals()ならfalse",
+      "false"
+    ],
+    "answerIndex": 0,
+    "explanation": "同一リテラルは同じ参照を指す。"
+  },
+  {
+    "id": 77,
+    "category": "オブジェクト指向の基礎",
+    "difficulty": "上級",
+    "question": "null引数のオーバーロード解決。出力は？",
+    "code": "public class Main {\n    static void f(Object o){ System.out.println(\"left\"); }\n    static void f(String s){ System.out.println(\"right\"); }\n    public static void main(String[] args) { f(null); }\n}\n// uid:77\n",
+    "choices": [
+      "right",
+      "不定",
+      "コンパイルエラー(曖昧)",
+      "left",
+      "実行時例外"
+    ],
+    "answerIndex": 0,
+    "explanation": "より具体的なString版が選ばれる。"
+  },
+  {
+    "id": 78,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "nullセーフなequals呼び出し。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String a = null;\n        System.out.println(\"d\".equals(a));\n    }\n}\n// uid:78\n",
+    "choices": [
+      "false",
+      "コンパイルエラー",
+      "実行時例外",
+      "NullPointerException",
+      "true"
+    ],
+    "answerIndex": 0,
+    "explanation": "リテラル側から呼べばNPEにならない。"
+  },
+  {
+    "id": 79,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "equalsのみ実装でHashSetに追加。サイズは？",
+    "code": "import java.util.*;\nclass P {\n    String x;\n    P(String x){ this.x=x; }\n    public boolean equals(Object o){\n        return (o instanceof P) && ((P)o).x.equals(this.x);\n    }\n    // hashCode未実装 // A\n}\npublic class Main {\n    public static void main(String[] args) {\n        Set<P> s = new HashSet<>();\n        s.add(new P(\"k\"));\n        s.add(new P(\"k\"));\n        System.out.println(s.size());\n    }\n}\n// uid:79\n",
+    "choices": [
+      "1",
+      "2",
+      "コンパイルエラー",
+      "実行時例外",
+      "0"
+    ],
+    "answerIndex": 1,
+    "explanation": "hashCode未実装で重複検出されず2。"
+  },
+  {
+    "id": 80,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "new String とリテラル比較。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String a = new String(\"waldo\");\n        String b = \"waldo\";\n        System.out.println(a == b);\n    }\n}\n// uid:80\n",
+    "choices": [
+      "コンパイルエラー",
+      "true",
+      "equals()ならtrue",
+      "実行時例外",
+      "false"
+    ],
+    "answerIndex": 4,
+    "explanation": "'=='は参照比較。newは別インスタンス。"
+  },
+  {
+    "id": 81,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "do-whileは最低1回実行。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int i = 0, c = 0; // caseY\n        do { c++; i--; } while(i > 0);\n        System.out.println(c);\n    }\n}\n// uid:81\n",
+    "choices": [
+      "コンパイルエラー",
+      "実行時例外",
+      "1",
+      "0",
+      "2"
+    ],
+    "answerIndex": 2,
+    "explanation": "条件判定が後なので1回は実行される。"
+  },
+  {
+    "id": 82,
+    "category": "アクセス修飾子とカプセル化",
+    "difficulty": "上級",
+    "question": "package-privateメンバの可視性。結果は？",
+    "code": "package sample;\nclass X { int v = 1; }\npublic class Main {\n    public static void main(String[] args) {\n        sample.X x = new sample.X();\n        System.out.println(x.v);\n    }\n}\n// uid:82\n",
+    "choices": [
+      "0",
+      "未定義",
+      "実行時例外",
+      "1",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 4,
+    "explanation": "package-privateは同一パッケージ外からアクセス不可。"
+  },
+  {
+    "id": 83,
+    "category": "例外処理",
+    "difficulty": "上級",
+    "question": "try-with-resourcesのclose順序。出力は？",
+    "code": "class R implements AutoCloseable {\n    String n; R(String n){this.n=n;}\n    public void close(){ System.out.print(\"C\"+n); }\n}\npublic class Main {\n    public static void main(String[] args) {\n        try(R a=new R(\"1\"); R b=new R(\"2\")){\n            System.out.print(\"B\");\n        }\n    }\n}\n// uid:83\n",
+    "choices": [
+      "C1C2B",
+      "実行時例外",
+      "コンパイルエラー",
+      "BC1C2",
+      "BC2C1"
+    ],
+    "answerIndex": 4,
+    "explanation": "closeは宣言の逆順で呼ばれる。"
+  },
+  {
+    "id": 84,
+    "category": "アクセス修飾子とカプセル化",
+    "difficulty": "上級",
+    "question": "package-privateメンバの可視性。結果は？",
+    "code": "package demo;\nclass X { int v = 1; }\npublic class Main {\n    public static void main(String[] args) {\n        demo.X x = new demo.X();\n        System.out.println(x.v);\n    }\n}\n// uid:84\n",
+    "choices": [
+      "0",
+      "未定義",
+      "1",
+      "コンパイルエラー",
+      "実行時例外"
+    ],
+    "answerIndex": 3,
+    "explanation": "package-privateは同一パッケージ外からアクセス不可。"
+  },
+  {
+    "id": 85,
+    "category": "多態性とオーバーライド",
+    "difficulty": "上級",
+    "question": "実行時バインディングの結果。出力は？",
+    "code": "class A { String f(){ return \"left\"; } }\nclass B extends A { String f(){ return \"right\"; } }\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        System.out.println(a.f());\n    }\n}\n// uid:85\n",
+    "choices": [
+      "不定",
+      "実行時例外",
+      "right",
+      "コンパイルエラー",
+      "left"
+    ],
+    "answerIndex": 2,
+    "explanation": "オーバーライドは動的ディスパッチ。"
+  },
+  {
+    "id": 86,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "同一リテラルはプール共有。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String a = \"grault\";\n        String b = \"grault\";\n        System.out.println(a == b);\n    }\n}\n// uid:86\n",
+    "choices": [
+      "equals()ならfalse",
+      "コンパイルエラー",
+      "実行時例外",
+      "true",
+      "false"
+    ],
+    "answerIndex": 3,
+    "explanation": "同一リテラルは同じ参照を指す。"
+  },
+  {
+    "id": 87,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "new String とリテラル比較。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String a = new String(\"bar\");\n        String b = \"bar\";\n        System.out.println(a == b);\n    }\n}\n// uid:87\n",
+    "choices": [
+      "コンパイルエラー",
+      "true",
+      "実行時例外",
+      "false",
+      "equals()ならtrue"
+    ],
+    "answerIndex": 3,
+    "explanation": "'=='は参照比較。newは別インスタンス。"
+  },
+  {
+    "id": 88,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "new String とリテラル比較。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String a = new String(\"baz\");\n        String b = \"baz\";\n        System.out.println(a == b);\n    }\n}\n// uid:88\n",
+    "choices": [
+      "実行時例外",
+      "false",
+      "コンパイルエラー",
+      "equals()ならtrue",
+      "true"
+    ],
+    "answerIndex": 1,
+    "explanation": "'=='は参照比較。newは別インスタンス。"
+  },
+  {
+    "id": 89,
+    "category": "switchと分岐",
+    "difficulty": "上級",
+    "question": "Stringのswitchの挙動。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"green\";\n        switch(s){\n            case \"red\": System.out.print(\"1\"); break;\n            case \"green\": System.out.print(\"2\"); break;\n            case \"blue\": System.out.print(\"3\"); break;\n            default: System.out.print(\"D\");\n        }\n    }\n}\n// uid:89\n",
+    "choices": [
+      "1",
+      "D",
+      "3",
+      "コンパイルエラー",
+      "2"
+    ],
+    "answerIndex": 4,
+    "explanation": "一致するcaseのラベルが実行される。"
+  },
+  {
+    "id": 90,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "コンパイル時結合は同一参照。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"rs\" + \"ust\";\n        System.out.println(s == \"rsust\");\n    }\n}\n// uid:90\n",
+    "choices": [
+      "false",
+      "実行時例外",
+      "true",
+      "equals()ならfalse",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 2,
+    "explanation": "リテラルの結合はコンパイル時に一体化される。"
+  },
+  {
+    "id": 91,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "new String とリテラル比較。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String a = new String(\"garply\");\n        String b = \"garply\";\n        System.out.println(a == b);\n    }\n}\n// uid:91\n",
+    "choices": [
+      "true",
+      "実行時例外",
+      "false",
+      "コンパイルエラー",
+      "equals()ならtrue"
+    ],
+    "answerIndex": 2,
+    "explanation": "'=='は参照比較。newは別インスタンス。"
+  },
+  {
+    "id": 92,
+    "category": "配列とコレクション",
+    "difficulty": "上級",
+    "question": "cloneは独立配列。出力は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        String[] a = new String[]{\"x\",\"y\",\"z\"};\n        String[] b = a.clone(); // caseX\n        a[0] = \"q\";\n        System.out.println(b[0]);\n    }\n}\n// uid:92\n",
+    "choices": [
+      "q",
+      "x",
+      "コンパイルエラー",
+      "実行時例外",
+      "y"
+    ],
+    "answerIndex": 1,
+    "explanation": "クローンは別配列のため影響しない。"
+  },
+  {
+    "id": 93,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "同一リテラルはプール共有。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String a = \"waldo\";\n        String b = \"waldo\";\n        System.out.println(a == b);\n    }\n}\n// uid:93\n",
+    "choices": [
+      "equals()ならfalse",
+      "コンパイルエラー",
+      "false",
+      "実行時例外",
+      "true"
+    ],
+    "answerIndex": 4,
+    "explanation": "同一リテラルは同じ参照を指す。"
+  },
+  {
+    "id": 94,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "三項演算子の結果型と実行時型。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        Object o = true ? \"c\" : new Object();\n        System.out.println(o.getClass().getSimpleName());\n    }\n}\n// uid:94\n",
+    "choices": [
+      "String",
+      "実行時例外",
+      "Serializable",
+      "Object",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 0,
+    "explanation": "実体はStringなので実行時型名はString。"
+  },
+  {
+    "id": 95,
+    "category": "多態性とオーバーライド",
+    "difficulty": "上級",
+    "question": "実行時バインディングの結果。出力は？",
+    "code": "class A { String f(){ return \"base\"; } }\nclass B extends A { String f(){ return \"child\"; } }\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        System.out.println(a.f());\n    }\n}\n// uid:95\n",
+    "choices": [
+      "コンパイルエラー",
+      "実行時例外",
+      "base",
+      "child",
+      "不定"
+    ],
+    "answerIndex": 3,
+    "explanation": "オーバーライドは動的ディスパッチ。"
+  },
+  {
+    "id": 96,
+    "category": "switchと分岐",
+    "difficulty": "上級",
+    "question": "Stringのswitchの挙動。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"b\";\n        switch(s){\n            case \"a\": System.out.print(\"1\"); break;\n            case \"b\": System.out.print(\"2\"); break;\n            case \"c\": System.out.print(\"3\"); break;\n            default: System.out.print(\"D\");\n        }\n    }\n}\n// uid:96\n",
+    "choices": [
+      "コンパイルエラー",
+      "3",
+      "1",
+      "2",
+      "D"
+    ],
+    "answerIndex": 3,
+    "explanation": "一致するcaseのラベルが実行される。"
+  },
+  {
+    "id": 97,
+    "category": "配列とコレクション",
+    "difficulty": "上級",
+    "question": "拡張for中の構造変更でどうなる？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<String> list = new ArrayList<>(Arrays.asList(\"a\",\"b\",\"c\")); // caseY\n        for(String x : list) {\n            if(x.equals(\"b\")) list.remove(x);\n        }\n        System.out.println(list.size());\n    }\n}\n// uid:97\n",
+    "choices": [
+      "コンパイルエラー",
+      "実行時例外(ConcurrentModificationException)",
+      "3",
+      "2",
+      "1"
+    ],
+    "answerIndex": 1,
+    "explanation": "Iteratorを介さない構造変更は例外。"
+  },
+  {
+    "id": 98,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "do-whileは最低1回実行。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int i = 0, c = 0; // loopA\n        do { c++; i--; } while(i > 0);\n        System.out.println(c);\n    }\n}\n// uid:98\n",
+    "choices": [
+      "1",
+      "コンパイルエラー",
+      "実行時例外",
+      "0",
+      "2"
+    ],
+    "answerIndex": 0,
+    "explanation": "条件判定が後なので1回は実行される。"
+  },
+  {
+    "id": 99,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "同一リテラルはプール共有。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String a = \"corge\";\n        String b = \"corge\";\n        System.out.println(a == b);\n    }\n}\n// uid:99\n",
+    "choices": [
+      "true",
+      "実行時例外",
+      "false",
+      "コンパイルエラー",
+      "equals()ならfalse"
+    ],
+    "answerIndex": 0,
+    "explanation": "同一リテラルは同じ参照を指す。"
+  },
+  {
+    "id": 100,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "コンパイル時結合は同一参照。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"go\" + \"pher\";\n        System.out.println(s == \"gopher\");\n    }\n}\n// uid:100\n",
+    "choices": [
+      "equals()ならfalse",
+      "実行時例外",
+      "true",
+      "false",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 2,
+    "explanation": "リテラルの結合はコンパイル時に一体化される。"
+  },
+  {
+    "id": 101,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "new String とリテラル比較。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String a = new String(\"fred\");\n        String b = \"fred\";\n        System.out.println(a == b);\n    }\n}\n// uid:101\n",
+    "choices": [
+      "実行時例外",
+      "false",
+      "true",
+      "コンパイルエラー",
+      "equals()ならtrue"
+    ],
+    "answerIndex": 1,
+    "explanation": "'=='は参照比較。newは別インスタンス。"
+  },
+  {
+    "id": 102,
+    "category": "オブジェクト指向の基礎",
+    "difficulty": "上級",
+    "question": "null引数のオーバーロード解決。出力は？",
+    "code": "public class Main {\n    static void f(Object o){ System.out.println(\"old\"); }\n    static void f(String s){ System.out.println(\"new\"); }\n    public static void main(String[] args) { f(null); }\n}\n// uid:102\n",
+    "choices": [
+      "コンパイルエラー(曖昧)",
+      "old",
+      "new",
+      "実行時例外",
+      "不定"
+    ],
+    "answerIndex": 2,
+    "explanation": "より具体的なString版が選ばれる。"
+  },
+  {
+    "id": 103,
+    "category": "クラス設計と継承",
+    "difficulty": "上級",
+    "question": "フィールドの隠蔽（多態性なし）。出力は？",
+    "code": "class A { String v = \"P\"; }\nclass B extends A { String v = \"Q\"; }\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        System.out.println(a.v);\n    }\n}\n// uid:103\n",
+    "choices": [
+      "未定義",
+      "実行時例外",
+      "コンパイルエラー",
+      "P",
+      "Q"
+    ],
+    "answerIndex": 3,
+    "explanation": "フィールドは参照型で解決される。"
+  },
+  {
+    "id": 104,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "do-whileは最低1回実行。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int i = 0, c = 0; // loopB\n        do { c++; i--; } while(i > 0);\n        System.out.println(c);\n    }\n}\n// uid:104\n",
+    "choices": [
+      "0",
+      "2",
+      "1",
+      "コンパイルエラー",
+      "実行時例外"
+    ],
+    "answerIndex": 2,
+    "explanation": "条件判定が後なので1回は実行される。"
+  },
+  {
+    "id": 105,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "do-whileは最低1回実行。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int i = 0, c = 0; // caseX\n        do { c++; i--; } while(i > 0);\n        System.out.println(c);\n    }\n}\n// uid:105\n",
+    "choices": [
+      "1",
+      "2",
+      "0",
+      "実行時例外",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 0,
+    "explanation": "条件判定が後なので1回は実行される。"
+  },
+  {
+    "id": 106,
+    "category": "オブジェクト指向の基礎",
+    "difficulty": "上級",
+    "question": "null引数のオーバーロード解決。出力は？",
+    "code": "public class Main {\n    static void f(Object o){ System.out.println(\"obj\"); }\n    static void f(String s){ System.out.println(\"str\"); }\n    public static void main(String[] args) { f(null); }\n}\n// uid:106\n",
+    "choices": [
+      "コンパイルエラー(曖昧)",
+      "obj",
+      "str",
+      "不定",
+      "実行時例外"
+    ],
+    "answerIndex": 2,
+    "explanation": "より具体的なString版が選ばれる。"
+  },
+  {
+    "id": 107,
+    "category": "例外処理",
+    "difficulty": "上級",
+    "question": "tryのreturnとfinallyの実行順序。出力は？",
+    "code": "public class Main {\n    static String f() {\n        try { return \"X\"; }\n        finally { System.out.print(\"Y \"); }\n    }\n    public static void main(String[] args) { System.out.println(f()); }\n}\n// uid:107\n",
+    "choices": [
+      "Y Y",
+      "未定義",
+      "Y X",
+      "X Y",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 2,
+    "explanation": "finallyの出力が先、最後にreturn値がprintlnされる。"
+  },
+  {
+    "id": 108,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "Optional#getを空で呼ぶと？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        Optional<String> o = Optional.ofNullable(null); // C\n        System.out.println(o.get());\n    }\n}\n// uid:108\n",
+    "choices": [
+      "何も出ない",
+      "NoSuchElementException がスローされる",
+      "空文字と出力",
+      "コンパイルエラー",
+      "null と出力"
+    ],
+    "answerIndex": 1,
+    "explanation": "空のOptionalでgetは例外。"
+  },
+  {
+    "id": 109,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "Stringは不変、SBは可変。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder sb = new StringBuilder(\"gamma\");\n        String s = sb.toString();\n        sb.append(\"!\");\n        System.out.println(s + \" / \" + sb.toString());\n    }\n}\n// uid:109\n",
+    "choices": [
+      "gamma! / gamma",
+      "gamma / gamma!",
+      "gamma! / gamma!",
+      "コンパイルエラー",
+      "実行時例外"
+    ],
+    "answerIndex": 1,
+    "explanation": "toStringで得たStringは以後の変更に影響しない。"
+  },
+  {
+    "id": 110,
+    "category": "例外処理",
+    "difficulty": "上級",
+    "question": "tryのreturnとfinallyの実行順序。出力は？",
+    "code": "public class Main {\n    static String f() {\n        try { return \"T\"; }\n        finally { System.out.print(\"F \"); }\n    }\n    public static void main(String[] args) { System.out.println(f()); }\n}\n// uid:110\n",
+    "choices": [
+      "F T",
+      "F F",
+      "T F",
+      "コンパイルエラー",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "finallyの出力が先、最後にreturn値がprintlnされる。"
+  },
+  {
+    "id": 111,
+    "category": "オブジェクト指向の基礎",
+    "difficulty": "上級",
+    "question": "null引数のオーバーロード解決。出力は？",
+    "code": "public class Main {\n    static void f(Object o){ System.out.println(\"wide\"); }\n    static void f(String s){ System.out.println(\"narrow\"); }\n    public static void main(String[] args) { f(null); }\n}\n// uid:111\n",
+    "choices": [
+      "wide",
+      "実行時例外",
+      "コンパイルエラー(曖昧)",
+      "不定",
+      "narrow"
+    ],
+    "answerIndex": 4,
+    "explanation": "より具体的なString版が選ばれる。"
+  },
+  {
+    "id": 112,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String second = \"java\";\n        System.out.println(second.replace(\"j\", \"J\"));\n    }\n}\n// uid:112\n",
+    "choices": [
+      "java",
+      "Java",
+      "JAVA",
+      "コンパイルエラー",
+      "実行時例外"
+    ],
+    "answerIndex": 1,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 113,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String up = \"scala\";\n        System.out.println(up.replace(\"s\", \"S\"));\n    }\n}\n// uid:113\n",
+    "choices": [
+      "scala",
+      "SCALA",
+      "Scala",
+      "コンパイルエラー",
+      "実行時例外"
+    ],
+    "answerIndex": 2,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 114,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String gamma = \"python\";\n        System.out.println(gamma.replace(\"p\", \"P\"));\n    }\n}\n// uid:114\n",
+    "choices": [
+      "実行時例外",
+      "python",
+      "コンパイルエラー",
+      "PYTHON",
+      "Python"
+    ],
+    "answerIndex": 4,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 115,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String up = \"swift\";\n        System.out.println(up.replace(\"s\", \"S\"));\n    }\n}\n// uid:115\n",
+    "choices": [
+      "Swift",
+      "SWIFT",
+      "swift",
+      "コンパイルエラー",
+      "実行時例外"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 116,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String first = \"rust\";\n        System.out.println(first.replace(\"r\", \"R\"));\n    }\n}\n// uid:116\n",
+    "choices": [
+      "Rust",
+      "RUST",
+      "rust",
+      "実行時例外",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 117,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String gamma = \"java\";\n        System.out.println(gamma.replace(\"j\", \"J\"));\n    }\n}\n// uid:117\n",
+    "choices": [
+      "実行時例外",
+      "JAVA",
+      "Java",
+      "java",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 2,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 118,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String delta = \"haskell\";\n        System.out.println(delta.replace(\"h\", \"H\"));\n    }\n}\n// uid:118\n",
+    "choices": [
+      "コンパイルエラー",
+      "実行時例外",
+      "Haskell",
+      "HASKELL",
+      "haskell"
+    ],
+    "answerIndex": 2,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 119,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String omega = \"python\";\n        System.out.println(omega.replace(\"p\", \"P\"));\n    }\n}\n// uid:119\n",
+    "choices": [
+      "python",
+      "Python",
+      "PYTHON",
+      "コンパイルエラー",
+      "実行時例外"
+    ],
+    "answerIndex": 1,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 120,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String up = \"perl\";\n        System.out.println(up.replace(\"p\", \"P\"));\n    }\n}\n// uid:120\n",
+    "choices": [
+      "perl",
+      "PERL",
+      "実行時例外",
+      "Perl",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 3,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 121,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String left = \"kotlin\";\n        System.out.println(left.replace(\"k\", \"K\"));\n    }\n}\n// uid:121\n",
+    "choices": [
+      "kotlin",
+      "KOTLIN",
+      "実行時例外",
+      "Kotlin",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 3,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 122,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String gamma = \"go\";\n        System.out.println(gamma.replace(\"g\", \"G\"));\n    }\n}\n// uid:122\n",
+    "choices": [
+      "実行時例外",
+      "go",
+      "コンパイルエラー",
+      "GO",
+      "Go"
+    ],
+    "answerIndex": 4,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 123,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String up = \"python\";\n        System.out.println(up.replace(\"p\", \"P\"));\n    }\n}\n// uid:123\n",
+    "choices": [
+      "Python",
+      "コンパイルエラー",
+      "実行時例外",
+      "PYTHON",
+      "python"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 124,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String omega = \"kotlin\";\n        System.out.println(omega.replace(\"k\", \"K\"));\n    }\n}\n// uid:124\n",
+    "choices": [
+      "コンパイルエラー",
+      "kotlin",
+      "Kotlin",
+      "KOTLIN",
+      "実行時例外"
+    ],
+    "answerIndex": 2,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 125,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String second = \"go\";\n        System.out.println(second.replace(\"g\", \"G\"));\n    }\n}\n// uid:125\n",
+    "choices": [
+      "実行時例外",
+      "コンパイルエラー",
+      "Go",
+      "GO",
+      "go"
+    ],
+    "answerIndex": 2,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 126,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String second = \"elixir\";\n        System.out.println(second.replace(\"e\", \"E\"));\n    }\n}\n// uid:126\n",
+    "choices": [
+      "ELIXIR",
+      "実行時例外",
+      "elixir",
+      "Elixir",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 3,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 127,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String flag = \"rust\";\n        System.out.println(flag.replace(\"r\", \"R\"));\n    }\n}\n// uid:127\n",
+    "choices": [
+      "Rust",
+      "rust",
+      "コンパイルエラー",
+      "実行時例外",
+      "RUST"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 128,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String first = \"elixir\";\n        System.out.println(first.replace(\"e\", \"E\"));\n    }\n}\n// uid:128\n",
+    "choices": [
+      "Elixir",
+      "elixir",
+      "ELIXIR",
+      "実行時例外",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 129,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String temp = \"scala\";\n        System.out.println(temp.replace(\"s\", \"S\"));\n    }\n}\n// uid:129\n",
+    "choices": [
+      "実行時例外",
+      "SCALA",
+      "Scala",
+      "scala",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 2,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 130,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String right = \"java\";\n        System.out.println(right.replace(\"j\", \"J\"));\n    }\n}\n// uid:130\n",
+    "choices": [
+      "JAVA",
+      "実行時例外",
+      "コンパイルエラー",
+      "Java",
+      "java"
+    ],
+    "answerIndex": 3,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 131,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String alpha = \"python\";\n        System.out.println(alpha.replace(\"p\", \"P\"));\n    }\n}\n// uid:131\n",
+    "choices": [
+      "実行時例外",
+      "コンパイルエラー",
+      "PYTHON",
+      "python",
+      "Python"
+    ],
+    "answerIndex": 4,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 132,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String delta = \"swift\";\n        System.out.println(delta.replace(\"s\", \"S\"));\n    }\n}\n// uid:132\n",
+    "choices": [
+      "コンパイルエラー",
+      "SWIFT",
+      "実行時例外",
+      "Swift",
+      "swift"
+    ],
+    "answerIndex": 3,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 133,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String omega = \"perl\";\n        System.out.println(omega.replace(\"p\", \"P\"));\n    }\n}\n// uid:133\n",
+    "choices": [
+      "perl",
+      "PERL",
+      "Perl",
+      "コンパイルエラー",
+      "実行時例外"
+    ],
+    "answerIndex": 2,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 134,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String gamma = \"perl\";\n        System.out.println(gamma.replace(\"p\", \"P\"));\n    }\n}\n// uid:134\n",
+    "choices": [
+      "PERL",
+      "perl",
+      "Perl",
+      "実行時例外",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 2,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 135,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String delta = \"ruby\";\n        System.out.println(delta.replace(\"r\", \"R\"));\n    }\n}\n// uid:135\n",
+    "choices": [
+      "コンパイルエラー",
+      "Ruby",
+      "実行時例外",
+      "RUBY",
+      "ruby"
+    ],
+    "answerIndex": 1,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 136,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String delta = \"ocaml\";\n        System.out.println(delta.replace(\"o\", \"O\"));\n    }\n}\n// uid:136\n",
+    "choices": [
+      "コンパイルエラー",
+      "実行時例外",
+      "ocaml",
+      "OCAML",
+      "Ocaml"
+    ],
+    "answerIndex": 4,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 137,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String left = \"python\";\n        System.out.println(left.replace(\"p\", \"P\"));\n    }\n}\n// uid:137\n",
+    "choices": [
+      "実行時例外",
+      "python",
+      "PYTHON",
+      "Python",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 3,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 138,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String omega = \"java\";\n        System.out.println(omega.replace(\"j\", \"J\"));\n    }\n}\n// uid:138\n",
+    "choices": [
+      "Java",
+      "実行時例外",
+      "コンパイルエラー",
+      "java",
+      "JAVA"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 139,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String beta = \"haskell\";\n        System.out.println(beta.replace(\"h\", \"H\"));\n    }\n}\n// uid:139\n",
+    "choices": [
+      "Haskell",
+      "コンパイルエラー",
+      "実行時例外",
+      "haskell",
+      "HASKELL"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 140,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String temp = \"swift\";\n        System.out.println(temp.replace(\"s\", \"S\"));\n    }\n}\n// uid:140\n",
+    "choices": [
+      "コンパイルエラー",
+      "実行時例外",
+      "swift",
+      "Swift",
+      "SWIFT"
+    ],
+    "answerIndex": 3,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 141,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String down = \"ruby\";\n        System.out.println(down.replace(\"r\", \"R\"));\n    }\n}\n// uid:141\n",
+    "choices": [
+      "Ruby",
+      "ruby",
+      "実行時例外",
+      "RUBY",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 142,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String beta = \"java\";\n        System.out.println(beta.replace(\"j\", \"J\"));\n    }\n}\n// uid:142\n",
+    "choices": [
+      "Java",
+      "コンパイルエラー",
+      "実行時例外",
+      "java",
+      "JAVA"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 143,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String temp = \"rust\";\n        System.out.println(temp.replace(\"r\", \"R\"));\n    }\n}\n// uid:143\n",
+    "choices": [
+      "RUST",
+      "実行時例外",
+      "Rust",
+      "コンパイルエラー",
+      "rust"
+    ],
+    "answerIndex": 2,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 144,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String down = \"kotlin\";\n        System.out.println(down.replace(\"k\", \"K\"));\n    }\n}\n// uid:144\n",
+    "choices": [
+      "kotlin",
+      "実行時例外",
+      "Kotlin",
+      "KOTLIN",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 2,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 145,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String flag = \"swift\";\n        System.out.println(flag.replace(\"s\", \"S\"));\n    }\n}\n// uid:145\n",
+    "choices": [
+      "コンパイルエラー",
+      "実行時例外",
+      "Swift",
+      "swift",
+      "SWIFT"
+    ],
+    "answerIndex": 2,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 146,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String left = \"ruby\";\n        System.out.println(left.replace(\"r\", \"R\"));\n    }\n}\n// uid:146\n",
+    "choices": [
+      "RUBY",
+      "コンパイルエラー",
+      "ruby",
+      "Ruby",
+      "実行時例外"
+    ],
+    "answerIndex": 3,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 147,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String gamma = \"ocaml\";\n        System.out.println(gamma.replace(\"o\", \"O\"));\n    }\n}\n// uid:147\n",
+    "choices": [
+      "コンパイルエラー",
+      "Ocaml",
+      "ocaml",
+      "実行時例外",
+      "OCAML"
+    ],
+    "answerIndex": 1,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 148,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String left = \"scala\";\n        System.out.println(left.replace(\"s\", \"S\"));\n    }\n}\n// uid:148\n",
+    "choices": [
+      "scala",
+      "Scala",
+      "コンパイルエラー",
+      "実行時例外",
+      "SCALA"
+    ],
+    "answerIndex": 1,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 149,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String second = \"ruby\";\n        System.out.println(second.replace(\"r\", \"R\"));\n    }\n}\n// uid:149\n",
+    "choices": [
+      "Ruby",
+      "ruby",
+      "コンパイルエラー",
+      "RUBY",
+      "実行時例外"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 150,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String second = \"ocaml\";\n        System.out.println(second.replace(\"o\", \"O\"));\n    }\n}\n// uid:150\n",
+    "choices": [
+      "ocaml",
+      "OCAML",
+      "コンパイルエラー",
+      "実行時例外",
+      "Ocaml"
+    ],
+    "answerIndex": 4,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 151,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String beta = \"kotlin\";\n        System.out.println(beta.replace(\"k\", \"K\"));\n    }\n}\n// uid:151\n",
+    "choices": [
+      "Kotlin",
+      "実行時例外",
+      "kotlin",
+      "KOTLIN",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 152,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String temp = \"perl\";\n        System.out.println(temp.replace(\"p\", \"P\"));\n    }\n}\n// uid:152\n",
+    "choices": [
+      "PERL",
+      "perl",
+      "コンパイルエラー",
+      "実行時例外",
+      "Perl"
+    ],
+    "answerIndex": 4,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 153,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String first = \"ocaml\";\n        System.out.println(first.replace(\"o\", \"O\"));\n    }\n}\n// uid:153\n",
+    "choices": [
+      "ocaml",
+      "Ocaml",
+      "OCAML",
+      "コンパイルエラー",
+      "実行時例外"
+    ],
+    "answerIndex": 1,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 154,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String gamma = \"elixir\";\n        System.out.println(gamma.replace(\"e\", \"E\"));\n    }\n}\n// uid:154\n",
+    "choices": [
+      "elixir",
+      "実行時例外",
+      "コンパイルエラー",
+      "Elixir",
+      "ELIXIR"
+    ],
+    "answerIndex": 3,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 155,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String omega = \"ocaml\";\n        System.out.println(omega.replace(\"o\", \"O\"));\n    }\n}\n// uid:155\n",
+    "choices": [
+      "OCAML",
+      "Ocaml",
+      "コンパイルエラー",
+      "ocaml",
+      "実行時例外"
+    ],
+    "answerIndex": 1,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 156,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String flag = \"scala\";\n        System.out.println(flag.replace(\"s\", \"S\"));\n    }\n}\n// uid:156\n",
+    "choices": [
+      "実行時例外",
+      "Scala",
+      "scala",
+      "SCALA",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 1,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 157,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String left = \"java\";\n        System.out.println(left.replace(\"j\", \"J\"));\n    }\n}\n// uid:157\n",
+    "choices": [
+      "実行時例外",
+      "JAVA",
+      "コンパイルエラー",
+      "Java",
+      "java"
+    ],
+    "answerIndex": 3,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 158,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String flag = \"perl\";\n        System.out.println(flag.replace(\"p\", \"P\"));\n    }\n}\n// uid:158\n",
+    "choices": [
+      "Perl",
+      "コンパイルエラー",
+      "perl",
+      "実行時例外",
+      "PERL"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 159,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String temp = \"python\";\n        System.out.println(temp.replace(\"p\", \"P\"));\n    }\n}\n// uid:159\n",
+    "choices": [
+      "実行時例外",
+      "python",
+      "Python",
+      "コンパイルエラー",
+      "PYTHON"
+    ],
+    "answerIndex": 2,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 160,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String flag = \"elixir\";\n        System.out.println(flag.replace(\"e\", \"E\"));\n    }\n}\n// uid:160\n",
+    "choices": [
+      "ELIXIR",
+      "elixir",
+      "Elixir",
+      "コンパイルエラー",
+      "実行時例外"
+    ],
+    "answerIndex": 2,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 161,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String temp = \"ocaml\";\n        System.out.println(temp.replace(\"o\", \"O\"));\n    }\n}\n// uid:161\n",
+    "choices": [
+      "Ocaml",
+      "コンパイルエラー",
+      "実行時例外",
+      "ocaml",
+      "OCAML"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 162,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String second = \"scala\";\n        System.out.println(second.replace(\"s\", \"S\"));\n    }\n}\n// uid:162\n",
+    "choices": [
+      "実行時例外",
+      "Scala",
+      "コンパイルエラー",
+      "SCALA",
+      "scala"
+    ],
+    "answerIndex": 1,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 163,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String alpha = \"swift\";\n        System.out.println(alpha.replace(\"s\", \"S\"));\n    }\n}\n// uid:163\n",
+    "choices": [
+      "実行時例外",
+      "SWIFT",
+      "コンパイルエラー",
+      "Swift",
+      "swift"
+    ],
+    "answerIndex": 3,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 164,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String left = \"ocaml\";\n        System.out.println(left.replace(\"o\", \"O\"));\n    }\n}\n// uid:164\n",
+    "choices": [
+      "実行時例外",
+      "OCAML",
+      "Ocaml",
+      "ocaml",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 2,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 165,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String temp = \"kotlin\";\n        System.out.println(temp.replace(\"k\", \"K\"));\n    }\n}\n// uid:165\n",
+    "choices": [
+      "Kotlin",
+      "実行時例外",
+      "KOTLIN",
+      "コンパイルエラー",
+      "kotlin"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 166,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String up = \"java\";\n        System.out.println(up.replace(\"j\", \"J\"));\n    }\n}\n// uid:166\n",
+    "choices": [
+      "JAVA",
+      "実行時例外",
+      "Java",
+      "java",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 2,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 167,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String flag = \"ocaml\";\n        System.out.println(flag.replace(\"o\", \"O\"));\n    }\n}\n// uid:167\n",
+    "choices": [
+      "Ocaml",
+      "実行時例外",
+      "OCAML",
+      "ocaml",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 168,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String right = \"haskell\";\n        System.out.println(right.replace(\"h\", \"H\"));\n    }\n}\n// uid:168\n",
+    "choices": [
+      "Haskell",
+      "HASKELL",
+      "haskell",
+      "実行時例外",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 169,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String up = \"elixir\";\n        System.out.println(up.replace(\"e\", \"E\"));\n    }\n}\n// uid:169\n",
+    "choices": [
+      "コンパイルエラー",
+      "Elixir",
+      "ELIXIR",
+      "elixir",
+      "実行時例外"
+    ],
+    "answerIndex": 1,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 170,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String beta = \"ruby\";\n        System.out.println(beta.replace(\"r\", \"R\"));\n    }\n}\n// uid:170\n",
+    "choices": [
+      "コンパイルエラー",
+      "実行時例外",
+      "RUBY",
+      "Ruby",
+      "ruby"
+    ],
+    "answerIndex": 3,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 171,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String flag = \"kotlin\";\n        System.out.println(flag.replace(\"k\", \"K\"));\n    }\n}\n// uid:171\n",
+    "choices": [
+      "コンパイルエラー",
+      "KOTLIN",
+      "Kotlin",
+      "kotlin",
+      "実行時例外"
+    ],
+    "answerIndex": 2,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 172,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String temp = \"haskell\";\n        System.out.println(temp.replace(\"h\", \"H\"));\n    }\n}\n// uid:172\n",
+    "choices": [
+      "HASKELL",
+      "haskell",
+      "実行時例外",
+      "Haskell",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 3,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 173,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String gamma = \"rust\";\n        System.out.println(gamma.replace(\"r\", \"R\"));\n    }\n}\n// uid:173\n",
+    "choices": [
+      "コンパイルエラー",
+      "実行時例外",
+      "RUST",
+      "Rust",
+      "rust"
+    ],
+    "answerIndex": 3,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 174,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String second = \"python\";\n        System.out.println(second.replace(\"p\", \"P\"));\n    }\n}\n// uid:174\n",
+    "choices": [
+      "Python",
+      "コンパイルエラー",
+      "実行時例外",
+      "PYTHON",
+      "python"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 175,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String alpha = \"rust\";\n        System.out.println(alpha.replace(\"r\", \"R\"));\n    }\n}\n// uid:175\n",
+    "choices": [
+      "コンパイルエラー",
+      "Rust",
+      "RUST",
+      "rust",
+      "実行時例外"
+    ],
+    "answerIndex": 1,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 176,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String up = \"go\";\n        System.out.println(up.replace(\"g\", \"G\"));\n    }\n}\n// uid:176\n",
+    "choices": [
+      "実行時例外",
+      "GO",
+      "Go",
+      "コンパイルエラー",
+      "go"
+    ],
+    "answerIndex": 2,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 177,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String first = \"ruby\";\n        System.out.println(first.replace(\"r\", \"R\"));\n    }\n}\n// uid:177\n",
+    "choices": [
+      "Ruby",
+      "ruby",
+      "実行時例外",
+      "RUBY",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 178,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String delta = \"kotlin\";\n        System.out.println(delta.replace(\"k\", \"K\"));\n    }\n}\n// uid:178\n",
+    "choices": [
+      "コンパイルエラー",
+      "kotlin",
+      "KOTLIN",
+      "Kotlin",
+      "実行時例外"
+    ],
+    "answerIndex": 3,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 179,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String delta = \"java\";\n        System.out.println(delta.replace(\"j\", \"J\"));\n    }\n}\n// uid:179\n",
+    "choices": [
+      "java",
+      "コンパイルエラー",
+      "Java",
+      "実行時例外",
+      "JAVA"
+    ],
+    "answerIndex": 2,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 180,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String right = \"perl\";\n        System.out.println(right.replace(\"p\", \"P\"));\n    }\n}\n// uid:180\n",
+    "choices": [
+      "コンパイルエラー",
+      "perl",
+      "PERL",
+      "Perl",
+      "実行時例外"
+    ],
+    "answerIndex": 3,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 181,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String beta = \"rust\";\n        System.out.println(beta.replace(\"r\", \"R\"));\n    }\n}\n// uid:181\n",
+    "choices": [
+      "コンパイルエラー",
+      "rust",
+      "実行時例外",
+      "RUST",
+      "Rust"
+    ],
+    "answerIndex": 4,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 182,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String right = \"swift\";\n        System.out.println(right.replace(\"s\", \"S\"));\n    }\n}\n// uid:182\n",
+    "choices": [
+      "Swift",
+      "swift",
+      "コンパイルエラー",
+      "SWIFT",
+      "実行時例外"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 183,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String omega = \"elixir\";\n        System.out.println(omega.replace(\"e\", \"E\"));\n    }\n}\n// uid:183\n",
+    "choices": [
+      "elixir",
+      "Elixir",
+      "コンパイルエラー",
+      "ELIXIR",
+      "実行時例外"
+    ],
+    "answerIndex": 1,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 184,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String down = \"ocaml\";\n        System.out.println(down.replace(\"o\", \"O\"));\n    }\n}\n// uid:184\n",
+    "choices": [
+      "実行時例外",
+      "OCAML",
+      "Ocaml",
+      "コンパイルエラー",
+      "ocaml"
+    ],
+    "answerIndex": 2,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 185,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String omega = \"scala\";\n        System.out.println(omega.replace(\"s\", \"S\"));\n    }\n}\n// uid:185\n",
+    "choices": [
+      "実行時例外",
+      "SCALA",
+      "scala",
+      "コンパイルエラー",
+      "Scala"
+    ],
+    "answerIndex": 4,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 186,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String omega = \"rust\";\n        System.out.println(omega.replace(\"r\", \"R\"));\n    }\n}\n// uid:186\n",
+    "choices": [
+      "RUST",
+      "Rust",
+      "実行時例外",
+      "コンパイルエラー",
+      "rust"
+    ],
+    "answerIndex": 1,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 187,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String omega = \"swift\";\n        System.out.println(omega.replace(\"s\", \"S\"));\n    }\n}\n// uid:187\n",
+    "choices": [
+      "コンパイルエラー",
+      "SWIFT",
+      "実行時例外",
+      "swift",
+      "Swift"
+    ],
+    "answerIndex": 4,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 188,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String temp = \"ruby\";\n        System.out.println(temp.replace(\"r\", \"R\"));\n    }\n}\n// uid:188\n",
+    "choices": [
+      "実行時例外",
+      "ruby",
+      "Ruby",
+      "コンパイルエラー",
+      "RUBY"
+    ],
+    "answerIndex": 2,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 189,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String left = \"swift\";\n        System.out.println(left.replace(\"s\", \"S\"));\n    }\n}\n// uid:189\n",
+    "choices": [
+      "Swift",
+      "コンパイルエラー",
+      "SWIFT",
+      "実行時例外",
+      "swift"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 190,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String left = \"elixir\";\n        System.out.println(left.replace(\"e\", \"E\"));\n    }\n}\n// uid:190\n",
+    "choices": [
+      "Elixir",
+      "ELIXIR",
+      "elixir",
+      "コンパイルエラー",
+      "実行時例外"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 191,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String right = \"ocaml\";\n        System.out.println(right.replace(\"o\", \"O\"));\n    }\n}\n// uid:191\n",
+    "choices": [
+      "Ocaml",
+      "OCAML",
+      "実行時例外",
+      "コンパイルエラー",
+      "ocaml"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 192,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String alpha = \"kotlin\";\n        System.out.println(alpha.replace(\"k\", \"K\"));\n    }\n}\n// uid:192\n",
+    "choices": [
+      "kotlin",
+      "コンパイルエラー",
+      "実行時例外",
+      "Kotlin",
+      "KOTLIN"
+    ],
+    "answerIndex": 3,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 193,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String down = \"elixir\";\n        System.out.println(down.replace(\"e\", \"E\"));\n    }\n}\n// uid:193\n",
+    "choices": [
+      "ELIXIR",
+      "コンパイルエラー",
+      "elixir",
+      "Elixir",
+      "実行時例外"
+    ],
+    "answerIndex": 3,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 194,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String alpha = \"java\";\n        System.out.println(alpha.replace(\"j\", \"J\"));\n    }\n}\n// uid:194\n",
+    "choices": [
+      "コンパイルエラー",
+      "Java",
+      "java",
+      "JAVA",
+      "実行時例外"
+    ],
+    "answerIndex": 1,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 195,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String temp = \"go\";\n        System.out.println(temp.replace(\"g\", \"G\"));\n    }\n}\n// uid:195\n",
+    "choices": [
+      "GO",
+      "実行時例外",
+      "go",
+      "コンパイルエラー",
+      "Go"
+    ],
+    "answerIndex": 4,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 196,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String beta = \"perl\";\n        System.out.println(beta.replace(\"p\", \"P\"));\n    }\n}\n// uid:196\n",
+    "choices": [
+      "Perl",
+      "実行時例外",
+      "perl",
+      "PERL",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 197,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String alpha = \"ocaml\";\n        System.out.println(alpha.replace(\"o\", \"O\"));\n    }\n}\n// uid:197\n",
+    "choices": [
+      "ocaml",
+      "コンパイルエラー",
+      "実行時例外",
+      "Ocaml",
+      "OCAML"
+    ],
+    "answerIndex": 3,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 198,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String left = \"haskell\";\n        System.out.println(left.replace(\"h\", \"H\"));\n    }\n}\n// uid:198\n",
+    "choices": [
+      "HASKELL",
+      "Haskell",
+      "実行時例外",
+      "haskell",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 1,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 199,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String alpha = \"scala\";\n        System.out.println(alpha.replace(\"s\", \"S\"));\n    }\n}\n// uid:199\n",
+    "choices": [
+      "実行時例外",
+      "Scala",
+      "コンパイルエラー",
+      "SCALA",
+      "scala"
+    ],
+    "answerIndex": 1,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 200,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String flag = \"go\";\n        System.out.println(flag.replace(\"g\", \"G\"));\n    }\n}\n// uid:200\n",
+    "choices": [
+      "実行時例外",
+      "go",
+      "コンパイルエラー",
+      "GO",
+      "Go"
+    ],
+    "answerIndex": 4,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 201,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String beta = \"ocaml\";\n        System.out.println(beta.replace(\"o\", \"O\"));\n    }\n}\n// uid:201\n",
+    "choices": [
+      "OCAML",
+      "実行時例外",
+      "Ocaml",
+      "コンパイルエラー",
+      "ocaml"
+    ],
+    "answerIndex": 2,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 202,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String up = \"ruby\";\n        System.out.println(up.replace(\"r\", \"R\"));\n    }\n}\n// uid:202\n",
+    "choices": [
+      "コンパイルエラー",
+      "ruby",
+      "RUBY",
+      "Ruby",
+      "実行時例外"
+    ],
+    "answerIndex": 3,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 203,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String left = \"rust\";\n        System.out.println(left.replace(\"r\", \"R\"));\n    }\n}\n// uid:203\n",
+    "choices": [
+      "実行時例外",
+      "rust",
+      "コンパイルエラー",
+      "Rust",
+      "RUST"
+    ],
+    "answerIndex": 3,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 204,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String left = \"go\";\n        System.out.println(left.replace(\"g\", \"G\"));\n    }\n}\n// uid:204\n",
+    "choices": [
+      "実行時例外",
+      "GO",
+      "コンパイルエラー",
+      "go",
+      "Go"
+    ],
+    "answerIndex": 4,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 205,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String delta = \"go\";\n        System.out.println(delta.replace(\"g\", \"G\"));\n    }\n}\n// uid:205\n",
+    "choices": [
+      "GO",
+      "コンパイルエラー",
+      "実行時例外",
+      "go",
+      "Go"
+    ],
+    "answerIndex": 4,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 206,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String right = \"go\";\n        System.out.println(right.replace(\"g\", \"G\"));\n    }\n}\n// uid:206\n",
+    "choices": [
+      "go",
+      "Go",
+      "実行時例外",
+      "コンパイルエラー",
+      "GO"
+    ],
+    "answerIndex": 1,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 207,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String temp = \"elixir\";\n        System.out.println(temp.replace(\"e\", \"E\"));\n    }\n}\n// uid:207\n",
+    "choices": [
+      "Elixir",
+      "elixir",
+      "ELIXIR",
+      "コンパイルエラー",
+      "実行時例外"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 208,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String flag = \"haskell\";\n        System.out.println(flag.replace(\"h\", \"H\"));\n    }\n}\n// uid:208\n",
+    "choices": [
+      "haskell",
+      "実行時例外",
+      "Haskell",
+      "コンパイルエラー",
+      "HASKELL"
+    ],
+    "answerIndex": 2,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 209,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String first = \"java\";\n        System.out.println(first.replace(\"j\", \"J\"));\n    }\n}\n// uid:209\n",
+    "choices": [
+      "実行時例外",
+      "コンパイルエラー",
+      "java",
+      "JAVA",
+      "Java"
+    ],
+    "answerIndex": 4,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 210,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String right = \"rust\";\n        System.out.println(right.replace(\"r\", \"R\"));\n    }\n}\n// uid:210\n",
+    "choices": [
+      "コンパイルエラー",
+      "RUST",
+      "rust",
+      "実行時例外",
+      "Rust"
+    ],
+    "answerIndex": 4,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 211,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String delta = \"scala\";\n        System.out.println(delta.replace(\"s\", \"S\"));\n    }\n}\n// uid:211\n",
+    "choices": [
+      "SCALA",
+      "Scala",
+      "コンパイルエラー",
+      "実行時例外",
+      "scala"
+    ],
+    "answerIndex": 1,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 212,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String delta = \"perl\";\n        System.out.println(delta.replace(\"p\", \"P\"));\n    }\n}\n// uid:212\n",
+    "choices": [
+      "PERL",
+      "perl",
+      "Perl",
+      "コンパイルエラー",
+      "実行時例外"
+    ],
+    "answerIndex": 2,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 213,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String down = \"perl\";\n        System.out.println(down.replace(\"p\", \"P\"));\n    }\n}\n// uid:213\n",
+    "choices": [
+      "PERL",
+      "Perl",
+      "perl",
+      "実行時例外",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 1,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 214,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String second = \"perl\";\n        System.out.println(second.replace(\"p\", \"P\"));\n    }\n}\n// uid:214\n",
+    "choices": [
+      "実行時例外",
+      "PERL",
+      "コンパイルエラー",
+      "Perl",
+      "perl"
+    ],
+    "answerIndex": 3,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 215,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String down = \"haskell\";\n        System.out.println(down.replace(\"h\", \"H\"));\n    }\n}\n// uid:215\n",
+    "choices": [
+      "実行時例外",
+      "haskell",
+      "Haskell",
+      "HASKELL",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 2,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 216,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String right = \"kotlin\";\n        System.out.println(right.replace(\"k\", \"K\"));\n    }\n}\n// uid:216\n",
+    "choices": [
+      "kotlin",
+      "実行時例外",
+      "コンパイルエラー",
+      "Kotlin",
+      "KOTLIN"
+    ],
+    "answerIndex": 3,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 217,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String beta = \"swift\";\n        System.out.println(beta.replace(\"s\", \"S\"));\n    }\n}\n// uid:217\n",
+    "choices": [
+      "コンパイルエラー",
+      "swift",
+      "SWIFT",
+      "Swift",
+      "実行時例外"
+    ],
+    "answerIndex": 3,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 218,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String second = \"rust\";\n        System.out.println(second.replace(\"r\", \"R\"));\n    }\n}\n// uid:218\n",
+    "choices": [
+      "実行時例外",
+      "rust",
+      "Rust",
+      "RUST",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 2,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 219,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String first = \"perl\";\n        System.out.println(first.replace(\"p\", \"P\"));\n    }\n}\n// uid:219\n",
+    "choices": [
+      "Perl",
+      "実行時例外",
+      "コンパイルエラー",
+      "PERL",
+      "perl"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 220,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String first = \"scala\";\n        System.out.println(first.replace(\"s\", \"S\"));\n    }\n}\n// uid:220\n",
+    "choices": [
+      "scala",
+      "実行時例外",
+      "SCALA",
+      "コンパイルエラー",
+      "Scala"
+    ],
+    "answerIndex": 4,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 221,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String gamma = \"ruby\";\n        System.out.println(gamma.replace(\"r\", \"R\"));\n    }\n}\n// uid:221\n",
+    "choices": [
+      "コンパイルエラー",
+      "実行時例外",
+      "Ruby",
+      "RUBY",
+      "ruby"
+    ],
+    "answerIndex": 2,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 222,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String right = \"python\";\n        System.out.println(right.replace(\"p\", \"P\"));\n    }\n}\n// uid:222\n",
+    "choices": [
+      "Python",
+      "PYTHON",
+      "実行時例外",
+      "コンパイルエラー",
+      "python"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 223,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String delta = \"elixir\";\n        System.out.println(delta.replace(\"e\", \"E\"));\n    }\n}\n// uid:223\n",
+    "choices": [
+      "elixir",
+      "コンパイルエラー",
+      "実行時例外",
+      "ELIXIR",
+      "Elixir"
+    ],
+    "answerIndex": 4,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 224,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String alpha = \"haskell\";\n        System.out.println(alpha.replace(\"h\", \"H\"));\n    }\n}\n// uid:224\n",
+    "choices": [
+      "Haskell",
+      "コンパイルエラー",
+      "HASKELL",
+      "haskell",
+      "実行時例外"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 225,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String first = \"go\";\n        System.out.println(first.replace(\"g\", \"G\"));\n    }\n}\n// uid:225\n",
+    "choices": [
+      "go",
+      "Go",
+      "実行時例外",
+      "コンパイルエラー",
+      "GO"
+    ],
+    "answerIndex": 1,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 226,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String up = \"kotlin\";\n        System.out.println(up.replace(\"k\", \"K\"));\n    }\n}\n// uid:226\n",
+    "choices": [
+      "kotlin",
+      "KOTLIN",
+      "実行時例外",
+      "Kotlin",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 3,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 227,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String alpha = \"ruby\";\n        System.out.println(alpha.replace(\"r\", \"R\"));\n    }\n}\n// uid:227\n",
+    "choices": [
+      "ruby",
+      "RUBY",
+      "Ruby",
+      "実行時例外",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 2,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 228,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String first = \"swift\";\n        System.out.println(first.replace(\"s\", \"S\"));\n    }\n}\n// uid:228\n",
+    "choices": [
+      "Swift",
+      "SWIFT",
+      "コンパイルエラー",
+      "swift",
+      "実行時例外"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 229,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String first = \"haskell\";\n        System.out.println(first.replace(\"h\", \"H\"));\n    }\n}\n// uid:229\n",
+    "choices": [
+      "コンパイルエラー",
+      "Haskell",
+      "実行時例外",
+      "HASKELL",
+      "haskell"
+    ],
+    "answerIndex": 1,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 230,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String down = \"python\";\n        System.out.println(down.replace(\"p\", \"P\"));\n    }\n}\n// uid:230\n",
+    "choices": [
+      "Python",
+      "python",
+      "PYTHON",
+      "実行時例外",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 231,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String delta = \"python\";\n        System.out.println(delta.replace(\"p\", \"P\"));\n    }\n}\n// uid:231\n",
+    "choices": [
+      "PYTHON",
+      "Python",
+      "python",
+      "実行時例外",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 1,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 232,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String beta = \"scala\";\n        System.out.println(beta.replace(\"s\", \"S\"));\n    }\n}\n// uid:232\n",
+    "choices": [
+      "実行時例外",
+      "scala",
+      "Scala",
+      "コンパイルエラー",
+      "SCALA"
+    ],
+    "answerIndex": 2,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 233,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String gamma = \"scala\";\n        System.out.println(gamma.replace(\"s\", \"S\"));\n    }\n}\n// uid:233\n",
+    "choices": [
+      "コンパイルエラー",
+      "scala",
+      "実行時例外",
+      "Scala",
+      "SCALA"
+    ],
+    "answerIndex": 3,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 234,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String alpha = \"perl\";\n        System.out.println(alpha.replace(\"p\", \"P\"));\n    }\n}\n// uid:234\n",
+    "choices": [
+      "perl",
+      "実行時例外",
+      "PERL",
+      "Perl",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 3,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 235,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String second = \"haskell\";\n        System.out.println(second.replace(\"h\", \"H\"));\n    }\n}\n// uid:235\n",
+    "choices": [
+      "コンパイルエラー",
+      "Haskell",
+      "HASKELL",
+      "実行時例外",
+      "haskell"
+    ],
+    "answerIndex": 1,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 236,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String up = \"rust\";\n        System.out.println(up.replace(\"r\", \"R\"));\n    }\n}\n// uid:236\n",
+    "choices": [
+      "rust",
+      "実行時例外",
+      "コンパイルエラー",
+      "RUST",
+      "Rust"
+    ],
+    "answerIndex": 4,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 237,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String omega = \"haskell\";\n        System.out.println(omega.replace(\"h\", \"H\"));\n    }\n}\n// uid:237\n",
+    "choices": [
+      "HASKELL",
+      "Haskell",
+      "haskell",
+      "コンパイルエラー",
+      "実行時例外"
+    ],
+    "answerIndex": 1,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 238,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String right = \"scala\";\n        System.out.println(right.replace(\"s\", \"S\"));\n    }\n}\n// uid:238\n",
+    "choices": [
+      "実行時例外",
+      "SCALA",
+      "Scala",
+      "scala",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 2,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 239,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String omega = \"ruby\";\n        System.out.println(omega.replace(\"r\", \"R\"));\n    }\n}\n// uid:239\n",
+    "choices": [
+      "ruby",
+      "コンパイルエラー",
+      "実行時例外",
+      "Ruby",
+      "RUBY"
+    ],
+    "answerIndex": 3,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 240,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String first = \"kotlin\";\n        System.out.println(first.replace(\"k\", \"K\"));\n    }\n}\n// uid:240\n",
+    "choices": [
+      "KOTLIN",
+      "kotlin",
+      "Kotlin",
+      "コンパイルエラー",
+      "実行時例外"
+    ],
+    "answerIndex": 2,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 241,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String first = \"python\";\n        System.out.println(first.replace(\"p\", \"P\"));\n    }\n}\n// uid:241\n",
+    "choices": [
+      "Python",
+      "python",
+      "コンパイルエラー",
+      "PYTHON",
+      "実行時例外"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 242,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String flag = \"java\";\n        System.out.println(flag.replace(\"j\", \"J\"));\n    }\n}\n// uid:242\n",
+    "choices": [
+      "JAVA",
+      "Java",
+      "コンパイルエラー",
+      "java",
+      "実行時例外"
+    ],
+    "answerIndex": 1,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 243,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String second = \"swift\";\n        System.out.println(second.replace(\"s\", \"S\"));\n    }\n}\n// uid:243\n",
+    "choices": [
+      "コンパイルエラー",
+      "実行時例外",
+      "Swift",
+      "swift",
+      "SWIFT"
+    ],
+    "answerIndex": 2,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 244,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String beta = \"elixir\";\n        System.out.println(beta.replace(\"e\", \"E\"));\n    }\n}\n// uid:244\n",
+    "choices": [
+      "Elixir",
+      "elixir",
+      "ELIXIR",
+      "コンパイルエラー",
+      "実行時例外"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 245,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String flag = \"ruby\";\n        System.out.println(flag.replace(\"r\", \"R\"));\n    }\n}\n// uid:245\n",
+    "choices": [
+      "実行時例外",
+      "ruby",
+      "RUBY",
+      "Ruby",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 3,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 246,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String right = \"ruby\";\n        System.out.println(right.replace(\"r\", \"R\"));\n    }\n}\n// uid:246\n",
+    "choices": [
+      "ruby",
+      "コンパイルエラー",
+      "実行時例外",
+      "Ruby",
+      "RUBY"
+    ],
+    "answerIndex": 3,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 247,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String down = \"go\";\n        System.out.println(down.replace(\"g\", \"G\"));\n    }\n}\n// uid:247\n",
+    "choices": [
+      "go",
+      "コンパイルエラー",
+      "実行時例外",
+      "GO",
+      "Go"
+    ],
+    "answerIndex": 4,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 248,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String down = \"rust\";\n        System.out.println(down.replace(\"r\", \"R\"));\n    }\n}\n// uid:248\n",
+    "choices": [
+      "実行時例外",
+      "RUST",
+      "コンパイルエラー",
+      "Rust",
+      "rust"
+    ],
+    "answerIndex": 3,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 249,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String beta = \"go\";\n        System.out.println(beta.replace(\"g\", \"G\"));\n    }\n}\n// uid:249\n",
+    "choices": [
+      "GO",
+      "Go",
+      "実行時例外",
+      "go",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 1,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 250,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String alpha = \"elixir\";\n        System.out.println(alpha.replace(\"e\", \"E\"));\n    }\n}\n// uid:250\n",
+    "choices": [
+      "実行時例外",
+      "コンパイルエラー",
+      "ELIXIR",
+      "Elixir",
+      "elixir"
+    ],
+    "answerIndex": 3,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 251,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String gamma = \"kotlin\";\n        System.out.println(gamma.replace(\"k\", \"K\"));\n    }\n}\n// uid:251\n",
+    "choices": [
+      "KOTLIN",
+      "Kotlin",
+      "実行時例外",
+      "コンパイルエラー",
+      "kotlin"
+    ],
+    "answerIndex": 1,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 252,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String down = \"swift\";\n        System.out.println(down.replace(\"s\", \"S\"));\n    }\n}\n// uid:252\n",
+    "choices": [
+      "swift",
+      "実行時例外",
+      "Swift",
+      "SWIFT",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 2,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 253,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String gamma = \"swift\";\n        System.out.println(gamma.replace(\"s\", \"S\"));\n    }\n}\n// uid:253\n",
+    "choices": [
+      "コンパイルエラー",
+      "実行時例外",
+      "Swift",
+      "SWIFT",
+      "swift"
+    ],
+    "answerIndex": 2,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 254,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String beta = \"python\";\n        System.out.println(beta.replace(\"p\", \"P\"));\n    }\n}\n// uid:254\n",
+    "choices": [
+      "コンパイルエラー",
+      "Python",
+      "python",
+      "PYTHON",
+      "実行時例外"
+    ],
+    "answerIndex": 1,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 255,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String up = \"haskell\";\n        System.out.println(up.replace(\"h\", \"H\"));\n    }\n}\n// uid:255\n",
+    "choices": [
+      "haskell",
+      "実行時例外",
+      "Haskell",
+      "HASKELL",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 2,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 256,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String alpha = \"go\";\n        System.out.println(alpha.replace(\"g\", \"G\"));\n    }\n}\n// uid:256\n",
+    "choices": [
+      "実行時例外",
+      "Go",
+      "コンパイルエラー",
+      "GO",
+      "go"
+    ],
+    "answerIndex": 1,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 257,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String second = \"kotlin\";\n        System.out.println(second.replace(\"k\", \"K\"));\n    }\n}\n// uid:257\n",
+    "choices": [
+      "Kotlin",
+      "コンパイルエラー",
+      "KOTLIN",
+      "kotlin",
+      "実行時例外"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 258,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String right = \"elixir\";\n        System.out.println(right.replace(\"e\", \"E\"));\n    }\n}\n// uid:258\n",
+    "choices": [
+      "実行時例外",
+      "コンパイルエラー",
+      "Elixir",
+      "ELIXIR",
+      "elixir"
+    ],
+    "answerIndex": 2,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 259,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String delta = \"rust\";\n        System.out.println(delta.replace(\"r\", \"R\"));\n    }\n}\n// uid:259\n",
+    "choices": [
+      "コンパイルエラー",
+      "RUST",
+      "実行時例外",
+      "Rust",
+      "rust"
+    ],
+    "answerIndex": 3,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 260,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String up = \"ocaml\";\n        System.out.println(up.replace(\"o\", \"O\"));\n    }\n}\n// uid:260\n",
+    "choices": [
+      "OCAML",
+      "コンパイルエラー",
+      "ocaml",
+      "Ocaml",
+      "実行時例外"
+    ],
+    "answerIndex": 3,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 261,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String omega = \"go\";\n        System.out.println(omega.replace(\"g\", \"G\"));\n    }\n}\n// uid:261\n",
+    "choices": [
+      "Go",
+      "実行時例外",
+      "GO",
+      "コンパイルエラー",
+      "go"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 262,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String left = \"perl\";\n        System.out.println(left.replace(\"p\", \"P\"));\n    }\n}\n// uid:262\n",
+    "choices": [
+      "Perl",
+      "実行時例外",
+      "コンパイルエラー",
+      "PERL",
+      "perl"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 263,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String temp = \"java\";\n        System.out.println(temp.replace(\"j\", \"J\"));\n    }\n}\n// uid:263\n",
+    "choices": [
+      "コンパイルエラー",
+      "実行時例外",
+      "Java",
+      "java",
+      "JAVA"
+    ],
+    "answerIndex": 2,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 264,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String down = \"java\";\n        System.out.println(down.replace(\"j\", \"J\"));\n    }\n}\n// uid:264\n",
+    "choices": [
+      "java",
+      "Java",
+      "JAVA",
+      "コンパイルエラー",
+      "実行時例外"
+    ],
+    "answerIndex": 1,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 265,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String gamma = \"haskell\";\n        System.out.println(gamma.replace(\"h\", \"H\"));\n    }\n}\n// uid:265\n",
+    "choices": [
+      "HASKELL",
+      "コンパイルエラー",
+      "実行時例外",
+      "Haskell",
+      "haskell"
+    ],
+    "answerIndex": 3,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 266,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String flag = \"python\";\n        System.out.println(flag.replace(\"p\", \"P\"));\n    }\n}\n// uid:266\n",
+    "choices": [
+      "Python",
+      "python",
+      "実行時例外",
+      "PYTHON",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 0,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 267,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String#replace は新しい文字列を返す。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String down = \"scala\";\n        System.out.println(down.replace(\"s\", \"S\"));\n    }\n}\n// uid:267\n",
+    "choices": [
+      "実行時例外",
+      "scala",
+      "Scala",
+      "SCALA",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 2,
+    "explanation": "Stringは不変、replaceは新しい文字列を返す。"
+  },
+  {
+    "id": 268,
+    "category": "多態性とオーバーライド",
+    "difficulty": "上級",
+    "question": "staticメソッドは多態性の対象外。出力は？",
+    "code": "class A { static String f(){ return \"A\"; } }\nclass B extends A { static String f(){ return \"B\"; } }\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        System.out.println(a.f());\n    }\n}\n// uid:268\n",
+    "choices": [
+      "不定",
+      "A",
+      "コンパイルエラー",
+      "実行時例外",
+      "B"
+    ],
+    "answerIndex": 1,
+    "explanation": "staticは参照型で解決される。"
+  },
+  {
+    "id": 269,
+    "category": "多態性とオーバーライド",
+    "difficulty": "上級",
+    "question": "staticメソッドは多態性の対象外。出力は？",
+    "code": "class A { static String f(){ return \"Left\"; } }\nclass B extends A { static String f(){ return \"Right\"; } }\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        System.out.println(a.f());\n    }\n}\n// uid:269\n",
+    "choices": [
+      "実行時例外",
+      "不定",
+      "コンパイルエラー",
+      "Left",
+      "Right"
+    ],
+    "answerIndex": 3,
+    "explanation": "staticは参照型で解決される。"
+  },
+  {
+    "id": 270,
+    "category": "多態性とオーバーライド",
+    "difficulty": "上級",
+    "question": "staticメソッドは多態性の対象外。出力は？",
+    "code": "class A { static String f(){ return \"Old\"; } }\nclass B extends A { static String f(){ return \"New\"; } }\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        System.out.println(a.f());\n    }\n}\n// uid:270\n",
+    "choices": [
+      "Old",
+      "New",
+      "コンパイルエラー",
+      "不定",
+      "実行時例外"
+    ],
+    "answerIndex": 0,
+    "explanation": "staticは参照型で解決される。"
+  },
+  {
+    "id": 271,
+    "category": "多態性とオーバーライド",
+    "difficulty": "上級",
+    "question": "staticメソッドは多態性の対象外。出力は？",
+    "code": "class A { static String f(){ return \"Base\"; } }\nclass B extends A { static String f(){ return \"Child\"; } }\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        System.out.println(a.f());\n    }\n}\n// uid:271\n",
+    "choices": [
+      "Base",
+      "不定",
+      "コンパイルエラー",
+      "実行時例外",
+      "Child"
+    ],
+    "answerIndex": 0,
+    "explanation": "staticは参照型で解決される。"
+  },
+  {
+    "id": 272,
+    "category": "多態性とオーバーライド",
+    "difficulty": "上級",
+    "question": "staticメソッドは多態性の対象外。出力は？",
+    "code": "class A { static String f(){ return \"Up\"; } }\nclass B extends A { static String f(){ return \"Down\"; } }\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        System.out.println(a.f());\n    }\n}\n// uid:272\n",
+    "choices": [
+      "実行時例外",
+      "Down",
+      "コンパイルエラー",
+      "Up",
+      "不定"
+    ],
+    "answerIndex": 3,
+    "explanation": "staticは参照型で解決される。"
+  },
+  {
+    "id": 273,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String.valueOf((Object)null) の結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = String.valueOf((Object)null); // obj-null\n        System.out.println(s);\n    }\n}\n// uid:273\n",
+    "choices": [
+      "コンパイルエラー",
+      "空文字",
+      "null",
+      "実行時例外",
+      "(null)"
+    ],
+    "answerIndex": 2,
+    "explanation": "null文字列を返す。"
+  },
+  {
+    "id": 274,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String.valueOf((Object)null) の結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = String.valueOf((Object)null); // cast-null\n        System.out.println(s);\n    }\n}\n// uid:274\n",
+    "choices": [
+      "コンパイルエラー",
+      "(null)",
+      "空文字",
+      "実行時例外",
+      "null"
+    ],
+    "answerIndex": 4,
+    "explanation": "null文字列を返す。"
+  },
+  {
+    "id": 275,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String.valueOf((Object)null) の結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = String.valueOf((Object)null); // api-null\n        System.out.println(s);\n    }\n}\n// uid:275\n",
+    "choices": [
+      "コンパイルエラー",
+      "実行時例外",
+      "空文字",
+      "null",
+      "(null)"
+    ],
+    "answerIndex": 3,
+    "explanation": "null文字列を返す。"
+  },
+  {
+    "id": 276,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String.valueOf((Object)null) の結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = String.valueOf((Object)null); // demo-null\n        System.out.println(s);\n    }\n}\n// uid:276\n",
+    "choices": [
+      "実行時例外",
+      "コンパイルエラー",
+      "空文字",
+      "null",
+      "(null)"
+    ],
+    "answerIndex": 3,
+    "explanation": "null文字列を返す。"
+  },
+  {
+    "id": 277,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String.valueOf((Object)null) の結果は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = String.valueOf((Object)null); // case-null\n        System.out.println(s);\n    }\n}\n// uid:277\n",
+    "choices": [
+      "コンパイルエラー",
+      "空文字",
+      "実行時例外",
+      "null",
+      "(null)"
+    ],
+    "answerIndex": 3,
+    "explanation": "null文字列を返す。"
+  },
+  {
+    "id": 278,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "文字列の自然順序でのsort。出力は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        String[] a = {\"10\",\"2\",\"1\"};\n        Arrays.sort(a);\n        System.out.println(a[0]);\n    }\n}\n// uid:278\n",
+    "choices": [
+      "2",
+      "不定(4)",
+      "1",
+      "実行時例外",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 2,
+    "explanation": "辞書順で最小要素が先頭。"
+  },
+  {
+    "id": 279,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "文字列の自然順序でのsort。出力は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        String[] a = {\"aa\",\"b\",\"a\"};\n        Arrays.sort(a);\n        System.out.println(a[0]);\n    }\n}\n// uid:279\n",
+    "choices": [
+      "実行時例外",
+      "コンパイルエラー",
+      "a",
+      "b",
+      "不定(4)"
+    ],
+    "answerIndex": 2,
+    "explanation": "辞書順で最小要素が先頭。"
+  },
+  {
+    "id": 280,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "文字列の自然順序でのsort。出力は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        String[] a = {\"z\",\"y\",\"x\"};\n        Arrays.sort(a);\n        System.out.println(a[0]);\n    }\n}\n// uid:280\n",
+    "choices": [
+      "y",
+      "実行時例外",
+      "コンパイルエラー",
+      "x",
+      "z"
+    ],
+    "answerIndex": 3,
+    "explanation": "辞書順で最小要素が先頭。"
+  },
+  {
+    "id": 281,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "文字列の自然順序でのsort。出力は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        String[] a = {\"ba\",\"ab\",\"aa\"};\n        Arrays.sort(a);\n        System.out.println(a[0]);\n    }\n}\n// uid:281\n",
+    "choices": [
+      "aa",
+      "コンパイルエラー",
+      "実行時例外",
+      "ab",
+      "ba"
+    ],
+    "answerIndex": 0,
+    "explanation": "辞書順で最小要素が先頭。"
+  },
+  {
+    "id": 282,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "文字列の自然順序でのsort。出力は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        String[] a = {\"az\",\"ay\",\"ax\"};\n        Arrays.sort(a);\n        System.out.println(a[0]);\n    }\n}\n// uid:282\n",
+    "choices": [
+      "実行時例外",
+      "az",
+      "コンパイルエラー",
+      "ay",
+      "ax"
+    ],
+    "answerIndex": 4,
+    "explanation": "辞書順で最小要素が先頭。"
+  },
+  {
+    "id": 283,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "arraycopy の自己コピー（右へシフト）。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String[] a = new String[]{\"A\",\"B\",\"C\",\"D\"};\n        System.arraycopy(a, 0, a, 1, 3);\n        System.out.println(a[1] + a[2]);\n    }\n}\n// uid:283\n",
+    "choices": [
+      "実行時例外",
+      "CD",
+      "BC",
+      "AB",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 3,
+    "explanation": "右側へ重なるコピーは末尾から行われる。"
+  },
+  {
+    "id": 284,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "arraycopy の自己コピー（右へシフト）。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String[] a = new String[]{\"x\",\"y\",\"z\",\"w\"};\n        System.arraycopy(a, 0, a, 1, 3);\n        System.out.println(a[1] + a[2]);\n    }\n}\n// uid:284\n",
+    "choices": [
+      "xy",
+      "yz",
+      "コンパイルエラー",
+      "実行時例外",
+      "zw"
+    ],
+    "answerIndex": 0,
+    "explanation": "右側へ重なるコピーは末尾から行われる。"
+  },
+  {
+    "id": 285,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "arraycopy の自己コピー（右へシフト）。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String[] a = new String[]{\"red\",\"green\",\"blue\",\"cyan\"};\n        System.arraycopy(a, 0, a, 1, 3);\n        System.out.println(a[1] + a[2]);\n    }\n}\n// uid:285\n",
+    "choices": [
+      "実行時例外",
+      "greenblue",
+      "bluecyan",
+      "コンパイルエラー",
+      "redgreen"
+    ],
+    "answerIndex": 4,
+    "explanation": "右側へ重なるコピーは末尾から行われる。"
+  },
+  {
+    "id": 286,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "arraycopy の自己コピー（右へシフト）。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String[] a = new String[]{\"dog\",\"cat\",\"fox\",\"cow\"};\n        System.arraycopy(a, 0, a, 1, 3);\n        System.out.println(a[1] + a[2]);\n    }\n}\n// uid:286\n",
+    "choices": [
+      "catfox",
+      "実行時例外",
+      "コンパイルエラー",
+      "dogcat",
+      "foxcow"
+    ],
+    "answerIndex": 3,
+    "explanation": "右側へ重なるコピーは末尾から行われる。"
+  },
+  {
+    "id": 287,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "trimは全角空白を除去しない。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"　a　\";\n        System.out.println(s.trim().length());\n    }\n}\n// uid:287\n",
+    "choices": [
+      "1",
+      "2",
+      "0",
+      "3",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 3,
+    "explanation": "trimはASCII空白のみ。全角は残る。"
+  },
+  {
+    "id": 288,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "trimは全角空白を除去しない。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"　b　\";\n        System.out.println(s.trim().length());\n    }\n}\n// uid:288\n",
+    "choices": [
+      "3",
+      "2",
+      "1",
+      "0",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 0,
+    "explanation": "trimはASCII空白のみ。全角は残る。"
+  },
+  {
+    "id": 289,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "trimは全角空白を除去しない。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \" 　c　 \";\n        System.out.println(s.trim().length());\n    }\n}\n// uid:289\n",
+    "choices": [
+      "4",
+      "2",
+      "0",
+      "1",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 0,
+    "explanation": "trimはASCII空白のみ。全角は残る。"
+  },
+  {
+    "id": 290,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "Stringは不変。replaceの戻り値未使用。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"axa\";\n        s.replace('x','y');\n        System.out.println(s);\n    }\n}\n// uid:290\n",
+    "choices": [
+      "実行時例外",
+      "不定(4)",
+      "axa",
+      "コンパイルエラー",
+      "aya"
+    ],
+    "answerIndex": 2,
+    "explanation": "戻り値を使わないと変わらない。"
+  },
+  {
+    "id": 291,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "Stringは不変。replaceの戻り値未使用。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"bxb\";\n        s.replace('x','y');\n        System.out.println(s);\n    }\n}\n// uid:291\n",
+    "choices": [
+      "コンパイルエラー",
+      "実行時例外",
+      "bxb",
+      "不定(4)",
+      "byb"
+    ],
+    "answerIndex": 2,
+    "explanation": "戻り値を使わないと変わらない。"
+  },
+  {
+    "id": 292,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "Stringは不変。replaceの戻り値未使用。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"cxc\";\n        s.replace('x','y');\n        System.out.println(s);\n    }\n}\n// uid:292\n",
+    "choices": [
+      "不定(4)",
+      "cyc",
+      "コンパイルエラー",
+      "実行時例外",
+      "cxc"
+    ],
+    "answerIndex": 4,
+    "explanation": "戻り値を使わないと変わらない。"
+  },
+  {
+    "id": 293,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "Stringは不変。replaceの戻り値未使用。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"dxd\";\n        s.replace('x','y');\n        System.out.println(s);\n    }\n}\n// uid:293\n",
+    "choices": [
+      "コンパイルエラー",
+      "不定(4)",
+      "dyd",
+      "実行時例外",
+      "dxd"
+    ],
+    "answerIndex": 4,
+    "explanation": "戻り値を使わないと変わらない。"
+  },
+  {
+    "id": 294,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "Stringは不変。replaceの戻り値未使用。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"yzy\";\n        s.replace('x','y');\n        System.out.println(s);\n    }\n}\n// uid:294\n",
+    "choices": [
+      "コンパイルエラー",
+      "yzy",
+      "実行時例外",
+      "不定(4)",
+      "不定(3)"
+    ],
+    "answerIndex": 1,
+    "explanation": "戻り値を使わないと変わらない。"
+  },
+  {
+    "id": 295,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "三項演算子は右結合。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String x = true ? (false ? \"L\" : \"R\") : \"L\";\n        System.out.println(x);\n    }\n}\n// uid:295\n",
+    "choices": [
+      "実行時例外",
+      "未定義",
+      "コンパイルエラー",
+      "L",
+      "R"
+    ],
+    "answerIndex": 4,
+    "explanation": "内側が先に評価されfalse→右側。"
+  },
+  {
+    "id": 296,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "三項演算子は右結合。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String x = true ? (false ? \"Y\" : \"N\") : \"Y\";\n        System.out.println(x);\n    }\n}\n// uid:296\n",
+    "choices": [
+      "実行時例外",
+      "未定義",
+      "Y",
+      "コンパイルエラー",
+      "N"
+    ],
+    "answerIndex": 4,
+    "explanation": "内側が先に評価されfalse→右側。"
+  },
+  {
+    "id": 297,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "三項演算子は右結合。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String x = true ? (false ? \"A\" : \"B\") : \"A\";\n        System.out.println(x);\n    }\n}\n// uid:297\n",
+    "choices": [
+      "未定義",
+      "A",
+      "B",
+      "実行時例外",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 2,
+    "explanation": "内側が先に評価されfalse→右側。"
+  },
+  {
+    "id": 298,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "三項演算子は右結合。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String x = true ? (false ? \"T\" : \"F\") : \"T\";\n        System.out.println(x);\n    }\n}\n// uid:298\n",
+    "choices": [
+      "実行時例外",
+      "コンパイルエラー",
+      "T",
+      "F",
+      "未定義"
+    ],
+    "answerIndex": 3,
+    "explanation": "内側が先に評価されfalse→右側。"
+  },
+  {
+    "id": 299,
+    "category": "演算子と制御構文",
+    "difficulty": "上級",
+    "question": "三項演算子は右結合。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String x = true ? (false ? \"X\" : \"Z\") : \"X\";\n        System.out.println(x);\n    }\n}\n// uid:299\n",
+    "choices": [
+      "Z",
+      "X",
+      "実行時例外",
+      "コンパイルエラー",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "内側が先に評価されfalse→右側。"
+  },
+  {
+    "id": 300,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "reverse の戻り値利用。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder sb = new StringBuilder(\"abc\");\n        sb.reverse().append(\"!\");\n        System.out.println(sb);\n    }\n}\n// uid:300\n",
+    "choices": [
+      "実行時例外",
+      "cba!",
+      "コンパイルエラー",
+      "abc!",
+      "!cba"
+    ],
+    "answerIndex": 1,
+    "explanation": "反転後に '!' を追加。"
+  },
+  {
+    "id": 301,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "reverse の戻り値利用。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder sb = new StringBuilder(\"kay\");\n        sb.reverse().append(\"!\");\n        System.out.println(sb);\n    }\n}\n// uid:301\n",
+    "choices": [
+      "yak!",
+      "実行時例外",
+      "コンパイルエラー",
+      "kay!",
+      "!yak"
+    ],
+    "answerIndex": 0,
+    "explanation": "反転後に '!' を追加。"
+  },
+  {
+    "id": 302,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "reverse の戻り値利用。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder sb = new StringBuilder(\"mad\");\n        sb.reverse().append(\"!\");\n        System.out.println(sb);\n    }\n}\n// uid:302\n",
+    "choices": [
+      "dam!",
+      "!dam",
+      "mad!",
+      "実行時例外",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 0,
+    "explanation": "反転後に '!' を追加。"
+  },
+  {
+    "id": 303,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "reverse の戻り値利用。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder sb = new StringBuilder(\"noon\");\n        sb.reverse().append(\"!\");\n        System.out.println(sb);\n    }\n}\n// uid:303\n",
+    "choices": [
+      "!noon",
+      "不定(4)",
+      "noon!",
+      "実行時例外",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 2,
+    "explanation": "反転後に '!' を追加。"
+  },
+  {
+    "id": 304,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "reverse の戻り値利用。出力は？",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder sb = new StringBuilder(\"abba\");\n        sb.reverse().append(\"!\");\n        System.out.println(sb);\n    }\n}\n// uid:304\n",
+    "choices": [
+      "不定(4)",
+      "!abba",
+      "実行時例外",
+      "abba!",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 3,
+    "explanation": "反転後に '!' を追加。"
+  },
+  {
+    "id": 305,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "Optional#orElse の返値。出力は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        Optional<String> o = Optional.ofNullable(null);\n        System.out.println(o.orElse(\"hi\"));\n    }\n}\n// uid:305\n",
+    "choices": [
+      "実行時例外",
+      "hi",
+      "空文字",
+      "コンパイルエラー",
+      "null"
+    ],
+    "answerIndex": 1,
+    "explanation": "空なら代替が返る。"
+  },
+  {
+    "id": 306,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "Optional#orElse の返値。出力は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        Optional<String> o = Optional.ofNullable(null);\n        System.out.println(o.orElse(\"yo\"));\n    }\n}\n// uid:306\n",
+    "choices": [
+      "yo",
+      "実行時例外",
+      "空文字",
+      "コンパイルエラー",
+      "null"
+    ],
+    "answerIndex": 0,
+    "explanation": "空なら代替が返る。"
+  },
+  {
+    "id": 307,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "Optional#orElse の返値。出力は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        Optional<String> o = Optional.ofNullable(null);\n        System.out.println(o.orElse(\"ok\"));\n    }\n}\n// uid:307\n",
+    "choices": [
+      "null",
+      "コンパイルエラー",
+      "ok",
+      "実行時例外",
+      "空文字"
+    ],
+    "answerIndex": 2,
+    "explanation": "空なら代替が返る。"
+  },
+  {
+    "id": 308,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "Optional#orElse の返値。出力は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        Optional<String> o = Optional.ofNullable(null);\n        System.out.println(o.orElse(\"hey\"));\n    }\n}\n// uid:308\n",
+    "choices": [
+      "空文字",
+      "hey",
+      "null",
+      "コンパイルエラー",
+      "実行時例外"
+    ],
+    "answerIndex": 1,
+    "explanation": "空なら代替が返る。"
+  },
+  {
+    "id": 309,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "Optional#orElse の返値。出力は？",
+    "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        Optional<String> o = Optional.ofNullable(null);\n        System.out.println(o.orElse(\"sup\"));\n    }\n}\n// uid:309\n",
+    "choices": [
+      "空文字",
+      "null",
+      "実行時例外",
+      "sup",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 3,
+    "explanation": "空なら代替が返る。"
+  },
+  {
+    "id": 310,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "次のプログラムをコンパイル、実行した結果として正しいものはどれか。",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder sb = new StringBuilder(\"01234\");\n        sb.replace(1, 3, \"X\");\n        System.out.println(sb);\n    }\n}\n// uid:310\n",
+    "choices": [
+      "0X34",
+      "実行時例外",
+      "コンパイルエラー",
+      "不定(4)",
+      "01234"
+    ],
+    "answerIndex": 0,
+    "explanation": "1と2が置換される。"
+  },
+  {
+    "id": 311,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "次のプログラムをコンパイル、実行した結果として正しいものはどれか。",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder sb = new StringBuilder(\"hello\");\n        sb.replace(1, 3, \"X\");\n        System.out.println(sb);\n    }\n}\n// uid:311\n",
+    "choices": [
+      "コンパイルエラー",
+      "hello",
+      "実行時例外",
+      "不定(4)",
+      "hXlo"
+    ],
+    "answerIndex": 4,
+    "explanation": "1と2が置換される。"
+  },
+  {
+    "id": 312,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "次のプログラムをコンパイル、実行した結果として正しいものはどれか。",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder sb = new StringBuilder(\"abcde\");\n        sb.replace(1, 3, \"X\");\n        System.out.println(sb);\n    }\n}\n// uid:312\n",
+    "choices": [
+      "abcde",
+      "不定(4)",
+      "aXde",
+      "コンパイルエラー",
+      "実行時例外"
+    ],
+    "answerIndex": 2,
+    "explanation": "1と2が置換される。"
+  },
+  {
+    "id": 313,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "次のプログラムをコンパイル、実行した結果として正しいものはどれか。",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder sb = new StringBuilder(\"xyzuv\");\n        sb.replace(1, 3, \"X\");\n        System.out.println(sb);\n    }\n}\n// uid:313\n",
+    "choices": [
+      "xXuv",
+      "不定(4)",
+      "xyzuv",
+      "コンパイルエラー",
+      "実行時例外"
+    ],
+    "answerIndex": 0,
+    "explanation": "1と2が置換される。"
+  },
+  {
+    "id": 314,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "次のプログラムをコンパイル、実行した結果として正しいものはどれか。",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder sb = new StringBuilder(\"wqrst\");\n        sb.replace(1, 3, \"X\");\n        System.out.println(sb);\n    }\n}\n// uid:314\n",
+    "choices": [
+      "実行時例外",
+      "wXst",
+      "wqrst",
+      "不定(4)",
+      "コンパイルエラー"
+    ],
+    "answerIndex": 1,
+    "explanation": "1と2が置換される。"
+  }
+]

@@ -218,7 +218,7 @@ async function loadAllQuestions() {
   }
 
   // 未選択ならセレクトボックスのファイルを fetch
-  const res = await fetch(currentFile, { cache: 'no-store' });
+  const res = await fetch('json/' + currentFile, { cache: 'no-store' });
   if (!res.ok) throw new Error(`問題の取得に失敗しました: ${res.status}`);
   const data = await res.json();
   validateQuestions(data);

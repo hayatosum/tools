@@ -1,0 +1,1602 @@
+[
+  {
+    "id": 1,
+    "category": "アクセス修飾子とカプセル化",
+    "difficulty": "上級",
+    "question": "Javaのアクセス修飾子で、同一パッケージ外からのアクセスを完全に禁止するのはどれ？",
+    "code": "",
+    "choices": [
+      "public",
+      "package-private(指定なし)",
+      "protected",
+      "internal",
+      "private"
+    ],
+    "answerIndex": 4,
+    "explanation": "privateは同一クラス内のみ可。"
+  },
+  {
+    "id": 2,
+    "category": "アクセス修飾子とカプセル化",
+    "difficulty": "上級",
+    "question": "デフォルト(指定なし)のアクセスレベルで正しい説明は？",
+    "code": "",
+    "choices": [
+      "サブクラスからのみアクセス可能",
+      "どこからでもアクセス可能",
+      "同一パッケージ内からのみアクセス可能",
+      "モジュール外禁止",
+      "同一クラス内のみアクセス可能"
+    ],
+    "answerIndex": 2,
+    "explanation": "いわゆるpackage-private。"
+  },
+  {
+    "id": 3,
+    "category": "アクセス修飾子とカプセル化",
+    "difficulty": "上級",
+    "question": "protectedメンバへのアクセスについて正しいのは？",
+    "code": "",
+    "choices": [
+      "どこからでもアクセス可能",
+      "同一クラスのみ",
+      "サブクラスのみ(パッケージは不可)",
+      "同一パッケージ、またはサブクラスからアクセスできる",
+      "モジュール内のみ"
+    ],
+    "answerIndex": 3,
+    "explanation": "protectedはパッケージ+継承先。"
+  },
+  {
+    "id": 4,
+    "category": "クラス設計と継承",
+    "difficulty": "上級",
+    "question": "finalが付いたクラスに対して可能な操作は？",
+    "code": "",
+    "choices": [
+      "継承でき、メソッドオーバーライドのみ禁止",
+      "抽象メソッドを持てる",
+      "インタフェース実装のみ不可",
+      "インスタンス化も禁止",
+      "継承はできないがインスタンス化はできる"
+    ],
+    "answerIndex": 4,
+    "explanation": "finalクラスは継承不可だが生成は可。"
+  },
+  {
+    "id": 5,
+    "category": "クラス設計と継承",
+    "difficulty": "上級",
+    "question": "finalメソッドの正しい説明は？",
+    "code": "",
+    "choices": [
+      "抽象にできる",
+      "同期化される",
+      "staticに自動変換される",
+      "オーバーライドできない",
+      "オーバーロードできない"
+    ],
+    "answerIndex": 3,
+    "explanation": "finalはオーバーライド禁止。オーバーロードは可。"
+  },
+  {
+    "id": 6,
+    "category": "クラス設計と継承",
+    "difficulty": "上級",
+    "question": "abstractクラスについて正しいのは？",
+    "code": "",
+    "choices": [
+      "コンストラクタを持てない",
+      "すべてのメソッドが抽象である必要がある",
+      "直接インスタンス化できない",
+      "finalと同時指定が必須",
+      "フィールドを持てない"
+    ],
+    "answerIndex": 2,
+    "explanation": "抽象クラスはnewできないが具象メソッドも持てる。"
+  },
+  {
+    "id": 7,
+    "category": "オブジェクト指向の基礎",
+    "difficulty": "上級",
+    "question": "Java 8以降のインタフェースで許されるものは？",
+    "code": "",
+    "choices": [
+      "フィールドのインスタンス可変メンバ",
+      "コンストラクタ",
+      "defaultメソッド",
+      "privateクラスメンバ",
+      "状態を持つプロパティ"
+    ],
+    "answerIndex": 2,
+    "explanation": "defaultメソッドはOK(他は不可/意味なし)。"
+  },
+  {
+    "id": 8,
+    "category": "オブジェクト指向の基礎",
+    "difficulty": "上級",
+    "question": "インタフェースのフィールドの暗黙的修飾は？",
+    "code": "",
+    "choices": [
+      "final",
+      "public static final",
+      "protected static",
+      "public",
+      "static"
+    ],
+    "answerIndex": 1,
+    "explanation": "常にpublic static final。"
+  },
+  {
+    "id": 9,
+    "category": "多態性とオーバーライド",
+    "difficulty": "上級",
+    "question": "メソッドのオーバーライドで許されるのは？",
+    "code": "",
+    "choices": [
+      "引数の数を変える",
+      "チェック例外を新たに増やす",
+      "可視性を広げる",
+      "戻り値型を無関係に変更",
+      "可視性を狭める"
+    ],
+    "answerIndex": 2,
+    "explanation": "可視性は拡大可(縮小不可)。"
+  },
+  {
+    "id": 10,
+    "category": "多態性とオーバーライド",
+    "difficulty": "上級",
+    "question": "戻り値の共変(Covariant return)について正しいのは？",
+    "code": "",
+    "choices": [
+      "ジェネリクスでのみ可能",
+      "戻り値型は同一でなければならない",
+      "スーパタイプに広げる戻り値のみ許可",
+      "サブタイプに狭める戻り値は許可される",
+      "原始型でのみ可能"
+    ],
+    "answerIndex": 3,
+    "explanation": "共変戻り値はより具体的にできる。"
+  },
+  {
+    "id": 11,
+    "category": "オブジェクト指向の基礎",
+    "difficulty": "上級",
+    "question": "オーバーロード解決での優先順位として正しいのは？",
+    "code": "",
+    "choices": [
+      "曖昧ならランダムに選択",
+      "varargsが常に最優先",
+      "より適合度の高いメソッド(正確一致)が優先される",
+      "ボクシングが拡大変換より優先",
+      "アクセス修飾子が優先度を決める"
+    ],
+    "answerIndex": 2,
+    "explanation": "最も具体的な一致が優先。"
+  },
+  {
+    "id": 12,
+    "category": "ラッパークラスとオートボクシング",
+    "difficulty": "上級",
+    "question": "プリミティブの拡大変換とボクシングの優先関係は？",
+    "code": "",
+    "choices": [
+      "同等で曖昧になる",
+      "varargsが常に上位",
+      "ボクシングが優先",
+      "拡大変換がボクシングより優先",
+      "規定なし"
+    ],
+    "answerIndex": 3,
+    "explanation": "widening > boxing > varargs。"
+  },
+  {
+    "id": 13,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "equals/hashCode契約で正しいのは？",
+    "code": "",
+    "choices": [
+      "equalsがtrueならhashCodeは等しくなければならない",
+      "hashCodeが等しければequalsもtrueでなければならない",
+      "equalsは対称律を満たす必要はない",
+      "equalsがfalseならhashCodeは必ず異なる",
+      "hashCodeは呼ぶたびに変わるべき"
+    ],
+    "answerIndex": 0,
+    "explanation": "equalsがtrueなら同じハッシュが必要。"
+  },
+  {
+    "id": 14,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "Stringの性質として正しいのは？",
+    "code": "",
+    "choices": [
+      "参照ごとに同期される",
+      "不変(immutable)である",
+      "可変でappendできる",
+      "スレッドセーフではない",
+      "intern不可"
+    ],
+    "answerIndex": 1,
+    "explanation": "Stringは不変。"
+  },
+  {
+    "id": 15,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "StringBuilderとStringBufferの違いで正しいのは？",
+    "code": "",
+    "choices": [
+      "どちらも不変",
+      "どちらも同期化される",
+      "StringBuilderは同期化される",
+      "StringBuilderは不変、StringBufferは可変",
+      "StringBufferは同期化されるがStringBuilderはされない"
+    ],
+    "answerIndex": 4,
+    "explanation": "Bufferは同期化。Builderは高速。"
+  },
+  {
+    "id": 16,
+    "category": "オブジェクト指向の基礎",
+    "difficulty": "上級",
+    "question": "Javaの引数渡しの説明として正しいのは？",
+    "code": "",
+    "choices": [
+      "可変長引数のみ参照渡し",
+      "プリミティブは値渡しで参照型は参照渡し",
+      "配列だけ参照渡し",
+      "常に値渡し(pass-by-value)",
+      "参照渡しと値渡しを選べる"
+    ],
+    "answerIndex": 3,
+    "explanation": "参照自体も値として渡される。"
+  },
+  {
+    "id": 17,
+    "category": "配列とコレクション",
+    "difficulty": "上級",
+    "question": "Arrays.asListの性質として正しいのは？",
+    "code": "",
+    "choices": [
+      "スレッドセーフ",
+      "可変サイズでadd可能",
+      "固定サイズでありadd/removeは不可",
+      "原始配列を要素へ自動展開",
+      "null要素は常に禁止"
+    ],
+    "answerIndex": 2,
+    "explanation": "固定サイズで構造変更不可。"
+  },
+  {
+    "id": 18,
+    "category": "配列とコレクション",
+    "difficulty": "上級",
+    "question": "Java 9のList.of(...)の性質として正しいのは？",
+    "code": "",
+    "choices": [
+      "不変リストでnull要素は許可されない",
+      "配列ビューである",
+      "遅延評価",
+      "不変だがnullは許可",
+      "可変で要素追加可"
+    ],
+    "answerIndex": 0,
+    "explanation": "不変かつnull禁止。"
+  },
+  {
+    "id": 19,
+    "category": "配列とコレクション",
+    "difficulty": "上級",
+    "question": "HashMapの反復順序について正しいのは？",
+    "code": "",
+    "choices": [
+      "ハッシュ値の昇順保証",
+      "Java 11から安定",
+      "挿入順序で保証される",
+      "キーの自然順で走査される",
+      "順序は保証されない"
+    ],
+    "answerIndex": 4,
+    "explanation": "順序は未定義。LinkedHashMapで挿入順。"
+  },
+  {
+    "id": 20,
+    "category": "配列とコレクション",
+    "difficulty": "上級",
+    "question": "LinkedHashMapの順序特性は？",
+    "code": "",
+    "choices": [
+      "挿入順(またはアクセス順)を維持できる",
+      "常にハッシュ昇順",
+      "キーのequals順",
+      "順序は保証されない",
+      "常に自然順"
+    ],
+    "answerIndex": 0,
+    "explanation": "コンストラクタでアクセス順にもできる。"
+  },
+  {
+    "id": 21,
+    "category": "配列とコレクション",
+    "difficulty": "上級",
+    "question": "TreeMapのキーに要求されるものは？",
+    "code": "",
+    "choices": [
+      "Comparable実装かComparator提供",
+      "シリアライズ可能",
+      "hashCodeのみ実装",
+      "equalsのみ実装",
+      "Cloneable"
+    ],
+    "answerIndex": 0,
+    "explanation": "順序付けが必要。"
+  },
+  {
+    "id": 22,
+    "category": "配列とコレクション",
+    "difficulty": "上級",
+    "question": "Setの一般的な性質は？",
+    "code": "",
+    "choices": [
+      "インデックスでアクセスできる",
+      "nullを禁止",
+      "必ずソートされる",
+      "順序を保証する",
+      "重複要素を許可しない"
+    ],
+    "answerIndex": 4,
+    "explanation": "重複不可が本質。"
+  },
+  {
+    "id": 23,
+    "category": "配列とコレクション",
+    "difficulty": "上級",
+    "question": "ArrayDequeの特徴として正しいのは？",
+    "code": "",
+    "choices": [
+      "スレッドセーフ",
+      "イテレータはfail-safe",
+      "null要素を許可しない",
+      "固定長",
+      "スタック操作不可"
+    ],
+    "answerIndex": 2,
+    "explanation": "nullは禁止。"
+  },
+  {
+    "id": 24,
+    "category": "配列とコレクション",
+    "difficulty": "上級",
+    "question": "一般的なコレクションのイテレータの性質は？",
+    "code": "",
+    "choices": [
+      "ConcurrentModificationExceptionは発生しない",
+      "常にfail-safe",
+      "構造変更が検出されるとfail-fastになる",
+      "変更を完全に許容する",
+      "WeakConsistency保証"
+    ],
+    "answerIndex": 2,
+    "explanation": "多くはfail-fast。"
+  },
+  {
+    "id": 25,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "Optionalで安全な値取得の推奨は？",
+    "code": "",
+    "choices": [
+      "nullにキャスト",
+      "常にget",
+      "orElse/ifPresentを使いgetは避ける",
+      "filterの後にget必須",
+      "mapの後にget必須"
+    ],
+    "answerIndex": 2,
+    "explanation": "getは空で例外のため非推奨。"
+  },
+  {
+    "id": 26,
+    "category": "例外処理",
+    "difficulty": "上級",
+    "question": "try-with-resourcesで複数リソースを開いた場合のclose順序は？",
+    "code": "",
+    "choices": [
+      "宣言の逆順",
+      "アルファベット順",
+      "ランダム",
+      "スレッドID順",
+      "宣言順"
+    ],
+    "answerIndex": 0,
+    "explanation": "逆順でクローズ。"
+  },
+  {
+    "id": 27,
+    "category": "例外処理",
+    "difficulty": "上級",
+    "question": "try-with-resourcesで発生した抑制例外(suppressed)はどこに記録される？",
+    "code": "",
+    "choices": [
+      "スローされた主例外のgetSuppressed()",
+      "System.err",
+      "サブクラスのスタック",
+      "ThreadLocal",
+      "記録されない"
+    ],
+    "answerIndex": 0,
+    "explanation": "Throwable#getSuppressed。"
+  },
+  {
+    "id": 28,
+    "category": "例外処理",
+    "difficulty": "上級",
+    "question": "finallyの振る舞いで正しいのは？",
+    "code": "",
+    "choices": [
+      "tryが複数回走る",
+      "catchが無ければfinallyは無視",
+      "tryでreturnしてもfinallyは実行される",
+      "finally内のreturnはコンパイラエラー",
+      "例外時はfinallyは実行されない"
+    ],
+    "answerIndex": 2,
+    "explanation": "finallyは必ず実行(一部ケースを除くVM終了等)。"
+  },
+  {
+    "id": 29,
+    "category": "例外処理",
+    "difficulty": "上級",
+    "question": "チェック例外の正しい説明は？",
+    "code": "",
+    "choices": [
+      "RuntimeExceptionのサブクラス",
+      "Errorのサブクラス",
+      "検査はJVMのみ",
+      "mainでは使えない",
+      "throws宣言またはcatchが必要"
+    ],
+    "answerIndex": 4,
+    "explanation": "コンパイル時に処理が求められる。"
+  },
+  {
+    "id": 30,
+    "category": "例外処理",
+    "difficulty": "上級",
+    "question": "ErrorとExceptionの関係で適切なのは？",
+    "code": "",
+    "choices": [
+      "ExceptionはVM専用",
+      "Errorは通常アプリで捕捉すべきでない",
+      "Exceptionは致命的で必ず停止",
+      "Errorはチェック例外",
+      "Errorは例外設計で積極的に使用"
+    ],
+    "answerIndex": 1,
+    "explanation": "Errorはリカバリ困難。"
+  },
+  {
+    "id": 31,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "String#internの効果として正しいのは？",
+    "code": "",
+    "choices": [
+      "プール上の等価なインスタンスを返す",
+      "文字列内容を変更する",
+      "同期化する",
+      "必ず新規作成",
+      "GCから除外する"
+    ],
+    "answerIndex": 0,
+    "explanation": "同一内容のプール参照へ。"
+  },
+  {
+    "id": 32,
+    "category": "ラッパークラスとオートボクシング",
+    "difficulty": "上級",
+    "question": "Integerのキャッシュ範囲として正しいのは？",
+    "code": "",
+    "choices": [
+      "0 〜 255 固定",
+      "通常 -128 〜 127",
+      "常にキャッシュなし",
+      "JVM引数で変更不可",
+      "-1024〜1023"
+    ],
+    "answerIndex": 1,
+    "explanation": "デフォルト-128〜127。"
+  },
+  {
+    "id": 33,
+    "category": "配列とコレクション",
+    "difficulty": "上級",
+    "question": "null要素の可否で正しいのは？",
+    "code": "",
+    "choices": [
+      "EnumMapはnullキー許可",
+      "ConcurrentHashMapはnullキー許可",
+      "ArrayDequeはnull許可",
+      "TreeMapは常にnullキー許可",
+      "HashMapは1つのnullキーと複数null値を許す"
+    ],
+    "answerIndex": 4,
+    "explanation": "ConcurrentHashMap/ArrayDequeはnull禁止。"
+  },
+  {
+    "id": 34,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "Comparator.nullsFirstの説明として正しいのは？",
+    "code": "",
+    "choices": [
+      "nullを0に変換する",
+      "例外を投げる",
+      "nullを除外する",
+      "nullを末尾にする",
+      "nullを先に並べるComparatorを生成する"
+    ],
+    "answerIndex": 4,
+    "explanation": "nullsFirst/Lastがある。"
+  },
+  {
+    "id": 35,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "String.formatで%dに文字列を渡した場合の挙動は？",
+    "code": "",
+    "choices": [
+      "未定義で実行時終了",
+      "自動で数値変換",
+      "0に変換",
+      "IllegalFormatConversionException",
+      "空文字になる"
+    ],
+    "answerIndex": 3,
+    "explanation": "型不一致で例外。"
+  },
+  {
+    "id": 36,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "クラスパスとモジュールパスの違いで正しいのは？",
+    "code": "",
+    "choices": [
+      "クラスパスは循環を禁止",
+      "モジュールパスはモジュール記述子(module-info)を前提とする",
+      "モジュールパスはJAR非対応",
+      "クラスパスはJDK9以降廃止",
+      "どちらも同義"
+    ],
+    "answerIndex": 1,
+    "explanation": "module-infoを用いる。"
+  },
+  {
+    "id": 37,
+    "category": "オブジェクト指向の基礎",
+    "difficulty": "上級",
+    "question": "パッケージ命名規約として一般的に推奨されるのは？",
+    "code": "",
+    "choices": [
+      "日本語名を使う",
+      "スペース含め可",
+      "すべて小文字の逆ドメイン",
+      "UpperCamelCase",
+      "snake_case"
+    ],
+    "answerIndex": 2,
+    "explanation": "逆ドメイン小文字。"
+  },
+  {
+    "id": 38,
+    "category": "初期化とライフサイクル",
+    "difficulty": "上級",
+    "question": "デフォルトコンストラクタについて正しいのは？",
+    "code": "",
+    "choices": [
+      "引数1つのものが生成",
+      "スーパの引数ありを呼ぶ",
+      "privateになる",
+      "他のコンストラクタが定義されていない場合のみ自動生成",
+      "常に自動生成"
+    ],
+    "answerIndex": 3,
+    "explanation": "定義が無い場合のみ。"
+  },
+  {
+    "id": 39,
+    "category": "初期化とライフサイクル",
+    "difficulty": "上級",
+    "question": "静的初期化子の実行タイミングは？",
+    "code": "",
+    "choices": [
+      "インスタンス生成のたび",
+      "main開始直後",
+      "コンパイル時",
+      "初回のクラスロード時(初回参照時)",
+      "JVM起動直後必ず"
+    ],
+    "answerIndex": 3,
+    "explanation": "最初のロード/初期化時。"
+  },
+  {
+    "id": 40,
+    "category": "初期化とライフサイクル",
+    "difficulty": "上級",
+    "question": "インスタンス初期化子の実行順序として正しいのは？",
+    "code": "",
+    "choices": [
+      "フィールド初期化の後",
+      "任意順序",
+      "コンストラクタ本体の前",
+      "コンストラクタ本体の後",
+      "静的初期化子の前"
+    ],
+    "answerIndex": 2,
+    "explanation": "コンストラクタより前。"
+  },
+  {
+    "id": 41,
+    "category": "初期化とライフサイクル",
+    "difficulty": "上級",
+    "question": "finalizeの取り扱いとして適切なのは？",
+    "code": "",
+    "choices": [
+      "GC直後に必ず呼ばれる",
+      "必ず実装すべき",
+      "例外は握りつぶされる",
+      "使用は推奨されず代わりにAutoCloseable等を使う",
+      "動作保証あり"
+    ],
+    "answerIndex": 3,
+    "explanation": "今は非推奨。"
+  },
+  {
+    "id": 42,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "GCが到達可能性を判定する起点に含まれるものは？",
+    "code": "",
+    "choices": [
+      "finalizeキューのみ",
+      "すべてのJAR",
+      "プロセス環境変数",
+      "弱参照のみ",
+      "スレッドスタック上のローカル変数"
+    ],
+    "answerIndex": 4,
+    "explanation": "スタックや静的フィールドなどがルート。"
+  },
+  {
+    "id": 43,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "StringBuilderのcapacityに関する説明で正しいのは？",
+    "code": "",
+    "choices": [
+      "必要に応じて自動拡張される",
+      "lengthと常に等しい",
+      "拡張は例外となる",
+      "自動縮小される",
+      "初期容量は固定で変更不可"
+    ],
+    "answerIndex": 0,
+    "explanation": "容量は自動拡張。"
+  },
+  {
+    "id": 44,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "BigDecimalのequalsとcompareToの違いで正しいのは？",
+    "code": "",
+    "choices": [
+      "equalsはスケールも比較し、compareToは数値だけ比較",
+      "equalsは四捨五入する",
+      "どちらもスケールまで一致必須",
+      "compareToはnullを大きいとみなす",
+      "どちらも数値のみ比較"
+    ],
+    "answerIndex": 0,
+    "explanation": "equalsはスケール考慮。"
+  },
+  {
+    "id": 45,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "Math.round(-1.5F) の結果は？",
+    "code": "",
+    "choices": [
+      "-1",
+      "例外",
+      "-2",
+      "0",
+      "1"
+    ],
+    "answerIndex": 0,
+    "explanation": "floor(x+0.5)で-1。"
+  },
+  {
+    "id": 46,
+    "category": "switchと分岐",
+    "difficulty": "上級",
+    "question": "Stringを条件とするswitchに関する正しい説明は？",
+    "code": "",
+    "choices": [
+      "caseラベルは変数で可",
+      "文字列の==で比較される",
+      "defaultは必須",
+      "Java 5から可能",
+      "Java 7以降で利用可能"
+    ],
+    "answerIndex": 4,
+    "explanation": "7以降、equals相当でマップ。"
+  },
+  {
+    "id": 47,
+    "category": "switchと分岐",
+    "difficulty": "上級",
+    "question": "switchでbreakを省略した場合の挙動は？",
+    "code": "",
+    "choices": [
+      "コンパイルエラー",
+      "defaultに飛ぶ",
+      "例外が投げられる",
+      "後続のcaseへフォールスルーする",
+      "自動的にbreakされる"
+    ],
+    "answerIndex": 3,
+    "explanation": "breakがなければ続く。"
+  },
+  {
+    "id": 48,
+    "category": "switchと分岐",
+    "difficulty": "上級",
+    "question": "enumをswitchに使用する際の正しい説明は？",
+    "code": "",
+    "choices": [
+      "常にdefault必須",
+      "文字列に変換して比較する",
+      "caseには列挙定数名をそのまま書く",
+      "caseにはordinalを使う",
+      "import不可"
+    ],
+    "answerIndex": 2,
+    "explanation": "定数名で記述。"
+  },
+  {
+    "id": 49,
+    "category": "配列とコレクション",
+    "difficulty": "上級",
+    "question": "拡張for文に関する正しい説明は？",
+    "code": "",
+    "choices": [
+      "コレクションの構造変更を常に許容する",
+      "インデックスに直接アクセスできる",
+      "Mapにも直接使える",
+      "内部で必ずIterator.removeを呼ぶ",
+      "配列やIterableに対して要素を順に取り出す"
+    ],
+    "answerIndex": 4,
+    "explanation": "Iterableや配列に適用。"
+  },
+  {
+    "id": 50,
+    "category": "配列とコレクション",
+    "difficulty": "上級",
+    "question": "Mapのfor-eachでキーと値を同時に扱う一般的な方法は？",
+    "code": "",
+    "choices": [
+      "keySetとgetを毎回呼ぶ",
+      "iteratorを複数ネストする",
+      "拡張forでは扱えない",
+      "entrySetを使う",
+      "valuesに対してgetKeyを呼ぶ"
+    ],
+    "answerIndex": 3,
+    "explanation": "entrySetが効率的。"
+  },
+  {
+    "id": 51,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "文字列連結に+演算子を大量に使う場合の推奨は？",
+    "code": "",
+    "choices": [
+      "必ずStringを使うべき",
+      "Streamでのみ可能",
+      "StringBuilder/Bufferの使用を検討する",
+      "concatのみ使用",
+      "+は常に最速"
+    ],
+    "answerIndex": 2,
+    "explanation": "大量連結は可変バッファが有利。"
+  },
+  {
+    "id": 52,
+    "category": "クラス設計と継承",
+    "difficulty": "上級",
+    "question": "Javaのrecord(レコード)について正しい説明は？",
+    "code": "",
+    "choices": [
+      "可変フィールドが前提",
+      "継承階層の基底として推奨",
+      "不変データキャリアを簡潔に表現するための構文",
+      "equals/hashCodeは自動生成されない",
+      "JDK8で導入"
+    ],
+    "answerIndex": 2,
+    "explanation": "データキャリア向け構文(新しめ)。"
+  },
+  {
+    "id": 53,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "module-info.javaでパッケージを公開するキーワードは？",
+    "code": "",
+    "choices": [
+      "requires",
+      "provide",
+      "exports",
+      "open",
+      "use"
+    ],
+    "answerIndex": 2,
+    "explanation": "エクスポートはexports。"
+  },
+  {
+    "id": 54,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "モジュールで依存先を下流にも伝播させる宣言は？",
+    "code": "",
+    "choices": [
+      "requires transitive",
+      "opens transitive",
+      "requires static",
+      "exports transitive",
+      "uses transitive"
+    ],
+    "answerIndex": 0,
+    "explanation": "transitiveで依存の再公開。"
+  },
+  {
+    "id": 55,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "リフレクションでアクセス可能にするためのモジュール宣言は？",
+    "code": "",
+    "choices": [
+      "exports",
+      "uses",
+      "requires",
+      "opens",
+      "provides"
+    ],
+    "answerIndex": 3,
+    "explanation": "opensはリフレクション向けに公開。"
+  },
+  {
+    "id": 56,
+    "category": "ラッパークラスとオートボクシング",
+    "difficulty": "上級",
+    "question": "Integer.parseIntとInteger.valueOfの違いは？",
+    "code": "",
+    "choices": [
+      "どちらも例外を投げない",
+      "どちらもintを返す",
+      "parseIntはIntegerを返す",
+      "valueOfは常に新規生成",
+      "valueOfはキャッシュなどを考慮しIntegerを返す"
+    ],
+    "answerIndex": 4,
+    "explanation": "parseIntはint、valueOfはInteger(キャッシュの可能性)。"
+  },
+  {
+    "id": 57,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "StringBuilderのtoString結果に関する正しい説明は？",
+    "code": "",
+    "choices": [
+      "変更を反映して同じオブジェクトが更新",
+      "同じ参照が再利用される",
+      "可変長でStringに変換不要",
+      "内部配列を直接返す",
+      "呼ぶたびに新しいStringが生成される"
+    ],
+    "answerIndex": 4,
+    "explanation": "常に新しいString。"
+  },
+  {
+    "id": 58,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "java.nio.file.Pathとjava.io.Fileの関係で正しいのは？",
+    "code": "",
+    "choices": [
+      "PathはI/Oに使えない",
+      "FileがPathのサブタイプ",
+      "Pathは新しいファイルAPIの主要表現でFileに相互変換可能",
+      "どちらも同義で相違なし",
+      "Pathはシリアライズ専用"
+    ],
+    "answerIndex": 2,
+    "explanation": "相互変換可能だがPathが新API。"
+  },
+  {
+    "id": 59,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "Files.readAllLinesで文字エンコーディングを指定しない場合は？",
+    "code": "",
+    "choices": [
+      "例外になる",
+      "プラットフォームデフォルトが使われる",
+      "読み込み不可",
+      "常にUTF-16",
+      "常にUTF-8"
+    ],
+    "answerIndex": 1,
+    "explanation": "オーバーロードで指定可。"
+  },
+  {
+    "id": 60,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "Path#normalizeの効果は？",
+    "code": "",
+    "choices": [
+      "実ファイルの整形",
+      "権限を修正",
+      "パス区切りをOS共通に変換",
+      "絶対パス化",
+      "冗長な\".\"や\"..\"を解消したPathを返す"
+    ],
+    "answerIndex": 4,
+    "explanation": "論理的な正規化のみ。"
+  },
+  {
+    "id": 61,
+    "category": "日付と時間API",
+    "difficulty": "上級",
+    "question": "java.timeパッケージの型(LocalDate等)の性質は？",
+    "code": "",
+    "choices": [
+      "可変で高速",
+      "不変だがスレッドセーフではない",
+      "mutableでスレッドセーフ",
+      "コピーオンライト",
+      "不変でスレッドセーフ"
+    ],
+    "answerIndex": 4,
+    "explanation": "不変で並行でも安全。"
+  },
+  {
+    "id": 62,
+    "category": "日付と時間API",
+    "difficulty": "上級",
+    "question": "時刻ゾーンを表す型は？",
+    "code": "",
+    "choices": [
+      "ZoneId",
+      "TimeZoneのみ",
+      "OffsetTime",
+      "Clock",
+      "Locale"
+    ],
+    "answerIndex": 0,
+    "explanation": "java.time.ZoneId。"
+  },
+  {
+    "id": 63,
+    "category": "日付と時間API",
+    "difficulty": "上級",
+    "question": "PeriodとDurationの違いで正しいのは？",
+    "code": "",
+    "choices": [
+      "どちらもカレンダー無視",
+      "どちらも日付ベース",
+      "Periodは日付ベース、Durationは時間ベース",
+      "どちらもミリ秒固定",
+      "どちらも時間ベース"
+    ],
+    "answerIndex": 2,
+    "explanation": "Period=年月日、Duration=秒/ナノ。"
+  },
+  {
+    "id": 64,
+    "category": "日付と時間API",
+    "difficulty": "上級",
+    "question": "Instantの説明で正しいのは？",
+    "code": "",
+    "choices": [
+      "月のみ",
+      "タイムゾーン付き日時",
+      "ローカル日付を表す",
+      "UTCの時間軸上の瞬間を表す",
+      "曜日のみ"
+    ],
+    "answerIndex": 3,
+    "explanation": "エポック基準の瞬間値。"
+  },
+  {
+    "id": 65,
+    "category": "日付と時間API",
+    "difficulty": "上級",
+    "question": "OffsetDateTimeとZonedDateTimeの相違は？",
+    "code": "",
+    "choices": [
+      "ZonedDateTimeはゾーンルール(夏時間等)を持つ",
+      "Zonedはオフセット不可",
+      "どちらもゾーンルールなし",
+      "OffsetDateTimeのみルールを持つ",
+      "どちらも同じ"
+    ],
+    "answerIndex": 0,
+    "explanation": "ZonedはZoneIdでルール有り。"
+  },
+  {
+    "id": 66,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "国際化(i18n)でキー/値リソースを扱うクラスは？",
+    "code": "",
+    "choices": [
+      "Locale",
+      "ResourceBundle",
+      "Formatter",
+      "Scanner",
+      "Propertiesのみ"
+    ],
+    "answerIndex": 1,
+    "explanation": "ResourceBundleが代表。"
+  },
+  {
+    "id": 67,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "Localeの役割として正しいのは？",
+    "code": "",
+    "choices": [
+      "ファイルエンコーディング",
+      "タイムゾーンの保持",
+      "通貨計算",
+      "日付差分計算",
+      "言語・国など地域情報の表現"
+    ],
+    "answerIndex": 4,
+    "explanation": "地域/言語設定。"
+  },
+  {
+    "id": 68,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "Scannerのデフォルト区切りは？",
+    "code": "",
+    "choices": [
+      "タブのみ",
+      "カンマ",
+      "改行のみ",
+      "セミコロン",
+      "空白(ホワイトスペース)"
+    ],
+    "answerIndex": 4,
+    "explanation": "ホワイトスペース。"
+  },
+  {
+    "id": 69,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "Files.walkの説明で正しいのは？",
+    "code": "",
+    "choices": [
+      "メモリに全ファイルを読み込む",
+      "必ずシンボリックリンクをたどる",
+      "ディレクトリツリーを走査するストリームを返す",
+      "カレントのみ列挙",
+      "Iteratorを返す"
+    ],
+    "answerIndex": 2,
+    "explanation": "深さ優先のストリーム。"
+  },
+  {
+    "id": 70,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "NIOのChannelの特徴で正しいのは？",
+    "code": "",
+    "choices": [
+      "Selectorは不要",
+      "文字列処理専用",
+      "同期I/Oのみ",
+      "バッファとの非同期/ブロックI/Oモデルを提供",
+      "常にノンブロッキング"
+    ],
+    "answerIndex": 3,
+    "explanation": "Channel/Buffer/Selectorのモデル。"
+  },
+  {
+    "id": 71,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "StringBuilderのスレッド安全性は？",
+    "code": "",
+    "choices": [
+      "volatileで安全",
+      "読み取りのみ安全",
+      "スレッドセーフではない",
+      "同期ブロック下でのみ安全",
+      "常にスレッドセーフ"
+    ],
+    "answerIndex": 2,
+    "explanation": "非同期化。"
+  },
+  {
+    "id": 72,
+    "category": "ラッパークラスとオートボクシング",
+    "difficulty": "上級",
+    "question": "nullをintにアンボックスすると？",
+    "code": "",
+    "choices": [
+      "0になる",
+      "IllegalArgumentException",
+      "-1になる",
+      "NullPointerException",
+      "自動的にラップ"
+    ],
+    "answerIndex": 3,
+    "explanation": "NPE。"
+  },
+  {
+    "id": 73,
+    "category": "初期化とライフサイクル",
+    "difficulty": "上級",
+    "question": "フィールドのデフォルト値として正しいのは？",
+    "code": "",
+    "choices": [
+      "doubleはNaN固定",
+      "intは0、booleanはfalse",
+      "すべて未定義",
+      "intは未定義、booleanはfalse",
+      "参照型は空文字"
+    ],
+    "answerIndex": 1,
+    "explanation": "フィールドはデフォルト初期化される。"
+  },
+  {
+    "id": 74,
+    "category": "初期化とライフサイクル",
+    "difficulty": "上級",
+    "question": "ローカル変数のデフォルト値は？",
+    "code": "",
+    "choices": [
+      "初期化必須でデフォルトなし",
+      "NaNで初期化",
+      "nullで初期化",
+      "0で初期化",
+      "falseで初期化"
+    ],
+    "answerIndex": 0,
+    "explanation": "未初期化は使用不可。"
+  },
+  {
+    "id": 75,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "静的インポートの正しい記法は？",
+    "code": "",
+    "choices": [
+      "import static java.lang.Math.*;",
+      "import Math.* static;",
+      "static import Math.*;",
+      "using static Math.*;",
+      "import java.lang.Math.static.*;"
+    ],
+    "answerIndex": 0,
+    "explanation": "import static ...;"
+  },
+  {
+    "id": 76,
+    "category": "ラッパークラスとオートボクシング",
+    "difficulty": "上級",
+    "question": "Integer同士の==比較でtrueになり得るのは？",
+    "code": "",
+    "choices": [
+      "equalsがtrueなら==もtrue",
+      "128以上は必ずtrue",
+      "どんな値でも常にtrue",
+      "参照が異なってもtrue",
+      "-128〜127の値をオートボクシングした同値比較"
+    ],
+    "answerIndex": 4,
+    "explanation": "キャッシュ範囲で同参照になり得る。"
+  },
+  {
+    "id": 77,
+    "category": "文字列とStringBuilder",
+    "difficulty": "上級",
+    "question": "文字列リテラルの格納タイミングは？",
+    "code": "",
+    "choices": [
+      "GC時",
+      "mainの開始時",
+      "コンパイル時のみに作成し実行時は使わない",
+      "実行時に都度生成",
+      "クラスロード時にプールされる"
+    ],
+    "answerIndex": 4,
+    "explanation": "クラス/定数プールにロード。"
+  },
+  {
+    "id": 78,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "一般的なクラスローダ階層で最上位に位置するのは？",
+    "code": "",
+    "choices": [
+      "Extension ClassLoader",
+      "Custom ClassLoader",
+      "Bootstrap ClassLoader",
+      "Platform ClassLoader",
+      "Application ClassLoader"
+    ],
+    "answerIndex": 2,
+    "explanation": "ブートストラップ。"
+  },
+  {
+    "id": 79,
+    "category": "オブジェクト指向の基礎",
+    "difficulty": "上級",
+    "question": "可変長引数の宣言位置として正しいのは？",
+    "code": "",
+    "choices": [
+      "2つまで可",
+      "先頭のみ可",
+      "最後の引数にのみ置ける",
+      "配列と同時不可",
+      "どこでも可"
+    ],
+    "answerIndex": 2,
+    "explanation": "varargsは最後。"
+  },
+  {
+    "id": 80,
+    "category": "多態性とオーバーライド",
+    "difficulty": "上級",
+    "question": "オーバーロードとオーバーライドの違いで正しいのは？",
+    "code": "",
+    "choices": [
+      "オーバーライドは同一名で戻り値も自由",
+      "オーバーロードは同一名でパラメータ型/数が異なる",
+      "オーバーライドは同一クラス内のみ",
+      "オーバーロードはサブクラスのみ",
+      "どちらも引数は同一"
+    ],
+    "answerIndex": 1,
+    "explanation": "オーバーロードはシグネチャ差。"
+  },
+  {
+    "id": 81,
+    "category": "多態性とオーバーライド",
+    "difficulty": "上級",
+    "question": "staticメソッドの呼び出し解決は？",
+    "code": "",
+    "choices": [
+      "実行時バインディング",
+      "参照型で解決(多態性はない)",
+      "必ず最下位クラス",
+      "オブジェクト実体で解決",
+      "abstractにできる"
+    ],
+    "answerIndex": 1,
+    "explanation": "コンパイル時解決。"
+  },
+  {
+    "id": 82,
+    "category": "初期化とライフサイクル",
+    "difficulty": "上級",
+    "question": "コンストラクタ内のthis()/super()呼び出し規則は？",
+    "code": "",
+    "choices": [
+      "必ず引数なし",
+      "省略不可",
+      "最初の文でなければならない",
+      "同時に呼べる",
+      "任意の位置でよい"
+    ],
+    "answerIndex": 2,
+    "explanation": "最初の文のみ可。"
+  },
+  {
+    "id": 83,
+    "category": "オブジェクト指向の基礎",
+    "difficulty": "上級",
+    "question": "複数インタフェースのdefaultメソッドが衝突した場合は？",
+    "code": "",
+    "choices": [
+      "実装クラスで明示的に解決する必要がある",
+      "コンパイラが最上位を選択",
+      "ランタイムで決定",
+      "自動的に一方が選ばれる",
+      "衝突は起きない"
+    ],
+    "answerIndex": 0,
+    "explanation": "明示オーバーライドが必要。"
+  },
+  {
+    "id": 84,
+    "category": "クラス設計と継承",
+    "difficulty": "上級",
+    "question": "sealedクラスの説明として正しいのは？",
+    "code": "",
+    "choices": [
+      "継承可能な型をpermitsで限定できる",
+      "JDK8から必須",
+      "抽象クラスの別名",
+      "アクセス修飾子と同義",
+      "インタフェースでは不可"
+    ],
+    "answerIndex": 0,
+    "explanation": "permitsで許可型を制御。"
+  },
+  {
+    "id": 85,
+    "category": "クラス設計と継承",
+    "difficulty": "上級",
+    "question": "recordのequals/hashCodeについて正しいのは？",
+    "code": "",
+    "choices": [
+      "コンパイラがコンポーネントに基づき自動生成",
+      "手動必須",
+      "equalsのみ自動",
+      "hashCodeのみ自動",
+      "自動生成されない"
+    ],
+    "answerIndex": 0,
+    "explanation": "基本は自動合成。"
+  },
+  {
+    "id": 86,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "正規表現でコンパイル済みパターンを表すクラスは？",
+    "code": "",
+    "choices": [
+      "java.text.Pattern",
+      "java.util.regex.Matcher",
+      "java.util.Formatter",
+      "java.util.regex.Pattern",
+      "java.util.Scanner"
+    ],
+    "answerIndex": 3,
+    "explanation": "Patternが正規表現。"
+  },
+  {
+    "id": 87,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "Files.newBufferedReaderの戻り値型は？",
+    "code": "",
+    "choices": [
+      "File",
+      "Scanner",
+      "InputStream",
+      "BufferedReader",
+      "Reader"
+    ],
+    "answerIndex": 3,
+    "explanation": "BufferedReaderを返す。"
+  },
+  {
+    "id": 88,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "Javaの標準文字集合名で正しいのは？",
+    "code": "",
+    "choices": [
+      "MS932",
+      "EUC-JP",
+      "UTF-8",
+      "Windows-31J",
+      "Shift_JIS"
+    ],
+    "answerIndex": 2,
+    "explanation": "標準名はUTF-8(他は別名扱い可)。"
+  },
+  {
+    "id": 89,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "Comparator.naturalOrder()が期待する型要件は？",
+    "code": "",
+    "choices": [
+      "Serializableであること",
+      "要素がComparableを実装していること",
+      "Cloneableであること",
+      "Iterableであること",
+      "Numberであること"
+    ],
+    "answerIndex": 1,
+    "explanation": "自然順序にはComparableが必要。"
+  },
+  {
+    "id": 90,
+    "category": "配列とコレクション",
+    "difficulty": "上級",
+    "question": "Collections.unmodifiableListでラップしたリストの性質は？",
+    "code": "",
+    "choices": [
+      "独立コピーになる",
+      "イテレータがfail-safeになる",
+      "nullを禁止",
+      "スレッドセーフになる",
+      "元リストを変更するとラップ側にも反映される"
+    ],
+    "answerIndex": 4,
+    "explanation": "ビューなので元に追随。"
+  },
+  {
+    "id": 91,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "Properties#loadで正しいのは？",
+    "code": "",
+    "choices": [
+      "バイナリ専用",
+      "JSON形式必須",
+      "UTF-8のみ",
+      "ISO-8859-1ベースで\\uエスケープを解釈する",
+      "キー重複は不可で例外"
+    ],
+    "answerIndex": 3,
+    "explanation": "伝統的仕様。"
+  },
+  {
+    "id": 92,
+    "category": "例外処理",
+    "difficulty": "上級",
+    "question": "RuntimeExceptionについて正しいのは？",
+    "code": "",
+    "choices": [
+      "throws必須",
+      "Errorの別名",
+      "チェック例外ではない",
+      "必ずcatchが必要",
+      "mainでは使えない"
+    ],
+    "answerIndex": 2,
+    "explanation": "非検査例外。"
+  },
+  {
+    "id": 93,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "@SuppressWarningsの目的は？",
+    "code": "",
+    "choices": [
+      "GCの抑制",
+      "ランタイムの最適化",
+      "例外の抑制",
+      "コンパイラ警告の抑制",
+      "ログの抑制"
+    ],
+    "answerIndex": 3,
+    "explanation": "注釈で警告を無効化。"
+  },
+  {
+    "id": 94,
+    "category": "多態性とオーバーライド",
+    "difficulty": "上級",
+    "question": "@Overrideを付ける主な利点は？",
+    "code": "",
+    "choices": [
+      "アクセス権が上がる",
+      "同期化される",
+      "抽象化される",
+      "シグネチャ不一致をコンパイル時に検出できる",
+      "パフォーマンス向上"
+    ],
+    "answerIndex": 3,
+    "explanation": "誤記を検知。"
+  },
+  {
+    "id": 95,
+    "category": "オブジェクト指向の基礎",
+    "difficulty": "上級",
+    "question": "@FunctionalInterfaceの要件は？",
+    "code": "",
+    "choices": [
+      "staticメソッド不可",
+      "defaultメソッド不可",
+      "抽象メソッドがちょうど1つ",
+      "抽象メソッドは0でも可",
+      "フィールド不可"
+    ],
+    "answerIndex": 2,
+    "explanation": "抽象メソッド1つ。"
+  },
+  {
+    "id": 96,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "Java Streamの終端操作に該当するのは？",
+    "code": "",
+    "choices": [
+      "distinct",
+      "filter",
+      "collect",
+      "peek",
+      "map"
+    ],
+    "answerIndex": 2,
+    "explanation": "collect, forEach, reduce等が終端。"
+  },
+  {
+    "id": 97,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "Java Streamの中間操作の評価タイミングは？",
+    "code": "",
+    "choices": [
+      "生成時に即時評価",
+      "終端操作が呼ばれるまで遅延評価",
+      "常に即時",
+      "forEachでのみ評価",
+      "並列のみ遅延"
+    ],
+    "answerIndex": 1,
+    "explanation": "遅延評価。"
+  },
+  {
+    "id": 98,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "Optional.empty()の正しい説明は？",
+    "code": "",
+    "choices": [
+      "例外を投げる",
+      "値を持たないOptionalを返す",
+      "0を返す",
+      "nullを返す",
+      "空文字を返す"
+    ],
+    "answerIndex": 1,
+    "explanation": "空のOptional。"
+  },
+  {
+    "id": 99,
+    "category": "クラス設計と継承",
+    "difficulty": "上級",
+    "question": "recordのコンポーネントの一般的な性質は？",
+    "code": "",
+    "choices": [
+      "synchronized",
+      "volatileのみ",
+      "暗黙に可変",
+      "finalで変更不可",
+      "transient"
+    ],
+    "answerIndex": 3,
+    "explanation": "暗黙にfinal相当。"
+  },
+  {
+    "id": 100,
+    "category": "標準APIの利用",
+    "difficulty": "上級",
+    "question": "正規表現の大文字小文字を無視するフラグは？",
+    "code": "",
+    "choices": [
+      "Pattern.CASE_INSENSITIVE",
+      "Pattern.DOTALL",
+      "Pattern.LITERAL",
+      "Pattern.UNICODE_CASE_ONLY",
+      "Pattern.MULTILINE"
+    ],
+    "answerIndex": 0,
+    "explanation": "CASE_INSENSITIVE。"
+  }
+]
