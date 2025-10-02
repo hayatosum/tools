@@ -1,0 +1,1502 @@
+[
+  {
+    "id": 1,
+    "category": "オブジェクト指向の基礎",
+    "difficulty": "初級",
+    "question": "カプセル化の目的は？",
+    "code": "",
+    "choices": [
+      "速度向上",
+      "GC回避",
+      "データの隠蔽と一貫性の維持",
+      "I/O最適化"
+    ],
+    "answerIndex": 2,
+    "explanation": "実装隠蔽による安全性。"
+  },
+  {
+    "id": 2,
+    "category": "アクセス修飾子",
+    "difficulty": "初級",
+    "question": "privateの特徴は？",
+    "code": "",
+    "choices": [
+      "サブクラスからアクセス可",
+      "同一クラス内のみアクセス可",
+      "全クラスからアクセス可",
+      "パッケージ内からアクセス可"
+    ],
+    "answerIndex": 1,
+    "explanation": "privateは最も制限が強い。"
+  },
+  {
+    "id": 3,
+    "category": "クラス設計",
+    "difficulty": "初級",
+    "question": "abstractクラスの特徴は？",
+    "code": "",
+    "choices": [
+      "インスタンス化不可",
+      "必ず抽象メソッドだけを持つ",
+      "フィールド不可",
+      "常にfinal"
+    ],
+    "answerIndex": 0,
+    "explanation": "抽象メソッド以外も持てる。"
+  },
+  {
+    "id": 4,
+    "category": "文字列",
+    "difficulty": "初級",
+    "question": "Stringはどんな性質？",
+    "code": "",
+    "choices": [
+      "可変",
+      "不変(immutable)",
+      "排他専用",
+      "同期済み"
+    ],
+    "answerIndex": 1,
+    "explanation": "文字列は不変。"
+  },
+  {
+    "id": 5,
+    "category": "コレクション",
+    "difficulty": "初級",
+    "question": "Listの特徴は？",
+    "code": "",
+    "choices": [
+      "必ずソート",
+      "キーと値",
+      "順序なし重複不可",
+      "順序を保持し重複可"
+    ],
+    "answerIndex": 3,
+    "explanation": "Listは順序保持・重複可。"
+  },
+  {
+    "id": 6,
+    "category": "オブジェクト指向の基礎",
+    "difficulty": "初級",
+    "question": "カプセル化の目的は？（バリエーション5）",
+    "code": "",
+    "choices": [
+      "データの隠蔽と一貫性の維持",
+      "速度向上",
+      "GC回避",
+      "I/O最適化"
+    ],
+    "answerIndex": 0,
+    "explanation": "実装隠蔽による安全性。"
+  },
+  {
+    "id": 7,
+    "category": "アクセス修飾子",
+    "difficulty": "初級",
+    "question": "privateの特徴は？（バリエーション6）",
+    "code": "",
+    "choices": [
+      "全クラスからアクセス可",
+      "サブクラスからアクセス可",
+      "同一クラス内のみアクセス可",
+      "パッケージ内からアクセス可"
+    ],
+    "answerIndex": 2,
+    "explanation": "privateは最も制限が強い。"
+  },
+  {
+    "id": 8,
+    "category": "クラス設計",
+    "difficulty": "初級",
+    "question": "abstractクラスの特徴は？（バリエーション7）",
+    "code": "",
+    "choices": [
+      "必ず抽象メソッドだけを持つ",
+      "常にfinal",
+      "フィールド不可",
+      "インスタンス化不可"
+    ],
+    "answerIndex": 3,
+    "explanation": "抽象メソッド以外も持てる。"
+  },
+  {
+    "id": 9,
+    "category": "文字列",
+    "difficulty": "初級",
+    "question": "Stringはどんな性質？（バリエーション8）",
+    "code": "",
+    "choices": [
+      "不変(immutable)",
+      "可変",
+      "排他専用",
+      "同期済み"
+    ],
+    "answerIndex": 0,
+    "explanation": "文字列は不変。"
+  },
+  {
+    "id": 10,
+    "category": "コレクション",
+    "difficulty": "初級",
+    "question": "Listの特徴は？（バリエーション9）",
+    "code": "",
+    "choices": [
+      "順序を保持し重複可",
+      "順序なし重複不可",
+      "必ずソート",
+      "キーと値"
+    ],
+    "answerIndex": 0,
+    "explanation": "Listは順序保持・重複可。"
+  },
+  {
+    "id": 11,
+    "category": "オブジェクト指向の基礎",
+    "difficulty": "初級",
+    "question": "カプセル化の目的は？（バリエーション10）",
+    "code": "",
+    "choices": [
+      "データの隠蔽と一貫性の維持",
+      "速度向上",
+      "I/O最適化",
+      "GC回避"
+    ],
+    "answerIndex": 0,
+    "explanation": "実装隠蔽による安全性。"
+  },
+  {
+    "id": 12,
+    "category": "アクセス修飾子",
+    "difficulty": "初級",
+    "question": "privateの特徴は？（バリエーション11）",
+    "code": "",
+    "choices": [
+      "パッケージ内からアクセス可",
+      "サブクラスからアクセス可",
+      "全クラスからアクセス可",
+      "同一クラス内のみアクセス可"
+    ],
+    "answerIndex": 3,
+    "explanation": "privateは最も制限が強い。"
+  },
+  {
+    "id": 13,
+    "category": "クラス設計",
+    "difficulty": "初級",
+    "question": "abstractクラスの特徴は？（バリエーション12）",
+    "code": "",
+    "choices": [
+      "フィールド不可",
+      "インスタンス化不可",
+      "必ず抽象メソッドだけを持つ",
+      "常にfinal"
+    ],
+    "answerIndex": 1,
+    "explanation": "抽象メソッド以外も持てる。"
+  },
+  {
+    "id": 14,
+    "category": "文字列",
+    "difficulty": "初級",
+    "question": "Stringはどんな性質？（バリエーション13）",
+    "code": "",
+    "choices": [
+      "同期済み",
+      "可変",
+      "排他専用",
+      "不変(immutable)"
+    ],
+    "answerIndex": 3,
+    "explanation": "文字列は不変。"
+  },
+  {
+    "id": 15,
+    "category": "コレクション",
+    "difficulty": "初級",
+    "question": "Listの特徴は？（バリエーション14）",
+    "code": "",
+    "choices": [
+      "必ずソート",
+      "順序を保持し重複可",
+      "順序なし重複不可",
+      "キーと値"
+    ],
+    "answerIndex": 1,
+    "explanation": "Listは順序保持・重複可。"
+  },
+  {
+    "id": 16,
+    "category": "オブジェクト指向の基礎",
+    "difficulty": "初級",
+    "question": "カプセル化の目的は？（バリエーション15）",
+    "code": "",
+    "choices": [
+      "データの隠蔽と一貫性の維持",
+      "速度向上",
+      "I/O最適化",
+      "GC回避"
+    ],
+    "answerIndex": 0,
+    "explanation": "実装隠蔽による安全性。"
+  },
+  {
+    "id": 17,
+    "category": "アクセス修飾子",
+    "difficulty": "初級",
+    "question": "privateの特徴は？（バリエーション16）",
+    "code": "",
+    "choices": [
+      "同一クラス内のみアクセス可",
+      "サブクラスからアクセス可",
+      "全クラスからアクセス可",
+      "パッケージ内からアクセス可"
+    ],
+    "answerIndex": 0,
+    "explanation": "privateは最も制限が強い。"
+  },
+  {
+    "id": 18,
+    "category": "クラス設計",
+    "difficulty": "初級",
+    "question": "abstractクラスの特徴は？（バリエーション17）",
+    "code": "",
+    "choices": [
+      "必ず抽象メソッドだけを持つ",
+      "インスタンス化不可",
+      "フィールド不可",
+      "常にfinal"
+    ],
+    "answerIndex": 1,
+    "explanation": "抽象メソッド以外も持てる。"
+  },
+  {
+    "id": 19,
+    "category": "文字列",
+    "difficulty": "初級",
+    "question": "Stringはどんな性質？（バリエーション18）",
+    "code": "",
+    "choices": [
+      "同期済み",
+      "排他専用",
+      "可変",
+      "不変(immutable)"
+    ],
+    "answerIndex": 3,
+    "explanation": "文字列は不変。"
+  },
+  {
+    "id": 20,
+    "category": "コレクション",
+    "difficulty": "初級",
+    "question": "Listの特徴は？（バリエーション19）",
+    "code": "",
+    "choices": [
+      "順序を保持し重複可",
+      "キーと値",
+      "順序なし重複不可",
+      "必ずソート"
+    ],
+    "answerIndex": 0,
+    "explanation": "Listは順序保持・重複可。"
+  },
+  {
+    "id": 21,
+    "category": "オブジェクト指向の基礎",
+    "difficulty": "中級",
+    "question": "オーバーロード解決の優先順は？",
+    "code": "",
+    "choices": [
+      "varargs最優先",
+      "常にボクシング優先",
+      "未定義",
+      "正確一致 > 拡大変換 > ボクシング > varargs"
+    ],
+    "answerIndex": 3,
+    "explanation": "解決順序に規則あり。"
+  },
+  {
+    "id": 22,
+    "category": "例外処理",
+    "difficulty": "中級",
+    "question": "try-with-resourcesでクローズ順序は？",
+    "code": "",
+    "choices": [
+      "宣言の逆順",
+      "ランダム",
+      "宣言順",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "逆順に呼ばれる。"
+  },
+  {
+    "id": 23,
+    "category": "コレクション",
+    "difficulty": "中級",
+    "question": "fail-fastイテレータの特徴は？",
+    "code": "",
+    "choices": [
+      "必ず安全",
+      "変更検出でConcurrentModificationException発生",
+      "常に停止",
+      "変更を許容"
+    ],
+    "answerIndex": 1,
+    "explanation": "fail-fast動作。"
+  },
+  {
+    "id": 24,
+    "category": "標準API",
+    "difficulty": "中級",
+    "question": "BigDecimalのequalsの特徴は？",
+    "code": "",
+    "choices": [
+      "数値のみ比較",
+      "hashCode依存",
+      "常に丸める",
+      "スケールも考慮する"
+    ],
+    "answerIndex": 3,
+    "explanation": "1.0と1は異なる。"
+  },
+  {
+    "id": 25,
+    "category": "初期化",
+    "difficulty": "中級",
+    "question": "インスタンス初期化子はいつ実行？",
+    "code": "",
+    "choices": [
+      "コンストラクタ本体の前",
+      "後",
+      "任意",
+      "静的初期化子の前"
+    ],
+    "answerIndex": 0,
+    "explanation": "前に実行。"
+  },
+  {
+    "id": 26,
+    "category": "オブジェクト指向の基礎",
+    "difficulty": "中級",
+    "question": "オーバーロード解決の優先順は？（バリエーション5）",
+    "code": "",
+    "choices": [
+      "常にボクシング優先",
+      "正確一致 > 拡大変換 > ボクシング > varargs",
+      "varargs最優先",
+      "未定義"
+    ],
+    "answerIndex": 1,
+    "explanation": "解決順序に規則あり。"
+  },
+  {
+    "id": 27,
+    "category": "例外処理",
+    "difficulty": "中級",
+    "question": "try-with-resourcesでクローズ順序は？（バリエーション6）",
+    "code": "",
+    "choices": [
+      "ランダム",
+      "宣言の逆順",
+      "宣言順",
+      "未定義"
+    ],
+    "answerIndex": 1,
+    "explanation": "逆順に呼ばれる。"
+  },
+  {
+    "id": 28,
+    "category": "コレクション",
+    "difficulty": "中級",
+    "question": "fail-fastイテレータの特徴は？（バリエーション7）",
+    "code": "",
+    "choices": [
+      "必ず安全",
+      "変更検出でConcurrentModificationException発生",
+      "常に停止",
+      "変更を許容"
+    ],
+    "answerIndex": 1,
+    "explanation": "fail-fast動作。"
+  },
+  {
+    "id": 29,
+    "category": "標準API",
+    "difficulty": "中級",
+    "question": "BigDecimalのequalsの特徴は？（バリエーション8）",
+    "code": "",
+    "choices": [
+      "常に丸める",
+      "数値のみ比較",
+      "hashCode依存",
+      "スケールも考慮する"
+    ],
+    "answerIndex": 3,
+    "explanation": "1.0と1は異なる。"
+  },
+  {
+    "id": 30,
+    "category": "初期化",
+    "difficulty": "中級",
+    "question": "インスタンス初期化子はいつ実行？（バリエーション9）",
+    "code": "",
+    "choices": [
+      "コンストラクタ本体の前",
+      "静的初期化子の前",
+      "任意",
+      "後"
+    ],
+    "answerIndex": 0,
+    "explanation": "前に実行。"
+  },
+  {
+    "id": 31,
+    "category": "オブジェクト指向の基礎",
+    "difficulty": "中級",
+    "question": "オーバーロード解決の優先順は？（バリエーション10）",
+    "code": "",
+    "choices": [
+      "varargs最優先",
+      "未定義",
+      "正確一致 > 拡大変換 > ボクシング > varargs",
+      "常にボクシング優先"
+    ],
+    "answerIndex": 2,
+    "explanation": "解決順序に規則あり。"
+  },
+  {
+    "id": 32,
+    "category": "例外処理",
+    "difficulty": "中級",
+    "question": "try-with-resourcesでクローズ順序は？（バリエーション11）",
+    "code": "",
+    "choices": [
+      "宣言の逆順",
+      "未定義",
+      "ランダム",
+      "宣言順"
+    ],
+    "answerIndex": 0,
+    "explanation": "逆順に呼ばれる。"
+  },
+  {
+    "id": 33,
+    "category": "コレクション",
+    "difficulty": "中級",
+    "question": "fail-fastイテレータの特徴は？（バリエーション12）",
+    "code": "",
+    "choices": [
+      "必ず安全",
+      "変更を許容",
+      "常に停止",
+      "変更検出でConcurrentModificationException発生"
+    ],
+    "answerIndex": 3,
+    "explanation": "fail-fast動作。"
+  },
+  {
+    "id": 34,
+    "category": "標準API",
+    "difficulty": "中級",
+    "question": "BigDecimalのequalsの特徴は？（バリエーション13）",
+    "code": "",
+    "choices": [
+      "hashCode依存",
+      "常に丸める",
+      "数値のみ比較",
+      "スケールも考慮する"
+    ],
+    "answerIndex": 3,
+    "explanation": "1.0と1は異なる。"
+  },
+  {
+    "id": 35,
+    "category": "初期化",
+    "difficulty": "中級",
+    "question": "インスタンス初期化子はいつ実行？（バリエーション14）",
+    "code": "",
+    "choices": [
+      "後",
+      "静的初期化子の前",
+      "任意",
+      "コンストラクタ本体の前"
+    ],
+    "answerIndex": 3,
+    "explanation": "前に実行。"
+  },
+  {
+    "id": 36,
+    "category": "オブジェクト指向の基礎",
+    "difficulty": "中級",
+    "question": "オーバーロード解決の優先順は？（バリエーション15）",
+    "code": "",
+    "choices": [
+      "varargs最優先",
+      "正確一致 > 拡大変換 > ボクシング > varargs",
+      "常にボクシング優先",
+      "未定義"
+    ],
+    "answerIndex": 1,
+    "explanation": "解決順序に規則あり。"
+  },
+  {
+    "id": 37,
+    "category": "例外処理",
+    "difficulty": "中級",
+    "question": "try-with-resourcesでクローズ順序は？（バリエーション16）",
+    "code": "",
+    "choices": [
+      "宣言の逆順",
+      "未定義",
+      "ランダム",
+      "宣言順"
+    ],
+    "answerIndex": 0,
+    "explanation": "逆順に呼ばれる。"
+  },
+  {
+    "id": 38,
+    "category": "コレクション",
+    "difficulty": "中級",
+    "question": "fail-fastイテレータの特徴は？（バリエーション17）",
+    "code": "",
+    "choices": [
+      "変更を許容",
+      "変更検出でConcurrentModificationException発生",
+      "必ず安全",
+      "常に停止"
+    ],
+    "answerIndex": 1,
+    "explanation": "fail-fast動作。"
+  },
+  {
+    "id": 39,
+    "category": "標準API",
+    "difficulty": "中級",
+    "question": "BigDecimalのequalsの特徴は？（バリエーション18）",
+    "code": "",
+    "choices": [
+      "数値のみ比較",
+      "hashCode依存",
+      "常に丸める",
+      "スケールも考慮する"
+    ],
+    "answerIndex": 3,
+    "explanation": "1.0と1は異なる。"
+  },
+  {
+    "id": 40,
+    "category": "初期化",
+    "difficulty": "中級",
+    "question": "インスタンス初期化子はいつ実行？（バリエーション19）",
+    "code": "",
+    "choices": [
+      "後",
+      "静的初期化子の前",
+      "コンストラクタ本体の前",
+      "任意"
+    ],
+    "answerIndex": 2,
+    "explanation": "前に実行。"
+  },
+  {
+    "id": 41,
+    "category": "オブジェクト指向の基礎",
+    "difficulty": "中級",
+    "question": "オーバーロード解決の優先順は？（バリエーション20）",
+    "code": "",
+    "choices": [
+      "正確一致 > 拡大変換 > ボクシング > varargs",
+      "未定義",
+      "varargs最優先",
+      "常にボクシング優先"
+    ],
+    "answerIndex": 0,
+    "explanation": "解決順序に規則あり。"
+  },
+  {
+    "id": 42,
+    "category": "例外処理",
+    "difficulty": "中級",
+    "question": "try-with-resourcesでクローズ順序は？（バリエーション21）",
+    "code": "",
+    "choices": [
+      "宣言の逆順",
+      "未定義",
+      "ランダム",
+      "宣言順"
+    ],
+    "answerIndex": 0,
+    "explanation": "逆順に呼ばれる。"
+  },
+  {
+    "id": 43,
+    "category": "コレクション",
+    "difficulty": "中級",
+    "question": "fail-fastイテレータの特徴は？（バリエーション22）",
+    "code": "",
+    "choices": [
+      "必ず安全",
+      "常に停止",
+      "変更を許容",
+      "変更検出でConcurrentModificationException発生"
+    ],
+    "answerIndex": 3,
+    "explanation": "fail-fast動作。"
+  },
+  {
+    "id": 44,
+    "category": "標準API",
+    "difficulty": "中級",
+    "question": "BigDecimalのequalsの特徴は？（バリエーション23）",
+    "code": "",
+    "choices": [
+      "数値のみ比較",
+      "hashCode依存",
+      "常に丸める",
+      "スケールも考慮する"
+    ],
+    "answerIndex": 3,
+    "explanation": "1.0と1は異なる。"
+  },
+  {
+    "id": 45,
+    "category": "初期化",
+    "difficulty": "中級",
+    "question": "インスタンス初期化子はいつ実行？（バリエーション24）",
+    "code": "",
+    "choices": [
+      "後",
+      "コンストラクタ本体の前",
+      "任意",
+      "静的初期化子の前"
+    ],
+    "answerIndex": 1,
+    "explanation": "前に実行。"
+  },
+  {
+    "id": 46,
+    "category": "オブジェクト指向の基礎",
+    "difficulty": "中級",
+    "question": "オーバーロード解決の優先順は？（バリエーション25）",
+    "code": "",
+    "choices": [
+      "未定義",
+      "varargs最優先",
+      "常にボクシング優先",
+      "正確一致 > 拡大変換 > ボクシング > varargs"
+    ],
+    "answerIndex": 3,
+    "explanation": "解決順序に規則あり。"
+  },
+  {
+    "id": 47,
+    "category": "例外処理",
+    "difficulty": "中級",
+    "question": "try-with-resourcesでクローズ順序は？（バリエーション26）",
+    "code": "",
+    "choices": [
+      "宣言順",
+      "未定義",
+      "ランダム",
+      "宣言の逆順"
+    ],
+    "answerIndex": 3,
+    "explanation": "逆順に呼ばれる。"
+  },
+  {
+    "id": 48,
+    "category": "コレクション",
+    "difficulty": "中級",
+    "question": "fail-fastイテレータの特徴は？（バリエーション27）",
+    "code": "",
+    "choices": [
+      "常に停止",
+      "変更を許容",
+      "必ず安全",
+      "変更検出でConcurrentModificationException発生"
+    ],
+    "answerIndex": 3,
+    "explanation": "fail-fast動作。"
+  },
+  {
+    "id": 49,
+    "category": "標準API",
+    "difficulty": "中級",
+    "question": "BigDecimalのequalsの特徴は？（バリエーション28）",
+    "code": "",
+    "choices": [
+      "常に丸める",
+      "数値のみ比較",
+      "hashCode依存",
+      "スケールも考慮する"
+    ],
+    "answerIndex": 3,
+    "explanation": "1.0と1は異なる。"
+  },
+  {
+    "id": 50,
+    "category": "初期化",
+    "difficulty": "中級",
+    "question": "インスタンス初期化子はいつ実行？（バリエーション29）",
+    "code": "",
+    "choices": [
+      "任意",
+      "静的初期化子の前",
+      "後",
+      "コンストラクタ本体の前"
+    ],
+    "answerIndex": 3,
+    "explanation": "前に実行。"
+  },
+  {
+    "id": 51,
+    "category": "例外処理",
+    "difficulty": "上級",
+    "question": "finallyで例外を投げるとtryの例外は？",
+    "code": "",
+    "choices": [
+      "finallyに上書きされる",
+      "両方保持",
+      "常にtry優先",
+      "未定義"
+    ],
+    "answerIndex": 0,
+    "explanation": "finally側が外へ。"
+  },
+  {
+    "id": 52,
+    "category": "多態性",
+    "difficulty": "上級",
+    "question": "ブリッジメソッドの目的は？",
+    "code": "",
+    "choices": [
+      "ラムダ変換",
+      "JIT用",
+      "型消去後に多態性維持",
+      "AOT用"
+    ],
+    "answerIndex": 2,
+    "explanation": "ジェネリクス整合性。"
+  },
+  {
+    "id": 53,
+    "category": "標準API",
+    "difficulty": "上級",
+    "question": "Optional#orElseとorElseGetの違いは？",
+    "code": "",
+    "choices": [
+      "両方即時",
+      "両方遅延",
+      "orElseは常に評価、orElseGetは必要時のみ",
+      "同一"
+    ],
+    "answerIndex": 2,
+    "explanation": "評価タイミングが異なる。"
+  },
+  {
+    "id": 54,
+    "category": "コレクション",
+    "difficulty": "上級",
+    "question": "ConcurrentHashMapの特性は？",
+    "code": "",
+    "choices": [
+      "nullキー/値禁止",
+      "null値のみ可",
+      "nullキー可",
+      "HashMapと同じ"
+    ],
+    "answerIndex": 0,
+    "explanation": "CHMはnull禁止。"
+  },
+  {
+    "id": 55,
+    "category": "正規表現",
+    "difficulty": "上級",
+    "question": "(?<=...)は何を表す？",
+    "code": "",
+    "choices": [
+      "貪欲",
+      "肯定の後読み",
+      "否定後読み",
+      "否定先読み"
+    ],
+    "answerIndex": 1,
+    "explanation": "ゼロ幅の後読み。"
+  },
+  {
+    "id": 56,
+    "category": "例外処理",
+    "difficulty": "上級",
+    "question": "finallyで例外を投げるとtryの例外は？（バリエーション5）",
+    "code": "",
+    "choices": [
+      "常にtry優先",
+      "未定義",
+      "両方保持",
+      "finallyに上書きされる"
+    ],
+    "answerIndex": 3,
+    "explanation": "finally側が外へ。"
+  },
+  {
+    "id": 57,
+    "category": "多態性",
+    "difficulty": "上級",
+    "question": "ブリッジメソッドの目的は？（バリエーション6）",
+    "code": "",
+    "choices": [
+      "ラムダ変換",
+      "AOT用",
+      "型消去後に多態性維持",
+      "JIT用"
+    ],
+    "answerIndex": 2,
+    "explanation": "ジェネリクス整合性。"
+  },
+  {
+    "id": 58,
+    "category": "標準API",
+    "difficulty": "上級",
+    "question": "Optional#orElseとorElseGetの違いは？（バリエーション7）",
+    "code": "",
+    "choices": [
+      "両方遅延",
+      "orElseは常に評価、orElseGetは必要時のみ",
+      "両方即時",
+      "同一"
+    ],
+    "answerIndex": 1,
+    "explanation": "評価タイミングが異なる。"
+  },
+  {
+    "id": 59,
+    "category": "コレクション",
+    "difficulty": "上級",
+    "question": "ConcurrentHashMapの特性は？（バリエーション8）",
+    "code": "",
+    "choices": [
+      "nullキー/値禁止",
+      "nullキー可",
+      "null値のみ可",
+      "HashMapと同じ"
+    ],
+    "answerIndex": 0,
+    "explanation": "CHMはnull禁止。"
+  },
+  {
+    "id": 60,
+    "category": "正規表現",
+    "difficulty": "上級",
+    "question": "(?<=...)は何を表す？（バリエーション9）",
+    "code": "",
+    "choices": [
+      "肯定の後読み",
+      "貪欲",
+      "否定後読み",
+      "否定先読み"
+    ],
+    "answerIndex": 0,
+    "explanation": "ゼロ幅の後読み。"
+  },
+  {
+    "id": 61,
+    "category": "例外処理",
+    "difficulty": "上級",
+    "question": "finallyで例外を投げるとtryの例外は？（バリエーション10）",
+    "code": "",
+    "choices": [
+      "未定義",
+      "常にtry優先",
+      "両方保持",
+      "finallyに上書きされる"
+    ],
+    "answerIndex": 3,
+    "explanation": "finally側が外へ。"
+  },
+  {
+    "id": 62,
+    "category": "多態性",
+    "difficulty": "上級",
+    "question": "ブリッジメソッドの目的は？（バリエーション11）",
+    "code": "",
+    "choices": [
+      "型消去後に多態性維持",
+      "JIT用",
+      "AOT用",
+      "ラムダ変換"
+    ],
+    "answerIndex": 0,
+    "explanation": "ジェネリクス整合性。"
+  },
+  {
+    "id": 63,
+    "category": "標準API",
+    "difficulty": "上級",
+    "question": "Optional#orElseとorElseGetの違いは？（バリエーション12）",
+    "code": "",
+    "choices": [
+      "両方即時",
+      "orElseは常に評価、orElseGetは必要時のみ",
+      "両方遅延",
+      "同一"
+    ],
+    "answerIndex": 1,
+    "explanation": "評価タイミングが異なる。"
+  },
+  {
+    "id": 64,
+    "category": "コレクション",
+    "difficulty": "上級",
+    "question": "ConcurrentHashMapの特性は？（バリエーション13）",
+    "code": "",
+    "choices": [
+      "null値のみ可",
+      "nullキー可",
+      "nullキー/値禁止",
+      "HashMapと同じ"
+    ],
+    "answerIndex": 2,
+    "explanation": "CHMはnull禁止。"
+  },
+  {
+    "id": 65,
+    "category": "正規表現",
+    "difficulty": "上級",
+    "question": "(?<=...)は何を表す？（バリエーション14）",
+    "code": "",
+    "choices": [
+      "否定先読み",
+      "貪欲",
+      "肯定の後読み",
+      "否定後読み"
+    ],
+    "answerIndex": 2,
+    "explanation": "ゼロ幅の後読み。"
+  },
+  {
+    "id": 66,
+    "category": "例外処理",
+    "difficulty": "上級",
+    "question": "finallyで例外を投げるとtryの例外は？（バリエーション15）",
+    "code": "",
+    "choices": [
+      "未定義",
+      "finallyに上書きされる",
+      "常にtry優先",
+      "両方保持"
+    ],
+    "answerIndex": 1,
+    "explanation": "finally側が外へ。"
+  },
+  {
+    "id": 67,
+    "category": "多態性",
+    "difficulty": "上級",
+    "question": "ブリッジメソッドの目的は？（バリエーション16）",
+    "code": "",
+    "choices": [
+      "ラムダ変換",
+      "型消去後に多態性維持",
+      "AOT用",
+      "JIT用"
+    ],
+    "answerIndex": 1,
+    "explanation": "ジェネリクス整合性。"
+  },
+  {
+    "id": 68,
+    "category": "標準API",
+    "difficulty": "上級",
+    "question": "Optional#orElseとorElseGetの違いは？（バリエーション17）",
+    "code": "",
+    "choices": [
+      "同一",
+      "orElseは常に評価、orElseGetは必要時のみ",
+      "両方遅延",
+      "両方即時"
+    ],
+    "answerIndex": 1,
+    "explanation": "評価タイミングが異なる。"
+  },
+  {
+    "id": 69,
+    "category": "コレクション",
+    "difficulty": "上級",
+    "question": "ConcurrentHashMapの特性は？（バリエーション18）",
+    "code": "",
+    "choices": [
+      "nullキー/値禁止",
+      "HashMapと同じ",
+      "null値のみ可",
+      "nullキー可"
+    ],
+    "answerIndex": 0,
+    "explanation": "CHMはnull禁止。"
+  },
+  {
+    "id": 70,
+    "category": "正規表現",
+    "difficulty": "上級",
+    "question": "(?<=...)は何を表す？（バリエーション19）",
+    "code": "",
+    "choices": [
+      "否定後読み",
+      "否定先読み",
+      "肯定の後読み",
+      "貪欲"
+    ],
+    "answerIndex": 2,
+    "explanation": "ゼロ幅の後読み。"
+  },
+  {
+    "id": 71,
+    "category": "例外処理",
+    "difficulty": "上級",
+    "question": "finallyで例外を投げるとtryの例外は？（バリエーション20）",
+    "code": "",
+    "choices": [
+      "両方保持",
+      "未定義",
+      "常にtry優先",
+      "finallyに上書きされる"
+    ],
+    "answerIndex": 3,
+    "explanation": "finally側が外へ。"
+  },
+  {
+    "id": 72,
+    "category": "多態性",
+    "difficulty": "上級",
+    "question": "ブリッジメソッドの目的は？（バリエーション21）",
+    "code": "",
+    "choices": [
+      "JIT用",
+      "ラムダ変換",
+      "型消去後に多態性維持",
+      "AOT用"
+    ],
+    "answerIndex": 2,
+    "explanation": "ジェネリクス整合性。"
+  },
+  {
+    "id": 73,
+    "category": "標準API",
+    "difficulty": "上級",
+    "question": "Optional#orElseとorElseGetの違いは？（バリエーション22）",
+    "code": "",
+    "choices": [
+      "両方即時",
+      "両方遅延",
+      "orElseは常に評価、orElseGetは必要時のみ",
+      "同一"
+    ],
+    "answerIndex": 2,
+    "explanation": "評価タイミングが異なる。"
+  },
+  {
+    "id": 74,
+    "category": "コレクション",
+    "difficulty": "上級",
+    "question": "ConcurrentHashMapの特性は？（バリエーション23）",
+    "code": "",
+    "choices": [
+      "nullキー可",
+      "HashMapと同じ",
+      "nullキー/値禁止",
+      "null値のみ可"
+    ],
+    "answerIndex": 2,
+    "explanation": "CHMはnull禁止。"
+  },
+  {
+    "id": 75,
+    "category": "正規表現",
+    "difficulty": "上級",
+    "question": "(?<=...)は何を表す？（バリエーション24）",
+    "code": "",
+    "choices": [
+      "否定先読み",
+      "肯定の後読み",
+      "否定後読み",
+      "貪欲"
+    ],
+    "answerIndex": 1,
+    "explanation": "ゼロ幅の後読み。"
+  },
+  {
+    "id": 76,
+    "category": "例外処理",
+    "difficulty": "上級",
+    "question": "finallyで例外を投げるとtryの例外は？（バリエーション25）",
+    "code": "",
+    "choices": [
+      "両方保持",
+      "未定義",
+      "常にtry優先",
+      "finallyに上書きされる"
+    ],
+    "answerIndex": 3,
+    "explanation": "finally側が外へ。"
+  },
+  {
+    "id": 77,
+    "category": "多態性",
+    "difficulty": "上級",
+    "question": "ブリッジメソッドの目的は？（バリエーション26）",
+    "code": "",
+    "choices": [
+      "型消去後に多態性維持",
+      "JIT用",
+      "ラムダ変換",
+      "AOT用"
+    ],
+    "answerIndex": 0,
+    "explanation": "ジェネリクス整合性。"
+  },
+  {
+    "id": 78,
+    "category": "標準API",
+    "difficulty": "上級",
+    "question": "Optional#orElseとorElseGetの違いは？（バリエーション27）",
+    "code": "",
+    "choices": [
+      "両方遅延",
+      "両方即時",
+      "同一",
+      "orElseは常に評価、orElseGetは必要時のみ"
+    ],
+    "answerIndex": 3,
+    "explanation": "評価タイミングが異なる。"
+  },
+  {
+    "id": 79,
+    "category": "コレクション",
+    "difficulty": "上級",
+    "question": "ConcurrentHashMapの特性は？（バリエーション28）",
+    "code": "",
+    "choices": [
+      "nullキー/値禁止",
+      "nullキー可",
+      "HashMapと同じ",
+      "null値のみ可"
+    ],
+    "answerIndex": 0,
+    "explanation": "CHMはnull禁止。"
+  },
+  {
+    "id": 80,
+    "category": "正規表現",
+    "difficulty": "上級",
+    "question": "(?<=...)は何を表す？（バリエーション29）",
+    "code": "",
+    "choices": [
+      "貪欲",
+      "否定先読み",
+      "否定後読み",
+      "肯定の後読み"
+    ],
+    "answerIndex": 3,
+    "explanation": "ゼロ幅の後読み。"
+  },
+  {
+    "id": 81,
+    "category": "例外処理",
+    "difficulty": "上級",
+    "question": "finallyで例外を投げるとtryの例外は？（バリエーション30）",
+    "code": "",
+    "choices": [
+      "両方保持",
+      "finallyに上書きされる",
+      "未定義",
+      "常にtry優先"
+    ],
+    "answerIndex": 1,
+    "explanation": "finally側が外へ。"
+  },
+  {
+    "id": 82,
+    "category": "多態性",
+    "difficulty": "上級",
+    "question": "ブリッジメソッドの目的は？（バリエーション31）",
+    "code": "",
+    "choices": [
+      "JIT用",
+      "型消去後に多態性維持",
+      "ラムダ変換",
+      "AOT用"
+    ],
+    "answerIndex": 1,
+    "explanation": "ジェネリクス整合性。"
+  },
+  {
+    "id": 83,
+    "category": "標準API",
+    "difficulty": "上級",
+    "question": "Optional#orElseとorElseGetの違いは？（バリエーション32）",
+    "code": "",
+    "choices": [
+      "両方遅延",
+      "同一",
+      "orElseは常に評価、orElseGetは必要時のみ",
+      "両方即時"
+    ],
+    "answerIndex": 2,
+    "explanation": "評価タイミングが異なる。"
+  },
+  {
+    "id": 84,
+    "category": "コレクション",
+    "difficulty": "上級",
+    "question": "ConcurrentHashMapの特性は？（バリエーション33）",
+    "code": "",
+    "choices": [
+      "nullキー可",
+      "nullキー/値禁止",
+      "null値のみ可",
+      "HashMapと同じ"
+    ],
+    "answerIndex": 1,
+    "explanation": "CHMはnull禁止。"
+  },
+  {
+    "id": 85,
+    "category": "正規表現",
+    "difficulty": "上級",
+    "question": "(?<=...)は何を表す？（バリエーション34）",
+    "code": "",
+    "choices": [
+      "否定後読み",
+      "否定先読み",
+      "貪欲",
+      "肯定の後読み"
+    ],
+    "answerIndex": 3,
+    "explanation": "ゼロ幅の後読み。"
+  },
+  {
+    "id": 86,
+    "category": "例外処理",
+    "difficulty": "上級",
+    "question": "finallyで例外を投げるとtryの例外は？（バリエーション35）",
+    "code": "",
+    "choices": [
+      "常にtry優先",
+      "両方保持",
+      "未定義",
+      "finallyに上書きされる"
+    ],
+    "answerIndex": 3,
+    "explanation": "finally側が外へ。"
+  },
+  {
+    "id": 87,
+    "category": "多態性",
+    "difficulty": "上級",
+    "question": "ブリッジメソッドの目的は？（バリエーション36）",
+    "code": "",
+    "choices": [
+      "ラムダ変換",
+      "型消去後に多態性維持",
+      "AOT用",
+      "JIT用"
+    ],
+    "answerIndex": 1,
+    "explanation": "ジェネリクス整合性。"
+  },
+  {
+    "id": 88,
+    "category": "標準API",
+    "difficulty": "上級",
+    "question": "Optional#orElseとorElseGetの違いは？（バリエーション37）",
+    "code": "",
+    "choices": [
+      "両方遅延",
+      "両方即時",
+      "orElseは常に評価、orElseGetは必要時のみ",
+      "同一"
+    ],
+    "answerIndex": 2,
+    "explanation": "評価タイミングが異なる。"
+  },
+  {
+    "id": 89,
+    "category": "コレクション",
+    "difficulty": "上級",
+    "question": "ConcurrentHashMapの特性は？（バリエーション38）",
+    "code": "",
+    "choices": [
+      "HashMapと同じ",
+      "null値のみ可",
+      "nullキー/値禁止",
+      "nullキー可"
+    ],
+    "answerIndex": 2,
+    "explanation": "CHMはnull禁止。"
+  },
+  {
+    "id": 90,
+    "category": "正規表現",
+    "difficulty": "上級",
+    "question": "(?<=...)は何を表す？（バリエーション39）",
+    "code": "",
+    "choices": [
+      "肯定の後読み",
+      "否定先読み",
+      "否定後読み",
+      "貪欲"
+    ],
+    "answerIndex": 0,
+    "explanation": "ゼロ幅の後読み。"
+  },
+  {
+    "id": 91,
+    "category": "例外処理",
+    "difficulty": "上級",
+    "question": "finallyで例外を投げるとtryの例外は？（バリエーション40）",
+    "code": "",
+    "choices": [
+      "未定義",
+      "両方保持",
+      "常にtry優先",
+      "finallyに上書きされる"
+    ],
+    "answerIndex": 3,
+    "explanation": "finally側が外へ。"
+  },
+  {
+    "id": 92,
+    "category": "多態性",
+    "difficulty": "上級",
+    "question": "ブリッジメソッドの目的は？（バリエーション41）",
+    "code": "",
+    "choices": [
+      "AOT用",
+      "型消去後に多態性維持",
+      "JIT用",
+      "ラムダ変換"
+    ],
+    "answerIndex": 1,
+    "explanation": "ジェネリクス整合性。"
+  },
+  {
+    "id": 93,
+    "category": "標準API",
+    "difficulty": "上級",
+    "question": "Optional#orElseとorElseGetの違いは？（バリエーション42）",
+    "code": "",
+    "choices": [
+      "同一",
+      "orElseは常に評価、orElseGetは必要時のみ",
+      "両方即時",
+      "両方遅延"
+    ],
+    "answerIndex": 1,
+    "explanation": "評価タイミングが異なる。"
+  },
+  {
+    "id": 94,
+    "category": "コレクション",
+    "difficulty": "上級",
+    "question": "ConcurrentHashMapの特性は？（バリエーション43）",
+    "code": "",
+    "choices": [
+      "nullキー/値禁止",
+      "null値のみ可",
+      "nullキー可",
+      "HashMapと同じ"
+    ],
+    "answerIndex": 0,
+    "explanation": "CHMはnull禁止。"
+  },
+  {
+    "id": 95,
+    "category": "正規表現",
+    "difficulty": "上級",
+    "question": "(?<=...)は何を表す？（バリエーション44）",
+    "code": "",
+    "choices": [
+      "否定先読み",
+      "貪欲",
+      "否定後読み",
+      "肯定の後読み"
+    ],
+    "answerIndex": 3,
+    "explanation": "ゼロ幅の後読み。"
+  },
+  {
+    "id": 96,
+    "category": "例外処理",
+    "difficulty": "上級",
+    "question": "finallyで例外を投げるとtryの例外は？（バリエーション45）",
+    "code": "",
+    "choices": [
+      "未定義",
+      "両方保持",
+      "常にtry優先",
+      "finallyに上書きされる"
+    ],
+    "answerIndex": 3,
+    "explanation": "finally側が外へ。"
+  },
+  {
+    "id": 97,
+    "category": "多態性",
+    "difficulty": "上級",
+    "question": "ブリッジメソッドの目的は？（バリエーション46）",
+    "code": "",
+    "choices": [
+      "型消去後に多態性維持",
+      "ラムダ変換",
+      "JIT用",
+      "AOT用"
+    ],
+    "answerIndex": 0,
+    "explanation": "ジェネリクス整合性。"
+  },
+  {
+    "id": 98,
+    "category": "標準API",
+    "difficulty": "上級",
+    "question": "Optional#orElseとorElseGetの違いは？（バリエーション47）",
+    "code": "",
+    "choices": [
+      "両方即時",
+      "orElseは常に評価、orElseGetは必要時のみ",
+      "同一",
+      "両方遅延"
+    ],
+    "answerIndex": 1,
+    "explanation": "評価タイミングが異なる。"
+  },
+  {
+    "id": 99,
+    "category": "コレクション",
+    "difficulty": "上級",
+    "question": "ConcurrentHashMapの特性は？（バリエーション48）",
+    "code": "",
+    "choices": [
+      "null値のみ可",
+      "HashMapと同じ",
+      "nullキー可",
+      "nullキー/値禁止"
+    ],
+    "answerIndex": 3,
+    "explanation": "CHMはnull禁止。"
+  },
+  {
+    "id": 100,
+    "category": "正規表現",
+    "difficulty": "上級",
+    "question": "(?<=...)は何を表す？（バリエーション49）",
+    "code": "",
+    "choices": [
+      "否定後読み",
+      "肯定の後読み",
+      "否定先読み",
+      "貪欲"
+    ],
+    "answerIndex": 1,
+    "explanation": "ゼロ幅の後読み。"
+  }
+]

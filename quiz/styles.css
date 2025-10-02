@@ -47,7 +47,7 @@ h2 {
   width: 400px;
 }
 .controls select {
-  width: 280px;
+  min-width: 280px;
 }
 .controls input,
 .controls select {

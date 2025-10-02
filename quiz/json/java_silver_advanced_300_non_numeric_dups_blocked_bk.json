@@ -4947,7 +4947,7 @@
     "id": 310,
     "category": "文字列とStringBuilder",
     "difficulty": "上級",
-    "question": "次のプログラムをコンパイル、実行した結果として正しいものはどれか。",
+    "question": "replaceの範囲はend排他。出力は？",
     "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder sb = new StringBuilder(\"01234\");\n        sb.replace(1, 3, \"X\");\n        System.out.println(sb);\n    }\n}\n// uid:310\n",
     "choices": [
       "0X34",
@@ -4963,7 +4963,7 @@
     "id": 311,
     "category": "文字列とStringBuilder",
     "difficulty": "上級",
-    "question": "次のプログラムをコンパイル、実行した結果として正しいものはどれか。",
+    "question": "replaceの範囲はend排他。出力は？",
     "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder sb = new StringBuilder(\"hello\");\n        sb.replace(1, 3, \"X\");\n        System.out.println(sb);\n    }\n}\n// uid:311\n",
     "choices": [
       "コンパイルエラー",
@@ -4979,7 +4979,7 @@
     "id": 312,
     "category": "文字列とStringBuilder",
     "difficulty": "上級",
-    "question": "次のプログラムをコンパイル、実行した結果として正しいものはどれか。",
+    "question": "replaceの範囲はend排他。出力は？",
     "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder sb = new StringBuilder(\"abcde\");\n        sb.replace(1, 3, \"X\");\n        System.out.println(sb);\n    }\n}\n// uid:312\n",
     "choices": [
       "abcde",
@@ -4995,7 +4995,7 @@
     "id": 313,
     "category": "文字列とStringBuilder",
     "difficulty": "上級",
-    "question": "次のプログラムをコンパイル、実行した結果として正しいものはどれか。",
+    "question": "replaceの範囲はend排他。出力は？",
     "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder sb = new StringBuilder(\"xyzuv\");\n        sb.replace(1, 3, \"X\");\n        System.out.println(sb);\n    }\n}\n// uid:313\n",
     "choices": [
       "xXuv",
@@ -5011,7 +5011,7 @@
     "id": 314,
     "category": "文字列とStringBuilder",
     "difficulty": "上級",
-    "question": "次のプログラムをコンパイル、実行した結果として正しいものはどれか。",
+    "question": "replaceの範囲はend排他。出力は？",
     "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder sb = new StringBuilder(\"wqrst\");\n        sb.replace(1, 3, \"X\");\n        System.out.println(sb);\n    }\n}\n// uid:314\n",
     "choices": [
       "実行時例外",
