@@ -58,23 +58,46 @@ function renderQuiz(questions) {
     const questionText = document.createElement('div');
     questionText.className = 'question-text';
 
-    // コードを含む場合はpre/codeで表示
-    if (q.code) {
-      // 通常文
+    // 1) codeプロパティ優先
+    if (q.code && q.code.trim() !== '') {
       if (q.question) {
         const p = document.createElement('p');
         p.textContent = q.question;
         questionText.appendChild(p);
       }
-      // ソースコード部分
       const pre = document.createElement('pre');
       const code = document.createElement('code');
-      code.textContent = q.code; // ← escape不要。textContentで安全
+      code.textContent = q.code; // textContentで安全に
       pre.appendChild(code);
       questionText.appendChild(pre);
     } else {
-      // 通常テキスト問題
-      questionText.textContent = q.question;
+      // 2) question内のフェンス付きコード ```lang ... ``` を検出
+      const fence = /```(?:\w+)?\n([\s\S]*?)```/m;
+      const m = typeof q.question === 'string' ? q.question.match(fence) : null;
+
+      if (m) {
+        // フェンスの外側は通常文、内側はコード
+        const before = q.question.slice(0, m.index).trim();
+        const after = q.question.slice(m.index + m[0].length).trim();
+        if (before) {
+          const p = document.createElement('p');
+          p.textContent = before;
+          questionText.appendChild(p);
+        }
+        const pre = document.createElement('pre');
+        const code = document.createElement('code');
+        code.textContent = m[1];
+        pre.appendChild(code);
+        questionText.appendChild(pre);
+        if (after) {
+          const p2 = document.createElement('p');
+          p2.textContent = after;
+          questionText.appendChild(p2);
+        }
+      } else {
+        // 通常テキストのみ
+        questionText.textContent = q.question || '';
+      }
     }
 
     const meta = document.createElement('div');
