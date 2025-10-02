@@ -44,7 +44,6 @@ function setStatus(msg, timeoutMs = 2000) {
 function validateAllAnswered() {
   const allAnswered = currentQuestions.every(q => userAnswers.has(q.id));
   gradeBtn.disabled = !allAnswered;
-  gradeArea.hidden = !allAnswered;
 }
 
 // --- 描画 ---
@@ -290,6 +289,7 @@ loadBtn.addEventListener('click', async () => {
     setStatus(`全 ${allQuestions.length}問中から ${currentQuestions.length}問を出題しました`, 3000);
     resetBtn.disabled = false;
     validateAllAnswered();
+    gradeArea.hidden = false;
   } catch (e) {
     console.error(e);
     setStatus(`エラー: ${e.message || e}`);
