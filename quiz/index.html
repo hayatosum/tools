@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>資格試験 学習用クイズ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="container">
+    <h1>資格試験 学習用クイズ</h1>
+    <p class="sub">外部JSONから問題を読み込みます</p>
+  </header>
+
+  <main class="container">
+    <section class="controls">
+      <label for="questionCount">出題数：</label>
+      <input id="questionCount" type="number" min="1" step="1" value="5" />
+      <button id="loadBtn" class="primary">出題</button>
+      <button id="gradeBtn" class="secondary" disabled>採点</button>
+      <button id="resetBtn" class="ghost" disabled>リセット</button>
+      <span id="status" class="status" aria-live="polite"></span>
+    </section>
+
+    <section id="quizArea" class="quiz-area" aria-live="polite"></section>
+
+    <section id="resultArea" class="result-area" aria-live="polite" hidden>
+      <h2>結果</h2>
+      <p id="scoreText"></p>
+      <details>
+        <summary>解説をすべて表示/非表示</summary>
+        <div id="explanations"></div>
+      </details>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    <small>サンプル実装（HTML/CSS/JS + questions.json）</small>
+  </footer>
+
+  <script src="./app.js" defer></script>
+</body>
+</html>
