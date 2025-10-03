@@ -56,7 +56,7 @@
       "category": "演算子と判定構造",
       "difficulty": "上級",
       "question": "次のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
-      "code": "public class Main {\n    public static void main(String[] args) {\n        int a = 10;\n        int b = a++ + a-- - a-- + ++a;\n        System.out.println(b);\n    }\n}",
+      "code": "public class Main {\n    public static void main(String[] args) {\n        int a = 10;\n        int b = a++ + a + a-- - a-- + ++a;\n        System.out.println(b);\n    }\n}",
       "choices": [
         "7が表示される",
         "32が表示される",
@@ -65,7 +65,7 @@
         "コンパイルエラーが発生する",
         "実行時に例外がスローされる"
       ],
-      "answerIndex": 2,
+      "answerIndex": 1,
       "explanation": "逐次評価により b=33 となる。"
     },
     {
