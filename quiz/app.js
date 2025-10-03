@@ -42,9 +42,13 @@ function setStatus(msg, timeoutMs = 2000) {
 }
 
 function validateAllAnswered() {
-  const allAnswered = currentQuestions.every(q => userAnswers.has(q.id));
+  const allAnswered = currentQuestions.every(q => {
+    const a = userAnswers.get(q.id);
+    return Array.isArray(a) && a.length > 0;   // 1つ以上チェックされていれば回答済み
+  });
   gradeBtn.disabled = !allAnswered;
 }
+
 
 // --- 描画 ---
 function renderQuiz(questions) {
@@ -120,13 +124,21 @@ function renderQuiz(questions) {
       label.setAttribute('for', id);
 
       const input = document.createElement('input');
-      input.type = 'radio';
+      input.type = 'checkbox';
       input.name = name;
       input.id = id;
       input.value = cIdx;
 
       input.addEventListener('change', () => {
-        userAnswers.set(q.id, cIdx);
+        let answers = userAnswers.get(q.id) || [];
+        if (input.checked) {
+          // 選択を追加（重複防止）
+          if (!answers.includes(cIdx)) answers.push(cIdx);
+        } else {
+          // 選択を解除
+          answers = answers.filter(v => v !== cIdx);
+        }
+        userAnswers.set(q.id, answers);
         validateAllAnswered();
       });
 
@@ -147,12 +159,19 @@ function renderQuiz(questions) {
 }
 
 // 採点後の表示
+function arraysEqual(a, b) {
+  if (a.length !== b.length) return false;
+  const sortedA = [...a].sort();
+  const sortedB = [...b].sort();
+  return sortedA.every((v, i) => v === sortedB[i]);
+}
+
 function markAnswers() {
   const cards = quizArea.querySelectorAll('.card');
   cards.forEach((card, idx) => {
     const q = currentQuestions[idx];
-    const user = userAnswers.get(q.id);
-    const correct = q.answerIndex;
+    const user = userAnswers.get(q.id) || [];
+    const correct = Array.isArray(q.answerIndex) ? q.answerIndex : [q.answerIndex];
 
     const choiceLabels = card.querySelectorAll('.choice');
     choiceLabels.forEach((label, cIdx) => {
@@ -160,14 +179,14 @@ function markAnswers() {
       const tag = label.querySelector('.answer-tag');
       if (tag) tag.remove();
 
-      if (cIdx === correct) {
+      if (correct.includes(cIdx)) {
         label.classList.add('correct');
         const span = document.createElement('span');
         span.className = 'answer-tag ok';
         span.textContent = '正解';
         label.appendChild(span);
       }
-      if (typeof user === 'number' && cIdx === user && user !== correct) {
+      if (user.includes(cIdx) && !correct.includes(cIdx)) {
         label.classList.add('incorrect');
         const span = document.createElement('span');
         span.className = 'answer-tag ng';
@@ -178,21 +197,24 @@ function markAnswers() {
   });
 }
 
+
 // 結果セクション
 function showResults() {
   let correctCount = 0;
   explanationsEl.innerHTML = '';
 
   currentQuestions.forEach((q, i) => {
-    const user = userAnswers.get(q.id);
-    if (user === q.answerIndex) correctCount++;
+    const user = userAnswers.get(q.id) || [];
+    const correct = Array.isArray(q.answerIndex) ? q.answerIndex : [q.answerIndex];
+    if (arraysEqual(user, correct)) correctCount++;
 
     const exp = document.createElement('div');
     exp.className = 'explanation';
-    const userTxt = typeof user === 'number' ? `あなたの回答: ${letter(user)}` : '未回答';
+    const correctLetters = correct.map(letter).join(',');
+    const userLetters = user.length ? user.map(letter).join(',') : '未回答';
     exp.innerHTML = `
       <div><strong>Q${i+1}.</strong> ${escapeHtml(q.question)}</div>
-      <div>正解: ${letter(q.answerIndex)}（${escapeHtml(q.choices[q.answerIndex])}） / ${userTxt}</div>
+      <div>正解: ${correctLetters} / あなたの回答: ${userLetters}</div>
       ${q.explanation ? `<div>${escapeHtml(q.explanation)}</div>` : ''}
     `;
     explanationsEl.appendChild(exp);
@@ -204,6 +226,7 @@ function showResults() {
   resultArea.hidden = false;
   gradeArea.hidden = true;
 }
+
 
 // --- 問題ロード ---
 async function loadAllQuestions() {
@@ -227,13 +250,40 @@ async function loadAllQuestions() {
 
 function validateQuestions(data) {
   if (!Array.isArray(data)) throw new Error('問題ファイルは配列である必要があります');
+
   data.forEach((q, i) => {
     if (typeof q.id === 'undefined') q.id = i + 1;
-    if (!q.question || !Array.isArray(q.choices) || typeof q.answerIndex !== 'number') {
+
+    // 質問/選択肢の基本チェック
+    if (typeof q.question !== 'string' || !Array.isArray(q.choices) || q.choices.length < 2) {
       throw new Error(`不正な問題形式があります (index: ${i})`);
     }
+
+    // --- answerIndex を数値 or 数値配列の両対応にして配列へ正規化 ---
+    let ans = q.answerIndex;
+    if (typeof ans === 'number') {
+      ans = [ans];                        // 単一正答を配列化
+    } else if (Array.isArray(ans)) {
+      ans = ans.map(v => Number(v));      // 文字や数値混在でも数値化
+    } else {
+      throw new Error(`answerIndex は数値または数値配列である必要があります (index: ${i})`);
+    }
+
+    // 重複除去 & 範囲チェック
+    const uniq = [...new Set(ans)];
+    if (uniq.length === 0) {
+      throw new Error(`answerIndex が空です (index: ${i})`);
+    }
+    const bad = uniq.find(v => !Number.isInteger(v) || v < 0 || v >= q.choices.length);
+    if (bad !== undefined) {
+      throw new Error(`answerIndex に不正な値があります: ${bad} (index: ${i})`);
+    }
+
+    // 正規化結果を書き戻し（以降はすべて配列として扱える）
+    q.answerIndex = uniq;
   });
 }
+
 
 function pickQuestions(n) {
   const cnt = Math.min(n, allQuestions.length);
