@@ -285,3 +285,19 @@ button:disabled {
   font-weight: bold;
   font-size: 14px;
 }
+
+.progress {
+  width: 100%;
+  height: 20px;
+  border-radius: 10px;
+  background: #eee;
+  margin: 10px 0;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background: var(--primary);
+  transition: width 0.5s ease;
+}

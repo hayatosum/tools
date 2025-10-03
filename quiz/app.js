@@ -247,32 +247,38 @@ function showResults() {
     const isCorrect = arraysEqual(user, correct);
     if (isCorrect) correctCount++;
 
-    // 履歴用の1問分
-    items.push({
-      id: q.id,
-      user,
-      correct,
-      isCorrect
-    });
+    items.push({ id: q.id, user, correct, isCorrect });
   });
 
   const total = currentQuestions.length;
   const rate = Math.round((correctCount / total) * 100);
   scoreText.textContent = `正解数: ${correctCount} / ${total}（正答率 ${rate}%）`;
 
-  // ===== 履歴保存 =====
-  const elapsedMs = quizStartAt ? (Date.now() - quizStartAt) : null;
+  // === プログレスバー更新 ===
+  const progressBar = document.getElementById('progressBar');
+  progressBar.style.width = rate + "%";
+  progressBar.style.background = rate >= 65 ? "var(--ok)" : "var(--ng)";
 
-  // 出題元（ローカル or セレクト）
+  // === 評価メッセージ ===
+  const elapsedMs = quizStartAt ? (Date.now() - quizStartAt) : null;
+  const perQ = elapsedMs ? elapsedMs / 1000 / total : null;
+  let evalMsg = "";
+  if (perQ !== null) {
+    evalMsg += `平均回答時間: ${perQ.toFixed(1)}秒/問 → `;
+    evalMsg += perQ <= 60 ? "✔ 1分以内" : "✘ 1分超過";
+  }
+  evalMsg += " / ";
+  evalMsg += rate >= 65 ? "✔ 正答率65%以上" : "✘ 正答率未達";
+  document.getElementById('evalText').textContent = evalMsg;
+
+  // === 履歴保存 ===
   let source = '';
   if (fileInput && fileInput.files && fileInput.files[0]) {
     source = `local:${fileInput.files[0].name}`;
   } else {
-    // ラベル（表示テキスト）を保存
     const selectedOption = fileSelect.options[fileSelect.selectedIndex];
     source = selectedOption ? selectedOption.textContent : currentFile;
   }
-
   appendHistoryEntry({
     ts: Date.now(),
     source,
@@ -280,12 +286,9 @@ function showResults() {
     correct: correctCount,
     rate,
     elapsedMs,
-    // 欲しければ選ばれた問題IDsなども保存可
     questionIds: currentQuestions.map(q => q.id),
     items
   });
-
-  // 保存後に履歴欄を更新
   renderHistory();
 
   resultArea.hidden = false;
@@ -309,13 +312,33 @@ async function loadAllQuestions() {
     data = await res.json();
   }
 
-  // --- prefix を読み出す ---
-  const prefix = data.prefix || "ZZ00";
-  const questions = data.questions || data; // 旧形式との互換（配列直書き）
+  let merged = [];
 
-  validateQuestions(questions, prefix);
-  allQuestions = questions;
+  if (Array.isArray(data)) {
+    // [{prefix:"KS01",questions:[...]}, {prefix:"KS02",questions:[...]}] の形式
+    data.forEach(block => {
+      const prefix = block.prefix || "ZZ00";
+      const questions = block.questions || [];
+      validateQuestions(questions, prefix);
+      merged = merged.concat(questions);
+    });
+  } else if (data.questions && data.prefix) {
+    // {prefix:"KS01",questions:[...]} の形式
+    const prefix = data.prefix || "ZZ00";
+    const questions = data.questions || [];
+    validateQuestions(questions, prefix);
+    merged = questions;
+  } else if (Array.isArray(data)) {
+    // 単純配列（旧形式）
+    validateQuestions(data, "ZZ00");
+    merged = data;
+  } else {
+    throw new Error("不正なJSON形式です");
+  }
+
+  allQuestions = merged;
 }
+
 
 // 旧: function validateQuestions(data) { ... } を丸ごと置き換え
 function validateQuestions(data, prefix = "ZZ00") {
