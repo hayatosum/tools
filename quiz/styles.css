@@ -119,7 +119,33 @@ button:disabled {
   padding: 8px;
   border: 1px solid var(--border);
   border-radius: 10px;
+  user-select: none;
 }
+
+/* ホバー時 */
+.choice:hover {
+  border-color: var(--primary);
+  background: #fafafa;
+}
+
+/* チェックされたとき（ラジオ/チェックボックス問わず） */
+.choice input:checked ~ div,
+.choice input:checked {
+  /* ← input 自身やその兄弟 div ではなく、label全体に色をつける */
+}
+
+.choice input:checked + div,
+.choice input:checked {
+  /* 保険的に div に色は不要なので削除してOK */
+}
+
+/* ラベル全体を青っぽく */
+.choice input:checked + div,
+.choice:has(input:checked) {
+  background: #e6f0ff;   /* 好みで濃さを調整 */
+  border-color: var(--primary);
+}
+
 .choice input {
   margin-top: 3px;
 }
