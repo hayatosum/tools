@@ -290,6 +290,9 @@ function showResults() {
     items
   });
   renderHistory();
+  
+  analyzeHistoryAndRender();
+
 
   resultArea.hidden = false;
   gradeArea.hidden = true;
@@ -617,3 +620,146 @@ function stopTimer() {
     timerId = null;
   }
 }
+
+// ===== 問題別分析 =====
+const lowRateInput = document.getElementById('lowRateThreshold');
+const analysisTableWrap = document.getElementById('analysisTableWrap');
+const rankTopEl = document.getElementById('rankTop');
+const rankBottomEl = document.getElementById('rankBottom');
+const barChartEl = document.getElementById('barChart');
+const heatmapEl = document.getElementById('heatmap');
+const analyzeBtn = document.getElementById('analyzeBtn');
+
+function gatherStatsFromHistory() {
+  const hist = loadHistory();
+  const stats = new Map(); // id -> { id, total, correct }
+
+  hist.forEach(run => {
+    if (!Array.isArray(run.items)) return;
+    run.items.forEach(it => {
+      if (!stats.has(it.id)) stats.set(it.id, { id: it.id, total: 0, correct: 0 });
+      const s = stats.get(it.id);
+      s.total += 1;
+      if (it.isCorrect) s.correct += 1;
+    });
+  });
+
+  // rate付与して配列化
+  const arr = [...stats.values()].map(s => ({ ...s, rate: s.total ? Math.round((s.correct / s.total) * 100) : 0 }));
+  // 表示用にID昇順で基本ソート
+  arr.sort((a,b) => a.id.localeCompare(b.id));
+  return arr;
+}
+
+// rate(0-100) -> 色（低い=赤、高い=緑）HSL補間
+function rateToColor(rate) {
+  const h = (rate / 100) * 120; // 0=赤, 120=緑
+  return `hsl(${h} 70% 45%)`;
+}
+
+function renderAnalysisTable(rows, lowThreshold) {
+  if (rows.length === 0) {
+    analysisTableWrap.innerHTML = "<p class='sub'>履歴がありません。</p>";
+    return;
+  }
+  let html = "<table id='analysisTable'><thead><tr><th>ID</th><th>出題回数</th><th>正解数</th><th>正答率</th></tr></thead><tbody>";
+  rows.forEach(r => {
+    const low = r.rate < lowThreshold;
+    html += `
+      <tr class="${low ? 'tr-low' : ''}">
+        <td>${r.id}</td>
+        <td>${r.total}</td>
+        <td>${r.correct}</td>
+        <td class="td-rate ${low ? 'bad' : ''}">${r.rate}%</td>
+      </tr>`;
+  });
+  html += "</tbody></table>";
+  analysisTableWrap.innerHTML = html;
+}
+
+function renderRanking(rows) {
+  const byRateDesc = [...rows].sort((a,b) => b.rate - a.rate || a.id.localeCompare(b.id));
+  const byRateAsc  = [...rows].sort((a,b) => a.rate - b.rate || a.id.localeCompare(b.id));
+
+  const topN = byRateDesc.slice(0, 10);
+  const bottomN = byRateAsc.slice(0, 10);
+
+  rankTopEl.innerHTML = topN.map(r => `<li>${r.id} — ${r.rate}%（${r.correct}/${r.total}）</li>`).join('') || '<li class="sub">データなし</li>';
+  rankBottomEl.innerHTML = bottomN.map(r => `<li>${r.id} — ${r.rate}%（${r.correct}/${r.total}）</li>`).join('') || '<li class="sub">データなし</li>';
+}
+
+function renderBarChart(rows) {
+  barChartEl.innerHTML = '';
+  if (!rows.length) {
+    barChartEl.innerHTML = '<p class="sub">データなし</p>';
+    return;
+  }
+  // 横棒はID順（任意で rate順にしたい場合は sort を変えてOK）
+  rows.forEach(r => {
+    const row = document.createElement('div');
+    row.className = 'bar-row';
+
+    const label = document.createElement('div');
+    label.className = 'bar-label';
+    label.textContent = r.id;
+
+    const track = document.createElement('div');
+    track.className = 'bar-track';
+
+    const fill = document.createElement('div');
+    fill.className = 'bar-fill';
+    fill.style.width = `${r.rate}%`;
+    fill.style.background = rateToColor(r.rate);
+
+    const val = document.createElement('div');
+    val.className = 'bar-val';
+    val.textContent = `${r.rate}%`;
+
+    track.appendChild(fill);
+    row.appendChild(label);
+    row.appendChild(track);
+    row.appendChild(val);
+    barChartEl.appendChild(row);
+  });
+}
+
+function renderHeatmap(rows) {
+  heatmapEl.innerHTML = '';
+  if (!rows.length) {
+    heatmapEl.innerHTML = '<p class="sub">データなし</p>';
+    return;
+  }
+  rows.forEach(r => {
+    const cell = document.createElement('div');
+    cell.className = 'hm-cell';
+    const sw = document.createElement('div');
+    sw.className = 'hm-swatch';
+    sw.style.background = rateToColor(r.rate);
+    const label = document.createElement('div');
+    label.className = 'hm-label';
+    label.textContent = r.id;
+    cell.title = `${r.id} — ${r.rate}%（${r.correct}/${r.total}）`;
+    cell.appendChild(sw);
+    cell.appendChild(label);
+    heatmapEl.appendChild(cell);
+  });
+}
+
+function analyzeHistoryAndRender() {
+  const lowThreshold = Number(lowRateInput?.value ?? 50);
+  const rows = gatherStatsFromHistory();
+  renderAnalysisTable(rows, lowThreshold);
+  renderRanking(rows);
+  renderBarChart(rows);
+  renderHeatmap(rows);
+}
+
+// 初期描画・イベント
+analyzeHistoryAndRender();
+if (analyzeBtn) analyzeBtn.addEventListener('click', analyzeHistoryAndRender);
+if (lowRateInput) lowRateInput.addEventListener('change', analyzeHistoryAndRender);
+
+// 採点直後にも更新
+// （既存の showResults() の最後に renderHistory() の直後でOK）
+
+
