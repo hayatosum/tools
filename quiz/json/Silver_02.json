@@ -283,7 +283,7 @@
       "abaと表示される",
       "eabaと表示される"
     ],
-    "answerIndex": 1,
+    "answerIndex": 3,
     "explanation": "reverseで \"edcba\"、replace(1,3,\"a\")で \"ea ba\" → \"eaba\" だが誤記に注意。実際は \"eaba\"。"
   },
   {
