@@ -415,6 +415,9 @@ loadBtn.addEventListener('click', async () => {
     resetBtn.disabled = false;
     validateAllAnswered();
     gradeArea.hidden = false;
+
+    startTimer();
+
   } catch (e) {
     console.error(e);
     setStatus(`エラー: ${e.message || e}`);
@@ -533,12 +536,39 @@ quizStartAt = Date.now();
 
 
 gradeBtn.addEventListener('click', () => {
+  stopTimer();
+
   markAnswers();
   showResults();
   setStatus('採点しました', 3000);
 });
 
 resetBtn.addEventListener('click', () => {
+  stopTimer();
+  
   resetState();
   setStatus('リセットしました', 1500);
 });
+
+
+let timerId = null;
+
+const timerEl = document.getElementById('timer');
+
+function startTimer() {
+  quizStartAt = Date.now();
+  timerEl.textContent = "経過時間: 0分0秒";
+  timerId = setInterval(() => {
+    const elapsedMs = Date.now() - quizStartAt;
+    const sec = Math.floor(elapsedMs / 1000) % 60;
+    const min = Math.floor(elapsedMs / 60000);
+    timerEl.textContent = `経過時間: ${min}分${sec}秒`;
+  }, 1000);
+}
+
+function stopTimer() {
+  if (timerId) {
+    clearInterval(timerId);
+    timerId = null;
+  }
+}
