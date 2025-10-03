@@ -482,7 +482,7 @@ function renderHistory() {
     meta.innerHTML = `
       <span>${d.toLocaleString()}</span>
       <span>出題数: ${h.total}</span>
-      <span>所要: ${typeof h.elapsedMs === 'number' ? Math.round(h.elapsedMs/1000) + 's' : '-'}</span>
+      <span>所要時間: ${typeof h.elapsedMs === 'number' ? Math.round(h.elapsedMs/1000) + 's' : '-'}</span>
     `;
     div.appendChild(meta);
 
