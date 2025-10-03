@@ -317,7 +317,7 @@
       "category": "演算子と判定構造",
       "difficulty": "上級",
       "question": "次のプログラムをコンパイルしたときにエラーが発生するのは何行目か。（2つ選択）",
-      "code": "public class Main {\n    public static void main(String[] args) {\n        final int NUM = 0;\n        int num = 10;\n        switch(num) {\n            case \"10\": System.out.println(\"A\"); break;\n            case num: System.out.println(\"B\"); break;\n            case 2*5: System.out.println(\"C\"); break;\n            case NUM: System.out.println(\"D\"); break;\n        }\n    }\n}",
+      "code": " 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         final int NUM = 0;\n 4.         int num = 10;\n 5.         switch(num) {\n 6.             case \"10\": System.out.println(\"A\");\n 7.             break;\n 8.             case num: System.out.println(\"B\");\n 9.             break;\n10.             case 2*5: System.out.println(\"C\");\n11.             break;\n12.             case NUM: System.out.println(\"D\");\n13.             break;\n14.         }\n15.     }\n16. }",
       "choices": [
         "6行目",
         "8行目",
@@ -325,8 +325,8 @@
         "12行目"
       ],
       "answerIndex": [
-        1,
-        2
+        0,
+        1
       ],
       "explanation": "caseに文字列リテラルや変数を直接は使えない。定数式のみ許可される。"
     },
