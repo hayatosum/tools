@@ -21,6 +21,19 @@ const resultArea = document.getElementById('resultArea');
 const scoreText = document.getElementById('scoreText');
 const explanationsEl = document.getElementById('explanations');
 
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    await loadAllQuestions();   // ← 初期ロード
+    renderHistory();            // 履歴も表示
+    renderTrendChart();         // グラフも表示
+    renderAnalysisTable();      // 分析テーブルも初期描画
+  } catch (e) {
+    console.warn("初期ロードで問題を読み込めませんでした:", e);
+  }
+});
+
+
+
 // --- ファイル切り替え ---
 fileSelect.addEventListener('change', () => {
   currentFile = fileSelect.value;
@@ -727,7 +740,7 @@ function renderAnalysisTable(rows, lowThreshold) {
     const low = r.rate < lowThreshold;
     html += `
       <tr class="${low ? 'tr-low' : ''}">
-        <td>${r.id}</td>
+        <td><span class="qid-link" data-qid="${r.id}" title="クリックで問題を表示">${r.id}</span></td>
         <td>${r.total}</td>
         <td>${r.correct}</td>
         <td class="td-rate ${low ? 'bad' : ''}">${r.rate}%</td>
@@ -744,8 +757,8 @@ function renderRanking(rows) {
   const topN = byRateDesc.slice(0, 10);
   const bottomN = byRateAsc.slice(0, 10);
 
-  rankTopEl.innerHTML = topN.map(r => `<li>${r.id} — ${r.rate}%（${r.correct}/${r.total}）</li>`).join('') || '<li class="sub">データなし</li>';
-  rankBottomEl.innerHTML = bottomN.map(r => `<li>${r.id} — ${r.rate}%（${r.correct}/${r.total}）</li>`).join('') || '<li class="sub">データなし</li>';
+  rankTopEl.innerHTML = topN.map(r => `<li><span class="qid-link" data-qid="${r.id}" title="クリックで問題を表示">${r.id}</span> — ${r.rate}%（${r.correct}/${r.total}）</li>`).join('') || '<li class="sub">データなし</li>';
+  rankBottomEl.innerHTML = bottomN.map(r => `<li><span class="qid-link" data-qid="${r.id}" title="クリックで問題を表示">${r.id}</span> — ${r.rate}%（${r.correct}/${r.total}）</li>`).join('') || '<li class="sub">データなし</li>';
 }
 
 function renderBarChart(rows) {
@@ -760,8 +773,10 @@ function renderBarChart(rows) {
     row.className = 'bar-row';
 
     const label = document.createElement('div');
-    label.className = 'bar-label';
+    label.classList.add('bar-label', 'qid-link');
     label.textContent = r.id;
+    label.title = 'クリックで問題を表示';
+    label.setAttribute('data-qid', r.id);
 
     const track = document.createElement('div');
     track.className = 'bar-track';
@@ -791,13 +806,15 @@ function renderHeatmap(rows) {
   }
   rows.forEach(r => {
     const cell = document.createElement('div');
-    cell.className = 'hm-cell';
+    cell.classList.add('hm-cell', 'qid-link');
+    cell.setAttribute('data-qid', r.id);
     const sw = document.createElement('div');
     sw.className = 'hm-swatch';
     sw.style.background = rateToColor(r.rate);
     const label = document.createElement('div');
     label.className = 'hm-label';
     label.textContent = r.id;
+    label.title = 'クリックで問題を表示';
     cell.title = `${r.id} — ${r.rate}%（${r.correct}/${r.total}）`;
     cell.appendChild(sw);
     cell.appendChild(label);
@@ -1026,3 +1043,60 @@ function renderTrendChart() {
 
 
 renderTrendChart();
+
+
+// 問題ID（.qid-link）クリックでプレビュー表示
+document.addEventListener('click', (e) => {
+  const el = e.target.closest('.qid-link');
+  if (!el) return;
+  const qid = el.dataset.qid;
+  const q = (Array.isArray(allQuestions) ? allQuestions : []).find(x => x.id === qid);
+  if (!q) return;
+  showQuestionPreview(q);
+});
+
+function showQuestionPreview(q) {
+  // 既存の escapeHtml があればそれを、なければ簡易版を使う
+  const esc = (s) => (typeof escapeHtml === 'function')
+    ? escapeHtml(String(s ?? ''))
+    : String(s ?? '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+
+  // 質問テキスト＋コード（q.codeがあれば別枠）
+  let qHtml = '';
+  if (q.question) qHtml += `<p>${esc(q.question)}</p>`;
+  if (q.code)     qHtml += `<pre><code>${esc(q.code)}</code></pre>`;
+
+  // 選択肢（A/B/C…）
+  const choiceHtml = (q.choices || []).map((c,i) =>
+    `<li><strong>${String.fromCharCode(65+i)}.</strong> ${c}</li>`
+  ).join('');
+
+  // モーダルDOM生成
+  const overlay = document.createElement('div');
+  overlay.className = 'modal-overlay';
+  overlay.innerHTML = `
+    <div class="modal" role="dialog" aria-modal="true" aria-label="問題プレビュー">
+      <button class="modal-close" aria-label="閉じる">×</button>
+      <h3 class="modal-title">${esc(q.id)}</h3>
+      <div class="modal-body">
+        <div class="qtext">${qHtml || ''}</div>
+        <ul class="qchoices">${choiceHtml}</ul>
+      </div>
+    </div>
+  `;
+
+  // 閉じる挙動
+  const close = () => {
+    document.removeEventListener('keydown', onKey);
+    overlay.remove();
+  };
+  const onKey = (ev) => { if (ev.key === 'Escape') close(); };
+
+  overlay.addEventListener('click', (ev) => { if (ev.target === overlay) close(); });
+  overlay.querySelector('.modal-close')?.addEventListener('click', close);
+  document.addEventListener('keydown', onKey);
+
+  // 表示
+  document.body.appendChild(overlay);
+}
+

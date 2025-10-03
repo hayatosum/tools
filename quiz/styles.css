@@ -218,7 +218,7 @@ button:disabled {
   font-size: 0.9em;
   margin-top: 6px;
 }
-.choices pre {
+.choices pre, .qchoices pre {
   display: inline-flex;          /* 横幅いっぱいに広げる */
   width: 90%;
   background: #f8f9fa;
@@ -406,3 +406,39 @@ button:disabled {
 #questionCount {
   width: 80px;
 }
+
+
+.qid-link {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.hm-cell {
+  text-decoration: unset;
+}
+
+
+/* ---- モーダル ---- */
+.modal-overlay{
+  position: fixed; inset: 0; z-index: 1000;
+  background: rgba(0,0,0,.4);
+  display: flex; align-items: center; justify-content: center;
+}
+.modal{
+  position: relative;
+  background: #fff; border-radius: 10px; padding: 18px 18px 16px;
+  max-width: 720px; width: min(92vw, 720px); max-height: 80vh; overflow: auto;
+  box-shadow: 0 10px 30px rgba(0,0,0,.25);
+}
+.modal-title{ margin: 0 0 8px; }
+.modal-close{
+  position: absolute; top: 8px; right: 10px;
+  border: none; background: transparent; font-size: 1.6rem; line-height: 1;
+  cursor: pointer; color: #666;
+}
+.modal-body .qtext pre{
+  background:#f8f9fa; border:1px solid #ddd; border-radius:8px;
+  padding:10px; overflow-x:auto; font-family:Consolas,"Courier New",monospace;
+}
+.modal-body .qchoices{ margin: 10px 0 0 18px; }
+.modal-body .qchoices li{ margin: 4px 0; }
