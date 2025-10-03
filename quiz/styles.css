@@ -23,17 +23,6 @@ body:not(.graded) .choice:hover {
   background: #fafafa;
 }
 
-/* チェックされたとき（ラジオ/チェックボックス問わず） */
-.choice input:checked ~ div,
-.choice input:checked {
-  /* ← input 自身やその兄弟 div ではなく、label全体に色をつける */
-}
-
-.choice input:checked + div,
-.choice input:checked {
-  /* 保険的に div に色は不要なので削除してOK */
-}
-
 /* ラベル全体を青っぽく */
 .choice:has(input:checked) {
   background: #e6f0ff;   /* 好みで濃さを調整 */
