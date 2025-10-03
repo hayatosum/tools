@@ -393,20 +393,41 @@ function pickQuestions(n) {
   const cnt = Math.min(n, allQuestions.length);
   const useAdaptive = adaptiveModeEl ? adaptiveModeEl.checked : false;
 
-  // 履歴なし or オフなら従来のランダム
-  const hist = loadHistory();
-  if (!useAdaptive || !hist.length) {
-    return shuffle(allQuestions).slice(0, cnt);
+  // 未出題を最優先でピック
+  const seenSet = getSeenIdSetFromHistory();
+  const unseen = allQuestions.filter(q => !seenSet.has(q.id));
+  const picked = [];
+
+  // まず未出題から必要数まで埋める（未出題内の順序はランダム）
+  if (unseen.length > 0) {
+    // 未出題が必要数以上ある場合 → 未出題だけで完結
+    if (unseen.length >= cnt) {
+      return shuffle(unseen).slice(0, cnt);
+    }
+    // 未出題が不足する場合 → あるだけ入れて、残りを既出から補完
+    picked.push(...shuffle(unseen)); // 全部採用（順序ランダム）
   }
 
-  // 履歴あり：ID別正答率を重みに変換
-  const rateMap = buildRateMapFromHistory();
-  const strength = Number(adaptiveStrengthEl?.value ?? 1.0);
-  const weights = allQuestions.map(q => rateToWeight(rateMap.get(q.id), strength));
+  const remain = cnt - picked.length;
+  if (remain <= 0) return picked.slice(0, cnt);
 
-  // 重み付きで抽出
-  return weightedSampleWithoutReplacement(allQuestions, weights, cnt);
+  // 既出のみのプールを作成
+  const seenPool = allQuestions.filter(q => seenSet.has(q.id) && !picked.includes(q));
+
+  // 弱点優先モードなら重み付け、OFFなら通常ランダム
+  if (useAdaptive && loadHistory().length > 0) {
+    const rateMap = buildRateMapFromHistory(); // 既存：id -> 正答率(0-100)
+    const strength = Number(adaptiveStrengthEl?.value ?? 1.0);
+    const weights = seenPool.map(q => rateToWeight(rateMap.get(q.id), strength));
+    const sampled = weightedSampleWithoutReplacement(seenPool, weights, remain);
+    picked.push(...sampled);
+  } else {
+    picked.push(...shuffle(seenPool).slice(0, remain));
+  }
+
+  return picked.slice(0, cnt);
 }
+
 
 function resetState() {
   currentQuestions = [];
@@ -834,5 +855,19 @@ function weightedSampleWithoutReplacement(items, weights, k) {
   }
   return picked;
 }
+
+
+
+// 履歴から既に出題された問題IDの集合を作る
+function getSeenIdSetFromHistory() {
+  const hist = loadHistory();
+  const set = new Set();
+  hist.forEach(run => {
+    if (!Array.isArray(run.items)) return;
+    run.items.forEach(it => set.add(it.id));
+  });
+  return set;
+}
+
 
 
