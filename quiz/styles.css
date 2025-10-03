@@ -179,3 +179,27 @@ button:disabled {
   font-size: 0.9em;
   margin-top: 6px;
 }
+
+.inline-exp {
+  margin-top: 12px;
+  border-left: 4px solid var(--border, #e5e7eb);
+  background: #fafafa;
+  padding: 10px 12px;
+  border-radius: 8px;
+}
+.inline-exp.hidden { display: none; }
+.inline-exp .exp-head {
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.inline-exp code, .inline-exp pre {
+  font-family: Consolas, "Courier New", monospace;
+}
+.inline-exp pre {
+  background: #f8f9fa;
+  border: 1px solid #ddd;
+  padding: 8px;
+  border-radius: 6px;
+  overflow-x: auto;
+  margin-top: 6px;
+}

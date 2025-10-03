@@ -154,6 +154,13 @@ function renderQuiz(questions) {
     card.appendChild(questionText);
     card.appendChild(meta);
     card.appendChild(choicesWrap);
+
+    // --- 解説プレースホルダ（採点後に埋める） ---
+    const exp = document.createElement('div');
+    exp.className = 'inline-exp hidden';
+    exp.innerHTML = `<div class="exp-head">解説</div><div class="exp-body"></div>`;
+    card.appendChild(exp);
+
     quizArea.appendChild(card);
   });
 }
@@ -194,38 +201,47 @@ function markAnswers() {
         label.appendChild(span);
       }
     });
+
+    // === ここから追記：各問題の下に解説を表示 ===
+    const expEl = card.querySelector('.inline-exp');
+    if (expEl) {
+      const body = expEl.querySelector('.exp-body');
+      const correctLetters = correct.map(letter).join(', ');
+      const userLetters = user.length ? user.map(letter).join(', ') : '未回答';
+
+      // フェンス付きコード ``` ... ``` が解説に含まれている場合も整形
+      const explanationHtml = formatExplanationHtml(q.explanation);
+
+      body.innerHTML = `
+        <div>正解: ${correctLetters} / あなたの回答: ${userLetters}</div>
+        ${explanationHtml}
+      `;
+      expEl.classList.remove('hidden');
+    }
+    // === 追記ここまで ===
   });
 }
+
 
 
 // 結果セクション
 function showResults() {
   let correctCount = 0;
-  explanationsEl.innerHTML = '';
 
-  currentQuestions.forEach((q, i) => {
+  currentQuestions.forEach((q) => {
     const user = userAnswers.get(q.id) || [];
     const correct = Array.isArray(q.answerIndex) ? q.answerIndex : [q.answerIndex];
     if (arraysEqual(user, correct)) correctCount++;
-
-    const exp = document.createElement('div');
-    exp.className = 'explanation';
-    const correctLetters = correct.map(letter).join(',');
-    const userLetters = user.length ? user.map(letter).join(',') : '未回答';
-    exp.innerHTML = `
-      <div><strong>Q${i+1}.</strong> ${escapeHtml(q.question)}</div>
-      <div>正解: ${correctLetters} / あなたの回答: ${userLetters}</div>
-      ${q.explanation ? `<div>${escapeHtml(q.explanation)}</div>` : ''}
-    `;
-    explanationsEl.appendChild(exp);
   });
 
   const total = currentQuestions.length;
   const rate = Math.round((correctCount / total) * 100);
   scoreText.textContent = `正解数: ${correctCount} / ${total}（正答率 ${rate}%）`;
+
   resultArea.hidden = false;
   gradeArea.hidden = true;
 }
+
 
 
 // --- 問題ロード ---
@@ -313,6 +329,26 @@ function escapeHtml(str) {
     .replaceAll('"','&quot;')
     .replaceAll("'",'&#39;');
 }
+
+function formatExplanationHtml(explanation) {
+  if (!explanation) return '';
+  const text = String(explanation);
+
+  // ```lang\n ... ``` を <pre><code> に変換（複数対応）
+  const fenceRegex = /```(?:\w+)?\n([\s\S]*?)```/g;
+  if (fenceRegex.test(text)) {
+    return text.replace(fenceRegex, (_, code) => {
+      return `<pre><code>${escapeHtml(code)}</code></pre>`;
+    }).split(fenceRegex).map(part => {
+      // プレーンテキスト部分もエスケープ
+      return part ? `<p>${escapeHtml(part)}</p>` : '';
+    }).join('');
+  }
+
+  // フェンスがなければプレーンテキストとして表示
+  return `<p>${escapeHtml(text)}</p>`;
+}
+
 
 // --- イベント ---
 loadBtn.addEventListener('click', async () => {
