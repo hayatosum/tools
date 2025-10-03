@@ -115,7 +115,19 @@ function renderQuiz(questions) {
     const choicesWrap = document.createElement('div');
     choicesWrap.className = 'choices';
 
-    q.choices.forEach((choiceText, cIdx) => {
+    // ★ シャッフル付きで choices を描画
+    // 正解インデックスを保持するためにペア化
+    const choicePairs = q.choices.map((c, i) => ({ text: c, index: i }));
+    const shuffled = shuffle(choicePairs);
+
+    // 新しい choices と正解インデックスを計算
+    q.choices = shuffled.map(c => c.text);
+    const correctSet = Array.isArray(q.answerIndex) ? q.answerIndex : [q.answerIndex];
+    q.answerIndex = shuffled
+      .map((c, newIdx) => (correctSet.includes(c.index) ? newIdx : null))
+      .filter(v => v !== null);
+
+    shuffled.forEach((c, cIdx) => {
       const id = `q${q.id}_c${cIdx}`;
       const name = `qgroup_${q.id}`;
 
@@ -143,7 +155,7 @@ function renderQuiz(questions) {
       });
 
       const text = document.createElement('div');
-      text.innerHTML = `<strong>${String.fromCharCode(65 + cIdx)}.</strong> ${escapeHtml(choiceText)}`;
+      text.innerHTML = `<strong>${String.fromCharCode(65 + cIdx)}.</strong> ${c.text}`;
 
       label.appendChild(input);
       label.appendChild(text);
@@ -548,6 +560,7 @@ resetBtn.addEventListener('click', () => {
   
   resetState();
   setStatus('リセットしました', 1500);
+  gradeArea.hidden = true;
 });
 
 

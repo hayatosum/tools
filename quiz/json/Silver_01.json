@@ -20,8 +20,8 @@
     "category": "パッケージ",
     "difficulty": "中級",
     "question": "次のうち、パッケージ宣言が正しく記述されているコードを選びなさい。（1つ選択）",
-    "code": "A. import java.io.*;\n   package aaa;\n   public class Sample {}\n\nB. package aaa;\n   import java.io.*;\n   public class Sample {}\n\nC. import java.io.*;\n   package aaa {\n       public class Sample {}\n   }\n\nD. import java.io.*;\n   package aaa {\n       public class Sample {}\n   }",
-    "choices": ["A", "B", "C", "D"],
+    "code": "",
+    "choices": ["<pre><code>import java.io.*;\n   package aaa;\n   public class Sample {}</pre></code>", "<pre><code>package aaa;\n   import java.io.*;\n   public class Sample {}</pre></code>", "<pre><code>import java.io.*;\n   package aaa {\n       public class Sample {}\n   }</pre></code>", "<pre><code>import java.io.*;\n   package aaa {\n       public class Sample {}\n   }</pre></code>"],
     "answerIndex": 1,
     "explanation": "package文はソースコードの先頭に1回だけ書く必要があるため、Bが正解。"
   },

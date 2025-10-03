@@ -179,6 +179,22 @@ button:disabled {
   font-size: 0.9em;
   margin-top: 6px;
 }
+.choices pre {
+  display: inline-flex;          /* 横幅いっぱいに広げる */
+  width: 90%;
+  background: #f8f9fa;
+  padding: 10px;
+  border-radius: 4px;
+  overflow-x: auto;
+  font-family: Consolas, "Courier New", monospace;
+  margin: 0px 2px;
+  box-sizing: border-box;  /* padding込みで幅調整 */
+}
+.choice > div {
+  flex: 1;                           /* 横幅を占有させる */
+  min-width: 0;                      /* flex収縮時のはみ出し防止 */
+}
+
 
 .inline-exp {
   margin-top: 12px;
