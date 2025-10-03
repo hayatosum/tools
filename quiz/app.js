@@ -5,10 +5,10 @@
 let allQuestions = [];
 let currentQuestions = []; // 出題中の問題
 let userAnswers = new Map(); // key: q.id, value: choice index
-let currentFile = fileSelect.value; // デフォルト
 
 // --- 要素参照 ---
 const fileSelect = document.getElementById('fileSelect');
+let currentFile = fileSelect.value; // デフォルト
 const fileInput  = document.getElementById('fileInput');
 const countInput = document.getElementById('questionCount');
 const loadBtn = document.getElementById('loadBtn');
