@@ -1,4 +1,4 @@
-{
+const SILVER_03 = {
   "prefix": "KS03",
   "questions": [
     {
@@ -348,4 +348,4 @@
       "explanation": "case1に該当しbreakがないためA,B,Cすべて実行される。"
     }
   ]
-}
+};

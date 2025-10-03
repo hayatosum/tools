@@ -318,20 +318,30 @@ function showResults() {
 async function loadAllQuestions() {
   let data;
 
+  // 1) ローカルファイルが選択されていれば最優先
   if (fileInput.files && fileInput.files[0]) {
     const file = fileInput.files[0];
     const text = await file.text();
     data = JSON.parse(text);
+
   } else {
-    const res = await fetch('json/' + currentFile, { cache: 'no-store' });
-    if (!res.ok) throw new Error(`問題の取得に失敗しました: ${res.status}`);
-    data = await res.json();
+    // 2) 内蔵データ（questions_data.js）にあるならそれを使用
+    const builtin = (window.BUILTIN_QUESTION_SETS || {})[currentFile];
+    if (builtin) {
+      data = builtin;
+    } else {
+      // 3) 最後の手段：従来どおりサーバからJSONをfetch（後方互換）
+      const res = await fetch('json/' + currentFile, { cache: 'no-store' });
+      if (!res.ok) throw new Error(`問題の取得に失敗しました: ${res.status}`);
+      data = await res.json();
+    }
   }
 
+  // === ここから下は既存のまま（複数ブロック/単一/旧形式に対応） ===
   let merged = [];
 
   if (Array.isArray(data)) {
-    // [{prefix:"KS01",questions:[...]}, {prefix:"KS02",questions:[...]}] の形式
+    // [{prefix:"KS01",questions:[...]}, {prefix:"KS02",questions:[...]}]
     data.forEach(block => {
       const prefix = block.prefix || "ZZ00";
       const questions = block.questions || [];
@@ -339,13 +349,13 @@ async function loadAllQuestions() {
       merged = merged.concat(questions);
     });
   } else if (data.questions && data.prefix) {
-    // {prefix:"KS01",questions:[...]} の形式
+    // {prefix:"KS01",questions:[...]}
     const prefix = data.prefix || "ZZ00";
     const questions = data.questions || [];
     validateQuestions(questions, prefix);
     merged = questions;
   } else if (Array.isArray(data)) {
-    // 単純配列（旧形式）
+    // 旧形式（単なる配列）
     validateQuestions(data, "ZZ00");
     merged = data;
   } else {

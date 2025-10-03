@@ -1,4 +1,4 @@
-{
+const SILVER_01 = {
   "prefix": "KS01",
   "questions": [
     {
@@ -123,4 +123,4 @@
       "explanation": "引数は `a`, `¥*`, `a¥*`, `a b c` の4つとして渡されるため、args.lengthは4となる。"
     }
   ]
-}
+};

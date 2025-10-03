@@ -1,4 +1,4 @@
-{
+const SILVER_11 = {
   "prefix": "KS11",
   "questions": [
     {
@@ -108,4 +108,4 @@
       "explanation": "非公開パッケージを一時的に利用するためには `--add-exports` オプションを使用する。"
     }
   ]
-}
+};

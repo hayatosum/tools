@@ -1,4 +1,4 @@
-{
+const SILVER_08 = {
   "prefix": "KS08",
   "questions": [
     {
@@ -121,4 +121,4 @@
       "explanation": "Consumer は引数を受け取り、何らかの処理をするが戻り値は返さないインタフェースです。"
     }
   ]
-}
+};

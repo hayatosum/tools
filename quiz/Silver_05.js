@@ -1,4 +1,4 @@
-{
+const SILVER_05 = {
   "prefix": "KS05",
   "questions": [
     {
@@ -167,4 +167,4 @@
       "explanation": "arrayAは2+2+3=7要素を持ち、外側の配列長を含め合計12が出力される。"
     }
   ]
-}
+};

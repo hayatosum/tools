@@ -1,4 +1,4 @@
-{
+const SILVER_07 = {
   "prefix": "KS07",
   "questions": [
     {
@@ -338,4 +338,4 @@
       "explanation": "Child(String) → this() で Child() が呼ばれ、Child() 内で super(\"B\") により Parent(String) が呼ばれ、その中で this() により Parent() が呼ばれます。結果として「A」「B」「C」「D」と順に出力されます。"
     }
   ]
-}
+};

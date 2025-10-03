@@ -1,4 +1,4 @@
-{
+const SILVER_10 = {
   "prefix": "KS10",
   "questions": [
     {
@@ -271,4 +271,4 @@
       "explanation": "再帰的に main を呼び出し続けるためスタックが枯渇し StackOverflowError が送出される。"
     }
   ]
-}
+};

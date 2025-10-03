@@ -1,4 +1,4 @@
-{
+const SILVER_02 = {
   "prefix": "KS02",
   "questions": [
     {
@@ -302,4 +302,4 @@
       "explanation": "「bcd」はインデックス1から始まるので 1 が返る。"
     }
   ]
-}
+};

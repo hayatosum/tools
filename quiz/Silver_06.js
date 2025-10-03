@@ -1,4 +1,4 @@
-{
+const SILVER_06 = {
   "prefix": "KS06",
   "questions": [
     {
@@ -338,4 +338,4 @@
       "explanation": "参照渡しにより、modify メソッド内でフィールドが更新され、値は20になる。"
     }
   ]
-}
+};

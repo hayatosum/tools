@@ -412,3 +412,8 @@ button:disabled {
 .legend-ma   { background: #888; }        /* 移動平均 */
 .legend-time { background: #16a34a; }     /* 秒/問（右軸） */
 .legend-pass { background: #dc2626; }     /* 63%ライン */
+
+
+#questionCount {
+  width: 80px;
+}
