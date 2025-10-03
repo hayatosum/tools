@@ -225,6 +225,7 @@ function markAnswers() {
       const explanationHtml = formatExplanationHtml(q.explanation);
 
       body.innerHTML = `
+        <div><strong>問題ID: ${q.id}</strong></div>
         <div>正解: ${correctLetters} / あなたの回答: ${userLetters}</div>
         ${explanationHtml}
       `;
