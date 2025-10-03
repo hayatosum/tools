@@ -1,0 +1,339 @@
+[
+  {
+    "id": 1,
+    "category": "クラスの継承、インタフェース、抽象クラス",
+    "difficulty": "中級",
+    "question": "このクラスが継承しているParentクラスの説明として、正しいものを選びなさい。",
+    "code": "public class Child extends Parent {\n    Child() {\n        name = \"java\";\n    }\n    void hello() {\n        System.out.println(\"hello, \" + name);\n    }\n}",
+    "choices": [
+      "Parentクラスは、helloメソッドの定義を持っていなければいけない",
+      "Parentクラスには、フィールドを初期化するためのコンストラクタを定義しなければいけない",
+      "Parentクラスには、helloフィールドを定義しなければいけない",
+      "Parentクラスには、nameフィールドを定義しなければいけない"
+    ],
+    "answerIndex": 3,
+    "explanation": "Childクラスではnameフィールドを利用しているため、Parentクラスにnameフィールドが存在している必要がある。"
+  },
+  {
+    "id": 2,
+    "category": "クラスの継承、インタフェース、抽象クラス",
+    "difficulty": "初級",
+    "question": "継承の説明として正しいものを選びなさい。",
+    "code": "",
+    "choices": [
+      "アクセス修飾子がデフォルトのままのフィールドは、すべてのサブクラスのメソッドからアクセスできる",
+      "アクセス修飾子がprivateなメソッドであっても、サブクラスからは利用できる",
+      "サブクラスであっても、コンストラクタは引き継がない",
+      "アクセス修飾子がprotectedメソッドには、同じパッケージに属するサブクラスのみアクセスできる"
+    ],
+    "answerIndex": 2,
+    "explanation": "コンストラクタは継承されないため、サブクラスでは独自に定義する必要がある。"
+  },
+  {
+    "id": 3,
+    "category": "クラスの継承、インタフェース、抽象クラス",
+    "difficulty": "初級",
+    "question": "インタフェースに関する説明として、正しいものを選びなさい。（2つ選択）",
+    "code": "",
+    "choices": [
+      "アクセス修飾子を省略しても、publicなメソッドとして扱われる",
+      "フィールドは一切定義できない",
+      "クラスは複数のインタフェースを同時に実装できない",
+      "インタフェースを継承することはできない",
+      "抽象クラスは、インタフェースに定義されているメソッドを実現しなくてもよい"
+    ],
+    "answerIndex": [0, 4],
+    "explanation": "インタフェースのメソッドは自動的にpublicになる。また、抽象クラスはインタフェースを実装した場合でもメソッドの実装を必須としない。"
+  },
+  {
+    "id": 4,
+    "category": "クラスの継承、インタフェース、抽象クラス",
+    "difficulty": "中級",
+    "question": "次のプログラムの説明として正しいものを選びなさい。",
+    "code": "public interface A {\n    void sample() {\n        System.out.println(\"sample\");\n    }\n}\npublic class B implements A {}\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        a.sample();\n    }\n}",
+    "choices": [
+      "インタフェースのsampleメソッドをdefaultで修飾しなければいけない",
+      "インタフェースのsampleメソッドを削除し、Bクラスにsampleメソッドを追加しなければいけない",
+      "実行時に例外がスローされる",
+      "「sample」と表示される"
+    ],
+    "answerIndex": 0,
+    "explanation": "インタフェースの通常メソッドには処理を記述できない。実装を持たせる場合はdefault修飾子が必要である。"
+  },
+  {
+    "id": 5,
+    "category": "クラスの継承、インタフェース、抽象クラス",
+    "difficulty": "中級",
+    "question": "次のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。",
+    "code": "public interface A {\n    @Override\n    default String toString() {\n        return \"A\";\n    }\n}\npublic class B implements A {\n    @Override\n    public String toString() {\n        return \"B\";\n    }\n}\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        System.out.println(a);\n    }\n}",
+    "choices": [
+      "Aインタフェースでコンパイルエラーとなる",
+      "Bクラスでコンパイルエラーとなる",
+      "Aが表示される",
+      "Bが表示される",
+      "実行時に例外がスローされる"
+    ],
+    "answerIndex": 3,
+    "explanation": "BクラスがtoStringをオーバーライドしているため、実行時には「B」が表示される。"
+  },
+  {
+    "id": 6,
+    "category": "クラスの継承、インタフェース、抽象クラス",
+    "difficulty": "中級",
+    "question": "以下のコードをコンパイル、実行し、指定の結果を得るために正しいコードを選びなさい。",
+    "code": "public interface A {\n    default void sample() {\n        System.out.println(\"Hello\");\n    }\n}\npublic interface B extends A {}\npublic class C implements B {\n    @Override\n    public void sample() {\n        // 空欄\n        System.out.println(\"Java\");\n    }\n}\npublic class Main {\n    public static void main(String[] args) {\n        A a = new C();\n        a.sample();\n    }\n}",
+    "choices": [
+      "super.sample();",
+      "A.super.sample();",
+      "public.sample();",
+      "new.sample();",
+      "上記のいずれも誤りである"
+    ],
+    "answerIndex": 1,
+    "explanation": "インタフェースのデフォルトメソッドを呼び出すには「A.super.sample()」を使用する。"
+  },
+  {
+    "id": 7,
+    "category": "クラスの継承、インタフェース、抽象クラス",
+    "difficulty": "中級",
+    "question": "次のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。",
+    "code": "public interface A {\n    default void test() {\n        System.out.println(\"A\");\n    }\n}\npublic interface B {\n    default void test() {\n        System.out.println(\"B\");\n    }\n}\npublic class Main implements A, B {\n    public static void main(String[] args) {\n        new Main().test();\n    }\n}",
+    "choices": [
+      "Aが表示される",
+      "Bが表示される",
+      "コンパイルエラーが発生する",
+      "実行時に例外がスローされる"
+    ],
+    "answerIndex": 2,
+    "explanation": "複数のインタフェースで同一シグネチャのデフォルトメソッドを持つ場合、曖昧さを解消するために明示的にオーバーライドが必要。"
+  },
+  {
+    "id": 8,
+    "category": "クラスの継承、インタフェース、抽象クラス",
+    "difficulty": "初級",
+    "question": "抽象クラスに関する説明として、正しいものを選びなさい。（3つ選択）",
+    "code": "",
+    "choices": [
+      "インスタンスを生成することはできない",
+      "抽象クラスのメソッドはオーバーライドできない",
+      "サブクラスから抽象クラスの公開フィールドに自由にアクセスできる",
+      "抽象クラスを継承した抽象クラスを定義できる",
+      "抽象メソッドは、すべてのサブクラスが実装しなければいけない"
+    ],
+    "answerIndex": [0, 3, 4],
+    "explanation": "抽象クラスはインスタンス化できないが、抽象クラスを継承するクラスは可能。また、抽象メソッドはすべての具象サブクラスで実装が必須。"
+  },
+  {
+    "id": 9,
+    "category": "クラスの継承、インタフェース、抽象クラス",
+    "difficulty": "上級",
+    "question": "次のプログラムを実行した結果として正しいものを選びなさい。",
+    "code": "abstract class AbstractSample {\n    public void sample() {\n        System.out.println(\"A\");\n        test();\n        System.out.println(\"C\");\n    }\n    protected abstract void test();\n}\nclass ConcreteSample extends AbstractSample {\n    protected void test() {\n        System.out.println(\"B\");\n    }\n}\npublic class Main {\n    public static void main(String[] args) {\n        AbstractSample s = new ConcreteSample();\n        s.sample();\n    }\n}",
+    "choices": [
+      "「A」「B」「C」と表示される",
+      "「A」「C」と表示される",
+      "AbstractSampleクラスでコンパイルエラーが発生する",
+      "ConcreteSampleクラスでコンパイルエラーが発生する",
+      "Mainクラスでコンパイルエラーが発生する",
+      "実行時に例外がスローされる"
+    ],
+    "answerIndex": 0,
+    "explanation": "sampleメソッドが呼ばれると「A」、test()の実装で「B」、続いて「C」と順に表示される。"
+  },
+  {
+    "id": 10,
+    "category": "クラスの継承、インタフェース、抽象クラス",
+    "difficulty": "初級",
+    "question": "オーバーライドに関する説明として正しいものを選びなさい。",
+    "code": "",
+    "choices": [
+      "引数リストの定義は、型、数、順番のすべてが同じでなければならない",
+      "戻り値は同じ型でなければいけない",
+      "抽象メソッドはオーバーライドできない",
+      "オーバーロードされたメソッドはオーバーライドできない"
+    ],
+    "answerIndex": 0,
+    "explanation": "オーバーライドは引数リストが完全に一致している必要がある。戻り値は共変戻り値であれば変更可能。"
+  },
+  {
+    "id": 11,
+    "category": "クラスの継承、インタフェース、抽象クラス",
+    "difficulty": "中級",
+    "question": "サブクラスにhelloメソッドをオーバーライドしようとするとき、適切なアクセス修飾子を選びなさい。",
+    "code": "public class Sample {\n    protected void hello() {\n        System.out.println(\"hello.\");\n    }\n}",
+    "choices": [
+      "デフォルト（アクセス修飾子なし）",
+      "private",
+      "public",
+      "アクセス修飾子は変えられない"
+    ],
+    "answerIndex": 2,
+    "explanation": "オーバーライドする際はスーパークラスと同等か、それより緩やかなアクセス修飾子しか付けられない。よってprotectedをpublicに拡張することは可能。"
+  },
+  {
+    "id": 12,
+    "category": "クラスの継承、インタフェース、抽象クラス",
+    "difficulty": "中級",
+    "question": "次のクラスを利用して正しい実行結果を選びなさい。",
+    "code": "class A {\n    String val = \"A\";\n    void print() {\n        System.out.print(val);\n    }\n}\nclass B extends A {\n    String val = \"B\";\n}\npublic class Main {\n    public static void main(String[] args) {\n        A a = new A();\n        A b = new B();\n        System.out.print(a.val);\n        System.out.print(b.val);\n        a.print();\n        b.print();\n    }\n}",
+    "choices": [
+      "\"ABAB\" と表示される",
+      "\"AAAA\" と表示される",
+      "\"AAAB\" と表示される",
+      "Bクラスでコンパイルエラーが発生する",
+      "Mainクラスでコンパイルエラーが発生する",
+      "実行時に例外がスローされる"
+    ],
+    "answerIndex": 0,
+    "explanation": "フィールドの隠蔽によりa.valは\"A\"、b.valも型Aの参照なので\"A\"。print()はオーバーライドされていないため両方とも\"A\"を出力する。結果はABAB。"
+  },
+  {
+    "id": 13,
+    "category": "クラスの継承、インタフェース、抽象クラス",
+    "difficulty": "初級",
+    "question": "次のクラスを利用して正しい結果を選びなさい。",
+    "code": "interface Worker {\n    void work();\n}\nclass Employee {\n    public void work() {\n        System.out.println(\"work\");\n    }\n}\nclass Engineer extends Employee implements Worker {}\npublic class Main {\n    public static void main(String[] args) {\n        Worker worker = new Engineer();\n        worker.work();\n    }\n}",
+    "choices": [
+      "Engineerクラスでコンパイルエラーが発生する",
+      "Mainクラスでコンパイルエラーが発生する",
+      "\"work\" と表示される",
+      "実行時に例外がスローされる"
+    ],
+    "answerIndex": 2,
+    "explanation": "EngineerはEmployeeを継承しているため、Employeeのwork()が利用される。結果は「work」と表示される。"
+  },
+  {
+    "id": 14,
+    "category": "クラスの継承、インタフェース、抽象クラス",
+    "difficulty": "上級",
+    "question": "次のクラスとインタフェースを利用するMainクラスをコンパイル、実行した結果を選びなさい。",
+    "code": "public interface Worker {\n    void work();\n}\nclass Employee implements Worker {\n    public void work() { System.out.println(\"work\"); }\n    public void report() { System.out.println(\"report\"); }\n}\nclass Engineer extends Employee {\n    public void create() { System.out.println(\"create future\"); }\n}\npublic class Main {\n    public static void main(String[] args) {\n        Worker a = new Engineer();\n        Employee b = new Engineer();\n        Engineer c = new Engineer();\n        a.create();\n        b.work();\n        c.report();\n    }\n}",
+    "choices": [
+      "Mainクラスの6行目でコンパイルエラーが発生する",
+      "Mainクラスの7行目でコンパイルエラーが発生する",
+      "Mainクラスの8行目でコンパイルエラーが発生する",
+      "選択肢AとBの両方",
+      "選択肢BとCの両方"
+    ],
+    "answerIndex": 0,
+    "explanation": "Worker型変数aではcreate()メソッドが利用できないため、Mainクラスの6行目でコンパイルエラーとなる。"
+  },
+  {
+    "id": 15,
+    "category": "クラスの継承、インタフェース、抽象クラス",
+    "difficulty": "中級",
+    "question": "次のプログラムを確認してください。これらのクラスやインタフェースを利用する以下のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。",
+    "code": "public interface A {}\n\npublic class B implements A {}\n\npublic class C extends B {}\n\npublic class D {}\n\npublic class Main {\n    public static void main(String[] args) {\n        A[] array = {\n            new B(),\n            new C(),\n            new A(),\n            new D()\n        };\n    }\n}",
+    "choices": [
+      "4行目でコンパイルエラーが発生する",
+      "5行目でコンパイルエラーが発生する",
+      "6行目でコンパイルエラーが発生する",
+      "7行目でコンパイルエラーが発生する",
+      "選択肢AとBの両方",
+      "選択肢BとCの両方",
+      "選択肢CとDの両方",
+      "正常に動作する"
+    ],
+    "answerIndex": 2,
+    "explanation": "インタフェースは直接インスタンス化できないため、`new A()` の箇所でコンパイルエラーが発生します。"
+  },
+  {
+    "id": 16,
+    "category": "クラスの継承、インタフェース、抽象クラス",
+    "difficulty": "初級",
+    "question": "次のプログラムを確認してください。これらのクラスを利用する以下のプログラムを実行し、「hello」とコンソールに表示したい。4行目の空欄に入るコードとして、正しいものを選びなさい。",
+    "code": "class A {}\n\nclass B extends A {\n    void hello() {\n        System.out.println(\"hello\");\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        // 空欄\n        b.hello();\n    }\n}",
+    "choices": [
+      "A b = a;",
+      "A b = new B();",
+      "A b = (A) a;",
+      "D b = a;",
+      "B b = (A) a;",
+      "B b = (B) a;"
+    ],
+    "answerIndex": 5,
+    "explanation": "変数aはA型ですが、実際のインスタンスはB型です。`hello()`を呼び出すにはB型にキャストする必要があるため、`B b = (B) a;` が正解です。"
+  },
+  {
+    "id": 17,
+    "category": "クラスの継承、インタフェース、抽象クラス",
+    "difficulty": "中級",
+    "question": "次のプログラムを確認してください。これらのクラスを利用する以下のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。",
+    "code": "class A {\n    void hello() {\n        System.out.println(\"A\");\n    }\n}\n\nclass B extends A {\n    void hello() {\n        System.out.println(\"B\");\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        A a = new A();\n        B b = (B) a;\n        b.hello();\n    }\n}",
+    "choices": [
+      "Aが表示される",
+      "Bが表示される",
+      "Mainクラスでコンパイルエラーが発生する",
+      "実行時に例外がスローされる"
+    ],
+    "answerIndex": 3,
+    "explanation": "変数aはA型のインスタンスなので、Bにキャストすると実行時に`ClassCastException`が発生します。"
+  },
+  {
+    "id": 18,
+    "category": "クラスの継承、インタフェース、抽象クラス",
+    "difficulty": "初級",
+    "question": "次のプログラムを確認してください。コンソールに「10」と表示するために、Sampleクラスの4行目の空欄に入るコードとして正しいものを選びなさい。（2つ選択）",
+    "code": "class Sample {\n    private int num;\n    public Sample(int num) {\n        // 空欄\n    }\n    public int getNum() {\n        return num;\n    }\n    public void setNum(int num) {\n        this.num = num;\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Sample s = new Sample(10);\n        System.out.println(s.getNum());\n    }\n}",
+    "choices": [
+      "this.num = num;",
+      "this->num = num;",
+      "num = num;",
+      "setNum(num);",
+      "super.setNum(num);"
+    ],
+    "answerIndex": [0, 3],
+    "explanation": "コンストラクタでフィールド`num`に引数を代入する必要があります。直接代入`this.num = num;` または `setNum(num);` が正解です。"
+  },
+  {
+    "id": 19,
+    "category": "クラスの継承、インタフェース、抽象クラス",
+    "difficulty": "中級",
+    "question": "次のプログラムを確認してください。これらのクラスを利用する以下のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。",
+    "code": "class Parent {\n    String name;\n    String getName() {\n        return this.name;\n    }\n}\n\nclass Child extends Parent {\n    String name;\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Child child = new Child();\n        child.name = \"sample\";\n        System.out.println(child.getName());\n    }\n}",
+    "choices": [
+      "「sample」と表示される",
+      "「null」と表示される",
+      "何も表示されない",
+      "コンパイルエラーが発生する",
+      "実行時に例外がスローされる"
+    ],
+    "answerIndex": 1,
+    "explanation": "親クラスの`name`と子クラスの`name`は別フィールドです。`child.name`に代入したのは子クラス側であり、`getName()`が参照するのは親クラスの`name`なので`null`が表示されます。"
+  },
+  {
+    "id": 20,
+    "category": "クラスの継承、インタフェース、抽象クラス",
+    "difficulty": "初級",
+    "question": "次のプログラムを確認してください。これらのクラスを利用する以下のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。",
+    "code": "class A {\n    public A() {\n        System.out.println(\"A\");\n    }\n}\n\nclass B extends A {\n    public B() {\n        System.out.println(\"B\");\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n    }\n}",
+    "choices": [
+      "「A」と表示される",
+      "「B」と表示される",
+      "「A」「B」と表示される",
+      "「B」「A」と表示される",
+      "コンパイルエラーが発生する",
+      "実行時に例外がスローされる"
+    ],
+    "answerIndex": 2,
+    "explanation": "Bのコンストラクタが呼ばれる際に、まずAのコンストラクタが呼ばれるため「A」「B」と順に表示されます。"
+  },
+  {
+    "id": 21,
+    "category": "クラスの継承、インタフェース、抽象クラス",
+    "difficulty": "上級",
+    "question": "次のプログラムを確認してください。これらのクラスを利用する以下のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。",
+    "code": "class Parent {\n    public Parent() {\n        System.out.println(\"A\");\n    }\n    public Parent(String val) {\n        this();\n        System.out.println(val);\n    }\n}\n\nclass Child extends Parent {\n    public Child() {\n        super(\"B\");\n        System.out.println(\"C\");\n    }\n    public Child(String val) {\n        this();\n        System.out.println(val);\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        new Child(\"D\");\n    }\n}",
+    "choices": [
+      "「A」「B」「C」「D」と表示される",
+      "「A」「B」と表示される",
+      "「B」「A」「D」「C」と表示される",
+      "「A」「B」「D」「C」と表示される",
+      "コンパイルエラーが発生する",
+      "実行時に例外がスローされる"
+    ],
+    "answerIndex": 0,
+    "explanation": "Child(String) → this() で Child() が呼ばれ、Child() 内で super(\"B\") により Parent(String) が呼ばれ、その中で this() により Parent() が呼ばれます。結果として「A」「B」「C」「D」と順に出力されます。"
+  }
+]
+

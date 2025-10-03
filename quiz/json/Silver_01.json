@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "category": "パッケージ",
+    "category": "簡単なJavaプログラムの作成",
     "difficulty": "中級",
     "question": "パッケージに関する説明として、正しいものを選びなさい。（3つ選択）",
     "code": "",
@@ -17,7 +17,7 @@
   },
   {
     "id": 2,
-    "category": "パッケージ",
+    "category": "簡単なJavaプログラムの作成",
     "difficulty": "中級",
     "question": "次のうち、パッケージ宣言が正しく記述されているコードを選びなさい。（1つ選択）",
     "code": "",
@@ -27,7 +27,7 @@
   },
   {
     "id": 3,
-    "category": "インポート",
+    "category": "簡単なJavaプログラムの作成",
     "difficulty": "中級",
     "question": "次のうち、インポート宣言をしなくても、自動的にインポートされるものはどれか。正しいものを選びなさい。（2つ選択）",
     "code": "",
@@ -42,7 +42,7 @@
   },
   {
     "id": 4,
-    "category": "パッケージとアクセス修飾子",
+    "category": "簡単なJavaプログラムの作成",
     "difficulty": "上級",
     "question": "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
     "code": "public class Sample {\n    protected int num = 10;\n}\n\npackage ex4;\npublic class SampleImpl extends Sample {\n    public static void main(String[] args) {\n        System.out.println(num);\n    }\n}",
@@ -57,7 +57,7 @@
   },
   {
     "id": 5,
-    "category": "アプリケーション実行",
+    "category": "簡単なJavaプログラムの作成",
     "difficulty": "中級",
     "question": "アプリケーションのエントリーポイントとなるメソッドの条件として、正しいものを選びなさい。（3つ選択）",
     "code": "",
@@ -74,7 +74,7 @@
   },
   {
     "id": 6,
-    "category": "アプリケーション実行",
+    "category": "簡単なJavaプログラムの作成",
     "difficulty": "初級",
     "question": "次のプログラムを以下に示したコマンドで実行したときの結果として、正しいものを選びなさい。（1つ選択）",
     "code": "> java Main java one two\n\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(args[0] + ' ' + args[1]);\n    }\n}",
@@ -90,7 +90,7 @@
   },
   {
     "id": 7,
-    "category": "Java実行コマンド",
+    "category": "簡単なJavaプログラムの作成",
     "difficulty": "初級",
     "question": "次のうち、Javaのクラスを実行するコマンドとして、正しいものを選びなさい。（2つ選択）",
     "code": "",
@@ -107,7 +107,7 @@
   },
   {
     "id": 8,
-    "category": "アプリケーション実行",
+    "category": "簡単なJavaプログラムの作成",
     "difficulty": "上級",
     "question": "以下に示したSampleクラスを実行したときの結果として、正しいものを選びなさい。なお、実行時のコマンドは次のとおりとする。（1つ選択）",
     "code": "> java Sample a ¥* a¥* \"a b c\"\n\npublic class Sample {\n    public static void main(String... args) {\n        System.out.println(args.length);\n    }\n}",

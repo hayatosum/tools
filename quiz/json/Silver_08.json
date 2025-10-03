@@ -1,0 +1,121 @@
+[
+  {
+    "id": 1,
+    "category": "関数型インタフェース、ラムダ式",
+    "difficulty": "中級",
+    "question": "次のプログラムを確認し、Mainクラスの空欄に入るコードとして、正しいものを選びなさい。（2つ選択）",
+    "code": "interface Algorithm {\n    void perform(String name);\n}\n\nclass Service {\n    private Algorithm logic;\n    public void setLogic(Algorithm logic) {\n        this.logic = logic;\n    }\n    public void doProcess(String name) {\n        System.out.println(\"start\");\n        this.logic.perform(name);\n        System.out.println(\"end\");\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Algorithm algorithm = (＿＿＿＿＿) -> {\n            System.out.println(\"hello, \" + name);\n        };\n        Service s = new Service();\n        s.setLogic(algorithm);\n        s.doProcess(\"Lambda\");\n    }\n}",
+    "choices": [
+      "()",
+      "(name)",
+      "(String)",
+      "(String name)"
+    ],
+    "answerIndex": [1, 3],
+    "explanation": "ラムダ式の引数は、型を省略して (name) と書くか、型を明示して (String name) と書けます。() や (String) は文法的に不正です。"
+  },
+  {
+    "id": 2,
+    "category": "関数型インタフェース、ラムダ式",
+    "difficulty": "中級",
+    "question": "次のプログラムの // insert code here に入るコードとして、誤っているものを選びなさい。（2つ選択）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        // insert code here\n        System.out.println(f.test(\"Lambda\"));\n    }\n    private static interface Function {\n        String test(String name);\n    }\n}",
+    "choices": [
+      "Function f = (name) -> { return \"hello, \" + name; };",
+      "Function f = (name) -> { \"hello, \" + name; };",
+      "Function f = (name) -> return \"hello, \" + name;",
+      "Function f = (name) -> \"hello, \" + name;",
+      "Function f = name -> { return \"hello, \" + name; };"
+    ],
+    "answerIndex": [1, 2],
+    "explanation": "ラムダ式では return を使う場合ブロックが必要です。選択肢BやCは文法的に不正です。その他の記述は有効です。"
+  },
+  {
+    "id": 3,
+    "category": "関数型インタフェース、ラムダ式",
+    "difficulty": "初級",
+    "question": "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String val = \"A\";\n        Function f = (val) -> {\n            System.out.println(val);\n        };\n        f.test(\"B\");\n    }\n}\n\ninterface Function {\n    void test(String val);\n}",
+    "choices": [
+      "Aが表示される",
+      "Bが表示される",
+      "コンパイルエラーが発生する",
+      "実行時に例外がスローされる"
+    ],
+    "answerIndex": 1,
+    "explanation": "ラムダ式の引数名 val が外側の変数 val をシャドウイングするため、ラムダ内で出力されるのは引数 \"B\" です。"
+  },
+  {
+    "id": 4,
+    "category": "関数型インタフェース、ラムダ式",
+    "difficulty": "中級",
+    "question": "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
+    "code": "public class Sample {\n    public static void main(String[] args) {\n        int cnt = 0;\n        Runnable r = () -> {\n            for (cnt = 0; cnt < 10; cnt++) {\n                System.out.println(cnt++);\n            }\n        };\n        new Thread(r).start();\n    }\n}",
+    "choices": [
+      "0123456789が表示される",
+      "02468が表示される"
+    ],
+    "answerIndex": 1,
+    "explanation": "ループ内で cnt++ が2回実行されるため、偶数だけが表示されます。結果は 0, 2, 4, 6, 8 です。"
+  },
+  {
+    "id": 5,
+    "category": "関数型インタフェース、ラムダ式",
+    "difficulty": "中級",
+    "question": "次のプログラムを実行し、「ok」と表示したい。11行目の空欄に入るコードとして、正しいものを選びなさい。（1つ選択）",
+    "code": "import java.util.Arrays;\nimport java.util.List;\nimport java.util.function.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        List<Sample> list = Arrays.asList(\n            new Sample(10),\n            new Sample(20),\n            new Sample(30));\n\n        ＿＿＿＿＿＿＿＿\n\n        if (x.test(new Sample(20))) {\n            System.out.println(\"ok\");\n        }\n    }\n}\n\nclass Sample {\n    private int num;\n    public Sample(int num) { this.num = num; }\n    public boolean equals(Object obj) {\n        if (!(obj instanceof Sample)) return false;\n        return this.num == ((Sample) obj).num;\n    }\n}",
+    "choices": [
+      "Predicate<Sample> x = s -> list.contains(s);",
+      "Supplier<Sample> x = s -> list.contains(s);",
+      "Consumer<Sample> x = s -> list.contains(s);",
+      "Function<Sample> x = s -> list.contains(s);"
+    ],
+    "answerIndex": 0,
+    "explanation": "test メソッドを持つ Predicate が正しい。Supplier や Consumer、Function には test メソッドがないため不正です。"
+  },
+  {
+    "id": 6,
+    "category": "関数型インタフェース、ラムダ式",
+    "difficulty": "初級",
+    "question": "java.util.functionパッケージに属する関数型インタフェースで、引数を受け取らず、結果を戻すためのものを選びなさい。（1つ選択）",
+    "code": "",
+    "choices": [
+      "Consumer",
+      "Function",
+      "Supplier",
+      "Predicate"
+    ],
+    "answerIndex": 2,
+    "explanation": "Supplier は引数を取らず、結果を返す関数型インタフェースです。Consumer は値を消費する、Function は引数を受けて結果を返す、Predicate は真偽値を返します。"
+  },
+  {
+    "id": 7,
+    "category": "関数型インタフェース、ラムダ式",
+    "difficulty": "中級",
+    "question": "次のプログラムの空欄に入るコードとして、正しいものを選びなさい。（1つ選択）",
+    "code": "import java.util.function.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        ＿＿＿＿＿＿＿＿ (String, Integer) func = (str) -> {\n            return Integer.parseInt(str);\n        };\n        System.out.println(func.apply(\"100\") * 2);\n    }\n}",
+    "choices": [
+      "Consumer",
+      "Function",
+      "Supplier",
+      "Predicate"
+    ],
+    "answerIndex": 1,
+    "explanation": "Function<T,R> は T を受け取り R を返すインタフェースです。ここでは String を受け取り Integer を返すため Function が正解です。"
+  },
+  {
+    "id": 8,
+    "category": "関数型インタフェース、ラムダ式",
+    "difficulty": "初級",
+    "question": "java.util.function.Consumerの説明として、正しいものを選びなさい。（1つ選択）",
+    "code": "",
+    "choices": [
+      "引数を受け取り、その値を使って処理だけ行い、結果は戻さない",
+      "引数を受け取らずに、結果だけを戻す",
+      "引数を受け取り判定を行う",
+      "引数を受け取り、それを使って何らかの処理をし、その処理結果を戻す"
+    ],
+    "answerIndex": 0,
+    "explanation": "Consumer は引数を受け取り、何らかの処理をするが戻り値は返さないインタフェースです。"
+  }
+]

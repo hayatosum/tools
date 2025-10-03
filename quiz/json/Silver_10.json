@@ -1,0 +1,271 @@
+[
+  {
+    "id": 1,
+    "category": "例外処理",
+    "difficulty": "初級",
+    "question": "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        try {\n            int[] array = {};\n            array[0] = 10;\n            System.out.println(\"finish\");\n        } catch (ArrayIndexOutOfBoundsException e) {\n            System.out.println(\"error\");\n        }\n    }\n}",
+    "choices": [
+      "「finish」と表示される",
+      "「error」と表示される",
+      "「finish」「error」と表示される",
+      "「error」「finish」と表示される",
+      "コンパイルエラーが発生する",
+      "実行時に例外がスローされる"
+    ],
+    "answerIndex": 1,
+    "explanation": "空配列に対して array[0] へ代入しようとして実行時に ArrayIndexOutOfBoundsException が発生し、catch 節で「error」を出力する。"
+  },
+  {
+    "id": 2,
+    "category": "例外処理",
+    "difficulty": "中級",
+    "question": "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。なお、実行時には起動パラメータを何も渡さないこととする。（1つ選択）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        try {\n            if (args.length == 0) {\n                System.out.println(\"A\");\n            }\n        } catch (NullPointerException e) {\n            System.out.println(\"B\");\n        } finally {\n            System.out.println(\"C\");\n        }\n    }\n}",
+    "choices": [
+      "「A」と表示される",
+      "「B」と表示される",
+      "「C」と表示される",
+      "「A」「C」と表示される",
+      "コンパイルエラーが発生する",
+      "実行時に例外がスローされる"
+    ],
+    "answerIndex": 3,
+    "explanation": "引数は空配列なので length==0 が真となり「A」を出力し、その後 finally で必ず「C」を出力する。"
+  },
+  {
+    "id": 3,
+    "category": "例外処理",
+    "difficulty": "中級",
+    "question": "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
+    "code": "public class SampleException extends Exception {}\npublic class SubSampleException extends SampleException {}\n\npublic class Main {\n    public static void main(String[] args) {\n        try {\n            sample();\n            sub();\n        } catch (SampleException e) {\n            System.out.println(\"A\");\n        } catch (SubSampleException e) {\n            System.out.println(\"B\");\n        }\n    }\n\n    private static void sample() throws SampleException {\n        throw new SampleException();\n    }\n\n    private static void sub() throws SubSampleException {\n        throw new SubSampleException();\n    }\n}",
+    "choices": [
+      "「A」と表示される",
+      "「B」と表示される",
+      "「B」「A」と表示される"
+    ],
+    "answerIndex": 0,
+    "explanation": "最初の sample() で SampleException が送出され、最初の catch に捕捉されて「A」を出力。sub() は呼ばれない。"
+  },
+  {
+    "id": 4,
+    "category": "例外処理",
+    "difficulty": "初級",
+    "question": "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        try {\n            Object obj = null;\n            System.out.println(obj.toString());\n            System.out.println(\"A\");\n        } finally {\n            System.out.println(\"B\");\n        } catch (NullPointerException e) {\n            System.out.println(\"C\");\n        }\n    }\n}",
+    "choices": [
+      "「B」「C」と表示される",
+      "「C」「B」と表示される",
+      "「C」と表示される",
+      "コンパイルエラーが発生する",
+      "実行時に例外がスローされる"
+    ],
+    "answerIndex": 3,
+    "explanation": "try の直後に finally、その後に catch と書かれており構文違反。finally は catch 群の後に 1 回だけ記述できる。"
+  },
+  {
+    "id": 5,
+    "category": "例外処理",
+    "difficulty": "中級",
+    "question": "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        System.out.println(test(null));\n    }\n\n    private static String test(Object obj) {\n        try {\n            try {\n                System.out.println(obj.toString());\n            } catch (NullPointerException e) {\n                return \"A\";\n            } finally {\n                System.out.println(\"B\");\n            }\n        }\n        return \"C\";\n    }\n}",
+    "choices": [
+      "「A」と表示される",
+      "「A」「B」と表示される",
+      "「B」「A」と表示される",
+      "「C」と表示される",
+      "コンパイルエラーが発生する",
+      "実行時に例外がスローされる"
+    ],
+    "answerIndex": 2,
+    "explanation": "内側の try で NPE を捕捉し \"A\" を返すが、その前に finally で「B」を出力。main の println で \"A\" が表示されるため順に「B」「A」。"
+  },
+  {
+    "id": 6,
+    "category": "例外処理",
+    "difficulty": "中級",
+    "question": "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int result = sample();\n        System.out.println(result);\n    }\n    private static int sample() {\n        try {\n            throw new RuntimeException();\n        } catch (RuntimeException e) {\n            return 10;\n        } finally {\n            return 20;\n        }\n    }\n}",
+    "choices": [
+      "10が表示される",
+      "20が表示される",
+      "30が表示される",
+      "コンパイルエラーが発生する",
+      "実行時に例外がスローされる"
+    ],
+    "answerIndex": 1,
+    "explanation": "finally の return は catch/try の return を上書きするため、最終的に 20 が返る。"
+  },
+  {
+    "id": 7,
+    "category": "例外処理",
+    "difficulty": "中級",
+    "question": "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int result = sample();\n        System.out.println(result);\n    }\n    private static int sample() {\n        int val = 0;\n        try {\n            String[] array = {\"A\",\"B\",\"C\"};\n            System.out.println(array[3]);\n        } catch (RuntimeException e) {\n            val = 10;\n            return val;\n        } finally {\n            val += 10;\n        }\n        return val;\n    }\n}",
+    "choices": [
+      "0が表示される",
+      "10が表示される",
+      "20が表示される",
+      "コンパイルエラーが発生する",
+      "実行時に例外がスローされる"
+    ],
+    "answerIndex": 1,
+    "explanation": "catch の return 値は finally 実行前に評価済み。finally でローカル変数を変更しても戻り値は 10 のまま。"
+  },
+  {
+    "id": 8,
+    "category": "例外処理",
+    "difficulty": "初級",
+    "question": "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        try {\n            System.out.println(\"A\");\n        } finally {\n            System.out.println(\"B\");\n        } finally {\n            System.out.println(\"C\");\n        }\n    }\n}",
+    "choices": [
+      "「A」「B」「C」と表示される",
+      "「A」「B」と表示される",
+      "「A」「C」と表示される",
+      "コンパイルエラーが発生する",
+      "実行時に例外がスローされる"
+    ],
+    "answerIndex": 3,
+    "explanation": "1つの try に対して finally は 1 つだけ。finally を連続して宣言しており構文エラー。"
+  },
+  {
+    "id": 9,
+    "category": "例外処理",
+    "difficulty": "中級",
+    "question": "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        try {\n            try {\n                String[] array = {\"A\",\"B\",\"C\"};\n                System.out.println(array[3]);\n            } catch (ArrayIndexOutOfBoundsException e) {\n                System.out.println(\"D\");\n            } finally {\n                System.out.println(\"E\");\n            }\n        } catch (ArrayIndexOutOfBoundsException e) {\n            System.out.println(\"F\");\n        } finally {\n            System.out.println(\"G\");\n        }\n    }\n}",
+    "choices": [
+      "「C」「E」「G」と表示される",
+      "「D」「E」「G」と表示される",
+      "「E」「F」「G」と表示される",
+      "「D」「E」と表示される",
+      "「F」「G」と表示される",
+      "コンパイルエラーが発生する",
+      "実行時に例外がスローされる"
+    ],
+    "answerIndex": 1,
+    "explanation": "内側の catch が例外を処理し「D」、続いて内側 finally の「E」、外側 finally の「G」の順で出力される。"
+  },
+  {
+    "id": 10,
+    "category": "例外処理",
+    "difficulty": "中級",
+    "question": "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
+    "code": "import java.io.FileInputStream;\nimport java.io.FileNotFoundException;\n\npublic class Sample {\n    public static void main(String[] args) {\n        try (FileInputStream is = new FileInputStream(\"sample.txt\")) {\n            throw new FileNotFoundException();\n        } catch (Exception e) {\n            System.out.println(\"A\");\n        } finally {\n            if (is != null) {\n                is.close();\n            }\n        }\n        System.out.println(\"B\");\n    }\n}",
+    "choices": [
+      "「A」と表示される",
+      "「B」と表示される",
+      "「A」「B」と表示される",
+      "「B」「A」と表示される",
+      "コンパイルエラーが発生する"
+    ],
+    "answerIndex": 4,
+    "explanation": "try-with-resources で宣言した変数 is のスコープは try 節内のみ。finally で is を参照しておりコンパイルエラー。"
+  },
+  {
+    "id": 11,
+    "category": "例外処理",
+    "difficulty": "中級",
+    "question": "次の Sample クラスの2行目の空欄に入るコードとして、正しいものを選びなさい。（2つ選択）",
+    "code": "public class SampleException extends Exception {}\npublic class TestException extends RuntimeException {}\n\npublic class Sample {\n    public void hello(String name) _________ {\n        if (name == null) {\n            throw new SampleException();\n        }\n        if (\"\".equals(name)) {\n            throw new TestException();\n        }\n        // do something\n    }\n}",
+    "choices": [
+      "throws SampleException, TestException",
+      "throws SampleException; TestException",
+      "throws TestException",
+      "throws SampleException",
+      "何も記述しなくてもよい"
+    ],
+    "answerIndex": 0,
+    "explanation": "チェック例外である SampleException を送出するためメソッド宣言に throws SampleException が必須。RuntimeException 系は任意なので同時に列挙してもよい（A も可）。"
+  },
+  {
+    "id": 12,
+    "category": "例外処理",
+    "difficulty": "初級",
+    "question": "エラーに関する説明として、誤っているものを選びなさい。（1つ選択）",
+    "code": "",
+    "choices": [
+      "エラーは、プログラムの実行環境で重大な異常が発生したときにスローされる",
+      "エラーは、Error クラスを継承した型である",
+      "エラーは throws 句に宣言する必要はない",
+      "エラーは例外処理を記述できない"
+    ],
+    "answerIndex": 3,
+    "explanation": "Error も Throwable であり try-catch で捕捉することは可能（推奨はされない）。したがって「例外処理を記述できない」は誤り。"
+  },
+  {
+    "id": 13,
+    "category": "例外処理",
+    "difficulty": "初級",
+    "question": "次のプログラムを確認してください。このプログラムを次のコマンドで実行したときの結果として、正しいものを選びなさい。（1つ選択）  → java Main",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        System.out.println(args[0].length());\n    }\n}",
+    "choices": [
+      "「null」と表示される",
+      "「0」と表示される",
+      "ArrayIndexOutOfBoundsExceptionが発生する",
+      "NullPointerExceptionが発生する"
+    ],
+    "answerIndex": 2,
+    "explanation": "引数なしで実行すると args[0] が存在せず、配列境界外アクセスの ArrayIndexOutOfBoundsException。"
+  },
+  {
+    "id": 14,
+    "category": "例外処理",
+    "difficulty": "初級",
+    "question": "次のプログラムをコンパイル、実行したときに発生する例外の種類として、正しいものを選びなさい。（1つ選択）",
+    "code": "import java.util.ArrayList;\nimport java.util.List;\n\npublic class Main {\n    public static void main(String[] args) {\n        List<String> list = new ArrayList<>();\n        list.get(0);\n    }\n}",
+    "choices": [
+      "IndexOutOfBoundsException",
+      "ArrayIndexOutOfBoundsException",
+      "StringIndexOutOfBoundsException",
+      "ListIndexOutOfBoundsException"
+    ],
+    "answerIndex": 0,
+    "explanation": "空のリストで get(0) を呼び出すと IndexOutOfBoundsException が送出される。"
+  },
+  {
+    "id": 15,
+    "category": "例外処理",
+    "difficulty": "中級",
+    "question": "次のプログラムを確認してください。これらのクラスを利用する以下のプログラムを、コンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
+    "code": "public class A {\n    private int num;\n    public A(int num) { this.num = num; }\n    public boolean equals(Object obj) {\n        A a = (A) obj;            \n        return this.num == a.num;\n    }\n}\n\npublic class B {\n    private int num;\n    public B(int num) { this.num = num; }\n    public boolean equals(Object obj) {\n        B b = (B) obj;            \n        return this.num == b.num;\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        A a = new A(10);\n        B b = new B(10);\n        System.out.println(a.equals(b));\n    }\n}",
+    "choices": [
+      "trueが表示される",
+      "falseが表示される",
+      "コンパイルエラーが発生する",
+      "実行時に例外がスローされる"
+    ],
+    "answerIndex": 3,
+    "explanation": "A#equals で obj を A にキャストしており、B インスタンスを渡すと ClassCastException が発生する。"
+  },
+  {
+    "id": 16,
+    "category": "例外処理",
+    "difficulty": "初級",
+    "question": "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String str = null;\n        if (str.equals(\"\")) {\n            System.out.println(\"blank\");\n        } else {\n            System.out.println(\"null\");\n        }\n    }\n}",
+    "choices": [
+      "「blank」と表示される",
+      "「null」と表示される",
+      "IllegalArgumentExceptionが発生する",
+      "NullPointerExceptionが発生する"
+    ],
+    "answerIndex": 3,
+    "explanation": "str が null のため equals 呼び出し時点で NullPointerException。"
+  },
+  {
+    "id": 17,
+    "category": "例外処理",
+    "difficulty": "初級",
+    "question": "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        main(args);\n    }\n}",
+    "choices": [
+      "何も表示されない",
+      "StackOverflowErrorが発生する",
+      "IllegalStateExceptionが発生する",
+      "ExceptionInInitializerErrorが発生する"
+    ],
+    "answerIndex": 1,
+    "explanation": "再帰的に main を呼び出し続けるためスタックが枯渇し StackOverflowError が送出される。"
+  }
+]
