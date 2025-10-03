@@ -256,7 +256,9 @@ function showResults() {
   if (fileInput && fileInput.files && fileInput.files[0]) {
     source = `local:${fileInput.files[0].name}`;
   } else {
-    source = currentFile;
+    // ラベル（表示テキスト）を保存
+    const selectedOption = fileSelect.options[fileSelect.selectedIndex];
+    source = selectedOption ? selectedOption.textContent : currentFile;
   }
 
   appendHistoryEntry({
