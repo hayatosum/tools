@@ -102,7 +102,7 @@
       "javap Test",
       "jmod Test.java"
     ],
-    "answerIndex": [1, 3],
+    "answerIndex": [1, 2],
     "explanation": "クラス実行は `java クラス名`。ソースコードをコンパイルするのは `javac Test.java`。`javac Test` や `java Test.java` は誤り。"
   },
   {
