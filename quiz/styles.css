@@ -395,3 +395,20 @@ button:disabled {
   max-height: 400px;
   overflow-y: auto;
 }
+
+
+.trend-chart {
+  width: 100%;
+  max-width: 960px;
+  min-height: 200px;
+}
+.trend-dot {
+  r: 3.5;
+}
+
+.trend-legend { display:flex; gap:12px; align-items:center; color:var(--muted); font-size:0.9em; margin:6px 0 0; }
+.legend-chip { display:inline-block; width:12px; height:12px; border-radius:3px; vertical-align:-2px; margin-right:6px; }
+.legend-rate { background: var(--primary); }
+.legend-ma   { background: #888; }        /* 移動平均 */
+.legend-time { background: #16a34a; }     /* 秒/問（右軸） */
+.legend-pass { background: #dc2626; }     /* 63%ライン */

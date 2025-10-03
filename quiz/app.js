@@ -297,6 +297,9 @@ function showResults() {
     items
   });
   renderHistory();
+
+  renderHistory();
+  renderTrendChart();
   
   analyzeHistoryAndRender();
 
@@ -881,3 +884,135 @@ function getSeenIdSetFromHistory() {
 
 
 
+// ====== 正答率トレンド（直近20回） ======
+function getLastNRuns(n = 20) {
+  const hist = loadHistory(); // 既存: localStorage から
+  return hist.slice(0, n).reverse(); // 新→旧で保存しているので逆順にして古→新へ
+}
+
+// ====== 正答率トレンド（直近20回 + 合格ライン + 移動平均 + 秒/問の二軸） ======
+function getLastNRuns(n = 20) {
+  const hist = loadHistory();
+  return hist.slice(0, n).reverse(); // 古→新の順に
+}
+
+function movingAverage(arr, win = 5) {
+  if (win <= 1) return [...arr];
+  const out = [];
+  for (let i = 0; i < arr.length; i++) {
+    const s = Math.max(0, i - win + 1);
+    const slice = arr.slice(s, i + 1);
+    const avg = slice.reduce((a, b) => a + b, 0) / slice.length;
+    out.push(Math.round(avg * 10) / 10);
+  }
+  return out;
+}
+
+function renderTrendChart() {
+  const host = document.getElementById('trendChart');
+  if (!host) return;
+
+  const runs = getLastNRuns(20);
+  if (!runs.length) {
+    host.innerHTML = `<p class="sub">履歴がありません。</p>`;
+    return;
+  }
+
+  // ---- データ整形 ----
+  const xs = runs.map((_, i) => i);                     // 0..n-1
+  const rate = runs.map(r => Number(r.rate || 0));      // 正答率(%)
+  const ma   = movingAverage(rate, 5);                  // 5回移動平均
+  const secPerQ = runs.map(r => {
+    const per = r.elapsedMs && r.total ? r.elapsedMs / 1000 / r.total : null;
+    return per ?? 0;
+  });
+
+  // ---- SVG座標系 ----
+  const W = 860, H = 260;
+  const padL = 42, padR = 44, padT = 12, padB = 30; // 右に第2軸ラベル余白
+  const iw = W - padL - padR;
+  const ih = H - padT - padB;
+
+  // xスケール
+  const n = xs.length;
+  const xStep = n > 1 ? (iw / (n - 1)) : 0;
+  const X = (i) => padL + i * xStep;
+
+  // yスケール（左軸＝正答率 0..100）
+  const Y = (v) => padT + (100 - Math.max(0, Math.min(100, v))) * (ih / 100);
+
+  // y2スケール（右軸＝秒/問）…データの上限をよしなに
+  const maxSec = Math.max(60, Math.ceil(Math.max(...secPerQ) / 10) * 10); // 少なくとも60s
+  const Y2 = (sec) => padT + (1 - Math.max(0, Math.min(maxSec, sec)) / maxSec) * ih;
+
+  // ポリライン座標
+  const ptsRate = rate.map((v, i) => `${X(i)},${Y(v)}`).join(' ');
+  const ptsMA   = ma.map(  (v, i) => `${X(i)},${Y(v)}`).join(' ');
+  const ptsTime = secPerQ.map((v, i) => `${X(i)},${Y2(v)}`).join(' ');
+
+  // グリッド（左軸：0,20,40,60,80,100）
+  const gridYVals = [0, 20, 40, 60, 80, 100];
+
+  // 63%合格ライン
+  const pass = 63;
+  const passY = Y(pass);
+
+  // 軸ラベル用（右軸：0, maxSec/2, maxSec）
+  const rightTicks = [0, Math.round(maxSec/2), maxSec];
+
+  const svg = `
+<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="正答率推移と所要時間">
+  <rect x="0" y="0" width="${W}" height="${H}" fill="#fff"/>
+
+  <!-- 左グリッド＆ラベル（正答率%） -->
+  ${gridYVals.map(v => `
+    <line x1="${padL}" y1="${Y(v)}" x2="${W-padR}" y2="${Y(v)}" stroke="#eee"/>
+    <text x="${padL-6}" y="${Y(v)+4}" text-anchor="end" font-size="10" fill="#666">${v}%</text>
+  `).join('')}
+
+  <!-- X軸 -->
+  <line x1="${padL}" y1="${H-padB}" x2="${W-padR}" y2="${H-padB}" stroke="#ddd"/>
+
+  <!-- 合格ライン 63% -->
+  <line x1="${padL}" y1="${passY}" x2="${W-padR}" y2="${passY}" stroke="#dc2626" stroke-dasharray="6,6" />
+  <text x="${W-padR+2}" y="${passY+4}" font-size="10" fill="#dc2626">63%</text>
+
+  <!-- 折れ線（正答率） -->
+  <polyline points="${ptsRate}" fill="none" stroke="var(--primary)" stroke-width="2"/>
+
+  <!-- 移動平均（正答率） -->
+  <polyline points="${ptsMA}" fill="none" stroke="#888" stroke-width="2" stroke-dasharray="4,3"/>
+
+  <!-- データ点（正答率） -->
+  ${rate.map((v,i) => `
+    <circle cx="${X(i)}" cy="${Y(v)}" r="3.5" fill="var(--primary)">
+      <title>${i+1}回目: ${v}%</title>
+    </circle>
+  `).join('')}
+
+  <!-- 秒/問（右軸） -->
+  <polyline points="${ptsTime}" fill="none" stroke="#16a34a" stroke-width="2" opacity="0.9"/>
+  ${secPerQ.map((v,i) => `
+    <circle cx="${X(i)}" cy="${Y2(v)}" r="3.5" fill="#16a34a">
+      <title>${i+1}回目: ${v.toFixed(1)} 秒/問</title>
+    </circle>
+  `).join('')}
+
+  <!-- 右軸ラベル（秒/問） -->
+  ${rightTicks.map(t => `
+    <text x="${W-padR+2}" y="${Y2(t)+4}" font-size="10" fill="#666">${t}s</text>
+  `).join('')}
+</svg>
+
+<div class="trend-legend">
+  <span><i class="legend-chip legend-rate"></i>正答率</span>
+  <span><i class="legend-chip legend-ma"></i>移動平均(5)</span>
+  <span><i class="legend-chip legend-time"></i>秒/問（右軸）</span>
+  <span><i class="legend-chip legend-pass"></i>合格ライン63%</span>
+</div>
+  `;
+  host.innerHTML = svg;
+}
+
+
+renderTrendChart();
