@@ -1,302 +1,305 @@
-[
-  {
-    "id": 1,
-    "question": "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-    "code": "public class Main {\n    public static void main(String[] args) {\n        int val = 7;\n        bool flg = true;\n        if (flg == true) {\n            do {\n                System.out.println(val);\n            } while (val > 10);\n        }\n    }\n}",
-    "choices": [
-      "7が1回だけ表示される",
-      "何も表示されない",
-      "コンパイルエラーが発生する",
-      "実行時に例外がスローされる"
-    ],
-    "answerIndex": 2,
-    "explanation": "Javaにはbool型は存在せずbooleanを使うため、コンパイルエラーとなる。"
-  },
-  {
-    "id": 2,
-    "question": "次の式のうち、コンパイルエラーになるものを選びなさい。（1つ選択）",
-    "choices": [
-      "int a = 267;",
-      "int b = 0413;",
-      "int c = 0x10B;",
-      "int d = 0b1000001011;",
-      "int e = 0827;"
-    ],
-    "answerIndex": 4,
-    "explanation": "0827 は8進数リテラルとして不正（8は使用不可）。"
-  },
-  {
-    "id": 3,
-    "question": "次の式のうち、コンパイルエラーになるものを選びなさい。（5つ選択）",
-    "choices": [
-      "int a = 123_456_789;",
-      "int b = 5_______2;",
-      "int c = _123_456_789;",
-      "int d = 123_456_789_;",
-      "float e = 3._1415F;",
-      "long f = 999_99_9999_L;",
-      "byte g = 0b0_1;"
-    ],
-    "answerIndex": [2, 3, 4, 5, 6],
-    "explanation": "アンダースコアは数値の先頭・末尾や小数点の隣には使えない。"
-  },
-  {
-    "id": 4,
-    "question": "char型の変数の初期化として、正しいものを選びなさい。（1つ選択）",
-    "choices": [
-      "char a = \"a\";",
-      "char b = 'abc';",
-      "char c = 89;",
-      "char d = null;"
-    ],
-    "answerIndex": 2,
-    "explanation": "charは整数リテラルで初期化可能。"
-  },
-  {
-    "id": 5,
-    "question": "次の式のうち、コンパイルエラーになるものを選びなさい。（2つ選択）",
-    "choices": [
-      "int $a = 100;",
-      "int b_ = 200;",
-      "int _0 = 300;",
-      "int ${d} = 400;",
-      "int g.a = 700;"
-    ],
-    "answerIndex": [3, 4],
-    "explanation": "変数名に { } や . は使用できない。"
-  },
-  {
-    "id": 6,
-    "question": "次の変数宣言のうち、コンパイルエラーとならないものを選びなさい。（1つ選択）",
-    "choices": [
-      "var a;",
-      "var b = null;",
-      "var c = () -> {};",
-      "var d = {1, 2, 3};",
-      "var e = new ArrayList<>();"
-    ],
-    "answerIndex": 4,
-    "explanation": "varは型推論できる必要があり、ArrayListのインスタンス化は可能。"
-  },
-  {
-    "id": 7,
-    "question": "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-    "code": "public class Sample {\n    private var value;\n    public Sample(var value) {\n        this.value = value;\n    }\n    public void test() {\n        System.out.println(value);\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Sample s = new Sample(\"sample\");\n        s.test();\n    }\n}",
-    "choices": [
-      "「sample」と表示される",
-      "「null」と表示される",
-      "コンパイルエラーが発生する",
-      "実行時に例外がスローされる"
-    ],
-    "answerIndex": 2,
-    "explanation": "フィールドやメソッド引数ではvarは使えないためコンパイルエラー。"
-  },
-  {
-    "id": 8,
-    "question": "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-    "code": "public class A {\n    public void test() { System.out.println(\"A\"); }\n}\n\npublic class B extends A {\n    @Override public void test() { System.out.println(\"B\"); }\n}\n\npublic class C extends A {\n    @Override public void test() { System.out.println(\"C\"); }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        var a = new B();\n        a = new C();\n        a.test();\n    }\n}",
-    "choices": [
-      "コンパイルエラーが発生する",
-      "実行時例外がスローされる",
-      "Aが表示される",
-      "Bが表示される",
-      "Cが表示される"
-    ],
-    "answerIndex": 4,
-    "explanation": "a は var により A 型として推論され、最後に C 型を代入し test() を呼ぶと C が表示される。"
-  },
-  {
-    "id": 9,
-    "question": "Stringオブジェクトを作成するコードとして、正しいものを選びなさい。（2つ選択）",
-    "choices": [
-      "String a = new String(\"sample\");",
-      "String b = \"sample\";",
-      "String c = String.newInstance(\"sample\");",
-      "String d = String.valueOf('sample');"
-    ],
-    "answerIndex": [0, 1],
-    "explanation": "Stringのインスタンス生成はnewまたはリテラル。newInstanceは存在せず、valueOfは単一のchar/intなど。"
-  },
-  {
-    "id": 10,
-    "question": "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-    "code": "public class Main {\n    public static void main(String[] args) {\n        String str = \"hoge, world.\";\n        hello(str);\n        System.out.println(str);\n    }\n    private static void hello(String msg) {\n        msg.replaceAll(\"hoge\", \"hello\");\n    }\n}",
-    "choices": [
-      "「hoge, world.」と表示される",
-      "「hello, world.」と表示される",
-      "「hello」と表示される",
-      "「hello, hello.」と表示される",
-      "コンパイルエラーが発生する",
-      "実行時に例外がスローされる"
-    ],
-    "answerIndex": 0,
-    "explanation": "Stringはimmutable。replaceAllの結果を再代入していないため元の文字列のまま出力される。"
-  },
-  {
-    "id": 11,
-    "question": "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-    "code": "public class Main {\n    public static void main(String[] args) {\n        String str = \"abcde\";\n        System.out.println(str.charAt(5));\n    }\n}",
-    "choices": [
-      "dが表示される",
-      "eが表示される",
-      "何も表示されない",
-      "nullが表示される",
-      "コンパイルエラーが発生する",
-      "実行時に例外がスローされる"
-    ],
-    "answerIndex": 5,
-    "explanation": "インデックス5は範囲外のためStringIndexOutOfBoundsExceptionが発生する。"
-  },
-  {
-    "id": 12,
-    "question": "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-    "code": "public class Main {\n    public static void main(String[] args) {\n        String str = \"abcde\";\n        System.out.println(str.indexOf(\"abcdef\"));\n    }\n}",
-    "choices": [
-      "0が表示される",
-      "1が表示される",
-      "4が表示される",
-      "5が表示される",
-      "-1が表示される",
-      "コンパイルエラーが発生する",
-      "実行時に例外がスローされる"
-    ],
-    "answerIndex": 4,
-    "explanation": "検索対象が見つからないため -1 が返る。"
-  },
-  {
-    "id": 13,
-    "question": "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-    "code": "public class Main {\n    public static void main(String[] args) {\n        String str = \"abcde\";\n        System.out.println(str.substring(2, 4));\n    }\n}",
-    "choices": [
-      "bcdと表示される",
-      "bcと表示される",
-      "cdと表示される",
-      "deと表示される"
-    ],
-    "answerIndex": 2,
-    "explanation": "substring(2,4) はインデックス2から3までを取得するので \"cd\"。"
-  },
-  {
-    "id": 14,
-    "question": "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-    "code": "public class Main {\n    public static void main(String[] args) {\n        String str = \"aaaa\";\n        System.out.println(str.replace(\"aa\", \"b\"));\n    }\n}",
-    "choices": [
-      "baaと表示される",
-      "babと表示される",
-      "bbと表示される",
-      "abaと表示される"
-    ],
-    "answerIndex": 0,
-    "explanation": "replace は最初の一致だけ置換するので \"baa\"。"
-  },
-  {
-    "id": 15,
-    "question": "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-    "code": "public class Main {\n    public static void main(String[] args) {\n        String str = \"abcde\";\n        System.out.println(str.charAt(str.length()));\n    }\n}",
-    "choices": [
-      "aが表示される",
-      "eが表示される",
-      "5が表示される",
-      "-1が表示される",
-      "コンパイルエラーが発生する",
-      "実行時に例外がスローされる"
-    ],
-    "answerIndex": 5,
-    "explanation": "length() は5。charAt(5) は範囲外で実行時例外。"
-  },
-  {
-    "id": 16,
-    "question": "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-    "code": "public class Main {\n    public static void main(String[] args) {\n        String str = \"abcde\";\n        System.out.println(str.substring(1, 3).startsWith(\"b\"));\n    }\n}",
-    "choices": [
-      "trueと表示される",
-      "falseと表示される",
-      "bcと表示される",
-      "abcと表示される",
-      "コンパイルエラーが発生する",
-      "実行時に例外がスローされる"
-    ],
-    "answerIndex": 0,
-    "explanation": "substring(1,3) は \"bc\"。startsWith(\"b\") は true。"
-  },
-  {
-    "id": 17,
-    "question": "次のプログラムを実行し、「Hello, Java!」と表示したい。3行目の空欄に入るコードとして、正しいものを選びなさい。（1つ選択）",
-    "code": "public class Sample {\n    public static void main(String[] args) {\n        String str = _____;\n        System.out.println(str);\n    }\n}",
-    "choices": [
-      "\"Hello, \".concat(\"Java!\")",
-      "\"Hello, \".append(\"Java!\")",
-      "\"Hello, \".add(\"Java!\")",
-      "\"Hello, \".plus(\"Java!\")"
-    ],
-    "answerIndex": 0,
-    "explanation": "Stringはconcatで連結する。appendやaddは存在しない。"
-  },
-  {
-    "id": 18,
-    "question": "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-    "code": "public class Main {\n    public static void main(String[] args) {\n        System.out.println(10 + 20 + \"30\" + 40);\n    }\n}",
-    "choices": [
-      "100が表示される",
-      "10203040が表示される",
-      "303040が表示される",
-      "コンパイルエラーが発生する",
-      "実行時に例外がスローされる"
-    ],
-    "answerIndex": 2,
-    "explanation": "10+20=30 となり、その後は文字列結合で \"303040\"。"
-  },
-  {
-    "id": 19,
-    "question": "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-    "code": "public class Main {\n    public static void main(String[] args) {\n        String str = null;\n        str += \"null\";\n        System.out.println(str);\n    }\n}",
-    "choices": [
-      "nullと表示される",
-      "nullnullと表示される",
-      "何も表示されない",
-      "コンパイルエラーが発生する",
-      "実行時に例外がスローされる"
-    ],
-    "answerIndex": 1,
-    "explanation": "str += は null を \"null\" に変換し \"nullnull\" になる。"
-  },
-  {
-    "id": 20,
-    "question": "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-    "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder sb = new StringBuilder(\"abcde\");\n        System.out.println(sb.capacity());\n    }\n}",
-    "choices": [
-      "0が表示される",
-      "5が表示される",
-      "16が表示される",
-      "21が表示される"
-    ],
-    "answerIndex": 3,
-    "explanation": "StringBuilderのcapacityは初期文字列長+16。5+16=21。"
-  },
-  {
-    "id": 21,
-    "question": "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-    "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder sb = new StringBuilder();\n        sb.append(\"abcde\");\n        sb.reverse();\n        sb.replace(1, 3, \"a\");\n        System.out.println(sb);\n    }\n}",
-    "choices": [
-      "aadeと表示される",
-      "adeと表示される",
-      "abaと表示される",
-      "eabaと表示される"
-    ],
-    "answerIndex": 3,
-    "explanation": "reverseで \"edcba\"、replace(1,3,\"a\")で \"ea ba\" → \"eaba\" だが誤記に注意。実際は \"eaba\"。"
-  },
-  {
-    "id": 22,
-    "question": "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-    "code": "public class Sample {\n    public static void main(String[] args) {\n        StringBuilder sb = new StringBuilder(\"abcde\");\n        System.out.println(sb.indexOf(\"bcd\"));\n    }\n}",
-    "choices": [
-      "1が表示される",
-      "2が表示される",
-      "3が表示される",
-      "4が表示される"
-    ],
-    "answerIndex": 0,
-    "explanation": "「bcd」はインデックス1から始まるので 1 が返る。"
-  }
-]
+{
+  "prefix": "KS02",
+  "questions": [
+    {
+      "id": 1,
+      "question": "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
+      "code": "public class Main {\n    public static void main(String[] args) {\n        int val = 7;\n        bool flg = true;\n        if (flg == true) {\n            do {\n                System.out.println(val);\n            } while (val > 10);\n        }\n    }\n}",
+      "choices": [
+        "7が1回だけ表示される",
+        "何も表示されない",
+        "コンパイルエラーが発生する",
+        "実行時に例外がスローされる"
+      ],
+      "answerIndex": 2,
+      "explanation": "Javaにはbool型は存在せずbooleanを使うため、コンパイルエラーとなる。"
+    },
+    {
+      "id": 2,
+      "question": "次の式のうち、コンパイルエラーになるものを選びなさい。（1つ選択）",
+      "choices": [
+        "int a = 267;",
+        "int b = 0413;",
+        "int c = 0x10B;",
+        "int d = 0b1000001011;",
+        "int e = 0827;"
+      ],
+      "answerIndex": 4,
+      "explanation": "0827 は8進数リテラルとして不正（8は使用不可）。"
+    },
+    {
+      "id": 3,
+      "question": "次の式のうち、コンパイルエラーになるものを選びなさい。（5つ選択）",
+      "choices": [
+        "int a = 123_456_789;",
+        "int b = 5_______2;",
+        "int c = _123_456_789;",
+        "int d = 123_456_789_;",
+        "float e = 3._1415F;",
+        "long f = 999_99_9999_L;",
+        "byte g = 0b0_1;"
+      ],
+      "answerIndex": [2, 3, 4, 5, 6],
+      "explanation": "アンダースコアは数値の先頭・末尾や小数点の隣には使えない。"
+    },
+    {
+      "id": 4,
+      "question": "char型の変数の初期化として、正しいものを選びなさい。（1つ選択）",
+      "choices": [
+        "char a = \"a\";",
+        "char b = 'abc';",
+        "char c = 89;",
+        "char d = null;"
+      ],
+      "answerIndex": 2,
+      "explanation": "charは整数リテラルで初期化可能。"
+    },
+    {
+      "id": 5,
+      "question": "次の式のうち、コンパイルエラーになるものを選びなさい。（2つ選択）",
+      "choices": [
+        "int $a = 100;",
+        "int b_ = 200;",
+        "int _0 = 300;",
+        "int ${d} = 400;",
+        "int g.a = 700;"
+      ],
+      "answerIndex": [3, 4],
+      "explanation": "変数名に { } や . は使用できない。"
+    },
+    {
+      "id": 6,
+      "question": "次の変数宣言のうち、コンパイルエラーとならないものを選びなさい。（1つ選択）",
+      "choices": [
+        "var a;",
+        "var b = null;",
+        "var c = () -> {};",
+        "var d = {1, 2, 3};",
+        "var e = new ArrayList<>();"
+      ],
+      "answerIndex": 4,
+      "explanation": "varは型推論できる必要があり、ArrayListのインスタンス化は可能。"
+    },
+    {
+      "id": 7,
+      "question": "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
+      "code": "public class Sample {\n    private var value;\n    public Sample(var value) {\n        this.value = value;\n    }\n    public void test() {\n        System.out.println(value);\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Sample s = new Sample(\"sample\");\n        s.test();\n    }\n}",
+      "choices": [
+        "「sample」と表示される",
+        "「null」と表示される",
+        "コンパイルエラーが発生する",
+        "実行時に例外がスローされる"
+      ],
+      "answerIndex": 2,
+      "explanation": "フィールドやメソッド引数ではvarは使えないためコンパイルエラー。"
+    },
+    {
+      "id": 8,
+      "question": "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
+      "code": "public class A {\n    public void test() { System.out.println(\"A\"); }\n}\n\npublic class B extends A {\n    @Override public void test() { System.out.println(\"B\"); }\n}\n\npublic class C extends A {\n    @Override public void test() { System.out.println(\"C\"); }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        var a = new B();\n        a = new C();\n        a.test();\n    }\n}",
+      "choices": [
+        "コンパイルエラーが発生する",
+        "実行時例外がスローされる",
+        "Aが表示される",
+        "Bが表示される",
+        "Cが表示される"
+      ],
+      "answerIndex": 4,
+      "explanation": "a は var により A 型として推論され、最後に C 型を代入し test() を呼ぶと C が表示される。"
+    },
+    {
+      "id": 9,
+      "question": "Stringオブジェクトを作成するコードとして、正しいものを選びなさい。（2つ選択）",
+      "choices": [
+        "String a = new String(\"sample\");",
+        "String b = \"sample\";",
+        "String c = String.newInstance(\"sample\");",
+        "String d = String.valueOf('sample');"
+      ],
+      "answerIndex": [0, 1],
+      "explanation": "Stringのインスタンス生成はnewまたはリテラル。newInstanceは存在せず、valueOfは単一のchar/intなど。"
+    },
+    {
+      "id": 10,
+      "question": "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
+      "code": "public class Main {\n    public static void main(String[] args) {\n        String str = \"hoge, world.\";\n        hello(str);\n        System.out.println(str);\n    }\n    private static void hello(String msg) {\n        msg.replaceAll(\"hoge\", \"hello\");\n    }\n}",
+      "choices": [
+        "「hoge, world.」と表示される",
+        "「hello, world.」と表示される",
+        "「hello」と表示される",
+        "「hello, hello.」と表示される",
+        "コンパイルエラーが発生する",
+        "実行時に例外がスローされる"
+      ],
+      "answerIndex": 0,
+      "explanation": "Stringはimmutable。replaceAllの結果を再代入していないため元の文字列のまま出力される。"
+    },
+    {
+      "id": 11,
+      "question": "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
+      "code": "public class Main {\n    public static void main(String[] args) {\n        String str = \"abcde\";\n        System.out.println(str.charAt(5));\n    }\n}",
+      "choices": [
+        "dが表示される",
+        "eが表示される",
+        "何も表示されない",
+        "nullが表示される",
+        "コンパイルエラーが発生する",
+        "実行時に例外がスローされる"
+      ],
+      "answerIndex": 5,
+      "explanation": "インデックス5は範囲外のためStringIndexOutOfBoundsExceptionが発生する。"
+    },
+    {
+      "id": 12,
+      "question": "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
+      "code": "public class Main {\n    public static void main(String[] args) {\n        String str = \"abcde\";\n        System.out.println(str.indexOf(\"abcdef\"));\n    }\n}",
+      "choices": [
+        "0が表示される",
+        "1が表示される",
+        "4が表示される",
+        "5が表示される",
+        "-1が表示される",
+        "コンパイルエラーが発生する",
+        "実行時に例外がスローされる"
+      ],
+      "answerIndex": 4,
+      "explanation": "検索対象が見つからないため -1 が返る。"
+    },
+    {
+      "id": 13,
+      "question": "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
+      "code": "public class Main {\n    public static void main(String[] args) {\n        String str = \"abcde\";\n        System.out.println(str.substring(2, 4));\n    }\n}",
+      "choices": [
+        "bcdと表示される",
+        "bcと表示される",
+        "cdと表示される",
+        "deと表示される"
+      ],
+      "answerIndex": 2,
+      "explanation": "substring(2,4) はインデックス2から3までを取得するので \"cd\"。"
+    },
+    {
+      "id": 14,
+      "question": "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
+      "code": "public class Main {\n    public static void main(String[] args) {\n        String str = \"aaaa\";\n        System.out.println(str.replace(\"aa\", \"b\"));\n    }\n}",
+      "choices": [
+        "baaと表示される",
+        "babと表示される",
+        "bbと表示される",
+        "abaと表示される"
+      ],
+      "answerIndex": 0,
+      "explanation": "replace は最初の一致だけ置換するので \"baa\"。"
+    },
+    {
+      "id": 15,
+      "question": "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
+      "code": "public class Main {\n    public static void main(String[] args) {\n        String str = \"abcde\";\n        System.out.println(str.charAt(str.length()));\n    }\n}",
+      "choices": [
+        "aが表示される",
+        "eが表示される",
+        "5が表示される",
+        "-1が表示される",
+        "コンパイルエラーが発生する",
+        "実行時に例外がスローされる"
+      ],
+      "answerIndex": 5,
+      "explanation": "length() は5。charAt(5) は範囲外で実行時例外。"
+    },
+    {
+      "id": 16,
+      "question": "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
+      "code": "public class Main {\n    public static void main(String[] args) {\n        String str = \"abcde\";\n        System.out.println(str.substring(1, 3).startsWith(\"b\"));\n    }\n}",
+      "choices": [
+        "trueと表示される",
+        "falseと表示される",
+        "bcと表示される",
+        "abcと表示される",
+        "コンパイルエラーが発生する",
+        "実行時に例外がスローされる"
+      ],
+      "answerIndex": 0,
+      "explanation": "substring(1,3) は \"bc\"。startsWith(\"b\") は true。"
+    },
+    {
+      "id": 17,
+      "question": "次のプログラムを実行し、「Hello, Java!」と表示したい。3行目の空欄に入るコードとして、正しいものを選びなさい。（1つ選択）",
+      "code": "public class Sample {\n    public static void main(String[] args) {\n        String str = _____;\n        System.out.println(str);\n    }\n}",
+      "choices": [
+        "\"Hello, \".concat(\"Java!\")",
+        "\"Hello, \".append(\"Java!\")",
+        "\"Hello, \".add(\"Java!\")",
+        "\"Hello, \".plus(\"Java!\")"
+      ],
+      "answerIndex": 0,
+      "explanation": "Stringはconcatで連結する。appendやaddは存在しない。"
+    },
+    {
+      "id": 18,
+      "question": "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
+      "code": "public class Main {\n    public static void main(String[] args) {\n        System.out.println(10 + 20 + \"30\" + 40);\n    }\n}",
+      "choices": [
+        "100が表示される",
+        "10203040が表示される",
+        "303040が表示される",
+        "コンパイルエラーが発生する",
+        "実行時に例外がスローされる"
+      ],
+      "answerIndex": 2,
+      "explanation": "10+20=30 となり、その後は文字列結合で \"303040\"。"
+    },
+    {
+      "id": 19,
+      "question": "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
+      "code": "public class Main {\n    public static void main(String[] args) {\n        String str = null;\n        str += \"null\";\n        System.out.println(str);\n    }\n}",
+      "choices": [
+        "nullと表示される",
+        "nullnullと表示される",
+        "何も表示されない",
+        "コンパイルエラーが発生する",
+        "実行時に例外がスローされる"
+      ],
+      "answerIndex": 1,
+      "explanation": "str += は null を \"null\" に変換し \"nullnull\" になる。"
+    },
+    {
+      "id": 20,
+      "question": "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
+      "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder sb = new StringBuilder(\"abcde\");\n        System.out.println(sb.capacity());\n    }\n}",
+      "choices": [
+        "0が表示される",
+        "5が表示される",
+        "16が表示される",
+        "21が表示される"
+      ],
+      "answerIndex": 3,
+      "explanation": "StringBuilderのcapacityは初期文字列長+16。5+16=21。"
+    },
+    {
+      "id": 21,
+      "question": "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
+      "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder sb = new StringBuilder();\n        sb.append(\"abcde\");\n        sb.reverse();\n        sb.replace(1, 3, \"a\");\n        System.out.println(sb);\n    }\n}",
+      "choices": [
+        "aadeと表示される",
+        "adeと表示される",
+        "abaと表示される",
+        "eabaと表示される"
+      ],
+      "answerIndex": 3,
+      "explanation": "reverseで \"edcba\"、replace(1,3,\"a\")で \"ea ba\" → \"eaba\" だが誤記に注意。実際は \"eaba\"。"
+    },
+    {
+      "id": 22,
+      "question": "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
+      "code": "public class Sample {\n    public static void main(String[] args) {\n        StringBuilder sb = new StringBuilder(\"abcde\");\n        System.out.println(sb.indexOf(\"bcd\"));\n    }\n}",
+      "choices": [
+        "1が表示される",
+        "2が表示される",
+        "3が表示される",
+        "4が表示される"
+      ],
+      "answerIndex": 0,
+      "explanation": "「bcd」はインデックス1から始まるので 1 が返る。"
+    }
+  ]
+}

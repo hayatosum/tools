@@ -297,59 +297,68 @@ function showResults() {
 
 // --- 問題ロード ---
 async function loadAllQuestions() {
-  // ローカルファイルが選ばれていればそれを優先
+  let data;
+
   if (fileInput.files && fileInput.files[0]) {
     const file = fileInput.files[0];
     const text = await file.text();
-    const data = JSON.parse(text);
-    validateQuestions(data);
-    allQuestions = data;
-    return;
+    data = JSON.parse(text);
+  } else {
+    const res = await fetch('json/' + currentFile, { cache: 'no-store' });
+    if (!res.ok) throw new Error(`問題の取得に失敗しました: ${res.status}`);
+    data = await res.json();
   }
 
-  // 未選択ならセレクトボックスのファイルを fetch
-  const res = await fetch('json/' + currentFile, { cache: 'no-store' });
-  if (!res.ok) throw new Error(`問題の取得に失敗しました: ${res.status}`);
-  const data = await res.json();
-  validateQuestions(data);
-  allQuestions = data;
+  // --- prefix を読み出す ---
+  const prefix = data.prefix || "ZZ00";
+  const questions = data.questions || data; // 旧形式との互換（配列直書き）
+
+  validateQuestions(questions, prefix);
+  allQuestions = questions;
 }
 
-function validateQuestions(data) {
+// 旧: function validateQuestions(data) { ... } を丸ごと置き換え
+function validateQuestions(data, prefix = "ZZ00") {
   if (!Array.isArray(data)) throw new Error('問題ファイルは配列である必要があります');
 
-  data.forEach((q, i) => {
-    if (typeof q.id === 'undefined') q.id = i + 1;
+  // 英字2桁+数字2桁+ハイフン+連番3桁 の形式例: KS01-001
+  const ID_RE = /^[A-Za-z]{2}\d{2}-\d{3}$/;
 
-    // 質問/選択肢の基本チェック
+  data.forEach((q, i) => {
+    // ---- ID の付与・正規化 ----
+    // 1) 既存IDがなければ prefix を使って自動採番
+    // 2) 既存IDが「数値のみ」なら、新しい形式へ変換
+    // 3) 既存IDが文字列でもID形式でなければ上書き（安全運用）
+    if (typeof q.id === 'undefined' || /^\d+$/.test(String(q.id)) || !ID_RE.test(String(q.id))) {
+      const seq = String(i + 1).padStart(3, '0');          // 001, 002, ...
+      const pf  = String(prefix).padEnd(4, '0').slice(0,4); // 念のため4桁に調整
+      q.id = `${pf}-${seq}`;                                // 例: KS01-001
+    }
+
+    // ---- 質問/選択肢の基本チェック ----
     if (typeof q.question !== 'string' || !Array.isArray(q.choices) || q.choices.length < 2) {
       throw new Error(`不正な問題形式があります (index: ${i})`);
     }
 
-    // --- answerIndex を数値 or 数値配列の両対応にして配列へ正規化 ---
+    // ---- answerIndex を配列として正規化（単一/複数どちらもOK）----
     let ans = q.answerIndex;
     if (typeof ans === 'number') {
-      ans = [ans];                        // 単一正答を配列化
+      ans = [ans];
     } else if (Array.isArray(ans)) {
-      ans = ans.map(v => Number(v));      // 文字や数値混在でも数値化
+      ans = ans.map(v => Number(v));
     } else {
       throw new Error(`answerIndex は数値または数値配列である必要があります (index: ${i})`);
     }
 
-    // 重複除去 & 範囲チェック
     const uniq = [...new Set(ans)];
-    if (uniq.length === 0) {
-      throw new Error(`answerIndex が空です (index: ${i})`);
-    }
+    if (uniq.length === 0) throw new Error(`answerIndex が空です (index: ${i})`);
     const bad = uniq.find(v => !Number.isInteger(v) || v < 0 || v >= q.choices.length);
-    if (bad !== undefined) {
-      throw new Error(`answerIndex に不正な値があります: ${bad} (index: ${i})`);
-    }
+    if (bad !== undefined) throw new Error(`answerIndex に不正な値があります: ${bad} (index: ${i})`);
 
-    // 正規化結果を書き戻し（以降はすべて配列として扱える）
     q.answerIndex = uniq;
   });
 }
+
 
 
 function pickQuestions(n) {
