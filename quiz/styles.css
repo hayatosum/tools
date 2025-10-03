@@ -201,7 +201,6 @@ button:disabled {
   border-left: 4px solid var(--border, #e5e7eb);
   background: #fafafa;
   padding: 10px 12px;
-  border-radius: 8px;
 }
 .inline-exp.hidden { display: none; }
 .inline-exp .exp-head {
