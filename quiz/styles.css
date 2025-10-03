@@ -203,3 +203,51 @@ button:disabled {
   overflow-x: auto;
   margin-top: 6px;
 }
+
+.history-controls {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.history-list {
+  display: grid;
+  gap: 10px;
+}
+
+.history-item {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 12px;
+  background: #fff;
+}
+
+.history-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: baseline;
+}
+
+.history-head .source {
+  color: var(--muted);
+  font-size: 0.9em;
+}
+
+.history-meta {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 0.9em;
+}
+
+.history-details {
+  margin-top: 8px;
+}
+
+.history-details summary {
+  cursor: pointer;
+}

@@ -227,20 +227,57 @@ function markAnswers() {
 // 結果セクション
 function showResults() {
   let correctCount = 0;
+  const items = [];
 
   currentQuestions.forEach((q) => {
     const user = userAnswers.get(q.id) || [];
     const correct = Array.isArray(q.answerIndex) ? q.answerIndex : [q.answerIndex];
-    if (arraysEqual(user, correct)) correctCount++;
+    const isCorrect = arraysEqual(user, correct);
+    if (isCorrect) correctCount++;
+
+    // 履歴用の1問分
+    items.push({
+      id: q.id,
+      user,
+      correct,
+      isCorrect
+    });
   });
 
   const total = currentQuestions.length;
   const rate = Math.round((correctCount / total) * 100);
   scoreText.textContent = `正解数: ${correctCount} / ${total}（正答率 ${rate}%）`;
 
+  // ===== 履歴保存 =====
+  const elapsedMs = quizStartAt ? (Date.now() - quizStartAt) : null;
+
+  // 出題元（ローカル or セレクト）
+  let source = '';
+  if (fileInput && fileInput.files && fileInput.files[0]) {
+    source = `local:${fileInput.files[0].name}`;
+  } else {
+    source = currentFile;
+  }
+
+  appendHistoryEntry({
+    ts: Date.now(),
+    source,
+    total,
+    correct: correctCount,
+    rate,
+    elapsedMs,
+    // 欲しければ選ばれた問題IDsなども保存可
+    questionIds: currentQuestions.map(q => q.id),
+    items
+  });
+
+  // 保存後に履歴欄を更新
+  renderHistory();
+
   resultArea.hidden = false;
   gradeArea.hidden = true;
 }
+
 
 
 
@@ -381,6 +418,117 @@ loadBtn.addEventListener('click', async () => {
     setStatus(`エラー: ${e.message || e}`);
   }
 });
+
+// ====== 履歴（localStorage） ======
+const LS_KEY = 'quizHistory.v1';
+
+// 履歴の読み書き
+function loadHistory() {
+  try {
+    const raw = localStorage.getItem(LS_KEY);
+    return raw ? JSON.parse(raw) : [];
+  } catch {
+    return [];
+  }
+}
+function saveHistory(history) {
+  localStorage.setItem(LS_KEY, JSON.stringify(history));
+}
+
+// 1件追加保存
+function appendHistoryEntry(entry) {
+  const hist = loadHistory();
+  hist.unshift(entry); // 新しい順に先頭へ
+  // 任意：上限（例：200件）
+  if (hist.length > 200) hist.length = 200;
+  saveHistory(hist);
+}
+
+// 履歴の描画
+const historyList = document.getElementById('historyList');
+const refreshHistoryBtn = document.getElementById('refreshHistoryBtn');
+const clearHistoryBtn = document.getElementById('clearHistoryBtn');
+
+function renderHistory() {
+  const hist = loadHistory();
+  historyList.innerHTML = '';
+  if (hist.length === 0) {
+    historyList.innerHTML = '<p class="sub">履歴はまだありません。</p>';
+    return;
+  }
+  hist.forEach((h, idx) => {
+    const div = document.createElement('div');
+    div.className = 'history-item';
+
+    const head = document.createElement('div');
+    head.className = 'history-head';
+    const title = document.createElement('h3');
+    title.textContent = `#${String(hist.length - idx).padStart(2,'0')}：${h.correct}/${h.total}（${h.rate}%）`;
+    const src = document.createElement('div');
+    src.className = 'source';
+    src.textContent = h.source ? `source: ${h.source}` : '';
+    head.appendChild(title);
+    head.appendChild(src);
+    div.appendChild(head);
+
+    const meta = document.createElement('div');
+    meta.className = 'history-meta';
+    const d = new Date(h.ts);
+    meta.innerHTML = `
+      <span>${d.toLocaleString()}</span>
+      <span>出題数: ${h.total}</span>
+      <span>所要: ${typeof h.elapsedMs === 'number' ? Math.round(h.elapsedMs/1000) + 's' : '-'}</span>
+    `;
+    div.appendChild(meta);
+
+    // 詳細（各問の正誤・ID・あなたの回答）
+    if (Array.isArray(h.items) && h.items.length) {
+      const details = document.createElement('details');
+      details.className = 'history-details';
+      const sum = document.createElement('summary');
+      sum.textContent = '詳細を表示';
+      details.appendChild(sum);
+
+      const ul = document.createElement('ul');
+      ul.style.margin = '8px 0 0 16px';
+      h.items.forEach((it, i) => {
+        const li = document.createElement('li');
+        const correctLetters = it.correct.map(letter).join(', ');
+        const userLetters = it.user.length ? it.user.map(letter).join(', ') : '未回答';
+        li.textContent = `Q${i+1} (id:${it.id})  正解: ${correctLetters} / 回答: ${userLetters}  ${it.isCorrect ? '○' : '×'}`;
+        ul.appendChild(li);
+      });
+      details.appendChild(ul);
+      div.appendChild(details);
+    }
+
+    historyList.appendChild(div);
+  });
+}
+
+// 画面起動時に一度描画
+renderHistory();
+
+// ボタン：再読込・全削除
+if (refreshHistoryBtn) {
+  refreshHistoryBtn.addEventListener('click', () => renderHistory());
+}
+if (clearHistoryBtn) {
+  clearHistoryBtn.addEventListener('click', () => {
+    if (confirm('履歴をすべて削除します。よろしいですか？')) {
+      saveHistory([]);
+      renderHistory();
+    }
+  });
+};
+
+// 出題開始時間（経過計測用）
+let quizStartAt = null;
+
+// loadBtn の CLICK ハンドラ内の成功時に追加
+// （currentQuestions = pickQuestions(n); の後あたり）
+quizStartAt = Date.now();
+
 
 gradeBtn.addEventListener('click', () => {
   markAnswers();
