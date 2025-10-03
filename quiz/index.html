@@ -42,6 +42,15 @@
           value="5"
         />
       </section>
+      
+      <section class="controls">
+        <label><input id="adaptiveMode" type="checkbox" checked> 弱点優先で出題</label>
+        <label class="sub" style="margin-left:8px;">
+          重点度(0〜2):
+          <input id="adaptiveStrength" type="number" min="0" max="2" step="0.1" value="1.0" style="width:70px;">
+        </label>
+      </section>
+
       <section class="controls">
         <button id="loadBtn" class="primary">出題</button>
         <button id="resetBtn" class="ghost" disabled>リセット</button>

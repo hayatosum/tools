@@ -388,9 +388,24 @@ function validateQuestions(data, prefix = "ZZ00") {
 
 
 
+// === 置き換え：出題選択 ===
 function pickQuestions(n) {
   const cnt = Math.min(n, allQuestions.length);
-  return shuffle(allQuestions).slice(0, cnt);
+  const useAdaptive = adaptiveModeEl ? adaptiveModeEl.checked : false;
+
+  // 履歴なし or オフなら従来のランダム
+  const hist = loadHistory();
+  if (!useAdaptive || !hist.length) {
+    return shuffle(allQuestions).slice(0, cnt);
+  }
+
+  // 履歴あり：ID別正答率を重みに変換
+  const rateMap = buildRateMapFromHistory();
+  const strength = Number(adaptiveStrengthEl?.value ?? 1.0);
+  const weights = allQuestions.map(q => rateToWeight(rateMap.get(q.id), strength));
+
+  // 重み付きで抽出
+  return weightedSampleWithoutReplacement(allQuestions, weights, cnt);
 }
 
 function resetState() {
@@ -762,5 +777,62 @@ if (lowRateInput) lowRateInput.addEventListener('change', analyzeHistoryAndRende
 
 // 採点直後にも更新
 // （既存の showResults() の最後に renderHistory() の直後でOK）
+
+
+
+// === 追加：要素参照 ===
+const adaptiveModeEl = document.getElementById('adaptiveMode');
+const adaptiveStrengthEl = document.getElementById('adaptiveStrength');
+
+// === 追加：履歴からID別の正答率を取り出す（0〜100） ===
+function buildRateMapFromHistory() {
+  const hist = loadHistory();            // 既存：localStorageから履歴取得
+  const totals = new Map();              // id -> 出題回数
+  const rights = new Map();              // id -> 正解数
+  hist.forEach(run => {
+    if (!Array.isArray(run.items)) return;
+    run.items.forEach(it => {
+      totals.set(it.id, (totals.get(it.id) || 0) + 1);
+      rights.set(it.id, (rights.get(it.id) || 0) + (it.isCorrect ? 1 : 0));
+    });
+  });
+  const rates = new Map();               // id -> 正答率(%)
+  totals.forEach((t, id) => {
+    const r = rights.get(id) || 0;
+    rates.set(id, Math.round((r / t) * 100));
+  });
+  return rates;
+}
+
+// === 追加：重み関数（低い正答率ほど大きな重み） ===
+// base=1.0, strength=0〜2.0 くらい推奨
+function rateToWeight(rate, strength = 1.0) {
+  // 未出題(= rate undefined)は等確率で 1.0
+  if (rate === undefined || rate === null || Number.isNaN(rate)) return 1.0;
+  // 0%→(1+strength), 100%→1.0 に線形で補間
+  const w = 1.0 + strength * (1 - rate / 100);
+  // 念のため下限・上限
+  return Math.max(0.1, Math.min(w, 1.0 + strength));
+}
+
+// === 追加：重み付きサンプリング（非復元・n件） ===
+function weightedSampleWithoutReplacement(items, weights, k) {
+  const picked = [];
+  const pool = items.map((v, i) => ({ v, w: weights[i], i }));
+  k = Math.min(k, pool.length);
+  for (let t = 0; t < k; t++) {
+    const totalW = pool.reduce((s, x) => s + x.w, 0);
+    if (totalW <= 0) break;
+    let r = Math.random() * totalW;
+    let idx = 0;
+    for (; idx < pool.length; idx++) {
+      r -= pool[idx].w;
+      if (r <= 0) break;
+    }
+    const chosen = pool.splice(idx, 1)[0];
+    picked.push(chosen.v);
+  }
+  return picked;
+}
 
 
