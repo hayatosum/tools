@@ -26,7 +26,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     await loadAllQuestions();   // ← 初期ロード
     renderHistory();            // 履歴も表示
     renderTrendChart();         // グラフも表示
-    renderAnalysisTable();      // 分析テーブルも初期描画
   } catch (e) {
     console.warn("初期ロードで問題を読み込めませんでした:", e);
   }
@@ -311,7 +310,6 @@ function showResults() {
   });
   renderHistory();
 
-  renderHistory();
   renderTrendChart();
   
   analyzeHistoryAndRender();
@@ -630,8 +628,6 @@ function renderHistory() {
   });
 }
 
-// 画面起動時に一度描画
-renderHistory();
 
 // ボタン：再読込・全削除
 if (refreshHistoryBtn) {
@@ -1042,7 +1038,6 @@ function renderTrendChart() {
 }
 
 
-renderTrendChart();
 
 
 // 問題ID（.qid-link）クリックでプレビュー表示
