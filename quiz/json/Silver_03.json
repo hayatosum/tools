@@ -1,0 +1,348 @@
+[
+  {
+    "id": 1,
+    "category": "演算子と判定構造",
+    "difficulty": "初級",
+    "question": "次のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int a = 3;\n        int b = a = 5;\n        System.out.println(a + b);\n    }\n}",
+    "choices": [
+      "8が表示される",
+      "10が表示される",
+      "16が表示される",
+      "コンパイルエラーが発生する",
+      "実行時に例外がスローされる"
+    ],
+    "answerIndex": 1,
+    "explanation": "代入式は右から評価され、a=5, b=5 となる。よって 5+5=10。"
+  },
+  {
+    "id": 2,
+    "category": "演算子と判定構造",
+    "difficulty": "初級",
+    "question": "次のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
+    "code": "public class Sample {\n    public static void main(String[] args) {\n        int num = -10;\n        System.out.println(10 * -num);\n    }\n}",
+    "choices": [
+      "100が表示される",
+      "-100が表示される",
+      "コンパイルエラーが発生する",
+      "実行時に例外がスローされる"
+    ],
+    "answerIndex": 0,
+    "explanation": "-num は 10。10*10=100。"
+  },
+  {
+    "id": 3,
+    "category": "演算子と判定構造",
+    "difficulty": "中級",
+    "question": "次の式のうち、コンパイルエラーになるものを選びなさい。（3つ選択）",
+    "code": "",
+    "choices": [
+      "byte a = 0b100000000;",
+      "short b = 128 + 128;",
+      "int c = 2 * 3L;",
+      "float d = 10.0;"
+    ],
+    "answerIndex": [
+      0,
+      2,
+      3
+    ],
+    "explanation": "byteは範囲外、longとの演算結果はlongで代入不可、floatリテラルはf必須。shortは定数式の範囲内でOK。"
+  },
+  {
+    "id": 4,
+    "category": "演算子と判定構造",
+    "difficulty": "上級",
+    "question": "次のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int a = 10;\n        int b = a++ + a-- - a-- + ++a;\n        System.out.println(b);\n    }\n}",
+    "choices": [
+      "7が表示される",
+      "32が表示される",
+      "33が表示される",
+      "43が表示される",
+      "コンパイルエラーが発生する",
+      "実行時に例外がスローされる"
+    ],
+    "answerIndex": 2,
+    "explanation": "逐次評価により b=33 となる。"
+  },
+  {
+    "id": 5,
+    "category": "演算子と判定構造",
+    "difficulty": "初級",
+    "question": "次のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        boolean a = true;\n        boolean b = true;\n        System.out.println(a <= b);\n    }\n}",
+    "choices": [
+      "trueが表示される",
+      "falseが表示される",
+      "コンパイルエラーが発生する",
+      "実行時に例外がスローされる"
+    ],
+    "answerIndex": 2,
+    "explanation": "booleanに <= は使用できないためコンパイルエラー。"
+  },
+  {
+    "id": 6,
+    "category": "演算子と判定構造",
+    "difficulty": "中級",
+    "question": "次のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int a = 10;\n        int b = 10;\n        if (10 < a && 10 < ++b) {\n            a++;\n        }\n        System.out.println(a + b);\n    }\n}",
+    "choices": [
+      "20が表示される",
+      "21が表示される",
+      "22が表示される",
+      "コンパイルエラーが発生する",
+      "実行時に例外がスローされる"
+    ],
+    "answerIndex": 1,
+    "explanation": "a=10 のため (10<a)はfalse、ショートサーキットで b++ は実行されず b=10。よって a+b=20。"
+  },
+  {
+    "id": 7,
+    "category": "演算子と判定構造",
+    "difficulty": "中級",
+    "question": "次のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int a = 100, b = 20, c = 30;\n        System.out.println(a % b * c + a / b);\n    }\n}",
+    "choices": [
+      "5が表示される",
+      "35が表示される",
+      "90が表示される",
+      "コンパイルエラーが発生する",
+      "実行時に例外がスローされる"
+    ],
+    "answerIndex": 0,
+    "explanation": "100%20=0, 0*30=0, 100/20=5, 合計5。実際の答え: 5 (→選択肢1)。"
+  },
+  {
+    "id": 8,
+    "category": "演算子と判定構造",
+    "difficulty": "上級",
+    "question": "次のクラスを利用するプログラムを実行したときの結果を選びなさい。（1つ選択）",
+    "code": "public class Sample {\n    private int num;\n    public Sample(int num) { this.num = num; }\n}\npublic class Main {\n    public static void main(String[] args) {\n        Sample s1 = new Sample(10);\n        Sample s2 = s1;\n        s1 = new Sample(10);\n        System.out.println(s1 == s2);\n    }\n}",
+    "choices": [
+      "trueが表示される",
+      "falseが表示される",
+      "コンパイルエラーが発生する",
+      "実行時に例外がスローされる"
+    ],
+    "answerIndex": 1,
+    "explanation": "新しいオブジェクトを生成したため参照は異なり false。"
+  },
+  {
+    "id": 9,
+    "category": "演算子と判定構造",
+    "difficulty": "上級",
+    "question": "equalsメソッドをオーバーライドしたクラスの挙動について正しいものを選びなさい。（1つ選択）",
+    "code": "public class Sample {\n    private int num;\n    private String name;\n    public Sample(int num, String name) { this.num=num; this.name=name; }\n    public boolean equals(Object obj) {\n        if(obj==null) return false;\n        if(obj instanceof Sample) {\n            Sample s=(Sample)obj;\n            return s.num==this.num;\n        }\n        return false;\n    }\n}\npublic class Main {\n    public static void main(String[] args) {\n        Sample a=new Sample(10,\"a\");\n        Sample b=new Sample(10,\"b\");\n        System.out.println(a.equals(b));\n    }\n}",
+    "choices": [
+      "trueが表示される",
+      "falseが表示される",
+      "Sampleクラスでコンパイルエラーが発生する",
+      "Mainクラスでコンパイルエラーが発生する",
+      "実行時に例外がスローされる"
+    ],
+    "answerIndex": 0,
+    "explanation": "equalsはnumのみ比較しており両方10なのでtrue。"
+  },
+  {
+    "id": 10,
+    "category": "演算子と判定構造",
+    "difficulty": "中級",
+    "question": "equalsの引数型がSampleである場合の挙動として正しいものを選びなさい。（1つ選択）",
+    "code": "public class Sample {\n    private int num;\n    public Sample(int num){ this.num=num; }\n    public boolean equals(Sample obj){\n        if(obj==null) return false;\n        return this.num==obj.num;\n    }\n}\npublic class Main {\n    public static void main(String[] args) {\n        Object a=new Sample(10);\n        Object b=new Sample(10);\n        System.out.println(a.equals(b));\n    }\n}",
+    "choices": [
+      "Sampleクラスでコンパイルエラーが発生する",
+      "Mainクラスでコンパイルエラーが発生する",
+      "trueと表示される",
+      "falseと表示される",
+      "実行時に例外がスローされる"
+    ],
+    "answerIndex": 3,
+    "explanation": "equals(Object)をオーバーライドしていないため Object.equals が呼ばれる。参照は異なり false。"
+  },
+  {
+    "id": 11,
+    "category": "演算子と判定構造",
+    "difficulty": "初級",
+    "question": "次のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        Object a = new Object();\n        Object b = null;\n        System.out.println(a.equals(b));\n    }\n}",
+    "choices": [
+      "trueが表示される",
+      "falseが表示される",
+      "コンパイルエラーが発生する",
+      "実行時に例外がスローされる"
+    ],
+    "answerIndex": 1,
+    "explanation": "equalsにnullを渡すと常にfalseを返す。"
+  },
+  {
+    "id": 12,
+    "category": "演算子と判定構造",
+    "difficulty": "初級",
+    "question": "次のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String a = \"sample\";\n        String b = \"sample\";\n        System.out.print(a == b);\n        System.out.print(\", \");\n        System.out.println(a.equals(b));\n    }\n}",
+    "choices": [
+      "[false, true] と表示される",
+      "[false, false] と表示される",
+      "[true, false] と表示される",
+      "[true, true] と表示される"
+    ],
+    "answerIndex": 3,
+    "explanation": "文字列リテラルは同じ参照を共有するので a==b はtrue。equalsもtrue。"
+  },
+  {
+    "id": 13,
+    "category": "演算子と判定構造",
+    "difficulty": "中級",
+    "question": "次のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String a = new String(\"sample\");\n        String b = \"sample\";\n        System.out.print(a == b);\n        System.out.print(\", \");\n        System.out.println(a.equals(b));\n    }\n}",
+    "choices": [
+      "[false, true] と表示される",
+      "[false, false] と表示される",
+      "[true, false] と表示される",
+      "[true, true] と表示される"
+    ],
+    "answerIndex": 0,
+    "explanation": "new Stringで生成した場合参照は異なるのでa==bはfalse。equalsは内容一致なのでtrue。"
+  },
+  {
+    "id": 14,
+    "category": "演算子と判定構造",
+    "difficulty": "上級",
+    "question": "次のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String a = \"abc\";\n        String b = new String(\"abc\");\n        int count = 0;\n        if (a.intern() == \"abc\") { count++; }\n        if (b.intern() == \"abc\") { count++; }\n        if (a.intern() == b.intern()) { count++; }\n        System.out.println(count);\n    }\n}",
+    "choices": [
+      "0が表示される",
+      "1が表示される",
+      "2が表示される",
+      "3が表示される"
+    ],
+    "answerIndex": 3,
+    "explanation": "internによりすべて文字列プールを参照し同一参照になる。countは3。"
+  },
+  {
+    "id": 15,
+    "category": "演算子と判定構造",
+    "difficulty": "初級",
+    "question": "次のプログラムを実行し、「ok」と表示したい。4行目に入るコードとして正しいものを選びなさい。（1つ選択）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int num = 10;\n        // (ここにコードを入れる)\n        System.out.println(\"ok\");\n    }\n}",
+    "choices": [
+      "if (num <= 10)",
+      "if num <= 10",
+      "if (num <= 10) then",
+      "if num < 10 then"
+    ],
+    "answerIndex": 0,
+    "explanation": "Javaのif文は if(条件) { } の形式。"
+  },
+  {
+    "id": 16,
+    "category": "演算子と判定構造",
+    "difficulty": "初級",
+    "question": "次のプログラムをコンパイル、実行したときの結果を選びなさい。（1つ選択）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        if (false)\n            System.out.println(\"A\");\n        System.out.println(\"B\");\n    }\n}",
+    "choices": [
+      "「A」と表示される",
+      "「B」と表示される",
+      "「A」「B」と表示される",
+      "何も表示されない"
+    ],
+    "answerIndex": 1,
+    "explanation": "if(false)の中は実行されないためBのみ出力される。"
+  },
+  {
+    "id": 17,
+    "category": "演算子と判定構造",
+    "difficulty": "中級",
+    "question": "次のプログラムをコンパイル、実行したときの結果を選びなさい。（1つ選択）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int num = 10;\n        if (num < 10)\n            System.out.println(\"A\");\n        else\n            System.out.println(\"B\");\n        if (num == 10)\n            System.out.println(\"C\");\n    }\n}",
+    "choices": [
+      "AとBとCが表示される",
+      "AとCが表示される",
+      "BとCが表示される",
+      "Aと表示される",
+      "Bと表示される",
+      "Cと表示される"
+    ],
+    "answerIndex": 2,
+    "explanation": "num=10なので最初のifはfalseでB。次のifはtrueでC。"
+  },
+  {
+    "id": 18,
+    "category": "演算子と判定構造",
+    "difficulty": "中級",
+    "question": "次のプログラムをコンパイル、実行したときの結果を選びなさい。（1つ選択）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int num = 10;\n        if (num == 100)\n            System.out.println(\"A\");\n        else if (10 < num)\n            System.out.println(\"B\");\n        else if (num == 10)\n            System.out.println(\"C\");\n        else if (num <= 10)\n            System.out.println(\"D\");\n    }\n}",
+    "choices": [
+      "Cが表示される",
+      "Dが表示される",
+      "CとDが表示される",
+      "何も表示されない",
+      "コンパイルエラーが発生する",
+      "実行時例外がスローされる"
+    ],
+    "answerIndex": 0,
+    "explanation": "num=10のとき、最初のifとelse ifはfalse、次のelse if(num==10)がtrueなのでC。"
+  },
+  {
+    "id": 19,
+    "category": "演算子と判定構造",
+    "difficulty": "中級",
+    "question": "switch文の条件式が戻せる型として正しいものをすべて選びなさい。（6つ選択）",
+    "code": "",
+    "choices": [
+      "char",
+      "byte",
+      "short",
+      "int",
+      "long",
+      "String",
+      "enum",
+      "boolean"
+    ],
+    "answerIndex": [
+      0,
+      1,
+      2,
+      3,
+      5,
+      6
+    ],
+    "explanation": "switch式で利用できるのは char, byte, short, int, それらのラッパー、String, enum。longとbooleanは不可。"
+  },
+  {
+    "id": 20,
+    "category": "演算子と判定構造",
+    "difficulty": "上級",
+    "question": "次のプログラムをコンパイルしたときにエラーが発生するのは何行目か。（2つ選択）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        final int NUM = 0;\n        int num = 10;\n        switch(num) {\n            case \"10\": System.out.println(\"A\"); break;\n            case num: System.out.println(\"B\"); break;\n            case 2*5: System.out.println(\"C\"); break;\n            case NUM: System.out.println(\"D\"); break;\n        }\n    }\n}",
+    "choices": [
+      "6行目",
+      "8行目",
+      "10行目",
+      "12行目"
+    ],
+    "answerIndex": [
+      1,
+      2
+    ],
+    "explanation": "caseに文字列リテラルや変数を直接は使えない。定数式のみ許可される。"
+  },
+  {
+    "id": 21,
+    "category": "演算子と判定構造",
+    "difficulty": "上級",
+    "question": "次のプログラムを実行したときに表示されるものを選びなさい。（1つ選択）",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int num = 1;\n        switch(num) {\n            case 1:\n            case 2:\n            case 3: System.out.println(\"A\");\n            case 4: System.out.println(\"B\");\n            default: System.out.println(\"C\");\n        }\n    }\n}",
+    "choices": [
+      "Aと表示される",
+      "AとBと表示される",
+      "AとBとCと表示される",
+      "何も表示されない",
+      "コンパイルエラーが発生する",
+      "実行時例外がスローされる"
+    ],
+    "answerIndex": 2,
+    "explanation": "case1に該当しbreakがないためA,B,Cすべて実行される。"
+  }
+]
