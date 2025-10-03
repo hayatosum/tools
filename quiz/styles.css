@@ -1,3 +1,75 @@
+.choices {
+  display: grid;
+  gap: 8px;
+  margin-top: 8px;
+}
+.choice {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 8px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  user-select: none;
+}
+
+.choice input {
+  margin-top: 3px;
+}
+
+/* ホバー時（採点前のみ） */
+body:not(.graded) .choice:hover {
+  border-color: var(--primary);
+  background: #fafafa;
+}
+
+/* チェックされたとき（ラジオ/チェックボックス問わず） */
+.choice input:checked ~ div,
+.choice input:checked {
+  /* ← input 自身やその兄弟 div ではなく、label全体に色をつける */
+}
+
+.choice input:checked + div,
+.choice input:checked {
+  /* 保険的に div に色は不要なので削除してOK */
+}
+
+/* ラベル全体を青っぽく */
+.choice:has(input:checked) {
+  background: #e6f0ff;   /* 好みで濃さを調整 */
+  border-color: var(--primary);
+}
+
+/* --- 採点後を最優先にする --- */
+/* 1) セレクタの“強さ”を上げ、記述順も後ろに置く */
+label.choice.correct,
+label.choice.incorrect,
+.choice.correct,
+.choice.incorrect {
+  background: transparent; /* 初期化 */
+}
+
+/* 正解：緑、 不正解：赤（既存と同じ配色でOK） */
+label.choice.correct,
+.choice.correct {
+  background: #f0fff4;            /* ← ここが最終的に勝つ */
+  border-color: var(--ok);
+}
+
+label.choice.incorrect,
+.choice.incorrect {
+  background: #fff5f5;
+  border-color: var(--ng);
+}
+
+/* ホバー時も採点色を維持 */
+.choice.correct:hover { border-color: var(--ok); }
+.choice.incorrect:hover { border-color: var(--ng); }
+
+
+
+
+
 :root {
   --fg: #111;
   --muted: #666;
@@ -107,56 +179,8 @@ button:disabled {
   font-size: 0.9em;
   margin-bottom: 8px;
 }
-.choices {
-  display: grid;
-  gap: 8px;
-  margin-top: 8px;
-}
-.choice {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-  padding: 8px;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  user-select: none;
-}
 
-/* ホバー時 */
-.choice:hover {
-  border-color: var(--primary);
-  background: #fafafa;
-}
 
-/* チェックされたとき（ラジオ/チェックボックス問わず） */
-.choice input:checked ~ div,
-.choice input:checked {
-  /* ← input 自身やその兄弟 div ではなく、label全体に色をつける */
-}
-
-.choice input:checked + div,
-.choice input:checked {
-  /* 保険的に div に色は不要なので削除してOK */
-}
-
-/* ラベル全体を青っぽく */
-.choice input:checked + div,
-.choice:has(input:checked) {
-  background: #e6f0ff;   /* 好みで濃さを調整 */
-  border-color: var(--primary);
-}
-
-.choice input {
-  margin-top: 3px;
-}
-.correct {
-  border-color: var(--ok);
-  background: #f0fff4;
-}
-.incorrect {
-  border-color: var(--ng);
-  background: #fff5f5;
-}
 .answer-tag {
   font-size: 0.85em;
   font-weight: 700;

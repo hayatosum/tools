@@ -213,6 +213,12 @@ function markAnswers() {
         label.appendChild(span);
       }
     });
+    
+    // 採点後にその設問のチェックを無効化（任意）
+    choiceLabels.forEach((label) => {
+      const inp = label.querySelector('input');
+      if (inp) inp.disabled = true;
+    });
 
     // === ここから追記：各問題の下に解説を表示 ===
     const expEl = card.querySelector('.inline-exp');
@@ -297,6 +303,9 @@ function showResults() {
 
   resultArea.hidden = false;
   gradeArea.hidden = true;
+
+  document.body.classList.add('graded');
+
 }
 
 
@@ -633,6 +642,7 @@ resetBtn.addEventListener('click', () => {
   resetState();
   setStatus('リセットしました', 1500);
   gradeArea.hidden = true;
+  document.body.classList.remove('graded');
 });
 
 
