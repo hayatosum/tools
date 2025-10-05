@@ -153,14 +153,14 @@ const SILVER_06 = {
             difficulty: "初級",
             question:
                 "次のプログラムの5行目に記述できるコードとして、正しいものを選びなさい。（2つ選択）",
-            code: "public class Main {\n    public static void main(String[] args) {\n        int a = 1;\n        int b = 2;\n        int c = b;\n        // ここに記述\n    }\n}",
+            code: "1. public class Main {\n2.     public static void main(String[] args) {\n3.         int a = 1;\n4.         int b = 2;\n5.         __________\n6.         int c = b;\n7.     }\n8. }",
             choices: [
                 "System.out.println(a);",
                 "System.out.println(b + 2);",
                 "System.out.println(c);",
                 "System.out.println(d);",
             ],
-            answerIndex: [0, 2],
+            answerIndex: [0, 1],
             explanation:
                 "aとcは宣言済みで利用可能です。dは未定義なのでエラーになります。",
         },
@@ -362,7 +362,7 @@ const SILVER_06 = {
             difficulty: "中級",
             question:
                 "次のプログラムを確認してください。このクラスを利用する以下のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
-            code: 'public class Sample {\n    Sample() {\n        System.out.println("A");\n    }\n    {\n        System.out.println("B");\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Sample s = new Sample();\n    }\n}',
+            code: '1. public class Sample {\n2.     Sample() {\n3.         System.out.println("A");\n4.     }\n5.     {\n6.         System.out.println("B");\n7.     }\n8. }\n\n1. public class Main {\n2.     public static void main(String[] args) {\n3.         Sample s = new Sample();\n4.     }\n5. }',
             choices: [
                 "「A」「B」と表示される",
                 "「B」「A」と表示される",
@@ -382,7 +382,7 @@ const SILVER_06 = {
             difficulty: "初級",
             question:
                 "次のプログラムをコンパイルし、実行したときに正しいものを選びなさい。（1つ選択）",
-            code: "public class Sample {\n    static int num;\n    {\n        num = 10;\n    }\n    public Sample() {\n        num = 100;\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(Sample.num);\n    }\n}",
+            code: "1. public class Sample {\n2.     static int num;\n3.     {\n4.         num = 10;\n5.     }\n6.     public Sample() {\n7.         num = 100;\n8.     }\n9. }\n\n1. public class Main {\n2.     public static void main(String[] args) {\n3.         System.out.println(Sample.num);\n4.     }\n5. }",
             choices: [
                 "0が表示される",
                 "10が表示される",
@@ -417,7 +417,7 @@ const SILVER_06 = {
             difficulty: "中級",
             question:
                 "次のプログラムを実行し、コンソールに「ok.」と表示したい。3行目の空欄に入るコードとして正しいものを選びなさい。（1つ選択）",
-            code: 'public class Sample {\n    public Sample() {\n        // 空欄\n    }\n    public Sample(String str, int num) {\n        System.out.println("ok.");\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Sample s = new Sample();\n    }\n}',
+            code: '1. public class Sample {\n2.     public Sample() {\n3.         __________\n4.     }\n5.     public Sample(String str, int num) {\n6.         System.out.println("ok.");\n7.     }\n8. }\n\n1. public class Main {\n2.     public static void main(String[] args) {\n3.         Sample s = new Sample();\n4.     }\n55. }',
             choices: [
                 "Sample(null, 0);",
                 "this(null, 0);",
