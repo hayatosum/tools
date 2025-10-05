@@ -282,7 +282,7 @@ const SILVER_04 = {
             difficulty: "上級",
             question:
                 "次のプログラムをコンパイル・実行した結果として正しいものを選びなさい。（1つ選択）",
-            code: "public class Main {\n  public static void main(String[] args) {\n    int total = 0;\n    a: for (int i = 0; i < 5; i++) {\n      b: for (int j = 0; j < 5; j++) {\n        if (i % 2 == 0) continue a; // 偶数iは外側へスキップ\n        if (j == 3) break b;        // jは0,1,2まで加算\n        total += j;\n      }\n    }\n    System.out.println(total);\n  }\n}",
+            code: "public class Main {\n    public static void main(String[] args) {\n        int total = 0;\n        a: for (int i = 0; i < 5; i++) {\n            b: for (int j = 0; j < 5; j++) {\n                if (i % 2 == 0) continue a;\n                if (3 < j) break b;\n                total += j;\n            }\n        }\n        System.out.println(total);\n    }\n}",
             choices: [
                 "6が表示される",
                 "12が表示される",
