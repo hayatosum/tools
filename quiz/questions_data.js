@@ -10,5 +10,17 @@ window.BUILTIN_QUESTION_SETS = {
     "Silver_09.json": SILVER_09,
     "Silver_10.json": SILVER_10,
     "Silver_11.json": SILVER_11,
-    Silver_ALL: [SILVER_01, SILVER_02, SILVER_03, SILVER_11],
+    Silver_ALL: [
+        SILVER_01,
+        SILVER_02,
+        SILVER_03,
+        SILVER_04,
+        SILVER_05,
+        SILVER_06,
+        SILVER_07,
+        SILVER_08,
+        SILVER_09,
+        SILVER_10,
+        SILVER_11,
+    ],
 };
