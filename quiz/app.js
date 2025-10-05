@@ -892,6 +892,84 @@ function analyzeHistoryAndRender() {
     renderRanking(rows);
     renderBarChart(rows);
     renderHeatmap(rows);
+    renderPrefixStats();
+}
+
+// ===== プレフィックス別 集計 =====
+// 例: KS01-001 → 'KS01' を取り出す
+function extractPrefix(id) {
+    if (!id) return "";
+    const m = String(id).match(/^([A-Za-z]{2}\d{2})-/);
+    return m ? m[1] : "";
+}
+
+function gatherPrefixStatsFromHistory() {
+    const hist = loadHistory();
+    const stats = new Map(); // prefix -> { prefix, total, correct }
+
+    hist.forEach((run) => {
+        if (!Array.isArray(run.items)) return;
+        run.items.forEach((it) => {
+            const pf = extractPrefix(it.id);
+            if (!pf) return;
+            if (!stats.has(pf))
+                stats.set(pf, { prefix: pf, total: 0, correct: 0 });
+            const s = stats.get(pf);
+            s.total += 1;
+            if (it.isCorrect) s.correct += 1;
+        });
+    });
+
+    const arr = [...stats.values()].map((s) => ({
+        ...s,
+        rate: s.total ? Math.round((s.correct / s.total) * 100) : 0,
+    }));
+    // プレフィックス順に並べる（KS01, KS02, …）
+    arr.sort((a, b) => a.prefix.localeCompare(b.prefix));
+    return arr;
+}
+
+function renderPrefixStats() {
+    const wrap = document.getElementById("prefixStatsWrap");
+    if (!wrap) return;
+
+    const rows = gatherPrefixStatsFromHistory();
+    if (!rows.length) {
+        wrap.innerHTML = "<p class='sub'>履歴がありません。</p>";
+        return;
+    }
+
+    let html = `
+    <table id="prefixTable">
+      <thead>
+        <tr>
+          <th>カテゴリ</th>
+          <th>出題回数</th>
+          <th>正解数</th>
+          <th>正答率</th>
+          <th>可視化</th>
+        </tr>
+      </thead>
+      <tbody>
+  `;
+    rows.forEach((r) => {
+        html += `
+      <tr>
+        <td>${r.prefix}</td>
+        <td>${r.total}</td>
+        <td>${r.correct}</td>
+        <td>${r.rate}%</td>
+        <td>
+          <div class="mini-track" aria-hidden="true">
+            <div class="mini-fill" style="width:${r.rate}%"></div>
+          </div>
+          <div class="mini-val">${r.rate}%</div>
+        </td>
+      </tr>
+    `;
+    });
+    html += `</tbody></table>`;
+    wrap.innerHTML = html;
 }
 
 // 初期描画・イベント
