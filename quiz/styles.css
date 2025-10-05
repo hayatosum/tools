@@ -82,6 +82,10 @@ body {
         "Noto Sans JP", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
     line-height: 1.6;
 }
+
+html {
+    overflow-y: scroll;
+}
 .container {
     max-width: 960px;
     margin: auto;
@@ -190,10 +194,12 @@ button:disabled {
 
 .result-area,
 .grade-area {
+    margin-bottom: 40px;
+}
+.grade-area {
     margin-top: 20px;
     border-top: 1px solid var(--border);
     padding-top: 16px;
-    margin-bottom: 40px;
 }
 .explanation {
     border-left: 4px solid var(--border);
@@ -594,4 +600,37 @@ button:disabled {
     font-variant-numeric: tabular-nums;
     font-size: 0.9em;
     color: var(--muted);
+}
+
+/* ==== Tabs ==== */
+.tabs {
+    display: flex;
+    gap: 8px;
+    border-bottom: 1px solid var(--border);
+    margin: 8px 0 12px;
+}
+.tab-btn {
+    appearance: none;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-bottom: none;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    padding: 8px 14px;
+    cursor: pointer;
+    color: var(--muted);
+}
+.tab-btn.active {
+    color: var(--fg);
+    font-weight: 700;
+    background: #fff;
+    border-color: var(--primary);
+}
+.tab-panel {
+    padding-top: 8px;
+}
+.tab-panel.hidden {
+    display: none;
 }

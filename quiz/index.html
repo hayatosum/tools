@@ -13,181 +13,229 @@
             <section class="controls">
                 <h2>Java Silver 模擬問題</h2>
             </section>
-            <section class="controls">
-                <label for="fileSelect">出題ファイル：</label>
-                <select id="fileSelect">
-                    <option value="Silver_ALL">全て</option>
-                    <option value="Silver_01">
-                        黒本：第1章 簡単なJavaプログラムの作成
-                    </option>
-                    <option value="Silver_02">
-                        黒本：第2章 Javaの基本データ型と文字列操作
-                    </option>
-                    <option value="Silver_03">
-                        黒本：第3章 演算子と判定構造
-                    </option>
-                    <option value="Silver_04">黒本：第4章 制御構造</option>
-                    <option value="Silver_05">黒本：第5章 配列の操作</option>
-                    <option value="Silver_06">
-                        黒本：第6章 インスタンスとメソッド
-                    </option>
-                    <option value="Silver_07">
-                        黒本：第7章 クラスの継承、インタフェース、抽象クラス
-                    </option>
-                    <option value="Silver_08">
-                        黒本：第8章 関数型インタフェース、ラムダ式
-                    </option>
-                    <option value="Silver_09">黒本：第9章 API</option>
-                    <option value="Silver_10">黒本：第10章 例外処理</option>
-                    <option value="Silver_11">
-                        黒本：第11章 モジュールシステム
-                    </option>
-                    <option value="Silver_12">
-                        黒本：第12章 総仕上げ問題①
-                    </option>
-                    <option value="Silver_13">
-                        黒本：第13章 総仕上げ問題②
-                    </option>
-                </select>
-                <input type="file" id="fileInput" accept=".json" />
-            </section>
-            <section class="controls">
-                <label for="questionCount">出題数：</label>
-                <input
-                    id="questionCount"
-                    type="number"
-                    min="1"
-                    step="1"
-                    value="5"
-                />
-                <label
-                    ><input id="adaptiveMode" type="checkbox" checked />
-                    弱点優先で出題</label
+
+            <nav class="tabs" role="tablist" aria-label="画面切替">
+                <button
+                    id="tab-quiz"
+                    class="tab-btn active"
+                    role="tab"
+                    aria-selected="true"
+                    aria-controls="panel-quiz"
                 >
-                <label class="sub" style="margin-left: 8px">
-                    重点度(0〜2):
+                    問題を解く
+                </button>
+                <button
+                    id="tab-analytics"
+                    class="tab-btn"
+                    role="tab"
+                    aria-selected="false"
+                    aria-controls="panel-analytics"
+                >
+                    回答結果を分析
+                </button>
+            </nav>
+
+            <section
+                id="panel-quiz"
+                class="tab-panel"
+                role="tabpanel"
+                aria-labelledby="tab-quiz"
+            >
+                <section class="controls">
+                    <label for="fileSelect">出題ファイル：</label>
+                    <select id="fileSelect">
+                        <option value="Silver_ALL">全て</option>
+                        <option value="Silver_01">
+                            黒本：第1章 簡単なJavaプログラムの作成
+                        </option>
+                        <option value="Silver_02">
+                            黒本：第2章 Javaの基本データ型と文字列操作
+                        </option>
+                        <option value="Silver_03">
+                            黒本：第3章 演算子と判定構造
+                        </option>
+                        <option value="Silver_04">黒本：第4章 制御構造</option>
+                        <option value="Silver_05">
+                            黒本：第5章 配列の操作
+                        </option>
+                        <option value="Silver_06">
+                            黒本：第6章 インスタンスとメソッド
+                        </option>
+                        <option value="Silver_07">
+                            黒本：第7章 クラスの継承、インタフェース、抽象クラス
+                        </option>
+                        <option value="Silver_08">
+                            黒本：第8章 関数型インタフェース、ラムダ式
+                        </option>
+                        <option value="Silver_09">黒本：第9章 API</option>
+                        <option value="Silver_10">黒本：第10章 例外処理</option>
+                        <option value="Silver_11">
+                            黒本：第11章 モジュールシステム
+                        </option>
+                        <option value="Silver_12">
+                            黒本：第12章 総仕上げ問題①
+                        </option>
+                        <option value="Silver_13">
+                            黒本：第13章 総仕上げ問題②
+                        </option>
+                    </select>
+                    <input type="file" id="fileInput" accept=".json" />
+                </section>
+                <section class="controls">
+                    <label for="questionCount">出題数：</label>
                     <input
-                        id="adaptiveStrength"
+                        id="questionCount"
                         type="number"
-                        min="0"
-                        max="2"
-                        step="0.1"
-                        value="1.0"
-                        style="width: 70px"
+                        min="1"
+                        step="1"
+                        value="5"
                     />
-                </label>
-            </section>
-
-            <section class="controls">
-                <button id="loadBtn" class="primary">出題</button>
-                <button id="resetBtn" class="ghost" disabled>リセット</button>
-                <span id="status" class="status" aria-live="polite"></span>
-            </section>
-
-            <section
-                id="resultArea"
-                class="result-area"
-                aria-live="polite"
-                hidden
-            >
-                <h2>採点結果</h2>
-                <p id="scoreText"></p>
-                <!-- ★ 追加: プログレスバー -->
-                <div class="progress">
-                    <div id="progressBar" class="progress-bar"></div>
-                </div>
-                <p id="evalText"></p>
-                <!-- ★ 評価メッセージ -->
-                <details hidden>
-                    <summary>解説をすべて表示/非表示</summary>
-                    <div id="explanations"></div>
-                </details>
-            </section>
-
-            <section
-                id="quizArea"
-                class="quiz-area"
-                aria-live="polite"
-            ></section>
-
-            <section
-                id="gradeArea"
-                class="grade-area"
-                aria-live="polite"
-                hidden
-            >
-                <button id="gradeBtn" class="ok" disabled>採点する</button>
-            </section>
-
-            <!-- 追加：履歴 -->
-            <section id="historyArea" class="result-area" aria-live="polite">
-                <h2>履歴</h2>
-                <div class="history-controls">
-                    <button id="refreshHistoryBtn" class="secondary">
-                        履歴を再読込
-                    </button>
-                    <button id="clearHistoryBtn" class="ghost">
-                        履歴を全削除
-                    </button>
-                </div>
-                <div id="historyList" class="history-list"></div>
-            </section>
-
-            <section id="trendArea" class="result-area" aria-live="polite">
-                <h2>正答率の推移（直近20回）</h2>
-                <div id="trendChart" class="trend-chart"></div>
-            </section>
-
-            <section id="analysisArea" class="result-area" aria-live="polite">
-                <h2>問題別分析</h2>
-                <div class="analysis-controls">
-                    <button id="analyzeBtn" class="secondary">
-                        分析を更新
-                    </button>
-                    <label class="sub">
-                        低正答率しきい値:
+                    <label
+                        ><input id="adaptiveMode" type="checkbox" checked />
+                        弱点優先で出題</label
+                    >
+                    <label class="sub" style="margin-left: 8px">
+                        重点度(0〜2):
                         <input
-                            id="lowRateThreshold"
+                            id="adaptiveStrength"
                             type="number"
                             min="0"
-                            max="100"
-                            step="1"
-                            value="80"
-                            style="width: 80px; margin-left: 6px"
+                            max="2"
+                            step="0.1"
+                            value="1.0"
+                            style="width: 70px"
                         />
-                        %
                     </label>
-                </div>
+                </section>
 
-                <div id="analysisTableWrap"></div>
+                <section class="controls">
+                    <button id="loadBtn" class="primary">出題</button>
+                    <button id="resetBtn" class="ghost" disabled>
+                        リセット
+                    </button>
+                    <span id="status" class="status" aria-live="polite"></span>
+                </section>
 
-                <div class="analysis-panels">
-                    <div class="panel">
-                        <h3>正答率ランキング（上位）</h3>
-                        <ol id="rankTop"></ol>
+                <section
+                    id="resultArea"
+                    class="result-area"
+                    aria-live="polite"
+                    hidden
+                >
+                    <h2>採点結果</h2>
+                    <p id="scoreText"></p>
+                    <!-- ★ 追加: プログレスバー -->
+                    <div class="progress">
+                        <div id="progressBar" class="progress-bar"></div>
                     </div>
-                    <div class="panel">
-                        <h3>正答率ランキング（下位）</h3>
-                        <ol id="rankBottom"></ol>
+                    <p id="evalText"></p>
+                    <!-- ★ 評価メッセージ -->
+                    <details hidden>
+                        <summary>解説をすべて表示/非表示</summary>
+                        <div id="explanations"></div>
+                    </details>
+                </section>
+
+                <section
+                    id="quizArea"
+                    class="quiz-area"
+                    aria-live="polite"
+                ></section>
+
+                <section
+                    id="gradeArea"
+                    class="grade-area"
+                    aria-live="polite"
+                    hidden
+                >
+                    <button id="gradeBtn" class="ok" disabled>採点する</button>
+                </section>
+            </section>
+
+            <section
+                id="panel-analytics"
+                class="tab-panel hidden"
+                role="tabpanel"
+                aria-labelledby="tab-analytics"
+            >
+                <section
+                    id="historyArea"
+                    class="result-area"
+                    aria-live="polite"
+                >
+                    <h2>履歴</h2>
+                    <div class="history-controls">
+                        <button id="refreshHistoryBtn" class="secondary">
+                            履歴を再読込
+                        </button>
+                        <button id="clearHistoryBtn" class="ghost">
+                            履歴を全削除
+                        </button>
                     </div>
-                </div>
+                    <div id="historyList" class="history-list"></div>
+                </section>
 
-                <div class="panel">
-                    <h3>正答率・横棒グラフ</h3>
-                    <div id="barChart" class="bar-chart"></div>
-                </div>
+                <section id="trendArea" class="result-area" aria-live="polite">
+                    <h2>正答率の推移（直近20回）</h2>
+                    <div id="trendChart" class="trend-chart"></div>
+                </section>
 
-                <div class="panel">
-                    <h3>ヒートマップ</h3>
-                    <div id="heatmap" class="heatmap"></div>
-                </div>
+                <section
+                    id="analysisArea"
+                    class="result-area"
+                    aria-live="polite"
+                >
+                    <h2>問題別分析</h2>
+                    <div class="analysis-controls">
+                        <button id="analyzeBtn" class="secondary">
+                            分析を更新
+                        </button>
+                        <label class="sub">
+                            低正答率しきい値:
+                            <input
+                                id="lowRateThreshold"
+                                type="number"
+                                min="0"
+                                max="100"
+                                step="1"
+                                value="80"
+                                style="width: 80px; margin-left: 6px"
+                            />
+                            %
+                        </label>
+                    </div>
 
-                <div class="panel">
-                    <h3>カテゴリ別 正答率</h3>
-                    <div id="prefixStatsWrap"></div>
-                </div>
+                    <div id="analysisTableWrap"></div>
+
+                    <div class="analysis-panels">
+                        <div class="panel">
+                            <h3>正答率ランキング（上位）</h3>
+                            <ol id="rankTop"></ol>
+                        </div>
+                        <div class="panel">
+                            <h3>正答率ランキング（下位）</h3>
+                            <ol id="rankBottom"></ol>
+                        </div>
+                    </div>
+
+                    <div class="panel">
+                        <h3>正答率・横棒グラフ</h3>
+                        <div id="barChart" class="bar-chart"></div>
+                    </div>
+
+                    <div class="panel">
+                        <h3>ヒートマップ</h3>
+                        <div id="heatmap" class="heatmap"></div>
+                    </div>
+
+                    <div class="panel">
+                        <h3>カテゴリ別 正答率</h3>
+                        <div id="prefixStatsWrap"></div>
+                    </div>
+                </section>
             </section>
         </main>
+
         <script src="./Silver_01.js"></script>
         <script src="./Silver_02.js"></script>
         <script src="./Silver_03.js"></script>

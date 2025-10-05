@@ -1,3 +1,29 @@
+// ==== タブ切替 ====
+const tabQuizBtn = document.getElementById("tab-quiz");
+const tabAnalBtn = document.getElementById("tab-analytics");
+const panelQuiz = document.getElementById("panel-quiz");
+const panelAnal = document.getElementById("panel-analytics");
+
+function switchTab(to) {
+    const toQuiz = to === "quiz";
+    // ボタンの状態
+    tabQuizBtn.classList.toggle("active", toQuiz);
+    tabAnalBtn.classList.toggle("active", !toQuiz);
+    tabQuizBtn.setAttribute("aria-selected", String(toQuiz));
+    tabAnalBtn.setAttribute("aria-selected", String(!toQuiz));
+    // パネルの表示/非表示
+    panelQuiz.classList.toggle("hidden", !toQuiz);
+    panelAnal.classList.toggle("hidden", toQuiz);
+    // スクロールを上に
+    window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+// イベント
+tabQuizBtn?.addEventListener("click", () => switchTab("quiz"));
+tabAnalBtn?.addEventListener("click", () => switchTab("analytics"));
+
+// 初期タブ
+switchTab("quiz");
 // --- 設定 ---
 // const QUESTIONS_URL = './questions.json'; // 同じフォルダに配置
 
