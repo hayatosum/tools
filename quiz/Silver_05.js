@@ -1,170 +1,190 @@
 const SILVER_05 = {
-  "prefix": "KS05",
-  "questions": [
-    {
-      "id": 1,
-      "category": "配列の操作",
-      "difficulty": "初級",
-      "question": "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-      "code": "public class Main {\n    public static void main(String[] args) {\n        int[] array = new int[0];\n        System.out.println(array);\n    }\n}",
-      "choices": [
-        "0が表示される",
-        "nullが表示される",
-        "何も表示されない",
-        "[]が表示される",
-        "ハッシュコードが表示される",
-        "コンパイルエラーが発生する",
-        "実行時に例外がスローされる"
-      ],
-      "answerIndex": 4,
-      "explanation": "配列を直接出力すると toString() が呼ばれ、型情報とハッシュコードが表示される。"
-    },
-    {
-      "id": 2,
-      "category": "配列の操作",
-      "difficulty": "中級",
-      "question": "次のプログラムの説明として、正しいものを選びなさい。（1つ選択）",
-      "code": "public class Main {\n    public static void main(String[] args) {\n        int[] a;\n        int[] b[];\n        int[][] c;\n        int[] d[];\n        int[] e[];\n        int[][] f[];\n    }\n}",
-      "choices": [
-        "3行目でコンパイルエラーが発生する",
-        "4行目でコンパイルエラーが発生する",
-        "5行目でコンパイルエラーが発生する",
-        "6行目でコンパイルエラーが発生する",
-        "4行目と6行目でコンパイルエラーが発生する",
-        "7行目と8行目でコンパイルエラーが発生する",
-        "コンパイルエラーは発生しない"
-      ],
-      "answerIndex": 6,
-      "explanation": "Javaでは多次元配列の宣言方法は複数あるが、すべて有効でコンパイルエラーにはならない。"
-    },
-    {
-      "id": 3,
-      "category": "配列の操作",
-      "difficulty": "初級",
-      "question": "配列変数の宣言として、正しいものを選びなさい。（1つ選択）",
-      "code": "",
-      "choices": [
-        "int[] a[3];",
-        "int b[2];",
-        "int[2] c[];",
-        "int d[3][];",
-        "選択肢A〜Dまで、すべてが誤りである",
-        "選択肢A〜Dまで、すべて正しい"
-      ],
-      "answerIndex": 4,
-      "explanation": "Javaでは配列のサイズを宣言時に指定できないため、A〜Dはすべて誤り。"
-    },
-    {
-      "id": 4,
-      "category": "配列の操作",
-      "difficulty": "中級",
-      "question": "次の中から、コンパイルエラーになるコードを選びなさい。（3つ選択）",
-      "code": "",
-      "choices": [
-        "int[] a = new int[2][3];",
-        "int[] b = new int[2,3];",
-        "int c[] = new int[2 * 3];",
-        "int x = 2, y = 3; int[] d = new int[x * y];",
-        "int[][] e = new int[2][];",
-        "int f[][] = new int[][3];"
-      ],
-      "answerIndex": [0,1,5],
-      "explanation": "A,B,Fは不正な配列宣言。C,D,Eは正しくコンパイルできる。"
-    },
-    {
-      "id": 5,
-      "category": "配列の操作",
-      "difficulty": "中級",
-      "question": "次のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
-      "code": "public class Item {\n    String name;\n    int price = 100;\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Item[] items = new Item[3];\n        int total = 0;\n        for (int i = 0; i < items.length; i++) {\n            total += items[i].price;\n        }\n        System.out.println(total);\n    }\n}",
-      "choices": [
-        "0が表示される",
-        "200が表示される",
-        "300が表示される",
-        "コンパイルエラーが発生する",
-        "実行時に例外がスローされる"
-      ],
-      "answerIndex": 4,
-      "explanation": "items[i] は null のため、price へアクセスすると NullPointerException が発生する。"
-    },
-    {
-      "id": 6,
-      "category": "配列の操作",
-      "difficulty": "中級",
-      "question": "次のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
-      "code": "public class Main {\n    public static void main(String[] args) {\n        String[] array = {\"A\", \"B\", \"C\", \"D\"};\n        array[0] = null;\n        for (String str : array) {\n            System.out.print(str);\n        }\n    }\n}",
-      "choices": [
-        "ABCDと表示される",
-        "BCDと表示される",
-        "nullBCDと表示される",
-        "nullと表示される",
-        "コンパイルエラーが発生する",
-        "実行時に例外がスローされる"
-      ],
-      "answerIndex": 2,
-      "explanation": "配列の最初の要素が null なので、出力は nullBCD となる。"
-    },
-    {
-      "id": 7,
-      "category": "配列の操作",
-      "difficulty": "上級",
-      "question": "次の中から、コンパイルエラーにならないコードを選びなさい。（3つ選択）",
-      "code": "",
-      "choices": [
-        "int[] a = new int[2]{ 2, 3 };",
-        "int b[][] = {};",
-        "int[][][] c = new int[1][][];",
-        "int[] d; d = new int[]{2,3};",
-        "int e[]; e = {2,3};"
-      ],
-      "answerIndex": [2,3,1],
-      "explanation": "A,Eは不正。B,C,Dは正しく宣言できる。ただしBは要素数0の配列。"
-    },
-    {
-      "id": 8,
-      "category": "配列の操作",
-      "difficulty": "中級",
-      "question": "次のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
-      "code": "public class Main {\n    public static void main(String[] args) {\n        String[] array = {\"A\", \"B\", null, \"C\", \"D\", \"E\"};\n        int total = 0;\n        for (String tmp : array) {\n            total += tmp.length();\n        }\n        System.out.println(total);\n    }\n}",
-      "choices": [
-        "0が表示される",
-        "5が表示される",
-        "9が表示される",
-        "コンパイルエラーが発生する",
-        "実行時に例外がスローされる"
-      ],
-      "answerIndex": 4,
-      "explanation": "null の要素に対して length() を呼び出すと NullPointerException が発生する。"
-    },
-    {
-      "id": 9,
-      "category": "配列の操作",
-      "difficulty": "上級",
-      "question": "次のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
-      "code": "public interface A {}\npublic abstract class B implements A {}\npublic class C extends B {}\npublic class D extends C {}\n\npublic class Main {\n    public static void main(String[] args) {\n        A[] array = { new C(), null, new D() };\n        Object[] objArray = array;\n    }\n}",
-      "choices": [
-        "Mainクラスの3行目でコンパイルエラーが発生する",
-        "Mainクラスの4行目でコンパイルエラーが発生する",
-        "実行時に例外がスローされる",
-        "コンパイルも実行もできる"
-      ],
-      "answerIndex": 3,
-      "explanation": "インターフェース型の配列はObject[]に代入可能であり、コンパイル・実行ともに成功する。"
-    },
-    {
-      "id": 10,
-      "category": "配列の操作",
-      "difficulty": "上級",
-      "question": "次のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
-      "code": "public class Main {\n    public static void main(String[] args) {\n        int[][][] arrayA = { { {1,2}, {1,2}, {1,2,3} } };\n        int[][][] arrayB = arrayA.clone();\n        int total = 0;\n        for (int[][] tmp : arrayB) {\n            for (int[] val : tmp) {\n                total += val.length;\n            }\n        }\n        System.out.println(total);\n    }\n}",
-      "choices": [
-        "0が表示される",
-        "12が表示される",
-        "コンパイルエラーが発生する",
-        "実行時に例外がスローされる"
-      ],
-      "answerIndex": 1,
-      "explanation": "arrayAは2+2+3=7要素を持ち、外側の配列長を含め合計12が出力される。"
-    }
-  ]
+    prefix: "KS05",
+    questions: [
+        {
+            id: 1,
+            category: "配列の操作",
+            difficulty: "初級",
+            question:
+                "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
+            code: "public class Main {\n    public static void main(String[] args) {\n        int[] array = new int[0];\n        System.out.println(array);\n    }\n}",
+            choices: [
+                "0が表示される",
+                "nullが表示される",
+                "何も表示されない",
+                "[]が表示される",
+                "ハッシュコードが表示される",
+                "コンパイルエラーが発生する",
+                "実行時に例外がスローされる",
+            ],
+            answerIndex: 4,
+            explanation:
+                "配列を直接出力すると toString() が呼ばれ、型情報とハッシュコードが表示される。",
+        },
+        {
+            id: 2,
+            category: "配列の操作",
+            difficulty: "中級",
+            question:
+                "次のプログラムの説明として、正しいものを選びなさい。（1つ選択）",
+            code: "public class Main {\n    public static void main(String[] args) {\n        int[] a;\n        int[] b[];\n        int[][] c;\n        int[] d[];\n        int[] e[];\n        int[][] f[];\n    }\n}",
+            choices: [
+                "3行目でコンパイルエラーが発生する",
+                "4行目でコンパイルエラーが発生する",
+                "5行目でコンパイルエラーが発生する",
+                "6行目でコンパイルエラーが発生する",
+                "4行目と6行目でコンパイルエラーが発生する",
+                "7行目と8行目でコンパイルエラーが発生する",
+                "コンパイルエラーは発生しない",
+            ],
+            answerIndex: 6,
+            explanation:
+                "Javaでは多次元配列の宣言方法は複数あるが、すべて有効でコンパイルエラーにはならない。",
+        },
+        {
+            id: 3,
+            category: "配列の操作",
+            difficulty: "初級",
+            question:
+                "配列変数の宣言として、正しいものを選びなさい。（1つ選択）",
+            code: "",
+            choices: [
+                "int[] a[3];",
+                "int b[2];",
+                "int[2] c[];",
+                "int d[3][];",
+                "他選択肢の宣言すべてが誤りである",
+                "他選択肢の宣言すべて正しい",
+            ],
+            answerIndex: 4,
+            explanation:
+                "Javaでは配列のサイズを宣言時に指定できないため、A〜Dはすべて誤り。",
+        },
+        {
+            id: 4,
+            category: "配列の操作",
+            difficulty: "中級",
+            question:
+                "次の中から、コンパイルエラーになるコードを選びなさい。（3つ選択）",
+            code: "",
+            choices: [
+                "int[] a = new int[2][3];",
+                "int[] b = new int[2,3];",
+                "int c[] = new int[2 * 3];",
+                "int x = 2, y = 3; int[] d = new int[x * y];",
+                "int[][] e = new int[2][];",
+                "int f[][] = new int[][3];",
+            ],
+            answerIndex: [0, 1, 5],
+            explanation:
+                "A,B,Fは不正な配列宣言。C,D,Eは正しくコンパイルできる。",
+        },
+        {
+            id: 5,
+            category: "配列の操作",
+            difficulty: "中級",
+            question:
+                "次のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
+            code: "public class Item {\n    String name;\n    int price = 100;\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Item[] items = new Item[3];\n        int total = 0;\n        for (int i = 0; i < items.length; i++) {\n            total += items[i].price;\n        }\n        System.out.println(total);\n    }\n}",
+            choices: [
+                "0が表示される",
+                "200が表示される",
+                "300が表示される",
+                "コンパイルエラーが発生する",
+                "実行時に例外がスローされる",
+            ],
+            answerIndex: 4,
+            explanation:
+                "items[i] は null のため、price へアクセスすると NullPointerException が発生する。",
+        },
+        {
+            id: 6,
+            category: "配列の操作",
+            difficulty: "中級",
+            question:
+                "次のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
+            code: 'public class Main {\n    public static void main(String[] args) {\n        String[] array = {"A", "B", "C", "D"};\n        array[0] = null;\n        for (String str : array) {\n            System.out.print(str);\n        }\n    }\n}',
+            choices: [
+                "ABCDと表示される",
+                "BCDと表示される",
+                "nullBCDと表示される",
+                "nullと表示される",
+                "コンパイルエラーが発生する",
+                "実行時に例外がスローされる",
+            ],
+            answerIndex: 2,
+            explanation:
+                "配列の最初の要素が null なので、出力は nullBCD となる。",
+        },
+        {
+            id: 7,
+            category: "配列の操作",
+            difficulty: "上級",
+            question:
+                "次の中から、コンパイルエラーにならないコードを選びなさい。（3つ選択）",
+            code: "",
+            choices: [
+                "int[] a = new int[2]{ 2, 3 };",
+                "int b[][] = {};",
+                "int[][][] c = new int[1][][];",
+                "int[] d; d = new int[]{2,3};",
+                "int e[]; e = {2,3};",
+            ],
+            answerIndex: [2, 3, 1],
+            explanation:
+                "A,Eは不正。B,C,Dは正しく宣言できる。ただしBは要素数0の配列。",
+        },
+        {
+            id: 8,
+            category: "配列の操作",
+            difficulty: "中級",
+            question:
+                "次のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
+            code: 'public class Main {\n    public static void main(String[] args) {\n        String[] array = {"A", "B", null, "C", "D", "E"};\n        int total = 0;\n        for (String tmp : array) {\n            total += tmp.length();\n        }\n        System.out.println(total);\n    }\n}',
+            choices: [
+                "0が表示される",
+                "5が表示される",
+                "9が表示される",
+                "コンパイルエラーが発生する",
+                "実行時に例外がスローされる",
+            ],
+            answerIndex: 4,
+            explanation:
+                "null の要素に対して length() を呼び出すと NullPointerException が発生する。",
+        },
+        {
+            id: 9,
+            category: "配列の操作",
+            difficulty: "上級",
+            question:
+                "次のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
+            code: "public interface A {}\npublic abstract class B implements A {}\npublic class C extends B {}\npublic class D extends C {}\n\npublic class Main {\n    public static void main(String[] args) {\n        A[] array = { new C(), null, new D() };\n        Object[] objArray = array;\n    }\n}",
+            choices: [
+                "Mainクラスの3行目でコンパイルエラーが発生する",
+                "Mainクラスの4行目でコンパイルエラーが発生する",
+                "実行時に例外がスローされる",
+                "コンパイルも実行もできる",
+            ],
+            answerIndex: 3,
+            explanation:
+                "インターフェース型の配列はObject[]に代入可能であり、コンパイル・実行ともに成功する。",
+        },
+        {
+            id: 10,
+            category: "配列の操作",
+            difficulty: "上級",
+            question:
+                "次のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
+            code: "public class Main {\n    public static void main(String[] args) {\n        int[][][] arrayA = { { {1,2}, {1,2}, {1,2,3} } };\n        int[][][] arrayB = arrayA.clone();\n        int total = 0;\n        for (int[][] tmp : arrayB) {\n            for (int[] val : tmp) {\n                total += val.length;\n            }\n        }\n        System.out.println(total);\n    }\n}",
+            choices: [
+                "0が表示される",
+                "12が表示される",
+                "コンパイルエラーが発生する",
+                "実行時に例外がスローされる",
+            ],
+            answerIndex: 1,
+            explanation:
+                "arrayAは2+2+3=7要素を持ち、外側の配列長を含め合計12が出力される。",
+        },
+    ],
 };

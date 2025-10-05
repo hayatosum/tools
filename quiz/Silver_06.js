@@ -1,341 +1,537 @@
 const SILVER_06 = {
-  "prefix": "KS06",
-  "questions": [
-    {
-      "id": 1,
-      "category": "インスタンスとメソッド",
-      "difficulty": "初級",
-      "question": "次のプログラムを確認してください。このクラスを利用する以下のプログラムを、コンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-      "code": "public class Item {\n    private int num = 10;\n    public void setNum(int num) {\n        this.num = num;\n    }\n    public int getNum() {\n        return this.num;\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Item a = new Item();\n        Item b = new Item();\n        b.setNum(20);\n        System.out.println(a.getNum());\n    }\n}",
-      "choices": ["0が表示される", "10が表示される", "20が表示される", "コンパイルエラーが発生する", "実行時に例外がスローされる"],
-      "answerIndex": 1,
-      "explanation": "aとbは別のインスタンスなので、bのsetNum(20)はaには影響しません。a.getNum()は初期値10を返します。"
-    },
-    {
-      "id": 2,
-      "category": "インスタンスとメソッド",
-      "difficulty": "中級",
-      "question": "次のプログラムを確認してください。このクラスを利用する以下のプログラムを、コンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-      "code": "public class Item {\n    public String name;\n    public int price;\n    public void printInfo() {\n        System.out.println(name + \", \" + price);\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Item a = new Item();\n        Item b = new Item();\n        a.name = \"apple\";\n        b.price = 100;\n        a.price = 200;\n        b.name = \"banana\";\n        a = b;\n        a.printInfo();\n    }\n}",
-      "choices": ["apple,100", "banana,100", "apple,200", "banana,200", "実行時に例外がスローされる", "コンパイルエラーが発生する"],
-      "answerIndex": 3,
-      "explanation": "a = b によりaがbを参照するようになります。したがってa.printInfo()はbのnameとpriceを表示し、「banana,200」と出力されます。"
-    },
-    {
-      "id": 3,
-      "category": "インスタンスとメソッド",
-      "difficulty": "初級",
-      "question": "次のプログラムを実行し、「NULL」と表示したい。3行目の空欄に入るコードとして、正しいものを選びなさい。（1つ選択）",
-      "code": "public class Main {\n    public static void main(String[] args) {\n        Object obj = null;\n        System.out.println(obj);\n    }\n}",
-      "choices": ["Object obj = null;", "Object obj = false;", "Object obj = NULL;", "Object obj = \"\";", "選択肢A〜Dのどれでも可能である", "選択肢A〜Eはすべて誤りである"],
-      "answerIndex": 0,
-      "explanation": "JavaではNULLやfalseでは代入できません。Object obj = null; とすることで、出力時に「null」と表示されます。"
-    },
-    {
-      "id": 4,
-      "category": "インスタンスとメソッド",
-      "difficulty": "中級",
-      "question": "次のプログラムを実行し、行付近が終了したときにガーベジコレクションの対象となるインスタンスはどれか。正しい説明を選びなさい。（1つ選択）",
-      "code": "public class Main {\n    public static void main(String[] args) {\n        Object a = new Object();\n        Object b = new Object();\n        Object c;\n        a = b;\n        a = null;\n        b = null;\n        // more code\n    }\n}",
-      "choices": ["3行目で作成したインスタンスだけが対象", "4行目で作成したインスタンスだけが対象", "3行目と4行目両方のインスタンスが対象", "対象となるインスタンスは存在しない"],
-      "answerIndex": 2,
-      "explanation": "最後にaもbもnullになっており、3行目と4行目のオブジェクトに参照が残っていないため、両方がGCの対象となります。"
-    },
-    {
-      "id": 5,
-      "category": "インスタンスとメソッド",
-      "difficulty": "中級",
-      "question": "次のプログラムを確認してください。このクラスを利用する以下のプログラムを、コンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-      "code": "public class Sample {\n    static int num = 0;\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Sample.num = 10;\n        Sample s = new Sample();\n        Sample s2 = new Sample();\n        s.num += 10;\n        s2.num = 30;\n        System.out.println(Sample.num);\n    }\n}",
-      "choices": ["10が表示される", "20が表示される", "30が表示される", "Mainクラスの3行目でコンパイルエラーが発生する", "実行時に例外がスローされる"],
-      "answerIndex": 2,
-      "explanation": "static変数はクラス全体で共有されるため、最終的にnumは30になり「30」と表示されます。"
-    },
-    {
-      "id": 6,
-      "category": "インスタンスとメソッド",
-      "difficulty": "中級",
-      "question": "次の中から、正しい説明を選びなさい。（2つ選択）",
-      "code": "staticメソッドやstaticフィールドのアクセスに関する知識問題",
-      "choices": ["staticメソッドからは、staticメソッドを呼び出せない", "staticメソッドからは、staticではないフィールドにアクセスできる", "staticメソッドからは、staticではないメソッドを呼び出せる", "staticメソッドからは、staticフィールドにアクセスできる", "staticではないメソッドからは、staticフィールドにアクセスできる", "staticではないメソッドからは、staticメソッドを呼び出せない"],
-      "answerIndex": [3,4],
-      "explanation": "staticはインスタンスに依存しないため、staticメソッド/フィールドにはアクセス可能ですが、インスタンス変数やインスタンスメソッドにはアクセスできません。"
-    },
-    {
-      "id": 7,
-      "category": "インスタンスとメソッド",
-      "difficulty": "初級",
-      "question": "次のクラスのhelloメソッドを呼び出し、コンソールに「hello」と表示したい。4行目の空欄に入るコードとして、正しいものを選びなさい。（1つ選択）",
-      "code": "public class Sample {\n    public void hello() {\n        System.out.println(\"hello\");\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Sample sample = new Sample();\n        sample.hello();\n    }\n}",
-      "choices": ["hello;", "hello();", "Sample.hello;", "Sample.hello();", "sample.hello();", "sample.hello"],
-      "answerIndex": 4,
-      "explanation": "インスタンスメソッドはオブジェクトを生成し、その参照を用いて呼び出す必要があります。正しくはsample.hello();です。"
-    },
-    {
-      "id": 8,
-      "category": "インスタンスとメソッド",
-      "difficulty": "中級",
-      "question": "次のプログラムを確認してください。このクラスを利用する以下のプログラムを、コンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-      "code": "public class Sample {\n    public int add(Integer a, Integer b) {\n        return a + b;\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Sample s = new Sample();\n        System.out.println(s.add(10, null));\n    }\n}",
-      "choices": ["10と表示される", "10nullと表示される", "voidと表示される", "コンパイルエラーが発生する", "実行時に例外がスローされる"],
-      "answerIndex": 4,
-      "explanation": "nullをIntegerに渡すと、アンボクシング時にNullPointerExceptionが発生します。"
-    },
-    {
-      "id": 9,
-      "category": "インスタンスとメソッド",
-      "difficulty": "初級",
-      "question": "次のプログラムの5行目に記述できるコードとして、正しいものを選びなさい。（2つ選択）",
-      "code": "public class Main {\n    public static void main(String[] args) {\n        int a = 1;\n        int b = 2;\n        int c = b;\n        // ここに記述\n    }\n}",
-      "choices": [
-        "System.out.println(a);",
-        "System.out.println(b + 2);",
-        "System.out.println(c);",
-        "System.out.println(d);"
-      ],
-      "answerIndex": [0, 2],
-      "explanation": "aとcは宣言済みで利用可能です。dは未定義なのでエラーになります。"
-    },
-    {
-      "id": 10,
-      "category": "インスタンスとメソッド",
-      "difficulty": "初級",
-      "question": "次の中から、メソッド宣言の記述として正しいものを選びなさい。（1つ選択）",
-      "code": "public class Sample {\n    // メソッドの宣言形式を問う問題\n}",
-      "choices": [
-        "Void sample() { }",
-        "void sample() { return \"sample\"; }",
-        "sample() { }",
-        "int sample() { return \"sample\"; }",
-        "void sample() { }"
-      ],
-      "answerIndex": 4,
-      "explanation": "Javaではメソッドの戻り値型は小文字のvoidです。Voidはクラス型のため誤りです。"
-    },
-    {
-      "id": 11,
-      "category": "インスタンスとメソッド",
-      "difficulty": "中級",
-      "question": "次のプログラムを確認してください。このクラスを利用する以下のプログラムの説明として正しいものを選びなさい。（1つ選択）",
-      "code": "public class Sample {\n    private String value;\n    public void setValue(String value) {\n        this.value = value;\n    }\n    public String getValue() {\n        return this.value;\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Sample s = new Sample();\n        String val = s.setValue(\"hello\");\n        s.getValue();\n        System.out.println(val);\n    }\n}",
-      "choices": [
-        "Mainクラスの4行目でコンパイルエラーが発生する",
-        "Mainクラスの5行目でコンパイルエラーが発生する",
-        "Mainクラスの4行目と5行目でコンパイルエラーが発生する",
-        "何も表示されない",
-        "nullが表示される",
-        "実行時に例外がスローされる"
-      ],
-      "answerIndex": 0,
-      "explanation": "setValueメソッドの戻り値はvoidであり、String型変数に代入できないため、4行目でコンパイルエラーになります。"
-    },
-    {
-      "id": 12,
-      "category": "インスタンスとメソッド",
-      "difficulty": "中級",
-      "question": "次のプログラムを確認してください。このクラスを利用する以下のプログラムの空欄に入るコードとして、正しいものを選びなさい。（2つ選択）",
-      "code": "public class Sample {\n    float divide(int a, int b) {\n        return (float) a / (float) b;\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Sample s = new Sample();\n        float result = s.divide(10, 2);\n        System.out.println(result);\n    }\n}",
-      "choices": ["int", "float", "double", "Integer", "String", "dim"],
-      "answerIndex": [1, 2],
-      "explanation": "divideの戻り値はfloatなので、変数resultの型はfloatまたは暗黙的にdoubleへ代入することが可能です。"
-    },
-    {
-      "id": 13,
-      "category": "インスタンスとメソッド",
-      "difficulty": "初級",
-      "question": "次のプログラムを確認してください。このクラスを利用する以下のプログラムを、コンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
-      "code": "public class Sample {\n    public int method(int a, int b) {\n        return a + b;\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Sample s = new Sample();\n        int result = s.method(2);\n        System.out.println(result);\n    }\n}",
-      "choices": ["0が表示される", "2が表示される", "コンパイルエラーが発生する", "実行時に例外がスローされる"],
-      "answerIndex": 2,
-      "explanation": "methodメソッドは2つの引数を必要としますが、呼び出し時に引数が1つしか渡されていないためコンパイルエラーになります。"
-    },
-    {
-      "id": 14,
-      "category": "インスタンスとメソッド",
-      "difficulty": "中級",
-      "question": "次の中から、メソッドの宣言として正しいものを選びなさい。（1つ選択）",
-      "code": "public class Sample {\n    // メソッド宣言に関する選択問題\n}",
-      "choices": [
-        "void method(void) { }",
-        "void method(int values...) { }",
-        "void method(int... values, String name) { }",
-        "void method(int a, int... b) { }"
-      ],
-      "answerIndex": 3,
-      "explanation": "可変長引数は最後にしか置けません。正しいのは void method(int a, int... b) です。"
-    },
-    {
-      "id": 15,
-      "category": "インスタンスとメソッド",
-      "difficulty": "中級",
-      "question": "次のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
-      "code": "public class Sample {\n    public void num() {\n        if (num < 0) return;\n        System.out.println(\"A\");\n        return;\n        System.out.println(\"B\");\n    }\n}",
-      "choices": [
-        "3行目でコンパイルエラーが発生する",
-        "5行目でコンパイルエラーが発生する",
-        "6行目でコンパイルエラーが発生する",
-        "「A」と表示される",
-        "「A」「B」と表示される"
-      ],
-      "answerIndex": 1,
-      "explanation": "returnの後にSystem.out.println(\"B\"); が書かれており、到達不能文となるためコンパイルエラーです。"
-    },
-    {
-      "id": 16,
-      "category": "インスタンスとメソッド",
-      "difficulty": "上級",
-      "question": "次のメソッドをオーバーロードしていないメソッド定義を選びなさい。（2つ選択）",
-      "code": "int calc(double a, int b) {\n    return (int)(a + b);\n}",
-      "choices": [
-        "int calc(int a) {}",
-        "double calc(double a, int b) {}",
-        "int calc(double a, double b) {}",
-        "int calc(double num1, int num2) {}",
-        "int calc() {}",
-        "int calc(int a, double b) {}"
-      ],
-      "answerIndex": [1, 3],
-      "explanation": "オーバーロードは引数の型や個数で区別されます。`double calc(double a, int b)` は戻り値型だけが異なるためオーバーロードにならず、また `int calc(double num1, int num2)` は引数リストが同一であるため同じシグネチャになりコンパイルエラーです。"
-    },
-    {
-      "id": 17,
-      "category": "インスタンスとメソッド",
-      "difficulty": "中級",
-      "question": "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-      "code": "public class Main {\n    public static void main(String[] args) {\n        Main m = new Main();\n        System.out.println(m.calc(2, 3));\n    }\n    private double calc(double a, int b) {\n        return (a + b) / 2;\n    }\n    private double calc(int a, double b) {\n        return (a + b) / 2;\n    }\n}",
-      "choices": ["4行目でコンパイルエラーが発生する", "6行目でコンパイルエラーが発生する", "9行目でコンパイルエラーが発生する", "選択肢BとCの両方", "2.5が表示される"],
-      "answerIndex": 4,
-      "explanation": "オーバーロードされた2つのcalcメソッドのどちらが呼ばれても `(2+3)/2` の計算結果は 2.5 となる。"
-    },
-    {
-      "id": 18,
-      "category": "インスタンスとメソッド",
-      "difficulty": "初級",
-      "question": "次のメソッドをオーバーロードするメソッド定義として、正しいものを選びなさい。（1つ選択）",
-      "code": "void method() {\n    // do something\n}",
-      "choices": ["public void method() {}", "protected void method() {}", "private void method() {}", "選択肢A〜Cまですべて正しい", "選択肢A〜Cまですべて誤りである"],
-      "answerIndex": 3,
-      "explanation": "アクセス修飾子が異なるだけでも正しくオーバーロードと見なされるため、A〜Cはいずれも正しい。"
-    },
-    {
-      "id": 19,
-      "category": "インスタンスとメソッド",
-      "difficulty": "初級",
-      "question": "Sampleというクラスを定義しようと考えている。このクラスに定義するコンストラクタを修飾できるアクセス修飾子についての説明として、正しいものを選びなさい。（1つ選択）",
-      "code": "class Sample {\n    // コンストラクタ定義\n}",
-      "choices": ["publicおよびコンストラクタの定義できる", "publicやprotectedでコンストラクタの定義できる", "private以外のコンストラクタが定義できる", "コンストラクタを修飾するアクセス修飾子に制限はない", "アクセス修飾子で修飾することはできない"],
-      "answerIndex": 3,
-      "explanation": "コンストラクタには public, protected, private を含む全てのアクセス修飾子を使用できる。"
-    },
-    {
-      "id": 20,
-      "category": "インスタンスとメソッド",
-      "difficulty": "中級",
-      "question": "次のプログラムを確認してください。このクラスを利用する以下のプログラムを、コンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
-      "code": "public class Sample {\n    void Sample() {\n        System.out.println(\"hello.\");\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Sample s = new Sample();\n        s.Sample();\n    }\n}",
-      "choices": ["「hello.」と表示される", "「hello.hello.」と表示される", "Sampleクラスでコンパイルエラーが発生する", "Mainクラスでコンパイルエラーが発生する", "実行時に例外がスローされる"],
-      "answerIndex": 0,
-      "explanation": "Sample() はコンストラクタではなくメソッドとして扱われるため、インスタンス生成時には呼ばれない。明示的に s.Sample() を呼び出した結果「hello.」が出力される。"
-    },
-    {
-      "id": 21,
-      "category": "インスタンスとメソッド",
-      "difficulty": "中級",
-      "question": "次のプログラムを確認してください。このクラスを利用する以下のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
-      "code": "public class Sample {\n    Sample() {\n        System.out.println(\"A\");\n    }\n    {\n        System.out.println(\"B\");\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Sample s = new Sample();\n    }\n}",
-      "choices": ["「A」「B」と表示される", "「B」「A」と表示される", "「A」と表示される", "「B」と表示される", "Sampleクラスでコンパイルエラーが発生する", "Mainクラスでコンパイルエラーが発生する", "実行時に例外がスローされる"],
-      "answerIndex": 1,
-      "explanation": "インスタンス初期化子はコンストラクタより先に実行されるため、B → A の順に表示される。"
-    },
-    {
-      "id": 22,
-      "category": "インスタンスとメソッド",
-      "difficulty": "初級",
-      "question": "次のプログラムをコンパイルし、実行したときに正しいものを選びなさい。（1つ選択）",
-      "code": "public class Sample {\n    static int num;\n    {\n        num = 10;\n    }\n    public Sample() {\n        num = 100;\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(Sample.num);\n    }\n}",
-      "choices": ["0が表示される", "10が表示される", "100が表示される", "コンパイルエラーが発生する"],
-      "answerIndex": 0,
-      "explanation": "インスタンスが生成されていないためコンストラクタや初期化ブロックは実行されず、staticフィールドnumの初期値0がそのまま出力される。"
-    },
-    {
-      "id": 23,
-      "category": "インスタンスとメソッド",
-      "difficulty": "中級",
-      "question": "次のプログラムを確認してください。このクラスを利用する以下のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
-      "code": "public class Sample {\n    void Sample() {\n        System.out.println(\"A\");\n    }\n    Sample(String str) {\n        System.out.println(str);\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Sample s = new Sample();\n    }\n}",
-      "choices": ["「A」と表示される", "「null」と表示される", "何も表示されない", "コンパイルエラーが発生する", "実行時に例外がスローされる"],
-      "answerIndex": 3,
-      "explanation": "引数なしのコンストラクタが定義されていないため `new Sample()` はコンパイルエラーとなる。"
-    },
-    {
-      "id": 24,
-      "category": "インスタンスとメソッド",
-      "difficulty": "中級",
-      "question": "次のプログラムを実行し、コンソールに「ok.」と表示したい。3行目の空欄に入るコードとして正しいものを選びなさい。（1つ選択）",
-      "code": "public class Sample {\n    public Sample() {\n        // 空欄\n    }\n    public Sample(String str, int num) {\n        System.out.println(\"ok.\");\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Sample s = new Sample();\n    }\n}",
-      "choices": ["Sample(null, 0);", "this(null, 0);", "super(null, 0);", "this.Sample(null, 0);"],
-      "answerIndex": 1,
-      "explanation": "同一クラス内の別コンストラクタを呼び出す場合は `this(...)` を用いる。よって `this(null, 0);` が正解。"
-    },
-    {
-      "id": 25,
-      "category": "インスタンスとメソッド",
-      "difficulty": "中級",
-      "question": "次のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
-      "code": "public class Sample {\n    public Sample() {\n        System.out.println(\"A\");\n        this(\"B\");\n    }\n    public Sample(String str) {\n        System.out.println(str);\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Sample s = new Sample();\n    }\n}",
-      "choices": ["「A」「B」と表示される", "「B」「A」と表示される", "「A」と表示される", "「B」と表示される", "コンパイルエラーが発生する", "実行時に例外がスローされる"],
-      "answerIndex": 4,
-      "explanation": "`this(...)` コンストラクタ呼び出しは必ずコンストラクタの先頭で行わなければならないため、記述位置が不正でコンパイルエラーとなる。"
-    },
-    {
-      "id": 26,
-      "category": "インスタンスとメソッド",
-      "difficulty": "中級",
-      "question": "次のプログラムを確認してください。このクラスを利用する以下のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
-      "code": "package ex26;\npublic class Parent {\n    int num = 10;\n}\n\npackage other;\nimport ex26.Parent;\npublic class Child extends Parent {\n    public static void main(String[] args) {\n        System.out.println(num);\n    }\n}",
-      "choices": ["0が表示される", "10が表示される", "Childクラスの4行目でコンパイルエラーが発生する", "Childクラスの6行目でコンパイルエラーが発生する", "実行時に例外がスローされる"],
-      "answerIndex": 3,
-      "explanation": "static コンテキスト（mainメソッド）からインスタンスフィールド `num` を直接参照できないため、6行目でコンパイルエラーとなる。"
-    },
-    {
-      "id": 27,
-      "category": "インスタンスとメソッド",
-      "difficulty": "上級",
-      "question": "次のプログラムを確認してください。このクラスを利用する以下のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
-      "code": "package other;\npublic class Book {\n    private String isbn;\n    public void setIsbn(String isbn) {\n        this.isbn = isbn;\n    }\n    protected void printInfo() {\n        System.out.println(isbn);\n    }\n}\n\npackage ex27;\nimport other.Book;\npublic class StoryBook extends Book {}\n\npackage ex27;\npublic class Main {\n    public static void main(String[] args) {\n        StoryBook story = new StoryBook();\n        story.setIsbn(\"xxx-x-xxxxx-xx-x\");\n        story.printInfo();\n    }\n}",
-      "choices": ["「null」と表示される", "「xxx-x-xxxxx-xx-x」と表示される", "コンパイルエラーが発生する", "実行時に例外がスローされる"],
-      "answerIndex": 1,
-      "explanation": "protected メソッドはサブクラスから利用可能であり、isbn フィールドに設定された文字列がそのまま出力される。"
-    },
-    {
-      "id": 28,
-      "category": "インスタンスとメソッド",
-      "difficulty": "初級",
-      "question": "次のプログラムにカプセル化を適用したい。次の中から正しいコードを選びなさい。（1つ選択）",
-      "code": "public class Sample {\n    int num;\n    int getNum() { return num; }\n    void setNum(int num) { this.num = num; }\n}",
-      "choices": ["private int num; private int getNum() { return num; } private void setNum(int num) { this.num = num; }", "public int num; public int getNum() { return num; } public void setNum(int num) { this.num = num; }", "public int num; private int getNum() { return num; } private void setNum(int num) { this.num = num; }", "private int num; public int getNum() { return num; } public void setNum(int num) { this.num = num; }"],
-      "answerIndex": 3,
-      "explanation": "フィールドを private にし、getter/setter を public にするのがカプセル化の基本。"
-    },
-    {
-      "id": 29,
-      "category": "インスタンスとメソッド",
-      "difficulty": "中級",
-      "question": "次のプログラムを利用する以下のプログラムを、コンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
-      "code": "public class Sample {\n    int num;\n    public Sample(int num) {\n        this.num = num;\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Sample s = new Sample(10);\n        modify(s.num);\n        System.out.println(s.num);\n    }\n    private static void modify(int num) {\n        num *= 2;\n    }\n}",
-      "choices": ["10が表示される", "20が表示される", "コンパイルエラーが発生する", "実行時に例外がスローされる"],
-      "answerIndex": 0,
-      "explanation": "値渡しのため `s.num` は変更されず、元の値10が表示される。"
-    },
-    {
-      "id": 30,
-      "category": "インスタンスとメソッド",
-      "difficulty": "中級",
-      "question": "次のプログラムを利用する以下のプログラムを、コンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
-      "code": "public class Sample {\n    int num;\n    public Sample(int num) {\n        this.num = num;\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Sample s = new Sample(10);\n        modify(s);\n        System.out.println(s.num);\n    }\n    private static void modify(Sample s) {\n        s.num *= 2;\n    }\n}",
-      "choices": ["10が表示される", "20が表示される", "コンパイルエラーが発生する", "実行時に例外がスローされる"],
-      "answerIndex": 1,
-      "explanation": "参照渡しにより、modify メソッド内でフィールドが更新され、値は20になる。"
-    }
-  ]
+    prefix: "KS06",
+    questions: [
+        {
+            id: 1,
+            category: "インスタンスとメソッド",
+            difficulty: "初級",
+            question:
+                "次のプログラムを確認してください。このクラスを利用する以下のプログラムを、コンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
+            code: "public class Item {\n    private int num = 10;\n    public void setNum(int num) {\n        this.num = num;\n    }\n    public int getNum() {\n        return this.num;\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Item a = new Item();\n        Item b = new Item();\n        b.setNum(20);\n        System.out.println(a.getNum());\n    }\n}",
+            choices: [
+                "0が表示される",
+                "10が表示される",
+                "20が表示される",
+                "コンパイルエラーが発生する",
+                "実行時に例外がスローされる",
+            ],
+            answerIndex: 1,
+            explanation:
+                "aとbは別のインスタンスなので、bのsetNum(20)はaには影響しません。a.getNum()は初期値10を返します。",
+        },
+        {
+            id: 2,
+            category: "インスタンスとメソッド",
+            difficulty: "中級",
+            question:
+                "次のプログラムを確認してください。このクラスを利用する以下のプログラムを、コンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
+            code: 'public class Item {\n    public String name;\n    public int price;\n    public void printInfo() {\n        System.out.println(name + ", " + price);\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Item a = new Item();\n        Item b = new Item();\n        a.name = "apple";\n        b.price = 100;\n        a.price = 200;\n        b.name = "banana";\n        a = b;\n        a.printInfo();\n    }\n}',
+            choices: [
+                "apple,100",
+                "banana,100",
+                "apple,200",
+                "banana,200",
+                "実行時に例外がスローされる",
+                "コンパイルエラーが発生する",
+            ],
+            answerIndex: 3,
+            explanation:
+                "a = b によりaがbを参照するようになります。したがってa.printInfo()はbのnameとpriceを表示し、「banana,200」と出力されます。",
+        },
+        {
+            id: 3,
+            category: "インスタンスとメソッド",
+            difficulty: "初級",
+            question:
+                "次のプログラムを実行し、「NULL」と表示したい。3行目の空欄に入るコードとして、正しいものを選びなさい。（1つ選択）",
+            code: "public class Main {\n    public static void main(String[] args) {\n        Object obj = null;\n        System.out.println(obj);\n    }\n}",
+            choices: [
+                "Object obj = null;",
+                "Object obj = false;",
+                "Object obj = NULL;",
+                'Object obj = "";',
+                "選択肢A〜Dのどれでも可能である",
+                "選択肢A〜Eはすべて誤りである",
+            ],
+            answerIndex: 0,
+            explanation:
+                "JavaではNULLやfalseでは代入できません。Object obj = null; とすることで、出力時に「null」と表示されます。",
+        },
+        {
+            id: 4,
+            category: "インスタンスとメソッド",
+            difficulty: "中級",
+            question:
+                "次のプログラムを実行し、行付近が終了したときにガーベジコレクションの対象となるインスタンスはどれか。正しい説明を選びなさい。（1つ選択）",
+            code: "public class Main {\n    public static void main(String[] args) {\n        Object a = new Object();\n        Object b = new Object();\n        Object c;\n        a = b;\n        a = null;\n        b = null;\n        // more code\n    }\n}",
+            choices: [
+                "3行目で作成したインスタンスだけが対象",
+                "4行目で作成したインスタンスだけが対象",
+                "3行目と4行目両方のインスタンスが対象",
+                "対象となるインスタンスは存在しない",
+            ],
+            answerIndex: 2,
+            explanation:
+                "最後にaもbもnullになっており、3行目と4行目のオブジェクトに参照が残っていないため、両方がGCの対象となります。",
+        },
+        {
+            id: 5,
+            category: "インスタンスとメソッド",
+            difficulty: "中級",
+            question:
+                "次のプログラムを確認してください。このクラスを利用する以下のプログラムを、コンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
+            code: "public class Sample {\n    static int num = 0;\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Sample.num = 10;\n        Sample s = new Sample();\n        Sample s2 = new Sample();\n        s.num += 10;\n        s2.num = 30;\n        System.out.println(Sample.num);\n    }\n}",
+            choices: [
+                "10が表示される",
+                "20が表示される",
+                "30が表示される",
+                "Mainクラスの3行目でコンパイルエラーが発生する",
+                "実行時に例外がスローされる",
+            ],
+            answerIndex: 2,
+            explanation:
+                "static変数はクラス全体で共有されるため、最終的にnumは30になり「30」と表示されます。",
+        },
+        {
+            id: 6,
+            category: "インスタンスとメソッド",
+            difficulty: "中級",
+            question: "次の中から、正しい説明を選びなさい。（2つ選択）",
+            code: "staticメソッドやstaticフィールドのアクセスに関する知識問題",
+            choices: [
+                "staticメソッドからは、staticメソッドを呼び出せない",
+                "staticメソッドからは、staticではないフィールドにアクセスできる",
+                "staticメソッドからは、staticではないメソッドを呼び出せる",
+                "staticメソッドからは、staticフィールドにアクセスできる",
+                "staticではないメソッドからは、staticフィールドにアクセスできる",
+                "staticではないメソッドからは、staticメソッドを呼び出せない",
+            ],
+            answerIndex: [3, 4],
+            explanation:
+                "staticはインスタンスに依存しないため、staticメソッド/フィールドにはアクセス可能ですが、インスタンス変数やインスタンスメソッドにはアクセスできません。",
+        },
+        {
+            id: 7,
+            category: "インスタンスとメソッド",
+            difficulty: "初級",
+            question:
+                "次のクラスのhelloメソッドを呼び出し、コンソールに「hello」と表示したい。4行目の空欄に入るコードとして、正しいものを選びなさい。（1つ選択）",
+            code: 'public class Sample {\n    public void hello() {\n        System.out.println("hello");\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Sample sample = new Sample();\n        __________\n    }\n}',
+            choices: [
+                "hello;",
+                "hello();",
+                "Sample.hello;",
+                "Sample.hello();",
+                "sample.hello();",
+                "sample.hello",
+            ],
+            answerIndex: 4,
+            explanation:
+                "インスタンスメソッドはオブジェクトを生成し、その参照を用いて呼び出す必要があります。正しくはsample.hello();です。",
+        },
+        {
+            id: 8,
+            category: "インスタンスとメソッド",
+            difficulty: "中級",
+            question:
+                "次のプログラムを確認してください。このクラスを利用する以下のプログラムを、コンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
+            code: "public class Sample {\n    public int add(Integer a, Integer b) {\n        return a + b;\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Sample s = new Sample();\n        System.out.println(s.add(10, null));\n    }\n}",
+            choices: [
+                "10と表示される",
+                "10nullと表示される",
+                "voidと表示される",
+                "コンパイルエラーが発生する",
+                "実行時に例外がスローされる",
+            ],
+            answerIndex: 4,
+            explanation:
+                "nullをIntegerに渡すと、アンボクシング時にNullPointerExceptionが発生します。",
+        },
+        {
+            id: 9,
+            category: "インスタンスとメソッド",
+            difficulty: "初級",
+            question:
+                "次のプログラムの5行目に記述できるコードとして、正しいものを選びなさい。（2つ選択）",
+            code: "public class Main {\n    public static void main(String[] args) {\n        int a = 1;\n        int b = 2;\n        int c = b;\n        // ここに記述\n    }\n}",
+            choices: [
+                "System.out.println(a);",
+                "System.out.println(b + 2);",
+                "System.out.println(c);",
+                "System.out.println(d);",
+            ],
+            answerIndex: [0, 2],
+            explanation:
+                "aとcは宣言済みで利用可能です。dは未定義なのでエラーになります。",
+        },
+        {
+            id: 10,
+            category: "インスタンスとメソッド",
+            difficulty: "初級",
+            question:
+                "次の中から、メソッド宣言の記述として正しいものを選びなさい。（1つ選択）",
+            code: "public class Sample {\n    // メソッドの宣言形式を問う問題\n}",
+            choices: [
+                "Void sample() { }",
+                'void sample() { return "sample"; }',
+                "sample() { }",
+                'int sample() { return "sample"; }',
+                "void sample() { }",
+            ],
+            answerIndex: 4,
+            explanation:
+                "Javaではメソッドの戻り値型は小文字のvoidです。Voidはクラス型のため誤りです。",
+        },
+        {
+            id: 11,
+            category: "インスタンスとメソッド",
+            difficulty: "中級",
+            question:
+                "次のプログラムを確認してください。このクラスを利用する以下のプログラムの説明として正しいものを選びなさい。（1つ選択）",
+            code: 'public class Sample {\n    private String value;\n    public void setValue(String value) {\n        this.value = value;\n    }\n    public String getValue() {\n        return this.value;\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Sample s = new Sample();\n        String val = s.setValue("hello");\n        s.getValue();\n        System.out.println(val);\n    }\n}',
+            choices: [
+                "Mainクラスの4行目でコンパイルエラーが発生する",
+                "Mainクラスの5行目でコンパイルエラーが発生する",
+                "Mainクラスの4行目と5行目でコンパイルエラーが発生する",
+                "何も表示されない",
+                "nullが表示される",
+                "実行時に例外がスローされる",
+            ],
+            answerIndex: 0,
+            explanation:
+                "setValueメソッドの戻り値はvoidであり、String型変数に代入できないため、4行目でコンパイルエラーになります。",
+        },
+        {
+            id: 12,
+            category: "インスタンスとメソッド",
+            difficulty: "中級",
+            question:
+                "次のプログラムを確認してください。このクラスを利用する以下のプログラムの空欄に入るコードとして、正しいものを選びなさい。（2つ選択）",
+            code: "public class Sample {\n    float divide(int a, int b) {\n        return (float) a / (float) b;\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Sample s = new Sample();\n        float result = s.divide(10, 2);\n        System.out.println(result);\n    }\n}",
+            choices: ["int", "float", "double", "Integer", "String", "dim"],
+            answerIndex: [1, 2],
+            explanation:
+                "divideの戻り値はfloatなので、変数resultの型はfloatまたは暗黙的にdoubleへ代入することが可能です。",
+        },
+        {
+            id: 13,
+            category: "インスタンスとメソッド",
+            difficulty: "初級",
+            question:
+                "次のプログラムを確認してください。このクラスを利用する以下のプログラムを、コンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
+            code: "public class Sample {\n    public int method(int a, int b) {\n        return a + b;\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Sample s = new Sample();\n        int result = s.method(2);\n        System.out.println(result);\n    }\n}",
+            choices: [
+                "0が表示される",
+                "2が表示される",
+                "コンパイルエラーが発生する",
+                "実行時に例外がスローされる",
+            ],
+            answerIndex: 2,
+            explanation:
+                "methodメソッドは2つの引数を必要としますが、呼び出し時に引数が1つしか渡されていないためコンパイルエラーになります。",
+        },
+        {
+            id: 14,
+            category: "インスタンスとメソッド",
+            difficulty: "中級",
+            question:
+                "次の中から、メソッドの宣言として正しいものを選びなさい。（1つ選択）",
+            code: "public class Sample {\n    // メソッド宣言に関する選択問題\n}",
+            choices: [
+                "void method(void) { }",
+                "void method(int values...) { }",
+                "void method(int... values, String name) { }",
+                "void method(int a, int... b) { }",
+            ],
+            answerIndex: 3,
+            explanation:
+                "可変長引数は最後にしか置けません。正しいのは void method(int a, int... b) です。",
+        },
+        {
+            id: 15,
+            category: "インスタンスとメソッド",
+            difficulty: "中級",
+            question:
+                "次のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
+            code: 'public class Sample {\n    public void num() {\n        if (num < 0) return;\n        System.out.println("A");\n        return;\n        System.out.println("B");\n    }\n}',
+            choices: [
+                "3行目でコンパイルエラーが発生する",
+                "5行目でコンパイルエラーが発生する",
+                "6行目でコンパイルエラーが発生する",
+                "「A」と表示される",
+                "「A」「B」と表示される",
+            ],
+            answerIndex: 1,
+            explanation:
+                'returnの後にSystem.out.println("B"); が書かれており、到達不能文となるためコンパイルエラーです。',
+        },
+        {
+            id: 16,
+            category: "インスタンスとメソッド",
+            difficulty: "上級",
+            question:
+                "次のメソッドをオーバーロードしていないメソッド定義を選びなさい。（2つ選択）",
+            code: "int calc(double a, int b) {\n    return (int)(a + b);\n}",
+            choices: [
+                "int calc(int a) {}",
+                "double calc(double a, int b) {}",
+                "int calc(double a, double b) {}",
+                "int calc(double num1, int num2) {}",
+                "int calc() {}",
+                "int calc(int a, double b) {}",
+            ],
+            answerIndex: [1, 3],
+            explanation:
+                "オーバーロードは引数の型や個数で区別されます。`double calc(double a, int b)` は戻り値型だけが異なるためオーバーロードにならず、また `int calc(double num1, int num2)` は引数リストが同一であるため同じシグネチャになりコンパイルエラーです。",
+        },
+        {
+            id: 17,
+            category: "インスタンスとメソッド",
+            difficulty: "中級",
+            question:
+                "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
+            code: "public class Main {\n    public static void main(String[] args) {\n        Main m = new Main();\n        System.out.println(m.calc(2, 3));\n    }\n    private double calc(double a, int b) {\n        return (a + b) / 2;\n    }\n    private double calc(int a, double b) {\n        return (a + b) / 2;\n    }\n}",
+            choices: [
+                "4行目でコンパイルエラーが発生する",
+                "6行目でコンパイルエラーが発生する",
+                "9行目でコンパイルエラーが発生する",
+                "選択肢BとCの両方",
+                "2.5が表示される",
+            ],
+            answerIndex: 4,
+            explanation:
+                "オーバーロードされた2つのcalcメソッドのどちらが呼ばれても `(2+3)/2` の計算結果は 2.5 となる。",
+        },
+        {
+            id: 18,
+            category: "インスタンスとメソッド",
+            difficulty: "初級",
+            question:
+                "次のメソッドをオーバーロードするメソッド定義として、正しいものを選びなさい。（1つ選択）",
+            code: "void method() {\n    // do something\n}",
+            choices: [
+                "public void method() {}",
+                "protected void method() {}",
+                "private void method() {}",
+                "選択肢A〜Cまですべて正しい",
+                "選択肢A〜Cまですべて誤りである",
+            ],
+            answerIndex: 3,
+            explanation:
+                "アクセス修飾子が異なるだけでも正しくオーバーロードと見なされるため、A〜Cはいずれも正しい。",
+        },
+        {
+            id: 19,
+            category: "インスタンスとメソッド",
+            difficulty: "初級",
+            question:
+                "Sampleというクラスを定義しようと考えている。このクラスに定義するコンストラクタを修飾できるアクセス修飾子についての説明として、正しいものを選びなさい。（1つ選択）",
+            code: "class Sample {\n    // コンストラクタ定義\n}",
+            choices: [
+                "publicおよびコンストラクタの定義できる",
+                "publicやprotectedでコンストラクタの定義できる",
+                "private以外のコンストラクタが定義できる",
+                "コンストラクタを修飾するアクセス修飾子に制限はない",
+                "アクセス修飾子で修飾することはできない",
+            ],
+            answerIndex: 3,
+            explanation:
+                "コンストラクタには public, protected, private を含む全てのアクセス修飾子を使用できる。",
+        },
+        {
+            id: 20,
+            category: "インスタンスとメソッド",
+            difficulty: "中級",
+            question:
+                "次のプログラムを確認してください。このクラスを利用する以下のプログラムを、コンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
+            code: 'public class Sample {\n    void Sample() {\n        System.out.println("hello.");\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Sample s = new Sample();\n        s.Sample();\n    }\n}',
+            choices: [
+                "「hello.」と表示される",
+                "「hello.hello.」と表示される",
+                "Sampleクラスでコンパイルエラーが発生する",
+                "Mainクラスでコンパイルエラーが発生する",
+                "実行時に例外がスローされる",
+            ],
+            answerIndex: 0,
+            explanation:
+                "Sample() はコンストラクタではなくメソッドとして扱われるため、インスタンス生成時には呼ばれない。明示的に s.Sample() を呼び出した結果「hello.」が出力される。",
+        },
+        {
+            id: 21,
+            category: "インスタンスとメソッド",
+            difficulty: "中級",
+            question:
+                "次のプログラムを確認してください。このクラスを利用する以下のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
+            code: 'public class Sample {\n    Sample() {\n        System.out.println("A");\n    }\n    {\n        System.out.println("B");\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Sample s = new Sample();\n    }\n}',
+            choices: [
+                "「A」「B」と表示される",
+                "「B」「A」と表示される",
+                "「A」と表示される",
+                "「B」と表示される",
+                "Sampleクラスでコンパイルエラーが発生する",
+                "Mainクラスでコンパイルエラーが発生する",
+                "実行時に例外がスローされる",
+            ],
+            answerIndex: 1,
+            explanation:
+                "インスタンス初期化子はコンストラクタより先に実行されるため、B → A の順に表示される。",
+        },
+        {
+            id: 22,
+            category: "インスタンスとメソッド",
+            difficulty: "初級",
+            question:
+                "次のプログラムをコンパイルし、実行したときに正しいものを選びなさい。（1つ選択）",
+            code: "public class Sample {\n    static int num;\n    {\n        num = 10;\n    }\n    public Sample() {\n        num = 100;\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(Sample.num);\n    }\n}",
+            choices: [
+                "0が表示される",
+                "10が表示される",
+                "100が表示される",
+                "コンパイルエラーが発生する",
+            ],
+            answerIndex: 0,
+            explanation:
+                "インスタンスが生成されていないためコンストラクタや初期化ブロックは実行されず、staticフィールドnumの初期値0がそのまま出力される。",
+        },
+        {
+            id: 23,
+            category: "インスタンスとメソッド",
+            difficulty: "中級",
+            question:
+                "次のプログラムを確認してください。このクラスを利用する以下のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
+            code: 'public class Sample {\n    void Sample() {\n        System.out.println("A");\n    }\n    Sample(String str) {\n        System.out.println(str);\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Sample s = new Sample();\n    }\n}',
+            choices: [
+                "「A」と表示される",
+                "「null」と表示される",
+                "何も表示されない",
+                "コンパイルエラーが発生する",
+                "実行時に例外がスローされる",
+            ],
+            answerIndex: 3,
+            explanation:
+                "引数なしのコンストラクタが定義されていないため `new Sample()` はコンパイルエラーとなる。",
+        },
+        {
+            id: 24,
+            category: "インスタンスとメソッド",
+            difficulty: "中級",
+            question:
+                "次のプログラムを実行し、コンソールに「ok.」と表示したい。3行目の空欄に入るコードとして正しいものを選びなさい。（1つ選択）",
+            code: 'public class Sample {\n    public Sample() {\n        // 空欄\n    }\n    public Sample(String str, int num) {\n        System.out.println("ok.");\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Sample s = new Sample();\n    }\n}',
+            choices: [
+                "Sample(null, 0);",
+                "this(null, 0);",
+                "super(null, 0);",
+                "this.Sample(null, 0);",
+            ],
+            answerIndex: 1,
+            explanation:
+                "同一クラス内の別コンストラクタを呼び出す場合は `this(...)` を用いる。よって `this(null, 0);` が正解。",
+        },
+        {
+            id: 25,
+            category: "インスタンスとメソッド",
+            difficulty: "中級",
+            question:
+                "次のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
+            code: 'public class Sample {\n    public Sample() {\n        System.out.println("A");\n        this("B");\n    }\n    public Sample(String str) {\n        System.out.println(str);\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Sample s = new Sample();\n    }\n}',
+            choices: [
+                "「A」「B」と表示される",
+                "「B」「A」と表示される",
+                "「A」と表示される",
+                "「B」と表示される",
+                "コンパイルエラーが発生する",
+                "実行時に例外がスローされる",
+            ],
+            answerIndex: 4,
+            explanation:
+                "`this(...)` コンストラクタ呼び出しは必ずコンストラクタの先頭で行わなければならないため、記述位置が不正でコンパイルエラーとなる。",
+        },
+        {
+            id: 26,
+            category: "インスタンスとメソッド",
+            difficulty: "中級",
+            question:
+                "次のプログラムを確認してください。このクラスを利用する以下のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
+            code: "package ex26;\npublic class Parent {\n    int num = 10;\n}\n\npackage other;\nimport ex26.Parent;\npublic class Child extends Parent {\n    public static void main(String[] args) {\n        System.out.println(num);\n    }\n}",
+            choices: [
+                "0が表示される",
+                "10が表示される",
+                "Childクラスの4行目でコンパイルエラーが発生する",
+                "Childクラスの6行目でコンパイルエラーが発生する",
+                "実行時に例外がスローされる",
+            ],
+            answerIndex: 3,
+            explanation:
+                "static コンテキスト（mainメソッド）からインスタンスフィールド `num` を直接参照できないため、6行目でコンパイルエラーとなる。",
+        },
+        {
+            id: 27,
+            category: "インスタンスとメソッド",
+            difficulty: "上級",
+            question:
+                "次のプログラムを確認してください。このクラスを利用する以下のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
+            code: 'package other;\npublic class Book {\n    private String isbn;\n    public void setIsbn(String isbn) {\n        this.isbn = isbn;\n    }\n    protected void printInfo() {\n        System.out.println(isbn);\n    }\n}\n\npackage ex27;\nimport other.Book;\npublic class StoryBook extends Book {}\n\npackage ex27;\npublic class Main {\n    public static void main(String[] args) {\n        StoryBook story = new StoryBook();\n        story.setIsbn("xxx-x-xxxxx-xx-x");\n        story.printInfo();\n    }\n}',
+            choices: [
+                "「null」と表示される",
+                "「xxx-x-xxxxx-xx-x」と表示される",
+                "コンパイルエラーが発生する",
+                "実行時に例外がスローされる",
+            ],
+            answerIndex: 1,
+            explanation:
+                "protected メソッドはサブクラスから利用可能であり、isbn フィールドに設定された文字列がそのまま出力される。",
+        },
+        {
+            id: 28,
+            category: "インスタンスとメソッド",
+            difficulty: "初級",
+            question:
+                "次のプログラムにカプセル化を適用したい。次の中から正しいコードを選びなさい。（1つ選択）",
+            code: "public class Sample {\n    int num;\n    int getNum() { return num; }\n    void setNum(int num) { this.num = num; }\n}",
+            choices: [
+                "private int num; private int getNum() { return num; } private void setNum(int num) { this.num = num; }",
+                "public int num; public int getNum() { return num; } public void setNum(int num) { this.num = num; }",
+                "public int num; private int getNum() { return num; } private void setNum(int num) { this.num = num; }",
+                "private int num; public int getNum() { return num; } public void setNum(int num) { this.num = num; }",
+            ],
+            answerIndex: 3,
+            explanation:
+                "フィールドを private にし、getter/setter を public にするのがカプセル化の基本。",
+        },
+        {
+            id: 29,
+            category: "インスタンスとメソッド",
+            difficulty: "中級",
+            question:
+                "次のプログラムを利用する以下のプログラムを、コンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
+            code: "public class Sample {\n    int num;\n    public Sample(int num) {\n        this.num = num;\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Sample s = new Sample(10);\n        modify(s.num);\n        System.out.println(s.num);\n    }\n    private static void modify(int num) {\n        num *= 2;\n    }\n}",
+            choices: [
+                "10が表示される",
+                "20が表示される",
+                "コンパイルエラーが発生する",
+                "実行時に例外がスローされる",
+            ],
+            answerIndex: 0,
+            explanation:
+                "値渡しのため `s.num` は変更されず、元の値10が表示される。",
+        },
+        {
+            id: 30,
+            category: "インスタンスとメソッド",
+            difficulty: "中級",
+            question:
+                "次のプログラムを利用する以下のプログラムを、コンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
+            code: "public class Sample {\n    int num;\n    public Sample(int num) {\n        this.num = num;\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Sample s = new Sample(10);\n        modify(s);\n        System.out.println(s.num);\n    }\n    private static void modify(Sample s) {\n        s.num *= 2;\n    }\n}",
+            choices: [
+                "10が表示される",
+                "20が表示される",
+                "コンパイルエラーが発生する",
+                "実行時に例外がスローされる",
+            ],
+            answerIndex: 1,
+            explanation:
+                "参照渡しにより、modify メソッド内でフィールドが更新され、値は20になる。",
+        },
+    ],
 };
