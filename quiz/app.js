@@ -701,6 +701,11 @@ gradeBtn.addEventListener("click", () => {
     markAnswers();
     showResults();
     setStatus("採点しました", 3000);
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth", // スムーズスクロール
+    });
 });
 
 resetBtn.addEventListener("click", () => {

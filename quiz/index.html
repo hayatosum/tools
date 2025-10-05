@@ -85,6 +85,26 @@
             </section>
 
             <section
+                id="resultArea"
+                class="result-area"
+                aria-live="polite"
+                hidden
+            >
+                <h2>採点結果</h2>
+                <p id="scoreText"></p>
+                <!-- ★ 追加: プログレスバー -->
+                <div class="progress">
+                    <div id="progressBar" class="progress-bar"></div>
+                </div>
+                <p id="evalText"></p>
+                <!-- ★ 評価メッセージ -->
+                <details hidden>
+                    <summary>解説をすべて表示/非表示</summary>
+                    <div id="explanations"></div>
+                </details>
+            </section>
+
+            <section
                 id="quizArea"
                 class="quiz-area"
                 aria-live="polite"
@@ -97,26 +117,6 @@
                 hidden
             >
                 <button id="gradeBtn" class="ok" disabled>採点する</button>
-            </section>
-
-            <section
-                id="resultArea"
-                class="result-area"
-                aria-live="polite"
-                hidden
-            >
-                <h2>結果</h2>
-                <p id="scoreText"></p>
-                <!-- ★ 追加: プログレスバー -->
-                <div class="progress">
-                    <div id="progressBar" class="progress-bar"></div>
-                </div>
-                <p id="evalText"></p>
-                <!-- ★ 評価メッセージ -->
-                <details hidden>
-                    <summary>解説をすべて表示/非表示</summary>
-                    <div id="explanations"></div>
-                </details>
             </section>
 
             <!-- 追加：履歴 -->
