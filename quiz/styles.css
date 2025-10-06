@@ -635,3 +635,7 @@ button:disabled {
 .tab-panel.hidden {
     display: none;
 }
+
+#fileCount {
+    margin-left: 8px;
+}

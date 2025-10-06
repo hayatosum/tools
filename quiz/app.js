@@ -36,6 +36,7 @@ let currentFile = "ALL"; // デフォルト
 // --- 要素参照 ---
 const fileSelect = document.getElementById("fileSelect");
 const fileInput = document.getElementById("fileInput");
+const fileCountEl = document.getElementById("fileCount");
 const countInput = document.getElementById("questionCount");
 const loadBtn = document.getElementById("loadBtn");
 const gradeBtn = document.getElementById("gradeBtn");
@@ -49,6 +50,7 @@ const explanationsEl = document.getElementById("explanations");
 const randomizeChoicesEl = document.getElementById("randomizeChoices");
 
 document.addEventListener("DOMContentLoaded", async () => {
+    updateSelectedFileCount();
     try {
         await loadAllQuestions(); // ← 初期ロード
         renderHistory(); // 履歴も表示
@@ -61,6 +63,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 // --- ファイル切り替え ---
 fileSelect.addEventListener("change", () => {
     currentFile = fileSelect.value;
+    updateSelectedFileCount();
 });
 
 // --- ユーティリティ ---
@@ -411,6 +414,38 @@ async function loadAllQuestions() {
     }
 
     allQuestions = merged;
+}
+
+function countQuestionsInBuiltinSet(key) {
+    const store = window.BUILTIN_QUESTION_SETS || {};
+    const data = store[key];
+    if (!data) return null;
+
+    // {prefix, questions} 形式
+    if (data && Array.isArray(data.questions)) return data.questions.length;
+
+    // 複数ブロック [{prefix, questions}, ...]
+    if (Array.isArray(data)) {
+        let total = 0;
+        for (const block of data) {
+            if (block && Array.isArray(block.questions)) total += block.questions.length;
+            // 念のため旧形式(配列)も加算
+            else if (Array.isArray(block)) total += block.length;
+        }
+        return total;
+    }
+    return null;
+}
+
+function updateSelectedFileCount() {
+    // ローカルファイル選択中は件数表示を消す（読み込んでみないと分からないため）
+    if (fileInput.files && fileInput.files[0]) {
+        fileCountEl.textContent = "";
+        return;
+    }
+    const key = fileSelect.value;
+    const cnt = countQuestionsInBuiltinSet(key);
+    fileCountEl.textContent = typeof cnt === "number" ? `（全 ${cnt} 問）` : "";
 }
 
 // 旧 validateQuestions を丸ごと置き換え
