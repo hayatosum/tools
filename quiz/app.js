@@ -196,6 +196,16 @@ function renderQuiz(questions) {
                 }
                 userAnswers.set(q.id, answers);
                 validateAllAnswered();
+
+                // ★ クラス制御：label.choice 要素に .selected を付ける・外す
+                const lbl = input.closest(".choice");
+                if (lbl) {
+                    if (input.checked) {
+                        lbl.classList.add("selected");
+                    } else {
+                        lbl.classList.remove("selected");
+                    }
+                }
             });
 
             const text = document.createElement("div");
