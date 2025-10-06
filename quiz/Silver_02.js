@@ -7,7 +7,7 @@ const JAVA_SILVER_1Z0_815_JPN_02 = {
             difficulty: "初級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: "public class Main {\n    public static void main(String[] args) {\n        int val = 7;\n        bool flg = true;\n        if (flg == true) {\n            do {\n                System.out.println(val);\n            } while (val > 10);\n        }\n    }\n}",
+            code: " 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         int val = 7;\n 4.         bool flg = true;\n 5.         if (flg == true) {\n 6.             do {\n 7.                 System.out.println(val);\n 8.             } while (val > 10);\n 9.         }\n10.     }\n11. }",
             choices: [
                 "7が1回だけ表示される",
                 "何も表示されない",
@@ -94,7 +94,7 @@ const JAVA_SILVER_1Z0_815_JPN_02 = {
             difficulty: "中級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: 'public class Sample {\n    private var value;\n    public Sample(var value) {\n        this.value = value;\n    }\n    public void test() {\n        System.out.println(value);\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Sample s = new Sample("sample");\n        s.test();\n    }\n}',
+            code: ' 1. public class Sample {\n 2.     private var value;\n 3.     public Sample(var value) {\n 4.         this.value = value;\n 5.     }\n 6.     public void test() {\n 7.         System.out.println(value);\n 8.     }\n 9. }\n\n 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         Sample s = new Sample("sample");\n 4.         s.test();\n 5.     }\n 6. }',
             choices: [
                 "「sample」と表示される",
                 "「null」と表示される",
@@ -110,7 +110,7 @@ const JAVA_SILVER_1Z0_815_JPN_02 = {
             difficulty: "初級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: 'public class A {\n    public void test() { System.out.println("A"); }\n}\n\npublic class B extends A {\n    @Override public void test() { System.out.println("B"); }\n}\n\npublic class C extends A {\n    @Override public void test() { System.out.println("C"); }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        var a = new B();\n        a = new C();\n        a.test();\n    }\n}',
+            code: ' 1. public class A {\n 2.     public void test() { System.out.println("A"); }\n 3. }\n\n 1. public class B extends A {\n 2.     @Override public void test() { System.out.println("B"); }\n 3. }\n\n 1. public class C extends A {\n 2.     @Override public void test() { System.out.println("C"); }\n 3. }\n\n 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         var a = new B();\n 4.         a = new C();\n 5.         a.test();\n 6.     }\n 7. }',
             choices: [
                 "コンパイルエラーが発生する",
                 "実行時例外がスローされる",
@@ -144,7 +144,7 @@ const JAVA_SILVER_1Z0_815_JPN_02 = {
             difficulty: "初級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: 'public class Main {\n    public static void main(String[] args) {\n        String str = "hoge, world.";\n        hello(str);\n        System.out.println(str);\n    }\n    private static void hello(String msg) {\n        msg.replaceAll("hoge", "hello");\n    }\n}',
+            code: ' 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         String str = "hoge, world.";\n 4.         hello(str);\n 5.         System.out.println(str);\n 6.     }\n 7.     private static void hello(String msg) {\n 8.         msg.replaceAll("hoge", "hello");\n 9.     }\n10. }',
             choices: [
                 "「hoge, world.」と表示される",
                 "「hello, world.」と表示される",
@@ -163,7 +163,7 @@ const JAVA_SILVER_1Z0_815_JPN_02 = {
             difficulty: "初級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: 'public class Main {\n    public static void main(String[] args) {\n        String str = "abcde";\n        System.out.println(str.charAt(5));\n    }\n}',
+            code: ' 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         String str = "abcde";\n 4.         System.out.println(str.charAt(5));\n 5.     }\n 6. }',
             choices: [
                 "dが表示される",
                 "eが表示される",
@@ -181,7 +181,7 @@ const JAVA_SILVER_1Z0_815_JPN_02 = {
             difficulty: "初級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: 'public class Main {\n    public static void main(String[] args) {\n        String str = "abcde";\n        System.out.println(str.indexOf("abcdef"));\n    }\n}',
+            code: ' 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         String str = "abcde";\n 4.         System.out.println(str.indexOf("abcdef"));\n 5.     }\n 6. }',
             choices: [
                 "0が表示される",
                 "1が表示される",
@@ -200,7 +200,7 @@ const JAVA_SILVER_1Z0_815_JPN_02 = {
             difficulty: "初級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: 'public class Main {\n    public static void main(String[] args) {\n        String str = "abcde";\n        System.out.println(str.substring(2, 4));\n    }\n}',
+            code: ' 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         String str = "abcde";\n 4.         System.out.println(str.substring(2, 4));\n 5.     }\n 6. }',
             choices: ["bcdと表示される", "bcと表示される", "cdと表示される", "deと表示される"],
             answerIndex: 2,
             explanation: 'substring(2,4) はインデックス2から3までを取得するので "cd"。',
@@ -211,7 +211,7 @@ const JAVA_SILVER_1Z0_815_JPN_02 = {
             difficulty: "初級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: 'public class Main {\n    public static void main(String[] args) {\n        String str = "aaaa";\n        System.out.println(str.replace("aa", "b"));\n    }\n}',
+            code: ' 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         String str = "aaaa";\n 4.         System.out.println(str.replace("aa", "b"));\n 5.     }\n 6. }',
             choices: ["baaと表示される", "babと表示される", "bbと表示される", "abaと表示される"],
             answerIndex: 0,
             explanation: 'replace は最初の一致だけ置換するので "baa"。',
@@ -222,7 +222,7 @@ const JAVA_SILVER_1Z0_815_JPN_02 = {
             difficulty: "初級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: 'public class Main {\n    public static void main(String[] args) {\n        String str = "abcde";\n        System.out.println(str.charAt(str.length()));\n    }\n}',
+            code: ' 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         String str = "abcde";\n 4.         System.out.println(str.charAt(str.length()));\n 5.     }\n 6. }',
             choices: [
                 "aが表示される",
                 "eが表示される",
@@ -240,7 +240,7 @@ const JAVA_SILVER_1Z0_815_JPN_02 = {
             difficulty: "初級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: 'public class Main {\n    public static void main(String[] args) {\n        String str = "abcde";\n        System.out.println(str.substring(1, 3).startsWith("b"));\n    }\n}',
+            code: ' 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         String str = "abcde";\n 4.         System.out.println(str.substring(1, 3).startsWith("b"));\n 5.     }\n 6. }',
             choices: [
                 "trueと表示される",
                 "falseと表示される",
@@ -258,7 +258,7 @@ const JAVA_SILVER_1Z0_815_JPN_02 = {
             difficulty: "初級",
             question:
                 "次のプログラムを実行し、「Hello, Java!」と表示したい。3行目の空欄に入るコードとして、正しいものを選びなさい。（1つ選択）",
-            code: "public class Sample {\n    public static void main(String[] args) {\n        String str = _____;\n        System.out.println(str);\n    }\n}",
+            code: " 1. public class Sample {\n 2.     public static void main(String[] args) {\n 3.         String str = _____;\n 4.         System.out.println(str);\n 5.     }\n 6. }",
             choices: [
                 '"Hello, ".concat("Java!")',
                 '"Hello, ".append("Java!")',
@@ -274,7 +274,7 @@ const JAVA_SILVER_1Z0_815_JPN_02 = {
             difficulty: "初級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: 'public class Main {\n    public static void main(String[] args) {\n        System.out.println(10 + 20 + "30" + 40);\n    }\n}',
+            code: ' 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         System.out.println(10 + 20 + "30" + 40);\n 4.     }\n 5. }',
             choices: [
                 "100が表示される",
                 "10203040が表示される",
@@ -291,7 +291,7 @@ const JAVA_SILVER_1Z0_815_JPN_02 = {
             difficulty: "初級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: 'public class Main {\n    public static void main(String[] args) {\n        String str = null;\n        str += "null";\n        System.out.println(str);\n    }\n}',
+            code: ' 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         String str = null;\n 4.         str += "null";\n 5.         System.out.println(str);\n 6.     }\n 7. }',
             choices: [
                 "nullと表示される",
                 "nullnullと表示される",
@@ -308,7 +308,7 @@ const JAVA_SILVER_1Z0_815_JPN_02 = {
             difficulty: "中級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: 'public class Main {\n    public static void main(String[] args) {\n        StringBuilder sb = new StringBuilder("abcde");\n        System.out.println(sb.capacity());\n    }\n}',
+            code: ' 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         StringBuilder sb = new StringBuilder("abcde");\n 4.         System.out.println(sb.capacity());\n 5.     }\n 6. }',
             choices: ["0が表示される", "5が表示される", "16が表示される", "21が表示される"],
             answerIndex: 3,
             explanation: "StringBuilderのcapacityは初期文字列長+16。5+16=21。",
@@ -319,7 +319,7 @@ const JAVA_SILVER_1Z0_815_JPN_02 = {
             difficulty: "中級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: 'public class Main {\n    public static void main(String[] args) {\n        StringBuilder sb = new StringBuilder();\n        sb.append("abcde");\n        sb.reverse();\n        sb.replace(1, 3, "a");\n        System.out.println(sb);\n    }\n}',
+            code: ' 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         StringBuilder sb = new StringBuilder();\n 4.         sb.append("abcde");\n 5.         sb.reverse();\n 6.         sb.replace(1, 3, "a");\n 7.         System.out.println(sb);\n 8.     }\n 9. }',
             choices: ["aadeと表示される", "adeと表示される", "abaと表示される", "eabaと表示される"],
             answerIndex: 3,
             explanation:
@@ -331,7 +331,7 @@ const JAVA_SILVER_1Z0_815_JPN_02 = {
             difficulty: "初級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: 'public class Sample {\n    public static void main(String[] args) {\n        StringBuilder sb = new StringBuilder("abcde");\n        System.out.println(sb.indexOf("bcd"));\n    }\n}',
+            code: ' 1. public class Sample {\n 2.     public static void main(String[] args) {\n 3.         StringBuilder sb = new StringBuilder("abcde");\n 4.         System.out.println(sb.indexOf("bcd"));\n 5.     }\n 6. }',
             choices: ["1が表示される", "2が表示される", "3が表示される", "4が表示される"],
             answerIndex: 0,
             explanation: "「bcd」はインデックス1から始まるので 1 が返る。",

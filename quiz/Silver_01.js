@@ -57,7 +57,7 @@ const JAVA_SILVER_1Z0_815_JPN_01 = {
             difficulty: "上級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: "public class Sample {\n    protected int num = 10;\n}\n\npackage ex4;\npublic class SampleImpl extends Sample {\n    public static void main(String[] args) {\n        System.out.println(num);\n    }\n}",
+            code: " 1. public class Sample {\n 2.     protected int num = 10;\n 3. }\n\n 1. package ex4;\n 2. public class SampleImpl extends Sample {\n 3.     public static void main(String[] args) {\n 4.         System.out.println(num);\n 5.     }\n 6. }",
             choices: [
                 "0が表示される",
                 "10が表示される",
@@ -93,7 +93,7 @@ const JAVA_SILVER_1Z0_815_JPN_01 = {
             difficulty: "初級",
             question:
                 "次のプログラムを以下に示したコマンドで実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: "> java Main java one two\n\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(args[0] + ' ' + args[1]);\n    }\n}",
+            code: "> java Main java one two\n\n 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         System.out.println(args[0] + ' ' + args[1]);\n 4.     }\n 5. }",
             choices: [
                 "「Main java」と表示される",
                 "「java one」と表示される",
@@ -130,7 +130,7 @@ const JAVA_SILVER_1Z0_815_JPN_01 = {
             difficulty: "上級",
             question:
                 "以下に示したSampleクラスを実行したときの結果として、正しいものを選びなさい。なお、実行時のコマンドは次のとおりとする。（1つ選択）",
-            code: '> java Sample a ¥* a¥* "a b c"\n\npublic class Sample {\n    public static void main(String... args) {\n        System.out.println(args.length);\n    }\n}',
+            code: '> java Sample a ¥* a¥* "a b c"\n\n 1. public class Sample {\n 2.     public static void main(String... args) {\n 3.         System.out.println(args.length);\n 4.     }\n 5. }',
             choices: ["4が表示される", "5が表示される", "6が表示される", "7が表示される"],
             answerIndex: 0,
             explanation:

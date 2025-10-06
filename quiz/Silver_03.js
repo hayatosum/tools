@@ -7,7 +7,7 @@ const JAVA_SILVER_1Z0_815_JPN_03 = {
             difficulty: "初級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
-            code: "public class Main {\n    public static void main(String[] args) {\n        int a = 3;\n        int b = a = 5;\n        System.out.println(a + b);\n    }\n}",
+            code: " 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         int a = 3;\n 4.         int b = a = 5;\n 5.         System.out.println(a + b);\n 6.     }\n 7. }",
             choices: [
                 "8が表示される",
                 "10が表示される",
@@ -24,7 +24,7 @@ const JAVA_SILVER_1Z0_815_JPN_03 = {
             difficulty: "初級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
-            code: "public class Sample {\n    public static void main(String[] args) {\n        int num = -10;\n        System.out.println(10 * -num);\n    }\n}",
+            code: " 1. public class Sample {\n 2.     public static void main(String[] args) {\n 3.         int num = -10;\n 4.         System.out.println(10 * -num);\n 5.     }\n 6. }",
             choices: [
                 "100が表示される",
                 "-100が表示される",
@@ -56,7 +56,7 @@ const JAVA_SILVER_1Z0_815_JPN_03 = {
             difficulty: "上級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
-            code: "public class Main {\n    public static void main(String[] args) {\n        int a = 10;\n        int b = a++ + a + a-- - a-- + ++a;\n        System.out.println(b);\n    }\n}",
+            code: " 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         int a = 10;\n 4.         int b = a++ + a + a-- - a-- + ++a;\n 5.         System.out.println(b);\n 6.     }\n 7. }",
             choices: [
                 "7が表示される",
                 "32が表示される",
@@ -74,7 +74,7 @@ const JAVA_SILVER_1Z0_815_JPN_03 = {
             difficulty: "初級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
-            code: "public class Main {\n    public static void main(String[] args) {\n        boolean a = true;\n        boolean b = true;\n        System.out.println(a <= b);\n    }\n}",
+            code: " 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         boolean a = true;\n 4.         boolean b = true;\n 5.         System.out.println(a <= b);\n 6.     }\n 7. }",
             choices: [
                 "trueが表示される",
                 "falseが表示される",
@@ -90,7 +90,7 @@ const JAVA_SILVER_1Z0_815_JPN_03 = {
             difficulty: "中級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
-            code: "public class Main {\n    public static void main(String[] args) {\n        int a = 10;\n        int b = 10;\n        if (10 < a && 10 < ++b) {\n            a++;\n        }\n        System.out.println(a + b);\n    }\n}",
+            code: " 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         int a = 10;\n 4.         int b = 10;\n 5.         if (10 < a && 10 < ++b) {\n 6.             a++;\n 7.         }\n 8.         System.out.println(a + b);\n 9.     }\n10. }",
             choices: [
                 "20が表示される",
                 "21が表示される",
@@ -108,7 +108,7 @@ const JAVA_SILVER_1Z0_815_JPN_03 = {
             difficulty: "中級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
-            code: "public class Main {\n    public static void main(String[] args) {\n        int a = 100, b = 20, c = 30;\n        System.out.println(a % b * c + a / b);\n    }\n}",
+            code: " 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         int a = 100, b = 20, c = 30;\n 4.         System.out.println(a % b * c + a / b);\n 5.     }\n 6. }",
             choices: [
                 "5が表示される",
                 "35が表示される",
@@ -124,7 +124,7 @@ const JAVA_SILVER_1Z0_815_JPN_03 = {
             category: "演算子と判定構造",
             difficulty: "上級",
             question: "次のクラスを利用するプログラムを実行したときの結果を選びなさい。（1つ選択）",
-            code: "public class Sample {\n    private int num;\n    public Sample(int num) { this.num = num; }\n}\npublic class Main {\n    public static void main(String[] args) {\n        Sample s1 = new Sample(10);\n        Sample s2 = s1;\n        s1 = new Sample(10);\n        System.out.println(s1 == s2);\n    }\n}",
+            code: " 1. public class Sample {\n 2.     private int num;\n 3.     public Sample(int num) { this.num = num; }\n 4. }\n 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         Sample s1 = new Sample(10);\n 4.         Sample s2 = s1;\n 5.         s1 = new Sample(10);\n 6.         System.out.println(s1 == s2);\n 7.     }\n 8. }",
             choices: [
                 "trueが表示される",
                 "falseが表示される",
@@ -140,7 +140,7 @@ const JAVA_SILVER_1Z0_815_JPN_03 = {
             difficulty: "上級",
             question:
                 "equalsメソッドをオーバーライドしたクラスの挙動について正しいものを選びなさい。（1つ選択）",
-            code: 'public class Sample {\n    private int num;\n    private String name;\n    public Sample(int num, String name) { this.num=num; this.name=name; }\n    public boolean equals(Object obj) {\n        if(obj==null) return false;\n        if(obj instanceof Sample) {\n            Sample s=(Sample)obj;\n            return s.num==this.num;\n        }\n        return false;\n    }\n}\npublic class Main {\n    public static void main(String[] args) {\n        Sample a=new Sample(10,"a");\n        Sample b=new Sample(10,"b");\n        System.out.println(a.equals(b));\n    }\n}',
+            code: ' 1. public class Sample {\n 2.     private int num;\n 3.     private String name;\n 4.     public Sample(int num, String name) { this.num=num; this.name=name; }\n 5.     public boolean equals(Object obj) {\n 6.         if(obj==null) return false;\n 7.         if(obj instanceof Sample) {\n 8.             Sample s=(Sample)obj;\n 9.             return s.num==this.num;\n10.         }\n11.         return false;\n12.     }\n13. }\n 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         Sample a=new Sample(10,"a");\n 4.         Sample b=new Sample(10,"b");\n 5.         System.out.println(a.equals(b));\n 6.     }\n 7. }',
             choices: [
                 "trueが表示される",
                 "falseが表示される",
@@ -157,7 +157,7 @@ const JAVA_SILVER_1Z0_815_JPN_03 = {
             difficulty: "中級",
             question:
                 "equalsの引数型がSampleである場合の挙動として正しいものを選びなさい。（1つ選択）",
-            code: "public class Sample {\n    private int num;\n    public Sample(int num){ this.num=num; }\n    public boolean equals(Sample obj){\n        if(obj==null) return false;\n        return this.num==obj.num;\n    }\n}\npublic class Main {\n    public static void main(String[] args) {\n        Object a=new Sample(10);\n        Object b=new Sample(10);\n        System.out.println(a.equals(b));\n    }\n}",
+            code: " 1. public class Sample {\n 2.     private int num;\n 3.     public Sample(int num){ this.num=num; }\n 4.     public boolean equals(Sample obj){\n 5.         if(obj==null) return false;\n 6.         return this.num==obj.num;\n 7.     }\n 8. }\n 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         Object a=new Sample(10);\n 4.         Object b=new Sample(10);\n 5.         System.out.println(a.equals(b));\n 6.     }\n 7. }",
             choices: [
                 "Sampleクラスでコンパイルエラーが発生する",
                 "Mainクラスでコンパイルエラーが発生する",
@@ -175,7 +175,7 @@ const JAVA_SILVER_1Z0_815_JPN_03 = {
             difficulty: "初級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
-            code: "public class Main {\n    public static void main(String[] args) {\n        Object a = new Object();\n        Object b = null;\n        System.out.println(a.equals(b));\n    }\n}",
+            code: " 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         Object a = new Object();\n 4.         Object b = null;\n 5.         System.out.println(a.equals(b));\n 6.     }\n 7. }",
             choices: [
                 "trueが表示される",
                 "falseが表示される",
@@ -191,7 +191,7 @@ const JAVA_SILVER_1Z0_815_JPN_03 = {
             difficulty: "初級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
-            code: 'public class Main {\n    public static void main(String[] args) {\n        String a = "sample";\n        String b = "sample";\n        System.out.print(a == b);\n        System.out.print(", ");\n        System.out.println(a.equals(b));\n    }\n}',
+            code: ' 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         String a = "sample";\n 4.         String b = "sample";\n 5.         System.out.print(a == b);\n 6.         System.out.print(", ");\n 7.         System.out.println(a.equals(b));\n 8.     }\n 9. }',
             choices: [
                 "[false, true] と表示される",
                 "[false, false] と表示される",
@@ -207,7 +207,7 @@ const JAVA_SILVER_1Z0_815_JPN_03 = {
             difficulty: "中級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
-            code: 'public class Main {\n    public static void main(String[] args) {\n        String a = new String("sample");\n        String b = "sample";\n        System.out.print(a == b);\n        System.out.print(", ");\n        System.out.println(a.equals(b));\n    }\n}',
+            code: ' 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         String a = new String("sample");\n 4.         String b = "sample";\n 5.         System.out.print(a == b);\n 6.         System.out.print(", ");\n 7.         System.out.println(a.equals(b));\n 8.     }\n 9. }',
             choices: [
                 "[false, true] と表示される",
                 "[false, false] と表示される",
@@ -224,7 +224,7 @@ const JAVA_SILVER_1Z0_815_JPN_03 = {
             difficulty: "上級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
-            code: 'public class Main {\n    public static void main(String[] args) {\n        String a = "abc";\n        String b = new String("abc");\n        int count = 0;\n        if (a.intern() == "abc") { count++; }\n        if (b.intern() == "abc") { count++; }\n        if (a.intern() == b.intern()) { count++; }\n        System.out.println(count);\n    }\n}',
+            code: ' 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         String a = "abc";\n 4.         String b = new String("abc");\n 5.         int count = 0;\n 6.         if (a.intern() == "abc") { count++; }\n 7.         if (b.intern() == "abc") { count++; }\n 8.         if (a.intern() == b.intern()) { count++; }\n 9.         System.out.println(count);\n10.     }\n11. }',
             choices: ["0が表示される", "1が表示される", "2が表示される", "3が表示される"],
             answerIndex: 3,
             explanation: "internによりすべて文字列プールを参照し同一参照になる。countは3。",
@@ -235,7 +235,7 @@ const JAVA_SILVER_1Z0_815_JPN_03 = {
             difficulty: "初級",
             question:
                 "次のプログラムを実行し、「ok」と表示したい。4行目に入るコードとして正しいものを選びなさい。（1つ選択）",
-            code: 'public class Main {\n    public static void main(String[] args) {\n        int num = 10;\n        // (ここにコードを入れる)\n        System.out.println("ok");\n    }\n}',
+            code: ' 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         int num = 10;\n 4.         // (ここにコードを入れる)\n 5.         System.out.println("ok");\n 6.     }\n 7. }',
             choices: ["if (num <= 10)", "if num <= 10", "if (num <= 10) then", "if num < 10 then"],
             answerIndex: 0,
             explanation: "Javaのif文は if(条件) { } の形式。",
@@ -245,7 +245,7 @@ const JAVA_SILVER_1Z0_815_JPN_03 = {
             category: "演算子と判定構造",
             difficulty: "初級",
             question: "次のプログラムをコンパイル、実行したときの結果を選びなさい。（1つ選択）",
-            code: 'public class Main {\n    public static void main(String[] args) {\n        if (false)\n            System.out.println("A");\n        System.out.println("B");\n    }\n}',
+            code: ' 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         if (false)\n 4.             System.out.println("A");\n 5.         System.out.println("B");\n 6.     }\n 7. }',
             choices: [
                 "「A」と表示される",
                 "「B」と表示される",
@@ -260,7 +260,7 @@ const JAVA_SILVER_1Z0_815_JPN_03 = {
             category: "演算子と判定構造",
             difficulty: "中級",
             question: "次のプログラムをコンパイル、実行したときの結果を選びなさい。（1つ選択）",
-            code: 'public class Main {\n    public static void main(String[] args) {\n        int num = 10;\n        if (num < 10)\n            System.out.println("A");\n        else\n            System.out.println("B");\n        if (num == 10)\n            System.out.println("C");\n    }\n}',
+            code: ' 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         int num = 10;\n 4.         if (num < 10)\n 5.             System.out.println("A");\n 6.         else\n 7.             System.out.println("B");\n 8.         if (num == 10)\n 9.             System.out.println("C");\n10.     }\n11. }',
             choices: [
                 "AとBとCが表示される",
                 "AとCが表示される",
@@ -277,7 +277,7 @@ const JAVA_SILVER_1Z0_815_JPN_03 = {
             category: "演算子と判定構造",
             difficulty: "中級",
             question: "次のプログラムをコンパイル、実行したときの結果を選びなさい。（1つ選択）",
-            code: 'public class Main {\n    public static void main(String[] args) {\n        int num = 10;\n        if (num == 100)\n            System.out.println("A");\n        else if (10 < num)\n            System.out.println("B");\n        else if (num == 10)\n            System.out.println("C");\n        else if (num <= 10)\n            System.out.println("D");\n    }\n}',
+            code: ' 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         int num = 10;\n 4.         if (num == 100)\n 5.             System.out.println("A");\n 6.         else if (10 < num)\n 7.             System.out.println("B");\n 8.         else if (num == 10)\n 9.             System.out.println("C");\n10.         else if (num <= 10)\n11.             System.out.println("D");\n12.     }\n13. }',
             choices: [
                 "Cが表示される",
                 "Dが表示される",
@@ -317,7 +317,7 @@ const JAVA_SILVER_1Z0_815_JPN_03 = {
             category: "演算子と判定構造",
             difficulty: "上級",
             question: "次のプログラムを実行したときに表示されるものを選びなさい。（1つ選択）",
-            code: 'public class Main {\n    public static void main(String[] args) {\n        int num = 1;\n        switch(num) {\n            case 1:\n            case 2:\n            case 3: System.out.println("A");\n            case 4: System.out.println("B");\n            default: System.out.println("C");\n        }\n    }\n}',
+            code: ' 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         int num = 1;\n 4.         switch(num) {\n 5.             case 1:\n 6.             case 2:\n 7.             case 3: System.out.println("A");\n 8.             case 4: System.out.println("B");\n 9.             default: System.out.println("C");\n10.         }\n11.     }\n12. }',
             choices: [
                 "Aと表示される",
                 "AとBと表示される",

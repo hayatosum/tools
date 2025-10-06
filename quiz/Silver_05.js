@@ -7,7 +7,7 @@ const JAVA_SILVER_1Z0_815_JPN_05 = {
             difficulty: "初級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: "public class Main {\n    public static void main(String[] args) {\n        int[] array = new int[0];\n        System.out.println(array);\n    }\n}",
+            code: " 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         int[] array = new int[0];\n 4.         System.out.println(array);\n 5.     }\n 6. }",
             choices: [
                 "0が表示される",
                 "nullが表示される",
@@ -26,7 +26,7 @@ const JAVA_SILVER_1Z0_815_JPN_05 = {
             category: "配列の操作",
             difficulty: "中級",
             question: "次のプログラムの説明として、正しいものを選びなさい。（1つ選択）",
-            code: "public class Main {\n    public static void main(String[] args) {\n        int[] a;\n        int[] b[];\n        int[][] c;\n        int[] d[];\n        int[] e[];\n        int[][] f[];\n    }\n}",
+            code: " 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         int[] a;\n 4.         int[] b[];\n 5.         int[][] c;\n 6.         int[] d[];\n 7.         int[] e[];\n 8.         int[][] f[];\n 9.     }\n10. }",
             choices: [
                 "3行目でコンパイルエラーが発生する",
                 "4行目でコンパイルエラーが発生する",
@@ -55,7 +55,7 @@ const JAVA_SILVER_1Z0_815_JPN_05 = {
                 "他選択肢の宣言すべて正しい",
             ],
             answerIndex: 4,
-            explanation: "Javaでは配列のサイズを宣言時に指定できないため、A〜Dはすべて誤り。",
+            explanation: "Javaでは配列のサイズを宣言時に指定できない。",
         },
         {
             id: 4,
@@ -64,15 +64,15 @@ const JAVA_SILVER_1Z0_815_JPN_05 = {
             question: "次の中から、コンパイルエラーになるコードを選びなさい。（3つ選択）",
             code: "",
             choices: [
-                "int[] a = new int[2][3];",
-                "int[] b = new int[2,3];",
-                "int c[] = new int[2 * 3];",
-                "int x = 2, y = 3; int[] d = new int[x * y];",
-                "int[][] e = new int[2][];",
-                "int f[][] = new int[][3];",
+                "<pre><code>int[] a = new int[2][3];</code></pre>",
+                "<pre><code>int[] b = new int[2,3];</code></pre>",
+                "<pre><code>int c[] = new int[2 * 3];</code></pre>",
+                "<pre><code>int x = 2, y = 3;\nint[] d = new int[x * y];</code></pre>",
+                "<pre><code>int[][] e = new int[2][];</code></pre>",
+                "<pre><code>int f[][] = new int[][3];</code></pre>",
             ],
             answerIndex: [0, 1, 5],
-            explanation: "A,B,Fは不正な配列宣言。C,D,Eは正しくコンパイルできる。",
+            explanation: "配列インスタンスの生成には、必ず扱える要素数を指定しなければならない。",
         },
         {
             id: 5,
@@ -80,7 +80,7 @@ const JAVA_SILVER_1Z0_815_JPN_05 = {
             difficulty: "中級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
-            code: "public class Item {\n    String name;\n    int price = 100;\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Item[] items = new Item[3];\n        int total = 0;\n        for (int i = 0; i < items.length; i++) {\n            total += items[i].price;\n        }\n        System.out.println(total);\n    }\n}",
+            code: " 1. public class Item {\n 2.     String name;\n 3.     int price = 100;\n 4. }\n\n 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         Item[] items = new Item[3];\n 4.         int total = 0;\n 5.         for (int i = 0; i < items.length; i++) {\n 6.             total += items[i].price;\n 7.         }\n 8.         System.out.println(total);\n 9.     }\n10. }",
             choices: [
                 "0が表示される",
                 "200が表示される",
@@ -98,7 +98,7 @@ const JAVA_SILVER_1Z0_815_JPN_05 = {
             difficulty: "中級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
-            code: 'public class Main {\n    public static void main(String[] args) {\n        String[] array = {"A", "B", "C", "D"};\n        array[0] = null;\n        for (String str : array) {\n            System.out.print(str);\n        }\n    }\n}',
+            code: ' 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         String[] array = {"A", "B", "C", "D"};\n 4.         array[0] = null;\n 5.         for (String str : array) {\n 6.             System.out.print(str);\n 7.         }\n 8.     }\n 9. }',
             choices: [
                 "ABCDと表示される",
                 "BCDと表示される",
@@ -132,7 +132,7 @@ const JAVA_SILVER_1Z0_815_JPN_05 = {
             difficulty: "中級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
-            code: 'public class Main {\n    public static void main(String[] args) {\n        String[] array = {"A", "B", null, "C", "D", "E"};\n        int total = 0;\n        for (String tmp : array) {\n            total += tmp.length();\n        }\n        System.out.println(total);\n    }\n}',
+            code: ' 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         String[] array = {"A", "B", null, "C", "D", "E"};\n 4.         int total = 0;\n 5.         for (String tmp : array) {\n 6.             total += tmp.length();\n 7.         }\n 8.         System.out.println(total);\n 9.     }\n10. }',
             choices: [
                 "0が表示される",
                 "5が表示される",
@@ -150,7 +150,7 @@ const JAVA_SILVER_1Z0_815_JPN_05 = {
             difficulty: "上級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
-            code: "public interface A {}\npublic abstract class B implements A {}\npublic class C extends B {}\npublic class D extends C {}\n\npublic class Main {\n    public static void main(String[] args) {\n        A[] array = { new C(), null, new D() };\n        Object[] objArray = array;\n    }\n}",
+            code: " 1. public interface A {}\n\n 1. public abstract class B implements A {}\n\n 1. public class C extends B {}\n\n 1. public class D extends C {}\n\n 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         A[] array = { new C(), null, new D() };\n 4.         Object[] objArray = array;\n 5.     }\n 6. }",
             choices: [
                 "Mainクラスの3行目でコンパイルエラーが発生する",
                 "Mainクラスの4行目でコンパイルエラーが発生する",
@@ -167,7 +167,7 @@ const JAVA_SILVER_1Z0_815_JPN_05 = {
             difficulty: "上級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
-            code: "public class Main {\n    public static void main(String[] args) {\n        int[][][] arrayA = { { {1,2}, {1,2}, {1,2,3} } };\n        int[][][] arrayB = arrayA.clone();\n        int total = 0;\n        for (int[][] tmp : arrayB) {\n            for (int[] val : tmp) {\n                total += val.length;\n            }\n        }\n        System.out.println(total);\n    }\n}",
+            code: " 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         int[][][] arrayA = { { {1,2}, {1,2}, {1,2,3} } };\n 4.         int[][][] arrayB = arrayA.clone();\n 5.         int total = 0;\n 6.         for (int[][] tmp : arrayB) {\n 7.             for (int[] val : tmp) {\n 8.                 total += val.length;\n 9.             }\n10.         }\n11.         System.out.println(total);\n12.     }\n13. }",
             choices: [
                 "0が表示される",
                 "12が表示される",

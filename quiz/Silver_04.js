@@ -7,7 +7,7 @@ const JAVA_SILVER_1Z0_815_JPN_04 = {
             difficulty: "初級",
             question:
                 "コンソールに0～4までの数字を順に表示したい。プログラムの5行目の空欄に入るコードとして、正しいものを選びなさい。",
-            code: "public class Main {\n  public static void main(String[] args) {\n    int a = 11;\n    int b = 0;\n    while ( [ ] ) {\n      if (5 < a) {\n        System.out.println(b);\n      }\n      a--;\n      b++;\n    }\n  }\n}",
+            code: " 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         int a = 11;\n 4.         int b = 0;\n 5.         while ( [ ] ) {\n 6.             if (5 < a) {\n 7.                 System.out.println(b);\n 8.             }\n 9.             a--;\n10.             b++;\n11.         }\n12.     }\n13. }",
             choices: ["b < 5", "5 < b", "5 < a", "a < 5", "true", "false"],
             answerIndex: 0,
             explanation: "ループが5回行われる条件は b < 5 のみ。（bが0～4のときに実行される）",
@@ -18,7 +18,7 @@ const JAVA_SILVER_1Z0_815_JPN_04 = {
             difficulty: "初級",
             question:
                 "コンソールに0～4までの数字を表示したい。プログラムの空欄①と②に入るコードの組み合わせとして、正しいものを選びなさい。",
-            code: "public class Main {\n  public static void main(String[] args) {\n    int a = 0;\n    ① {\n      System.out.println(a++);\n    } ②\n  }\n}",
+            code: " 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         int a = 0;\n 4.         ① {\n 5.             System.out.println(a++);\n 6.         } ②\n 7.     }\n 8. }",
             choices: [
                 "①do (a < 5) ②while;",
                 "①do (5 < a) ②while;",
@@ -35,7 +35,7 @@ const JAVA_SILVER_1Z0_815_JPN_04 = {
             difficulty: "中級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。",
-            code: "public class Main {\n  public static void main(String[] args) {\n    int a = 0;\n    while (a < 5)\n      do {\n        a++;\n        System.out.print(a);\n      } while (true);\n  }\n}",
+            code: " 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         int a = 0;\n 4.         while (a < 5)\n 5.             do {\n 6.                 a++;\n 7.                 System.out.print(a);\n 8.             } while (true);\n 9.     }\n10. }",
             choices: [
                 "012が表示される",
                 "012が5回表示される",
@@ -44,9 +44,9 @@ const JAVA_SILVER_1Z0_815_JPN_04 = {
                 "コンパイルエラーが発生する",
                 "実行時に例外がスローされる",
             ],
-            answerIndex: 3,
+            answerIndex: 4,
             explanation:
-                "while (true) により無限ループとなり、aが5に到達しても終了条件がなく無限に実行される。",
+                "while文で括弧を省略する場合、繰り返し対象になるのは次の1文のみ。Javaの文は、次のセミコロンが現れるまでが1つの文であるため、コンパイルエラーが発生する。",
         },
         {
             id: 4,
@@ -54,7 +54,7 @@ const JAVA_SILVER_1Z0_815_JPN_04 = {
             difficulty: "初級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。",
-            code: "public class Main {\n  public static void main(String[] args) {\n    for (int i = 1, long j = 2; i < 5; i++) {\n      System.out.print(i + j);\n    }\n  }\n}",
+            code: " 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         for (int i = 1, long j = 2; i < 5; i++) {\n 4.             System.out.print(i + j);\n 5.         }\n 6.     }\n 7. }",
             choices: [
                 "[2468] と表示される",
                 "[246810] と表示される",
@@ -90,7 +90,7 @@ const JAVA_SILVER_1Z0_815_JPN_04 = {
             difficulty: "初級",
             question:
                 "次のプログラムを実行し、コンソールに「0」と表示したい。3行目の空欄に入るコードとして正しいものを選びなさい。",
-            code: "public class Main {\n  public static void main(String[] args) {\n    for (int i = 0; ______; i++) {\n      System.out.println(i);\n    }\n  }\n}",
+            code: " 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         for (int i = 0; ______; i++) {\n 4.             System.out.println(i);\n 5.         }\n 6.     }\n 7. }",
             choices: ["i < 0", "i == 0", "0 < i", "1 < 2"],
             answerIndex: 1,
             explanation: "条件式にi==0とすると、i=0の1回だけループが実行され「0」が表示される。",
@@ -101,7 +101,7 @@ const JAVA_SILVER_1Z0_815_JPN_04 = {
             difficulty: "中級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。",
-            code: "public class Main {\n  public static void main(String[] args) {\n    for (int i = 0, j = 0; i < 3, j < 5; i++) {\n      System.out.println(i++);\n      j += i;\n    }\n  }\n}",
+            code: " 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         for (int i = 0, j = 0; i < 3, j < 5; i++) {\n 4.             System.out.println(i++);\n 5.             j += i;\n 6.         }\n 7.     }\n 8. }",
             choices: [
                 "[0][1][2] と表示される",
                 "[0][2][4] と表示される",
@@ -118,7 +118,7 @@ const JAVA_SILVER_1Z0_815_JPN_04 = {
             difficulty: "上級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。",
-            code: 'public class Main {\n  public static void main(String[] args) {\n    for (int i = 0; i < 3; i++, period()) {\n      System.out.print(i);\n    }\n  }\n  private static void period() {\n    System.out.print(".");\n  }\n}',
+            code: ' 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         for (int i = 0; i < 3; i++, period()) {\n 4.             System.out.print(i);\n 5.         }\n 6.     }\n 7.     private static void period() {\n 8.         System.out.print(".");\n 9.     }\n10. }',
             choices: [
                 "[0,1,2] と表示される",
                 "[0,1,2,] と表示される",
@@ -137,7 +137,7 @@ const JAVA_SILVER_1Z0_815_JPN_04 = {
             difficulty: "中級",
             question:
                 "次のプログラムを実行し、コンソールに「10」と表示したい。6行目の空欄に入るコードとして正しいものを選びなさい。",
-            code: "public class Main {\n  public static void main(String[] args) {\n    int array[][] = new int[][] {{1,2}, {2,3,4}};\n    int total = 0;\n    for (int i = 0; i < array.length; i++) {\n      for ( ______ ) {\n        total += array[i][j];\n      }\n    }\n    System.out.println(total);\n  }\n}",
+            code: " 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         int array[][] = new int[][] {{1,2}, {2,3,4}};\n 4.         int total = 0;\n 5.         for (int i = 0; i < array.length; i++) {\n 6.             for ( ______ ) {\n 7.                 total += array[i][j];\n 8.             }\n 9.         }\n10.         System.out.println(total);\n11.     }\n12. }",
             choices: [
                 "int j = 0; j < array[i].length; j++",
                 "int j = 0; j < array[j].length; j++",
@@ -154,14 +154,14 @@ const JAVA_SILVER_1Z0_815_JPN_04 = {
             difficulty: "中級",
             question:
                 "次のプログラムの3行目の空欄に記述すると無限ループになるコードを選びなさい。（3つ選択）",
-            code: "public class Main {\n  public static void main(String[] args) {\n    for ( ______ ) {\n      System.out.println(i);\n    }\n  }\n}",
+            code: " 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         for ( ______ ) {\n 4.             System.out.println(i);\n 5.         }\n 6.     }\n 7. }",
             choices: [
                 "int i=0; true; i++",
                 "int i=0; false; i++",
                 "int i=0; ; i++",
-                "int i=0; i<5; i++",
+                "int i=0; i<5;",
             ],
-            answerIndex: [0, 2],
+            answerIndex: [0, 2, 3],
             explanation:
                 "for文で条件がtrueまたは省略された場合、終了条件がなく無限ループになる。falseの場合は1回も実行されない。",
         },
@@ -171,7 +171,7 @@ const JAVA_SILVER_1Z0_815_JPN_04 = {
             difficulty: "中級",
             question:
                 "次のプログラムの4行目の空欄①に記述するコードとして、正しいものを選びなさい。（1つ選択）",
-            code: 'public class Main {\n  public static void main(String[] args) {\n    String[][] array = { { "A", "B", "C" } };\n    for (①) {\n      System.out.print(obj);\n    }\n  }\n}',
+            code: ' 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         String[][] array = { { "A", "B", "C" } };\n 4.         for (①) {\n 5.             System.out.print(obj);\n 6.         }\n 7.     }\n 8. }',
             choices: [
                 "Object obj : array",
                 "String str : array",
@@ -190,7 +190,7 @@ const JAVA_SILVER_1Z0_815_JPN_04 = {
             difficulty: "中級",
             question:
                 "次のプログラムをコンパイル・実行した結果として正しいものを選びなさい。（1つ選択）",
-            code: 'public class Main {\n  public static void main(String[] args) {\n    String[] array = { "A", "B", "C" };\n    for (String s : array) {\n      s = "D"; // ループ変数に代入\n    }\n    for (String s : array) {\n      System.out.print(s);\n    }\n  }\n}',
+            code: ' 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         String[] array = { "A", "B", "C" };\n 4.         for (String s : array) {\n 5.             s = "D"; // ループ変数に代入\n 6.         }\n 7.         for (String s : array) {\n 8.             System.out.print(s);\n 9.         }\n10.     }\n11. }',
             choices: [
                 "DDDと表示される",
                 "ABCと表示される",
@@ -224,7 +224,7 @@ const JAVA_SILVER_1Z0_815_JPN_04 = {
             difficulty: "中級",
             question:
                 "次のプログラムをコンパイル・実行した結果として正しいものを選びなさい。（1つ選択）",
-            code: 'public class Main {\n  public static void main(String[] args) {\n    String[] array = { "A", "B" };\n    for (String a : array) {\n      for (String b : array) {\n        if ("B".equals(b)) {\n          break;\n        }\n        System.out.print(b);\n      }\n    }\n  }\n}',
+            code: ' 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         String[] array = { "A", "B" };\n 4.         for (String a : array) {\n 5.             for (String b : array) {\n 6.                 if ("B".equals(b)) {\n 7.                     break;\n 8.                 }\n 9.                 System.out.print(b);\n10.             }\n11.         }\n12.     }\n13. }',
             choices: [
                 "AAと表示される",
                 "ABABと表示される",
@@ -242,7 +242,7 @@ const JAVA_SILVER_1Z0_815_JPN_04 = {
             difficulty: "中級",
             question:
                 "次のプログラムをコンパイル・実行した結果として正しいものを選びなさい。（1つ選択）",
-            code: "public class Main {\n  public static void main(String[] args) {\n    int[] array = { 1, 2, 3, 4, 5 };\n    int total = 0;\n    for (int v : array) {\n      if (v % 2 == 0) continue; // 偶数はスキップ\n      total += v;\n    }\n    System.out.println(total);\n  }\n}",
+            code: " 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         int[] array = { 1, 2, 3, 4, 5 };\n 4.         int total = 0;\n 5.         for (int v : array) {\n 6.             if (v % 2 == 0) continue; // 偶数はスキップ\n 7.             total += v;\n 8.         }\n 9.         System.out.println(total);\n10.     }\n11. }",
             choices: [
                 "1が表示される",
                 "9が表示される",
@@ -277,7 +277,7 @@ const JAVA_SILVER_1Z0_815_JPN_04 = {
             difficulty: "上級",
             question:
                 "次のプログラムをコンパイル・実行した結果として正しいものを選びなさい。（1つ選択）",
-            code: "public class Main {\n    public static void main(String[] args) {\n        int total = 0;\n        a: for (int i = 0; i < 5; i++) {\n            b: for (int j = 0; j < 5; j++) {\n                if (i % 2 == 0) continue a;\n                if (3 < j) break b;\n                total += j;\n            }\n        }\n        System.out.println(total);\n    }\n}",
+            code: " 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         int total = 0;\n 4.         a: for (int i = 0; i < 5; i++) {\n 5.             b: for (int j = 0; j < 5; j++) {\n 6.                 if (i % 2 == 0) continue a;\n 7.                 if (3 < j) break b;\n 8.                 total += j;\n 9.             }\n10.         }\n11.         System.out.println(total);\n12.     }\n13. }",
             choices: [
                 "6が表示される",
                 "12が表示される",
