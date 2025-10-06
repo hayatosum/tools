@@ -1,5 +1,5 @@
-const SILVER_01 = {
-    prefix: "KS01",
+const JAVA_SILVER_1Z0_815_JPN_01 = {
+    prefix: "1Z0-815-JPN_01",
     questions: [
         {
             id: 1,

@@ -31,7 +31,7 @@ switchTab("quiz");
 let allQuestions = [];
 let currentQuestions = []; // 出題中の問題
 let userAnswers = new Map(); // key: q.id, value: choice index
-let currentFile = "Silver_ALL"; // デフォルト
+let currentFile = "ALL"; // デフォルト
 
 // --- 要素参照 ---
 const fileSelect = document.getElementById("fileSelect");
@@ -46,6 +46,7 @@ const gradeArea = document.getElementById("gradeArea");
 const resultArea = document.getElementById("resultArea");
 const scoreText = document.getElementById("scoreText");
 const explanationsEl = document.getElementById("explanations");
+const randomizeChoicesEl = document.getElementById("randomizeChoices");
 
 document.addEventListener("DOMContentLoaded", async () => {
     try {
@@ -156,19 +157,23 @@ function renderQuiz(questions) {
         const choicesWrap = document.createElement("div");
         choicesWrap.className = "choices";
 
-        // ★ シャッフル付きで choices を描画
-        // 正解インデックスを保持するためにペア化
+        // ★ 選択肢の順序決定（ランダム or 作問順）
         const choicePairs = q.choices.map((c, i) => ({ text: c, index: i }));
-        const shuffled = shuffle(choicePairs);
+        const displayPairs = randomizeChoicesEl?.checked
+            ? shuffle(choicePairs) // ← ランダム表示
+            : choicePairs; // ← 作問順のまま表示
 
         // 新しい choices と正解インデックスを計算
-        q.choices = shuffled.map((c) => c.text);
         const correctSet = Array.isArray(q.answerIndex) ? q.answerIndex : [q.answerIndex];
-        q.answerIndex = shuffled
+
+        // 表示順にあわせて q.choices と q.answerIndex を“表示用”にそろえる
+        q.choices = displayPairs.map((c) => c.text);
+        q.answerIndex = displayPairs
             .map((c, newIdx) => (correctSet.includes(c.index) ? newIdx : null))
             .filter((v) => v !== null);
 
-        shuffled.forEach((c, cIdx) => {
+        // 実際の選択肢DOMを作成
+        displayPairs.forEach((c, cIdx) => {
             const id = `q${q.id}_c${cIdx}`;
             const name = `qgroup_${q.id}`;
 
@@ -185,10 +190,8 @@ function renderQuiz(questions) {
             input.addEventListener("change", () => {
                 let answers = userAnswers.get(q.id) || [];
                 if (input.checked) {
-                    // 選択を追加（重複防止）
                     if (!answers.includes(cIdx)) answers.push(cIdx);
                 } else {
-                    // 選択を解除
                     answers = answers.filter((v) => v !== cIdx);
                 }
                 userAnswers.set(q.id, answers);
@@ -196,6 +199,7 @@ function renderQuiz(questions) {
             });
 
             const text = document.createElement("div");
+            // 選択肢のHTMLはエスケープしないポリシー（コード含む）に合わせる
             text.innerHTML = `<strong>${String.fromCharCode(65 + cIdx)}.</strong> ${c.text}`;
 
             label.appendChild(input);
@@ -399,50 +403,52 @@ async function loadAllQuestions() {
     allQuestions = merged;
 }
 
-// 旧: function validateQuestions(data) { ... } を丸ごと置き換え
+// 旧 validateQuestions を丸ごと置き換え
 function validateQuestions(data, prefix = "ZZ00") {
-    if (!Array.isArray(data)) throw new Error("問題ファイルは配列である必要があります");
+    if (!Array.isArray(data)) {
+        throw new Error("問題ファイルは配列である必要があります");
+    }
 
-    // 英字2桁+数字2桁+ハイフン+連番3桁 の形式例: KS01-001
-    const ID_RE = /^[A-Za-z]{2}\d{2}-\d{3}$/;
+    // ID生成: プレフィックスはフリーフォーマットをそのまま使用
+    const makeId = (pf, i) => {
+        const p = (pf ?? "").toString().trim();
+        const head = p.length ? p : "ZZ00"; // 空or未指定ならフォールバック
+        return `${head}-${String(i + 1).padStart(3, "0")}`;
+    };
 
     data.forEach((q, i) => {
-        // ---- ID の付与・正規化 ----
-        // 1) 既存IDがなければ prefix を使って自動採番
-        // 2) 既存IDが「数値のみ」なら、新しい形式へ変換
-        // 3) 既存IDが文字列でもID形式でなければ上書き（安全運用）
-        if (
-            typeof q.id === "undefined" ||
-            /^\d+$/.test(String(q.id)) ||
-            !ID_RE.test(String(q.id))
-        ) {
-            const seq = String(i + 1).padStart(3, "0"); // 001, 002, ...
-            const pf = String(prefix).padEnd(4, "0").slice(0, 4); // 念のため4桁に調整
-            q.id = `${pf}-${seq}`; // 例: KS01-001
+        // ===== ID の正規化 =====
+        // 1) 未設定 → prefix + 連番 例: "<自由形式>-001"
+        // 2) 数値のみ → 同上（既存データ互換）
+        // 3) 文字列で既にIDがある → そのまま尊重（形式チェックしない）
+        if (typeof q.id === "undefined" || /^\d+$/.test(String(q.id))) {
+            q.id = makeId(prefix, i);
+        } else {
+            // 何もしない：フリーフォーマットIDを尊重
+            q.id = String(q.id);
         }
 
-        // ---- 質問/選択肢の基本チェック ----
-        if (typeof q.question !== "string" || !Array.isArray(q.choices) || q.choices.length < 2) {
+        // ===== 質問/選択肢チェック =====
+        if (typeof q.question !== "string" || !Array.isArray(q.choices) || q.choices.length < 1) {
             throw new Error(`不正な問題形式があります (index: ${i})`);
         }
 
-        // ---- answerIndex を配列として正規化（単一/複数どちらもOK）----
+        // ===== answerIndex を配列化（完全一致型・複数対応）=====
         let ans = q.answerIndex;
-        if (typeof ans === "number") {
-            ans = [ans];
-        } else if (Array.isArray(ans)) {
-            ans = ans.map((v) => Number(v));
-        } else {
+        if (typeof ans === "number") ans = [ans];
+        if (!Array.isArray(ans)) {
             throw new Error(`answerIndex は数値または数値配列である必要があります (index: ${i})`);
         }
-
-        const uniq = [...new Set(ans)];
+        const uniq = [...new Set(ans.map(Number))];
         if (uniq.length === 0) throw new Error(`answerIndex が空です (index: ${i})`);
         const bad = uniq.find((v) => !Number.isInteger(v) || v < 0 || v >= q.choices.length);
         if (bad !== undefined)
             throw new Error(`answerIndex に不正な値があります: ${bad} (index: ${i})`);
-
         q.answerIndex = uniq;
+
+        // 任意メタの型だけ軽く整える
+        if (q.category != null) q.category = String(q.category);
+        if (q.difficulty != null) q.difficulty = String(q.difficulty);
     });
 }
 
@@ -599,6 +605,9 @@ function appendHistoryEntry(entry) {
 const historyList = document.getElementById("historyList");
 const refreshHistoryBtn = document.getElementById("refreshHistoryBtn");
 const clearHistoryBtn = document.getElementById("clearHistoryBtn");
+const exportHistoryBtn = document.getElementById("exportHistoryBtn");
+const importHistoryBtn = document.getElementById("importHistoryBtn");
+const importHistoryInput = document.getElementById("importHistoryInput");
 
 function renderHistory() {
     const hist = loadHistory();
@@ -672,7 +681,25 @@ if (clearHistoryBtn) {
         if (confirm("履歴をすべて削除します。よろしいですか？")) {
             saveHistory([]);
             renderHistory();
+            renderTrendChart();
+            analyzeHistoryAndRender();
         }
+    });
+}
+
+// ★ エクスポート
+if (exportHistoryBtn) {
+    exportHistoryBtn.addEventListener("click", exportHistory);
+}
+
+// ★ インポート（ボタン→ファイル選択を開く）
+if (importHistoryBtn && importHistoryInput) {
+    importHistoryBtn.addEventListener("click", () => importHistoryInput.click());
+    importHistoryInput.addEventListener("change", () => {
+        const f = importHistoryInput.files?.[0];
+        if (f) importHistoryFromFile(f);
+        // 同じファイルを続けて読み込めるように値リセット
+        importHistoryInput.value = "";
     });
 }
 
@@ -903,8 +930,10 @@ function analyzeHistoryAndRender() {
 // 例: KS01-001 → 'KS01' を取り出す
 function extractPrefix(id) {
     if (!id) return "";
-    const m = String(id).match(/^([A-Za-z]{2}\d{2})-/);
-    return m ? m[1] : "";
+    const str = String(id);
+    const lastHyphen = str.lastIndexOf("-");
+    // ハイフンがあれば、最後のハイフンより前をプレフィックスとみなす
+    return lastHyphen > 0 ? str.slice(0, lastHyphen) : str;
 }
 
 function gatherPrefixStatsFromHistory() {
@@ -1282,4 +1311,84 @@ function showQuestionPreview(q) {
 
     // 表示
     document.body.appendChild(overlay);
+}
+
+// ==== 履歴のエクスポート/インポート ====
+
+// ダウンロード用ユーティリティ
+function downloadText(filename, text) {
+    const blob = new Blob([text], { type: "application/json;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+}
+
+// エクスポート：現在の履歴配列をJSONで保存
+function exportHistory() {
+    const hist = loadHistory(); // 既存: localStorage → 配列
+    const payload = {
+        version: 1,
+        exportedAt: new Date().toISOString(),
+        items: hist,
+    };
+    const fname = `quizHistory_export_${new Date().toISOString().replace(/[:.]/g, "-")}.json`;
+    downloadText(fname, JSON.stringify(payload, null, 2));
+    setStatus("履歴をエクスポートしました", 2000);
+}
+
+// 取り込み：ファイルを読み、形式を検証してマージ
+async function importHistoryFromFile(file) {
+    if (!file) return;
+    try {
+        const text = await file.text();
+        let data = JSON.parse(text);
+
+        // 受け付ける形式：
+        // 1) { version, items: [...] }
+        // 2) 単なる配列 [...]
+        const imported = Array.isArray(data) ? data : Array.isArray(data.items) ? data.items : null;
+        if (!imported) throw new Error("不正なJSON形式です（items配列が見つかりません）");
+
+        // 軽いバリデーション（ts/total/correct/rate など最低限）
+        const cleaned = imported.filter(
+            (x) =>
+                x &&
+                typeof x === "object" &&
+                typeof x.ts === "number" &&
+                typeof x.total === "number" &&
+                typeof x.correct === "number"
+        );
+
+        if (cleaned.length === 0) throw new Error("取り込める履歴エントリがありません");
+
+        // 既存とマージ：ts＋questionIds＋rate 等を基準に簡易重複除去
+        const current = loadHistory();
+        const keyOf = (h) => `${h.ts}-${h.total}-${h.correct}-${h.rate ?? ""}-${h.source ?? ""}`;
+        const map = new Map();
+        [...current, ...cleaned].forEach((h) => {
+            map.set(keyOf(h), h);
+        });
+
+        // 新しい順にソートし、上限200件で切る（既存実装と整合）
+        const merged = [...map.values()].sort((a, b) => b.ts - a.ts).slice(0, 200);
+        saveHistory(merged);
+
+        // 画面更新
+        renderHistory();
+        renderTrendChart();
+        analyzeHistoryAndRender();
+
+        setStatus(
+            `履歴をインポートしました（${cleaned.length}件・重複除去後 ${merged.length}件）`,
+            4000
+        );
+    } catch (e) {
+        console.error(e);
+        setStatus(`インポート失敗: ${e.message || e}`, 5000);
+    }
 }

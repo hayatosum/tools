@@ -39,28 +39,49 @@
                 <section class="controls">
                     <label for="fileSelect">出題ファイル：</label>
                     <select id="fileSelect">
-                        <option value="Silver_ALL">全て</option>
-                        <option value="Silver_01">黒本：第1章 簡単なJavaプログラムの作成</option>
-                        <option value="Silver_02">
-                            黒本：第2章 Javaの基本データ型と文字列操作
+                        <option value="JAVA_SILVER_1Z0_815_JPN_ALL">全て</option>
+                        <option value="JAVA_SILVER_1Z0_815_JPN_01">
+                            Java SE 11 Silver 2019 黒本：第1章 簡単なJavaプログラムの作成
                         </option>
-                        <option value="Silver_03">黒本：第3章 演算子と判定構造</option>
-                        <option value="Silver_04">黒本：第4章 制御構造</option>
-                        <option value="Silver_05">黒本：第5章 配列の操作</option>
-                        <option value="Silver_06">黒本：第6章 インスタンスとメソッド</option>
-                        <option value="Silver_07">
-                            黒本：第7章 クラスの継承、インタフェース、抽象クラス
+                        <option value="JAVA_SILVER_1Z0_815_JPN_02">
+                            Java SE 11 Silver 2019 黒本：第2章 Javaの基本データ型と文字列操作
                         </option>
-                        <option value="Silver_08">
-                            黒本：第8章 関数型インタフェース、ラムダ式
+                        <option value="JAVA_SILVER_1Z0_815_JPN_03">
+                            Java SE 11 Silver 2019 黒本：第3章 演算子と判定構造
                         </option>
-                        <option value="Silver_09">黒本：第9章 API</option>
-                        <option value="Silver_10">黒本：第10章 例外処理</option>
-                        <option value="Silver_11">黒本：第11章 モジュールシステム</option>
-                        <option value="Silver_12">黒本：第12章 総仕上げ問題①</option>
-                        <option value="Silver_13">黒本：第13章 総仕上げ問題②</option>
+                        <option value="JAVA_SILVER_1Z0_815_JPN_04">
+                            Java SE 11 Silver 2019 黒本：第4章 制御構造
+                        </option>
+                        <option value="JAVA_SILVER_1Z0_815_JPN_05">
+                            Java SE 11 Silver 2019 黒本：第5章 配列の操作
+                        </option>
+                        <option value="JAVA_SILVER_1Z0_815_JPN_06">
+                            Java SE 11 Silver 2019 黒本：第6章 インスタンスとメソッド
+                        </option>
+                        <option value="JAVA_SILVER_1Z0_815_JPN_07">
+                            Java SE 11 Silver 2019 黒本：第7章
+                            クラスの継承、インタフェース、抽象クラス
+                        </option>
+                        <option value="JAVA_SILVER_1Z0_815_JPN_08">
+                            Java SE 11 Silver 2019 黒本：第8章 関数型インタフェース、ラムダ式
+                        </option>
+                        <option value="JAVA_SILVER_1Z0_815_JPN_09">
+                            Java SE 11 Silver 2019 黒本：第9章 API
+                        </option>
+                        <option value="JAVA_SILVER_1Z0_815_JPN_10">
+                            Java SE 11 Silver 2019 黒本：第10章 例外処理
+                        </option>
+                        <option value="JAVA_SILVER_1Z0_815_JPN_11">
+                            Java SE 11 Silver 2019 黒本：第11章 モジュールシステム
+                        </option>
+                        <option value="JAVA_SILVER_1Z0_815_JPN_12">
+                            Java SE 11 Silver 2019 黒本：第12章 総仕上げ問題①
+                        </option>
+                        <option value="JAVA_SILVER_1Z0_815_JPN_13">
+                            Java SE 11 Silver 2019 黒本：第13章 総仕上げ問題②
+                        </option>
                     </select>
-                    <input type="file" id="fileInput" accept=".json" />
+                    <input type="file" id="fileInput" accept=".json" hidden />
                 </section>
                 <section class="controls">
                     <label for="questionCount">出題数：</label>
@@ -79,6 +100,10 @@
                             value="1.0"
                             style="width: 70px"
                         />
+                    </label>
+                    <label>
+                        <input id="randomizeChoices" type="checkbox" checked />
+                        選択肢をランダムに並べ替える
                     </label>
                 </section>
 
@@ -121,6 +146,22 @@
                     <div class="history-controls">
                         <button id="refreshHistoryBtn" class="secondary">履歴を再読込</button>
                         <button id="clearHistoryBtn" class="ghost">履歴を全削除</button>
+                        <button id="exportHistoryBtn" class="secondary" title="履歴をJSONで保存">
+                            履歴をエクスポート
+                        </button>
+                        <button
+                            id="importHistoryBtn"
+                            class="secondary"
+                            title="JSONから履歴を読み込み"
+                        >
+                            履歴をインポート
+                        </button>
+                        <input
+                            id="importHistoryInput"
+                            type="file"
+                            accept="application/json"
+                            hidden
+                        />
                     </div>
                     <div id="historyList" class="history-list"></div>
                 </section>
@@ -149,7 +190,22 @@
                         </label>
                     </div>
 
-                    <div id="analysisTableWrap"></div>
+                    <div id="analysisTableWrap" hidden></div>
+
+                    <div class="panel">
+                        <h3>ヒートマップ</h3>
+                        <div id="heatmap" class="heatmap"></div>
+                    </div>
+
+                    <div class="panel">
+                        <h3>カテゴリ別 正答率</h3>
+                        <div id="prefixStatsWrap"></div>
+                    </div>
+
+                    <div class="panel">
+                        <h3>正答率・横棒グラフ</h3>
+                        <div id="barChart" class="bar-chart"></div>
+                    </div>
 
                     <div class="analysis-panels">
                         <div class="panel">
@@ -160,21 +216,6 @@
                             <h3>正答率ランキング（下位）</h3>
                             <ol id="rankBottom"></ol>
                         </div>
-                    </div>
-
-                    <div class="panel">
-                        <h3>正答率・横棒グラフ</h3>
-                        <div id="barChart" class="bar-chart"></div>
-                    </div>
-
-                    <div class="panel">
-                        <h3>ヒートマップ</h3>
-                        <div id="heatmap" class="heatmap"></div>
-                    </div>
-
-                    <div class="panel">
-                        <h3>カテゴリ別 正答率</h3>
-                        <div id="prefixStatsWrap"></div>
                     </div>
                 </section>
             </section>
@@ -191,6 +232,8 @@
         <script src="./Silver_09.js"></script>
         <script src="./Silver_10.js"></script>
         <script src="./Silver_11.js"></script>
+        <script src="./Silver_12.js"></script>
+        <script src="./Silver_13.js"></script>
         <script src="./questions_data.js"></script>
         <script src="./app.js" defer></script>
     </body>

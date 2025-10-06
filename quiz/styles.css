@@ -113,8 +113,8 @@ h3 {
     width: 400px;
 }
 .controls select {
+    border: 1px solid var(--border);
     min-width: 280px;
-    max-width: 400px;
 }
 .controls input,
 .controls select {
@@ -196,6 +196,7 @@ button:disabled {
 .grade-area {
     margin-bottom: 40px;
 }
+.resultArea,
 .grade-area {
     margin-top: 20px;
     border-top: 1px solid var(--border);
@@ -412,7 +413,7 @@ button:disabled {
     align-items: center;
 }
 .bar-label {
-    width: 120px;
+    width: 160px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -438,14 +439,14 @@ button:disabled {
 .heatmap {
     display: grid;
     gap: 6px;
-    grid-template-columns: repeat(auto-fill, minmax(42px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(92px, 1fr));
     align-items: center;
 }
 .hm-cell {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 4px;
+    gap: 0px;
 }
 .hm-swatch {
     width: 100%;
@@ -606,7 +607,7 @@ button:disabled {
 .tabs {
     display: flex;
     gap: 8px;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--fg);
     margin: 8px 0 12px;
 }
 .tab-btn {
@@ -626,7 +627,7 @@ button:disabled {
     color: var(--fg);
     font-weight: 700;
     background: #fff;
-    border-color: var(--primary);
+    border-color: var(--fg);
 }
 .tab-panel {
     padding-top: 8px;

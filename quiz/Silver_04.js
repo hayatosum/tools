@@ -1,5 +1,5 @@
-const SILVER_04 = {
-    prefix: "KS04",
+const JAVA_SILVER_1Z0_815_JPN_04 = {
+    prefix: "1Z0-815-JPN_04",
     questions: [
         {
             id: 1,
@@ -224,7 +224,7 @@ const SILVER_04 = {
             difficulty: "中級",
             question:
                 "次のプログラムをコンパイル・実行した結果として正しいものを選びなさい。（1つ選択）",
-            code: 'public class Main {\n  public static void main(String[] args) {\n    String[] array = { "A", "B" };\n    for (String a : array) {\n      for (String b : array) {\n        if ("B".equals(b)) {\n          break;          // 内側のみを脱出\n        }\n        System.out.print(b);\n      }\n    }\n  }\n}',
+            code: 'public class Main {\n  public static void main(String[] args) {\n    String[] array = { "A", "B" };\n    for (String a : array) {\n      for (String b : array) {\n        if ("B".equals(b)) {\n          break;\n        }\n        System.out.print(b);\n      }\n    }\n  }\n}',
             choices: [
                 "AAと表示される",
                 "ABABと表示される",
@@ -232,9 +232,9 @@ const SILVER_04 = {
                 "ABと表示される",
                 "BBと表示される",
             ],
-            answerIndex: 2,
+            answerIndex: 0,
             explanation:
-                '内側ループはb=="B"で直ちにbreakし、"A"のみ出力して外側の次周回へ。結果は「A」。',
+                '内側ループはb=="B"で直ちにbreakし、"A"のみ出力して外側の次周回へ。結果は「AA」。',
         },
         {
             id: 15,
