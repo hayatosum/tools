@@ -685,7 +685,7 @@ function renderHistory() {
         }/${h.total}（${h.rate}%）`;
         const src = document.createElement("div");
         src.className = "source";
-        src.textContent = h.source ? `source: ${h.source}` : "";
+        src.textContent = h.source ? `出題範囲: ${h.source}` : "";
         head.appendChild(title);
         head.appendChild(src);
         div.appendChild(head);
