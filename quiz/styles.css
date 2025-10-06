@@ -462,7 +462,6 @@ button:disabled {
     text-overflow: ellipsis;
 }
 
-#historyList,
 #analysisTableWrap,
 .bar-chart {
     max-height: 400px;
@@ -638,4 +637,17 @@ button:disabled {
 
 #fileCount {
     margin-left: 8px;
+}
+
+.pager button {
+    background: #f8f9fb;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 6px 10px;
+    cursor: pointer;
+    margin: 0 4px;
+}
+.pager button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
 }

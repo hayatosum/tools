@@ -654,23 +654,35 @@ const exportHistoryBtn = document.getElementById("exportHistoryBtn");
 const importHistoryBtn = document.getElementById("importHistoryBtn");
 const importHistoryInput = document.getElementById("importHistoryInput");
 
+let historyPage = 1;
+const PAGE_SIZE = 3;
+
 function renderHistory() {
     const hist = loadHistory();
+    const totalPages = Math.ceil(hist.length / PAGE_SIZE);
+    const start = (historyPage - 1) * PAGE_SIZE;
+    const end = start + PAGE_SIZE;
+    const pageHist = hist.slice(start, end);
+
+    const historyList = document.getElementById("historyList");
     historyList.innerHTML = "";
+
     if (hist.length === 0) {
         historyList.innerHTML = '<p class="sub">履歴はまだありません。</p>';
         return;
     }
-    hist.forEach((h, idx) => {
+
+    // 履歴アイテムを描画
+    pageHist.forEach((h, idx) => {
         const div = document.createElement("div");
         div.className = "history-item";
 
         const head = document.createElement("div");
         head.className = "history-head";
         const title = document.createElement("h3");
-        title.textContent = `#${String(hist.length - idx).padStart(2, "0")}：${h.correct}/${
-            h.total
-        }（${h.rate}%）`;
+        title.textContent = `#${String(hist.length - (start + idx)).padStart(2, "0")}：${
+            h.correct
+        }/${h.total}（${h.rate}%）`;
         const src = document.createElement("div");
         src.className = "source";
         src.textContent = h.source ? `source: ${h.source}` : "";
@@ -687,10 +699,9 @@ function renderHistory() {
             <span>所要時間: ${
                 typeof h.elapsedMs === "number" ? Math.round(h.elapsedMs / 1000) + "s" : "-"
             }</span>
-            `;
+        `;
         div.appendChild(meta);
 
-        // 詳細（各問の正誤・ID・あなたの回答）
         if (Array.isArray(h.items) && h.items.length) {
             const details = document.createElement("details");
             details.className = "history-details";
@@ -706,7 +717,7 @@ function renderHistory() {
                 const userLetters = it.user.length ? it.user.map(letter).join(", ") : "未回答";
                 li.textContent = `Q${i + 1} (id:${
                     it.id
-                })  正解: ${correctLetters} / 回答: ${userLetters}  ${it.isCorrect ? "○" : "×"}`;
+                }) 正解: ${correctLetters} / 回答: ${userLetters} ${it.isCorrect ? "○" : "×"}`;
                 ul.appendChild(li);
             });
             details.appendChild(ul);
@@ -715,6 +726,37 @@ function renderHistory() {
 
         historyList.appendChild(div);
     });
+
+    // === ページネーション ===
+    const pager = document.createElement("div");
+    pager.className = "pager";
+    pager.style.marginTop = "10px";
+    pager.style.textAlign = "center";
+
+    const prevBtn = document.createElement("button");
+    prevBtn.textContent = "← 前へ";
+    prevBtn.disabled = historyPage <= 1;
+    prevBtn.addEventListener("click", () => {
+        historyPage--;
+        renderHistory();
+    });
+
+    const nextBtn = document.createElement("button");
+    nextBtn.textContent = "次へ →";
+    nextBtn.disabled = historyPage >= totalPages;
+    nextBtn.addEventListener("click", () => {
+        historyPage++;
+        renderHistory();
+    });
+
+    const info = document.createElement("span");
+    info.textContent = ` ${historyPage} / ${totalPages} ページ `;
+    info.style.margin = "0 8px";
+
+    pager.appendChild(prevBtn);
+    pager.appendChild(info);
+    pager.appendChild(nextBtn);
+    historyList.appendChild(pager);
 }
 
 // ボタン：再読込・全削除
