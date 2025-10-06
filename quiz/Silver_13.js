@@ -704,7 +704,7 @@ const JAVA_SILVER_1Z0_815_JPN_13 = {
                 "デフォルトで、モジュール外からモジュールが動作するディレクトリ内にはアクセスができる",
                 "module-info.javaは空にはできない",
             ],
-            answerIndex: 2,
+            answerIndex: [2, 3],
             explanation:
                 "モジュールシステムでは明示的な依存関係を宣言する必要があるため、module-info.javaに依存モジュールを記述する。",
         },

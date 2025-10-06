@@ -467,7 +467,7 @@ const JAVA_SILVER_1Z0_815_JPN_06 = {
             difficulty: "上級",
             question:
                 "次のプログラムを確認してください。このクラスを利用する以下のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
-            code: 'package other;\npublic class Book {\n    private String isbn;\n    public void setIsbn(String isbn) {\n        this.isbn = isbn;\n    }\n    protected void printInfo() {\n        System.out.println(isbn);\n    }\n}\n\npackage ex27;\nimport other.Book;\npublic class StoryBook extends Book {}\n\npackage ex27;\npublic class Main {\n    public static void main(String[] args) {\n        StoryBook story = new StoryBook();\n        story.setIsbn("xxx-x-xxxxx-xx-x");\n        story.printInfo();\n    }\n}',
+            code: ' 1. package other;\n 2. public class Book {\n 3.     private String isbn;\n 4.     public void setIsbn(String isbn) {\n 5.         this.isbn = isbn;\n 6.     }\n 7.     protected void printInfo() {\n 8.         System.out.println(isbn);\n 9.     }\n10. }\n\n 1. package ex27;\n 2. import other.Book;\n 3. public class StoryBook extends Book {}\n\n 1. package ex27;\n 2. public class Main {\n 3.     public static void main(String[] args) {\n 4.         StoryBook story = new StoryBook();\n 5.         story.setIsbn("xxx-x-xxxxx-xx-x");\n 6.         story.printInfo();\n 7.     }\n 8. }',
             choices: [
                 "「null」と表示される",
                 "「xxx-x-xxxxx-xx-x」と表示される",

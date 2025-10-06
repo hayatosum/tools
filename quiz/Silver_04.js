@@ -71,7 +71,7 @@ const JAVA_SILVER_1Z0_815_JPN_04 = {
             difficulty: "中級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。",
-            code: "public class Main {\n  public static void main(String[] args) {\n    int a = 1;\n    for (int b = 2, total = 0; b <= 5; b++) {\n      total = a * b;\n    }\n    System.out.println(total);\n  }\n}",
+            code: " 1.     public class Main {\n 2.         public static void main(String[] args) {\n 3.             int a = 1;\n 4.             for (int b = 2, total = 0; b <= 5; b++) {\n 5.                 total = a * b;\n 6.             }\n 7.             System.out.println(total);\n 8.         }\n 9.     }",
             choices: [
                 "[2][3][4] と表示される",
                 "[2][3][4][5] と表示される",
@@ -80,9 +80,9 @@ const JAVA_SILVER_1Z0_815_JPN_04 = {
                 "コンパイルエラーが発生する",
                 "実行時に例外がスローされる",
             ],
-            answerIndex: 2,
+            answerIndex: 4,
             explanation:
-                "ループ終了後のtotalの値は最後の計算a*5=5となるが、ループ終了後に一度だけSystem.out.println(total)が呼ばれるので「5」が表示される。",
+                "totalのスコープはfor文のブロック内のみであるため、このコードは「変数が見つからない」という意味のコンパイルエラーが発生する。",
         },
         {
             id: 6,
