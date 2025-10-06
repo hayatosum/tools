@@ -124,7 +124,7 @@ const JAVA_SILVER_1Z0_815_JPN_03 = {
             category: "演算子と判定構造",
             difficulty: "上級",
             question: "次のクラスを利用するプログラムを実行したときの結果を選びなさい。（1つ選択）",
-            code: " 1. public class Sample {\n 2.     private int num;\n 3.     public Sample(int num) { this.num = num; }\n 4. }\n 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         Sample s1 = new Sample(10);\n 4.         Sample s2 = s1;\n 5.         s1 = new Sample(10);\n 6.         System.out.println(s1 == s2);\n 7.     }\n 8. }",
+            code: " 1. public class Sample {\n 2.     private int num;\n 3.     public Sample(int num) { this.num = num; }\n 4. }\n\n 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         Sample s1 = new Sample(10);\n 4.         Sample s2 = s1;\n 5.         s1 = new Sample(10);\n 6.         System.out.println(s1 == s2);\n 7.     }\n 8. }",
             choices: [
                 "trueが表示される",
                 "falseが表示される",
@@ -140,7 +140,7 @@ const JAVA_SILVER_1Z0_815_JPN_03 = {
             difficulty: "上級",
             question:
                 "equalsメソッドをオーバーライドしたクラスの挙動について正しいものを選びなさい。（1つ選択）",
-            code: ' 1. public class Sample {\n 2.     private int num;\n 3.     private String name;\n 4.     public Sample(int num, String name) { this.num=num; this.name=name; }\n 5.     public boolean equals(Object obj) {\n 6.         if(obj==null) return false;\n 7.         if(obj instanceof Sample) {\n 8.             Sample s=(Sample)obj;\n 9.             return s.num==this.num;\n10.         }\n11.         return false;\n12.     }\n13. }\n 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         Sample a=new Sample(10,"a");\n 4.         Sample b=new Sample(10,"b");\n 5.         System.out.println(a.equals(b));\n 6.     }\n 7. }',
+            code: ' 1. public class Sample {\n 2.     private int num;\n 3.     private String name;\n 4.     public Sample(int num, String name) { this.num=num; this.name=name; }\n 5.     public boolean equals(Object obj) {\n 6.         if(obj==null) return false;\n 7.         if(obj instanceof Sample) {\n 8.             Sample s=(Sample)obj;\n 9.             return s.num==this.num;\n10.         }\n11.         return false;\n12.     }\n13. }\n\n 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         Sample a=new Sample(10,"a");\n 4.         Sample b=new Sample(10,"b");\n 5.         System.out.println(a.equals(b));\n 6.     }\n 7. }',
             choices: [
                 "trueが表示される",
                 "falseが表示される",
@@ -157,7 +157,7 @@ const JAVA_SILVER_1Z0_815_JPN_03 = {
             difficulty: "中級",
             question:
                 "equalsの引数型がSampleである場合の挙動として正しいものを選びなさい。（1つ選択）",
-            code: " 1. public class Sample {\n 2.     private int num;\n 3.     public Sample(int num){ this.num=num; }\n 4.     public boolean equals(Sample obj){\n 5.         if(obj==null) return false;\n 6.         return this.num==obj.num;\n 7.     }\n 8. }\n 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         Object a=new Sample(10);\n 4.         Object b=new Sample(10);\n 5.         System.out.println(a.equals(b));\n 6.     }\n 7. }",
+            code: " 1. public class Sample {\n 2.     private int num;\n 3.     public Sample(int num){ this.num=num; }\n 4.     public boolean equals(Sample obj){\n 5.         if(obj==null) return false;\n 6.         return this.num==obj.num;\n 7.     }\n 8. }\n\n 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         Object a=new Sample(10);\n 4.         Object b=new Sample(10);\n 5.         System.out.println(a.equals(b));\n 6.     }\n 7. }",
             choices: [
                 "Sampleクラスでコンパイルエラーが発生する",
                 "Mainクラスでコンパイルエラーが発生する",

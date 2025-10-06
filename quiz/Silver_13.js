@@ -1140,7 +1140,7 @@ const JAVA_SILVER_1Z0_815_JPN_13 = {
             question:
                 "次のプログラムをコンパイルし、実行したときの結果として、正しいものを選びなさい。",
             code: ' 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         String[] array = {"A", "B"};\n 4.         int i = 0;\n 5.         while (i < array.length) {\n 6.             int j = 0;\n 7.             do {\n 8.                 ++j;\n 9.             } while (j < array[i].length());\n10.             System.out.println(array[i] + ":" + j);\n11.             i++;\n12.         }\n13.     }\n14. }',
-            choices: ["A:  A:2", "B:  B:2", "C:  A:1", "D:  B:1", "E:  実行時に例外がスローされる"],
+            choices: ["A:2  B:2", "A:1  B:3", "A:1  B:1", "実行時に例外がスローされる"],
             answerIndex: 0,
             explanation:
                 "do-while文内でjを1から開始し、AおよびBはいずれも長さ1のため、1回ループしてj=2になる。したがって出力は「A:2」「B:2」となる。",

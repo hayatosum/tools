@@ -84,9 +84,9 @@ const JAVA_SILVER_1Z0_815_JPN_09 = {
                 "6行目でコンパイルエラーが発生する",
                 "実行時に例外がスローされる",
             ],
-            answerIndex: 2,
+            answerIndex: 4,
             explanation:
-                "LocalDate.of の月は 1 始まりであるため、0 を指定するとコンパイルエラーになる。",
+                "LocalDate.of の月は 1 始まりであるため、0 を指定すると実行時に java.time.DateTimeException が発生する。",
         },
         {
             id: 6,

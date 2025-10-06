@@ -118,18 +118,18 @@ const JAVA_SILVER_1Z0_815_JPN_04 = {
             difficulty: "上級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。",
-            code: ' 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         for (int i = 0; i < 3; i++, period()) {\n 4.             System.out.print(i);\n 5.         }\n 6.     }\n 7.     private static void period() {\n 8.         System.out.print(".");\n 9.     }\n10. }',
+            code: ' 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         for (int i = 0; i < 3; i++, period()) {\n 4.             System.out.print(i);\n 5.         }\n 6.     }\n 7.     private static void period() {\n 8.         System.out.print(",");\n 9.     }\n10. }',
             choices: [
+                "[0,1,2,] と表示される",
+                "[,0,1,2] と表示される",
                 "[0,1,2] と表示される",
-                "[0,1,2,] と表示される",
-                "[0.1.2.] と表示される",
-                "[0,1,2,] と表示される",
+                "[,0,1,2,] と表示される",
                 "コンパイルエラーが発生する",
                 "実行時に例外がスローされる",
             ],
-            answerIndex: 2,
+            answerIndex: 0,
             explanation:
-                "for文の更新部でメソッドを呼び出すことが可能であり、iの値と同時にperiod()の「.」が出力されるので「0.1.2.」となる。",
+                "for文の更新部でメソッドを呼び出すことが可能であり、iの値と同時にperiod()の「,」が出力されるので「0,1,2,」となる。",
         },
         {
             id: 9,
@@ -144,9 +144,9 @@ const JAVA_SILVER_1Z0_815_JPN_04 = {
                 "int j = i; j < array[i].length; j++",
                 "int j = i; j < array[j].length; j++",
             ],
-            answerIndex: 0,
+            answerIndex: 2,
             explanation:
-                "2次元配列を走査するには「int j=0; j<array[i].length; j++」とするのが正しい。",
+                "j < array[j].length の判定を行うと java.lang.ArrayIndexOutOfBoundsException が発生する。jの初期値が0の場合、totalの値は12となってしまうため、消去法で int j = i; j < array[i].length; j++ が正しいことが求まる。",
         },
         {
             id: 10,
@@ -190,7 +190,7 @@ const JAVA_SILVER_1Z0_815_JPN_04 = {
             difficulty: "中級",
             question:
                 "次のプログラムをコンパイル・実行した結果として正しいものを選びなさい。（1つ選択）",
-            code: ' 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         String[] array = { "A", "B", "C" };\n 4.         for (String s : array) {\n 5.             s = "D"; // ループ変数に代入\n 6.         }\n 7.         for (String s : array) {\n 8.             System.out.print(s);\n 9.         }\n10.     }\n11. }',
+            code: ' 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         String[] array = { "A", "B", "C" };\n 4.         for (String s : array) {\n 5.             s = "D";\n 6.         }\n 7.         for (String s : array) {\n 8.             System.out.print(s);\n 9.         }\n10.     }\n11. }',
             choices: [
                 "DDDと表示される",
                 "ABCと表示される",
@@ -242,7 +242,7 @@ const JAVA_SILVER_1Z0_815_JPN_04 = {
             difficulty: "中級",
             question:
                 "次のプログラムをコンパイル・実行した結果として正しいものを選びなさい。（1つ選択）",
-            code: " 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         int[] array = { 1, 2, 3, 4, 5 };\n 4.         int total = 0;\n 5.         for (int v : array) {\n 6.             if (v % 2 == 0) continue; // 偶数はスキップ\n 7.             total += v;\n 8.         }\n 9.         System.out.println(total);\n10.     }\n11. }",
+            code: " 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         int[] array = { 1, 2, 3, 4, 5 };\n 4.         int total = 0;\n 5.         for (int v : array) {\n 6.             if (v % 2 == 0) continue;\n 7.             total += v;\n 8.         }\n 9.         System.out.println(total);\n10.     }\n11. }",
             choices: [
                 "1が表示される",
                 "9が表示される",
@@ -265,7 +265,7 @@ const JAVA_SILVER_1Z0_815_JPN_04 = {
                 "代入",
                 "return文",
                 "tryブロック",
-                "選択肢A～Eすべて",
+                "他の選択肢すべて",
             ],
             answerIndex: 0,
             explanation:

@@ -34,9 +34,9 @@ const JAVA_SILVER_1Z0_815_JPN_06 = {
                 "実行時に例外がスローされる",
                 "コンパイルエラーが発生する",
             ],
-            answerIndex: 3,
+            answerIndex: 1,
             explanation:
-                "a = b によりaがbを参照するようになります。したがってa.printInfo()はbのnameとpriceを表示し、「banana,200」と出力されます。",
+                "a = b によりaがbを参照するようになります。したがってa.printInfo()はbのnameとpriceを表示し、「banana,100」と出力されます。",
         },
         {
             id: 3,

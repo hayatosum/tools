@@ -89,19 +89,20 @@ const JAVA_SILVER_1Z0_815_JPN_07 = {
             category: "クラスの継承、インタフェース、抽象クラス",
             difficulty: "中級",
             question:
-                "以下のコードをコンパイル、実行し、指定の結果を得るために正しいコードを選びなさい。",
-            code: 'public interface A {\n    default void sample() {\n        System.out.println("Hello");\n    }\n}\npublic interface B extends A {}\npublic class C implements B {\n    @Override\n    public void sample() {\n        // 空欄\n        System.out.println("Java");\n    }\n}\npublic class Main {\n    public static void main(String[] args) {\n        A a = new C();\n        a.sample();\n    }\n}',
+                "以下に示すコードをコンパイル、実行し、次のような結果を表示したい。Cクラスの空欄に入るコードとして正しいものを選びなさい。（1つ選択）\n\n出力結果：\nHello\nJava",
+            code: ' 1. public interface A {\n 2.     default void sample() {\n 3.         System.out.println("Hello");\n 4.     }\n 5. }\n\n 1. public interface B extends A {\n 2. }\n\n 1. public class C implements B {\n 2.     @Override\n 3.     public void sample() {\n 4.         ____________\n 5.         System.out.println("Java");\n 6.     }\n 7. }\n\n 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         A a = new C();\n 4.         a.sample();\n 5.     }\n 6. }',
             choices: [
-                "super.sample();",
-                "A.super.sample();",
-                "public.sample();",
-                "new.sample();",
+                "<pre><code>super.sample();</code></pre>",
+                "<pre><code>A.super.sample();</code></pre>",
+                "<pre><code>public.sample();</code></pre>",
+                "<pre><code>new.sample();</code></pre>",
                 "上記のいずれも誤りである",
             ],
             answerIndex: 1,
             explanation:
-                "インタフェースのデフォルトメソッドを呼び出すには「A.super.sample()」を使用する。",
+                "インターフェースのdefaultメソッドをオーバーライドしたメソッド内で呼び出す場合は「A.super.sample();」と指定する。通常のsuperはクラス継承にのみ使用可能であり、インターフェースのdefaultメソッドには使えない。したがって正解はBの「A.super.sample();」。",
         },
+
         {
             id: 7,
             category: "クラスの継承、インタフェース、抽象クラス",
