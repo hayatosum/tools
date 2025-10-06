@@ -206,13 +206,13 @@ const JAVA_SILVER_1Z0_815_JPN_04 = {
             category: "制御構造",
             difficulty: "中級",
             question: "次のコードと同じ結果を出力するコードを選びなさい。（1つ選択）",
-            code: "int num = 10;\ndo {\n  num++;\n} while (++num < 10);\nSystem.out.println(num);",
+            code: "1. int num = 10;\n2. do {\n3.     num++;\n4. } while (++num < 10);\n5. System.out.println(num);",
             choices: [
                 "<pre><code>int num = 10;\nwhile (++num < 10) {\n    num++;\n}\nSystem.out.println(num);</pre></code>",
                 "<pre><code>int num = 10;\nwhile (++num <= 10) {\n    num++;\n}\nSystem.out.println(num);</pre></code>",
                 "<pre><code>int num = 10;\nwhile (num++ < 10) {\n    num++;\n}\nSystem.out.println(num);</pre></code>",
                 "<pre><code>int num = 10;\nwhile (num++ <= 10) {\n    num++;\n}\nSystem.out.println(num);</pre></code>",
-                "選択肢A～Dはすべて誤りである",
+                "他の選択肢はすべて誤りである",
             ],
             answerIndex: 4,
             explanation:

@@ -1122,5 +1122,224 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
             explanation:
                 "JDKは各OSごとに提供されるため、環境に応じたインストーラを選択してセットアップを行う必要がある。",
         },
+        {
+            id: 68,
+            category: "総仕上げ問題①",
+            difficulty: "中級",
+            question:
+                "次のクラスのコンストラクタのうち、コンパイル可能で、かつ array フィールドに参照をセットできるものを選びなさい。（2つ選択）",
+            code: "public class Sample {\n private String[] array;\n}",
+            choices: [
+                "<pre><code>public Sample(String[] array) {\n this.array = array;\n}</code></pre>",
+                "<pre><code>public Sample(String... array) {\n array = array;\n}</code></pre>",
+                "<pre><code>public Sample(String str) {\n this.array = str;\n}</code></pre>",
+                "<pre><code>public Sample(String[] array) {\n array = array;\n}</code></pre>",
+                "<pre><code>public Sample(String... array) {\n this.array = array;\n}</code></pre>",
+                "<pre><code>public Sample(Object[] array) {\n this.array = array;\n}</code></pre>",
+            ],
+            answerIndex: [0, 4],
+            explanation:
+                "フィールドに代入するには this.array に String[] を渡す必要がある。A はそのまま代入でき、E は可変長引数が実体として String[] なので代入できる。B と D はパラメータに自己代入しておりフィールドを更新しない。C は String を String[] に代入できず、F は Object[] を String[] に代入できない。",
+        },
+        {
+            id: 69,
+            category: "総仕上げ問題①",
+            difficulty: "上級",
+            question:
+                "次のプログラムをコンパイル・実行した結果として、正しいものを選びなさい。（1つ選択）",
+            code: ' 1. import java.util.List;\n 2. import java.util.ArrayList;\n 3.\n 4. public class Main {\n 5. public static void main(String[] args) {\n 6. List<String> list = new ArrayList<>();\n 7. try {\n 8. while (true) {\n 9. list.add("hello");\n10. }\n11. } catch (RuntimeException e) {\n12. System.out.println("A");\n13. } catch (Exception e) {\n14. System.out.println("B");\n15. }\n16. System.out.println("C");\n17. }\n18. }',
+            choices: [
+                "Aが表示される",
+                "Bが表示される",
+                "Cが表示される",
+                "実行時に例外がスローされる",
+                "throws宣言がないためコンパイルエラーが発生する",
+            ],
+            answerIndex: 3,
+            explanation:
+                "無限に要素を追加し続けるためヒープを使い切り OutOfMemoryError（Error）が発生する。catch しているのは Exception/RuntimeException であり Error は捕捉できないため、実行時に（エラーとして）スローされて終了する。",
+        },
+        {
+            id: 70,
+            category: "総仕上げ問題①",
+            difficulty: "中級",
+            question:
+                "com.example モジュール内にある main メソッドを持つ com.sample.Main クラスをコマンドラインから実行するためのコマンドとして正しいものを選びなさい。（1つ選択）",
+            code: "",
+            choices: [
+                "<pre><code>java -classpath com.example.jar -m com.example/com.sample.Main</code></pre>",
+                "<pre><code>java -classpath com.example.jar com.sample.Main</code></pre>",
+                "<pre><code>java --module-path mods -m com.example/com.sample.Main</code></pre>",
+                "<pre><code>java --module-path mods com.example/com.sample.Main</code></pre>",
+            ],
+            answerIndex: 2,
+            explanation:
+                "モジュールとして起動するには --module-path でモジュールパスを指定し、-m モジュール/メインクラス を用いる。A はクラスパスと -m の混在、B はクラスパス起動、D は -m がなくいずれも不正。",
+        },
+        {
+            id: 71,
+            category: "総仕上げ問題①",
+            difficulty: "初級",
+            question:
+                "次のプログラムを実行し、「abcd」と表示したい。「// insert code here」に入るコードとして正しいものを選びなさい。（1つ選択）",
+            code: ' 1. public class Sample {\n 2. public static void main(String[] args) {\n 3. String[][] array = new String[2][2];\n 4. array[0][0] = "a";\n 5. array[0][1] = "b";\n 6. array[1][0] = "c";\n 7. array[1][1] = "d";\n 8. // insert code here\n 9. }\n10. }',
+            choices: [
+                "<pre><code>for (int i = 1; i < 2; ++i) {\n for (int j = 1; j < 2; ++j) {\n System.out.print(array[i][j]);\n }\n}</code></pre>",
+                "<pre><code>for (int i = 0; i < 2; ++i) {\n for (int j = 0; j < i; ++j) {\n System.out.print(array[i][j]);\n }\n}</code></pre>",
+                "<pre><code>for (String a : array) {\n for (String b : array) {\n System.out.println(b);\n }\n}</code></pre>",
+                "<pre><code>for (int i = 0; i < 2; ) {\n for (int j = 0; j < 2; ) {\n System.out.print(array[i][j]);\n j++;\n }\n i++;\n}</code></pre>",
+            ],
+            answerIndex: 3,
+            explanation:
+                "2×2 の配列の全要素を先頭から順に出力すればよい。D は i, j をループ本体でインクリメントする形だが、0,0→0,1→1,0→1,1 の順に出力できる。他の選択肢は走査範囲が不足、または型不一致/出力が改行付きで不適切。",
+        },
+        {
+            id: 72,
+            category: "総仕上げ問題①",
+            difficulty: "中級",
+            question:
+                "次のプログラムを実行して「AXCD」と表示したい。空欄に入るコードとして正しいものを選びなさい。（1つ選択）",
+            code: ' 1. public class Sample {\n 2. public static void main(String[] args) {\n 3. StringBuilder sb = new StringBuilder("ABCD");\n 4. // insert code here\n 5. System.out.println(sb);\n 6. }\n 7. }',
+            choices: [
+                '<pre><code>sb.replace(sb.indexOf("B"), sb.indexOf("B"), "X");</code></pre>',
+                '<pre><code>sb.replace(sb.indexOf("B"), sb.indexOf("C"), "X");</code></pre>',
+                '<pre><code>sb.replace(sb.indexOf("A"), sb.indexOf("B"), "X");</code></pre>',
+                '<pre><code>sb.replace(sb.indexOf("A"), sb.indexOf("C"), "X");</code></pre>',
+            ],
+            answerIndex: 1,
+            explanation:
+                "StringBuilder#replace は [start, end) を X に置換する。B の範囲は「B」の位置から「C」の位置（排他的）であり、B だけが X に置き換わって「AXCD」になる。A は挿入、C と D は置換範囲が広すぎる。",
+        },
+        {
+            id: 73,
+            category: "総仕上げ問題①",
+            difficulty: "初級",
+            question:
+                "次のプログラムを実行し、「135」と表示したい。4行目の空欄に入るコードとして正しいものを選びなさい。（1つ選択）",
+            code: " 1. public class Main {\n 2. public static void main(String[] args) {\n 3. int[] array = { 1, 2, 3, 4, 5 };\n 4. for (/* insert */) {\n 5. System.out.print(array[i]);\n 6. }\n 7. }\n 8. }",
+            choices: [
+                "<pre><code>int i = 0; i < 4; i++</code></pre>",
+                "<pre><code>int i = 0; i < 5; i += 2</code></pre>",
+                "<pre><code>int i = 1; i <= 5; i = i + 1</code></pre>",
+                "<pre><code>int i = 1; i < 5; i += 2</code></pre>",
+            ],
+            answerIndex: 1,
+            explanation:
+                "要素 0,2,4 を順に出力すれば 1,3,5 となる。よって i を 0 から 2 ずつ増やす。",
+        },
+        {
+            id: 74,
+            category: "総仕上げ問題①",
+            difficulty: "中級",
+            question:
+                "次のプログラムをコンパイル・実行したときの結果として、正しいものを選びなさい。（1つ選択）",
+            code: ' 1. public class Main {\n 2. public static void main(String[] args) {\n 3. String[] str = new String[2];\n 4. int i = 0;\n 5. for (String s : str) {\n 6. str[i].concat("e" + i);\n 7. i++;\n 8. }\n 9. for (i = 0; i < str.length; i++) {\n10. System.out.println(str[i]);\n11. }\n12. }\n13. }',
+            choices: ["e0", "e1", "null e0", "実行時に例外がスローされる"],
+            answerIndex: 3,
+            explanation:
+                "配列の各要素は初期値 null。最初のループで str[0].concat(...) を呼び出した時点で NullPointerException が発生する。",
+        },
+        {
+            id: 75,
+            category: "総仕上げ問題①",
+            difficulty: "中級",
+            question:
+                "モジュール a はモジュール b に依存し、他のすべてのモジュールから com.sample パッケージへアクセスできるようにしたい。この要件に合致する module-info.java を選びなさい。（1つ選択）",
+            code: "",
+            choices: [
+                "<pre><code>module a {\n requires com.sample;\n exports b;\n}</code></pre>",
+                "<pre><code>module a {\n requires b;\n exports com.sample;\n}</code></pre>",
+            ],
+            answerIndex: 1,
+            explanation:
+                "a から b を参照するには requires b。外部に com.sample を公開するには exports com.sample を宣言する。",
+        },
+        {
+            id: 76,
+            category: "総仕上げ問題①",
+            difficulty: "初級",
+            question:
+                "次のプログラムをコンパイルし、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
+            code: ' 1. public class Main {\n 2. public void test(Object[] array) {\n 3. System.out.println("A");\n 4. }\n 5. public void test(String[] array) {\n 6. System.out.println("B");\n 7. }\n 8. public void test(Object obj) {\n 9. System.out.println("C");\n10. }\n11. public static void main(String[] args) {\n12. new Main().test(args);\n13. }\n14. }',
+            choices: [
+                "Aが表示される",
+                "Bが表示される",
+                "Cが表示される",
+                "実行時に例外がスローされる",
+                "コンパイルエラーが発生する",
+            ],
+            answerIndex: 1,
+            explanation:
+                "main の引数は String[]。オーバーロード解決は最も適合する test(String[]) が選ばれるため「B」が表示される。",
+        },
+        {
+            id: 77,
+            category: "総仕上げ問題①",
+            difficulty: "中級",
+            question:
+                "次のプログラムをコンパイル・実行したときの結果として、正しいものを選びなさい。（1つ選択）",
+            code: ' 1. public class Sample {\n 2. public void test() {\n 3. System.out.println("Sample#test()");\n 4. }\n 5. }\n 6.\n 7. public class SubSample extends Sample {\n 8. @Override\n 9. public void test() {\n10. System.out.println("SubSample#test()");\n11. }\n12. }\n13.\n14. public class Main {\n15. public static void main(String[] args) {\n16. SubSample sub = new SubSample();\n17. Sample sample = new SubSample();\n18. sub = sample;\n19. sub.test();\n20. sample.test();\n21. }\n22. }',
+            choices: [
+                "Sample#test() / Sample#test()",
+                "SubSample#test() / SubSample#test()",
+                "SubSample#test() / Sample#test()",
+                "Sample#test() / SubSample#test()",
+                "コンパイルエラーが発生する",
+            ],
+            answerIndex: 4,
+            explanation:
+                "変数 sub は SubSample 型、sample は Sample 型（サブタイプのインスタンスを指す）であり、sub = sample; はスーパタイプからサブタイプへの代入でコンパイル不可（明示キャストが必要）。",
+        },
+        {
+            id: 78,
+            category: "総仕上げ問題①",
+            difficulty: "中級",
+            question:
+                "次のプログラムを確認し、B クラスの空欄に入るコードとして正しいものを選びなさい。（2つ選択）",
+            code: " 1. // ex78/a/A.java\n 2. package ex78.a;\n 3. public abstract class A {\n 4. protected abstract void test();\n 5. }\n 6.\n 7. // ex78/b/B.java\n 8. package ex78.b;\n 9. import ex78.a.A;\n10. public class B extends A {\n11. // insert code here\n12. }",
+            choices: [
+                "<pre><code>public void test() {}</code></pre>",
+                "<pre><code>private void test() {}</code></pre>",
+                "<pre><code>void test() {}</code></pre>",
+                "<pre><code>protected void test() {}</code></pre>",
+            ],
+            answerIndex: [0, 3],
+            explanation:
+                "A の抽象メソッドは protected。サブクラス（かつ別パッケージ）でのオーバーライドは同じく protected 以上（public も可）でなければならない。",
+        },
+        {
+            id: 79,
+            category: "総仕上げ問題①",
+            difficulty: "中級",
+            question: "モジュールに関する説明として、正しいものを選びなさい。（2つ選択）",
+            code: "",
+            choices: [
+                "コマンドラインからモジュールのエクスポートを設定することはできない",
+                "Java の基本 API は java.base モジュールにある",
+                "JDK がモジュール化されたため、API は非推奨になった",
+                "モジュール形式で実行するには、アプリケーションをモジュールとして構造化する必要がある",
+            ],
+            answerIndex: [1, 3],
+            explanation:
+                "基本 API は java.base に含まれる。--module-path / -m でモジュール形式で実行するにはモジュールとして構成する必要がある。A は誤り（--add-exports などで可能）、C も誤り。",
+        },
+        {
+            id: 80,
+            category: "総仕上げ問題①",
+            difficulty: "中級",
+            question:
+                "次のプログラムをコンパイル・実行した結果として、正しいものを選びなさい。（1つ選択）",
+            code: ' 1. public class Test {\n 2. public static void main(String[] args) {\n 3. String[][] array = new String[2][];\n 4. array[0] = new String[2];\n 5. array[1] = new String[5];\n 6. int i = 97;\n 7. for (int a = 0; a < array.length; a++) {\n 8. for (int b = 0; b < array.length; b++) {\n 9. array[a][b] = "" + i;\n10. i++;\n11. }\n12. }\n13. for (String[] tmp : array) {\n14. for (String s : tmp) {\n15. System.out.print(s + " ");\n16. }\n17. System.out.println();\n18. }\n19. }\n20. }',
+            choices: [
+                "97 98",
+                "97 98 / 99 100 101 102 103",
+                "コンパイルエラーが発生する",
+                "実行時にNullPointerExceptionがスローされる",
+                "実行時にArrayIndexOutOfBoundsExceptionがスローされる",
+            ],
+            answerIndex: 4,
+            explanation:
+                "内側のループ条件が b < array.length になっており、行ごとの長さではなく外側配列の長さ（2）で回している。a=0 のとき b=0,1 は妥当だが b=2 に達して array[0][2] へアクセスしようとして ArrayIndexOutOfBoundsException が発生する。",
+        },
     ],
 };

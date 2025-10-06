@@ -340,7 +340,7 @@ const JAVA_SILVER_1Z0_815_JPN_06 = {
             difficulty: "中級",
             question:
                 "次のプログラムを確認してください。このクラスを利用する以下のプログラムを、コンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
-            code: 'public class Sample {\n    void Sample() {\n        System.out.println("hello.");\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Sample s = new Sample();\n        s.Sample();\n    }\n}',
+            code: '1. public class Sample {\n2.     void Sample() {\n3.         System.out.println("hello.");\n4.     }5. \n}\n\n1. public class Main {\n2.     public static void main(String[] args) {\n3.         Sample s = new Sample();\n4.         s.Sample();\n5.     }\n6. }',
             choices: [
                 "「hello.」と表示される",
                 "「hello.hello.」と表示される",

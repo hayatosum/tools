@@ -6,7 +6,7 @@ const JAVA_SILVER_1Z0_815_JPN_07 = {
             category: "クラスの継承、インタフェース、抽象クラス",
             difficulty: "中級",
             question: "このクラスが継承しているParentクラスの説明として、正しいものを選びなさい。",
-            code: 'public class Child extends Parent {\n    Child() {\n        name = "java";\n    }\n    void hello() {\n        System.out.println("hello, " + name);\n    }\n}',
+            code: '1. public class Child extends Parent {\n2.     Child() {\n3.         name = "java";\n4.     }\n5.     void hello() {\n6.         System.out.println("hello, " + name);\n7.     }\n8. }',
             choices: [
                 "Parentクラスは、helloメソッドの定義を持っていなければいけない",
                 "Parentクラスには、フィールドを初期化するためのコンストラクタを定義しなければいけない",
