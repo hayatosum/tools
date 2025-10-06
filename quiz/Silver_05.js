@@ -26,7 +26,7 @@ const JAVA_SILVER_1Z0_815_JPN_05 = {
             category: "配列の操作",
             difficulty: "中級",
             question: "次のプログラムの説明として、正しいものを選びなさい。（1つ選択）",
-            code: " 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         int[] a;\n 4.         int[] b[];\n 5.         int[][] c;\n 6.         int[] d[];\n 7.         int[] e[];\n 8.         int[][] f[];\n 9.     }\n10. }",
+            code: " 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         int[] a;\n 4.         int b[];\n 5.         int[][] c;\n 6.         int d[][];\n 7.         int[] e[];\n 8.         int[][] f[];\n 9.     }\n10. }",
             choices: [
                 "3行目でコンパイルエラーが発生する",
                 "4行目でコンパイルエラーが発生する",
@@ -117,14 +117,15 @@ const JAVA_SILVER_1Z0_815_JPN_05 = {
             question: "次の中から、コンパイルエラーにならないコードを選びなさい。（3つ選択）",
             code: "",
             choices: [
-                "int[] a = new int[2]{ 2, 3 };",
-                "int b[][] = {};",
-                "int[][][] c = new int[1][][];",
-                "int[] d; d = new int[]{2,3};",
-                "int e[]; e = {2,3};",
+                "<pre><code>int[] a = new int[2]{ 2, 3 };</code></pre>",
+                "<pre><code>int b[][] = {};</code></pre>",
+                "<pre><code>int[][][] c = new int[1][][];</code></pre>",
+                "<pre><code>int[] d;\nd = new int[]{2,3};</code></pre>",
+                "<pre><code>int e[];\ne = {2,3};</code></pre>",
             ],
             answerIndex: [2, 3, 1],
-            explanation: "A,Eは不正。B,C,Dは正しく宣言できる。ただしBは要素数0の配列。",
+            explanation:
+                "newと初期化子の両方を使う場合、[]の中に要素数を指定するとコンパイルエラーになる。",
         },
         {
             id: 8,
@@ -167,7 +168,7 @@ const JAVA_SILVER_1Z0_815_JPN_05 = {
             difficulty: "上級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
-            code: " 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         int[][][] arrayA = { { {1,2}, {1,2}, {1,2,3} } };\n 4.         int[][][] arrayB = arrayA.clone();\n 5.         int total = 0;\n 6.         for (int[][] tmp : arrayB) {\n 7.             for (int[] val : tmp) {\n 8.                 total += val.length;\n 9.             }\n10.         }\n11.         System.out.println(total);\n12.     }\n13. }",
+            code: " 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         int[][] arrayA = { {1,2}, {1,2}, {1,2,3} };\n 4.         int[][] arrayB = arrayA.clone();\n 5.         int total = 0;\n 6.         for (int[] tmp : arrayB) {\n 7.             for (int val : tmp) {\n 8.                 total += val;\n 9.             }\n10.         }\n11.         System.out.println(total);\n12.     }\n13. }",
             choices: [
                 "0が表示される",
                 "12が表示される",
