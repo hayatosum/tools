@@ -5,8 +5,7 @@ const SILVER_07 = {
             id: 1,
             category: "クラスの継承、インタフェース、抽象クラス",
             difficulty: "中級",
-            question:
-                "このクラスが継承しているParentクラスの説明として、正しいものを選びなさい。",
+            question: "このクラスが継承しているParentクラスの説明として、正しいものを選びなさい。",
             code: 'public class Child extends Parent {\n    Child() {\n        name = "java";\n    }\n    void hello() {\n        System.out.println("hello, " + name);\n    }\n}',
             choices: [
                 "Parentクラスは、helloメソッドの定義を持っていなければいけない",
@@ -38,8 +37,7 @@ const SILVER_07 = {
             id: 3,
             category: "クラスの継承、インタフェース、抽象クラス",
             difficulty: "初級",
-            question:
-                "インタフェースに関する説明として、正しいものを選びなさい。（2つ選択）",
+            question: "インタフェースに関する説明として、正しいものを選びなさい。（2つ選択）",
             code: "",
             choices: [
                 "アクセス修飾子を省略しても、publicなメソッドとして扱われる",
@@ -125,8 +123,7 @@ const SILVER_07 = {
             id: 8,
             category: "クラスの継承、インタフェース、抽象クラス",
             difficulty: "初級",
-            question:
-                "抽象クラスに関する説明として、正しいものを選びなさい。（3つ選択）",
+            question: "抽象クラスに関する説明として、正しいものを選びなさい。（3つ選択）",
             code: "",
             choices: [
                 "インスタンスを生成することはできない",
@@ -143,8 +140,7 @@ const SILVER_07 = {
             id: 9,
             category: "クラスの継承、インタフェース、抽象クラス",
             difficulty: "上級",
-            question:
-                "次のプログラムを実行した結果として正しいものを選びなさい。",
+            question: "次のプログラムを実行した結果として正しいものを選びなさい。",
             code: 'abstract class AbstractSample {\n    public void sample() {\n        System.out.println("A");\n        test();\n        System.out.println("C");\n    }\n    protected abstract void test();\n}\nclass ConcreteSample extends AbstractSample {\n    protected void test() {\n        System.out.println("B");\n    }\n}\npublic class Main {\n    public static void main(String[] args) {\n        AbstractSample s = new ConcreteSample();\n        s.sample();\n    }\n}',
             choices: [
                 "「A」「B」「C」と表示される",
@@ -162,8 +158,7 @@ const SILVER_07 = {
             id: 10,
             category: "クラスの継承、インタフェース、抽象クラス",
             difficulty: "初級",
-            question:
-                "オーバーライドに関する説明として正しいものを選びなさい。",
+            question: "オーバーライドに関する説明として正しいものを選びなさい。",
             code: "",
             choices: [
                 "引数リストの定義は、型、数、順番のすべてが同じでなければならない",

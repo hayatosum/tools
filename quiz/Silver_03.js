@@ -16,8 +16,7 @@ const SILVER_03 = {
                 "実行時に例外がスローされる",
             ],
             answerIndex: 1,
-            explanation:
-                "代入式は右から評価され、a=5, b=5 となる。よって 5+5=10。",
+            explanation: "代入式は右から評価され、a=5, b=5 となる。よって 5+5=10。",
         },
         {
             id: 2,
@@ -39,8 +38,7 @@ const SILVER_03 = {
             id: 3,
             category: "演算子と判定構造",
             difficulty: "中級",
-            question:
-                "次の式のうち、コンパイルエラーになるものを選びなさい。（3つ選択）",
+            question: "次の式のうち、コンパイルエラーになるものを選びなさい。（3つ選択）",
             code: "",
             choices: [
                 "byte a = 0b100000000;",
@@ -119,15 +117,13 @@ const SILVER_03 = {
                 "実行時に例外がスローされる",
             ],
             answerIndex: 0,
-            explanation:
-                "100%20=0, 0*30=0, 100/20=5, 合計5。実際の答え: 5 (→選択肢1)。",
+            explanation: "100%20=0, 0*30=0, 100/20=5, 合計5。実際の答え: 5 (→選択肢1)。",
         },
         {
             id: 8,
             category: "演算子と判定構造",
             difficulty: "上級",
-            question:
-                "次のクラスを利用するプログラムを実行したときの結果を選びなさい。（1つ選択）",
+            question: "次のクラスを利用するプログラムを実行したときの結果を選びなさい。（1つ選択）",
             code: "public class Sample {\n    private int num;\n    public Sample(int num) { this.num = num; }\n}\npublic class Main {\n    public static void main(String[] args) {\n        Sample s1 = new Sample(10);\n        Sample s2 = s1;\n        s1 = new Sample(10);\n        System.out.println(s1 == s2);\n    }\n}",
             choices: [
                 "trueが表示される",
@@ -203,8 +199,7 @@ const SILVER_03 = {
                 "[true, true] と表示される",
             ],
             answerIndex: 3,
-            explanation:
-                "文字列リテラルは同じ参照を共有するので a==b はtrue。equalsもtrue。",
+            explanation: "文字列リテラルは同じ参照を共有するので a==b はtrue。equalsもtrue。",
         },
         {
             id: 13,
@@ -230,15 +225,9 @@ const SILVER_03 = {
             question:
                 "次のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
             code: 'public class Main {\n    public static void main(String[] args) {\n        String a = "abc";\n        String b = new String("abc");\n        int count = 0;\n        if (a.intern() == "abc") { count++; }\n        if (b.intern() == "abc") { count++; }\n        if (a.intern() == b.intern()) { count++; }\n        System.out.println(count);\n    }\n}',
-            choices: [
-                "0が表示される",
-                "1が表示される",
-                "2が表示される",
-                "3が表示される",
-            ],
+            choices: ["0が表示される", "1が表示される", "2が表示される", "3が表示される"],
             answerIndex: 3,
-            explanation:
-                "internによりすべて文字列プールを参照し同一参照になる。countは3。",
+            explanation: "internによりすべて文字列プールを参照し同一参照になる。countは3。",
         },
         {
             id: 15,
@@ -247,12 +236,7 @@ const SILVER_03 = {
             question:
                 "次のプログラムを実行し、「ok」と表示したい。4行目に入るコードとして正しいものを選びなさい。（1つ選択）",
             code: 'public class Main {\n    public static void main(String[] args) {\n        int num = 10;\n        // (ここにコードを入れる)\n        System.out.println("ok");\n    }\n}',
-            choices: [
-                "if (num <= 10)",
-                "if num <= 10",
-                "if (num <= 10) then",
-                "if num < 10 then",
-            ],
+            choices: ["if (num <= 10)", "if num <= 10", "if (num <= 10) then", "if num < 10 then"],
             answerIndex: 0,
             explanation: "Javaのif文は if(条件) { } の形式。",
         },
@@ -260,8 +244,7 @@ const SILVER_03 = {
             id: 16,
             category: "演算子と判定構造",
             difficulty: "初級",
-            question:
-                "次のプログラムをコンパイル、実行したときの結果を選びなさい。（1つ選択）",
+            question: "次のプログラムをコンパイル、実行したときの結果を選びなさい。（1つ選択）",
             code: 'public class Main {\n    public static void main(String[] args) {\n        if (false)\n            System.out.println("A");\n        System.out.println("B");\n    }\n}',
             choices: [
                 "「A」と表示される",
@@ -276,8 +259,7 @@ const SILVER_03 = {
             id: 17,
             category: "演算子と判定構造",
             difficulty: "中級",
-            question:
-                "次のプログラムをコンパイル、実行したときの結果を選びなさい。（1つ選択）",
+            question: "次のプログラムをコンパイル、実行したときの結果を選びなさい。（1つ選択）",
             code: 'public class Main {\n    public static void main(String[] args) {\n        int num = 10;\n        if (num < 10)\n            System.out.println("A");\n        else\n            System.out.println("B");\n        if (num == 10)\n            System.out.println("C");\n    }\n}',
             choices: [
                 "AとBとCが表示される",
@@ -294,8 +276,7 @@ const SILVER_03 = {
             id: 18,
             category: "演算子と判定構造",
             difficulty: "中級",
-            question:
-                "次のプログラムをコンパイル、実行したときの結果を選びなさい。（1つ選択）",
+            question: "次のプログラムをコンパイル、実行したときの結果を選びなさい。（1つ選択）",
             code: 'public class Main {\n    public static void main(String[] args) {\n        int num = 10;\n        if (num == 100)\n            System.out.println("A");\n        else if (10 < num)\n            System.out.println("B");\n        else if (num == 10)\n            System.out.println("C");\n        else if (num <= 10)\n            System.out.println("D");\n    }\n}',
             choices: [
                 "Cが表示される",
@@ -313,19 +294,9 @@ const SILVER_03 = {
             id: 19,
             category: "演算子と判定構造",
             difficulty: "中級",
-            question:
-                "switch文の条件式が戻せる型として正しいものをすべて選びなさい。（6つ選択）",
+            question: "switch文の条件式が戻せる型として正しいものをすべて選びなさい。（6つ選択）",
             code: "",
-            choices: [
-                "char",
-                "byte",
-                "short",
-                "int",
-                "long",
-                "String",
-                "enum",
-                "boolean",
-            ],
+            choices: ["char", "byte", "short", "int", "long", "String", "enum", "boolean"],
             answerIndex: [0, 1, 2, 3, 5, 6],
             explanation:
                 "switch式で利用できるのは char, byte, short, int, それらのラッパー、String, enum。longとbooleanは不可。",
@@ -339,15 +310,13 @@ const SILVER_03 = {
             code: ' 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         final int NUM = 0;\n 4.         int num = 10;\n 5.         switch(num) {\n 6.             case "10": System.out.println("A");\n 7.             break;\n 8.             case num: System.out.println("B");\n 9.             break;\n10.             case 2*5: System.out.println("C");\n11.             break;\n12.             case NUM: System.out.println("D");\n13.             break;\n14.         }\n15.     }\n16. }',
             choices: ["6行目", "8行目", "10行目", "12行目"],
             answerIndex: [0, 1],
-            explanation:
-                "caseに文字列リテラルや変数を直接は使えない。定数式のみ許可される。",
+            explanation: "caseに文字列リテラルや変数を直接は使えない。定数式のみ許可される。",
         },
         {
             id: 21,
             category: "演算子と判定構造",
             difficulty: "上級",
-            question:
-                "次のプログラムを実行したときに表示されるものを選びなさい。（1つ選択）",
+            question: "次のプログラムを実行したときに表示されるものを選びなさい。（1つ選択）",
             code: 'public class Main {\n    public static void main(String[] args) {\n        int num = 1;\n        switch(num) {\n            case 1:\n            case 2:\n            case 3: System.out.println("A");\n            case 4: System.out.println("B");\n            default: System.out.println("C");\n        }\n    }\n}',
             choices: [
                 "Aと表示される",

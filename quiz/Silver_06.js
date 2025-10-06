@@ -161,15 +161,13 @@ const SILVER_06 = {
                 "System.out.println(d);",
             ],
             answerIndex: [0, 1],
-            explanation:
-                "aとcは宣言済みで利用可能です。dは未定義なのでエラーになります。",
+            explanation: "aとcは宣言済みで利用可能です。dは未定義なのでエラーになります。",
         },
         {
             id: 10,
             category: "インスタンスとメソッド",
             difficulty: "初級",
-            question:
-                "次の中から、メソッド宣言の記述として正しいものを選びなさい。（1つ選択）",
+            question: "次の中から、メソッド宣言の記述として正しいものを選びなさい。（1つ選択）",
             code: "public class Sample {\n    // メソッドの宣言形式を問う問題\n}",
             choices: [
                 "Void sample() { }",
@@ -234,8 +232,7 @@ const SILVER_06 = {
             id: 14,
             category: "インスタンスとメソッド",
             difficulty: "中級",
-            question:
-                "次の中から、メソッドの宣言として正しいものを選びなさい。（1つ選択）",
+            question: "次の中から、メソッドの宣言として正しいものを選びなさい。（1つ選択）",
             code: "public class Sample {\n    // メソッド宣言に関する選択問題\n}",
             choices: [
                 "void method(void) { }",
@@ -269,8 +266,7 @@ const SILVER_06 = {
             id: 16,
             category: "インスタンスとメソッド",
             difficulty: "上級",
-            question:
-                "次のメソッドをオーバーロードしていないメソッド定義を選びなさい。（2つ選択）",
+            question: "次のメソッドをオーバーロードしていないメソッド定義を選びなさい。（2つ選択）",
             code: "int calc(double a, int b) {\n    return (int)(a + b);\n}",
             choices: [
                 "int calc(int a) {}",
@@ -513,8 +509,7 @@ const SILVER_06 = {
                 "実行時に例外がスローされる",
             ],
             answerIndex: 0,
-            explanation:
-                "値渡しのため `s.num` は変更されず、元の値10が表示される。",
+            explanation: "値渡しのため `s.num` は変更されず、元の値10が表示される。",
         },
         {
             id: 30,
@@ -530,8 +525,7 @@ const SILVER_06 = {
                 "実行時に例外がスローされる",
             ],
             answerIndex: 1,
-            explanation:
-                "参照渡しにより、modify メソッド内でフィールドが更新され、値は20になる。",
+            explanation: "参照渡しにより、modify メソッド内でフィールドが更新され、値は20になる。",
         },
     ],
 };

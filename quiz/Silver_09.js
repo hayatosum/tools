@@ -95,10 +95,7 @@ const SILVER_09 = {
             question:
                 "次のプログラムをコンパイルし、実行したときの正しいものを選びなさい。なお、現在の日付を2019年8月20日とする。（1つ選択）",
             code: 'import java.time.DayOfWeek;\nimport java.time.LocalDate;\n\npublic class Sample {\n    public static void main(String[] args) {\n        LocalDate a = LocalDate.of(2019, 8, 19);\n        LocalDate b = LocalDate.now();\n        b = b.with(DayOfWeek.MONDAY);\n        System.out.println(a.equals(b) + "," + a.isBefore(b));\n    }\n}',
-            choices: [
-                "[true, true] と表示される",
-                "[false, false] と表示される",
-            ],
+            choices: ["[true, true] と表示される", "[false, false] と表示される"],
             answerIndex: 1,
             explanation:
                 "2019/8/19 は月曜日だが、LocalDate.now() が 2019/8/20 を返すため、with(DayOfWeek.MONDAY) の使用は正しくなくエラーではなく別の結果となる。a.equals(b) は false, a.isBefore(b) は true ではなく false になる。",
@@ -107,8 +104,7 @@ const SILVER_09 = {
             id: 7,
             category: "API",
             difficulty: "初級",
-            question:
-                "次のうち、ArrayListの説明として正しいものを選びなさい。（3つ選択）",
+            question: "次のうち、ArrayListの説明として正しいものを選びなさい。（3つ選択）",
             code: "",
             choices: [
                 "nullは扱えない",
@@ -237,8 +233,7 @@ const SILVER_09 = {
             id: 14,
             category: "API",
             difficulty: "中級",
-            question:
-                "次のうち、値を変更できない固定長のリストを作るものを選びなさい。（2つ選択）",
+            question: "次のうち、値を変更できない固定長のリストを作るものを選びなさい。（2つ選択）",
             code: "",
             choices: [
                 "var list = List.of(1,2,3);",
@@ -300,8 +295,7 @@ const SILVER_09 = {
                 "実行時に例外がスローされる",
             ],
             answerIndex: 1,
-            explanation:
-                'removeIf により "B" が削除され、残る要素は [A, C] になります。',
+            explanation: 'removeIf により "B" が削除され、残る要素は [A, C] になります。',
         },
         {
             id: 18,

@@ -120,8 +120,7 @@ function renderQuiz(questions) {
         } else {
             // 2) question内のフェンス付きコード ```lang ... ``` を検出
             const fence = /```(?:\w+)?\n([\s\S]*?)```/m;
-            const m =
-                typeof q.question === "string" ? q.question.match(fence) : null;
+            const m = typeof q.question === "string" ? q.question.match(fence) : null;
 
             if (m) {
                 // フェンスの外側は通常文、内側はコード
@@ -164,9 +163,7 @@ function renderQuiz(questions) {
 
         // 新しい choices と正解インデックスを計算
         q.choices = shuffled.map((c) => c.text);
-        const correctSet = Array.isArray(q.answerIndex)
-            ? q.answerIndex
-            : [q.answerIndex];
+        const correctSet = Array.isArray(q.answerIndex) ? q.answerIndex : [q.answerIndex];
         q.answerIndex = shuffled
             .map((c, newIdx) => (correctSet.includes(c.index) ? newIdx : null))
             .filter((v) => v !== null);
@@ -199,9 +196,7 @@ function renderQuiz(questions) {
             });
 
             const text = document.createElement("div");
-            text.innerHTML = `<strong>${String.fromCharCode(
-                65 + cIdx
-            )}.</strong> ${c.text}`;
+            text.innerHTML = `<strong>${String.fromCharCode(65 + cIdx)}.</strong> ${c.text}`;
 
             label.appendChild(input);
             label.appendChild(text);
@@ -236,9 +231,7 @@ function markAnswers() {
     cards.forEach((card, idx) => {
         const q = currentQuestions[idx];
         const user = userAnswers.get(q.id) || [];
-        const correct = Array.isArray(q.answerIndex)
-            ? q.answerIndex
-            : [q.answerIndex];
+        const correct = Array.isArray(q.answerIndex) ? q.answerIndex : [q.answerIndex];
 
         const choiceLabels = card.querySelectorAll(".choice");
         choiceLabels.forEach((label, cIdx) => {
@@ -273,18 +266,16 @@ function markAnswers() {
         if (expEl) {
             const body = expEl.querySelector(".exp-body");
             const correctLetters = correct.map(letter).join(", ");
-            const userLetters = user.length
-                ? user.map(letter).join(", ")
-                : "未回答";
+            const userLetters = user.length ? user.map(letter).join(", ") : "未回答";
 
             // フェンス付きコード ``` ... ``` が解説に含まれている場合も整形
             const explanationHtml = formatExplanationHtml(q.explanation);
 
             body.innerHTML = `
-        <div>問題ID: ${q.id}</div>
-        <div>正解: ${correctLetters} / あなたの回答: ${userLetters}</div>
-        ${explanationHtml}
-      `;
+                <div>問題ID: ${q.id}</div>
+                <div>正解: ${correctLetters} / あなたの回答: ${userLetters}</div>
+                ${explanationHtml}
+                `;
             expEl.classList.remove("hidden");
         }
         // === 追記ここまで ===
@@ -298,9 +289,7 @@ function showResults() {
 
     currentQuestions.forEach((q) => {
         const user = userAnswers.get(q.id) || [];
-        const correct = Array.isArray(q.answerIndex)
-            ? q.answerIndex
-            : [q.answerIndex];
+        const correct = Array.isArray(q.answerIndex) ? q.answerIndex : [q.answerIndex];
         const isCorrect = arraysEqual(user, correct);
         if (isCorrect) correctCount++;
 
@@ -377,8 +366,7 @@ async function loadAllQuestions() {
             const res = await fetch("json/" + currentFile, {
                 cache: "no-store",
             });
-            if (!res.ok)
-                throw new Error(`問題の取得に失敗しました: ${res.status}`);
+            if (!res.ok) throw new Error(`問題の取得に失敗しました: ${res.status}`);
             data = await res.json();
         }
     }
@@ -413,8 +401,7 @@ async function loadAllQuestions() {
 
 // 旧: function validateQuestions(data) { ... } を丸ごと置き換え
 function validateQuestions(data, prefix = "ZZ00") {
-    if (!Array.isArray(data))
-        throw new Error("問題ファイルは配列である必要があります");
+    if (!Array.isArray(data)) throw new Error("問題ファイルは配列である必要があります");
 
     // 英字2桁+数字2桁+ハイフン+連番3桁 の形式例: KS01-001
     const ID_RE = /^[A-Za-z]{2}\d{2}-\d{3}$/;
@@ -435,11 +422,7 @@ function validateQuestions(data, prefix = "ZZ00") {
         }
 
         // ---- 質問/選択肢の基本チェック ----
-        if (
-            typeof q.question !== "string" ||
-            !Array.isArray(q.choices) ||
-            q.choices.length < 2
-        ) {
+        if (typeof q.question !== "string" || !Array.isArray(q.choices) || q.choices.length < 2) {
             throw new Error(`不正な問題形式があります (index: ${i})`);
         }
 
@@ -450,21 +433,14 @@ function validateQuestions(data, prefix = "ZZ00") {
         } else if (Array.isArray(ans)) {
             ans = ans.map((v) => Number(v));
         } else {
-            throw new Error(
-                `answerIndex は数値または数値配列である必要があります (index: ${i})`
-            );
+            throw new Error(`answerIndex は数値または数値配列である必要があります (index: ${i})`);
         }
 
         const uniq = [...new Set(ans)];
-        if (uniq.length === 0)
-            throw new Error(`answerIndex が空です (index: ${i})`);
-        const bad = uniq.find(
-            (v) => !Number.isInteger(v) || v < 0 || v >= q.choices.length
-        );
+        if (uniq.length === 0) throw new Error(`answerIndex が空です (index: ${i})`);
+        const bad = uniq.find((v) => !Number.isInteger(v) || v < 0 || v >= q.choices.length);
         if (bad !== undefined)
-            throw new Error(
-                `answerIndex に不正な値があります: ${bad} (index: ${i})`
-            );
+            throw new Error(`answerIndex に不正な値があります: ${bad} (index: ${i})`);
 
         q.answerIndex = uniq;
     });
@@ -494,22 +470,14 @@ function pickQuestions(n) {
     if (remain <= 0) return picked.slice(0, cnt);
 
     // 既出のみのプールを作成
-    const seenPool = allQuestions.filter(
-        (q) => seenSet.has(q.id) && !picked.includes(q)
-    );
+    const seenPool = allQuestions.filter((q) => seenSet.has(q.id) && !picked.includes(q));
 
     // 弱点優先モードなら重み付け、OFFなら通常ランダム
     if (useAdaptive && loadHistory().length > 0) {
         const rateMap = buildRateMapFromHistory(); // 既存：id -> 正答率(0-100)
         const strength = Number(adaptiveStrengthEl?.value ?? 1.0);
-        const weights = seenPool.map((q) =>
-            rateToWeight(rateMap.get(q.id), strength)
-        );
-        const sampled = weightedSampleWithoutReplacement(
-            seenPool,
-            weights,
-            remain
-        );
+        const weights = seenPool.map((q) => rateToWeight(rateMap.get(q.id), strength));
+        const sampled = weightedSampleWithoutReplacement(seenPool, weights, remain);
         picked.push(...sampled);
     } else {
         picked.push(...shuffle(seenPool).slice(0, remain));
@@ -646,9 +614,9 @@ function renderHistory() {
         const head = document.createElement("div");
         head.className = "history-head";
         const title = document.createElement("h3");
-        title.textContent = `#${String(hist.length - idx).padStart(2, "0")}：${
-            h.correct
-        }/${h.total}（${h.rate}%）`;
+        title.textContent = `#${String(hist.length - idx).padStart(2, "0")}：${h.correct}/${
+            h.total
+        }（${h.rate}%）`;
         const src = document.createElement("div");
         src.className = "source";
         src.textContent = h.source ? `source: ${h.source}` : "";
@@ -660,14 +628,12 @@ function renderHistory() {
         meta.className = "history-meta";
         const d = new Date(h.ts);
         meta.innerHTML = `
-      <span>${d.toLocaleString()}</span>
-      <span>出題数: ${h.total}</span>
-      <span>所要時間: ${
-          typeof h.elapsedMs === "number"
-              ? Math.round(h.elapsedMs / 1000) + "s"
-              : "-"
-      }</span>
-    `;
+            <span>${d.toLocaleString()}</span>
+            <span>出題数: ${h.total}</span>
+            <span>所要時間: ${
+                typeof h.elapsedMs === "number" ? Math.round(h.elapsedMs / 1000) + "s" : "-"
+            }</span>
+            `;
         div.appendChild(meta);
 
         // 詳細（各問の正誤・ID・あなたの回答）
@@ -683,14 +649,10 @@ function renderHistory() {
             h.items.forEach((it, i) => {
                 const li = document.createElement("li");
                 const correctLetters = it.correct.map(letter).join(", ");
-                const userLetters = it.user.length
-                    ? it.user.map(letter).join(", ")
-                    : "未回答";
+                const userLetters = it.user.length ? it.user.map(letter).join(", ") : "未回答";
                 li.textContent = `Q${i + 1} (id:${
                     it.id
-                })  正解: ${correctLetters} / 回答: ${userLetters}  ${
-                    it.isCorrect ? "○" : "×"
-                }`;
+                })  正解: ${correctLetters} / 回答: ${userLetters}  ${it.isCorrect ? "○" : "×"}`;
                 ul.appendChild(li);
             });
             details.appendChild(ul);
@@ -781,8 +743,7 @@ function gatherStatsFromHistory() {
     hist.forEach((run) => {
         if (!Array.isArray(run.items)) return;
         run.items.forEach((it) => {
-            if (!stats.has(it.id))
-                stats.set(it.id, { id: it.id, total: 0, correct: 0 });
+            if (!stats.has(it.id)) stats.set(it.id, { id: it.id, total: 0, correct: 0 });
             const s = stats.get(it.id);
             s.total += 1;
             if (it.isCorrect) s.correct += 1;
@@ -810,31 +771,32 @@ function renderAnalysisTable(rows, lowThreshold) {
         analysisTableWrap.innerHTML = "<p class='sub'>履歴がありません。</p>";
         return;
     }
+
     let html =
         "<table id='analysisTable'><thead><tr><th>ID</th><th>出題回数</th><th>正解数</th><th>正答率</th></tr></thead><tbody>";
+
     rows.forEach((r) => {
         const low = r.rate < lowThreshold;
         html += `
-      <tr class="${low ? "tr-low" : ""}">
-        <td><span class="qid-link" data-qid="${
-            r.id
-        }" title="クリックで問題を表示">${r.id}</span></td>
-        <td>${r.total}</td>
-        <td>${r.correct}</td>
-        <td class="td-rate ${low ? "bad" : ""}">${r.rate}%</td>
-      </tr>`;
+        <tr class="${low ? "tr-low" : ""}">
+            <td>
+                <span class="qid-link" data-qid="${r.id}" title="クリックで問題を表示">
+                    ${r.id}
+                </span>
+            </td>
+            <td>${r.total}</td>
+            <td>${r.correct}</td>
+            <td class="td-rate ${low ? "bad" : ""}">${r.rate}%</td>
+        </tr>`;
     });
+
     html += "</tbody></table>";
     analysisTableWrap.innerHTML = html;
 }
 
 function renderRanking(rows) {
-    const byRateDesc = [...rows].sort(
-        (a, b) => b.rate - a.rate || a.id.localeCompare(b.id)
-    );
-    const byRateAsc = [...rows].sort(
-        (a, b) => a.rate - b.rate || a.id.localeCompare(b.id)
-    );
+    const byRateDesc = [...rows].sort((a, b) => b.rate - a.rate || a.id.localeCompare(b.id));
+    const byRateAsc = [...rows].sort((a, b) => a.rate - b.rate || a.id.localeCompare(b.id));
 
     const topN = byRateDesc.slice(0, 10);
     const bottomN = byRateAsc.slice(0, 10);
@@ -842,15 +804,26 @@ function renderRanking(rows) {
     rankTopEl.innerHTML =
         topN
             .map(
-                (r) =>
-                    `<li><span class="qid-link" data-qid="${r.id}" title="クリックで問題を表示">${r.id}</span> — ${r.rate}%（${r.correct}/${r.total}）</li>`
+                (r) => `
+                <li>
+                    <span class="qid-link" data-qid="${r.id}" title="クリックで問題を表示">
+                        ${r.id}
+                    </span>
+                    — ${r.rate}%（${r.correct}/${r.total}）
+                </li>`
             )
             .join("") || '<li class="sub">データなし</li>';
+
     rankBottomEl.innerHTML =
         bottomN
             .map(
-                (r) =>
-                    `<li><span class="qid-link" data-qid="${r.id}" title="クリックで問題を表示">${r.id}</span> — ${r.rate}%（${r.correct}/${r.total}）</li>`
+                (r) => `
+                <li>
+                    <span class="qid-link" data-qid="${r.id}" title="クリックで問題を表示">
+                        ${r.id}
+                    </span>
+                    — ${r.rate}%（${r.correct}/${r.total}）
+                </li>`
             )
             .join("") || '<li class="sub">データなし</li>';
 }
@@ -943,8 +916,7 @@ function gatherPrefixStatsFromHistory() {
         run.items.forEach((it) => {
             const pf = extractPrefix(it.id);
             if (!pf) return;
-            if (!stats.has(pf))
-                stats.set(pf, { prefix: pf, total: 0, correct: 0 });
+            if (!stats.has(pf)) stats.set(pf, { prefix: pf, total: 0, correct: 0 });
             const s = stats.get(pf);
             s.total += 1;
             if (it.isCorrect) s.correct += 1;
@@ -971,43 +943,48 @@ function renderPrefixStats() {
     }
 
     let html = `
-    <table id="prefixTable">
-      <thead>
-        <tr>
-          <th>カテゴリ</th>
-          <th>出題回数</th>
-          <th>正解数</th>
-          <th>正答率</th>
-          <th>可視化</th>
-        </tr>
-      </thead>
-      <tbody>
-  `;
+        <table id="prefixTable">
+            <thead>
+                <tr>
+                    <th>カテゴリ</th>
+                    <th>出題回数</th>
+                    <th>正解数</th>
+                    <th>正答率</th>
+                    <th>可視化</th>
+                </tr>
+            </thead>
+            <tbody>
+    `;
+
     rows.forEach((r) => {
         html += `
-      <tr>
-        <td>${r.prefix}</td>
-        <td>${r.total}</td>
-        <td>${r.correct}</td>
-        <td>${r.rate}%</td>
-        <td>
-          <div class="mini-track" aria-hidden="true">
-            <div class="mini-fill" style="width:${r.rate}%"></div>
-          </div>
-          <div class="mini-val">${r.rate}%</div>
-        </td>
-      </tr>
-    `;
+            <tr>
+                <td>${r.prefix}</td>
+                <td>${r.total}</td>
+                <td>${r.correct}</td>
+                <td>${r.rate}%</td>
+                <td>
+                    <div class="mini-track" aria-hidden="true">
+                        <div class="mini-fill" style="width:${r.rate}%"></div>
+                    </div>
+                    <div class="mini-val">${r.rate}%</div>
+                </td>
+            </tr>
+        `;
     });
-    html += `</tbody></table>`;
+
+    html += `
+            </tbody>
+        </table>
+    `;
+
     wrap.innerHTML = html;
 }
 
 // 初期描画・イベント
 analyzeHistoryAndRender();
 if (analyzeBtn) analyzeBtn.addEventListener("click", analyzeHistoryAndRender);
-if (lowRateInput)
-    lowRateInput.addEventListener("change", analyzeHistoryAndRender);
+if (lowRateInput) lowRateInput.addEventListener("change", analyzeHistoryAndRender);
 
 // 採点直後にも更新
 // （既存の showResults() の最後に renderHistory() の直後でOK）
@@ -1025,10 +1002,7 @@ function buildRateMapFromHistory() {
         if (!Array.isArray(run.items)) return;
         run.items.forEach((it) => {
             totals.set(it.id, (totals.get(it.id) || 0) + 1);
-            rights.set(
-                it.id,
-                (rights.get(it.id) || 0) + (it.isCorrect ? 1 : 0)
-            );
+            rights.set(it.id, (rights.get(it.id) || 0) + (it.isCorrect ? 1 : 0));
         });
     });
     const rates = new Map(); // id -> 正答率(%)
@@ -1120,8 +1094,7 @@ function renderTrendChart() {
     const rate = runs.map((r) => Number(r.rate || 0)); // 正答率(%)
     const ma = movingAverage(rate, 5); // 5回移動平均
     const secPerQ = runs.map((r) => {
-        const per =
-            r.elapsedMs && r.total ? r.elapsedMs / 1000 / r.total : null;
+        const per = r.elapsedMs && r.total ? r.elapsedMs / 1000 / r.total : null;
         return per ?? 0;
     });
 
@@ -1143,10 +1116,9 @@ function renderTrendChart() {
     // yスケール（左軸＝正答率 0..100）
     const Y = (v) => padT + (100 - Math.max(0, Math.min(100, v))) * (ih / 100);
 
-    // y2スケール（右軸＝秒/問）…データの上限をよしなに
+    // y2スケール（右軸＝秒/問）
     const maxSec = Math.max(60, Math.ceil(Math.max(...secPerQ) / 10) * 10); // 少なくとも60s
-    const Y2 = (sec) =>
-        padT + (1 - Math.max(0, Math.min(maxSec, sec)) / maxSec) * ih;
+    const Y2 = (sec) => padT + (1 - Math.max(0, Math.min(maxSec, sec)) / maxSec) * ih;
 
     // ポリライン座標
     const ptsRate = rate.map((v, i) => `${X(i)},${Y(v)}`).join(" ");
@@ -1164,84 +1136,79 @@ function renderTrendChart() {
     const rightTicks = [0, Math.round(maxSec / 2), maxSec];
 
     const svg = `
-<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="正答率推移と所要時間">
-  <rect x="0" y="0" width="${W}" height="${H}" fill="#fff"/>
+        <svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="正答率推移と所要時間">
+            <rect x="0" y="0" width="${W}" height="${H}" fill="#fff"/>
 
-  <!-- 左グリッド＆ラベル（正答率%） -->
-  ${gridYVals
-      .map(
-          (v) => `
-    <line x1="${padL}" y1="${Y(v)}" x2="${W - padR}" y2="${Y(
-              v
-          )}" stroke="#eee"/>
-    <text x="${padL - 6}" y="${
-              Y(v) + 4
-          }" text-anchor="end" font-size="10" fill="#666">${v}%</text>
-  `
-      )
-      .join("")}
+            <!-- 左グリッド＆ラベル（正答率%） -->
+            ${gridYVals
+                .map(
+                    (v) => `
+                    <line x1="${padL}" y1="${Y(v)}" x2="${W - padR}" y2="${Y(v)}" stroke="#eee"/>
+                    <text x="${padL - 6}" y="${
+                        Y(v) + 4
+                    }" text-anchor="end" font-size="10" fill="#666">${v}%</text>
+                `
+                )
+                .join("")}
 
-  <!-- X軸 -->
-  <line x1="${padL}" y1="${H - padB}" x2="${W - padR}" y2="${
-        H - padB
-    }" stroke="#ddd"/>
+            <!-- X軸 -->
+            <line x1="${padL}" y1="${H - padB}" x2="${W - padR}" y2="${H - padB}" stroke="#ddd"/>
 
-  <!-- 合格ライン 63% -->
-  <line x1="${padL}" y1="${passY}" x2="${
+            <!-- 合格ライン 63% -->
+            <line x1="${padL}" y1="${passY}" x2="${
         W - padR
-    }" y2="${passY}" stroke="#dc2626" stroke-dasharray="6,6" />
-  <text x="${W - padR + 2}" y="${
-        passY + 4
-    }" font-size="10" fill="#dc2626">63%</text>
+    }" y2="${passY}" stroke="#dc2626" stroke-dasharray="6,6"/>
+            <text x="${W - padR + 2}" y="${passY + 4}" font-size="10" fill="#dc2626">63%</text>
 
-  <!-- 折れ線（正答率） -->
-  <polyline points="${ptsRate}" fill="none" stroke="var(--primary)" stroke-width="2"/>
+            <!-- 折れ線（正答率） -->
+            <polyline points="${ptsRate}" fill="none" stroke="var(--primary)" stroke-width="2"/>
 
-  <!-- 移動平均（正答率） -->
-  <polyline points="${ptsMA}" fill="none" stroke="#888" stroke-width="2" stroke-dasharray="4,3"/>
+            <!-- 移動平均（正答率） -->
+            <polyline points="${ptsMA}" fill="none" stroke="#888" stroke-width="2" stroke-dasharray="4,3"/>
 
-  <!-- データ点（正答率） -->
-  ${rate
-      .map(
-          (v, i) => `
-    <circle cx="${X(i)}" cy="${Y(v)}" r="3.5" fill="var(--primary)">
-      <title>${i + 1}回目: ${v}%</title>
-    </circle>
-  `
-      )
-      .join("")}
+            <!-- データ点（正答率） -->
+            ${rate
+                .map(
+                    (v, i) => `
+                    <circle cx="${X(i)}" cy="${Y(v)}" r="3.5" fill="var(--primary)">
+                        <title>${i + 1}回目: ${v}%</title>
+                    </circle>
+                `
+                )
+                .join("")}
 
-  <!-- 秒/問（右軸） -->
-  <polyline points="${ptsTime}" fill="none" stroke="#16a34a" stroke-width="2" opacity="0.9"/>
-  ${secPerQ
-      .map(
-          (v, i) => `
-    <circle cx="${X(i)}" cy="${Y2(v)}" r="3.5" fill="#16a34a">
-      <title>${i + 1}回目: ${v.toFixed(1)} 秒/問</title>
-    </circle>
-  `
-      )
-      .join("")}
+            <!-- 秒/問（右軸） -->
+            <polyline points="${ptsTime}" fill="none" stroke="#16a34a" stroke-width="2" opacity="0.9"/>
+            ${secPerQ
+                .map(
+                    (v, i) => `
+                    <circle cx="${X(i)}" cy="${Y2(v)}" r="3.5" fill="#16a34a">
+                        <title>${i + 1}回目: ${v.toFixed(1)} 秒/問</title>
+                    </circle>
+                `
+                )
+                .join("")}
 
-  <!-- 右軸ラベル（秒/問） -->
-  ${rightTicks
-      .map(
-          (t) => `
-    <text x="${W - padR + 2}" y="${
-              Y2(t) + 4
-          }" font-size="10" fill="#666">${t}s</text>
-  `
-      )
-      .join("")}
-</svg>
+            <!-- 右軸ラベル（秒/問） -->
+            ${rightTicks
+                .map(
+                    (t) => `
+                    <text x="${W - padR + 2}" y="${
+                        Y2(t) + 4
+                    }" font-size="10" fill="#666">${t}s</text>
+                `
+                )
+                .join("")}
+        </svg>
 
-<div class="trend-legend">
-  <span><i class="legend-chip legend-rate"></i>正答率</span>
-  <span><i class="legend-chip legend-ma"></i>移動平均(5)</span>
-  <span><i class="legend-chip legend-time"></i>秒/問（右軸）</span>
-  <span><i class="legend-chip legend-pass"></i>合格ライン63%</span>
-</div>
-  `;
+        <div class="trend-legend">
+            <span><i class="legend-chip legend-rate"></i>正答率</span>
+            <span><i class="legend-chip legend-ma"></i>移動平均(5)</span>
+            <span><i class="legend-chip legend-time"></i>秒/問（右軸）</span>
+            <span><i class="legend-chip legend-pass"></i>合格ライン63%</span>
+        </div>
+    `;
+
     host.innerHTML = svg;
 }
 
@@ -1250,9 +1217,7 @@ document.addEventListener("click", (e) => {
     const el = e.target.closest(".qid-link");
     if (!el) return;
     const qid = el.dataset.qid;
-    const q = (Array.isArray(allQuestions) ? allQuestions : []).find(
-        (x) => x.id === qid
-    );
+    const q = (Array.isArray(allQuestions) ? allQuestions : []).find((x) => x.id === qid);
     if (!q) return;
     showQuestionPreview(q);
 });
@@ -1281,31 +1246,29 @@ function showQuestionPreview(q) {
 
     // 選択肢（A/B/C…）
     const choiceHtml = (q.choices || [])
-        .map(
-            (c, i) =>
-                `<li><strong>${String.fromCharCode(65 + i)}.</strong> ${c}</li>`
-        )
+        .map((c, i) => `<li><strong>${String.fromCharCode(65 + i)}.</strong> ${c}</li>`)
         .join("");
 
     // モーダルDOM生成
     const overlay = document.createElement("div");
     overlay.className = "modal-overlay";
     overlay.innerHTML = `
-    <div class="modal" role="dialog" aria-modal="true" aria-label="問題プレビュー">
-      <button class="modal-close" aria-label="閉じる">×</button>
-      <h3 class="modal-title">${esc(q.id)}</h3>
-      <div class="modal-body">
-        <div class="qtext">${qHtml || ""}</div>
-        <ul class="qchoices">${choiceHtml}</ul>
-      </div>
-    </div>
-  `;
+        <div class="modal" role="dialog" aria-modal="true" aria-label="問題プレビュー">
+            <button class="modal-close" aria-label="閉じる">×</button>
+            <h3 class="modal-title">${esc(q.id)}</h3>
+            <div class="modal-body">
+                <div class="qtext">${qHtml || ""}</div>
+                <ul class="qchoices">${choiceHtml}</ul>
+            </div>
+        </div>
+    `;
 
     // 閉じる挙動
     const close = () => {
         document.removeEventListener("keydown", onKey);
         overlay.remove();
     };
+
     const onKey = (ev) => {
         if (ev.key === "Escape") close();
     };
@@ -1313,6 +1276,7 @@ function showQuestionPreview(q) {
     overlay.addEventListener("click", (ev) => {
         if (ev.target === overlay) close();
     });
+
     overlay.querySelector(".modal-close")?.addEventListener("click", close);
     document.addEventListener("keydown", onKey);
 

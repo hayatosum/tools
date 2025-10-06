@@ -5,8 +5,7 @@ const SILVER_01 = {
             id: 1,
             category: "簡単なJavaプログラムの作成",
             difficulty: "中級",
-            question:
-                "パッケージに関する説明として、正しいものを選びなさい。（3つ選択）",
+            question: "パッケージに関する説明として、正しいものを選びなさい。（3つ選択）",
             code: "",
             choices: [
                 "名前空間を提供する",
@@ -33,8 +32,7 @@ const SILVER_01 = {
                 "<pre><code>import java.io.*;\n   package aaa {\n       public class Sample {}\n   }</pre></code>",
             ],
             answerIndex: 1,
-            explanation:
-                "package文はソースコードの先頭に1回だけ書く必要があるため、Bが正解。",
+            explanation: "package文はソースコードの先頭に1回だけ書く必要があるため、Bが正解。",
         },
         {
             id: 3,
@@ -133,12 +131,7 @@ const SILVER_01 = {
             question:
                 "以下に示したSampleクラスを実行したときの結果として、正しいものを選びなさい。なお、実行時のコマンドは次のとおりとする。（1つ選択）",
             code: '> java Sample a ¥* a¥* "a b c"\n\npublic class Sample {\n    public static void main(String... args) {\n        System.out.println(args.length);\n    }\n}',
-            choices: [
-                "4が表示される",
-                "5が表示される",
-                "6が表示される",
-                "7が表示される",
-            ],
+            choices: ["4が表示される", "5が表示される", "6が表示される", "7が表示される"],
             answerIndex: 0,
             explanation:
                 "引数は `a`, `¥*`, `a¥*`, `a b c` の4つとして渡されるため、args.lengthは4となる。",

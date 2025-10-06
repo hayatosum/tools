@@ -93,8 +93,7 @@ const SILVER_08 = {
             id: 7,
             category: "関数型インタフェース、ラムダ式",
             difficulty: "中級",
-            question:
-                "次のプログラムの空欄に入るコードとして、正しいものを選びなさい。（1つ選択）",
+            question: "次のプログラムの空欄に入るコードとして、正しいものを選びなさい。（1つ選択）",
             code: 'import java.util.function.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        ＿＿＿＿＿＿＿＿ (String, Integer) func = (str) -> {\n            return Integer.parseInt(str);\n        };\n        System.out.println(func.apply("100") * 2);\n    }\n}',
             choices: ["Consumer", "Function", "Supplier", "Predicate"],
             answerIndex: 1,

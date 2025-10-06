@@ -46,11 +46,7 @@ const SILVER_10 = {
             question:
                 "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
             code: 'public class SampleException extends Exception {}\npublic class SubSampleException extends SampleException {}\n\npublic class Main {\n    public static void main(String[] args) {\n        try {\n            sample();\n            sub();\n        } catch (SampleException e) {\n            System.out.println("A");\n        } catch (SubSampleException e) {\n            System.out.println("B");\n        }\n    }\n\n    private static void sample() throws SampleException {\n        throw new SampleException();\n    }\n\n    private static void sub() throws SubSampleException {\n        throw new SubSampleException();\n    }\n}',
-            choices: [
-                "「A」と表示される",
-                "「B」と表示される",
-                "「B」「A」と表示される",
-            ],
+            choices: ["「A」と表示される", "「B」と表示される", "「B」「A」と表示される"],
             answerIndex: 0,
             explanation:
                 "最初の sample() で SampleException が送出され、最初の catch に捕捉されて「A」を出力。sub() は呼ばれない。",
@@ -206,8 +202,7 @@ const SILVER_10 = {
             id: 12,
             category: "例外処理",
             difficulty: "初級",
-            question:
-                "エラーに関する説明として、誤っているものを選びなさい。（1つ選択）",
+            question: "エラーに関する説明として、誤っているものを選びなさい。（1つ選択）",
             code: "",
             choices: [
                 "エラーは、プログラムの実行環境で重大な異常が発生したときにスローされる",
@@ -284,8 +279,7 @@ const SILVER_10 = {
                 "NullPointerExceptionが発生する",
             ],
             answerIndex: 3,
-            explanation:
-                "str が null のため equals 呼び出し時点で NullPointerException。",
+            explanation: "str が null のため equals 呼び出し時点で NullPointerException。",
         },
         {
             id: 17,

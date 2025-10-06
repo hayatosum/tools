@@ -10,8 +10,7 @@ const SILVER_04 = {
             code: "public class Main {\n  public static void main(String[] args) {\n    int a = 11;\n    int b = 0;\n    while ( [ ] ) {\n      if (5 < a) {\n        System.out.println(b);\n      }\n      a--;\n      b++;\n    }\n  }\n}",
             choices: ["b < 5", "5 < b", "5 < a", "a < 5", "true", "false"],
             answerIndex: 0,
-            explanation:
-                "ループが5回行われる条件は b < 5 のみ。（bが0～4のときに実行される）",
+            explanation: "ループが5回行われる条件は b < 5 のみ。（bが0～4のときに実行される）",
         },
         {
             id: 2,
@@ -94,8 +93,7 @@ const SILVER_04 = {
             code: "public class Main {\n  public static void main(String[] args) {\n    for (int i = 0; ______; i++) {\n      System.out.println(i);\n    }\n  }\n}",
             choices: ["i < 0", "i == 0", "0 < i", "1 < 2"],
             answerIndex: 1,
-            explanation:
-                "条件式にi==0とすると、i=0の1回だけループが実行され「0」が表示される。",
+            explanation: "条件式にi==0とすると、i=0の1回だけループが実行され「0」が表示される。",
         },
         {
             id: 7,
@@ -112,8 +110,7 @@ const SILVER_04 = {
                 "実行時に例外がスローされる",
             ],
             answerIndex: 3,
-            explanation:
-                "for文の条件部にカンマ区切りは使用できずコンパイルエラーとなる。",
+            explanation: "for文の条件部にカンマ区切りは使用できずコンパイルエラーとなる。",
         },
         {
             id: 8,
@@ -208,8 +205,7 @@ const SILVER_04 = {
             id: 13,
             category: "制御構造",
             difficulty: "中級",
-            question:
-                "次のコードと同じ結果を出力するコードを選びなさい。（1つ選択）",
+            question: "次のコードと同じ結果を出力するコードを選びなさい。（1つ選択）",
             code: "int num = 10;\ndo {\n  num++;\n} while (++num < 10);\nSystem.out.println(num);",
             choices: [
                 "<pre><code>int num = 10;\nwhile (++num < 10) {\n    num++;\n}\nSystem.out.println(num);</pre></code>",
@@ -261,8 +257,7 @@ const SILVER_04 = {
             id: 16,
             category: "制御構造",
             difficulty: "上級",
-            question:
-                "次の中から、ラベルが記述できるものを選びなさい。（1つ選択）",
+            question: "次の中から、ラベルが記述できるものを選びなさい。（1つ選択）",
             code: "",
             choices: [
                 "if文やswitch文",
@@ -291,8 +286,7 @@ const SILVER_04 = {
                 "実行時に例外がスローされる",
             ],
             answerIndex: 1,
-            explanation:
-                "処理されるのはi=1,3の2回。各回でj=0+1+2=3を加算し合計6+6=12。",
+            explanation: "処理されるのはi=1,3の2回。各回でj=0+1+2=3を加算し合計6+6=12。",
         },
     ],
 };

@@ -15,15 +15,13 @@ const SILVER_02 = {
                 "実行時に例外がスローされる",
             ],
             answerIndex: 2,
-            explanation:
-                "Javaにはbool型は存在せずbooleanを使うため、コンパイルエラーとなる。",
+            explanation: "Javaにはbool型は存在せずbooleanを使うため、コンパイルエラーとなる。",
         },
         {
             id: 2,
             category: "Javaの基本データ型と文字列操作",
             difficulty: "初級",
-            question:
-                "次の式のうち、コンパイルエラーになるものを選びなさい。（1つ選択）",
+            question: "次の式のうち、コンパイルエラーになるものを選びなさい。（1つ選択）",
             choices: [
                 "int a = 267;",
                 "int b = 0413;",
@@ -38,8 +36,7 @@ const SILVER_02 = {
             id: 3,
             category: "Javaの基本データ型と文字列操作",
             difficulty: "中級",
-            question:
-                "次の式のうち、コンパイルエラーになるものを選びなさい。（5つ選択）",
+            question: "次の式のうち、コンパイルエラーになるものを選びなさい。（5つ選択）",
             choices: [
                 "int a = 123_456_789;",
                 "int b = 5_______2;",
@@ -50,21 +47,14 @@ const SILVER_02 = {
                 "byte g = 0b0_1;",
             ],
             answerIndex: [2, 3, 4, 5, 6],
-            explanation:
-                "アンダースコアは数値の先頭・末尾や小数点の隣には使えない。",
+            explanation: "アンダースコアは数値の先頭・末尾や小数点の隣には使えない。",
         },
         {
             id: 4,
             category: "Javaの基本データ型と文字列操作",
             difficulty: "初級",
-            question:
-                "char型の変数の初期化として、正しいものを選びなさい。（1つ選択）",
-            choices: [
-                'char a = "a";',
-                "char b = 'abc';",
-                "char c = 89;",
-                "char d = null;",
-            ],
+            question: "char型の変数の初期化として、正しいものを選びなさい。（1つ選択）",
+            choices: ['char a = "a";', "char b = 'abc';", "char c = 89;", "char d = null;"],
             answerIndex: 2,
             explanation: "charは整数リテラルで初期化可能。",
         },
@@ -72,8 +62,7 @@ const SILVER_02 = {
             id: 5,
             category: "Javaの基本データ型と文字列操作",
             difficulty: "初級",
-            question:
-                "次の式のうち、コンパイルエラーになるものを選びなさい。（2つ選択）",
+            question: "次の式のうち、コンパイルエラーになるものを選びなさい。（2つ選択）",
             choices: [
                 "int $a = 100;",
                 "int b_ = 200;",
@@ -88,8 +77,7 @@ const SILVER_02 = {
             id: 6,
             category: "Javaの基本データ型と文字列操作",
             difficulty: "初級",
-            question:
-                "次の変数宣言のうち、コンパイルエラーとならないものを選びなさい。（1つ選択）",
+            question: "次の変数宣言のうち、コンパイルエラーとならないものを選びなさい。（1つ選択）",
             choices: [
                 "var a;",
                 "var b = null;",
@@ -98,8 +86,7 @@ const SILVER_02 = {
                 "var e = new ArrayList<>();",
             ],
             answerIndex: 4,
-            explanation:
-                "varは型推論できる必要があり、ArrayListのインスタンス化は可能。",
+            explanation: "varは型推論できる必要があり、ArrayListのインスタンス化は可能。",
         },
         {
             id: 7,
@@ -115,8 +102,7 @@ const SILVER_02 = {
                 "実行時に例外がスローされる",
             ],
             answerIndex: 2,
-            explanation:
-                "フィールドやメソッド引数ではvarは使えないためコンパイルエラー。",
+            explanation: "フィールドやメソッド引数ではvarは使えないためコンパイルエラー。",
         },
         {
             id: 8,
@@ -187,8 +173,7 @@ const SILVER_02 = {
                 "実行時に例外がスローされる",
             ],
             answerIndex: 5,
-            explanation:
-                "インデックス5は範囲外のためStringIndexOutOfBoundsExceptionが発生する。",
+            explanation: "インデックス5は範囲外のためStringIndexOutOfBoundsExceptionが発生する。",
         },
         {
             id: 12,
@@ -216,15 +201,9 @@ const SILVER_02 = {
             question:
                 "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
             code: 'public class Main {\n    public static void main(String[] args) {\n        String str = "abcde";\n        System.out.println(str.substring(2, 4));\n    }\n}',
-            choices: [
-                "bcdと表示される",
-                "bcと表示される",
-                "cdと表示される",
-                "deと表示される",
-            ],
+            choices: ["bcdと表示される", "bcと表示される", "cdと表示される", "deと表示される"],
             answerIndex: 2,
-            explanation:
-                'substring(2,4) はインデックス2から3までを取得するので "cd"。',
+            explanation: 'substring(2,4) はインデックス2から3までを取得するので "cd"。',
         },
         {
             id: 14,
@@ -233,12 +212,7 @@ const SILVER_02 = {
             question:
                 "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
             code: 'public class Main {\n    public static void main(String[] args) {\n        String str = "aaaa";\n        System.out.println(str.replace("aa", "b"));\n    }\n}',
-            choices: [
-                "baaと表示される",
-                "babと表示される",
-                "bbと表示される",
-                "abaと表示される",
-            ],
+            choices: ["baaと表示される", "babと表示される", "bbと表示される", "abaと表示される"],
             answerIndex: 0,
             explanation: 'replace は最初の一致だけ置換するので "baa"。',
         },
@@ -326,8 +300,7 @@ const SILVER_02 = {
                 "実行時に例外がスローされる",
             ],
             answerIndex: 1,
-            explanation:
-                'str += は null を "null" に変換し "nullnull" になる。',
+            explanation: 'str += は null を "null" に変換し "nullnull" になる。',
         },
         {
             id: 20,
@@ -336,12 +309,7 @@ const SILVER_02 = {
             question:
                 "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
             code: 'public class Main {\n    public static void main(String[] args) {\n        StringBuilder sb = new StringBuilder("abcde");\n        System.out.println(sb.capacity());\n    }\n}',
-            choices: [
-                "0が表示される",
-                "5が表示される",
-                "16が表示される",
-                "21が表示される",
-            ],
+            choices: ["0が表示される", "5が表示される", "16が表示される", "21が表示される"],
             answerIndex: 3,
             explanation: "StringBuilderのcapacityは初期文字列長+16。5+16=21。",
         },
@@ -352,12 +320,7 @@ const SILVER_02 = {
             question:
                 "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
             code: 'public class Main {\n    public static void main(String[] args) {\n        StringBuilder sb = new StringBuilder();\n        sb.append("abcde");\n        sb.reverse();\n        sb.replace(1, 3, "a");\n        System.out.println(sb);\n    }\n}',
-            choices: [
-                "aadeと表示される",
-                "adeと表示される",
-                "abaと表示される",
-                "eabaと表示される",
-            ],
+            choices: ["aadeと表示される", "adeと表示される", "abaと表示される", "eabaと表示される"],
             answerIndex: 3,
             explanation:
                 'reverseで "edcba"、replace(1,3,"a")で "ea ba" → "eaba" だが誤記に注意。実際は "eaba"。',
@@ -369,12 +332,7 @@ const SILVER_02 = {
             question:
                 "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
             code: 'public class Sample {\n    public static void main(String[] args) {\n        StringBuilder sb = new StringBuilder("abcde");\n        System.out.println(sb.indexOf("bcd"));\n    }\n}',
-            choices: [
-                "1が表示される",
-                "2が表示される",
-                "3が表示される",
-                "4が表示される",
-            ],
+            choices: ["1が表示される", "2が表示される", "3が表示される", "4が表示される"],
             answerIndex: 0,
             explanation: "「bcd」はインデックス1から始まるので 1 が返る。",
         },

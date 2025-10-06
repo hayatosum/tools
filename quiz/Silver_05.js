@@ -25,8 +25,7 @@ const SILVER_05 = {
             id: 2,
             category: "配列の操作",
             difficulty: "中級",
-            question:
-                "次のプログラムの説明として、正しいものを選びなさい。（1つ選択）",
+            question: "次のプログラムの説明として、正しいものを選びなさい。（1つ選択）",
             code: "public class Main {\n    public static void main(String[] args) {\n        int[] a;\n        int[] b[];\n        int[][] c;\n        int[] d[];\n        int[] e[];\n        int[][] f[];\n    }\n}",
             choices: [
                 "3行目でコンパイルエラーが発生する",
@@ -45,8 +44,7 @@ const SILVER_05 = {
             id: 3,
             category: "配列の操作",
             difficulty: "初級",
-            question:
-                "配列変数の宣言として、正しいものを選びなさい。（1つ選択）",
+            question: "配列変数の宣言として、正しいものを選びなさい。（1つ選択）",
             code: "",
             choices: [
                 "int[] a[3];",
@@ -57,15 +55,13 @@ const SILVER_05 = {
                 "他選択肢の宣言すべて正しい",
             ],
             answerIndex: 4,
-            explanation:
-                "Javaでは配列のサイズを宣言時に指定できないため、A〜Dはすべて誤り。",
+            explanation: "Javaでは配列のサイズを宣言時に指定できないため、A〜Dはすべて誤り。",
         },
         {
             id: 4,
             category: "配列の操作",
             difficulty: "中級",
-            question:
-                "次の中から、コンパイルエラーになるコードを選びなさい。（3つ選択）",
+            question: "次の中から、コンパイルエラーになるコードを選びなさい。（3つ選択）",
             code: "",
             choices: [
                 "int[] a = new int[2][3];",
@@ -76,8 +72,7 @@ const SILVER_05 = {
                 "int f[][] = new int[][3];",
             ],
             answerIndex: [0, 1, 5],
-            explanation:
-                "A,B,Fは不正な配列宣言。C,D,Eは正しくコンパイルできる。",
+            explanation: "A,B,Fは不正な配列宣言。C,D,Eは正しくコンパイルできる。",
         },
         {
             id: 5,
@@ -113,15 +108,13 @@ const SILVER_05 = {
                 "実行時に例外がスローされる",
             ],
             answerIndex: 2,
-            explanation:
-                "配列の最初の要素が null なので、出力は nullBCD となる。",
+            explanation: "配列の最初の要素が null なので、出力は nullBCD となる。",
         },
         {
             id: 7,
             category: "配列の操作",
             difficulty: "上級",
-            question:
-                "次の中から、コンパイルエラーにならないコードを選びなさい。（3つ選択）",
+            question: "次の中から、コンパイルエラーにならないコードを選びなさい。（3つ選択）",
             code: "",
             choices: [
                 "int[] a = new int[2]{ 2, 3 };",
@@ -131,8 +124,7 @@ const SILVER_05 = {
                 "int e[]; e = {2,3};",
             ],
             answerIndex: [2, 3, 1],
-            explanation:
-                "A,Eは不正。B,C,Dは正しく宣言できる。ただしBは要素数0の配列。",
+            explanation: "A,Eは不正。B,C,Dは正しく宣言できる。ただしBは要素数0の配列。",
         },
         {
             id: 8,
@@ -183,8 +175,7 @@ const SILVER_05 = {
                 "実行時に例外がスローされる",
             ],
             answerIndex: 1,
-            explanation:
-                "arrayAは2+2+3=7要素を持ち、外側の配列長を含め合計12が出力される。",
+            explanation: "arrayAは2+2+3=7要素を持ち、外側の配列長を含め合計12が出力される。",
         },
     ],
 };
