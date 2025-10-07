@@ -7,7 +7,7 @@ const JAVA_SILVER_1Z0_815_JPN_06 = {
             difficulty: "初級",
             question:
                 "次のプログラムを確認してください。このクラスを利用する以下のプログラムを、コンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: "public class Item {\n    private int num = 10;\n    public void setNum(int num) {\n        this.num = num;\n    }\n    public int getNum() {\n        return this.num;\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Item a = new Item();\n        Item b = new Item();\n        b.setNum(20);\n        System.out.println(a.getNum());\n    }\n}",
+            code: " 1. public class Item {\n 2.     private int num = 10;\n 3.     public void setNum(int num) {\n 4.         this.num = num;\n 5.     }\n 6.     public int getNum() {\n 7.         return this.num;\n 8.     }\n 9. }\n\n 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         Item a = new Item();\n 4.         Item b = new Item();\n 5.         b.setNum(20);\n 6.         System.out.println(a.getNum());\n 7.     }\n 8. }",
             choices: [
                 "0が表示される",
                 "10が表示される",
@@ -25,7 +25,7 @@ const JAVA_SILVER_1Z0_815_JPN_06 = {
             difficulty: "中級",
             question:
                 "次のプログラムを確認してください。このクラスを利用する以下のプログラムを、コンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: 'public class Item {\n    public String name;\n    public int price;\n    public void printInfo() {\n        System.out.println(name + ", " + price);\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Item a = new Item();\n        Item b = new Item();\n        a.name = "apple";\n        b.price = 100;\n        a.price = 200;\n        b.name = "banana";\n        a = b;\n        a.printInfo();\n    }\n}',
+            code: ' 1. public class Item {\n 2.     public String name;\n 3.     public int price;\n 4.     public void printInfo() {\n 5.         System.out.println(name + ", " + price);\n 6.     }\n 7. }\n\n 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         Item a = new Item();\n 4.         Item b = new Item();\n 5.         a.name = "apple";\n 6.         b.price = 100;\n 7.         a.price = 200;\n 8.         b.name = "banana";\n 9.         a = b;\n10.         a.printInfo();\n11.     }\n12. }',
             choices: [
                 "apple,100",
                 "banana,100",
@@ -63,7 +63,7 @@ const JAVA_SILVER_1Z0_815_JPN_06 = {
             difficulty: "中級",
             question:
                 "次のプログラムを実行し、行付近が終了したときにガーベジコレクションの対象となるインスタンスはどれか。正しい説明を選びなさい。（1つ選択）",
-            code: "public class Main {\n    public static void main(String[] args) {\n        Object a = new Object();\n        Object b = new Object();\n        Object c;\n        a = b;\n        a = null;\n        b = null;\n        // more code\n    }\n}",
+            code: " 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         Object a = new Object();\n 4.         Object b = new Object();\n 5.         Object c;\n 6.         a = b;\n 7.         a = null;\n 8.         b = null;\n 9.         // more code\n10.     }\n11. }",
             choices: [
                 "3行目で作成したインスタンスだけが対象",
                 "4行目で作成したインスタンスだけが対象",
@@ -80,7 +80,7 @@ const JAVA_SILVER_1Z0_815_JPN_06 = {
             difficulty: "中級",
             question:
                 "次のプログラムを確認してください。このクラスを利用する以下のプログラムを、コンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: "public class Sample {\n    static int num = 0;\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Sample.num = 10;\n        Sample s = new Sample();\n        Sample s2 = new Sample();\n        s.num += 10;\n        s2.num = 30;\n        System.out.println(Sample.num);\n    }\n}",
+            code: " 1. public class Sample {\n 2.     static int num = 0;\n 3. }\n\n 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         Sample.num = 10;\n 4.         Sample s = new Sample();\n 5.         Sample s2 = new Sample();\n 6.         s.num += 10;\n 7.         s2.num = 30;\n 8.         System.out.println(Sample.num);\n 9.     }\n10. }",
             choices: [
                 "10が表示される",
                 "20が表示される",
@@ -97,7 +97,7 @@ const JAVA_SILVER_1Z0_815_JPN_06 = {
             category: "インスタンスとメソッド",
             difficulty: "中級",
             question: "次の中から、正しい説明を選びなさい。（2つ選択）",
-            code: "staticメソッドやstaticフィールドのアクセスに関する知識問題",
+            code: " 1. staticメソッドやstaticフィールドのアクセスに関する知識問題",
             choices: [
                 "staticメソッドからは、staticメソッドを呼び出せない",
                 "staticメソッドからは、staticではないフィールドにアクセスできる",
@@ -116,7 +116,7 @@ const JAVA_SILVER_1Z0_815_JPN_06 = {
             difficulty: "初級",
             question:
                 "次のクラスのhelloメソッドを呼び出し、コンソールに「hello」と表示したい。4行目の空欄に入るコードとして、正しいものを選びなさい。（1つ選択）",
-            code: 'public class Sample {\n    public void hello() {\n        System.out.println("hello");\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Sample sample = new Sample();\n        __________\n    }\n}',
+            code: ' 1. public class Sample {\n 2.     public void hello() {\n 3.         System.out.println("hello");\n 4.     }\n 5. }\n\n 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         Sample sample = new Sample();\n 4.         __________\n 5.     }\n 6. }',
             choices: [
                 "hello;",
                 "hello();",
@@ -153,7 +153,7 @@ const JAVA_SILVER_1Z0_815_JPN_06 = {
             difficulty: "初級",
             question:
                 "次のプログラムの5行目に記述できるコードとして、正しいものを選びなさい。（2つ選択）",
-            code: "1. public class Main {\n2.     public static void main(String[] args) {\n3.         int a = 1;\n4.         int b = 2;\n5.         __________\n6.         int c = b;\n7.     }\n8. }",
+            code: " 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         int a = 1;\n 4.         int b = 2;\n 5.         __________\n 6.         int c = b;\n 7.     }\n 8. }",
             choices: [
                 "System.out.println(a);",
                 "System.out.println(b + 2);",
@@ -168,7 +168,7 @@ const JAVA_SILVER_1Z0_815_JPN_06 = {
             category: "インスタンスとメソッド",
             difficulty: "初級",
             question: "次の中から、メソッド宣言の記述として正しいものを選びなさい。（1つ選択）",
-            code: "public class Sample {\n    // メソッドの宣言形式を問う問題\n}",
+            code: " 1. public class Sample {\n 2.     // メソッドの宣言形式を問う問題\n 3. }",
             choices: [
                 "Void sample() { }",
                 'void sample() { return "sample"; }',
@@ -186,7 +186,7 @@ const JAVA_SILVER_1Z0_815_JPN_06 = {
             difficulty: "中級",
             question:
                 "次のプログラムを確認してください。このクラスを利用する以下のプログラムの説明として正しいものを選びなさい。（1つ選択）",
-            code: 'public class Sample {\n    private String value;\n    public void setValue(String value) {\n        this.value = value;\n    }\n    public String getValue() {\n        return this.value;\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Sample s = new Sample();\n        String val = s.setValue("hello");\n        s.getValue();\n        System.out.println(val);\n    }\n}',
+            code: ' 1. public class Sample {\n 2.     private String value;\n 3.     public void setValue(String value) {\n 4.         this.value = value;\n 5.     }\n 6.     public String getValue() {\n 7.         return this.value;\n 8.     }\n 9. }\n\n 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         Sample s = new Sample();\n 4.         String val = s.setValue("hello");\n 5.         s.getValue();\n 6.         System.out.println(val);\n 7.     }\n 8. }',
             choices: [
                 "Mainクラスの4行目でコンパイルエラーが発生する",
                 "Mainクラスの5行目でコンパイルエラーが発生する",
@@ -205,7 +205,7 @@ const JAVA_SILVER_1Z0_815_JPN_06 = {
             difficulty: "中級",
             question:
                 "次のプログラムを確認してください。このクラスを利用する以下のプログラムの空欄に入るコードとして、正しいものを選びなさい。（2つ選択）",
-            code: "public class Sample {\n    float divide(int a, int b) {\n        return (float) a / (float) b;\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Sample s = new Sample();\n        float result = s.divide(10, 2);\n        System.out.println(result);\n    }\n}",
+            code: " 1. public class Sample {\n 2.     float divide(int a, int b) {\n 3.         return (float) a / (float) b;\n 4.     }\n 5. }\n\n 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         Sample s = new Sample();\n 4.         float result = s.divide(10, 2);\n 5.         System.out.println(result);\n 6.     }\n 7. }",
             choices: ["int", "float", "double", "Integer", "String", "dim"],
             answerIndex: [1, 2],
             explanation:
@@ -217,7 +217,7 @@ const JAVA_SILVER_1Z0_815_JPN_06 = {
             difficulty: "初級",
             question:
                 "次のプログラムを確認してください。このクラスを利用する以下のプログラムを、コンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
-            code: "public class Sample {\n    public int method(int a, int b) {\n        return a + b;\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Sample s = new Sample();\n        int result = s.method(2);\n        System.out.println(result);\n    }\n}",
+            code: " 1. public class Sample {\n 2.     public int method(int a, int b) {\n 3.         return a + b;\n 4.     }\n 5. }\n\n 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         Sample s = new Sample();\n 4.         int result = s.method(2);\n 5.         System.out.println(result);\n 6.     }\n 7. }",
             choices: [
                 "0が表示される",
                 "2が表示される",
@@ -233,7 +233,7 @@ const JAVA_SILVER_1Z0_815_JPN_06 = {
             category: "インスタンスとメソッド",
             difficulty: "中級",
             question: "次の中から、メソッドの宣言として正しいものを選びなさい。（1つ選択）",
-            code: "public class Sample {\n    // メソッド宣言に関する選択問題\n}",
+            code: " 1. public class Sample {\n 2.     // メソッド宣言に関する選択問題\n 3. }",
             choices: [
                 "void method(void) { }",
                 "void method(int values...) { }",
@@ -267,7 +267,7 @@ const JAVA_SILVER_1Z0_815_JPN_06 = {
             category: "インスタンスとメソッド",
             difficulty: "上級",
             question: "次のメソッドをオーバーロードしていないメソッド定義を選びなさい。（2つ選択）",
-            code: "int calc(double a, int b) {\n    return (int)(a + b);\n}",
+            code: " 1. int calc(double a, int b) {\n 2.     return (int)(a + b);\n 3. }",
             choices: [
                 "int calc(int a) {}",
                 "double calc(double a, int b) {}",
@@ -304,7 +304,7 @@ const JAVA_SILVER_1Z0_815_JPN_06 = {
             difficulty: "初級",
             question:
                 "次のメソッドをオーバーロードするメソッド定義として、正しいものを選びなさい。（1つ選択）",
-            code: "void method() {\n    // do something\n}",
+            code: " 1. void method() {\n 2.     // do something\n 3. }",
             choices: [
                 "public void method() {}",
                 "protected void method() {}",
@@ -322,7 +322,7 @@ const JAVA_SILVER_1Z0_815_JPN_06 = {
             difficulty: "初級",
             question:
                 "Sampleというクラスを定義しようと考えている。このクラスに定義するコンストラクタを修飾できるアクセス修飾子についての説明として、正しいものを選びなさい。（1つ選択）",
-            code: "class Sample {\n    // コンストラクタ定義\n}",
+            code: " 1. class Sample {\n 2.     // コンストラクタ定義\n 3. }",
             choices: [
                 "publicおよびコンストラクタの定義できる",
                 "publicやprotectedでコンストラクタの定義できる",
@@ -340,7 +340,7 @@ const JAVA_SILVER_1Z0_815_JPN_06 = {
             difficulty: "中級",
             question:
                 "次のプログラムを確認してください。このクラスを利用する以下のプログラムを、コンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
-            code: '1. public class Sample {\n2.     void Sample() {\n3.         System.out.println("hello.");\n4.     }5. \n}\n\n1. public class Main {\n2.     public static void main(String[] args) {\n3.         Sample s = new Sample();\n4.         s.Sample();\n5.     }\n6. }',
+            code: ' 1. public class Sample {\n 2.     void Sample() {\n 3.         System.out.println("hello.");\n 4.     }\n 5. }\n\n 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         Sample s = new Sample();\n 4.         s.Sample();\n 5.     }\n 6. }',
             choices: [
                 "「hello.」と表示される",
                 "「hello.hello.」と表示される",
@@ -358,7 +358,7 @@ const JAVA_SILVER_1Z0_815_JPN_06 = {
             difficulty: "中級",
             question:
                 "次のプログラムを確認してください。このクラスを利用する以下のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
-            code: '1. public class Sample {\n2.     Sample() {\n3.         System.out.println("A");\n4.     }\n5.     {\n6.         System.out.println("B");\n7.     }\n8. }\n\n1. public class Main {\n2.     public static void main(String[] args) {\n3.         Sample s = new Sample();\n4.     }\n5. }',
+            code: ' 1. public class Sample {\n 2.     Sample() {\n 3.         System.out.println("A");\n 4.     }\n 5.     {\n 6.         System.out.println("B");\n 7.     }\n 8. }\n\n 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         Sample s = new Sample();\n 4.     }\n 5. }',
             choices: [
                 "「A」「B」と表示される",
                 "「B」「A」と表示される",
@@ -378,7 +378,7 @@ const JAVA_SILVER_1Z0_815_JPN_06 = {
             difficulty: "初級",
             question:
                 "次のプログラムをコンパイルし、実行したときに正しいものを選びなさい。（1つ選択）",
-            code: "1. public class Sample {\n2.     static int num;\n3.     {\n4.         num = 10;\n5.     }\n6.     public Sample() {\n7.         num = 100;\n8.     }\n9. }\n\n1. public class Main {\n2.     public static void main(String[] args) {\n3.         System.out.println(Sample.num);\n4.     }\n5. }",
+            code: " 1. public class Sample {\n 2.     static int num;\n 3.     {\n 4.         num = 10;\n 5.     }\n 6.     public Sample() {\n 7.         num = 100;\n 8.     }\n 9. }\n\n 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         System.out.println(Sample.num);\n 4.     }\n 5. }",
             choices: [
                 "0が表示される",
                 "10が表示される",
@@ -395,7 +395,7 @@ const JAVA_SILVER_1Z0_815_JPN_06 = {
             difficulty: "中級",
             question:
                 "次のプログラムを確認してください。このクラスを利用する以下のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
-            code: 'public class Sample {\n    void Sample() {\n        System.out.println("A");\n    }\n    Sample(String str) {\n        System.out.println(str);\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Sample s = new Sample();\n    }\n}',
+            code: ' 1. public class Sample {\n 2.     void Sample() {\n 3.         System.out.println("A");\n 4.     }\n 5.     Sample(String str) {\n 6.         System.out.println(str);\n 7.     }\n 8. }\n\n 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         Sample s = new Sample();\n 4.     }\n 5. }',
             choices: [
                 "「A」と表示される",
                 "「null」と表示される",
@@ -413,7 +413,7 @@ const JAVA_SILVER_1Z0_815_JPN_06 = {
             difficulty: "中級",
             question:
                 "次のプログラムを実行し、コンソールに「ok.」と表示したい。3行目の空欄に入るコードとして正しいものを選びなさい。（1つ選択）",
-            code: '1. public class Sample {\n2.     public Sample() {\n3.         __________\n4.     }\n5.     public Sample(String str, int num) {\n6.         System.out.println("ok.");\n7.     }\n8. }\n\n1. public class Main {\n2.     public static void main(String[] args) {\n3.         Sample s = new Sample();\n4.     }\n55. }',
+            code: ' 1. public class Sample {\n 2.     public Sample() {\n 3.         __________\n 4.     }\n 5.     public Sample(String str, int num) {\n 6.         System.out.println("ok.");\n 7.     }\n 8. }\n\n 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         Sample s = new Sample();\n 4.     }\n 5. }',
             choices: [
                 "Sample(null, 0);",
                 "this(null, 0);",
@@ -430,7 +430,7 @@ const JAVA_SILVER_1Z0_815_JPN_06 = {
             difficulty: "中級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
-            code: 'public class Sample {\n    public Sample() {\n        System.out.println("A");\n        this("B");\n    }\n    public Sample(String str) {\n        System.out.println(str);\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Sample s = new Sample();\n    }\n}',
+            code: ' 1. public class Sample {\n 2.     public Sample() {\n 3.         System.out.println("A");\n 4.         this("B");\n 5.     }\n 6.     public Sample(String str) {\n 7.         System.out.println(str);\n 8.     }\n 9. }\n\n 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         Sample s = new Sample();\n 4.     }\n 5. }',
             choices: [
                 "「A」「B」と表示される",
                 "「B」「A」と表示される",
@@ -449,7 +449,7 @@ const JAVA_SILVER_1Z0_815_JPN_06 = {
             difficulty: "中級",
             question:
                 "次のプログラムを確認してください。このクラスを利用する以下のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
-            code: "package ex26;\npublic class Parent {\n    int num = 10;\n}\n\npackage other;\nimport ex26.Parent;\npublic class Child extends Parent {\n    public static void main(String[] args) {\n        System.out.println(num);\n    }\n}",
+            code: " 1. package ex26;\n 2. public class Parent {\n 3.     int num = 10;\n 4. }\n\n 1. package other;\n 2. import ex26.Parent;\n 3. public class Child extends Parent {\n 4.     public static void main(String[] args) {\n 5.         System.out.println(num);\n 6.     }\n 7. }",
             choices: [
                 "0が表示される",
                 "10が表示される",
@@ -484,7 +484,7 @@ const JAVA_SILVER_1Z0_815_JPN_06 = {
             difficulty: "初級",
             question:
                 "次のプログラムにカプセル化を適用したい。次の中から正しいコードを選びなさい。（1つ選択）",
-            code: "public class Sample {\n    int num;\n    int getNum() { return num; }\n    void setNum(int num) { this.num = num; }\n}",
+            code: " 1. public class Sample {\n 2.     int num;\n 3.     int getNum() { return num; }\n 4.     void setNum(int num) { this.num = num; }\n 5. }",
             choices: [
                 "private int num; private int getNum() { return num; } private void setNum(int num) { this.num = num; }",
                 "public int num; public int getNum() { return num; } public void setNum(int num) { this.num = num; }",
@@ -501,7 +501,7 @@ const JAVA_SILVER_1Z0_815_JPN_06 = {
             difficulty: "中級",
             question:
                 "次のプログラムを利用する以下のプログラムを、コンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
-            code: "public class Sample {\n    int num;\n    public Sample(int num) {\n        this.num = num;\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Sample s = new Sample(10);\n        modify(s.num);\n        System.out.println(s.num);\n    }\n    private static void modify(int num) {\n        num *= 2;\n    }\n}",
+            code: " 1. public class Sample {\n 2.     int num;\n 3.     public Sample(int num) {\n 4.         this.num = num;\n 5.     }\n 6. }\n\n 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         Sample s = new Sample(10);\n 4.         modify(s.num);\n 5.         System.out.println(s.num);\n 6.     }\n 7.     private static void modify(int num) {\n 8.         num *= 2;\n 9.     }\n10. }",
             choices: [
                 "10が表示される",
                 "20が表示される",
@@ -517,7 +517,7 @@ const JAVA_SILVER_1Z0_815_JPN_06 = {
             difficulty: "中級",
             question:
                 "次のプログラムを利用する以下のプログラムを、コンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
-            code: "public class Sample {\n    int num;\n    public Sample(int num) {\n        this.num = num;\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Sample s = new Sample(10);\n        modify(s);\n        System.out.println(s.num);\n    }\n    private static void modify(Sample s) {\n        s.num *= 2;\n    }\n}",
+            code: " 1. public class Sample {\n 2.     int num;\n 3.     public Sample(int num) {\n 4.         this.num = num;\n 5.     }\n 6. }\n\n 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         Sample s = new Sample(10);\n 4.         modify(s);\n 5.         System.out.println(s.num);\n 6.     }\n 7.     private static void modify(Sample s) {\n 8.         s.num *= 2;\n 9.     }\n10. }",
             choices: [
                 "10が表示される",
                 "20が表示される",
