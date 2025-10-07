@@ -475,7 +475,7 @@ button:disabled {
 .heatmap {
     display: grid;
     gap: 6px;
-    grid-template-columns: repeat(auto-fill, minmax(92px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(52px, 1fr));
     align-items: center;
 }
 .hm-cell {
@@ -491,11 +491,12 @@ button:disabled {
     border: 1px solid var(--border);
 }
 .hm-label {
-    font-size: 0.6em;
+    font-size: 0.1em;
     color: var(--muted);
-    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    line-height: 1;
+    text-align: center;
 }
 
 #analysisTableWrap,
@@ -568,7 +569,6 @@ button:disabled {
 .modal {
     position: relative;
     background: #fff;
-    border-radius: 10px;
     padding: 18px 18px 36px;
     max-width: 720px;
     width: min(92vw, 720px);
