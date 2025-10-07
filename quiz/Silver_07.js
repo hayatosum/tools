@@ -55,7 +55,7 @@ const JAVA_SILVER_1Z0_815_JPN_07 = {
             category: "クラスの継承、インタフェース、抽象クラス",
             difficulty: "中級",
             question: "次のプログラムの説明として正しいものを選びなさい。",
-            code: ' 1. public interface A {\n 2.     void sample() {\n 3.         System.out.println("sample");\n 4.     }\n 5. }\n 6. public class B implements A {}\n 7. public class Main {\n 8.     public static void main(String[] args) {\n 9.         A a = new B();\n10.         a.sample();\n11.     }\n12. }',
+            code: ' 1. public interface A {\n 2.     void sample() {\n 3.         System.out.println("sample");\n 4.     }\n 5. }\n\n 1. public class B implements A {\n 2. }\n\n 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         A a = new B();\n 4.         a.sample();\n 5.     }\n 6. }',
             choices: [
                 "インタフェースのsampleメソッドをdefaultで修飾しなければいけない",
                 "インタフェースのsampleメソッドを削除し、Bクラスにsampleメソッドを追加しなければいけない",
@@ -72,7 +72,7 @@ const JAVA_SILVER_1Z0_815_JPN_07 = {
             difficulty: "中級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。",
-            code: ' 1. public interface A {\n 2.     @Override\n 3.     default String toString() {\n 4.         return "A";\n 5.     }\n 6. }\n 7. public class B implements A {\n 8.     @Override\n 9.     public String toString() {\n10.         return "B";\n11.     }\n12. }\n13. public class Main {\n14.     public static void main(String[] args) {\n15.         A a = new B();\n16.         System.out.println(a);\n17.     }\n18. }',
+            code: ' 1. public interface A {\n 2.     @Override\n 3.     default String toString() {\n 4.         return "A";\n 5.     }\n 6. }\n\n 1. public class B implements A {\n 2.     @Override\n 3.     public String toString() {\n 4.         return "B";\n 5.     }\n 6. }\n\n 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         A a = new B();\n 4.         System.out.println(a);\n 5.     }\n 6. }',
             choices: [
                 "Aインタフェースでコンパイルエラーとなる",
                 "Bクラスでコンパイルエラーとなる",
@@ -89,20 +89,19 @@ const JAVA_SILVER_1Z0_815_JPN_07 = {
             category: "クラスの継承、インタフェース、抽象クラス",
             difficulty: "中級",
             question:
-                "以下に示すコードをコンパイル、実行し、次のような結果を表示したい。Cクラスの空欄に入るコードとして正しいものを選びなさい。（1つ選択）\n\n出力結果：\nHello\nJava",
-            code: ' 1. public interface A {\n 2.     default void sample() {\n 3.         System.out.println("Hello");\n 4.     }\n 5. }\n\n 1. public interface B extends A {\n 2. }\n\n 1. public class C implements B {\n 2.     @Override\n 3.     public void sample() {\n 4.         ____________\n 5.         System.out.println("Java");\n 6.     }\n 7. }\n\n 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         A a = new C();\n 4.         a.sample();\n 5.     }\n 6. }',
+                "以下に示すコードをコンパイル、実行し、次のような結果を表示したい。Cクラスの空欄に入るコードとして正しいものを選びなさい。（1つ選択）",
+            code: 'Hello\nJava\n\n 1. public interface A {\n 2.     default void sample() {\n 3.         System.out.println("Hello");\n 4.     }\n 5. }\n\n 1. public interface B extends A {\n 2. }\n\n 1. public class C implements B {\n 2.     @Override\n 3.     public void sample() {\n 4.         ____________\n 5.         System.out.println("Java");\n 6.     }\n 7. }\n\n 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         A a = new C();\n 4.         a.sample();\n 5.     }\n 6. }',
             choices: [
                 "<pre><code>super.sample();</code></pre>",
                 "<pre><code>A.super.sample();</code></pre>",
                 "<pre><code>public.sample();</code></pre>",
                 "<pre><code>new.sample();</code></pre>",
-                "上記のいずれも誤りである",
+                "他の選択肢のいずれも誤りである",
             ],
-            answerIndex: 1,
+            answerIndex: 4,
             explanation:
-                "インターフェースのdefaultメソッドをオーバーライドしたメソッド内で呼び出す場合は「A.super.sample();」と指定する。通常のsuperはクラス継承にのみ使用可能であり、インターフェースのdefaultメソッドには使えない。したがって正解はBの「A.super.sample();」。",
+                "オーバーライドしたメソッドから元のデフォルトメソッドの呼び出しは、2つ以上の実現や継承の階層をまたいで行うことはできない。",
         },
-
         {
             id: 7,
             category: "クラスの継承、インタフェース、抽象クラス",
@@ -227,14 +226,12 @@ const JAVA_SILVER_1Z0_815_JPN_07 = {
             category: "クラスの継承、インタフェース、抽象クラス",
             difficulty: "上級",
             question:
-                "次のクラスとインタフェースを利用するMainクラスをコンパイル、実行した結果を選びなさい。",
-            code: ' 1. public interface Worker {\n 2.     void work();\n 3. }\n 4. class Employee implements Worker {\n 5.     public void work() { System.out.println("work"); }\n 6.     public void report() { System.out.println("report"); }\n 7. }\n 8. class Engineer extends Employee {\n 9.     public void create() { System.out.println("create future"); }\n10. }\n11. public class Main {\n12.     public static void main(String[] args) {\n13.         Worker a = new Engineer();\n14.         Employee b = new Engineer();\n15.         Engineer c = new Engineer();\n16.         a.create();\n17.         b.work();\n18.         c.report();\n19.     }\n20. }',
+                "次のクラスとインタフェースを利用するMainクラスをコンパイル、実行した結果をすべて選びなさい。",
+            code: ' 1. public interface Worker {\n 2.     void work();\n 3. }\n\n 1. class Employee implements Worker {\n 2.     public void work() {\n 3.         System.out.println("work");\n 4.     }\n 5.     public void report() {\n 6.         System.out.println("report");\n 7.     }\n 8. }\n\n 1. class Engineer extends Employee {\n 2.     public void create() {\n 3.         System.out.println("create future");\n 4.     }\n 5. }\n\n 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         Worker a = new Engineer();\n 4.         Employee b = new Engineer();\n 5.         Engineer c = new Engineer();\n 6.         a.create();\n 7.         b.work();\n 8.         c.report();\n 9.     }\n10. }',
             choices: [
                 "Mainクラスの6行目でコンパイルエラーが発生する",
                 "Mainクラスの7行目でコンパイルエラーが発生する",
                 "Mainクラスの8行目でコンパイルエラーが発生する",
-                "選択肢AとBの両方",
-                "選択肢BとCの両方",
             ],
             answerIndex: 0,
             explanation:
@@ -264,7 +261,7 @@ const JAVA_SILVER_1Z0_815_JPN_07 = {
             difficulty: "初級",
             question:
                 "次のプログラムを確認してください。これらのクラスを利用する以下のプログラムを実行し、「hello」とコンソールに表示したい。4行目の空欄に入るコードとして、正しいものを選びなさい。",
-            code: ' 1. class A {}\n\n 1. class B extends A {\n 2.     void hello() {\n 3.         System.out.println("hello");\n 4.     }\n 5. }\n\n 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         A a = new B();\n 4.         // 空欄\n 5.         b.hello();\n 6.     }\n 7. }',
+            code: ' 1. class A {}\n\n 1. class B extends A {\n 2.     void hello() {\n 3.         System.out.println("hello");\n 4.     }\n 5. }\n\n 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         A a = new B();\n 4.         __________\n 5.         b.hello();\n 6.     }\n 7. }',
             choices: [
                 "A b = a;",
                 "A b = new B();",
