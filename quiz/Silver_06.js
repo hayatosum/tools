@@ -44,18 +44,18 @@ const JAVA_SILVER_1Z0_815_JPN_06 = {
             difficulty: "初級",
             question:
                 "次のプログラムを実行し、「NULL」と表示したい。3行目の空欄に入るコードとして、正しいものを選びなさい。（1つ選択）",
-            code: "public class Main {\n    public static void main(String[] args) {\n        Object obj = null;\n        System.out.println(obj);\n    }\n}",
+            code: " 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         __________\n 4.         System.out.println(obj);\n 5.     }\n 6. }",
             choices: [
                 "Object obj = null;",
                 "Object obj = false;",
                 "Object obj = NULL;",
                 'Object obj = "";',
-                "選択肢A〜Dのどれでも可能である",
-                "選択肢A〜Eはすべて誤りである",
+                "他の選択肢のどれでも可能である",
+                "他の選択肢はすべて誤りである",
             ],
-            answerIndex: 0,
+            answerIndex: 5,
             explanation:
-                "JavaではNULLやfalseでは代入できません。Object obj = null; とすることで、出力時に「null」と表示されます。",
+                "Object obj = null; とした場合、出力内容は「null」となる。参照を保持していないことを表現するためのリテラルは「null」であり、nullは「NULL」と表現できない。",
         },
         {
             id: 4,
@@ -135,7 +135,7 @@ const JAVA_SILVER_1Z0_815_JPN_06 = {
             difficulty: "中級",
             question:
                 "次のプログラムを確認してください。このクラスを利用する以下のプログラムを、コンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: "public class Sample {\n    public int add(Integer a, Integer b) {\n        return a + b;\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Sample s = new Sample();\n        System.out.println(s.add(10, null));\n    }\n}",
+            code: " 1. public class Sample {\n 2.     public int add(Integer a, Integer b) {\n 3.         return a + b;\n 4.     }\n 5. }\n\n 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         Sample s = new Sample();\n 4.         System.out.println(s.add(10, null));\n 5.     }\n 6. }",
             choices: [
                 "10と表示される",
                 "10nullと表示される",
@@ -161,7 +161,7 @@ const JAVA_SILVER_1Z0_815_JPN_06 = {
                 "System.out.println(d);",
             ],
             answerIndex: [0, 1],
-            explanation: "aとcは宣言済みで利用可能です。dは未定義なのでエラーになります。",
+            explanation: "aとbは宣言済みで利用可能です。dは未定義なのでエラーになります。",
         },
         {
             id: 10,
@@ -250,7 +250,7 @@ const JAVA_SILVER_1Z0_815_JPN_06 = {
             difficulty: "中級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として正しいものを選びなさい。（1つ選択）",
-            code: 'public class Sample {\n    public void num() {\n        if (num < 0) return;\n        System.out.println("A");\n        return;\n        System.out.println("B");\n    }\n}',
+            code: ' 1. public class Sample {\n 2.     public void method(int num) {\n 3.         if (num < 0) return;\n 4.         System.out.println("A");\n 5.         return;\n 6.         System.out.println("B");\n 7.     }\n 8. }',
             choices: [
                 "3行目でコンパイルエラーが発生する",
                 "5行目でコンパイルエラーが発生する",
@@ -258,7 +258,7 @@ const JAVA_SILVER_1Z0_815_JPN_06 = {
                 "「A」と表示される",
                 "「A」「B」と表示される",
             ],
-            answerIndex: 1,
+            answerIndex: 2,
             explanation:
                 'returnの後にSystem.out.println("B"); が書かれており、到達不能文となるためコンパイルエラーです。',
         },
@@ -286,7 +286,7 @@ const JAVA_SILVER_1Z0_815_JPN_06 = {
             difficulty: "中級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: "public class Main {\n    public static void main(String[] args) {\n        Main m = new Main();\n        System.out.println(m.calc(2, 3));\n    }\n    private double calc(double a, int b) {\n        return (a + b) / 2;\n    }\n    private double calc(int a, double b) {\n        return (a + b) / 2;\n    }\n}",
+            code: " 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         Main m = new Main();\n 4.         System.out.println(m.calc(2, 3));\n 5.     }\n 6.     private double calc(double a, int b) {\n 7.         return (a + b) / 2;\n 8.     }\n 9.     private double calc(int a, double b) {\n10.         return (a + b) / 2;\n11.     }\n12. }",
             choices: [
                 "4行目でコンパイルエラーが発生する",
                 "6行目でコンパイルエラーが発生する",
