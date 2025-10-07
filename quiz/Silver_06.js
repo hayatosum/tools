@@ -293,7 +293,7 @@ const JAVA_SILVER_1Z0_815_JPN_06 = {
                 "9行目でコンパイルエラーが発生する",
                 "2.5が表示される",
             ],
-            answerIndex: 4,
+            answerIndex: 3,
             explanation:
                 "オーバーロードされた2つのcalcメソッドのどちらが呼ばれても `(2+3)/2` の計算結果は 2.5 となる。",
         },

@@ -488,7 +488,7 @@ function validateQuestions(data, prefix = "ZZ00") {
         if (uniq.length === 0) throw new Error(`answerIndex が空です (index: ${i})`);
         const bad = uniq.find((v) => !Number.isInteger(v) || v < 0 || v >= q.choices.length);
         if (bad !== undefined)
-            throw new Error(`answerIndex に不正な値があります: ${bad} (index: ${i})`);
+            throw new Error(`answerIndex に不正な値があります: ${bad} (id: ${q.id}, index: ${i})`);
         q.answerIndex = uniq;
 
         // 任意メタの型だけ軽く整える
