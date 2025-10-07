@@ -48,8 +48,86 @@ const resultArea = document.getElementById("resultArea");
 const scoreText = document.getElementById("scoreText");
 const explanationsEl = document.getElementById("explanations");
 const randomizeChoicesEl = document.getElementById("randomizeChoices");
+const adaptiveModeEl = document.getElementById("adaptiveMode");
+const adaptiveStrengthEl = document.getElementById("adaptiveStrength");
+const showQuestionIdEl = document.getElementById("showQuestionId");
+
+// 出題範囲のセレクト
+fileSelect?.addEventListener("change", () => {
+    localStorage.setItem("opt.fileSelect", fileSelect.value);
+    // 既存の処理（件数更新など）はそのまま
+});
+
+// 出題数
+countInput?.addEventListener("input", () => {
+    localStorage.setItem("opt.questionCount", String(countInput.value));
+});
+
+// 弱点優先
+adaptiveModeEl?.addEventListener("change", () => {
+    localStorage.setItem("opt.adaptiveMode", adaptiveModeEl.checked ? "1" : "0");
+});
+
+// 重点度
+adaptiveStrengthEl?.addEventListener("input", () => {
+    localStorage.setItem("opt.adaptiveStrength", String(adaptiveStrengthEl.value));
+});
+
+// 選択肢ランダム
+randomizeChoicesEl?.addEventListener("change", () => {
+    localStorage.setItem("opt.randomizeChoices", randomizeChoicesEl.checked ? "1" : "0");
+    // すでに出題済みなら表示順が変わるため再描画
+    if (Array.isArray(currentQuestions) && currentQuestions.length > 0) {
+        renderQuiz(currentQuestions);
+    }
+});
+
+// （任意）問題ID表示
+showQuestionIdEl?.addEventListener("change", () => {
+    localStorage.setItem("opt.showQuestionId", showQuestionIdEl.checked ? "1" : "0");
+    if (Array.isArray(currentQuestions) && currentQuestions.length > 0) {
+        renderQuiz(currentQuestions);
+    }
+});
 
 document.addEventListener("DOMContentLoaded", async () => {
+    // ▼ 設定の復元
+    // 出題範囲
+    const savedFileKey = localStorage.getItem("opt.fileSelect");
+    if (savedFileKey && fileSelect) {
+        fileSelect.value = savedFileKey;
+    }
+
+    // 出題数
+    const savedCount = localStorage.getItem("opt.questionCount");
+    if (savedCount && countInput) {
+        countInput.value = savedCount;
+    }
+
+    // 弱点優先
+    const savedAdaptive = localStorage.getItem("opt.adaptiveMode");
+    if (savedAdaptive !== null && adaptiveModeEl) {
+        adaptiveModeEl.checked = savedAdaptive === "1";
+    }
+
+    // 重点度
+    const savedStrength = localStorage.getItem("opt.adaptiveStrength");
+    if (savedStrength !== null && adaptiveStrengthEl) {
+        adaptiveStrengthEl.value = savedStrength;
+    }
+
+    // 選択肢ランダム
+    const savedRand = localStorage.getItem("opt.randomizeChoices");
+    if (savedRand !== null && randomizeChoicesEl) {
+        randomizeChoicesEl.checked = savedRand === "1";
+    }
+
+    // （任意）問題ID表示
+    const savedShowId = localStorage.getItem("opt.showQuestionId");
+    if (savedShowId !== null && showQuestionIdEl) {
+        showQuestionIdEl.checked = savedShowId === "1";
+    }
+
     updateSelectedFileCount();
     try {
         await loadAllQuestions(); // ← 初期ロード
@@ -155,7 +233,8 @@ function renderQuiz(questions) {
         meta.className = "meta";
         const cat = q.category ? `カテゴリ: ${q.category}` : "カテゴリ: -";
         const diff = q.difficulty ? ` / 難易度: ${q.difficulty}` : "";
-        meta.textContent = `${cat}${diff}`;
+        const idPart = showQuestionIdEl?.checked ? ` / ID: ${q.id}` : "";
+        meta.textContent = `${cat}${diff}${idPart}`;
 
         const choicesWrap = document.createElement("div");
         choicesWrap.className = "choices";
@@ -1104,10 +1183,6 @@ if (lowRateInput) lowRateInput.addEventListener("change", analyzeHistoryAndRende
 
 // 採点直後にも更新
 // （既存の showResults() の最後に renderHistory() の直後でOK）
-
-// === 追加：要素参照 ===
-const adaptiveModeEl = document.getElementById("adaptiveMode");
-const adaptiveStrengthEl = document.getElementById("adaptiveStrength");
 
 // === 追加：履歴からID別の正答率を取り出す（0〜100） ===
 function buildRateMapFromHistory() {
