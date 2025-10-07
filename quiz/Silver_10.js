@@ -7,7 +7,7 @@ const JAVA_SILVER_1Z0_815_JPN_10 = {
             difficulty: "初級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: 'public class Main {\n    public static void main(String[] args) {\n        try {\n            int[] array = {};\n            array[0] = 10;\n            System.out.println("finish");\n        } catch (ArrayIndexOutOfBoundsException e) {\n            System.out.println("error");\n        }\n    }\n}',
+            code: ' 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         try {\n 4.             int[] array = {};\n 5.             array[0] = 10;\n 6.             System.out.println("finish");\n 7.         } catch (ArrayIndexOutOfBoundsException e) {\n 8.             System.out.println("error");\n 9.         }\n10.     }\n11. }',
             choices: [
                 "「finish」と表示される",
                 "「error」と表示される",
@@ -26,16 +26,16 @@ const JAVA_SILVER_1Z0_815_JPN_10 = {
             difficulty: "中級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。なお、実行時には起動パラメータを何も渡さないこととする。（1つ選択）",
-            code: 'public class Main {\n    public static void main(String[] args) {\n        try {\n            if (args.length == 0) {\n                System.out.println("A");\n            }\n        } catch (NullPointerException e) {\n            System.out.println("B");\n        } finally {\n            System.out.println("C");\n        }\n    }\n}',
+            code: ' 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         try {\n 4.             if (args.length == 0) {\n 5.                 System.out.println("A");\n 6.             }\n 7.         } catch (NullPointerException e) {\n 8.             System.out.println("B");\n 9.         } finally {\n10.             System.out.println("C");\n11.         }\n12.     }\n13. }',
             choices: [
-                "「A」と表示される",
-                "「B」と表示される",
-                "「C」と表示される",
+                "「A」「B」「C」と表示される",
                 "「A」「C」と表示される",
+                "「B」「C」と表示される",
+                "「A」「B」と表示される",
                 "コンパイルエラーが発生する",
                 "実行時に例外がスローされる",
             ],
-            answerIndex: 3,
+            answerIndex: 1,
             explanation:
                 "引数は空配列なので length==0 が真となり「A」を出力し、その後 finally で必ず「C」を出力する。",
         },
@@ -45,11 +45,18 @@ const JAVA_SILVER_1Z0_815_JPN_10 = {
             difficulty: "中級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: 'public class SampleException extends Exception {}\npublic class SubSampleException extends SampleException {}\n\npublic class Main {\n    public static void main(String[] args) {\n        try {\n            sample();\n            sub();\n        } catch (SampleException e) {\n            System.out.println("A");\n        } catch (SubSampleException e) {\n            System.out.println("B");\n        }\n    }\n\n    private static void sample() throws SampleException {\n        throw new SampleException();\n    }\n\n    private static void sub() throws SubSampleException {\n        throw new SubSampleException();\n    }\n}',
-            choices: ["「A」と表示される", "「B」と表示される", "「B」「A」と表示される"],
-            answerIndex: 0,
+            code: ' 1. public class SampleException extends Exception {}\n\n 1. public class SubSampleException extends SampleException {}\n\n 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         try {\n 4.             sample();\n 5.             sub();\n 6.         } catch (SampleException e) {\n 7.             System.out.println("A");\n 8.         } catch (SubSampleException e) {\n 9.             System.out.println("B");\n10.         }\n11.     }\n12. \n13.     private static void sample() throws SampleException {\n14.         throw new SampleException();\n15.     }\n16. \n17.     private static void sub() throws SubSampleException {\n18.         throw new SubSampleException();\n19.     }\n20. }',
+            choices: [
+                "「A」と表示される",
+                "「B」と表示される",
+                "「B」「A」と表示される",
+                "何も表示されない",
+                "コンパイルエラーが発生する",
+                "実行時に例外がスローされる",
+            ],
+            answerIndex: 4,
             explanation:
-                "最初の sample() で SampleException が送出され、最初の catch に捕捉されて「A」を出力。sub() は呼ばれない。",
+                "最初の sample() で SampleException が送出され、最初の catch に捕捉されるため、SubSampleException が catch されることがなく到達できないコードとなりコンパイルエラーが発生する。",
         },
         {
             id: 4,
@@ -57,11 +64,11 @@ const JAVA_SILVER_1Z0_815_JPN_10 = {
             difficulty: "初級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: 'public class Main {\n    public static void main(String[] args) {\n        try {\n            Object obj = null;\n            System.out.println(obj.toString());\n            System.out.println("A");\n        } finally {\n            System.out.println("B");\n        } catch (NullPointerException e) {\n            System.out.println("C");\n        }\n    }\n}',
+            code: ' 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         try {\n 4.             Object obj = null;\n 5.             System.out.println(obj.toString());\n 6.             System.out.println("A");\n 7.         } finally {\n 8.             System.out.println("B");\n 9.         } catch (NullPointerException e) {\n10.             System.out.println("C");\n11.         }\n12.     }\n13. }',
             choices: [
                 "「B」「C」と表示される",
                 "「C」「B」と表示される",
-                "「C」と表示される",
+                "「A」「C」と表示される",
                 "コンパイルエラーが発生する",
                 "実行時に例外がスローされる",
             ],
@@ -75,7 +82,7 @@ const JAVA_SILVER_1Z0_815_JPN_10 = {
             difficulty: "中級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: 'public class Main {\n    public static void main(String[] args) {\n        System.out.println(test(null));\n    }\n\n    private static String test(Object obj) {\n        try {\n            try {\n                System.out.println(obj.toString());\n            } catch (NullPointerException e) {\n                return "A";\n            } finally {\n                System.out.println("B");\n            }\n        }\n        return "C";\n    }\n}',
+            code: ' 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         System.out.println(test(null));\n 4.     }\n 5. \n 6.     private static String test(Object obj) {\n 7.         try {\n 8.             try {\n 9.                 System.out.println(obj.toString());\n10.             } catch (NullPointerException e) {\n11.                 return "A";\n12.             } finally {\n13.                 System.out.println("B");\n14.             }\n15.         }\n16.         return "C";\n17.     }\n18. }',
             choices: [
                 "「A」と表示される",
                 "「A」「B」と表示される",
@@ -94,7 +101,7 @@ const JAVA_SILVER_1Z0_815_JPN_10 = {
             difficulty: "中級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: "public class Main {\n    public static void main(String[] args) {\n        int result = sample();\n        System.out.println(result);\n    }\n    private static int sample() {\n        try {\n            throw new RuntimeException();\n        } catch (RuntimeException e) {\n            return 10;\n        } finally {\n            return 20;\n        }\n    }\n}",
+            code: " 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         int result = sample();\n 4.         System.out.println(result);\n 5.     }\n 6.     private static int sample() {\n 7.         try {\n 8.             throw new RuntimeException();\n 9.         } catch (RuntimeException e) {\n10.             return 10;\n11.         } finally {\n12.             return 20;\n13.         }\n14.     }\n15. }",
             choices: [
                 "10が表示される",
                 "20が表示される",
@@ -112,7 +119,7 @@ const JAVA_SILVER_1Z0_815_JPN_10 = {
             difficulty: "中級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: 'public class Main {\n    public static void main(String[] args) {\n        int result = sample();\n        System.out.println(result);\n    }\n    private static int sample() {\n        int val = 0;\n        try {\n            String[] array = {"A","B","C"};\n            System.out.println(array[3]);\n        } catch (RuntimeException e) {\n            val = 10;\n            return val;\n        } finally {\n            val += 10;\n        }\n        return val;\n    }\n}',
+            code: ' 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         int result = sample();\n 4.         System.out.println(result);\n 5.     }\n 6.     private static int sample() {\n 7.         int val = 0;\n 8.         try {\n 9.             String[] array = {"A","B","C"};\n10.             System.out.println(array[3]);\n11.         } catch (RuntimeException e) {\n12.             val = 10;\n13.             return val;\n14.         } finally {\n15.             val += 10;\n16.         }\n17.         return val;\n18.     }\n19. }',
             choices: [
                 "0が表示される",
                 "10が表示される",
@@ -130,7 +137,7 @@ const JAVA_SILVER_1Z0_815_JPN_10 = {
             difficulty: "初級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: 'public class Main {\n    public static void main(String[] args) {\n        try {\n            System.out.println("A");\n        } finally {\n            System.out.println("B");\n        } finally {\n            System.out.println("C");\n        }\n    }\n}',
+            code: ' 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         try {\n 4.             System.out.println("A");\n 5.         } finally {\n 6.             System.out.println("B");\n 7.         } finally {\n 8.             System.out.println("C");\n 9.         }\n10.     }\n11. }',
             choices: [
                 "「A」「B」「C」と表示される",
                 "「A」「B」と表示される",
@@ -148,7 +155,7 @@ const JAVA_SILVER_1Z0_815_JPN_10 = {
             difficulty: "中級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: 'public class Main {\n    public static void main(String[] args) {\n        try {\n            try {\n                String[] array = {"A","B","C"};\n                System.out.println(array[3]);\n            } catch (ArrayIndexOutOfBoundsException e) {\n                System.out.println("D");\n            } finally {\n                System.out.println("E");\n            }\n        } catch (ArrayIndexOutOfBoundsException e) {\n            System.out.println("F");\n        } finally {\n            System.out.println("G");\n        }\n    }\n}',
+            code: ' 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         try {\n 4.             try {\n 5.                 String[] array = {"A","B","C"};\n 6.                 System.out.println(array[3]);\n 7.             } catch (ArrayIndexOutOfBoundsException e) {\n 8.                 System.out.println("D");\n 9.             } finally {\n10.                 System.out.println("E");\n11.             }\n12.         } catch (ArrayIndexOutOfBoundsException e) {\n13.             System.out.println("F");\n14.         } finally {\n15.             System.out.println("G");\n16.         }\n17.     }\n18. }',
             choices: [
                 "「C」「E」「G」と表示される",
                 "「D」「E」「G」と表示される",
@@ -168,7 +175,7 @@ const JAVA_SILVER_1Z0_815_JPN_10 = {
             difficulty: "中級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: 'import java.io.FileInputStream;\nimport java.io.FileNotFoundException;\n\npublic class Sample {\n    public static void main(String[] args) {\n        try (FileInputStream is = new FileInputStream("sample.txt")) {\n            throw new FileNotFoundException();\n        } catch (Exception e) {\n            System.out.println("A");\n        } finally {\n            if (is != null) {\n                is.close();\n            }\n        }\n        System.out.println("B");\n    }\n}',
+            code: ' 1. import java.io.FileInputStream;\n 2. import java.io.FileNotFoundException;\n 3. \n 4. public class Sample {\n 5.     public static void main(String[] args) {\n 6.         try (FileInputStream is = new FileInputStream("sample.txt")) {\n 7.             throw new FileNotFoundException();\n 8.         } catch (Exception e) {\n 9.             System.out.println("A");\n10.         } finally {\n11.             if (is != null) {\n12.                 is.close();\n13.             }\n14.         }\n15.         System.out.println("B");\n16.     }\n17. }',
             choices: [
                 "「A」と表示される",
                 "「B」と表示される",
@@ -186,7 +193,7 @@ const JAVA_SILVER_1Z0_815_JPN_10 = {
             difficulty: "中級",
             question:
                 "次の Sample クラスの2行目の空欄に入るコードとして、正しいものを選びなさい。（2つ選択）",
-            code: 'public class SampleException extends Exception {}\npublic class TestException extends RuntimeException {}\n\npublic class Sample {\n    public void hello(String name) _________ {\n        if (name == null) {\n            throw new SampleException();\n        }\n        if ("".equals(name)) {\n            throw new TestException();\n        }\n        // do something\n    }\n}',
+            code: ' 1. public class SampleException extends Exception {}\n 2. public class TestException extends RuntimeException {}\n 3. \n 4. public class Sample {\n 5.     public void hello(String name) _________ {\n 6.         if (name == null) {\n 7.             throw new SampleException();\n 8.         }\n 9.         if ("".equals(name)) {\n10.             throw new TestException();\n11.         }\n12.         // do something\n13.     }\n14. }',
             choices: [
                 "throws SampleException, TestException",
                 "throws SampleException; TestException",
@@ -194,9 +201,9 @@ const JAVA_SILVER_1Z0_815_JPN_10 = {
                 "throws SampleException",
                 "何も記述しなくてもよい",
             ],
-            answerIndex: 0,
+            answerIndex: [0, 3],
             explanation:
-                "チェック例外である SampleException を送出するためメソッド宣言に throws SampleException が必須。RuntimeException 系は任意なので同時に列挙してもよい（A も可）。",
+                "チェック例外である SampleException を送出するためメソッド宣言に throws SampleException が必須。RuntimeException 系は任意なので同時に列挙してもよい。",
         },
         {
             id: 12,
@@ -206,8 +213,8 @@ const JAVA_SILVER_1Z0_815_JPN_10 = {
             code: "",
             choices: [
                 "エラーは、プログラムの実行環境で重大な異常が発生したときにスローされる",
-                "エラーは、Error クラスを継承した型である",
-                "エラーは throws 句に宣言する必要はない",
+                "エラーは、Errorクラスを継承した型である",
+                "エラーは throws句に宣言する必要はない",
                 "エラーは例外処理を記述できない",
             ],
             answerIndex: 3,
@@ -220,7 +227,7 @@ const JAVA_SILVER_1Z0_815_JPN_10 = {
             difficulty: "初級",
             question:
                 "次のプログラムを確認してください。このプログラムを次のコマンドで実行したときの結果として、正しいものを選びなさい。（1つ選択）  → java Main",
-            code: "public class Main {\n    public static void main(String[] args) {\n        System.out.println(args[0].length());\n    }\n}",
+            code: " 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         System.out.println(args[0].length());\n 4.     }\n 5. }",
             choices: [
                 "「null」と表示される",
                 "「0」と表示される",
@@ -237,7 +244,7 @@ const JAVA_SILVER_1Z0_815_JPN_10 = {
             difficulty: "初級",
             question:
                 "次のプログラムをコンパイル、実行したときに発生する例外の種類として、正しいものを選びなさい。（1つ選択）",
-            code: "import java.util.ArrayList;\nimport java.util.List;\n\npublic class Main {\n    public static void main(String[] args) {\n        List<String> list = new ArrayList<>();\n        list.get(0);\n    }\n}",
+            code: " 1. import java.util.ArrayList;\n 2. import java.util.List;\n 3. \n 4. public class Main {\n 5.     public static void main(String[] args) {\n 6.         List<String> list = new ArrayList<>();\n 7.         list.get(0);\n 8.     }\n 9. }",
             choices: [
                 "IndexOutOfBoundsException",
                 "ArrayIndexOutOfBoundsException",
@@ -254,7 +261,7 @@ const JAVA_SILVER_1Z0_815_JPN_10 = {
             difficulty: "中級",
             question:
                 "次のプログラムを確認してください。これらのクラスを利用する以下のプログラムを、コンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: "public class A {\n    private int num;\n    public A(int num) { this.num = num; }\n    public boolean equals(Object obj) {\n        A a = (A) obj;            \n        return this.num == a.num;\n    }\n}\n\npublic class B {\n    private int num;\n    public B(int num) { this.num = num; }\n    public boolean equals(Object obj) {\n        B b = (B) obj;            \n        return this.num == b.num;\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        A a = new A(10);\n        B b = new B(10);\n        System.out.println(a.equals(b));\n    }\n}",
+            code: " 1. public class A {\n 2.     private int num;\n 3.     public A(int num) { this.num = num; }\n 4.     public boolean equals(Object obj) {\n 5.         A a = (A) obj;            \n 6.         return this.num == a.num;\n 7.     }\n 8. }\n 9. \n10. public class B {\n11.     private int num;\n12.     public B(int num) { this.num = num; }\n13.     public boolean equals(Object obj) {\n14.         B b = (B) obj;            \n15.         return this.num == b.num;\n16.     }\n17. }\n18. \n19. public class Main {\n20.     public static void main(String[] args) {\n21.         A a = new A(10);\n22.         B b = new B(10);\n23.         System.out.println(a.equals(b));\n24.     }\n25. }",
             choices: [
                 "trueが表示される",
                 "falseが表示される",
@@ -271,7 +278,7 @@ const JAVA_SILVER_1Z0_815_JPN_10 = {
             difficulty: "初級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: 'public class Main {\n    public static void main(String[] args) {\n        String str = null;\n        if (str.equals("")) {\n            System.out.println("blank");\n        } else {\n            System.out.println("null");\n        }\n    }\n}',
+            code: ' 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         String str = null;\n 4.         if (str.equals("")) {\n 5.             System.out.println("blank");\n 6.         } else {\n 7.             System.out.println("null");\n 8.         }\n 9.     }\n10. }',
             choices: [
                 "「blank」と表示される",
                 "「null」と表示される",
@@ -287,7 +294,7 @@ const JAVA_SILVER_1Z0_815_JPN_10 = {
             difficulty: "初級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: "public class Main {\n    public static void main(String[] args) {\n        main(args);\n    }\n}",
+            code: " 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         main(args);\n 4.     }\n 5. }",
             choices: [
                 "何も表示されない",
                 "StackOverflowErrorが発生する",
