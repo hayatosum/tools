@@ -7,7 +7,7 @@ const JAVA_SILVER_1Z0_815_JPN_08 = {
             difficulty: "中級",
             question:
                 "次のプログラムを確認し、Mainクラスの空欄に入るコードとして、正しいものを選びなさい。（2つ選択）",
-            code: 'interface Algorithm {\n    void perform(String name);\n}\n\nclass Service {\n    private Algorithm logic;\n    public void setLogic(Algorithm logic) {\n        this.logic = logic;\n    }\n    public void doProcess(String name) {\n        System.out.println("start");\n        this.logic.perform(name);\n        System.out.println("end");\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Algorithm algorithm = (＿＿＿＿＿) -> {\n            System.out.println("hello, " + name);\n        };\n        Service s = new Service();\n        s.setLogic(algorithm);\n        s.doProcess("Lambda");\n    }\n}',
+            code: ' 1. interface Algorithm {\n 2.     void perform(String name);\n 3. }\n\n 1. class Service {\n 2.     private Algorithm logic;\n 3.     public void setLogic(Algorithm logic) {\n 4.         this.logic = logic;\n 5.     }\n 6.     public void doProcess(String name) {\n 7.         System.out.println("start");\n 8.         this.logic.perform(name);\n 9.         System.out.println("end");\n10.     }\n11. }\n\n 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         Algorithm algorithm = (＿＿＿＿＿) -> {\n 4.             System.out.println("hello, " + name);\n 5.         };\n 6.         Service s = new Service();\n 7.         s.setLogic(algorithm);\n 8.         s.doProcess("Lambda");\n 9.     }\n10. }',
             choices: ["()", "(name)", "(String)", "(String name)"],
             answerIndex: [1, 3],
             explanation:
@@ -19,13 +19,13 @@ const JAVA_SILVER_1Z0_815_JPN_08 = {
             difficulty: "中級",
             question:
                 "次のプログラムの // insert code here に入るコードとして、誤っているものを選びなさい。（2つ選択）",
-            code: 'public class Main {\n    public static void main(String[] args) {\n        // insert code here\n        System.out.println(f.test("Lambda"));\n    }\n    private static interface Function {\n        String test(String name);\n    }\n}',
+            code: ' 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         // insert code here\n 4.         System.out.println(f.test("Lambda"));\n 5.     }\n 6.     private static interface Function {\n 7.         String test(String name);\n 8.     }\n 9. }',
             choices: [
-                'Function f = (name) -> { return "hello, " + name; };',
-                'Function f = (name) -> { "hello, " + name; };',
-                'Function f = (name) -> return "hello, " + name;',
-                'Function f = (name) -> "hello, " + name;',
-                'Function f = name -> { return "hello, " + name; };',
+                '<pre><code>Function f = (name) -> {\n    return "hello, " + name;\n};</pre></code>',
+                '<pre><code>Function f = (name) -> {\n    "hello, " + name;\n};</pre></code>',
+                '<pre><code>Function f = (name) -> return "hello, " + name;</pre></code>',
+                '<pre><code>Function f = (name) -> "hello, " + name;</pre></code>',
+                '<pre><code>Function f = name -> {\n    return "hello, " + name;\n};</pre></code>',
             ],
             answerIndex: [1, 2],
             explanation:
@@ -37,16 +37,16 @@ const JAVA_SILVER_1Z0_815_JPN_08 = {
             difficulty: "初級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: 'public class Main {\n    public static void main(String[] args) {\n        String val = "A";\n        Function f = (val) -> {\n            System.out.println(val);\n        };\n        f.test("B");\n    }\n}\n\ninterface Function {\n    void test(String val);\n}',
+            code: ' 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         String val = "A";\n 4.         Function f = (val) -> {\n 5.             System.out.println(val);\n 6.         };\n 7.         f.test("B");\n 8.     }\n 9. }\n10. \n11. interface Function {\n12.     void test(String val);\n13. }',
             choices: [
                 "Aが表示される",
                 "Bが表示される",
                 "コンパイルエラーが発生する",
                 "実行時に例外がスローされる",
             ],
-            answerIndex: 1,
+            answerIndex: 2,
             explanation:
-                'ラムダ式の引数名 val が外側の変数 val をシャドウイングするため、ラムダ内で出力されるのは引数 "B" です。',
+                "ラムダ式を宣言しているブロックで宣言したローカル変数と同じ名前の変数は、ラムダ式内で宣言できない。設問では同じ名前の変数を重複して宣言していることにより、コンパイルエラーが発生する。",
         },
         {
             id: 4,
@@ -54,24 +54,30 @@ const JAVA_SILVER_1Z0_815_JPN_08 = {
             difficulty: "中級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: "public class Sample {\n    public static void main(String[] args) {\n        int cnt = 0;\n        Runnable r = () -> {\n            for (cnt = 0; cnt < 10; cnt++) {\n                System.out.println(cnt++);\n            }\n        };\n        new Thread(r).start();\n    }\n}",
-            choices: ["0123456789が表示される", "02468が表示される"],
-            answerIndex: 1,
+            code: " 1. public class Sample {\n 2.     public static void main(String[] args) {\n 3.         int cnt = 0;\n 4.         Runnable r = () -> {\n 5.             for (cnt = 0; cnt < 10; cnt++) {\n 6.                 System.out.println(cnt++);\n 7.             }\n 8.         };\n 9.     new Thread(r).start();\n10.     }\n11. }",
+            choices: [
+                "0123456789が表示される",
+                "02468が表示される",
+                "13579が表示される",
+                "コンパイルエラーが発生する",
+                "実行時に例外がスローされる",
+            ],
+            answerIndex: 3,
             explanation:
-                "ループ内で cnt++ が2回実行されるため、偶数だけが表示されます。結果は 0, 2, 4, 6, 8 です。",
+                "ラムダ式から式を宣言しているメソッドのローカル変数にアクセスする場合、その変数は実質的にfinalでなければならない。設問ではcntがループ内で更新されているため、コンパイルエラーが発生する。",
         },
         {
             id: 5,
             category: "関数型インタフェース、ラムダ式",
             difficulty: "中級",
             question:
-                "次のプログラムを実行し、「ok」と表示したい。11行目の空欄に入るコードとして、正しいものを選びなさい。（1つ選択）",
-            code: 'import java.util.Arrays;\nimport java.util.List;\nimport java.util.function.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        List<Sample> list = Arrays.asList(\n            new Sample(10),\n            new Sample(20),\n            new Sample(30));\n\n        ＿＿＿＿＿＿＿＿\n\n        if (x.test(new Sample(20))) {\n            System.out.println("ok");\n        }\n    }\n}\n\nclass Sample {\n    private int num;\n    public Sample(int num) { this.num = num; }\n    public boolean equals(Object obj) {\n        if (!(obj instanceof Sample)) return false;\n        return this.num == ((Sample) obj).num;\n    }\n}',
+                "次のプログラムを実行し、「ok」と表示したい。12行目の空欄に入るコードとして、正しいものを選びなさい。（1つ選択）",
+            code: ' 1. import java.util.Arrays;\n 2. import java.util.List;\n 3. import java.util.function.*;\n 4. \n 5. public class Main {\n 6.     public static void main(String[] args) {\n 7.         List<Sample> list = Arrays.asList(\n 8.         new Sample(10),\n 9.         new Sample(20),\n10.         new Sample(30));\n11. \n12.         ＿＿＿＿＿＿＿＿\n13. \n14.         if (x.test(new Sample(20))) {\n15.             System.out.println("ok");\n16.         }\n17. }\n18. }\n19. \n20. class Sample {\n21.     private int num;\n22.     public Sample(int num) { this.num = num; }\n23.     public boolean equals(Object obj) {\n24.         if (!(obj instanceof Sample)) return false;\n25.         return this.num == ((Sample) obj).num;\n26.     }\n27. }',
             choices: [
-                "Predicate<Sample> x = s -> list.contains(s);",
-                "Supplier<Sample> x = s -> list.contains(s);",
-                "Consumer<Sample> x = s -> list.contains(s);",
-                "Function<Sample> x = s -> list.contains(s);",
+                "<pre><code>Predicate<Sample> x = s -> list.contains(s);</pre></code>",
+                "<pre><code>Supplier<Sample> x = s -> list.contains(s);</pre></code>",
+                "<pre><code>Consumer<Sample> x = s -> list.contains(s);</pre></code>",
+                "<pre><code>Function<Sample> x = s -> list.contains(s);</pre></code>",
             ],
             answerIndex: 0,
             explanation:
@@ -94,7 +100,7 @@ const JAVA_SILVER_1Z0_815_JPN_08 = {
             category: "関数型インタフェース、ラムダ式",
             difficulty: "中級",
             question: "次のプログラムの空欄に入るコードとして、正しいものを選びなさい。（1つ選択）",
-            code: 'import java.util.function.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        ＿＿＿＿＿＿＿＿ (String, Integer) func = (str) -> {\n            return Integer.parseInt(str);\n        };\n        System.out.println(func.apply("100") * 2);\n    }\n}',
+            code: ' 1. import java.util.function.*;\n 2. \n 3. public class Main {\n 4.     public static void main(String[] args) {\n 5.         ＿＿＿＿＿＿＿＿ (String, Integer) func = (str) -> {\n 6.             return Integer.parseInt(str);\n 7.         };\n 8.         System.out.println(func.apply("100") * 2);\n 9.     }\n10. }',
             choices: ["Consumer", "Function", "Supplier", "Predicate"],
             answerIndex: 1,
             explanation:
