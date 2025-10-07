@@ -15,7 +15,7 @@ const JAVA_SILVER_1Z0_815_JPN_11 = {
             ],
             answerIndex: [0, 1],
             explanation:
-                "module-info.java はモジュール宣言のために必須であり、公開するパッケージを `exports` で指定する。利用するモジュールは `requires` で記述するためCは誤り。Dも誤り。",
+                "module-info.java はモジュール宣言のために必須であり、公開するパッケージを `exports` で指定する。",
         },
         {
             id: 2,
@@ -25,11 +25,11 @@ const JAVA_SILVER_1Z0_815_JPN_11 = {
                 "libディレクトリにあるsampleモジュールを実行したい。エントリーポイントを持つクラスがcom.test.Helloとしたときのコマンドとして正しいものを選びなさい。（1つ選択）",
             code: "",
             choices: [
-                "java -m lib sample/com.test.Hello",
-                "java --module-path lib com.test.Hello",
-                "java --module-path lib -m com.test.Hello",
-                "java --module-path lib -m sample/com.test.Hello",
-                "java --module-path lib -m sample.com.test.Hello",
+                "<pre><code>java -m lib sample/com.test.Hello</code></pre>",
+                "<pre><code>java --module-path lib com.test.Hello</code></pre>",
+                "<pre><code>java --module-path lib -m com.test.Hello</code></pre>",
+                "<pre><code>java --module-path lib -m sample/com.test.Hello</code></pre>",
+                "<pre><code>java --module-path lib -m sample.com.test.Hello</code></pre>",
             ],
             answerIndex: 3,
             explanation:
@@ -89,10 +89,10 @@ const JAVA_SILVER_1Z0_815_JPN_11 = {
                 "module-info.javaに設定したモジュールの設定情報を調べるためのコマンドとして、正しいものを選びなさい。（2つ選択）",
             code: "",
             choices: [
-                "java --describe-module",
-                "jdeps --list-deps",
-                "jmod describe",
-                "java --show-module-resolution",
+                "<pre><code>java --describe-module</code></pre>",
+                "<pre><code>jdeps --list-deps</code></pre>",
+                "<pre><code>jmod describe</code></pre>",
+                "<pre><code>java --show-module-resolution</code></pre>",
             ],
             answerIndex: [0, 3],
             explanation:
@@ -105,7 +105,12 @@ const JAVA_SILVER_1Z0_815_JPN_11 = {
             question:
                 "module-info.javaでexportsされていないパッケージを、一時的に利用してコンパイルしたい。javacコマンドのオプションとして正しいものを選びなさい。（1つ選択）",
             code: "",
-            choices: ["--add-exports", "--exports", "--add", "--add-modules"],
+            choices: [
+                "<pre><code>--add-exports</code></pre>",
+                "<pre><code>--exports</code></pre>",
+                "<pre><code>--add</code></pre>",
+                "<pre><code>--add-modules</code></pre>",
+            ],
             answerIndex: 0,
             explanation:
                 "非公開パッケージを一時的に利用するためには `--add-exports` オプションを使用する。",
