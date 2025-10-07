@@ -6,7 +6,7 @@ const JAVA_SILVER_1Z0_815_JPN_07 = {
             category: "クラスの継承、インタフェース、抽象クラス",
             difficulty: "中級",
             question: "このクラスが継承しているParentクラスの説明として、正しいものを選びなさい。",
-            code: ' 1. public class Child extends Parent {\n 2.     Child() {\n 3.         name = "java";\n 4.     }\n 5. void hello() {\n 6.     System.out.println("hello, " + name);\n 7. }\n 8. }',
+            code: ' 1. public class Child extends Parent {\n 2.     Child() {\n 3.         name = "java";\n 4.     }\n 5.     void hello() {\n 6.         System.out.println("hello, " + name);\n 7.     }\n 8. }',
             choices: [
                 "Parentクラスは、helloメソッドの定義を持っていなければいけない",
                 "Parentクラスには、フィールドを初期化するためのコンストラクタを定義しなければいけない",
@@ -89,8 +89,8 @@ const JAVA_SILVER_1Z0_815_JPN_07 = {
             category: "クラスの継承、インタフェース、抽象クラス",
             difficulty: "中級",
             question:
-                "以下に示すコードをコンパイル、実行し、次のような結果を表示したい。Cクラスの空欄に入るコードとして正しいものを選びなさい。（1つ選択）",
-            code: 'Hello\nJava\n\n 1. public interface A {\n 2.     default void sample() {\n 3.         System.out.println("Hello");\n 4.     }\n 5. }\n\n 1. public interface B extends A {\n 2. }\n\n 1. public class C implements B {\n 2.     @Override\n 3.     public void sample() {\n 4.         ____________\n 5.         System.out.println("Java");\n 6.     }\n 7. }\n\n 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         A a = new C();\n 4.         a.sample();\n 5.     }\n 6. }',
+                "以下に示すコードをコンパイル、実行し、「Hello Java」を表示したい。Cクラスの空欄に入るコードとして正しいものを選びなさい。（1つ選択）",
+            code: ' 1. public interface A {\n 2.     default void sample() {\n 3.         System.out.print("Hello ");\n 4.     }\n 5. }\n\n 1. public interface B extends A {\n 2. }\n\n 1. public class C implements B {\n 2.     @Override\n 3.     public void sample() {\n 4.         ____________\n 5.         System.out.println("Java");\n 6.     }\n 7. }\n\n 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         A a = new C();\n 4.         a.sample();\n 5.     }\n 6. }',
             choices: [
                 "<pre><code>super.sample();</code></pre>",
                 "<pre><code>A.super.sample();</code></pre>",
@@ -141,7 +141,7 @@ const JAVA_SILVER_1Z0_815_JPN_07 = {
             category: "クラスの継承、インタフェース、抽象クラス",
             difficulty: "上級",
             question: "次のプログラムを実行した結果として正しいものを選びなさい。",
-            code: ' 1. abstract class AbstractSample {\n 2.     public void sample() {\n 3.         System.out.println("A");\n 4.         test();\n 5.         System.out.println("C");\n 6.     }\n 7. protected abstract void test();\n 8. }\n 9. class ConcreteSample extends AbstractSample {\n10.     protected void test() {\n11.         System.out.println("B");\n12.     }\n13. }\n14. public class Main {\n15.     public static void main(String[] args) {\n16.         AbstractSample s = new ConcreteSample();\n17.         s.sample();\n18.     }\n19. }',
+            code: ' 1. abstract class AbstractSample {\n 2.     public void sample() {\n 3.         System.out.println("A");\n 4.         test();\n 5.         System.out.println("C");\n 6.     }\n 7.     protected abstract void test();\n 8. }\n\n 1. class ConcreteSample extends AbstractSample {\n 2.     protected void test() {\n 3.         System.out.println("B");\n 4.     }\n 5. }\n\n 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         AbstractSample s = new ConcreteSample();\n 4.         s.sample();\n 5.     }\n 6. }',
             choices: [
                 "「A」「B」「C」と表示される",
                 "「A」「C」と表示される",
@@ -210,7 +210,7 @@ const JAVA_SILVER_1Z0_815_JPN_07 = {
             category: "クラスの継承、インタフェース、抽象クラス",
             difficulty: "初級",
             question: "次のクラスを利用して正しい結果を選びなさい。",
-            code: ' 1. interface Worker {\n 2.     void work();\n 3. }\n 4. class Employee {\n 5.     public void work() {\n 6.         System.out.println("work");\n 7.     }\n 8. }\n 9. class Engineer extends Employee implements Worker {}\n10. public class Main {\n11.     public static void main(String[] args) {\n12.         Worker worker = new Engineer();\n13.         worker.work();\n14.     }\n15. }',
+            code: ' 1. interface Worker {\n 2.     void work();\n 3. }\n 4. class Employee {\n 5.     public void work() {\n 6.         System.out.println("work");\n 7.     }\n 8. }\n\n 1. class Engineer extends Employee implements Worker {}\n\n 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         Worker worker = new Engineer();\n 4.         worker.work();\n 5.     }\n 6. }',
             choices: [
                 "Engineerクラスでコンパイルエラーが発生する",
                 "Mainクラスでコンパイルエラーが発生する",
@@ -297,7 +297,7 @@ const JAVA_SILVER_1Z0_815_JPN_07 = {
             difficulty: "初級",
             question:
                 "次のプログラムを確認してください。コンソールに「10」と表示するために、Sampleクラスの4行目の空欄に入るコードとして正しいものを選びなさい。（2つ選択）",
-            code: " 1. class Sample {\n 2.     private int num;\n 3.     public Sample(int num) {\n 4.         // 空欄\n 5.     }\n 6.     public int getNum() {\n 7.         return num;\n 8.     }\n 9.     public void setNum(int num) {\n10.         this.num = num;\n11.     }\n12. }\n\n 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         Sample s = new Sample(10);\n 4.         System.out.println(s.getNum());\n 5.     }\n 6. }",
+            code: " 1. class Sample {\n 2.     private int num;\n 3.     public Sample(int num) {\n 4.         __________\n 5.     }\n 6.     public int getNum() {\n 7.         return num;\n 8.     }\n 9.     public void setNum(int num) {\n10.         this.num = num;\n11.     }\n12. }\n\n 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         Sample s = new Sample(10);\n 4.         System.out.println(s.getNum());\n 5.     }\n 6. }",
             choices: [
                 "this.num = num;",
                 "this->num = num;",
@@ -352,7 +352,7 @@ const JAVA_SILVER_1Z0_815_JPN_07 = {
             difficulty: "上級",
             question:
                 "次のプログラムを確認してください。これらのクラスを利用する以下のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。",
-            code: ' 1. class Parent {\n 2.     public Parent() {\n 3.         System.out.println("A");\n 4.     }\n 5. public Parent(String val) {\n 6.     this();\n 7.     System.out.println(val);\n 8. }\n 9. }\n\n 1. class Child extends Parent {\n 2.     public Child() {\n 3.         super("B");\n 4.         System.out.println("C");\n 5.     }\n 6. public Child(String val) {\n 7.     this();\n 8.     System.out.println(val);\n 9. }\n10. }\n\n 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         new Child("D");\n 4.     }\n 5. }',
+            code: ' 1. class Parent {\n 2.     public Parent() {\n 3.         System.out.println("A");\n 4.     }\n 5.     public Parent(String val) {\n 6.         this();\n 7.         System.out.println(val);\n 8.     }\n 9. }\n\n 1. class Child extends Parent {\n 2.     public Child() {\n 3.         super("B");\n 4.         System.out.println("C");\n 5.     }\n 6.     public Child(String val) {\n 7.         this();\n 8.         System.out.println(val);\n 9.     }\n10. }\n\n 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         new Child("D");\n 4.     }\n 5. }',
             choices: [
                 "「A」「B」「C」「D」と表示される",
                 "「A」「B」と表示される",
