@@ -9,10 +9,10 @@ const JAVA_SILVER_1Z0_815_JPN_09 = {
                 "次の計算式を使い、毎年積立を行って複利運用したときの金額を計算したい。この計算を行うコードとして正しいものを選びなさい。（1つ選択）",
             code: "n = m * ((1 + r)^x - 1) / r",
             choices: [
-                "n = (int) (m * (Math.pow((1 + r), x) - 1) / r);",
-                "n = (int) (m * (Math.pow(x, (1 + r)) - 1) / r);",
-                "n = (int) (m * (Math.sqrt((1 + r)) - 1) / r);",
-                "n = (int) (m * (Math.sqrt((1 + r), x) - 1) / r);",
+                "<pre><code>n = (int) (m * (Math.pow((1 + r), x) - 1) / r);</code></pre>",
+                "<pre><code>n = (int) (m * (Math.pow(x, (1 + r)) - 1) / r);</code></pre>",
+                "<pre><code>n = (int) (m * (Math.sqrt((1 + r)) - 1) / r);</code></pre>",
+                "<pre><code>n = (int) (m * (Math.sqrt((1 + r), x) - 1) / r);</code></pre>",
             ],
             answerIndex: 0,
             explanation:
@@ -24,7 +24,7 @@ const JAVA_SILVER_1Z0_815_JPN_09 = {
             difficulty: "中級",
             question:
                 "次のプログラムをコンパイル、実行した結果として、正しいものを選びなさい。（1つ選択）",
-            code: 'import java.util.Comparator;\n\npublic class SampleComparator implements Comparator<Sample> {\n    @Override\n    public int compare(Sample s1, Sample s2) {\n        if (s1.getId() < s2.getId()) {\n            return 1;\n        }\n        if (s2.getId() < s1.getId()) {\n            return -1;\n        }\n        return 0;\n    }\n}\n\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.List;\n\npublic class Main {\n    public static void main(String[] args) {\n        Sample[] samples = {\n            new Sample(2, "B"),\n            new Sample(3, "C"),\n            new Sample(1, "A")\n        };\n\n        List<Sample> list = new ArrayList<>(Arrays.asList(samples));\n        list.sort(new SampleComparator());\n        for (Sample s : list) {\n            System.out.println(s.getName());\n        }\n    }\n}',
+            code: ' 1. import java.util.Comparator;\n 2. \n 3. public class SampleComparator implements Comparator<Sample> {\n 4.     @Override\n 5.     public int compare(Sample s1, Sample s2) {\n 6.         if (s1.getId() < s2.getId()) {\n 7.             return 1;\n 8.         }\n 9.         if (s2.getId() < s1.getId()) {\n10.             return -1;\n11.         }\n12.         return 0;\n13.     }\n14. }\n15. \n16. import java.util.ArrayList;\n17. import java.util.Arrays;\n18. import java.util.List;\n19. \n20. public class Main {\n21.     public static void main(String[] args) {\n22.         Sample[] samples = {\n23.             new Sample(2, "B"),\n24.             new Sample(3, "C"),\n25.             new Sample(1, "A")\n26.         };\n27. \n28.         List<Sample> list = new ArrayList<>(Arrays.asList(samples));\n29.         list.sort(new SampleComparator());\n30.         for (Sample s : list) {\n31.             System.out.println(s.getName());\n32.         }\n33.     }\n34. }',
             choices: [
                 "「A」「B」「C」と表示される",
                 "「B」「C」「A」と表示される",
@@ -41,12 +41,12 @@ const JAVA_SILVER_1Z0_815_JPN_09 = {
             difficulty: "初級",
             question:
                 "次のプログラムを実行し、「3」「2」「1」と表示したい。空欄に入るコードとして正しいものを選びなさい。（1つ選択）",
-            code: "import java.util.Arrays;\nimport java.util.List;\n\npublic class Main {\n    public static void main(String[] args) {\n        List<Integer> list = Arrays.asList(new Integer[]{1, 2, 3});\n        // 空欄\n        for (Integer num : list) {\n            System.out.println(num);\n        }\n    }\n}",
+            code: " 1. import java.util.Arrays;\n 2. import java.util.List;\n 3. \n 4. public class Main {\n 5.     public static void main(String[] args) {\n 6.         List<Integer> list = Arrays.asList(new Integer[]{1, 2, 3});\n 7.         // 空欄\n 8.         for (Integer num : list) {\n 9.             System.out.println(num);\n10.         }\n11.     }\n12. }",
             choices: [
-                "list.sort((a, b) -> a.compareTo(b));",
-                "list.sort(() -> a.compareTo(b));",
-                "list.sort((a) -> a.compareTo(b));",
-                "list.sort((a, b) -> -a.compareTo(b));",
+                "<pre><code>list.sort((a, b) -> a.compareTo(b));</code></pre>",
+                "<pre><code>list.sort(() -> a.compareTo(b));</code></pre>",
+                "<pre><code>list.sort((a) -> a.compareTo(b));</code></pre>",
+                "<pre><code>list.sort((a, b) -> -a.compareTo(b));</code></pre>",
             ],
             answerIndex: 3,
             explanation:
@@ -58,7 +58,7 @@ const JAVA_SILVER_1Z0_815_JPN_09 = {
             difficulty: "初級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: "public class Sample {\n    public static void main(String[] args) {\n        char a = '0';\n        int num = 0;\n        if (Character.isAlphabetic(a)) {\n            num++;\n        }\n        if (Character.isDigit(a)) {\n            num++;\n        }\n        if (Character.isLowerCase(a)) {\n            num++;\n        }\n        System.out.println(num);\n    }\n}",
+            code: " 1. public class Sample {\n 2.     public static void main(String[] args) {\n 3.         char a = '0';\n 4.         int num = 0;\n 5.         if (Character.isAlphabetic(a)) {\n 6.             num++;\n 7.         }\n 8.         if (Character.isDigit(a)) {\n 9.             num++;\n10.         }\n11.         if (Character.isLowerCase(a)) {\n12.             num++;\n13.         }\n14.         System.out.println(num);\n15.     }\n16. }",
             choices: [
                 "0が表示される",
                 "1が表示される",
@@ -76,7 +76,7 @@ const JAVA_SILVER_1Z0_815_JPN_09 = {
             difficulty: "中級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: 'import java.time.LocalDate;\n\npublic class Sample {\n    public static void main(String[] args) {\n        LocalDate a = LocalDate.of(2015, 0, 1);\n        LocalDate b = LocalDate.parse("2015-01-01");\n        System.out.println(a.equals(b));\n    }\n}',
+            code: ' 1. import java.time.LocalDate;\n 2. \n 3. public class Sample {\n 4.     public static void main(String[] args) {\n 5.         LocalDate a = LocalDate.of(2015, 0, 1);\n 6.         LocalDate b = LocalDate.parse("2015-01-01");\n 7.         System.out.println(a.equals(b));\n 8.     }\n 9. }',
             choices: [
                 "trueが表示される",
                 "falseが表示される",
@@ -94,11 +94,16 @@ const JAVA_SILVER_1Z0_815_JPN_09 = {
             difficulty: "中級",
             question:
                 "次のプログラムをコンパイルし、実行したときの正しいものを選びなさい。なお、現在の日付を2019年8月20日とする。（1つ選択）",
-            code: 'import java.time.DayOfWeek;\nimport java.time.LocalDate;\n\npublic class Sample {\n    public static void main(String[] args) {\n        LocalDate a = LocalDate.of(2019, 8, 19);\n        LocalDate b = LocalDate.now();\n        b = b.with(DayOfWeek.MONDAY);\n        System.out.println(a.equals(b) + "," + a.isBefore(b));\n    }\n}',
-            choices: ["[true, true] と表示される", "[false, false] と表示される"],
-            answerIndex: 1,
+            code: ' 1. import java.time.DayOfWeek;\n 2. import java.time.LocalDate;\n 3. \n 4. public class Sample {\n 5.     public static void main(String[] args) {\n 6.         LocalDate a = LocalDate.of(2019, 8, 19);\n 7.         LocalDate b = LocalDate.now();\n 8.         b = b.with(DayOfWeek.MONDAY);\n 9.         System.out.println(a.equals(b) + "," + a.isBefore(b));\n10.     }\n11. }',
+            choices: [
+                "[true, true] と表示される",
+                "[false, false] と表示される",
+                "[true, false] と表示される",
+                "[false, true] と表示される",
+            ],
+            answerIndex: 3,
             explanation:
-                "2019/8/19 は月曜日だが、LocalDate.now() が 2019/8/20 を返すため、with(DayOfWeek.MONDAY) の使用は正しくなくエラーではなく別の結果となる。a.equals(b) は false, a.isBefore(b) は true ではなく false になる。",
+                "2019/8/19 は月曜日だが、LocalDate.now() が 2019/8/20 を返すため、with(DayOfWeek.MONDAY) の使用は正しくなくエラーではなく別の結果となる。a.equals(b) は false, a.isBefore(b) は true になる。",
         },
         {
             id: 7,
@@ -123,7 +128,7 @@ const JAVA_SILVER_1Z0_815_JPN_09 = {
             difficulty: "中級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: 'import java.util.ArrayList;\n\npublic class Main {\n    public static void main(String[] args) {\n        ArrayList list = new ArrayList();\n        list.add("A");\n        list.add(10);\n        list.add("B");\n        for (Object obj : list) {\n            System.out.print(obj);\n        }\n    }\n}',
+            code: ' 1. import java.util.ArrayList;\n 2. \n 3. public class Main {\n 4.     public static void main(String[] args) {\n 5.         ArrayList list = new ArrayList();\n 6.         list.add("A");\n 7.         list.add(10);\n 8.         list.add("B");\n 9.         for (Object obj : list) {\n10.             System.out.print(obj);\n11.         }\n12.     }\n13. }',
             choices: [
                 "5行目でコンパイルエラーが発生する",
                 "6行目でコンパイルエラーが発生する",
@@ -143,7 +148,7 @@ const JAVA_SILVER_1Z0_815_JPN_09 = {
             difficulty: "初級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: 'import java.util.ArrayList;\n\npublic class Main {\n    public static void main(String[] args) {\n        ArrayList<String> list = new ArrayList<>();\n        list.add("A");\n        list.add(2, "B");\n        list.add("C");\n        list.add("D");\n        for (String str : list) {\n            System.out.print(str);\n        }\n    }\n}',
+            code: ' 1. import java.util.ArrayList;\n 2. \n 3. public class Main {\n 4.     public static void main(String[] args) {\n 5.         ArrayList<String> list = new ArrayList<>();\n 6.         list.add("A");\n 7.         list.add(2, "B");\n 8.         list.add("C");\n 9.         list.add("D");\n10.         for (String str : list) {\n11.             System.out.print(str);\n12.         }\n13.     }\n14. }',
             choices: [
                 "「ABCD」と表示される",
                 "「ACBD」と表示される",
@@ -161,7 +166,7 @@ const JAVA_SILVER_1Z0_815_JPN_09 = {
             difficulty: "初級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: 'import java.util.ArrayList;\n\npublic class Main {\n    public static void main(String[] args) {\n        ArrayList<String> list = new ArrayList<>();\n        list.add("A");\n        list.set(0, "B");\n        list.add("C");\n        list.set(1, "D");\n        for (String str : list) {\n            System.out.print(str);\n        }\n    }\n}',
+            code: ' 1. import java.util.ArrayList;\n 2. \n 3. public class Main {\n 4.     public static void main(String[] args) {\n 5.         ArrayList<String> list = new ArrayList<>();\n 6.         list.add("A");\n 7.         list.set(0, "B");\n 8.         list.add("C");\n 9.         list.set(1, "D");\n10.         for (String str : list) {\n11.             System.out.print(str);\n12.         }\n13.     }\n14. }',
             choices: [
                 "「BD」と表示される",
                 "「AD」と表示される",
@@ -181,7 +186,7 @@ const JAVA_SILVER_1Z0_815_JPN_09 = {
             difficulty: "中級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: 'public class Item {\n    private String name;\n    private int price;\n    public Item(String name, int price) {\n        this.name = name;\n        this.price = price;\n    }\n    public boolean equals(Object obj) {\n        if (obj instanceof Item) {\n            Item tmp = (Item) obj;\n            if (tmp.name.equals(this.name)) {\n                return true;\n            }\n        }\n        return false;\n    }\n    public String getName() {\n        return name;\n    }\n}\n\nimport java.util.ArrayList;\n\npublic class Main {\n    public static void main(String[] args) {\n        ArrayList<Item> list = new ArrayList<>();\n        list.add(new Item("A", 100));\n        list.add(new Item("B", 200));\n        list.add(new Item("C", 300));\n        list.add(new Item("A", 100));\n        list.remove(new Item("A", 500));\n        for (Item item : list) {\n            System.out.println(item.getName());\n        }\n    }\n}',
+            code: ' 1. public class Item {\n 2.     private String name;\n 3.     private int price;\n 4.     public Item(String name, int price) {\n 5.         this.name = name;\n 6.         this.price = price;\n 7.     }\n 8.     public boolean equals(Object obj) {\n 9.         if (obj instanceof Item) {\n10.             Item tmp = (Item) obj;\n11.             if (tmp.name.equals(this.name)) {\n12.                 return true;\n13.             }\n14.         }\n15.         return false;\n16.     }\n17.     public String getName() {\n18.         return name;\n19.     }\n20. }\n\n 1. import java.util.ArrayList;\n 2. \n 3. public class Main {\n 4.     public static void main(String[] args) {\n 5.         ArrayList<Item> list = new ArrayList<>();\n 6.         list.add(new Item("A", 100));\n 7.         list.add(new Item("B", 200));\n 8.         list.add(new Item("C", 300));\n 9.         list.add(new Item("A", 100));\n10.         list.remove(new Item("A", 500));\n11.         for (Item item : list) {\n12.             System.out.println(item.getName());\n13.         }\n14.     }\n15. }',
             choices: [
                 "「A」「C」と表示される",
                 "「A」「B」「C」と表示される",
@@ -199,7 +204,7 @@ const JAVA_SILVER_1Z0_815_JPN_09 = {
             difficulty: "中級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: 'import java.util.ArrayList;\n\npublic class Main {\n    public static void main(String[] args) {\n        ArrayList<String> list = new ArrayList<>();\n        list.add("A");\n        list.add("B");\n        list.add("C");\n        for (String str : list) {\n            if ("B".equals(str)) {\n                list.remove(str);\n            } else {\n                System.out.println(str);\n            }\n        }\n    }\n}',
+            code: ' 1. import java.util.ArrayList;\n 2. \n 3. public class Main {\n 4.     public static void main(String[] args) {\n 5.         ArrayList<String> list = new ArrayList<>();\n 6.         list.add("A");\n 7.         list.add("B");\n 8.         list.add("C");\n 9.         for (String str : list) {\n10.             if ("B".equals(str)) {\n11.                 list.remove(str);\n12.             } else {\n13.                 System.out.println(str);\n14.             }\n15.         }\n16.     }\n17. }',
             choices: [
                 "「A」「C」と表示される",
                 "「A」「B」「C」と表示される",
@@ -207,7 +212,7 @@ const JAVA_SILVER_1Z0_815_JPN_09 = {
                 "コンパイルエラーが発生する",
                 "実行時に例外がスローされる",
             ],
-            answerIndex: 4,
+            answerIndex: 2,
             explanation:
                 "拡張for文でイテレーション中に list.remove を行うと ConcurrentModificationException がスローされる。",
         },
@@ -217,7 +222,7 @@ const JAVA_SILVER_1Z0_815_JPN_09 = {
             difficulty: "中級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: 'import java.util.ArrayList;\n\npublic class Main {\n  public static void main(String[] args) {\n    ArrayList<String> list = new ArrayList<>();\n    list.add("A");\n    list.add("B");\n    list.add("C");\n    list.add("D");\n    list.add("E");\n\n    for (String str : list) {\n      if ("C".equals(str)) {\n        list.remove(str);\n      }\n    }\n\n    for (String str : list) {\n      System.out.println(str);\n    }\n  }\n}',
+            code: ' 1. import java.util.ArrayList;\n 2. \n 3. public class Main {\n 4.     public static void main(String[] args) {\n 5.         ArrayList<String> list = new ArrayList<>();\n 6.         list.add("A");\n 7.         list.add("B");\n 8.         list.add("C");\n 9.         list.add("D");\n10.         list.add("E");\n11. \n12.         for (String str : list) {\n13.             if ("C".equals(str)) {\n14.                 list.remove(str);\n15.             }\n16.         }\n17. \n18.         for (String str : list) {\n19.             System.out.println(str);\n20.         }\n21.     }\n22. }',
             choices: [
                 "「A」「B」「D」「E」と表示される",
                 "「A」「B」「C」「D」「E」と表示される",
@@ -236,10 +241,10 @@ const JAVA_SILVER_1Z0_815_JPN_09 = {
             question: "次のうち、値を変更できない固定長のリストを作るものを選びなさい。（2つ選択）",
             code: "",
             choices: [
-                "var list = List.of(1,2,3);",
-                "var list = new ArrayList<Integer>();",
-                "var list = Arrays.asList(new Integer[]{1,2,3});",
-                "var list = new ArrayList<Integer>(3);",
+                "<pre><code>var list = List.of(1,2,3);</code></pre>",
+                "<pre><code>var list = new ArrayList<Integer>();</code></pre>",
+                "<pre><code>var list = Arrays.asList(new Integer[]{1,2,3});</code></pre>",
+                "<pre><code>var list = new ArrayList<Integer>(3);</code></pre>",
             ],
             answerIndex: [0, 2],
             explanation:
@@ -251,7 +256,7 @@ const JAVA_SILVER_1Z0_815_JPN_09 = {
             difficulty: "初級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: 'import java.util.Arrays;\n\npublic class Main {\n  public static void main(String[] args) {\n    String[] a = {"b", "c"};\n    String[] b = {"a", "b", "c"};\n    System.out.println(Arrays.mismatch(a, b));\n  }\n}',
+            code: ' 1. import java.util.Arrays;\n 2. \n 3. public class Main {\n 4.     public static void main(String[] args) {\n 5.         String[] a = {"b", "c"};\n 6.         String[] b = {"a", "b", "c"};\n 7.         System.out.println(Arrays.mismatch(a, b));\n 8.     }\n 9. }',
             choices: [
                 "falseが表示される",
                 "trueが表示される",
@@ -269,7 +274,7 @@ const JAVA_SILVER_1Z0_815_JPN_09 = {
             difficulty: "初級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: 'import java.util.Arrays;\n\npublic class Main {\n  public static void main(String[] args) {\n    String[] a = {"B", "A"};\n    String[] b = {"A", "B"};\n    System.out.println(Arrays.compare(a, b));\n  }\n}',
+            code: ' 1. import java.util.Arrays;\n 2. \n 3. public class Main {\n 4.     public static void main(String[] args) {\n 5.         String[] a = {"B", "A"};\n 6.         String[] b = {"A", "B"};\n 7.         System.out.println(Arrays.compare(a, b));\n 8.     }\n 9. }',
             choices: [
                 "trueが表示される",
                 "falseが表示される",
@@ -287,7 +292,7 @@ const JAVA_SILVER_1Z0_815_JPN_09 = {
             difficulty: "中級",
             question:
                 "次のプログラムをコンパイル、実行したときの 結果として、正しいものを選びなさい。（1つ選択）",
-            code: 'import java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.List;\n\npublic class Main {\n    public static void main(String[] args) {\n        List<String> list = new ArrayList<>(\n            Arrays.asList(new String[]{"A","B","C"})\n        );\n        list.removeIf(\n            (String s) -> {\n                return s.equals("B");\n            }\n        );\n        System.out.println(list);\n    }\n}',
+            code: ' 1. import java.util.ArrayList;\n 2. import java.util.Arrays;\n 3. import java.util.List;\n 4. \n 5. public class Main {\n 6.     public static void main(String[] args) {\n 7.         List<String> list = new ArrayList<>(\n 8.             Arrays.asList(new String[]{"A","B","C"})\n 9.         );\n10.         list.removeIf(\n11.             (String s) -> {\n12.                 return s.equals("B");\n13.             }\n14.         );\n15.         System.out.println(list);\n16.     }\n17. }',
             choices: [
                 "[A, B, C]",
                 "[A, C]",
@@ -303,13 +308,13 @@ const JAVA_SILVER_1Z0_815_JPN_09 = {
             difficulty: "初級",
             question:
                 "次のプログラムの実行結果として「A」「B」「C」と順に表示したい。以下の空欄に入るコードとして正しいものを選びなさい。（2つ選択）",
-            code: 'import java.util.List;\n\npublic class Main {\n  public static void main(String[] args) {\n    List<String> list = List.of("A", "B", "C");\n    // 空欄\n  }\n}',
+            code: ' 1. import java.util.List;\n 2. \n 3. public class Main {\n 4.     public static void main(String[] args) {\n 5.         List<String> list = List.of("A", "B", "C");\n 6.         // 空欄\n 7.     }\n 8. }',
             choices: [
-                "list.forEach(str -> System.out.println(str));",
-                "list.for(str -> System.out.println(str));",
-                "list.forEach(System.out::println);",
-                "list.forEach(System.out.println());",
-                "list.for(System.out::println);",
+                "<pre><code>list.forEach(str -> System.out.println(str));</code></pre>",
+                "<pre><code>list.for(str -> System.out.println(str));</code></pre>",
+                "<pre><code>list.forEach(System.out::println);</code></pre>",
+                "<pre><code>list.forEach(System.out.println());</code></pre>",
+                "<pre><code>list.for(System.out::println);</code></pre>",
             ],
             answerIndex: [0, 2],
             explanation:
@@ -321,7 +326,7 @@ const JAVA_SILVER_1Z0_815_JPN_09 = {
             difficulty: "中級",
             question:
                 "次のプログラムをコンパイルし、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: 'public class Item {\n  private int id;\n  private String name;\n  public Item(int id, String name) {\n    this.id = id;\n    this.name = name;\n  }\n  public int getId() { return id; }\n  public String getName() { return name; }\n}\n\nimport java.util.HashMap;\nimport java.util.Map;\n\npublic class Sample {\n  public static void main(String[] args) {\n    Map<Integer, Item> map = new HashMap<Integer, Item>();\n    map.put(1, new Item(1, "A"));\n    map.put(2, new Item(2, "B"));\n    map.put(3, new Item(3, "C"));\n    map.put(1, new Item(1, "A"));\n    map.put(null, new Item(0, "default"));\n\n    System.out.println(map.size());\n  }\n}',
+            code: ' 1. public class Item {\n 2.     private int id;\n 3.     private String name;\n 4.     public Item(int id, String name) {\n 5.         this.id = id;\n 6.         this.name = name;\n 7.     }\n 8.     public int getId() { return id; }\n 9.     public String getName() { return name; }\n10. }\n\n 1. import java.util.HashMap;\n 2. import java.util.Map;\n 3. \n 4. public class Sample {\n 5.     public static void main(String[] args) {\n 6.         Map<Integer, Item> map = new HashMap<Integer, Item>();\n 7.         map.put(1, new Item(1, "A"));\n 8.         map.put(2, new Item(2, "B"));\n 9.         map.put(3, new Item(3, "C"));\n10.         map.put(1, new Item(1, "A"));\n11.         map.put(null, new Item(0, "default"));\n12. \n13.         System.out.println(map.size());\n14.     }\n15. }',
             choices: [
                 "3が表示される",
                 "4が表示される",
