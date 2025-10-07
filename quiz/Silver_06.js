@@ -63,14 +63,14 @@ const JAVA_SILVER_1Z0_815_JPN_06 = {
             difficulty: "中級",
             question:
                 "次のプログラムを実行し、行付近が終了したときにガーベジコレクションの対象となるインスタンスはどれか。正しい説明を選びなさい。（1つ選択）",
-            code: " 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         Object a = new Object();\n 4.         Object b = new Object();\n 5.         Object c;\n 6.         a = b;\n 7.         a = null;\n 8.         b = null;\n 9.         // more code\n10.     }\n11. }",
+            code: " 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         Object a = new Object();\n 4.         Object b = new Object();\n 5.         Object c = a;\n 6.         a = null;\n 7.         b = null;\n 8.         // more code\n 9.     }\n10. }",
             choices: [
                 "3行目で作成したインスタンスだけが対象",
                 "4行目で作成したインスタンスだけが対象",
                 "3行目と4行目両方のインスタンスが対象",
                 "対象となるインスタンスは存在しない",
             ],
-            answerIndex: 2,
+            answerIndex: 1,
             explanation:
                 "最後にaもbもnullになっており、3行目と4行目のオブジェクトに参照が残っていないため、両方がGCの対象となります。",
         },
@@ -205,7 +205,7 @@ const JAVA_SILVER_1Z0_815_JPN_06 = {
             difficulty: "中級",
             question:
                 "次のプログラムを確認してください。このクラスを利用する以下のプログラムの空欄に入るコードとして、正しいものを選びなさい。（2つ選択）",
-            code: " 1. public class Sample {\n 2.     float divide(int a, int b) {\n 3.         return (float) a / (float) b;\n 4.     }\n 5. }\n\n 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         Sample s = new Sample();\n 4.         float result = s.divide(10, 2);\n 5.         System.out.println(result);\n 6.     }\n 7. }",
+            code: " 1. public class Sample {\n 2.     float divide(int a, int b) {\n 3.         return (float) a / (float) b;\n 4.     }\n 5. }\n\n 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         Sample s = new Sample();\n 4.         _____ result = s.divide(10, 2);\n 5.         System.out.println(result);\n 6.     }\n 7. }",
             choices: ["int", "float", "double", "Integer", "String", "dim"],
             answerIndex: [1, 2],
             explanation:
@@ -235,14 +235,13 @@ const JAVA_SILVER_1Z0_815_JPN_06 = {
             question: "次の中から、メソッドの宣言として正しいものを選びなさい。（1つ選択）",
             code: " 1. public class Sample {\n 2.     // メソッド宣言に関する選択問題\n 3. }",
             choices: [
-                "void method(void) { }",
-                "void method(int values...) { }",
-                "void method(int... values, String name) { }",
-                "void method(int a, int... b) { }",
+                "<pre><code>void method(void) { }</pre></code>",
+                "<pre><code>void method(int values...) { }</pre></code>",
+                "<pre><code>void method(int... values, String name) { }</pre></code>",
+                "<pre><code>void method(int... a, int... b) { }</pre></code>",
             ],
-            answerIndex: 3,
-            explanation:
-                "可変長引数は最後にしか置けません。正しいのは void method(int a, int... b) です。",
+            answerIndex: 1,
+            explanation: "可変長引数は最後にしか置けません。",
         },
         {
             id: 15,
@@ -453,13 +452,13 @@ const JAVA_SILVER_1Z0_815_JPN_06 = {
             choices: [
                 "0が表示される",
                 "10が表示される",
-                "Childクラスの4行目でコンパイルエラーが発生する",
-                "Childクラスの6行目でコンパイルエラーが発生する",
+                "Childクラスの3行目でコンパイルエラーが発生する",
+                "Childクラスの5行目でコンパイルエラーが発生する",
                 "実行時に例外がスローされる",
             ],
             answerIndex: 3,
             explanation:
-                "static コンテキスト（mainメソッド）からインスタンスフィールド `num` を直接参照できないため、6行目でコンパイルエラーとなる。",
+                "static コンテキスト（mainメソッド）からインスタンスフィールド `num` を直接参照できないため、5行目でコンパイルエラーとなる。",
         },
         {
             id: 27,
@@ -486,10 +485,10 @@ const JAVA_SILVER_1Z0_815_JPN_06 = {
                 "次のプログラムにカプセル化を適用したい。次の中から正しいコードを選びなさい。（1つ選択）",
             code: " 1. public class Sample {\n 2.     int num;\n 3.     int getNum() { return num; }\n 4.     void setNum(int num) { this.num = num; }\n 5. }",
             choices: [
-                "private int num; private int getNum() { return num; } private void setNum(int num) { this.num = num; }",
-                "public int num; public int getNum() { return num; } public void setNum(int num) { this.num = num; }",
-                "public int num; private int getNum() { return num; } private void setNum(int num) { this.num = num; }",
-                "private int num; public int getNum() { return num; } public void setNum(int num) { this.num = num; }",
+                "<pre><code>private int num;\nprivate int getNum() { return num; }\nprivate void setNum(int num) { this.num = num; }</code></pre>",
+                "<pre><code>public int num;\npublic int getNum() { return num; }\npublic void setNum(int num) { this.num = num; }</code></pre>",
+                "<pre><code>public int num;\nprivate int getNum() { return num; }\nprivate void setNum(int num) { this.num = num; }</code></pre>",
+                "<pre><code>private int num;\npublic int getNum() { return num; }\npublic void setNum(int num) { this.num = num; }</code></pre>",
             ],
             answerIndex: 3,
             explanation:
