@@ -220,7 +220,7 @@ button:disabled {
     background: #f8f9fa;
     border: 1px solid #ddd;
     padding: 10px;
-    border-radius: 8px;
+    border-radius: 0px;
     overflow-x: auto;
     font-family: Consolas, "Courier New", monospace;
     font-size: 0.9em;
@@ -228,16 +228,52 @@ button:disabled {
 }
 .choices pre,
 .qchoices pre {
-    display: inline-flex; /* 横幅いっぱいに広げる */
+    display: inline-flex;
     width: 90%;
+    max-width: 90%;
     background: #f8f9fa;
     padding: 10px;
-    border-radius: 4px;
-    overflow-x: auto;
+    border-radius: 0px;
     font-family: Consolas, "Courier New", monospace;
     margin: 0px 2px;
     box-sizing: border-box; /* padding込みで幅調整 */
 }
+
+/* pre は親幅に収めて、自身で横スクロールを出す */
+.question-text pre,
+.modal-body .qtext pre {
+    display: block;
+    max-width: 100%;
+}
+
+.question-text pre,
+.modal-body .qtext pre,
+.choices pre,
+.qchoices pre {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: pre; /* 折り返さない */
+}
+
+/* 中身の code は必要分の幅を主張（ただし pre の中に閉じ込める） */
+.question-text pre > code,
+.modal-body .qtext pre > code,
+.choices pre > code,
+.qchoices pre > code {
+    display: inline-block;
+    min-width: max-content;
+}
+
+.card,
+.question-text {
+    min-width: 0;
+}
+
+.choice > div {
+    flex: 1;
+    min-width: 0;
+}
+
 .choice > div {
     flex: 1; /* 横幅を占有させる */
     min-width: 0; /* flex収縮時のはみ出し防止 */
