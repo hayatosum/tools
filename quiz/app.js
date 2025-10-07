@@ -96,6 +96,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const savedFileKey = localStorage.getItem("opt.fileSelect");
     if (savedFileKey && fileSelect) {
         fileSelect.value = savedFileKey;
+        currentFile = fileSelect.value;
     }
 
     // 出題数
