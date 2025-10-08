@@ -93,7 +93,7 @@ const JAVA_SILVER_1Z0_815_JPN_13 = {
             difficulty: "中級",
             question:
                 "次のプログラムを確認し、Bクラスの空欄への記述に関する説明として、正しいものを選びなさい。（1つ選択）",
-            code: ' 1. package ex06.a;\n 2. public class A {\n 3.     String a = "A";\n 4.     protected String b = "B";\n 5.     public String c = "C";\n 6. }\n\n 1. package ex06.b;\n 2. import ex06.a.A;\n 3. public class B extends A {\n 4.     public void test() {\n 5.     }\n 6. }',
+            code: ' 1. package ex06.a;\n 2. public class A {\n 3.     String a = "A";\n 4.     protected String b = "B";\n 5.     public String c = "C";\n 6. }\n\n 1. package ex06.b;\n 2. import ex06.a.A;\n 3. public class B extends A {\n 4.     public void test() {\n 5.     __________\n 6.     }\n 7. }',
             choices: [
                 "「new B().b;」と「new B().c;」の両方でコンパイルエラーが発生する",
                 "「new B().b;」のみでコンパイルエラーが発生する",
@@ -286,7 +286,7 @@ const JAVA_SILVER_1Z0_815_JPN_13 = {
             difficulty: "中級",
             question:
                 "次のプログラムを実行して、「A,B」と表示したい。Mainクラスの空欄に入るコードとして正しいものを選びなさい。（1つ選択）",
-            code: ' 1. public class Sample {\n 2.     static String header = "A:";\n 3.     private String value = "B";\n 4.     public static String getValue() {\n 5.         return new Sample().value;\n 6.     }\n 7. }\n\n 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         Sample s = new Sample();\n 4.         System.out.println(Sample.header + s.getValue());\n 5.     }\n 6. }',
+            code: ' 1. public class Sample {\n 2.     static String header = "A:";\n 3.     private String value = "B";\n 4.     public static String getValue() {\n 5.         return new Sample().value;\n 6.     }\n 7. }\n\n 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         Sample s = new Sample();\n 4.         __________\n 5.     }\n 6. }',
             choices: [
                 "<code>System.out.println(Sample.getValue() + s.header);</code>",
                 "<code>System.out.println(Sample.header + Sample.value);</code>",
@@ -445,7 +445,7 @@ const JAVA_SILVER_1Z0_815_JPN_13 = {
             difficulty: "初級",
             question:
                 "次のプログラムを実行して、1, 2, 3と順に表示したい。空欄に入るコードとして正しいものを選びなさい。（1つ選択）",
-            code: " 1. import java.util.List;\n 2. public class Main {\n 3.     public static void main(String[] args) {\n 4.         List<Integer> list = List.of(1, 2, 3);\n 5.         list.forEach(x -> System.out.println(x));\n 6.     }\n 7. }",
+            code: " 1. import java.util.List;\n 2. public class Main {\n 3.     public static void main(String[] args) {\n 4.         List<Integer> list = List.of(1, 2, 3);\n 5.         __________\n 6.     }\n 7. }",
             choices: [
                 "<code>list.forEach(() -> System.out.println(x));</code>",
                 "<code>list.forEach((x) -> System.out.println(x));</code>",
@@ -579,7 +579,7 @@ const JAVA_SILVER_1Z0_815_JPN_13 = {
             difficulty: "中級",
             question:
                 "次のプログラムをコンパイルし、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: ' 1. import java.util.function.Consumer;\n\n 1. public class Main {\n 2. public static void main(String[] args) {\n 3. final String val = "Hello, Lambda";\n 4. Consumer<String> func = (val) -> System.out.println(val);\n 5. func.accept("Hello, Java");\n 6. }\n 7. }',
+            code: ' 1. import java.util.function.Consumer;\n\n 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         final String val = "Hello, Lambda";\n 4.         Consumer<String> func = (val) -> System.out.println(val);\n 5.         func.accept("Hello, Java");\n 6.     }\n 7. }',
             choices: [
                 "「Hello, Lambda」と表示される",
                 "「Hello, Java」と表示される",
@@ -597,7 +597,7 @@ const JAVA_SILVER_1Z0_815_JPN_13 = {
             difficulty: "初級",
             question:
                 "次のプログラムをコンパイルし、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: " 1. public class Main {\n 2. public static void main(String[] args) {\n 3. String str;\n 4. test(str);\n 5. }\n 6. private static void test(String str) {\n 7. System.out.println(str);\n 8. }\n 9. }",
+            code: " 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         String str;\n 4.         test(str);\n 5.     }\n 6.     private static void test(String str) {\n 7.         System.out.println(str);\n 8.     }\n 9. }",
             choices: [
                 "「null」と表示される",
                 "何も表示されない",
@@ -631,7 +631,7 @@ const JAVA_SILVER_1Z0_815_JPN_13 = {
             difficulty: "初級",
             question:
                 "次のプログラムをコンパイルし、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: " 1. public class Sample {\n 2. public static void main(String[] args) {\n 3. int[] array = { 1, 2, 3, 4, 5 };\n 4. int key = 3;\n 5. int cnt = 0;\n 6. for (int i : array) {\n 7. if (i != key) {\n 8. continue;\n 9. }\n10. cnt++;\n11. }\n12. System.out.println(cnt);\n13. }\n14. }",
+            code: " 1. public class Sample {\n 2.     public static void main(String[] args) {\n 3.         int[] array = { 1, 2, 3, 4, 5 };\n 4.         int key = 3;\n 5.         int cnt = 0;\n 6.         for (int i : array) {\n 7.             if (i != key) {\n 8.                 continue;\n 9.             cnt++;\n10.             }\n11.         }\n12.         System.out.println(cnt);\n13.     }\n14. }",
             choices: ["3", "2", "1", "コンパイルエラーが発生する"],
             answerIndex: 3,
             explanation:
