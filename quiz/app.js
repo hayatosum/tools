@@ -308,19 +308,11 @@ function renderChoiceContent(raw) {
         if (plain) appendImages(wrap, plain);
 
         const body = m[1];
-        // 改行を含む ⇒ ブロック扱い（<pre><code>）
-        if (body.includes("\n")) {
-            const pre = document.createElement("pre");
-            const code = document.createElement("code");
-            code.textContent = body;
-            pre.appendChild(code);
-            wrap.appendChild(pre);
-        } else {
-            // 1行のみ ⇒ インライン <code>
-            const code = document.createElement("code");
-            code.textContent = body;
-            wrap.appendChild(code);
-        }
+        const pre = document.createElement("pre");
+        const code = document.createElement("code");
+        code.textContent = body;
+        pre.appendChild(code);
+        wrap.appendChild(pre);
         last = m.index + m[0].length;
     }
     if (found) {
@@ -457,10 +449,10 @@ function renderQuiz(questions) {
             });
 
             const text = document.createElement("div");
-            const labelStrong = document.createElement("strong");
-            labelStrong.textContent = `${String.fromCharCode(65 + cIdx)}.`;
-            text.appendChild(labelStrong);
-            text.append(" ");
+            //const labelStrong = document.createElement("strong");
+            //labelStrong.textContent = `${String.fromCharCode(65 + cIdx)}.`;
+            //text.appendChild(labelStrong);
+            //text.append(" ");
             const rawChoice = typeof c === "string" ? c : c.text;
             text.appendChild(renderChoiceContent(rawChoice));
 
@@ -1675,7 +1667,7 @@ function openQuestionModalById(qid) {
       <h3 id="qmodal-title" class="modal-title">問題 ${escapeHtml(q.id)}</h3>
       <div class="modal-body">
         <div class="qtext">${qtextHtml}</div>
-        <ol class="qchoices">${choicesHtml}</ol>
+        <ul class="qchoices">${choicesHtml}</ul>
         <div style="margin-top:10px">
           <button class="answer-toggle" type="button" aria-expanded="false" aria-controls="answer-${escapeHtml(
               q.id

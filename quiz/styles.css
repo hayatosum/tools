@@ -238,8 +238,8 @@ button:disabled {
 .choices pre,
 .qchoices pre {
     display: inline-flex;
-    width: 92%;
-    max-width: 92%;
+    width: 100%;
+    max-width: 100%;
     border: 0px;
 }
 
@@ -591,7 +591,8 @@ button:disabled {
     font-family: Consolas, "Courier New", monospace;
 }
 .modal-body .qchoices {
-    margin: 10px 0 0 18px;
+    margin: 10px 0 0 0;
+    padding-inline-start: 32px;
 }
 .modal-body .qchoices li {
     margin: 4px 0;
@@ -788,7 +789,12 @@ button:disabled {
 }
 
 /* 問題文/選択肢/モーダル内の画像 */
-.question-text img,
+.question-text img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
 .choices img,
 .qchoices img,
 .modal-body .qtext img {
