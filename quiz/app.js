@@ -254,10 +254,10 @@ function renderQuiz(questions) {
 
         const meta = document.createElement("div");
         meta.className = "meta";
-        const cat = q.category ? `カテゴリ: ${q.category}` : "カテゴリ: -";
-        const diff = q.difficulty ? ` / 難易度: ${q.difficulty}` : "";
-        const idPart = showQuestionIdEl?.checked ? ` / ID: ${q.id}` : "";
-        meta.textContent = `${cat}${diff}${idPart}`;
+        const idPart = showQuestionIdEl?.checked ? `ID: ${q.id}` : "";
+        const cat = showQuestionIdEl?.checked && q.category ? ` / カテゴリ: ${q.category}` : "";
+        const diff = showQuestionIdEl?.checked && q.difficulty ? ` / 難易度: ${q.difficulty}` : "";
+        meta.textContent = `${idPart}${cat}${diff}`;
 
         const choicesWrap = document.createElement("div");
         choicesWrap.className = "choices";
