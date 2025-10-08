@@ -195,10 +195,88 @@ function validateAllAnswered() {
     });
     gradeBtn.disabled = !allAnswered;
 }
+
+// === 画像サポート ===
+function sanitizeImageSrc(src) {
+    const s = String(src || "").trim();
+    // 同一オリジンの相対パス or data:image のみ許可（外部リンクは不可にする場合はここで弾く）
+    if (s.startsWith("data:image/")) return s;
+    if (s.startsWith("./") || s.startsWith("../") || s.startsWith("/") || /^[\w.\-\/]+$/.test(s)) {
+        return s;
+    }
+    return ""; // 危険なURLは拒否
+}
+function createImageEl(src, alt = "") {
+    const safe = sanitizeImageSrc(src);
+    if (!safe) return null;
+    const img = document.createElement("img");
+    img.loading = "lazy";
+    img.decoding = "async";
+    img.src = safe;
+    img.alt = String(alt || "");
+    return img;
+}
+// テキスト中の Markdown 画像と <img> を順にDOMへ流し込む（コード領域は別処理）
+function appendImages(fragment, plainText) {
+    const s = String(plainText ?? "");
+    let i = 0;
+    while (i < s.length) {
+        // 直近の画像トークンを探索（Markdown or <img>）
+        const mdIdx = s.indexOf("![", i);
+        const htmlIdx = s.indexOf("<img", i);
+        const hasMd = mdIdx >= 0;
+        const hasHtml = htmlIdx >= 0;
+        if (!hasMd && !hasHtml) {
+            // 画像がなければ残りをテキストとして追加
+            if (s.slice(i)) {
+                const span = document.createElement("span");
+                span.textContent = s.slice(i);
+                fragment.appendChild(span);
+            }
+            break;
+        }
+        const useHtml = hasHtml && (!hasMd || htmlIdx < mdIdx);
+        const idx = useHtml ? htmlIdx : mdIdx;
+        // トークン前のテキスト
+        if (idx > i) {
+            const span = document.createElement("span");
+            span.textContent = s.slice(i, idx);
+            fragment.appendChild(span);
+        }
+        if (useHtml) {
+            const close = s.indexOf(">", idx);
+            if (close < 0) break;
+            const tag = s.slice(idx, close + 1);
+            const srcM = tag.match(/src\s*=\s*"(.*?)"|src\s*=\s*'(.*?)'/i);
+            const altM = tag.match(/alt\s*=\s*"(.*?)"|alt\s*=\s*'(.*?)'/i);
+            const src = srcM ? srcM[1] || srcM[2] : "";
+            const alt = altM ? altM[1] || altM[2] : "";
+            const img = createImageEl(src, alt);
+            if (img) fragment.appendChild(img);
+            i = close + 1;
+        } else {
+            // Markdown: ![alt](src)
+            const md = s.slice(idx).match(/^!\[([^\]]*)\]\(([^)]+)\)/);
+            if (md) {
+                const img = createImageEl(md[2], md[1]);
+                if (img) fragment.appendChild(img);
+                i = idx + md[0].length;
+            } else {
+                // 形式が崩れていたらそのままテキストとして
+                const span = document.createElement("span");
+                span.textContent = s.slice(idx, idx + 2);
+                fragment.appendChild(span);
+                i = idx + 2;
+            }
+        }
+    }
+    return fragment;
+}
+
 // 選択肢の文字列を安全にDOMへ変換する。
-// ・<code>…</code> を認識し、改行があれば <pre><code>…</code></pre> に“昇格”表示
-// ・コード内は textContent で入れるため、HTMLタグはそのまま文字として出る
-// ・```fenced``` もサポート（任意）
+// ・<code>…</code> は改行ありで <pre><code>…</code></pre> に昇格（中身は textContent）
+// ・```fenced``` もサポート
+// ・画像（![alt](src) / <img ...>）は安全化して表示
 function renderChoiceContent(raw) {
     const wrap = document.createElement("span");
     const s = String(raw ?? "");
@@ -207,23 +285,15 @@ function renderChoiceContent(raw) {
     const fence = /```(?:\w+)?\n([\s\S]*?)```/m;
     const fm = s.match(fence);
     if (fm) {
-        const before = s.slice(0, fm.index).trim();
-        const after = s.slice(fm.index + fm[0].length).trim();
-        if (before) {
-            const t = document.createElement("span");
-            t.textContent = before + " ";
-            wrap.appendChild(t);
-        }
+        const before = s.slice(0, fm.index);
+        const after = s.slice(fm.index + fm[0].length);
+        if (before) appendImages(wrap, before);
         const pre = document.createElement("pre");
         const code = document.createElement("code");
         code.textContent = fm[1];
         pre.appendChild(code);
         wrap.appendChild(pre);
-        if (after) {
-            const t2 = document.createElement("span");
-            t2.textContent = " " + after;
-            wrap.appendChild(t2);
-        }
+        if (after) appendImages(wrap, after);
         return wrap;
     }
 
@@ -235,11 +305,7 @@ function renderChoiceContent(raw) {
     while ((m = codeRe.exec(s)) !== null) {
         found = true;
         const plain = s.slice(last, m.index);
-        if (plain) {
-            const t = document.createElement("span");
-            t.textContent = plain;
-            wrap.appendChild(t);
-        }
+        if (plain) appendImages(wrap, plain);
 
         const body = m[1];
         // 改行を含む ⇒ ブロック扱い（<pre><code>）
@@ -259,16 +325,12 @@ function renderChoiceContent(raw) {
     }
     if (found) {
         const tail = s.slice(last);
-        if (tail) {
-            const t = document.createElement("span");
-            t.textContent = tail;
-            wrap.appendChild(t);
-        }
+        if (tail) appendImages(wrap, tail);
         return wrap;
     }
 
     // 3) <code> も fence も無ければ素のテキストとして
-    wrap.textContent = s;
+    appendImages(wrap, s);
     return wrap;
 }
 
@@ -308,12 +370,12 @@ function renderQuiz(questions) {
 
             if (m) {
                 // フェンスの外側は通常文、内側はコード
-                const before = q.question.slice(0, m.index).trim();
-                const after = q.question.slice(m.index + m[0].length).trim();
+                const before = q.question.slice(0, m.index);
+                const after = q.question.slice(m.index + m[0].length);
                 if (before) {
-                    const p = document.createElement("p");
-                    p.textContent = before;
-                    questionText.appendChild(p);
+                    questionText.appendChild(
+                        appendImages(document.createDocumentFragment(), before)
+                    );
                 }
                 const pre = document.createElement("pre");
                 const code = document.createElement("code");
@@ -321,15 +383,15 @@ function renderQuiz(questions) {
                 pre.appendChild(code);
                 questionText.appendChild(pre);
                 if (after) {
-                    const p2 = document.createElement("p");
-                    p2.textContent = after;
-                    questionText.appendChild(p2);
+                    questionText.appendChild(
+                        appendImages(document.createDocumentFragment(), after)
+                    );
                 }
             } else {
                 // 通常テキストのみ
-                const p = document.createElement("p");
-                p.textContent = q.question || "(問題文なし)";
-                questionText.appendChild(p);
+                questionText.appendChild(
+                    appendImages(document.createDocumentFragment(), q.question || "(問題文なし)")
+                );
             }
         }
 

@@ -786,3 +786,17 @@ button:disabled {
 .history-details .history-table tbody tr:hover {
     filter: brightness(0.98);
 }
+
+/* 問題文/選択肢/モーダル内の画像 */
+.question-text img,
+.choices img,
+.qchoices img,
+.modal-body .qtext img {
+    display: inline-flex;
+    max-width: 100%;
+    height: auto;
+}
+
+.choice > div > strong {
+    vertical-align: top;
+}
