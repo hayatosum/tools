@@ -345,11 +345,11 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
                 "多次元配列のインスタンス化と初期化のコードとして、正しいものを選びなさい。（2つ選択）",
             code: "",
             choices: [
-                "int[][] array = {{1,2,3},{4,5,6}};",
-                "int[][][] array = {{{1,2},{3,4},{5,6}}};",
-                "int[][] array = {0,1};",
-                "int[][] array = new int[1][2]; array[0][0]=1; array[0][1]=2;",
-                "int[][][] array2 = new int[2][2][2];",
+                "<code>int[][] array = {{1,2,3},{4,5,6}};</code>",
+                "<code>int[][][] array = {{{1,2},{3,4},{5,6}}};</code>",
+                "<code>int[][] array = {0,1};</code>",
+                "<code>int[][] array = new int[][2];\narray[0][0] = 1;\narray[0][1] = 2;\narray[1][0] = 3;\narray[1][1] = 4;</code>",
+                "<code>int[] array = {0,1};\nint[][][] array2 = new int[2][2][2];\narray2[0][0] = array;\narray2[0][1] = array;\narray2[1][0] = array;\narray2[1][1] = array;</code>",
             ],
             answerIndex: [0, 3],
             explanation:
@@ -363,9 +363,9 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
             code: " 1. public class A {\n 2.     int num = 10;\n 3.     public double getValue() { return 0.0; }\n 4. }\n\n 1. public class B extends A {\n 2.     @Override\n 3.     public double getValue() { return 1.0; }\n 4. }\n\n 1. public class C extends B {\n 2.     @Override\n 3.     public double getValue() {\n 4.         System.out.println(super.num);\n 5.         return super.getValue();\n 6.     }\n 7. }",
             choices: [
                 "Bクラスのサブクラスでは、getValueメソッドでAクラスのフィールドにアクセスすることができる",
-                "Bクラスのサブクラスでは、super.getValue()を使えるがAクラスのフィールドにはアクセスできない",
-                "Bクラスのサブクラスでは、new.getValue()を使う必要がある",
-                "Bクラスのサブクラスでは、public.getValue()を使う必要がある",
+                "Bクラスのサブクラスでは、Bクラスのメソッドを呼び出すためにsuper.getValue()を使えるが、Aクラスのフィールドにはアクセスできない",
+                "Bクラスのサブクラスでは、Bクラスのメソッドを呼び出すためにnew.getValue()を使う",
+                "Bクラスのサブクラスでは、Bクラスのメソッドを呼び出すためにpublic.getValue()を使う",
             ],
             answerIndex: 0,
             explanation:
@@ -397,7 +397,7 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
             choices: [
                 "Bインタフェースのsampleメソッドを実装している",
                 "Cインタフェースのsampleメソッドを実装している",
-                "Dクラスがsampleメソッドを使わないのであればオーバーライドは不要",
+                "Dクラスがsampleメソッドを使わないのであれば、オーバーライドをする必要はない",
                 "コンパイルエラーが発生する",
             ],
             answerIndex: 3,
@@ -433,7 +433,7 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
                 "<code>List<B> listB = new ArrayList<>();\nlistB.add(new C());</code>",
                 "<code>List<C> listC = new ArrayList<>();\nlistC.add(new D());</code>",
                 "<code>List<D> listD = new ArrayList<>();\nlistD.add(new C());</code>",
-                "<code>List<A> listE = new ArrayList<>();\nlistE.add(new D());</code>",
+                "<code>List<A> listE = new ArrayList<>();\nlistE.add(new C());</code>",
             ],
             answerIndex: 3,
             explanation:
@@ -450,7 +450,7 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
                 "「D」「C」と表示される",
                 "「D」「B」と表示される",
                 "「A」「B」と表示される",
-                "「D」「C」と表示される",
+                "「A」「C」と表示される",
             ],
             answerIndex: 1,
             explanation:
@@ -545,8 +545,8 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
                 "次のプログラムをコンパイルし、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
             code: ' 1. import java.util.HashMap;\n 2. import java.util.List;\n 3. import java.util.Map;\n 4. public class Main {\n 5.     static Map<String, String> map = new HashMap<>();\n 6.     static List<String> keys = List.of("A", "B", "C");\n 7.     static String[] values = {"1", "2", "3"};\n 8.     static {\n 9.         for (var i = 0; i < keys.size(); i++) {\n10.             map.put(keys.get(i), values[i]);\n11.         }\n12.     }\n13.     public static void main(String[] args) {\n14.         keys.clear();\n15.         values = new String[0];\n16.         System.out.println(map.size() + "," + keys.size() + "," + values.length);\n17.     }\n18. }',
             choices: [
+                "「3,3,0」と表示される",
                 "「3,0,0」と表示される",
-                "「3,0」と表示される",
                 "「3,3,3」と表示される",
                 "コンパイルエラーが発生する",
                 "実行時に例外がスローされる",
@@ -591,7 +591,7 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
             question: "次の繰り返し処理のコードと同じ結果となるfor文を選びなさい。（1つ選択）",
             code: "int x = 0;\nwhile (x < 10) {\n    System.out.print(x++);\n}",
             choices: [
-                "<code>for (int a = 0; a < 10; ) {\n    System.out.print(a++);\n}</code>",
+                "<code>for (int a = 0; a < 10; ) {\n    System.out.print(a);\n    a++;\n}</code>",
                 "<code>int b = 0;\nfor (; b < 10; ) {\n    System.out.print(++b);\n}</code>",
                 "<code>int c = 0;\nfor (;;c++) {\n    System.out.print(c);\n}</code>",
                 "<code>for (int d = 0; d < 10; d++) {\n    System.out.print(d++);\n}</code>",
@@ -639,10 +639,10 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
                 "次のプログラムを以下に示したコマンドで実行したときの結果として、正しいものを選びなさい。（1つ選択）",
             code: "1. public class A {\n2.   public static void main(String[] args) {\n3.     for (String str : args) {\n4.       System.out.print(str);\n5.     }\n6.   }\n7. }",
             choices: [
-                "AA BAB と表示される",
-                "FA BABJ と表示される",
-                "FA BABJ と表示される",
-                "A B A B と表示される",
+                "「AA BAB」と表示される",
+                "「A BAB」と表示される",
+                "「A BA B」と表示される",
+                "「A B A B」と表示される",
                 "実行時に例外がスローされる",
             ],
             answerIndex: 3,
@@ -657,11 +657,10 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
                 "次のプログラムをコンパイルし、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
             code: '1. public class Main {\n2.   public static void main(String[] args) {\n3.     String[] array = {"A", "B", "C", "D"};\n4.     for (int i = 0; i < array.length; i++) {\n5.       System.out.print(array[i] + " ");\n6.       if (array[i].equals("C")) {\n7.         continue;\n8.       }\n9.       System.out.println("end");\n10.      break;\n11.     }\n12.   }\n13. }',
             choices: [
-                "A end と表示される",
-                "A B end と表示される",
+                "A B C end と表示される",
                 "A B C D end と表示される",
-                "A end C D と表示される",
-                "実行時に例外がスローされる",
+                "A end と表示される",
+                "コンパイルエラーが発生する",
             ],
             answerIndex: 0,
             explanation:
@@ -676,7 +675,7 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
             code: "1. public interface A {\n2.   public Iterable a();\n3. }\n\n1. import java.util.Collection;\n2. public interface B extends A {\n3.   public Collection a();\n4. }\n\n1. import java.nio.file.Path;\n2. public interface C extends A {\n3.   public Path a();\n4. }\n\n1. public interface D extends B, C {\n2. }\n3. }",
             choices: [
                 "Dインタフェースから2つ以上継承しているため",
-                "BインタフェースおよびCインタフェースで戻り値型が異なる同名メソッドを定義しているため",
+                "BインタフェースがAインタフェースとは異なる戻り値型の同名メソッドを定義しているため",
                 "BとCのインタフェースから継承したメソッドの戻り値が異なるため",
                 "Dインタフェースで継承したメソッドを再定義しなかったため",
             ],
@@ -725,8 +724,8 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
                 "次のプログラムをコンパイルし、実行したときの結果として正しいものを選びなさい。（1つ選択）",
             code: ' 1. public class Sample {\n 2.   String name;\n 3.   int num;\n 4.   public Sample(String name, int num) {\n 5.     this.name = name;\n 6.     this.num = num;\n 7.   }\n 8. }\n\n 1. public class SubSample extends Sample {\n 2.   int price;\n 3.   public SubSample(int price) {\n 4.     this.price = price;\n 5.   }\n 6.   public SubSample(String name, int num, int price) {\n 7.     super(name, num);\n 8.     this(price);\n 9.   }\n10. }\n\n 1. public class Main {\n 2.   public static void main(String[] args) {\n 3.     SubSample s1 = new SubSample(100);\n 4.     SubSample s2 = new SubSample("sample", 200, 100);\n 5.     System.out.println(s1.name + ", " + s1.num + ", " + s1.price);\n 6.     System.out.println(s2.name + ", " + s2.num);\n 7.   }\n 8. }',
             choices: [
-                "sample 200 100",
-                "null 0 100",
+                "<code>sample 200 100\nsample 200 100</code>",
+                "<code>null 0 100\nsample 200 100</code>",
                 "SubSampleクラスの3行目だけでコンパイルエラーになる",
                 "SubSampleクラスの8行目だけでコンパイルエラーになる",
                 "SubSampleクラスの3行目と8行目の両方でコンパイルエラーになる",
@@ -742,10 +741,10 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
             question: "testメソッドのオーバーライドとして正しくないものを選びなさい。（1つ選択）",
             code: " 1. public interface Sample {\n 2.   void test();\n 3. }",
             choices: [
-                '<code>public class SampleTest implements Sample {\n  @Override public void test() { System.out.println("test"); }\n}</code>',
-                '<code>public class SampleTest2 {\n  @Override public void test() { System.out.println("test"); }\n}</code>',
-                "<code>public abstract class SampleTest3 implements Sample {\n  @Override public abstract void test();\n}</code>",
-                '<code>public abstract class SampleTest4 implements Sample {\n  @Override public void test() { System.out.println("test"); }\n}</code>',
+                '<code>public class SampleTest implements Sample {\n    @Override\n    public void test() {\n        System.out.println("test");\n    }\n}</code>',
+                '<code>public class SampleTest2 {\n    @Override\n    public void test() {\n        System.out.println("test");\n    }\n}</code>',
+                "<code>public abstract class SampleTest3 implements Sample {\n    @Override\n    public abstract void test();\n}</code>",
+                '<code>public abstract class SampleTest4 implements Sample {\n    @Override\n    public void test() {\n        System.out.println("test");\n    }\n}</code>',
             ],
             answerIndex: 1,
             explanation:
@@ -774,7 +773,7 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
             category: "総仕上げ問題①",
             difficulty: "中級",
             question:
-                "次の数式を表したコードとして、正しいものを選びなさい。（1つ選択）\n a = b * c * (1 + c)^n / ((1 + c)^n - 1)",
+                "次の数式を表したコードとして、正しいものを選びなさい。（1つ選択）\n![](img/1Z0-815-JPN_12-047_q.png)",
             code: "",
             choices: [
                 "<code>a = b * c * Math.pow(1 + c, n) / (Math.pow(1 + c, n) - 1);</code>",
