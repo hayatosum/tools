@@ -127,7 +127,7 @@ const JAVA_SILVER_1Z0_815_JPN_13 = {
             difficulty: "初級",
             question:
                 "BクラスからAクラスのtestメソッドを呼び出すために、Bクラスの空欄に入るコードとして正しいものを選びなさい。（1つ選択）",
-            code: " 1. public class A {\n 2.     public void test() {\n 3.         // do something\n 4.     }\n 5. }\n\n 1. public class B extends A {\n 2.     public void test() {\n 3.         super.test();\n 4.     }\n 5. }",
+            code: " 1. public class A {\n 2.     public void test() {\n 3.         // do something\n 4.     }\n 5. }\n\n 1. public class B extends A {\n 2.     public void test() {\n 3.         __________\n 4.     }\n 5. }",
             choices: [
                 "<code>this.test();</code>",
                 "<code>public.test();</code>",
@@ -241,7 +241,7 @@ const JAVA_SILVER_1Z0_815_JPN_13 = {
             difficulty: "初級",
             question:
                 "次のプログラムを確認してください。次のプログラムの空欄に入るコードとして、正しいものを選びなさい。（1つ選択）",
-            code: " 1. public class A {\n 2.     private int num;\n 3.     public A(int num) {\n 4.         this.num = num;\n 5.     }\n 6. }\n\n 1. public class B extends A {\n 2.     private String val;\n 3.     public B(String val, int num) {\n 4.         super(num);\n 5.         this.val = val;\n 6.     }\n 7. }",
+            code: " 1. public class A {\n 2.     private int num;\n 3.     public A(int num) {\n 4.         this.num = num;\n 5.     }\n 6. }\n\n 1. public class B extends A {\n 2.     private String val;\n 3.     public B(String val, int num) {\n 4.         __________\n 5.     }\n 6. }",
             choices: ["this(num);", "super(num);", "this(val);", "super(val);", "super();"],
             answerIndex: 1,
             explanation:
@@ -614,7 +614,7 @@ const JAVA_SILVER_1Z0_815_JPN_13 = {
             difficulty: "初級",
             question:
                 "次のプログラムをコンパイルし、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: " 1. public class Main {\n 2. public static void main(String[] args) {\n 3. int result = 30 - 12 / (2 * 5) + 1;\n 4. System.out.println(result);\n 5. }\n 6. }",
+            code: " 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         int result = 30 - 12 / (2 * 5) + 1;\n 4.         System.out.println(result);\n 5.     }\n 6. }",
             choices: [
                 "2が表示される",
                 "3が表示される",
@@ -643,7 +643,7 @@ const JAVA_SILVER_1Z0_815_JPN_13 = {
             difficulty: "初級",
             question:
                 "次のプログラムをコンパイルし、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: ' 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         int num = 0;\n 4.         System.out.println(num++ + "," + ++num);\n 5.     }\n 6. }',
+            code: ' 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         int num = 0;\n 4.         System.out.println(num++ + num + "," + ++num + num);\n 5.     }\n 6. }',
             choices: [
                 "「1,22」と表示される",
                 "「2,22」と表示される",
@@ -845,16 +845,16 @@ const JAVA_SILVER_1Z0_815_JPN_13 = {
             difficulty: "上級",
             question:
                 "次のプログラムを実行して「0」と表示したい。Mainクラスの空欄に入るコードとして正しいものを選びなさい。（3つ選択）",
-            code: " 1. class Test {\n 2.     public int num;\n 3.     public Test(int num) {\n 4.         this.num = num;\n 5.     }\n 6.     public int getNum() {\n 7.         return num;\n 8.     }\n 9.     public void modify(int x) {\n10.         num += x;\n11.     }\n12. }\n\n 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         Test t = new Test(100);\n 4.         _____\n 5.         System.out.println(t.getNum());\n 6.     }\n 7. }",
+            code: " 1. class Test {\n 2.     public int num;\n 3.     public Test(int num) {\n 4.         this.num = num;\n 5.     }\n 6.     public int getNum() {\n 7.         return num;\n 8.     }\n 9.     public void modify(int x) {\n10.         num += x;\n11.     }\n12. }\n\n 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         Test t = new Test(100);\n 4.         __________\n 5.         System.out.println(t.getNum());\n 6.     }\n 7. }",
             choices: [
-                "this.num = 0;",
-                "num = 0;",
-                "t(0);",
-                "t.num = 0;",
-                "t.getNum() = 0;",
-                "t.modify(0);",
-                "t.modify(-t.num);",
-                "t.modify(-t.getNum());",
+                "<code>this.num = 0;</code>",
+                "<code>num = 0;</code>",
+                "<code>t(0);</code>",
+                "<code>t.num = 0;</code>",
+                "<code>t.getNum() = 0;</code>",
+                "<code>t.modify(0);</code>",
+                "<code>t.modify(-t.num);</code>",
+                "<code>t.modify(-t.getNum());</code>",
             ],
             answerIndex: [3, 6, 7],
             explanation: "modify(-t.getNum()) により num = 100 + (-100) = 0 となるため、出力は 0。",
@@ -936,7 +936,7 @@ const JAVA_SILVER_1Z0_815_JPN_13 = {
             difficulty: "中級",
             question:
                 "次のプログラムの空欄に入るコードとして正しいものを選びなさい。なお、ex57.b.Sampleクラスのパスは/bin/ex57/b/Sample.classである。（1つ選択）",
-            code: " 1. package ex57.a;\n 2. \n 3. \n 4. public class Main {\n 5.     public static void main(String[] args) {\n 6.         Sample s = new Sample();\n 7.     }\n 8. }",
+            code: " 1. package ex57.a;\n 2. \n 3. __________\n 4. \n 5. public class Main {\n 6.     public static void main(String[] args) {\n 7.         Sample s = new Sample();\n 8.     }\n 9. }",
             choices: [
                 "<code>import ex57.b.Sample;</code>",
                 "<code>import ex57.b;</code>",
@@ -1141,7 +1141,7 @@ const JAVA_SILVER_1Z0_815_JPN_13 = {
                 "<code>A:2\nB:2</code>",
                 "<code>A:1\nB:3</code>",
                 "<code>A:1\nB:1</code>",
-                "<code>実行時に例外がスローされる</code>",
+                "実行時に例外がスローされる",
             ],
             answerIndex: 2,
             explanation:
@@ -1222,7 +1222,7 @@ const JAVA_SILVER_1Z0_815_JPN_13 = {
             category: "総仕上げ問題②",
             difficulty: "中級",
             question: "次のコードを確認し、trueを返すコードとして正しいものを選びなさい。",
-            code: "char[][][] array1 = {{'a', 'b'}, {'c', 'd'}};\nchar[][] array2 = array1.clone();\nchar[] array3 = array1[1].clone();",
+            code: "char[][] array1 = {{'a', 'b'}, {'c', 'd'}};\nchar[][] array2 = array1.clone();\nchar[] array3 = array1[1].clone();",
             choices: [
                 "array1[1] == array3",
                 "array1[1][1] == array3[1]",
@@ -1273,7 +1273,7 @@ const JAVA_SILVER_1Z0_815_JPN_13 = {
             category: "総仕上げ問題②",
             difficulty: "初級",
             question: "次のプログラムの説明として、正しいものを選びなさい。（1つ選択）",
-            code: " 1. public class SampleException extends Exception {}\n 2. public class SubSampleException extends SampleException {}\n 3. \n 4. public class Sample {\n 5.     public void test(int num) throws SampleException {\n 6.         if (num < 10) {\n 7.             throw new SubSampleException();\n 8.         }\n 9.     }\n10. }",
+            code: " 1. public class SampleException extends Exception {}\n\n 1. public class SubSampleException extends SampleException {}\n\n 1. public class Sample {\n 2.     public void test(int num) throws SampleException {\n 3.         if (num < 10) {\n 4.             throw new SubSampleException();\n 5.         }\n 6.     }\n 7. }",
             choices: [
                 "testメソッドでは、SampleExceptionクラスか、そのサブクラスであればスローできる",
                 "SampleExceptionは非検査例外である",
