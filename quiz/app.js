@@ -845,18 +845,39 @@ function renderHistory() {
             sum.textContent = "詳細を表示";
             details.appendChild(sum);
 
-            const ul = document.createElement("ul");
-            ul.style.margin = "8px 0 0 16px";
+            const tbl = document.createElement("table");
+            tbl.className = "history-table";
+            tbl.innerHTML = `
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>ID</th>
+                  <th>正解</th>
+                  <th>回答</th>
+                  <th>判定</th>
+                </tr>
+              </thead>
+              <tbody></tbody>`;
+            const tbody = tbl.querySelector("tbody");
             h.items.forEach((it, i) => {
-                const li = document.createElement("li");
+                const tr = document.createElement("tr");
+                tr.className = it.isCorrect ? "row-ok" : "row-ng";
                 const correctLetters = it.correct.map(letter).join(", ");
                 const userLetters = it.user.length ? it.user.map(letter).join(", ") : "未回答";
-                li.textContent = `Q${i + 1} (id:${
-                    it.id
-                }) 正解: ${correctLetters} / 回答: ${userLetters} ${it.isCorrect ? "○" : "×"}`;
-                ul.appendChild(li);
+                tr.innerHTML = `
+                  <td>${i + 1}</td>
+                  <td>
+                    <span class="qid-link" data-qid="${it.id}" title="クリックで問題を表示">
+                      ${it.id}
+                    </span>
+                  </td>
+                  <td>${correctLetters}</td>
+                  <td>${userLetters}</td>
+                  <td>${it.isCorrect ? "○" : "×"}</td>`;
+                tbody.appendChild(tr);
             });
-            details.appendChild(ul);
+            details.appendChild(tbl);
+
             div.appendChild(details);
         }
 
