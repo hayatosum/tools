@@ -24,7 +24,7 @@ const JAVA_SILVER_1Z0_815_JPN_09 = {
             difficulty: "中級",
             question:
                 "次のプログラムをコンパイル、実行した結果として、正しいものを選びなさい。（1つ選択）",
-            code: ' 1. import java.util.Comparator;\n 2. \n 3. public class SampleComparator implements Comparator<Sample> {\n 4.     @Override\n 5.     public int compare(Sample s1, Sample s2) {\n 6.         if (s1.getId() < s2.getId()) {\n 7.             return 1;\n 8.         }\n 9.         if (s2.getId() < s1.getId()) {\n10.             return -1;\n11.         }\n12.         return 0;\n13.     }\n14. }\n15. \n16. import java.util.ArrayList;\n17. import java.util.Arrays;\n18. import java.util.List;\n19. \n20. public class Main {\n21.     public static void main(String[] args) {\n22.         Sample[] samples = {\n23.             new Sample(2, "B"),\n24.             new Sample(3, "C"),\n25.             new Sample(1, "A")\n26.         };\n27. \n28.         List<Sample> list = new ArrayList<>(Arrays.asList(samples));\n29.         list.sort(new SampleComparator());\n30.         for (Sample s : list) {\n31.             System.out.println(s.getName());\n32.         }\n33.     }\n34. }',
+            code: ' 1. import java.util.Comparator;\n 2. \n 3. public class SampleComparator implements Comparator<Sample> {\n 4.     @Override\n 5.     public int compare(Sample s1, Sample s2) {\n 6.         if (s1.getId() < s2.getId()) {\n 7.             return 1;\n 8.         }\n 9.         if (s2.getId() < s1.getId()) {\n10.             return -1;\n11.         }\n12.         return 0;\n13.     }\n14. }\n\n 1. import java.util.ArrayList;\n 2. import java.util.Arrays;\n 3. import java.util.List;\n 4. \n 5. public class Main {\n 6.     public static void main(String[] args) {\n 7.         Sample[] samples = {\n 8.             new Sample(2, "B"),\n 9.             new Sample(3, "C"),\n10.             new Sample(1, "A")\n11.         };\n12. \n13.         List<Sample> list = new ArrayList<>(Arrays.asList(samples));\n14.         list.sort(new SampleComparator());\n15.         for (Sample s : list) {\n16.             System.out.println(s.getName());\n17.         }\n18.     }\n19. }',
             choices: [
                 "「A」「B」「C」と表示される",
                 "「B」「C」「A」と表示される",
@@ -188,15 +188,15 @@ const JAVA_SILVER_1Z0_815_JPN_09 = {
                 "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
             code: ' 1. public class Item {\n 2.     private String name;\n 3.     private int price;\n 4.     public Item(String name, int price) {\n 5.         this.name = name;\n 6.         this.price = price;\n 7.     }\n 8.     public boolean equals(Object obj) {\n 9.         if (obj instanceof Item) {\n10.             Item tmp = (Item) obj;\n11.             if (tmp.name.equals(this.name)) {\n12.                 return true;\n13.             }\n14.         }\n15.         return false;\n16.     }\n17.     public String getName() {\n18.         return name;\n19.     }\n20. }\n\n 1. import java.util.ArrayList;\n 2. \n 3. public class Main {\n 4.     public static void main(String[] args) {\n 5.         ArrayList<Item> list = new ArrayList<>();\n 6.         list.add(new Item("A", 100));\n 7.         list.add(new Item("B", 200));\n 8.         list.add(new Item("C", 300));\n 9.         list.add(new Item("A", 100));\n10.         list.remove(new Item("A", 500));\n11.         for (Item item : list) {\n12.             System.out.println(item.getName());\n13.         }\n14.     }\n15. }',
             choices: [
-                "「A」「C」と表示される",
-                "「A」「B」「C」と表示される",
-                "「A」と表示される",
+                "「A」「B」「C」「A」と表示される",
+                "「B」「C」「A」と表示される",
+                "「B」「C」と表示される",
                 "コンパイルエラーが発生する",
                 "実行時に例外がスローされる",
             ],
             answerIndex: 1,
             explanation:
-                'equalsはnameフィールドのみを比較対象とするため、remove(new Item("A", 500)) で最初の「A」が削除される。残りは [B, C, A] で、「A」「B」「C」と出力される。',
+                'equalsはnameフィールドのみを比較対象とするため、remove(new Item("A", 500)) で最初の「A」が削除される。残りは [B, C, A] で、「B」「C」「A」と出力される。',
         },
         {
             id: 12,
@@ -212,7 +212,7 @@ const JAVA_SILVER_1Z0_815_JPN_09 = {
                 "コンパイルエラーが発生する",
                 "実行時に例外がスローされる",
             ],
-            answerIndex: 2,
+            answerIndex: 4,
             explanation:
                 "拡張for文でイテレーション中に list.remove を行うと ConcurrentModificationException がスローされる。",
         },
@@ -308,12 +308,12 @@ const JAVA_SILVER_1Z0_815_JPN_09 = {
             difficulty: "初級",
             question:
                 "次のプログラムの実行結果として「A」「B」「C」と順に表示したい。以下の空欄に入るコードとして正しいものを選びなさい。（2つ選択）",
-            code: ' 1. import java.util.List;\n 2. \n 3. public class Main {\n 4.     public static void main(String[] args) {\n 5.         List<String> list = List.of("A", "B", "C");\n 6.         // 空欄\n 7.     }\n 8. }',
+            code: ' 1. import java.util.List;\n 2. \n 3. public class Main {\n 4.     public static void main(String[] args) {\n 5.         List<String> list = List.of("A", "B", "C");\n 6.         __________\n 7.     }\n 8. }',
             choices: [
                 "<pre><code>list.forEach(str -> System.out.println(str));</code></pre>",
                 "<pre><code>list.for(str -> System.out.println(str));</code></pre>",
                 "<pre><code>list.forEach(System.out::println);</code></pre>",
-                "<pre><code>list.forEach(System.out.println());</code></pre>",
+                "<pre><code>list.forEach(System.out::println());</code></pre>",
                 "<pre><code>list.for(System.out::println);</code></pre>",
             ],
             answerIndex: [0, 2],
