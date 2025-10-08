@@ -103,7 +103,7 @@
                     <!-- 番号順のときだけ表示 -->
                     <div id="orderedControls" class="hidden">
                         <div id="orderRangeGroup" class="order-range">
-                            <span>No：</span>
+                            <span>問題No：</span>
                             <label>
                                 <input
                                     id="orderFrom"
@@ -129,6 +129,7 @@
                 </section>
 
                 <section class="controls">
+                    <label>オプション：</label>
                     <label>
                         <input id="randomizeChoices" type="checkbox" checked />
                         選択肢をランダムに並べ替える
@@ -174,7 +175,7 @@
                 aria-labelledby="tab-analytics"
             >
                 <section id="historyArea" class="result-area" aria-live="polite">
-                    <h2>履歴</h2>
+                    <h2>過去の回答</h2>
                     <div class="history-controls">
                         <button id="refreshHistoryBtn" class="secondary">再読込</button>
                         <button id="clearHistoryBtn" class="ghost">全削除</button>
