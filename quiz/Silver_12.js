@@ -11,7 +11,7 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
             choices: [
                 "<code>java a/A.java</code>",
                 "<code>java b/B.java</code>",
-                "<code>javac b/B.java\njava a/A</code>",
+                "<code>javac b/B.java\njava a/A.java</code>",
                 "<code>javac a/A.java\njava a/A</code>",
             ],
             answerIndex: 3,
@@ -165,7 +165,7 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
             difficulty: "中級",
             question:
                 "次のプログラムのコンパイルを成功させるための方法として、正しいものを選びなさい。（1つ選択）",
-            code: " 1. public interface A {\n 2. abstract void x();\n 3. }\n\n 1. public abstract class B /* position 1 / {\n 2. / position 2 /\n 3. public void x() {}\n 4. public abstract void z();\n 5. }\n\n 1. public class C extends B implements A {\n 2. / position 3 */\n 3. }",
+            code: " 1. public interface A {\n 2.     abstract void x();\n 3. }\n\n 1. public abstract class B /* position 1 / {\n 2.     / position 2 /\n 3.     public void x() {}\n 4.     public abstract void z();\n 5. }\n\n 1. public class C extends B implements A {\n 2.     / position 3 */\n 3. }",
             choices: [
                 "以下をposition 3に記述する\n<code>@Override\npublic void x() {}</code>",
                 "以下をposition 3に記述する\n<code>public void z() {}</code>",
@@ -182,7 +182,7 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
             difficulty: "初級",
             question:
                 "次のプログラムを確認し、変数 value のデータ型として正しいものを選びなさい。（1つ選択）",
-            code: " 1. public class Main {\n 2. public static void main(String... args) {\n 3. for (var value : args) {\n 4. System.out.println(value);\n 5. }\n 6. }\n 7. }",
+            code: " 1. public class Main {\n 2.     public static void main(String... args) {\n 3.         for (var value : args) {\n 4.             System.out.println(value);\n 5.         }\n 6.     }\n 7. }",
             choices: ["String", "String[]", "Character", "var"],
             answerIndex: 0,
             explanation:
@@ -194,7 +194,7 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
             difficulty: "中級",
             question:
                 "次のプログラムをコンパイルし、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: ' 1. public class Main {\n 2. public static void main(String[] args) {\n 3. String str = "abdef gh";\n 4. int x = str.indexOf("ef");\n 5. str.substring(x - 3);\n 6. x = str.indexOf(" ");\n 7. System.out.println(str + " " + x);\n 8. }\n 9. }',
+            code: ' 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         String str = "abdef gh";\n 4.         int x = str.indexOf("ef");\n 5.         str.substring(x - 3);\n 6.         x = str.indexOf(" ");\n 7.         System.out.println(str + " " + x);\n 8.     }\n 9. }',
             choices: [
                 "「ef gh 5」と表示される",
                 "「ef gh 4」と表示される",
@@ -212,7 +212,7 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
             difficulty: "中級",
             question:
                 "次のプログラムをコンパイルし、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: ' 1. public class Sample {\n 2. static String str;\n 3. public static void main(String[] args) {\n 4. switch (str) {\n 5. case "10": str += "10";\n 6. default: str += "def";\n 7. case "20": str += "20";\n 8. }\n 9. System.out.println(str);\n10. }\n11. }',
+            code: ' 1. public class Sample {\n 2.     static String str;\n 3.     public static void main(String[] args) {\n 4.         switch (str) {\n 5.             case "10": str += "10";\n 6.             default: str += "def";\n 7.             case "20": str += "20";\n 8.         }\n 9.         System.out.println(str);\n10.     }\n11. }',
             choices: [
                 "「10 def 20」と表示される",
                 "「def 20」と表示される",
@@ -229,7 +229,7 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
             difficulty: "初級",
             question:
                 "次のプログラムを確認し、変数 x のデータ型として正しいものを選びなさい。（1つ選択）",
-            code: ' 1. import java.util.Arrays;\n 2. import java.util.List;\n 3. \n 4. public class Sample {\n 5. public static void main(String[] args) {\n 6. List<String> list = Arrays.asList(new String[]{"a", "b", "c"});\n 7. list.forEach(x -> {System.out.println(x);});\n 8. }\n 9. }',
+            code: ' 1. import java.util.Arrays;\n 2. import java.util.List;\n 3. \n 4. public class Sample {\n 5.     public static void main(String[] args) {\n 6.         List<String> list = Arrays.asList(new String[]{"a", "b", "c"});\n 7.         list.forEach(x -> {System.out.println(x);});\n 8.     }\n 9. }',
             choices: ["List<Character>", "String", "char", "List<String>"],
             answerIndex: 1,
             explanation:
@@ -377,7 +377,7 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
             category: "総仕上げ問題①",
             difficulty: "上級",
             question: "次のプログラムの説明として、正しいものを選びなさい。（3つ選択）",
-            code: ' 1. import java.util.Collection;\n 2. public class A {\n 3.     public void sample(Collection arg) {\n 4.         System.out.println("A");\n 5.     }\n 6. }\n\n 1. import java.util.List;\n 2. public class B extends A {\n 3.     public void sample(Collection arg) {\n 4.         System.out.println("B");\n 5.     }\n 6.     public void sample(List arg) {\n 7.         System.out.println("C");\n 8.     }\n 9. }\n\n 1. import java.util.*;\n 2. public class Main {\n 3.     public static void main(String[] args) {\n 4.         A a1 = new A();\n 5.         A a2 = new B();\n 6.         B b1 = new B();\n 7.         List<String> list = new ArrayList<>();\n 8.     }\n 9. }',
+            code: ' 1. import java.util.Collection;\n 2. public class A {\n 3.     public void sample(Collection arg) {\n 4.         System.out.println("A");\n 5.     }\n 6. }\n\n 1. import java.util.List;\n 2. public class B extends A {\n 3.     public void sample(Collection arg) {\n 4.         System.out.println("B");\n 5.     }\n 6.     public void sample(List arg) {\n 7.         System.out.println("C");\n 8.     }\n 9. }\n\n 1. import java.util.*;\n 2. public class Main {\n 3.     public static void main(String[] args) {\n 4.         A a1 = new A();\n 5.         A a2 = new B();\n 6.         B b1 = new B();\n 7.         List<String> list = new ArrayList<>();\n 8.     // do something\n 9.     }\n10. }',
             choices: [
                 "a1.sample(list) を実行すると A が表示される",
                 "a2.sample(list) を実行すると A が表示される",
@@ -387,14 +387,14 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
             ],
             answerIndex: [0, 2, 4],
             explanation:
-                "オーバーロードとオーバーライドの関係：a1とa2は宣言型がAであるためA#sample(Collection)が呼ばれる。b1はB型でList引数が一致するためCが表示される。",
+                "オーバーロードとオーバーライドの関係：a1は宣言型がAであるためA#sample(Collection)が呼ばれる。a2は宣言型がAであるがB#sample(Collection)でオーバーライドしているためB#sample(Collection)が呼ばれる。b1はB型でList引数が一致するためCが表示される。",
         },
         {
             id: 24,
             category: "総仕上げ問題①",
             difficulty: "中級",
             question: "Dクラスの説明として正しいものを選びなさい。（1つ選択）",
-            code: ' 1. public interface A { void sample(); }\n 2. public interface B extends A {\n 3.     default void sample() { System.out.println("B"); }\n 4. }\n 5. public interface C extends A {\n 6.     @Override default void sample() { System.out.println("C"); }\n 7. }\n 8. public class D implements B, C {\n 9.     @Override public void sample() { super.sample(); }\n10. }',
+            code: ' 1. public interface A {\n 2.     void sample();\n 3. }\n\n 1. public interface B extends A {\n 2.     default void sample() { System.out.println("B"); }\n 3. }\n\n 1. public interface C extends A {\n 2.     @Override default void sample() { System.out.println("C"); }\n 3. }\n\n 1. public class D implements B, C {\n 2.     @Override public void sample() { super.sample(); }\n 3. }',
             choices: [
                 "Bインタフェースのsampleメソッドを実装している",
                 "Cインタフェースのsampleメソッドを実装している",
@@ -428,7 +428,7 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
             difficulty: "初級",
             question:
                 "次のプログラムを確認し、コンパイルエラーとなるコードを選びなさい。（1つ選択）",
-            code: "public abstract class A {}\n\npublic interface B {}\n\npublic class C extends A implements B {}\n\npublic class D extends C {}\n\n<code>List<A> listA = new ArrayList<>();\nlistA.add(new D());</code>",
+            code: "public abstract class A {}\n\npublic interface B {}\n\npublic class C extends A implements B {}\n\npublic class D extends C {}",
             choices: [
                 "<code>List<A> listA = new ArrayList<>();\nlistA.add(new D());</code>",
                 "<code>List<B> listB = new ArrayList<>();\nlistB.add(new C());</code>",
@@ -513,7 +513,7 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
             difficulty: "中級",
             question:
                 "次のプログラムをコンパイルし、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: ' 1. import java.util.ArrayList;\n 2. import java.util.Arrays;\n 3. public class Main {\n 4.     public static void main(String[] args) {\n 5.         var alphabet = new ArrayList<>(\n 6.             Arrays.asList("A", "B", "C", "D", "E")\n 7.         );\n 8.         alphabet.sort((a, b) -> a.compareTo(b));\n 9.         alphabet.forEach(System.out::print);\n10.     }\n11. }',
+            code: ' 1. import java.util.ArrayList;\n 2. import java.util.Arrays;\n 3. public class Main {\n 4.     public static void main(String[] args) {\n 5.         var alphabet = new ArrayList<>(\n 6.             Arrays.asList("A", "B", "C", "D", "E")\n 7.         );\n 8.         alphabet.sort((a, b) -> -a.compareTo(b));\n 9.         alphabet.forEach(System.out::print);\n10.     }\n11. }',
             choices: [
                 "何も表示されない",
                 "「A」「B」「C」「D」「E」と表示される",
@@ -521,7 +521,8 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
                 "「A」「B」と表示される",
             ],
             answerIndex: 2,
-            explanation: "昇順ソートが行われるため、「ABCDE」と順に出力される。",
+            explanation:
+                "通常は昇順ソートが行われるが、設問のコードではマイナス演算子がついているため、「EDCBA」と降順でソートが行われる。",
         },
         {
             id: 32,
@@ -607,7 +608,7 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
             question: "次のうち、メソッドの定義として正しいものを選びなさい。（2つ選択）",
             choices: [
                 "<code>public void methodA(int x) {\n    return ++x;\n}</code>",
-                '<code>public void methodB() {\n    System.out.println("B");\n}</code>',
+                '<code>public String methodB() {\n    System.out.println("B");\n}</code>',
                 "<code>public boolean methodC(int a) {\n    return a < 0;\n}</code>",
                 "<code>public char methodD(String str) {\n    return str;\n}</code>",
                 "<code>public void methodE() {\n    return;\n}</code>",
@@ -639,7 +640,7 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
             difficulty: "初級",
             question:
                 "次のプログラムを以下に示したコマンドで実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: "1. public class A {\n2.   public static void main(String[] args) {\n3.     for (String str : args) {\n4.       System.out.print(str);\n5.     }\n6.   }\n7. }",
+            code: 'java A "A B" A B\n\n1. public class A {\n2.     public static void main(String[] args) {\n3.         for (String str : args) {\n4.             System.out.print(str);\n5.         }\n6.     }\n7. }',
             choices: [
                 "「AA BAB」と表示される",
                 "「A BAB」と表示される",
@@ -649,7 +650,7 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
             ],
             answerIndex: 1,
             explanation:
-                'コマンド行引数 "A", "B", "A", "B" がそのまま順に出力されるため、「ABAB」と表示される。',
+                'コマンド行引数 "A B", "A", "B" がそのまま順に出力されるため、「ABAB」と表示される。',
         },
         {
             id: 40,
@@ -657,7 +658,7 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
             difficulty: "中級",
             question:
                 "次のプログラムをコンパイルし、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: '1. public class Main {\n2.   public static void main(String[] args) {\n3.     String[] array = {"A", "B", "C", "D"};\n4.     for (int i = 0; i < array.length; i++) {\n5.       System.out.print(array[i] + " ");\n6.       if (array[i].equals("C")) {\n7.         continue;\n8.       }\n9.       System.out.println("end");\n10.      break;\n11.     }\n12.   }\n13. }',
+            code: '1. public class Main {\n2.     public static void main(String[] args) {\n3.         String[] array = {"A", "B", "C", "D"};\n4.         for (int i = 0; i < array.length; i++) {\n5.             System.out.print(array[i] + " ");\n6.             if (array[i].equals("C")) {\n7.                 continue;\n8.             }\n9.             System.out.println("end");\n10.            break;\n11.         }\n12.     }\n13. }',
             choices: [
                 "A B C end と表示される",
                 "A B C D end と表示される",
@@ -708,7 +709,7 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
             difficulty: "上級",
             question:
                 "次のプログラムをコンパイルし、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: "1. public class A {\n2.   private boolean isValue(int val) {\n3.     return true;\n4.   }\n5. }\n\n1. public class B extends A {\n2.   public int test(int num) {\n3.     if (isValue(num)) {\n4.       return num;\n5.     }\n6.     return 0;\n7.   }\n8.   public static void main(String[] args) {\n9.     B b = new B();\n10.    System.out.println(b.test(10));\n11.  }\n12. }",
+            code: "1. public class A {\n2.     private boolean isValue(int val) {\n3.         return true;\n4.     }\n5. }\n\n1. public class B extends A {\n2.     public int test(int num) {\n3.         if (isValue(num)) {\n4.             return num;\n5.         }\n6.         return 0;\n7.     }\n8.     public static void main(String[] args) {\n9.         B b = new B();\n10.        System.out.println(b.test(10));\n11.     }\n12. }",
             choices: [
                 "0が表示される",
                 "10が表示される",
@@ -724,7 +725,7 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
             difficulty: "中級",
             question:
                 "次のプログラムをコンパイルし、実行したときの結果として正しいものを選びなさい。（1つ選択）",
-            code: ' 1. public class Sample {\n 2.   String name;\n 3.   int num;\n 4.   public Sample(String name, int num) {\n 5.     this.name = name;\n 6.     this.num = num;\n 7.   }\n 8. }\n\n 1. public class SubSample extends Sample {\n 2.   int price;\n 3.   public SubSample(int price) {\n 4.     this.price = price;\n 5.   }\n 6.   public SubSample(String name, int num, int price) {\n 7.     super(name, num);\n 8.     this(price);\n 9.   }\n10. }\n\n 1. public class Main {\n 2.   public static void main(String[] args) {\n 3.     SubSample s1 = new SubSample(100);\n 4.     SubSample s2 = new SubSample("sample", 200, 100);\n 5.     System.out.println(s1.name + ", " + s1.num + ", " + s1.price);\n 6.     System.out.println(s2.name + ", " + s2.num);\n 7.   }\n 8. }',
+            code: ' 1. public class Sample {\n 2.     String name;\n 3.     int num;\n 4.     public Sample(String name, int num) {\n 5.         this.name = name;\n 6.         this.num = num;\n 7.     }\n 8. }\n\n 1. public class SubSample extends Sample {\n 2.     int price;\n 3.     public SubSample(int price) {\n 4.         this.price = price;\n 5.     }\n 6.     public SubSample(String name, int num, int price) {\n 7.         super(name, num);\n 8.         this(price);\n 9.     }\n10. }\n\n 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         SubSample s1 = new SubSample(100);\n 4.         SubSample s2 = new SubSample("sample", 200, 100);\n 5.         System.out.println(s1.name + ", " + s1.num + ", " + s1.price);\n 6.         System.out.println(s2.name + ", " + s2.num);\n 7.     }\n 8. }',
             choices: [
                 "<code>sample 200 100\nsample 200 100</code>",
                 "<code>null 0 100\nsample 200 100</code>",
@@ -758,7 +759,7 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
             difficulty: "初級",
             question:
                 "次のプログラムをコンパイル・実行した結果として正しいものを選びなさい。なお、現在の日付は2019年8月14日とする。（1つ選択）",
-            code: " 1. import java.time.LocalDate;\n 2. public class Diary {\n 3.   private LocalDate now = LocalDate.now();\n 4.   public LocalDate getNow() {\n 5.     return this.now;\n 6.   }\n 7. }\n\n 1. public class Main {\n 2.   public static void main(String[] args) {\n 3.     Diary d = new Diary();\n 4.     System.out.println(d.getNow());\n 5.   }\n 6. }",
+            code: " 1. import java.time.LocalDate;\n 2. public class Diary {\n 3.     private LocalDate now = LocalDate.now();\n 4.     public LocalDate getNow() {\n 5.         return this.now;\n 6.     }\n 7. }\n\n 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         Diary d = new Diary();\n 4.         System.out.println(d.getNow());\n 5.     }\n 6. }",
             choices: [
                 "[2019-08-14] と表示される",
                 "[08-14-2019] と表示される",
@@ -791,13 +792,13 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
             category: "総仕上げ問題①",
             difficulty: "初級",
             question:
-                "次のプログラムを以下に示したコマンドで実行したときの結果として、正しいものを選びなさい。（1つ選択）\n> java Main a b c",
-            code: ' 1. public class Main {\n 2.   public static void main(String[] args) {\n 3.     int i = 1;\n 4.     for (String s : args) {\n 5.       System.out.println((i++) + ") " + s);\n 6.     }\n 7.   }\n 8. }',
+                "次のプログラムを以下に示したコマンドで実行したときの結果として、正しいものを選びなさい。（1つ選択）",
+            code: '> java Main a b c\n\n 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         int i = 1;\n 4.         for (String s : args) {\n 5.             System.out.println((i++) + ") " + s);\n 6.         }\n 7.     }\n 8. }',
             choices: [
-                "<code>1) a\\n2) b\\n3) c</code>",
-                "<code>2) a\\n3) b\\n4) c</code>",
-                "<code>1) Main\\n2) a\\n3) b\\n4) c</code>",
-                "<code>2) Main\\n3) a\\n4) b\\n5) c</code>",
+                "<code>1) a\n2) b\n3) c</code>",
+                "<code>2) a\n3) b\n4) c</code>",
+                "<code>1) Main\n2) a\n3) b\n4) c</code>",
+                "<code>2) Main\n3) a\n4) b\n5) c</code>",
             ],
             answerIndex: 0,
             explanation:
@@ -809,7 +810,7 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
             difficulty: "中級",
             question:
                 "次のプログラムをコンパイル・実行した結果として正しいものを選びなさい。（1つ選択）",
-            code: ' 1. public class Sample {\n 2.   int a;\n 3.   int b;\n 4.   int c;\n 5.   int d;\n 6.   void setA(int a) { a = a; }\n 7.   void setB() { this.b = b; }\n 8.   int setC() { return c; }\n 9.   int setD(int num) { d = num; return d; }\n10.   void setAll(int x) { a = b = this.c = setD(x); }\n11.   @Override public String toString() {\n12.     return "Sample [a=" + a + ", b=" + b + ", c=" + c + ", d=" + d + "]";\n13.   }\n14.   public static void main(String[] args) {\n15.     Sample s = new Sample();\n16.     s.setAll(10);\n17.     System.out.println(s);\n18.   }\n19. }',
+            code: ' 1. public class Sample {\n 2.     int a;\n 3.     int b;\n 4.     int c;\n 5.     int d;\n 6.     void setA(int a) { a = a; }\n 7.     void setB() { this.b = b; }\n 8.     int setC() { return c; }\n 9.     int setD(int num) { d = num; return d; }\n10.     void setAll(int x) { a = b = this.c = setD(x); }\n11.     @Override public String toString() {\n12.         return "Sample [a=" + a + ", b=" + b + ", c=" + c + ", d=" + d + "]";\n13.     }\n14.     public static void main(String[] args) {\n15.         Sample s = new Sample();\n16.         s.setAll(10);\n17.         System.out.println(s);\n18.     }\n19. }',
             choices: [
                 "Sample [a=10, b=10, c=10, d=10]",
                 "Sample [a=0, b=10, c=10, d=10]",
@@ -827,7 +828,7 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
             difficulty: "初級",
             question:
                 "次のプログラムをコンパイル・実行した結果として、正しいものを選びなさい。（1つ選択）",
-            code: " 1. public class Main {\n 2.   public static void main(String[] args) {\n 3.     int num = 0;\n 4.     do {\n 5.       num++;\n 6.       if (num == 1) {\n 7.         continue;\n 8.       }\n 9.       System.out.println(num);\n10.     } while (num < 1);\n11.   }\n12. }",
+            code: " 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         int num = 0;\n 4.         do {\n 5.             num++;\n 6.             if (num == 1) {\n 7.                 continue;\n 8.             }\n 9.             System.out.println(num);\n10.         } while (num < 1);\n11.     }\n12. }",
             choices: [
                 "「0」「1」と表示される",
                 "「0」と表示される",
@@ -894,7 +895,7 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
             category: "総仕上げ問題①",
             difficulty: "中級",
             question: "次のプログラムの説明として、正しいものを選びなさい。（1つ選択）",
-            code: " 1. public interface Sample {\n 2.     void test();\n 3. }\n 4. \n 5. class SampleImpl implements Sample {\n 6.     @Override\n 7.     public void test() {\n 8.         // do something\n 9.     }\n10. }\n11. \n12. class SubSampleImpl extends SampleImpl {\n13.     void test(int x) {\n14.         // do something\n15.     }\n16. }",
+            code: " 1. public interface Sample {\n 2.     void test();\n 3. }\n\n 1. class SampleImpl implements Sample {\n 2.     @Override\n 3.     public void test() {\n 4.         // do something\n 5.     }\n 6. }\n\n 1. class SubSampleImpl extends SampleImpl {\n 2.     void test(int x) {\n 3.         // do something\n 4.     }\n 5. }",
             choices: [
                 "Sampleインタフェースでコンパイルエラーが発生する",
                 "SampleImplクラスでコンパイルエラーが発生する",
@@ -930,12 +931,12 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
             difficulty: "中級",
             question:
                 "次のプログラムをコンパイルし、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: ' 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         String[][] array = {\n 4.             { "A", "B" },\n 5.             { "C", "D", "E", "F", "G" }\n 6.         };\n 7.         for (int i = 0; i < array.length; i++) {\n 8.             int j = 0;\n 9.             while (j < array[i].length) {\n10.                 System.out.println("[" + i + "," + j + "]=" + array[i][j]);\n11.                 j++;\n12.             }\n13.         }\n14.     }\n15. }',
+            code: ' 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         String[][] array = {\n 4.             { "A", "B" },\n 5.             { "C" },\n 6.             { "D", "E", "F", "G" }\n 7.         };\n 8.         for (int i = 0; i < array.length; i++) {\n 9.             int j = 0;\n10.             while (j < array[i].length) {\n11.                 System.out.println("[" + i + "," + j + "]=" + array[i][j]);\n12.                 j++;\n13.             }\n14.         }\n15.     }\n16. }',
             choices: [
                 "[0,0]=A\n[0,1]=B\n[1,0]=C\n[1,1]=D\n[2,0]=E\n[2,1]=F\n[2,2]=G",
                 "[0,0]=A\n[0,1]=B\n[1,0]=C\n[2,0]=D\n[2,1]=E\n[2,2]=F\n[2,3]=G",
                 "[0,0]=A\n[0,1]=B\n[1,0]=C\n[1,1]=D\n[2,0]=E\n[2,1]=F\n[3,0]=G",
-                "[0,0]=A\n[0,1]=B\n[1,0]=C\n[1,0]=D\n[1,1]=E\n[1,2]=F\n[1,3]=G",
+                "[0,0]=A\n[0,1]=B\n[0,2]=C\n[1,0]=D\n[1,1]=E\n[1,2]=F\n[1,3]=G",
             ],
             answerIndex: 1,
             explanation:
@@ -1084,7 +1085,7 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
             difficulty: "中級",
             question:
                 "次のプログラムをコンパイルし、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: ' 1. public class A {\n 2.     protected A() {\n 3.         this(2);\n 4.         System.out.print("1");\n 5.     }\n 6.     protected A(int a) {\n 7.         System.out.print(a);\n 8.     }\n 9. }\n10. \n11. public class B extends A {\n12.     B() {\n13.         this(4);\n14.         System.out.print("3");\n15.     }\n16.     B(int b) {\n17.         System.out.print(b);\n18.     }\n19. }\n20. \n21. public class Main {\n22.     public static void main(String[] args) {\n23.         B b = new B();\n24.     }\n25. }',
+            code: ' 1. public class A {\n 2.     protected A() {\n 3.         this(2);\n 4.         System.out.print("1");\n 5.     }\n 6.     protected A(int a) {\n 7.         System.out.print(a);\n 8.     }\n 9. }\n\n 1. public class B extends A {\n 2.     B() {\n 3.         this(4);\n 4.         System.out.print("3");\n 5.     }\n 6.     B(int b) {\n 7.         System.out.print(b);\n 8.     }\n 9. }\n\n 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         B b = new B();\n 4.     }\n 5. }',
             choices: [
                 "2143が表示される",
                 "1234が表示される",
@@ -1100,7 +1101,7 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
             category: "総仕上げ問題①",
             difficulty: "初級",
             question: "次のプログラムの空欄に入るコードとして、正しいものを選びなさい。（1つ選択）",
-            code: " 1. public class Sample {\n 2.     public static void print(Integer num) {\n 3.         System.out.println(num);\n 4.     }\n 5. }\n 6. \n 7. import java.util.List;\n 8. public class Main {\n 9.     public static void main(String[] args) {\n10.         List<Integer> list = List.of(1, 2, 3);\n11.         list.forEach(＿＿＿＿＿＿＿);\n12.     }\n13. }",
+            code: " 1. public class Sample {\n 2.     public static void print(Integer num) {\n 3.         System.out.println(num);\n 4.     }\n 5. }\n\n 6. import java.util.List;\n 7. public class Main {\n 8.     public static void main(String[] args) {\n 9.         List<Integer> list = List.of(1, 2, 3);\n10.         list.forEach(＿＿＿＿＿＿＿);\n11.     }\n12. }",
             choices: ["new Sample()::print", "Sample.print", "Sample:print", "Sample::print"],
             answerIndex: 3,
             explanation:
@@ -1148,7 +1149,7 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
             difficulty: "上級",
             question:
                 "次のプログラムをコンパイル・実行した結果として、正しいものを選びなさい。（1つ選択）",
-            code: ' 1. import java.util.List;\n 2. import java.util.ArrayList;\n 3.\n 4. public class Main {\n 5. public static void main(String[] args) {\n 6. List<String> list = new ArrayList<>();\n 7. try {\n 8. while (true) {\n 9. list.add("hello");\n10. }\n11. } catch (RuntimeException e) {\n12. System.out.println("A");\n13. } catch (Exception e) {\n14. System.out.println("B");\n15. }\n16. System.out.println("C");\n17. }\n18. }',
+            code: ' 1. import java.util.List;\n 2. import java.util.ArrayList;\n 3.\n 4. public class Main {\n 5.     public static void main(String[] args) {\n 6.         List<String> list = new ArrayList<>();\n 7.         try {\n 8.             while (true) {\n 9.                 list.add("hello");\n10.             }\n11.         } catch (RuntimeException e) {\n12.             System.out.println("A");\n13.         } catch (Exception e) {\n14.             System.out.println("B");\n15.         }\n16.         System.out.println("C");\n17.     }\n18. }',
             choices: [
                 "Aが表示される",
                 "Bが表示される",
@@ -1175,7 +1176,7 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
             ],
             answerIndex: 2,
             explanation:
-                "モジュールとして起動するには --module-path でモジュールパスを指定し、-m モジュール/メインクラス を用いる。A はクラスパスと -m の混在、B はクラスパス起動、D は -m がなくいずれも不正。",
+                "モジュールとして起動するには --module-path でモジュールパスを指定し、-m モジュール/メインクラス を用いる。",
         },
         {
             id: 71,
@@ -1200,7 +1201,7 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
             difficulty: "中級",
             question:
                 "次のプログラムを実行して「AXCD」と表示したい。空欄に入るコードとして正しいものを選びなさい。（1つ選択）",
-            code: ' 1. public class Sample {\n 2. public static void main(String[] args) {\n 3. StringBuilder sb = new StringBuilder("ABCD");\n 4. // insert code here\n 5. System.out.println(sb);\n 6. }\n 7. }',
+            code: ' 1. public class Sample {\n 2.     public static void main(String[] args) {\n 3.         StringBuilder sb = new StringBuilder("ABCD");\n 4.         // insert code here\n 5.         System.out.println(sb);\n 6.     }\n 7. }',
             choices: [
                 '<code>sb.replace(sb.indexOf("B"), sb.indexOf("B"), "X");</code>',
                 '<code>sb.replace(sb.indexOf("B"), sb.indexOf("C"), "X");</code>',
@@ -1217,11 +1218,11 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
             difficulty: "初級",
             question:
                 "次のプログラムを実行し、「135」と表示したい。4行目の空欄に入るコードとして正しいものを選びなさい。（1つ選択）",
-            code: " 1. public class Main {\n 2. public static void main(String[] args) {\n 3. int[] array = { 1, 2, 3, 4, 5 };\n 4. for (/* insert */) {\n 5. System.out.print(array[i]);\n 6. }\n 7. }\n 8. }",
+            code: " 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         int[] array = { 1, 2, 3, 4, 5 };\n 4.         for (__________) {\n 5.             System.out.print(array[i]);\n 6.         }\n 7.     }\n 8. }",
             choices: [
-                "<code>int i = 0; i < 4; i++</code>",
+                "<code>int i = 0; i <= 4; i++</code>",
                 "<code>int i = 0; i < 5; i += 2</code>",
-                "<code>int i = 1; i <= 5; i = i + 1</code>",
+                "<code>int i = 1; i <= 5; i += 1</code>",
                 "<code>int i = 1; i < 5; i += 2</code>",
             ],
             answerIndex: 1,
@@ -1234,12 +1235,12 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
             difficulty: "中級",
             question:
                 "次のプログラムをコンパイル・実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: ' 1. public class Main {\n 2. public static void main(String[] args) {\n 3. String[] str = new String[2];\n 4. int i = 0;\n 5. for (String s : str) {\n 6. str[i].concat("e" + i);\n 7. i++;\n 8. }\n 9. for (i = 0; i < str.length; i++) {\n10. System.out.println(str[i]);\n11. }\n12. }\n13. }',
+            code: ' 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         String[] str = new String[2];\n 4.         int i = 0;\n 5.         for (String s : str) {\n 6.             str[i].concat("e" + i);\n 7.             i++;\n 8.         }\n 9.         for (i = 0; i < str.length; i++) {\n10.             System.out.println(str[i]);\n11.         }\n12.     }\n13. }',
             choices: [
                 "<code>e0\ne1</code>",
                 "<code>null e0\nnull e1</code>",
                 "<code>null\nnull</code>",
-                "<code>実行時に例外がスローされる</code>",
+                "実行時に例外がスローされる",
             ],
             answerIndex: 3,
             explanation:
@@ -1268,7 +1269,7 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
             difficulty: "初級",
             question:
                 "次のプログラムをコンパイルし、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: ' 1. public class Main {\n 2. public void test(Object[] array) {\n 3. System.out.println("A");\n 4. }\n 5. public void test(String[] array) {\n 6. System.out.println("B");\n 7. }\n 8. public void test(Object obj) {\n 9. System.out.println("C");\n10. }\n11. public static void main(String[] args) {\n12. new Main().test(args);\n13. }\n14. }',
+            code: ' 1. public class Main {\n 2.     public void test(Object[] array) {\n 3.         System.out.println("A");\n 4.     }\n 5.     public void test(String[] array) {\n 6.         System.out.println("B");\n 7.     }\n 8.     public void test(Object obj) {\n 9.         System.out.println("C");\n10.     }\n11.     public static void main(String[] args) {\n12.         new Main().test(args);\n13.     }\n14. }',
             choices: [
                 "Aが表示される",
                 "Bが表示される",
@@ -1286,7 +1287,7 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
             difficulty: "中級",
             question:
                 "次のプログラムをコンパイル・実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: ' 1. public class Sample {\n 2. public void test() {\n 3. System.out.println("Sample#test()");\n 4. }\n 5. }\n 6.\n 7. public class SubSample extends Sample {\n 8. @Override\n 9. public void test() {\n10. System.out.println("SubSample#test()");\n11. }\n12. }\n13.\n14. public class Main {\n15. public static void main(String[] args) {\n16. SubSample sub = new SubSample();\n17. Sample sample = new SubSample();\n18. sub = sample;\n19. sub.test();\n20. sample.test();\n21. }\n22. }',
+            code: ' 1. public class Sample {\n 2.     public void test() {\n 3.         System.out.println("Sample#test()");\n 4.     }\n 5. }\n 6.\n 7. public class SubSample extends Sample {\n 8.     @Override\n 9.     public void test() {\n10.         System.out.println("SubSample#test()");\n11.     }\n12. }\n13.\n14. public class Main {\n15.     public static void main(String[] args) {\n16.         SubSample sub = new SubSample();\n17.         Sample sample = new SubSample();\n18.         sub = sample;\n19.         sub.test();\n20.         sample.test();\n21.     }\n22. }',
             choices: [
                 "<code>Sample#test()\nSample#test()</code>",
                 "<code>SubSample#test()\nSubSample#test()</code>",
@@ -1304,7 +1305,7 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
             difficulty: "中級",
             question:
                 "次のプログラムを確認し、B クラスの空欄に入るコードとして正しいものを選びなさい。（2つ選択）",
-            code: " 1. // ex78/a/A.java\n 2. package ex78.a;\n 3. public abstract class A {\n 4. protected abstract void test();\n 5. }\n 6.\n 7. // ex78/b/B.java\n 8. package ex78.b;\n 9. import ex78.a.A;\n10. public class B extends A {\n11. // insert code here\n12. }",
+            code: " 1. // ex78/a/A.java\n 2. package ex78.a;\n 3. public abstract class A {\n 4.     protected abstract void test();\n 5. }\n 6.\n 7. // ex78/b/B.java\n 8. package ex78.b;\n 9. import ex78.a.A;\n10. public class B extends A {\n11.     // insert code here\n12. }",
             choices: [
                 "<code>public void test() {}</code>",
                 "<code>private void test() {}</code>",
@@ -1337,7 +1338,7 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
             difficulty: "中級",
             question:
                 "次のプログラムをコンパイル・実行した結果として、正しいものを選びなさい。（1つ選択）",
-            code: ' 1. public class Test {\n 2. public static void main(String[] args) {\n 3. String[][] array = new String[2][];\n 4. array[0] = new String[2];\n 5. array[1] = new String[5];\n 6. int i = 97;\n 7. for (int a = 0; a < array.length; a++) {\n 8. for (int b = 0; b < array.length; b++) {\n 9. array[a][b] = "" + i;\n10. i++;\n11. }\n12. }\n13. for (String[] tmp : array) {\n14. for (String s : tmp) {\n15. System.out.print(s + " ");\n16. }\n17. System.out.println();\n18. }\n19. }\n20. }',
+            code: ' 1. public class Test {\n 2.     public static void main(String[] args) {\n 3.         String[][] array = new String[2][];\n 4.         array[0] = new String[2];\n 5.         array[1] = new String[5];\n 6.         int i = 97;\n 7.         for (int a = 0; a < array.length; a++) {\n 8.             for (int b = 0; b < array.length; b++) {\n 9.                 array[a][b] = "" + i;\n10.                 i++;\n11.             }\n12.         }\n13.         for (String[] tmp : array) {\n14.             for (String s : tmp) {\n15.                 System.out.print(s + " ");\n16.             }\n17.             System.out.println();\n18.         }\n19.     }\n20. }',
             choices: [
                 "<code>97 98\n99 100 null null null</code>",
                 "<code>97 98\n99 100 101 102 103</code>",
