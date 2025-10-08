@@ -4,7 +4,7 @@ const tabAnalBtn = document.getElementById("tab-analytics");
 const panelQuiz = document.getElementById("panel-quiz");
 const panelAnal = document.getElementById("panel-analytics");
 
-function switchTab(to) {
+async function switchTab(to) {
     const toQuiz = to === "quiz";
     // ボタンの状態
     tabQuizBtn.classList.toggle("active", toQuiz);
@@ -16,6 +16,27 @@ function switchTab(to) {
     panelAnal.classList.toggle("hidden", toQuiz);
     // スクロールを上に
     window.scrollTo({ top: 0, behavior: "smooth" });
+
+    try {
+        if (toQuiz) {
+            // 問題を解く → セレクトボックス（＋ローカルファイルがあればそちら）で再読込
+            if (fileSelect) currentFile = fileSelect.value || currentFile;
+            await loadAllQuestions(); // 通常ルート（ローカル優先）
+            updateSelectedFileCount?.();
+            setStatus?.("出題範囲を再読込しました", 1500);
+        } else {
+            // 回答結果を分析 → 常に ALL を強制再読込（ローカルファイルは無視）
+            await loadAllQuestions("JAVA_SILVER_1Z0_815_JPN_ALL");
+            // 分析系の再描画（履歴はそのまま）
+            renderHistory?.();
+            renderTrendChart?.();
+            analyzeHistoryAndRender?.();
+            setStatus?.("分析用に全問題（ALL）を再読込しました", 1500);
+        }
+    } catch (e) {
+        console.warn("タブ切替時の再読込でエラー:", e);
+        setStatus?.(`エラー: ${e.message || e}`, 4000);
+    }
 }
 
 // イベント
@@ -445,11 +466,20 @@ function showResults() {
 }
 
 // --- 問題ロード ---
-async function loadAllQuestions() {
+async function loadAllQuestions(forceKey = null) {
     let data;
 
-    // 1) ローカルファイルが選択されていれば最優先
-    if (fileInput.files && fileInput.files[0]) {
+    // ★ forceKey 指定時はローカルファイルを無視して、指定キーの内蔵/サーバを読む
+    if (forceKey) {
+        const builtin = (window.BUILTIN_QUESTION_SETS || {})[forceKey];
+        if (builtin) {
+            data = builtin;
+        } else {
+            const res = await fetch("json/" + forceKey, { cache: "no-store" });
+            if (!res.ok) throw new Error(`問題の取得に失敗しました: ${res.status}`);
+            data = await res.json();
+        }
+    } else if (fileInput.files && fileInput.files[0]) {
         const file = fileInput.files[0];
         const text = await file.text();
         data = JSON.parse(text);
