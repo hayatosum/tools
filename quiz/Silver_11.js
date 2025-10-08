@@ -25,11 +25,11 @@ const JAVA_SILVER_1Z0_815_JPN_11 = {
                 "libディレクトリにあるsampleモジュールを実行したい。エントリーポイントを持つクラスがcom.test.Helloとしたときのコマンドとして正しいものを選びなさい。（1つ選択）",
             code: "",
             choices: [
-                "<pre><code>java -m lib sample/com.test.Hello</code></pre>",
-                "<pre><code>java --module-path lib com.test.Hello</code></pre>",
-                "<pre><code>java --module-path lib -m com.test.Hello</code></pre>",
-                "<pre><code>java --module-path lib -m sample/com.test.Hello</code></pre>",
-                "<pre><code>java --module-path lib -m sample.com.test.Hello</code></pre>",
+                "<code>java -m lib sample/com.test.Hello</code>",
+                "<code>java --module-path lib com.test.Hello</code>",
+                "<code>java --module-path lib -m com.test.Hello</code>",
+                "<code>java --module-path lib -m sample/com.test.Hello</code>",
+                "<code>java --module-path lib -m sample.com.test.Hello</code>",
             ],
             answerIndex: 3,
             explanation:
@@ -43,10 +43,10 @@ const JAVA_SILVER_1Z0_815_JPN_11 = {
                 "sampleモジュールは、com.sampleパッケージを公開し、testモジュールを利用している。module-info.javaの設定として、正しいものを選びなさい。（1つ選択）",
             code: "",
             choices: [
-                "<pre><code>module sample {\n    exports test;\n    requires com.sample;\n}</code></pre>",
-                "<pre><code>module sample {\n    export com.sample;\n    requires test;\n}</code></pre>",
-                "<pre><code>module sample {\n    requires com.sample;\n    requires test;\n}</code></pre>",
-                "<pre><code>module sample {\n    exports com.sample;\n    requires test;\n}</code></pre>",
+                "<code>module sample {\n    exports test;\n    requires com.sample;\n}</code>",
+                "<code>module sample {\n    export com.sample;\n    requires test;\n}</code>",
+                "<code>module sample {\n    requires com.sample;\n    requires test;\n}</code>",
+                "<code>module sample {\n    exports com.sample;\n    requires test;\n}</code>",
             ],
             answerIndex: 3,
             explanation:
@@ -89,10 +89,10 @@ const JAVA_SILVER_1Z0_815_JPN_11 = {
                 "module-info.javaに設定したモジュールの設定情報を調べるためのコマンドとして、正しいものを選びなさい。（2つ選択）",
             code: "",
             choices: [
-                "<pre><code>java --describe-module</code></pre>",
-                "<pre><code>jdeps --list-deps</code></pre>",
-                "<pre><code>jmod describe</code></pre>",
-                "<pre><code>java --show-module-resolution</code></pre>",
+                "<code>java --describe-module</code>",
+                "<code>jdeps --list-deps</code>",
+                "<code>jmod describe</code>",
+                "<code>java --show-module-resolution</code>",
             ],
             answerIndex: [0, 3],
             explanation:
@@ -106,10 +106,10 @@ const JAVA_SILVER_1Z0_815_JPN_11 = {
                 "module-info.javaでexportsされていないパッケージを、一時的に利用してコンパイルしたい。javacコマンドのオプションとして正しいものを選びなさい。（1つ選択）",
             code: "",
             choices: [
-                "<pre><code>--add-exports</code></pre>",
-                "<pre><code>--exports</code></pre>",
-                "<pre><code>--add</code></pre>",
-                "<pre><code>--add-modules</code></pre>",
+                "<code>--add-exports</code>",
+                "<code>--exports</code>",
+                "<code>--add</code>",
+                "<code>--add-modules</code>",
             ],
             answerIndex: 0,
             explanation:

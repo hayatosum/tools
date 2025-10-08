@@ -21,11 +21,11 @@ const JAVA_SILVER_1Z0_815_JPN_08 = {
                 "次のプログラムの // insert code here に入るコードとして、誤っているものを選びなさい。（2つ選択）",
             code: ' 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         // insert code here\n 4.         System.out.println(f.test("Lambda"));\n 5.     }\n 6.     private static interface Function {\n 7.         String test(String name);\n 8.     }\n 9. }',
             choices: [
-                '<pre><code>Function f = (name) -> {\n    return "hello, " + name;\n};</pre></code>',
-                '<pre><code>Function f = (name) -> {\n    "hello, " + name;\n};</pre></code>',
-                '<pre><code>Function f = (name) -> return "hello, " + name;</pre></code>',
-                '<pre><code>Function f = (name) -> "hello, " + name;</pre></code>',
-                '<pre><code>Function f = name -> {\n    return "hello, " + name;\n};</pre></code>',
+                '<code>Function f = (name) -> {\n    return "hello, " + name;\n};</code>',
+                '<code>Function f = (name) -> {\n    "hello, " + name;\n};</code>',
+                '<code>Function f = (name) -> return "hello, " + name;</code>',
+                '<code>Function f = (name) -> "hello, " + name;</code>',
+                '<code>Function f = name -> {\n    return "hello, " + name;\n};</code>',
             ],
             answerIndex: [1, 2],
             explanation:
@@ -74,10 +74,10 @@ const JAVA_SILVER_1Z0_815_JPN_08 = {
                 "次のプログラムを実行し、「ok」と表示したい。12行目の空欄に入るコードとして、正しいものを選びなさい。（1つ選択）",
             code: ' 1. import java.util.Arrays;\n 2. import java.util.List;\n 3. import java.util.function.*;\n 4. \n 5. public class Main {\n 6.     public static void main(String[] args) {\n 7.         List<Sample> list = Arrays.asList(\n 8.         new Sample(10),\n 9.         new Sample(20),\n10.         new Sample(30));\n11. \n12.         ＿＿＿＿＿＿＿＿\n13. \n14.         if (x.test(new Sample(20))) {\n15.             System.out.println("ok");\n16.         }\n17.     }\n18. }\n19. \n20. class Sample {\n21.     private int num;\n22.     public Sample(int num) { this.num = num; }\n23.     public boolean equals(Object obj) {\n24.         if (!(obj instanceof Sample)) return false;\n25.         return this.num == ((Sample) obj).num;\n26.     }\n27. }',
             choices: [
-                "<pre><code>Predicate&lt;Sample&gt; x = s -> list.contains(s);</pre></code>",
-                "<pre><code>Supplier&lt;Sample&gt; x = s -> list.contains(s);</pre></code>",
-                "<pre><code>Consumer&lt;Sample&gt; x = s -> list.contains(s);</pre></code>",
-                "<pre><code>Function&lt;Sample&gt; x = s -> list.contains(s);</pre></code>",
+                "<code>Predicate&lt;Sample&gt; x = s -> list.contains(s);</code>",
+                "<code>Supplier&lt;Sample&gt; x = s -> list.contains(s);</code>",
+                "<code>Consumer&lt;Sample&gt; x = s -> list.contains(s);</code>",
+                "<code>Function&lt;Sample&gt; x = s -> list.contains(s);</code>",
             ],
             answerIndex: 0,
             explanation:

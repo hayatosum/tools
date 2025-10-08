@@ -1,7 +1,5 @@
 .choices {
-    display: grid;
-    gap: 8px;
-    margin-top: 8px;
+    display: block;
 }
 .choice {
     display: flex;
@@ -11,6 +9,8 @@
     border: 1px solid var(--border);
     border-radius: 10px;
     user-select: none;
+    max-width: 100%;
+    margin-top: 8px;
 }
 
 .choice input {
@@ -217,7 +217,10 @@ button:disabled {
     border-top: 1px solid var(--border);
 }
 
-.question-text pre {
+.question-text pre,
+.modal-body .qtext pre,
+.choices pre,
+.qchoices pre {
     background: #f8f9fa;
     border: 1px solid #ddd;
     padding: 10px;
@@ -225,35 +228,19 @@ button:disabled {
     overflow-x: auto;
     font-family: Consolas, "Courier New", monospace;
     font-size: 0.9em;
-    margin-top: 6px;
+    margin: 6px 0 0 0;
+    display: block;
+    max-width: 100%;
+    -webkit-overflow-scrolling: touch;
+    white-space: pre; /* 折り返さない */
 }
+
 .choices pre,
 .qchoices pre {
     display: inline-flex;
-    width: 90%;
-    max-width: 90%;
-    background: #f8f9fa;
-    padding: 10px;
-    border-radius: 0px;
-    font-family: Consolas, "Courier New", monospace;
-    margin: 0px 2px;
-    box-sizing: border-box; /* padding込みで幅調整 */
-}
-
-/* pre は親幅に収めて、自身で横スクロールを出す */
-.question-text pre,
-.modal-body .qtext pre {
-    display: block;
-    max-width: 100%;
-}
-
-.question-text pre,
-.modal-body .qtext pre,
-.choices pre,
-.qchoices pre {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    white-space: pre; /* 折り返さない */
+    width: 92%;
+    max-width: 92%;
+    border: 0px;
 }
 
 /* 中身の code は必要分の幅を主張（ただし pre の中に閉じ込める） */
@@ -263,6 +250,12 @@ button:disabled {
 .qchoices pre > code {
     display: inline-block;
     min-width: max-content;
+}
+
+/* 選択肢内のコードブロック */
+.choices pre,
+.qchoices pre {
+    margin: 0;
 }
 
 .card,
@@ -277,11 +270,6 @@ button:disabled {
 .choice > div {
     flex: 1;
     min-width: 0;
-}
-
-.choice > div {
-    flex: 1; /* 横幅を占有させる */
-    min-width: 0; /* flex収縮時のはみ出し防止 */
 }
 
 .inline-exp {
@@ -597,7 +585,7 @@ button:disabled {
 .modal-body .qtext pre {
     background: #f8f9fa;
     border: 1px solid #ddd;
-    border-radius: 8px;
+    border-radius: 0px;
     padding: 10px;
     overflow-x: auto;
     font-family: Consolas, "Courier New", monospace;
@@ -739,7 +727,6 @@ button:disabled {
     border-left: 4px solid var(--border);
     background: #fafafa;
     padding: 10px 12px;
-    border-radius: 8px;
 }
 .answer-block.show {
     display: block;

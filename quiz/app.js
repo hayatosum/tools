@@ -195,6 +195,82 @@ function validateAllAnswered() {
     });
     gradeBtn.disabled = !allAnswered;
 }
+// 選択肢の文字列を安全にDOMへ変換する。
+// ・<code>…</code> を認識し、改行があれば <pre><code>…</code></pre> に“昇格”表示
+// ・コード内は textContent で入れるため、HTMLタグはそのまま文字として出る
+// ・```fenced``` もサポート（任意）
+function renderChoiceContent(raw) {
+    const wrap = document.createElement("span");
+    const s = String(raw ?? "");
+
+    // 1) ```fence```（任意）
+    const fence = /```(?:\w+)?\n([\s\S]*?)```/m;
+    const fm = s.match(fence);
+    if (fm) {
+        const before = s.slice(0, fm.index).trim();
+        const after = s.slice(fm.index + fm[0].length).trim();
+        if (before) {
+            const t = document.createElement("span");
+            t.textContent = before + " ";
+            wrap.appendChild(t);
+        }
+        const pre = document.createElement("pre");
+        const code = document.createElement("code");
+        code.textContent = fm[1];
+        pre.appendChild(code);
+        wrap.appendChild(pre);
+        if (after) {
+            const t2 = document.createElement("span");
+            t2.textContent = " " + after;
+            wrap.appendChild(t2);
+        }
+        return wrap;
+    }
+
+    // 2) <code>…</code> をすべて走査（複数可）
+    const codeRe = /<code(?:\s+[^>]*)?>([\s\S]*?)<\/code>/gi;
+    let last = 0,
+        m,
+        found = false;
+    while ((m = codeRe.exec(s)) !== null) {
+        found = true;
+        const plain = s.slice(last, m.index);
+        if (plain) {
+            const t = document.createElement("span");
+            t.textContent = plain;
+            wrap.appendChild(t);
+        }
+
+        const body = m[1];
+        // 改行を含む ⇒ ブロック扱い（<pre><code>）
+        if (body.includes("\n")) {
+            const pre = document.createElement("pre");
+            const code = document.createElement("code");
+            code.textContent = body;
+            pre.appendChild(code);
+            wrap.appendChild(pre);
+        } else {
+            // 1行のみ ⇒ インライン <code>
+            const code = document.createElement("code");
+            code.textContent = body;
+            wrap.appendChild(code);
+        }
+        last = m.index + m[0].length;
+    }
+    if (found) {
+        const tail = s.slice(last);
+        if (tail) {
+            const t = document.createElement("span");
+            t.textContent = tail;
+            wrap.appendChild(t);
+        }
+        return wrap;
+    }
+
+    // 3) <code> も fence も無ければ素のテキストとして
+    wrap.textContent = s;
+    return wrap;
+}
 
 // --- 描画 ---
 function renderQuiz(questions) {
@@ -319,8 +395,12 @@ function renderQuiz(questions) {
             });
 
             const text = document.createElement("div");
-            // 選択肢のHTMLはエスケープしないポリシー（コード含む）に合わせる
-            text.innerHTML = `<strong>${String.fromCharCode(65 + cIdx)}.</strong> ${c.text}`;
+            const labelStrong = document.createElement("strong");
+            labelStrong.textContent = `${String.fromCharCode(65 + cIdx)}.`;
+            text.appendChild(labelStrong);
+            text.append(" ");
+            const rawChoice = typeof c === "string" ? c : c.text;
+            text.appendChild(renderChoiceContent(rawChoice));
 
             label.appendChild(input);
             label.appendChild(text);

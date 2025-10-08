@@ -9,10 +9,10 @@ const JAVA_SILVER_1Z0_815_JPN_09 = {
                 "次の計算式を使い、毎年積立を行って複利運用したときの金額を計算したい。この計算を行うコードとして正しいものを選びなさい。（1つ選択）",
             code: "n = m * ((1 + r)^x - 1) / r",
             choices: [
-                "<pre><code>n = (int) (m * (Math.pow((1 + r), x) - 1) / r);</code></pre>",
-                "<pre><code>n = (int) (m * (Math.pow(x, (1 + r)) - 1) / r);</code></pre>",
-                "<pre><code>n = (int) (m * (Math.sqrt((1 + r)) - 1) / r);</code></pre>",
-                "<pre><code>n = (int) (m * (Math.sqrt((1 + r), x) - 1) / r);</code></pre>",
+                "<code>n = (int) (m * (Math.pow((1 + r), x) - 1) / r);</code>",
+                "<code>n = (int) (m * (Math.pow(x, (1 + r)) - 1) / r);</code>",
+                "<code>n = (int) (m * (Math.sqrt((1 + r)) - 1) / r);</code>",
+                "<code>n = (int) (m * (Math.sqrt((1 + r), x) - 1) / r);</code>",
             ],
             answerIndex: 0,
             explanation:
@@ -43,10 +43,10 @@ const JAVA_SILVER_1Z0_815_JPN_09 = {
                 "次のプログラムを実行し、「3」「2」「1」と表示したい。空欄に入るコードとして正しいものを選びなさい。（1つ選択）",
             code: " 1. import java.util.Arrays;\n 2. import java.util.List;\n 3. \n 4. public class Main {\n 5.     public static void main(String[] args) {\n 6.         List<Integer> list = Arrays.asList(new Integer[]{1, 2, 3});\n 7.         // 空欄\n 8.         for (Integer num : list) {\n 9.             System.out.println(num);\n10.         }\n11.     }\n12. }",
             choices: [
-                "<pre><code>list.sort((a, b) -> a.compareTo(b));</code></pre>",
-                "<pre><code>list.sort(() -> a.compareTo(b));</code></pre>",
-                "<pre><code>list.sort((a) -> a.compareTo(b));</code></pre>",
-                "<pre><code>list.sort((a, b) -> -a.compareTo(b));</code></pre>",
+                "<code>list.sort((a, b) -> a.compareTo(b));</code>",
+                "<code>list.sort(() -> a.compareTo(b));</code>",
+                "<code>list.sort((a) -> a.compareTo(b));</code>",
+                "<code>list.sort((a, b) -> -a.compareTo(b));</code>",
             ],
             answerIndex: 3,
             explanation:
@@ -241,10 +241,10 @@ const JAVA_SILVER_1Z0_815_JPN_09 = {
             question: "次のうち、値を変更できない固定長のリストを作るものを選びなさい。（2つ選択）",
             code: "",
             choices: [
-                "<pre><code>var list = List.of(1,2,3);</code></pre>",
-                "<pre><code>var list = new ArrayList<Integer>();</code></pre>",
-                "<pre><code>var list = Arrays.asList(new Integer[]{1,2,3});</code></pre>",
-                "<pre><code>var list = new ArrayList<Integer>(3);</code></pre>",
+                "<code>var list = List.of(1,2,3);</code>",
+                "<code>var list = new ArrayList<Integer>();</code>",
+                "<code>var list = Arrays.asList(new Integer[]{1,2,3});</code>",
+                "<code>var list = new ArrayList<Integer>(3);</code>",
             ],
             answerIndex: [0, 2],
             explanation:
@@ -310,11 +310,11 @@ const JAVA_SILVER_1Z0_815_JPN_09 = {
                 "次のプログラムの実行結果として「A」「B」「C」と順に表示したい。以下の空欄に入るコードとして正しいものを選びなさい。（2つ選択）",
             code: ' 1. import java.util.List;\n 2. \n 3. public class Main {\n 4.     public static void main(String[] args) {\n 5.         List<String> list = List.of("A", "B", "C");\n 6.         __________\n 7.     }\n 8. }',
             choices: [
-                "<pre><code>list.forEach(str -> System.out.println(str));</code></pre>",
-                "<pre><code>list.for(str -> System.out.println(str));</code></pre>",
-                "<pre><code>list.forEach(System.out::println);</code></pre>",
-                "<pre><code>list.forEach(System.out::println());</code></pre>",
-                "<pre><code>list.for(System.out::println);</code></pre>",
+                "<code>list.forEach(str -> System.out.println(str));</code>",
+                "<code>list.for(str -> System.out.println(str));</code>",
+                "<code>list.forEach(System.out::println);</code>",
+                "<code>list.forEach(System.out::println());</code>",
+                "<code>list.for(System.out::println);</code>",
             ],
             answerIndex: [0, 2],
             explanation:
