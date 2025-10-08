@@ -82,7 +82,7 @@ const JAVA_SILVER_1Z0_815_JPN_10 = {
             difficulty: "中級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: ' 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         System.out.println(test(null));\n 4.     }\n 5. \n 6.     private static String test(Object obj) {\n 7.         try {\n 8.             try {\n 9.                 System.out.println(obj.toString());\n10.             } catch (NullPointerException e) {\n11.                 return "A";\n12.             } finally {\n13.                 System.out.println("B");\n14.             }\n15.         }\n16.         return "C";\n17.     }\n18. }',
+            code: ' 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         System.out.println(test(null));\n 4.     }\n 5. \n 6.     private static String test(Object obj) {\n 7.         try {\n 8.             System.out.println(obj.toString());\n 9.         } catch (NullPointerException e) {\n10.             return "A";\n11.         } finally {\n12.             System.out.println("B");\n13.         }\n14.         return "C";\n15.     }\n16. }',
             choices: [
                 "「A」と表示される",
                 "「A」「B」と表示される",
@@ -193,7 +193,7 @@ const JAVA_SILVER_1Z0_815_JPN_10 = {
             difficulty: "中級",
             question:
                 "次の Sample クラスの2行目の空欄に入るコードとして、正しいものを選びなさい。（2つ選択）",
-            code: ' 1. public class SampleException extends Exception {}\n 2. public class TestException extends RuntimeException {}\n 3. \n 4. public class Sample {\n 5.     public void hello(String name) _________ {\n 6.         if (name == null) {\n 7.             throw new SampleException();\n 8.         }\n 9.         if ("".equals(name)) {\n10.             throw new TestException();\n11.         }\n12.         // do something\n13.     }\n14. }',
+            code: ' 1. public class SampleException extends Exception {}\n\n 1. public class TestException extends RuntimeException {}\n\n 1. public class Sample {\n 2.     public void hello(String name) _________ {\n 3.         if (name == null) {\n 4.             throw new SampleException();\n 5.         }\n 6.         if ("".equals(name)) {\n 7.             throw new TestException();\n 8.         }\n 9.         // do something\n10.     }\n11. }',
             choices: [
                 "throws SampleException, TestException",
                 "throws SampleException; TestException",
@@ -226,8 +226,8 @@ const JAVA_SILVER_1Z0_815_JPN_10 = {
             category: "例外処理",
             difficulty: "初級",
             question:
-                "次のプログラムを確認してください。このプログラムを次のコマンドで実行したときの結果として、正しいものを選びなさい。（1つ選択）  → java Main",
-            code: " 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         System.out.println(args[0].length());\n 4.     }\n 5. }",
+                "次のプログラムを確認してください。このプログラムを次のコマンドで実行したときの結果として、正しいものを選びなさい。（1つ選択）",
+            code: "> java Main\n\n 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         System.out.println(args[0].length());\n 4.     }\n 5. }",
             choices: [
                 "「null」と表示される",
                 "「0」と表示される",
@@ -261,7 +261,7 @@ const JAVA_SILVER_1Z0_815_JPN_10 = {
             difficulty: "中級",
             question:
                 "次のプログラムを確認してください。これらのクラスを利用する以下のプログラムを、コンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: " 1. public class A {\n 2.     private int num;\n 3.     public A(int num) { this.num = num; }\n 4.     public boolean equals(Object obj) {\n 5.         A a = (A) obj;            \n 6.         return this.num == a.num;\n 7.     }\n 8. }\n 9. \n10. public class B {\n11.     private int num;\n12.     public B(int num) { this.num = num; }\n13.     public boolean equals(Object obj) {\n14.         B b = (B) obj;            \n15.         return this.num == b.num;\n16.     }\n17. }\n18. \n19. public class Main {\n20.     public static void main(String[] args) {\n21.         A a = new A(10);\n22.         B b = new B(10);\n23.         System.out.println(a.equals(b));\n24.     }\n25. }",
+            code: " 1. public class A {\n 2.     private int num;\n 3.     public A(int num) { this.num = num; }\n 4.     public boolean equals(Object obj) {\n 5.         A a = (A) obj;            \n 6.         return this.num == a.num;\n 7.     }\n 8. }\n\n 1. public class B {\n 2.     private int num;\n 3.     public B(int num) { this.num = num; }\n 4.     public boolean equals(Object obj) {\n 5.         B b = (B) obj;            \n 6.         return this.num == b.num;\n 7.     }\n 8. }\n\n 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         A a = new A(10);\n 4.         B b = new B(10);\n 5.         System.out.println(a.equals(b));\n 6.     }\n 7. }",
             choices: [
                 "trueが表示される",
                 "falseが表示される",
