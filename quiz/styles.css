@@ -806,3 +806,23 @@ button:disabled {
 .choice > div > strong {
     vertical-align: top;
 }
+
+.hidden {
+    display: none !important;
+}
+
+.order-mode {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+.order-range {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+.order-range input[type="number"] {
+    width: 4rem;
+}

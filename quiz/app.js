@@ -71,6 +71,12 @@ const adaptiveModeEl = document.getElementById("adaptiveMode");
 const adaptiveStrengthEl = document.getElementById("adaptiveStrength");
 const showQuestionIdEl = document.getElementById("showQuestionId");
 
+const orderModeEl = document.getElementById("questionOrderMode");
+const randomControls = document.getElementById("randomControls");
+const orderedControls = document.getElementById("orderedControls");
+const orderFromEl = document.getElementById("orderFrom");
+const orderToEl = document.getElementById("orderTo");
+
 // 出題範囲のセレクト
 fileSelect?.addEventListener("change", () => {
     localStorage.setItem("opt.fileSelect", fileSelect.value);
@@ -107,6 +113,16 @@ showQuestionIdEl?.addEventListener("change", () => {
     if (Array.isArray(currentQuestions) && currentQuestions.length > 0) {
         renderQuiz(currentQuestions);
     }
+});
+
+orderModeEl?.addEventListener("change", updateOrderModeUI);
+orderFromEl?.addEventListener("input", () => {
+    clampOrderInputs();
+    localStorage.setItem("opt.orderFrom", orderFromEl.value);
+});
+orderToEl?.addEventListener("input", () => {
+    clampOrderInputs();
+    localStorage.setItem("opt.orderTo", orderToEl.value);
 });
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -148,6 +164,15 @@ document.addEventListener("DOMContentLoaded", async () => {
         showQuestionIdEl.checked = savedShowId === "1";
     }
 
+    // ▼ 復元（DOMContentLoaded で他オプションと一緒に）
+    const savedMode = localStorage.getItem("opt.orderMode");
+    if (savedMode && orderModeEl) orderModeEl.value = savedMode;
+    const savedFrom = localStorage.getItem("opt.orderFrom");
+    const savedTo = localStorage.getItem("opt.orderTo");
+    if (savedFrom && orderFromEl) orderFromEl.value = savedFrom;
+    if (savedTo && orderToEl) orderToEl.value = savedTo;
+    updateOrderModeUI();
+
     updateSelectedFileCount();
     try {
         await loadAllQuestions(); // ← 初期ロード
@@ -160,6 +185,34 @@ document.addEventListener("DOMContentLoaded", async () => {
     // 初期タブ
     switchTab("quiz");
 });
+
+function refreshOrderRangeBounds() {
+    if (!orderFromEl || !orderToEl) return;
+    const max = Array.isArray(allQuestions) ? allQuestions.length : 0;
+    orderFromEl.min = orderToEl.min = "1";
+    orderFromEl.max = orderToEl.max = String(max || 1);
+    if (!orderFromEl.value) orderFromEl.value = "1";
+    if (!orderToEl.value) orderToEl.value = String(Math.min(10, Math.max(1, max)));
+    clampOrderInputs();
+}
+function clampOrderInputs() {
+    if (!orderFromEl || !orderToEl) return;
+    const max = Array.isArray(allQuestions) ? allQuestions.length : 1;
+    let f = Math.max(1, Math.min(max, parseInt(orderFromEl.value || "1", 10)));
+    let t = Math.max(1, Math.min(max, parseInt(orderToEl.value || String(max), 10)));
+    if (f > t) [f, t] = [t, f];
+    orderFromEl.value = String(f);
+    orderToEl.value = String(t);
+}
+function updateOrderModeUI() {
+    const isRandom = (orderModeEl?.value || "random") === "random";
+    randomControls?.classList.toggle("hidden", !isRandom);
+    orderedControls?.classList.toggle("hidden", isRandom);
+    localStorage.setItem("opt.orderMode", isRandom ? "random" : "ordered");
+    // 入力可能/不可（任意）
+    randomControls?.querySelectorAll("input,select").forEach((el) => (el.disabled = !isRandom));
+    orderedControls?.querySelectorAll("input,select").forEach((el) => (el.disabled = isRandom));
+}
 
 // --- ファイル切り替え ---
 fileSelect.addEventListener("change", () => {
@@ -665,6 +718,8 @@ async function loadAllQuestions(forceKey = null) {
     }
 
     allQuestions = merged;
+
+    refreshOrderRangeBounds();
 }
 
 function countQuestionsInBuiltinSet(key) {
@@ -748,35 +803,43 @@ function validateQuestions(data, prefix = "ZZ00") {
     });
 }
 
-// === 置き換え：出題選択 ===
+// 出題選択 ===
 function pickQuestions(n) {
+    const mode = orderModeEl ? orderModeEl.value : "random";
+
+    // --- 番号順：from–to をそのまま返す（出題数 n は無視） ---
+    if (mode === "ordered" && Array.isArray(allQuestions) && orderFromEl && orderToEl) {
+        const max = allQuestions.length;
+        let from = parseInt(orderFromEl.value || "1", 10);
+        let to = parseInt(orderToEl.value || String(max), 10);
+        if (!Number.isFinite(from)) from = 1;
+        if (!Number.isFinite(to)) to = max;
+        from = Math.max(1, Math.min(max, from));
+        to = Math.max(1, Math.min(max, to));
+        if (from > to) [from, to] = [to, from];
+        return allQuestions.slice(from - 1, to);
+    }
+
+    // --- ランダム：既存ロジック（未出題優先 → 補完ランダム/弱点優先） ---
     const cnt = Math.min(n, allQuestions.length);
     const useAdaptive = adaptiveModeEl ? adaptiveModeEl.checked : false;
 
-    // 未出題を最優先でピック
     const seenSet = getSeenIdSetFromHistory();
     const unseen = allQuestions.filter((q) => !seenSet.has(q.id));
     const picked = [];
 
-    // まず未出題から必要数まで埋める（未出題内の順序はランダム）
     if (unseen.length > 0) {
-        // 未出題が必要数以上ある場合 → 未出題だけで完結
-        if (unseen.length >= cnt) {
-            return shuffle(unseen).slice(0, cnt);
-        }
-        // 未出題が不足する場合 → あるだけ入れて、残りを既出から補完
-        picked.push(...shuffle(unseen)); // 全部採用（順序ランダム）
+        if (unseen.length >= cnt) return shuffle(unseen).slice(0, cnt);
+        picked.push(...shuffle(unseen));
     }
 
     const remain = cnt - picked.length;
     if (remain <= 0) return picked.slice(0, cnt);
 
-    // 既出のみのプールを作成
     const seenPool = allQuestions.filter((q) => seenSet.has(q.id) && !picked.includes(q));
 
-    // 弱点優先モードなら重み付け、OFFなら通常ランダム
     if (useAdaptive && loadHistory().length > 0) {
-        const rateMap = buildRateMapFromHistory(); // 既存：id -> 正答率(0-100)
+        const rateMap = buildRateMapFromHistory();
         const strength = Number(adaptiveStrengthEl?.value ?? 1.0);
         const weights = seenPool.map((q) => rateToWeight(rateMap.get(q.id), strength));
         const sampled = weightedSampleWithoutReplacement(seenPool, weights, remain);
@@ -784,7 +847,6 @@ function pickQuestions(n) {
     } else {
         picked.push(...shuffle(seenPool).slice(0, remain));
     }
-
     return picked.slice(0, cnt);
 }
 
@@ -842,17 +904,23 @@ loadBtn.addEventListener("click", async () => {
         setStatus("問題を読み込み中…", 0);
         await loadAllQuestions();
 
-        const n = ensureNumber(countInput.value, 1);
-        if (n < 1) {
-            setStatus("出題数は1以上を指定してください");
-            return;
-        }
-        if (allQuestions.length === 0) {
-            setStatus("登録された問題がありません");
-            return;
-        }
-        if (n > allQuestions.length) {
-            setStatus(`出題数が多すぎます（最大 ${allQuestions.length}）`);
+        const mode = orderModeEl ? orderModeEl.value : "random";
+        let n = ensureNumber(countInput.value, 1);
+        if (mode === "random") {
+            if (n < 1) {
+                setStatus("出題数は1以上を指定してください");
+                return;
+            }
+            if (allQuestions.length === 0) {
+                setStatus("登録された問題がありません");
+                return;
+            }
+            if (n > allQuestions.length) {
+                setStatus(`出題数が多すぎます（最大 ${allQuestions.length}）`);
+            }
+        } else {
+            // 番号順：範囲を整えるだけ
+            clampOrderInputs();
         }
 
         currentQuestions = pickQuestions(n);

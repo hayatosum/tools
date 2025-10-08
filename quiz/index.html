@@ -69,22 +69,66 @@
                     <input type="file" id="fileInput" accept=".json" hidden />
                     <span id="fileCount" class="sub"></span>
                 </section>
+
                 <section class="controls">
-                    <label for="questionCount">出題数：</label>
-                    <input id="questionCount" type="number" min="1" step="1" value="5" />
-                    <label><input id="adaptiveMode" type="checkbox" checked /> 弱点優先</label>
-                    <label class="sub" style="margin-left: 8px">
-                        重点度(0〜2):
-                        <input
-                            id="adaptiveStrength"
-                            type="number"
-                            min="0"
-                            max="2"
-                            step="0.1"
-                            value="1.0"
-                            style="width: 70px"
-                        />
-                    </label>
+                    <div class="order-mode">
+                        <label for="questionOrderMode">出題方法：</label>
+                        <select id="questionOrderMode">
+                            <option value="random">ランダム</option>
+                            <option value="ordered">番号順</option>
+                        </select>
+                    </div>
+                </section>
+
+                <section class="controls">
+                    <!-- ランダムのときだけ表示 -->
+                    <div id="randomControls">
+                        <label for="questionCount">出題数：</label>
+                        <input id="questionCount" type="number" min="1" step="1" value="5" />
+                        <label><input id="adaptiveMode" type="checkbox" checked /> 弱点優先</label>
+                        <label class="sub" style="margin-left: 8px">
+                            重点度(0〜2):
+                            <input
+                                id="adaptiveStrength"
+                                type="number"
+                                min="0"
+                                max="2"
+                                step="0.1"
+                                value="1.0"
+                                style="width: 70px"
+                            />
+                        </label>
+                    </div>
+
+                    <!-- 番号順のときだけ表示 -->
+                    <div id="orderedControls" class="hidden">
+                        <div id="orderRangeGroup" class="order-range">
+                            <span>No：</span>
+                            <label>
+                                <input
+                                    id="orderFrom"
+                                    type="number"
+                                    min="1"
+                                    value="1"
+                                    inputmode="numeric"
+                                />
+                            </label>
+                            <label>～</label>
+                            <label>
+                                <input
+                                    id="orderTo"
+                                    type="number"
+                                    min="1"
+                                    value="10"
+                                    inputmode="numeric"
+                                />
+                            </label>
+                            <label>を出題する</label>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="controls">
                     <label>
                         <input id="randomizeChoices" type="checkbox" checked />
                         選択肢をランダムに並べ替える
