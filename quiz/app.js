@@ -43,8 +43,6 @@ async function switchTab(to) {
 tabQuizBtn?.addEventListener("click", () => switchTab("quiz"));
 tabAnalBtn?.addEventListener("click", () => switchTab("analytics"));
 
-// 初期タブ
-switchTab("quiz");
 // --- 設定 ---
 // const QUESTIONS_URL = './questions.json'; // 同じフォルダに配置
 
@@ -158,6 +156,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     } catch (e) {
         console.warn("初期ロードで問題を読み込めませんでした:", e);
     }
+
+    // 初期タブ
+    switchTab("quiz");
 });
 
 // --- ファイル切り替え ---
@@ -790,15 +791,34 @@ function renderHistory() {
         const head = document.createElement("div");
         head.className = "history-head";
         const title = document.createElement("h3");
-        title.textContent = `#${String(hist.length - (start + idx)).padStart(2, "0")}：${
-            h.correct
-        }/${h.total}（${h.rate}%）`;
-        const src = document.createElement("div");
-        src.className = "source";
-        src.textContent = h.source ? `出題範囲: ${h.source}` : "";
+        title.textContent = `#${String(hist.length - (start + idx)).padStart(2, "0")}`;
         head.appendChild(title);
-        head.appendChild(src);
+
+        // ★ 追加：正答率のプログレスバー
+        const prog = document.createElement("div");
+        prog.className = "history-progress";
+        // ミニトラック & フィル & 値
+        prog.innerHTML = `
+            <div class="mini-val">${h.correct}/${h.total} (${h.rate}%)</div>
+            <div class="mini-track" role="progressbar"
+                aria-label="正答率"
+                aria-valuemin="0" aria-valuemax="100"
+                aria-valuenow="${h.rate}">
+                <div class="mini-fill" style="width:${h.rate}%"></div>
+            </div>
+        `;
+        // 色は正答率に応じて（赤→緑）既存関数で動的設定
+        const fillEl = prog.querySelector(".mini-fill");
+        if (fillEl && typeof rateToColor === "function") {
+            fillEl.style.background = rateToColor(h.rate);
+        }
+        head.appendChild(prog);
         div.appendChild(head);
+
+        const src = document.createElement("div");
+        src.className = "history-meta";
+        src.textContent = h.source ? `${h.source}` : "";
+        div.appendChild(src);
 
         const meta = document.createElement("div");
         meta.className = "history-meta";
