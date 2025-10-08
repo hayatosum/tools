@@ -34,7 +34,7 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
             ],
             answerIndex: 0,
             explanation:
-                "Javaソースの構造は常に「package → import → class」の順で記述する必要がある。",
+                "Javaのソースファイルは、最上部にpackage宣言、次にimport宣言、その後にクラスやインタフェースの宣言を書く必要があります。この順序以外ではコンパイルエラーとなります。",
         },
         {
             id: 3,
@@ -69,7 +69,7 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
             ],
             answerIndex: 4,
             explanation:
-                "ラムダ式で参照する変数はfinalまたは実質finalである必要があるため、i++によりコンパイルエラー。",
+                "Javaのラムダ式内で参照するローカル変数は、finalまたは実質final（再代入されない）でなければなりません。i++で再代入しているため、コンパイルエラーとなります。",
         },
         {
             id: 5,
@@ -101,8 +101,9 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
                 "モジュールの名前が短すぎる",
                 "コンパイルエラーが発生する",
             ],
-            answerIndex: 3,
-            explanation: "循環依存（AがBを、BがAをrequire）は許可されず、コンパイルエラーとなる。",
+            answerIndex: [0, 3],
+            explanation:
+                "Javaのモジュールシステムでは、2つのモジュールが互いにrequiresし合う循環依存は許可されておらず、コンパイルエラーとなります。",
         },
         {
             id: 7,
@@ -351,7 +352,7 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
                 "<code>int[][] array = new int[][2];\narray[0][0] = 1;\narray[0][1] = 2;\narray[1][0] = 3;\narray[1][1] = 4;</code>",
                 "<code>int[] array = {0,1};\nint[][][] array2 = new int[2][2][2];\narray2[0][0] = array;\narray2[0][1] = array;\narray2[1][0] = array;\narray2[1][1] = array;</code>",
             ],
-            answerIndex: [0, 3],
+            answerIndex: [0, 4],
             explanation:
                 "2次元配列では波括弧で初期化リテラルを使用できるほか、new文で配列サイズを指定してから要素に代入することも正しい構文。",
         },
@@ -384,7 +385,7 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
                 "b1.sample(list) を実行すると B が表示される",
                 "b1.sample(list) を実行すると C が表示される",
             ],
-            answerIndex: [0, 1, 4],
+            answerIndex: [0, 2, 4],
             explanation:
                 "オーバーロードとオーバーライドの関係：a1とa2は宣言型がAであるためA#sample(Collection)が呼ばれる。b1はB型でList引数が一致するためCが表示される。",
         },
@@ -470,7 +471,7 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
                 "Aはabstractにできない",
                 "BはAのサブタイプである",
             ],
-            answerIndex: 5,
+            answerIndex: [0, 1, 5],
             explanation:
                 "BはAを実装しておりAのサブタイプである。インターフェースはfinalにできない。",
         },
@@ -486,7 +487,7 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
                 "セキュリティとメンテナンス性が向上する",
                 "アプリケーションの堅牢性が向上する",
             ],
-            answerIndex: 3,
+            answerIndex: [1, 3],
             explanation: "モジュール化により依存関係が明確になり、セキュリティと保守性が高まる。",
         },
         {
@@ -519,7 +520,7 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
                 "「E」「D」「C」「B」「A」と表示される",
                 "「A」「B」と表示される",
             ],
-            answerIndex: 1,
+            answerIndex: 2,
             explanation: "昇順ソートが行われるため、「ABCDE」と順に出力される。",
         },
         {
@@ -611,8 +612,9 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
                 "<code>public char methodD(String str) {\n    return str;\n}</code>",
                 "<code>public void methodE() {\n    return;\n}</code>",
             ],
-            answerIndex: 2,
-            explanation: "戻り値型とreturn文の整合が取れているのはmethodB()とmethodC()である。",
+            answerIndex: [2, 4],
+            explanation:
+                "void型でreturn;のみはOK、boolean型で条件式returnもOK、void型で値returnやchar型でString returnは不可、など戻り値型とreturn文の整合が取れているものが正しい定義です。",
         },
         {
             id: 38,
@@ -645,7 +647,7 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
                 "「A B A B」と表示される",
                 "実行時に例外がスローされる",
             ],
-            answerIndex: 3,
+            answerIndex: 1,
             explanation:
                 'コマンド行引数 "A", "B", "A", "B" がそのまま順に出力されるため、「ABAB」と表示される。',
         },
@@ -662,7 +664,7 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
                 "A end と表示される",
                 "コンパイルエラーが発生する",
             ],
-            answerIndex: 0,
+            answerIndex: 2,
             explanation:
                 '最初のループで array[0] が "A" のため "A end" が出力され、breakで終了する。',
         },
@@ -730,7 +732,7 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
                 "SubSampleクラスの8行目だけでコンパイルエラーになる",
                 "SubSampleクラスの3行目と8行目の両方でコンパイルエラーになる",
             ],
-            answerIndex: 3,
+            answerIndex: 4,
             explanation:
                 "コンストラクタ内の別コンストラクタ呼び出し（this(...)）は最初の文でなければならない。super(...) の後に this(price) を置いているため8行目でコンパイルエラー。",
         },
@@ -792,10 +794,10 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
                 "次のプログラムを以下に示したコマンドで実行したときの結果として、正しいものを選びなさい。（1つ選択）\n> java Main a b c",
             code: ' 1. public class Main {\n 2.   public static void main(String[] args) {\n 3.     int i = 1;\n 4.     for (String s : args) {\n 5.       System.out.println((i++) + ") " + s);\n 6.     }\n 7.   }\n 8. }',
             choices: [
-                "1) a\\n2) b\\n3) c",
-                "2) a\\n3) b\\n4) c",
-                "1) Main\\n2) a\\n3) b\\n4) c",
-                "2) Main\\n3) a\\n4) b\\n5) c",
+                "<code>1) a\\n2) b\\n3) c</code>",
+                "<code>2) a\\n3) b\\n4) c</code>",
+                "<code>1) Main\\n2) a\\n3) b\\n4) c</code>",
+                "<code>2) Main\\n3) a\\n4) b\\n5) c</code>",
             ],
             answerIndex: 0,
             explanation:
@@ -843,15 +845,15 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
             question: "例外処理に関する説明として、正しいものを選びなさい。（2つ選択）",
             code: "",
             choices: [
-                "finallyブロックは、try/catch の後に配置される（最後に来る）",
-                "try-with-resourcesのリソースは finally より前にクローズされる",
+                "finallyブロックは、tryブロックまたはcatchブラックのすぐ後ろに配置しなければならない",
+                "try-with-resourcesのリソースを閉じる前に finallyブロックが実行される",
                 "tryブロックは複数のcatchブロックを持つことができる",
-                "catchブロックは、一般的な型より特定の型を先に並べる必要がある",
-                "tryブロックは、catchブロックとfinallyブロックを必ず両方持たなければならない",
+                "catchブロックは、一般的な型から特定の型への順に並べなければいけない",
+                "tryブロックは、catchブロックとfinallyブロックを持たなければいけない",
             ],
-            answerIndex: 2,
+            answerIndex: [0, 2],
             explanation:
-                "正しいものはCとD。複数catchは可（C）。例外の多重定義は上位型より下位型を先に並べる必要がある（D）。AやBは表現の揺れを含むが設問では2つ選択の想定のためC・Dを正答とする。",
+                "tryブロックは複数のcatchブロックを持つことができ、catchの順序は上位型（例：Exception）より下位型（例：IOException）を後ろに書く必要があります。finallyブロックはtryまたはcatchの直後に配置します。",
         },
         {
             id: 52,
@@ -883,7 +885,7 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
                 "<code>float a = Math.round((int)(x / y), 2);</code>",
                 "<code>float a = Math.round((float) x / y, 2);</code>",
             ],
-            answerIndex: 1,
+            answerIndex: 0,
             explanation:
                 "浮動小数点の除算を行い、100倍→四捨五入→100で割ることで小数第2位までを表示できる。",
         },
@@ -912,14 +914,13 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
             choices: [
                 "<code>int[][] a = {{1,1},{2,2}};</code>",
                 "<code>short b = (short)'A';</code>",
-                "<code>byte c1 = 10;</code>",
-                "<code>char c2 = 'c';</code>",
+                "<code>byte c1 = 10;\nchar c2 = c1;</code>",
                 "<code>boolean d = (10 == 10);</code>",
-                "<code>float e = 1.9;</code>",
-                "<code>int f = 12.34;</code>",
+                "<code>float e = 1.99;</code>",
+                "<code>int f = 12_34;</code>",
                 "<code>String g = 'a';</code>",
             ],
-            answerIndex: 4,
+            answerIndex: [0, 1, 3, 5],
             explanation:
                 "float e, int f, String gは型不一致でコンパイルエラー。正しいのはa〜dとboolean d。",
         },
@@ -931,12 +932,12 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
                 "次のプログラムをコンパイルし、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
             code: ' 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         String[][] array = {\n 4.             { "A", "B" },\n 5.             { "C", "D", "E", "F", "G" }\n 6.         };\n 7.         for (int i = 0; i < array.length; i++) {\n 8.             int j = 0;\n 9.             while (j < array[i].length) {\n10.                 System.out.println("[" + i + "," + j + "]=" + array[i][j]);\n11.                 j++;\n12.             }\n13.         }\n14.     }\n15. }',
             choices: [
-                "[0,0]=A [0,1]=B [1,0]=C [1,1]=D [2,0]=E [2,1]=F [2,2]=G",
-                "[0,0]=A [0,1]=B [1,0]=C [2,0]=D [2,1]=E [2,2]=F [2,3]=G",
-                "[0,0]=A [0,1]=B [1,0]=C [1,1]=D [2,0]=E [2,1]=F [2,2]=G",
-                "[0,0]=A [0,1]=B [0,2]=C [1,0]=D [1,1]=E [1,2]=F [1,3]=G",
+                "[0,0]=A\n[0,1]=B\n[1,0]=C\n[1,1]=D\n[2,0]=E\n[2,1]=F\n[2,2]=G",
+                "[0,0]=A\n[0,1]=B\n[1,0]=C\n[2,0]=D\n[2,1]=E\n[2,2]=F\n[2,3]=G",
+                "[0,0]=A\n[0,1]=B\n[1,0]=C\n[1,1]=D\n[2,0]=E\n[2,1]=F\n[3,0]=G",
+                "[0,0]=A\n[0,1]=B\n[1,0]=C\n[1,0]=D\n[1,1]=E\n[1,2]=F\n[1,3]=G",
             ],
-            answerIndex: 2,
+            answerIndex: 1,
             explanation:
                 "配列の構造から、出力は[0,0]=A, [0,1]=B, [1,0]=C, [1,1]=D, [2,0]=E, [2,1]=F, [2,2]=Gのようになる。",
         },
@@ -970,7 +971,7 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
                 "9が表示される",
                 "コンパイルエラーが発生する",
             ],
-            answerIndex: 2,
+            answerIndex: 0,
             explanation: "num=9は10より小さいためif文の条件がtrueとなり、「9」が表示される。",
         },
         {
@@ -981,10 +982,10 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
                 "次のプログラムをコンパイルし、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
             code: ' 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         int a = 4;\n 4.         int b = 2;\n 5.         System.out.println("a + b = " + (a + b) + ", b + a = " + a + b);\n 6.     }\n 7. }',
             choices: [
-                "a + b = 6, b + a = 42 と表示される",
-                "a + b = 6, b + a = 6 と表示される",
-                "a + b = 42, b + a = 6 と表示される",
-                "a + b = 42, b + a = 42 と表示される",
+                "「6 = (a + b) = 42」と表示される",
+                "「6 = (a + b) = 6」と表示される",
+                "「42 = (a + b) = 42」と表示される",
+                "「42 = (a + b) = 6」と表示される",
             ],
             answerIndex: 0,
             explanation:
@@ -1033,12 +1034,12 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
                 "次のプログラムをコンパイルし、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
             code: " 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         char[][] arrays = {{'a', 'd'}, {'b', 'e'}, {'c', 'f'}};\n 4.         for (char[] array : arrays) {\n 5.             for (char c : array) {\n 6.                 System.out.print(c);\n 7.             }\n 8.             System.out.print(\" \");\n 9.         }\n10.     }\n11. }",
             choices: [
-                "[a d b e c f] と表示される",
-                "[abdefc] と表示される",
-                "[abcdef] と表示される",
-                "[ab def cf] と表示される",
+                "[ad be cf] と表示される",
+                "[abc def] と表示される",
+                "[a b c d e f] と表示される",
+                "[abd ecf] と表示される",
             ],
-            answerIndex: 2,
+            answerIndex: 0,
             explanation:
                 "配列を二重ループで出力しているため、各文字が順に出力されて「abcdef」となる。",
         },
@@ -1100,8 +1101,8 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
             difficulty: "初級",
             question: "次のプログラムの空欄に入るコードとして、正しいものを選びなさい。（1つ選択）",
             code: " 1. public class Sample {\n 2.     public static void print(Integer num) {\n 3.         System.out.println(num);\n 4.     }\n 5. }\n 6. \n 7. import java.util.List;\n 8. public class Main {\n 9.     public static void main(String[] args) {\n10.         List<Integer> list = List.of(1, 2, 3);\n11.         list.forEach(＿＿＿＿＿＿＿);\n12.     }\n13. }",
-            choices: ["new Sample()::print", "Sample.print", "Sample::print", "Sample::print()"],
-            answerIndex: 2,
+            choices: ["new Sample()::print", "Sample.print", "Sample:print", "Sample::print"],
+            answerIndex: 3,
             explanation:
                 "メソッド参照ではクラス名::メソッド名の形式を用いる。したがって正解はSample::print。",
         },
@@ -1130,12 +1131,12 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
                 "次のクラスのコンストラクタのうち、コンパイル可能で、かつ array フィールドに参照をセットできるものを選びなさい。（2つ選択）",
             code: "public class Sample {\n private String[] array;\n}",
             choices: [
-                "<code>public Sample(String[] array) {\n this.array = array;\n}</code>",
-                "<code>public Sample(String... array) {\n array = array;\n}</code>",
-                "<code>public Sample(String str) {\n this.array = str;\n}</code>",
-                "<code>public Sample(String[] array) {\n array = array;\n}</code>",
-                "<code>public Sample(String... array) {\n this.array = array;\n}</code>",
-                "<code>public Sample(Object[] array) {\n this.array = array;\n}</code>",
+                "<code>public Sample(String[] array) {\n    this.array = array;\n}</code>",
+                "<code>public Sample(String... array) {\n    array = array;\n}</code>",
+                "<code>public Sample(String str) {\n    this.array = str;\n}</code>",
+                "<code>public Sample(String[] array) {\n    array = array;\n}</code>",
+                "<code>public Sample(String... array) {\n    this.array = array;\n}</code>",
+                "<code>public Sample(Object[] array) {\n    this.array = array;\n}</code>",
             ],
             answerIndex: [0, 4],
             explanation:
@@ -1184,10 +1185,10 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
                 "次のプログラムを実行し、「abcd」と表示したい。「// insert code here」に入るコードとして正しいものを選びなさい。（1つ選択）",
             code: ' 1. public class Sample {\n 2. public static void main(String[] args) {\n 3. String[][] array = new String[2][2];\n 4. array[0][0] = "a";\n 5. array[0][1] = "b";\n 6. array[1][0] = "c";\n 7. array[1][1] = "d";\n 8. // insert code here\n 9. }\n10. }',
             choices: [
-                "<code>for (int i = 1; i < 2; ++i) {\n for (int j = 1; j < 2; ++j) {\n System.out.print(array[i][j]);\n }\n}</code>",
-                "<code>for (int i = 0; i < 2; ++i) {\n for (int j = 0; j < i; ++j) {\n System.out.print(array[i][j]);\n }\n}</code>",
-                "<code>for (String a : array) {\n for (String b : array) {\n System.out.println(b);\n }\n}</code>",
-                "<code>for (int i = 0; i < 2; ) {\n for (int j = 0; j < 2; ) {\n System.out.print(array[i][j]);\n j++;\n }\n i++;\n}</code>",
+                "<code>for (int i = 1; i < 2; ++i) {\n    for (int j = 1; j < 2; ++j) {\n        System.out.print(array[i][j]);\n    }\n}</code>",
+                "<code>for (int i = 0; i < 2; ++i) {\n    for (int j = 0; j < i; ++j) {\n        System.out.print(array[i][j]);\n    }\n}</code>",
+                "<code>for (String a : array) {\n    for (String b : array) {\n        System.out.println(b);\n    }\n}</code>",
+                "<code>for (int i = 0; i < 2; ) {\n    for (int j = 0; j < 2; ) {\n        System.out.print(array[i][j]);\n        j++;\n    }\n    i++;\n}</code>",
             ],
             answerIndex: 3,
             explanation:
@@ -1234,7 +1235,12 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
             question:
                 "次のプログラムをコンパイル・実行したときの結果として、正しいものを選びなさい。（1つ選択）",
             code: ' 1. public class Main {\n 2. public static void main(String[] args) {\n 3. String[] str = new String[2];\n 4. int i = 0;\n 5. for (String s : str) {\n 6. str[i].concat("e" + i);\n 7. i++;\n 8. }\n 9. for (i = 0; i < str.length; i++) {\n10. System.out.println(str[i]);\n11. }\n12. }\n13. }',
-            choices: ["e0", "e1", "null e0", "実行時に例外がスローされる"],
+            choices: [
+                "<code>e0\ne1</code>",
+                "<code>null e0\nnull e1</code>",
+                "<code>null\nnull</code>",
+                "<code>実行時に例外がスローされる</code>",
+            ],
             answerIndex: 3,
             explanation:
                 "配列の各要素は初期値 null。最初のループで str[0].concat(...) を呼び出した時点で NullPointerException が発生する。",
@@ -1247,8 +1253,10 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
                 "モジュール a はモジュール b に依存し、他のすべてのモジュールから com.sample パッケージへアクセスできるようにしたい。この要件に合致する module-info.java を選びなさい。（1つ選択）",
             code: "",
             choices: [
-                "<code>module a {\n requires com.sample;\n exports b;\n}</code>",
-                "<code>module a {\n requires b;\n exports com.sample;\n}</code>",
+                "<code>module a {\n    requires com.sample;\n    exports b;\n}</code>",
+                "<code>module a {\n    requires b;\n    exports com.sample;\n}</code>",
+                "<code>module a {\n    import com.sample;\n    export b;\n}</code>",
+                "<code>module a {\n    import b;\n    export com.sample;\n}</code>",
             ],
             answerIndex: 1,
             explanation:
@@ -1280,10 +1288,10 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
                 "次のプログラムをコンパイル・実行したときの結果として、正しいものを選びなさい。（1つ選択）",
             code: ' 1. public class Sample {\n 2. public void test() {\n 3. System.out.println("Sample#test()");\n 4. }\n 5. }\n 6.\n 7. public class SubSample extends Sample {\n 8. @Override\n 9. public void test() {\n10. System.out.println("SubSample#test()");\n11. }\n12. }\n13.\n14. public class Main {\n15. public static void main(String[] args) {\n16. SubSample sub = new SubSample();\n17. Sample sample = new SubSample();\n18. sub = sample;\n19. sub.test();\n20. sample.test();\n21. }\n22. }',
             choices: [
-                "Sample#test() / Sample#test()",
-                "SubSample#test() / SubSample#test()",
-                "SubSample#test() / Sample#test()",
-                "Sample#test() / SubSample#test()",
+                "<code>Sample#test()\nSample#test()</code>",
+                "<code>SubSample#test()\nSubSample#test()</code>",
+                "<code>SubSample#test()\nSample#test()</code>",
+                "実行時に例外がスローされる",
                 "コンパイルエラーが発生する",
             ],
             answerIndex: 4,
@@ -1314,12 +1322,12 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
             question: "モジュールに関する説明として、正しいものを選びなさい。（2つ選択）",
             code: "",
             choices: [
-                "コマンドラインからモジュールのエクスポートを設定することはできない",
+                "コマンドラインからモジュールのエクスポートを設定することはできるが望ましくない",
                 "Java の基本 API は java.base モジュールにある",
                 "JDK がモジュール化されたため、API は非推奨になった",
-                "モジュール形式で実行するには、アプリケーションをモジュールとして構造化する必要がある",
+                "モジュール式JDKで実行するには、アプリケーションをモジュールとして構造化する必要がある",
             ],
-            answerIndex: [1, 3],
+            answerIndex: [0, 1],
             explanation:
                 "基本 API は java.base に含まれる。--module-path / -m でモジュール形式で実行するにはモジュールとして構成する必要がある。A は誤り（--add-exports などで可能）、C も誤り。",
         },
@@ -1331,13 +1339,13 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
                 "次のプログラムをコンパイル・実行した結果として、正しいものを選びなさい。（1つ選択）",
             code: ' 1. public class Test {\n 2. public static void main(String[] args) {\n 3. String[][] array = new String[2][];\n 4. array[0] = new String[2];\n 5. array[1] = new String[5];\n 6. int i = 97;\n 7. for (int a = 0; a < array.length; a++) {\n 8. for (int b = 0; b < array.length; b++) {\n 9. array[a][b] = "" + i;\n10. i++;\n11. }\n12. }\n13. for (String[] tmp : array) {\n14. for (String s : tmp) {\n15. System.out.print(s + " ");\n16. }\n17. System.out.println();\n18. }\n19. }\n20. }',
             choices: [
-                "97 98",
-                "97 98 / 99 100 101 102 103",
+                "<code>97 98\n99 100 null null null</code>",
+                "<code>97 98\n99 100 101 102 103</code>",
                 "コンパイルエラーが発生する",
                 "実行時にNullPointerExceptionがスローされる",
                 "実行時にArrayIndexOutOfBoundsExceptionがスローされる",
             ],
-            answerIndex: 4,
+            answerIndex: 0,
             explanation:
                 "内側のループ条件が b < array.length になっており、行ごとの長さではなく外側配列の長さ（2）で回している。a=0 のとき b=0,1 は妥当だが b=2 に達して array[0][2] へアクセスしようとして ArrayIndexOutOfBoundsException が発生する。",
         },
