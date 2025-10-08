@@ -711,3 +711,51 @@ button:disabled {
     width: 90px;
     text-align: right;
 }
+
+/* ---- 解答トグル ---- */
+.answer-toggle {
+    display: inline-flex;
+    gap: 6px;
+    align-items: center;
+    border: 1px solid var(--border);
+    background: #fff;
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.answer-toggle[aria-expanded="true"] {
+    background: var(--primary-weak);
+    border-color: var(--primary);
+}
+.answer-block {
+    display: none;
+    margin-top: 10px;
+    border-left: 4px solid var(--border);
+    background: #fafafa;
+    padding: 10px 12px;
+    border-radius: 8px;
+}
+.answer-block.show {
+    display: block;
+}
+.answer-meta {
+    color: var(--muted);
+    margin-bottom: 8px;
+}
+.answer-correct {
+    display: inline-block;
+    font-weight: 700;
+    padding: 0px 8px;
+    border-radius: 6px;
+    background: #dcfce7;
+    color: var(--ok);
+    border: 1px solid #bbf7d0;
+}
+.answer-badgelike {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 6px;
+    background: #eef2ff;
+    margin-left: 6px;
+}

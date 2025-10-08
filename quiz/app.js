@@ -1454,14 +1454,113 @@ function renderTrendChart() {
     host.innerHTML = svg;
 }
 
+// ===== モーダル：問題詳細を表示（解答トグル付き） =====
+function openQuestionModalById(qid) {
+    if (!qid || !Array.isArray(allQuestions) || allQuestions.length === 0) return;
+    const q = allQuestions.find((x) => String(x.id) === String(qid));
+    if (!q) {
+        setStatus?.(`問題ID ${qid} が見つかりません`, 2500);
+        return;
+    }
+
+    // 質問テキストとコードを整形（renderQuizと同等のロジックの簡易版）
+    const qTextParts = [];
+    if (q.code && q.code.trim()) {
+        if (q.question) qTextParts.push(`<p>${escapeHtml(q.question)}</p>`);
+        qTextParts.push(`<pre><code>${escapeHtml(q.code)}</code></pre>`);
+    } else if (typeof q.question === "string") {
+        const fence = /```(?:\w+)?\n([\s\S]*?)```/m;
+        const m = q.question.match(fence);
+        if (m) {
+            const before = q.question.slice(0, m.index).trim();
+            const after = q.question.slice(m.index + m[0].length).trim();
+            if (before) qTextParts.push(`<p>${escapeHtml(before)}</p>`);
+            qTextParts.push(`<pre><code>${escapeHtml(m[1])}</code></pre>`);
+            if (after) qTextParts.push(`<p>${escapeHtml(after)}</p>`);
+        } else {
+            qTextParts.push(`<p>${escapeHtml(q.question)}</p>`);
+        }
+    }
+    const qtextHtml = qTextParts.join("");
+
+    // 選択肢 A/B/C… を列挙（作問順のまま）
+    const choicesHtml = (q.choices || [])
+        .map((c, i) => {
+            return `<li><strong>${letter(i)}.</strong> ${c}</li>`;
+        })
+        .join("");
+
+    // 正解（複数対応）
+    const correct = Array.isArray(q.answerIndex) ? q.answerIndex : [q.answerIndex];
+    const correctLetters = correct.map(letter).join(", ");
+
+    // 解説（フェンスは既存関数で整形）
+    const explanationHtml = formatExplanationHtml(q.explanation);
+
+    // モーダルDOM
+    const $overlay = document.createElement("div");
+    $overlay.className = "modal-overlay";
+    $overlay.innerHTML = `
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="qmodal-title">
+      <button class="modal-close" aria-label="閉じる">&times;</button>
+      <h3 id="qmodal-title" class="modal-title">問題 ${escapeHtml(q.id)}</h3>
+      <div class="modal-body">
+        <div class="qtext">${qtextHtml}</div>
+        <ol class="qchoices">${choicesHtml}</ol>
+        <div style="margin-top:10px">
+          <button class="answer-toggle" type="button" aria-expanded="false" aria-controls="answer-${escapeHtml(
+              q.id
+          )}">
+            解答を表示
+          </button>
+          <div id="answer-${escapeHtml(q.id)}" class="answer-block" hidden>
+            <div class="answer-meta">
+              正解：
+              <span class="answer-correct">${escapeHtml(correctLetters)}</span>
+            </div>
+            ${explanationHtml || "<p class='sub'>解説は未登録です。</p>"}
+          </div>
+        </div>
+      </div>
+    </div>`;
+
+    // 閉じる
+    const close = () => $overlay.remove();
+    $overlay.addEventListener("click", (e) => {
+        if (e.target === $overlay) close();
+    });
+    $overlay.querySelector(".modal-close")?.addEventListener("click", close);
+
+    // 解答トグル
+    const $btn = $overlay.querySelector(".answer-toggle");
+    const $pane = $overlay.querySelector(".answer-block");
+    $btn?.addEventListener("click", () => {
+        const expanded = $btn.getAttribute("aria-expanded") === "true";
+        const next = !expanded;
+        $btn.setAttribute("aria-expanded", String(next));
+        $btn.textContent = next ? "解答を隠す" : "解答を表示";
+        if (next) {
+            $pane.hidden = false;
+            $pane.classList.add("show");
+        } else {
+            $pane.classList.remove("show");
+            // CSSで display:none; に戻す
+            $pane.hidden = true;
+        }
+    });
+
+    document.body.appendChild($overlay);
+}
+
 // 問題ID（.qid-link）クリックでプレビュー表示
 document.addEventListener("click", (e) => {
-    const el = e.target.closest(".qid-link");
+    const el = e.target.closest?.(".qid-link");
     if (!el) return;
-    const qid = el.dataset.qid;
-    const q = (Array.isArray(allQuestions) ? allQuestions : []).find((x) => x.id === qid);
-    if (!q) return;
-    showQuestionPreview(q);
+    const qid = el.getAttribute("data-qid") || el.textContent?.trim();
+    if (qid) {
+        e.preventDefault();
+        openQuestionModalById(qid);
+    }
 });
 
 function showQuestionPreview(q) {
