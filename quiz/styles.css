@@ -165,13 +165,14 @@ button:disabled {
     border-radius: 14px;
     padding: 14px;
 }
-.card h3 {
-    margin: 0 0 6px;
+.card .question-title {
+    display: flex;
+    margin-top: -4px;
 }
 .meta {
+    margin-left: auto;
     color: var(--muted);
     font-size: 0.9em;
-    margin-bottom: 8px;
 }
 
 .answer-tag {
@@ -267,6 +268,10 @@ button:disabled {
 .card,
 .question-text {
     min-width: 0;
+}
+
+.question-text p {
+    margin: 8px 0;
 }
 
 .choice > div {

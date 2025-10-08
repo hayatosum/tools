@@ -204,8 +204,11 @@ function renderQuiz(questions) {
         card.className = "card";
 
         // --- 問題文の描画 ---
-        const title = document.createElement("h3");
-        title.textContent = `Q${idx + 1}.`;
+        const questionTitle = document.createElement("div");
+        questionTitle.className = "question-title";
+
+        const questionId = document.createElement("h3");
+        questionId.textContent = `Q${idx + 1}`;
 
         const questionText = document.createElement("div");
         questionText.className = "question-text";
@@ -248,7 +251,9 @@ function renderQuiz(questions) {
                 }
             } else {
                 // 通常テキストのみ
-                questionText.textContent = q.question || "";
+                const p = document.createElement("p");
+                p.textContent = q.question || "(問題文なし)";
+                questionText.appendChild(p);
             }
         }
 
@@ -257,7 +262,7 @@ function renderQuiz(questions) {
         const idPart = showQuestionIdEl?.checked ? `ID: ${q.id}` : "";
         const cat = showQuestionIdEl?.checked && q.category ? ` / カテゴリ: ${q.category}` : "";
         const diff = showQuestionIdEl?.checked && q.difficulty ? ` / 難易度: ${q.difficulty}` : "";
-        meta.textContent = `${idPart}${cat}${diff}`;
+        meta.textContent = `${idPart}`;
 
         const choicesWrap = document.createElement("div");
         choicesWrap.className = "choices";
@@ -322,9 +327,10 @@ function renderQuiz(questions) {
             choicesWrap.appendChild(label);
         });
 
-        card.appendChild(title);
+        card.appendChild(questionTitle);
+        questionTitle.appendChild(questionId);
+        questionTitle.appendChild(meta);
         card.appendChild(questionText);
-        card.appendChild(meta);
         card.appendChild(choicesWrap);
 
         // --- 解説プレースホルダ（採点後に埋める） ---
