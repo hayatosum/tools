@@ -4,6 +4,14 @@ const tabAnalBtn = document.getElementById("tab-analytics");
 const panelQuiz = document.getElementById("panel-quiz");
 const panelAnal = document.getElementById("panel-analytics");
 
+const wrongFixed = document.getElementById("wrongFixed");
+const toggleWrongBtn = document.getElementById("toggleWrong");
+const wrongPanel = document.getElementById("wrongPanel");
+const jumpWrongList = document.getElementById("jumpWrongList");
+
+let wrongIdxes = []; // 不正解の「問題の並び順インデックス」（0始まり）
+let wrongCursor = 0; // 現在位置
+
 async function switchTab(to) {
     const toQuiz = to === "quiz";
     // ボタンの状態
@@ -16,6 +24,10 @@ async function switchTab(to) {
     panelAnal.classList.toggle("hidden", toQuiz);
     // スクロールを上に
     window.scrollTo({ top: 0, behavior: "smooth" });
+
+    // 固定UI（経過時間・不正解問題）は「問題を解く」タブのみ表示
+    if (timerEl) timerEl.style.display = toQuiz ? "" : "none";
+    if (wrongFixed) wrongFixed.style.display = toQuiz ? "" : "none";
 
     try {
         if (toQuiz) {
@@ -77,6 +89,8 @@ const orderedControls = document.getElementById("orderedControls");
 const orderFromEl = document.getElementById("orderFrom");
 const orderToEl = document.getElementById("orderTo");
 
+const timerEl = document.getElementById("timer"); // ← 追加
+
 // 出題範囲のセレクト
 fileSelect?.addEventListener("change", () => {
     localStorage.setItem("opt.fileSelect", fileSelect.value);
@@ -126,6 +140,9 @@ orderToEl?.addEventListener("input", () => {
 });
 
 document.addEventListener("DOMContentLoaded", async () => {
+    // 現在の問題インデックスを追跡（出題順に対応）
+    let currentQuestionIndex = 0;
+
     // ▼ 設定の復元
     // 出題範囲
     const savedFileKey = localStorage.getItem("opt.fileSelect");
@@ -520,6 +537,11 @@ function renderQuiz(questions) {
         card.appendChild(questionText);
         card.appendChild(choicesWrap);
 
+        // スクロール目印になるID/属性
+        card.id = `qcard-${q.id}`;
+        card.dataset.qid = q.id;
+        card.dataset.qnum = String(idx + 1);
+
         // --- 解説プレースホルダ（採点後に埋める） ---
         const exp = document.createElement("div");
         exp.className = "inline-exp hidden";
@@ -657,6 +679,63 @@ function showResults() {
     gradeArea.hidden = true;
 
     document.body.classList.add("graded");
+
+    // === 不正解ジャンプ（固定・トグル） ===
+    (() => {
+        if (!wrongFixed || !toggleWrongBtn || !wrongPanel || !jumpWrongList) return;
+
+        // 出題順に沿って不正解の位置を抽出
+        wrongIdxes = [];
+        items.forEach((it, i) => {
+            if (!it.isCorrect) wrongIdxes.push(i);
+        });
+
+        // 不正解ゼロ → 固定ナビ非表示
+        if (wrongIdxes.length === 0) {
+            wrongFixed.classList.add("hidden");
+            toggleWrongBtn.onclick = null;
+            jumpWrongList.innerHTML = "";
+            // 念のため閉じた状態に
+            wrongPanel.classList.add("hidden");
+            toggleWrongBtn.setAttribute("aria-expanded", "false");
+            return;
+        }
+
+        // 不正解あり → 固定ナビ表示、トグルはデフォルト閉
+        wrongFixed.classList.remove("hidden");
+        wrongPanel.classList.add("hidden");
+        toggleWrongBtn.setAttribute("aria-expanded", "false");
+
+        // リストを再生成
+        jumpWrongList.innerHTML = "";
+        wrongIdxes.forEach((i) => {
+            const qnum = i + 1;
+            const btn = document.createElement("button");
+            btn.type = "button";
+            btn.className = "jump-link";
+            btn.textContent = `Q${qnum}`;
+            btn.addEventListener("click", () => {
+                // 位置同期しつつスクロール
+                if (typeof currentQuestionIndex === "number") currentQuestionIndex = i;
+                scrollToCardByIndex(i);
+            });
+            jumpWrongList.appendChild(btn);
+        });
+
+        // トグル（開閉）
+        toggleWrongBtn.onclick = () => {
+            const isHiddenNow = wrongPanel.classList.toggle("hidden"); // toggle後の状態を確認
+            const expanded = !isHiddenNow;
+            toggleWrongBtn.setAttribute("aria-expanded", expanded ? "true" : "false");
+        };
+    })();
+}
+
+// スクロール関数（上に少し余白を残す）
+function smoothScrollToCard(card) {
+    const rect = card.getBoundingClientRect();
+    const y = window.scrollY + rect.top - 12; // ← ほんの少し上に余白
+    window.scrollTo({ top: Math.max(0, y), behavior: "smooth" });
 }
 
 // --- 問題ロード ---
@@ -947,14 +1026,11 @@ loadBtn.addEventListener("click", async () => {
 
         currentQuestions = pickQuestions(n);
         renderQuiz(currentQuestions);
+        currentQuestionIndex = 0;
 
         setTimeout(() => {
-            const firstQ = document.querySelector(".card");
-            if (firstQ) {
-                firstQ.scrollIntoView({ behavior: "smooth", block: "start" });
-            } else {
-                window.scrollTo({ top: 0, behavior: "smooth" });
-            }
+            currentQuestionIndex = 0; // 現在位置をQ1にリセット
+            scrollToCardByIndex(0); // 共通スクロール関数で移動
         }, 100);
 
         setStatus(
@@ -1212,8 +1288,6 @@ resetBtn.addEventListener("click", () => {
 });
 
 let timerId = null;
-
-const timerEl = document.getElementById("timer");
 
 function startTimer() {
     quizStartAt = Date.now();
@@ -2038,17 +2112,19 @@ function toggleNthChoiceOnTopCard(n /* 1-based */) {
 
 // ← → で前後へ、数字で選択肢トグル
 document.addEventListener("keydown", (e) => {
-    if (isTypingInForm(document.activeElement)) return;
+    if (isTypingInForm(document.activeElement)) return; // 入力中は無視
 
     // 左右キーで前後の問題へ
-    if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
-        const cur = getTopCardIndex();
-        if (cur >= 0) {
-            e.preventDefault(); // 余計な横スクロールを抑止
-            const next = e.key === "ArrowRight" ? cur + 1 : cur - 1;
-            scrollToCard(next, true);
-        }
-        return;
+    if (!currentQuestions || currentQuestions.length === 0) return;
+
+    if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        currentQuestionIndex = Math.max(0, currentQuestionIndex - 1);
+        scrollToCardByIndex(currentQuestionIndex);
+    } else if (e.key === "ArrowRight") {
+        e.preventDefault();
+        currentQuestionIndex = Math.min(currentQuestions.length - 1, currentQuestionIndex + 1);
+        scrollToCardByIndex(currentQuestionIndex);
     }
 
     // 数字キー（上段 or テンキー）で選択肢トグル
@@ -2066,3 +2142,39 @@ document.addEventListener("keydown", (e) => {
         toggleNthChoiceOnTopCard(mapDigit);
     }
 });
+
+// ==== 戻る／進むボタン無効化 ====
+window.addEventListener("popstate", function (event) {
+    history.pushState(null, "", location.href);
+});
+
+// 初期状態を履歴に追加
+history.pushState(null, "", location.href);
+
+// ==== マウスボタン4/5で ←→ と同じ動作を行う ====
+document.addEventListener("mousedown", (e) => {
+    if (isTypingInForm(document.activeElement)) return;
+    // 左右キーで前後の問題へ
+    if (!currentQuestions || currentQuestions.length === 0) return;
+
+    // button 3: 戻る（マウスボタン4）
+    // button 4: 進む（マウスボタン5）
+    if (e.button === 3) {
+        e.preventDefault();
+        currentQuestionIndex = Math.max(0, currentQuestionIndex - 1);
+        scrollToCardByIndex(currentQuestionIndex);
+    } else if (e.button === 4) {
+        e.preventDefault();
+        currentQuestionIndex = Math.min(currentQuestions.length - 1, currentQuestionIndex + 1);
+        scrollToCardByIndex(currentQuestionIndex);
+    }
+});
+
+function scrollToCardByIndex(zeroBasedIndex) {
+    const qnum = zeroBasedIndex + 1;
+    const card = document.querySelector(`.card:nth-of-type(${qnum})`);
+    if (!card) return;
+    const rect = card.getBoundingClientRect();
+    const y = window.scrollY + rect.top - 12; // 少し余白
+    window.scrollTo({ top: Math.max(0, y), behavior: "smooth" });
+}

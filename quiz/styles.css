@@ -826,3 +826,72 @@ button:disabled {
 .order-range input[type="number"] {
     width: 4rem;
 }
+
+/* 固定ナビ（タイマー下） */
+.wrong-fixed {
+    position: fixed;
+    right: 20px;
+    top: 48px; /* タイマー（.timer-fixed）の下 */
+    z-index: 1000;
+    display: block;
+    align-items: flex-start;
+    background: rgba(0, 0, 0, 0.75);
+    color: #fff;
+    padding: 6px 8px;
+    border-radius: 8px;
+    backdrop-filter: saturate(140%) blur(2px);
+}
+.wrong-fixed .secondary {
+    background: #fff;
+    color: var(--fg, #111);
+    border: 1px solid var(--border, #e5e7eb);
+    border-radius: 8px;
+    padding: 4px 10px;
+    cursor: pointer;
+    font-size: 13px;
+    line-height: 1;
+}
+
+/* トグルで開閉するパネル */
+.wrong-panel {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    max-width: min(52vw, 420px);
+    margin: 6px 0 2px 0;
+}
+.wrong-panel.hidden {
+    display: none;
+}
+
+/* ジャンプ用のボタン群 */
+.jump-list {
+    display: grid;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+.jump-link {
+    border: 1px solid var(--border);
+    padding: 4px 8px;
+    border-radius: 8px;
+    background: #fff;
+    color: var(--fg, #111);
+    cursor: pointer;
+    user-select: none;
+    width: 100%;
+}
+.jump-link:hover {
+    background: var(--primary-weak, #dbeafe);
+    border-color: var(--primary, #2563eb);
+}
+
+/* テキスト風トグル */
+.wrong-fixed .toggle-plain {
+    background: transparent;
+    border: none;
+    color: #fff; /* 黒半透明パネル上で読める色 */
+    padding: 0;
+    font-weight: 700;
+    cursor: pointer;
+    width: max-content;
+}
