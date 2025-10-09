@@ -50,7 +50,10 @@ const JAVA_SILVER_1Z0_815_JPN_13 = {
             ],
             answerIndex: 0,
             explanation:
-                "6行目ではfloat型からint型への代入が暗黙にできないためキャストが必要。a = (int)b; とすればコンパイルが通る。",
+                "6行目の「a = b;」は、float型からint型への代入なので暗黙的な型変換はできず、コンパイルエラーになります。" +
+                "この場合、明示的なキャスト（a = (int) b;）が必要です。" +
+                "他の選択肢（7～9行目）は、int→floatやfloat→double、int→doubleの変換は自動的に行われるため、キャストは不要です。" +
+                "したがって、6行目を「a = (int) b;」に修正することでコンパイルエラーが解消します。",
         },
         {
             id: 4,
@@ -193,13 +196,17 @@ const JAVA_SILVER_1Z0_815_JPN_13 = {
             code: "",
             choices: [
                 "<code>var a = {1.0, 2.0, 3.0, 4.0};</code>",
-                "<code>var b = new Double[]{1.0, 2.0, 3.0, 4.0};</code>",
+                "<code>var b = new Double{1.0, 2.0, 3.0, 4.0};</code>",
                 "<code>var c = new Float[]{1.0F, 2.0F, 3.0F, 4.0F};</code>",
                 "<code>var d = new double[]{1.0, 2.0, 3.0, 4.0};</code>",
             ],
             answerIndex: [2, 3],
             explanation:
-                "配列リテラルは型明示が必要。varでは配列の初期化時にnewが必要なため、CとDのみ正しくコンパイルされる。",
+                "選択肢のうち、正常にコンパイルされるのは「var c = new Float[]{1.0F, 2.0F, 3.0F, 4.0F};」と「var d = new double[]{1.0, 2.0, 3.0, 4.0};」です。\n" +
+                "Javaでは、配列リテラル（{...}）を使う場合は、変数宣言と同時に型を明示する必要があります。varを使う場合は、必ずnew型名[] {...}の形で初期化しなければなりません。\n" +
+                "「var a = {1.0, 2.0, 3.0, 4.0};」は型が明示されていないためコンパイルエラーです。\n" +
+                "「var b = new Double{1.0, 2.0, 3.0, 4.0};」は配列を生成する場合はnew Double[]{...}と書く必要があり、こちらも構文エラーです。\n" +
+                "したがって、new Float[]{...}やnew double[]{...}のように型を明示した配列初期化のみが正しくコンパイルされます。",
         },
         {
             id: 13,
@@ -223,7 +230,7 @@ const JAVA_SILVER_1Z0_815_JPN_13 = {
             difficulty: "上級",
             question:
                 "次のプログラムをコンパイルし、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: ' 1. import java.util.Collection;\n 2. \n 3. public class A {\n 4.     private Collection collection;\n 5.     public void set(Collection collection) {\n 6.         this.collection = collection;\n 7.         System.out.println("A");\n 8.     }\n 9. }\n\n 1. import java.util.Collection;\n 2. public class B extends A {\n 3.     public void set(Collection collection) {\n 4.         super.set(collection);\n 5.         System.out.println("B");\n 6.     }\n 7. }\n\n 1. import java.util.Collection;\n 2. public class C extends B {\n 3.     @Override\n 4.     public void set(Collection collection) {\n 5.         super.set(collection);\n 6.         System.out.println("C");\n 7.     }\n 8. }\n\n 1. import java.util.List;\n 2. public class Main {\n 3.     public static void main(String[] args) {\n 4.         new C().set(List.of(1, 2, 3));\n 5.     }\n 6. }',
+            code: ' 1. import java.util.Collection;\n 2. \n 3. public class A {\n 4.     private Collection collection;\n 5.     public void set(Collection collection) {\n 6.         this.collection = collection;\n 7.         System.out.println("A");\n 8.     }\n 9. }\n\n 1. import java.util.Collection;\n 2. public class B extends A {\n 3.     public void set(Collection collection) {\n 4.         super.set(collection);\n 5.         System.out.println("B");\n 6.     }\n 7. }\n\n 1. import java.util.Collection;\n 2. public class C extends B {\n 3.     @Override\n 4.     public void set(Collection collection) {\n 5.         super.super.set(collection);\n 6.         System.out.println("C");\n 7.     }\n 8. }\n\n 1. import java.util.List;\n 2. public class Main {\n 3.     public static void main(String[] args) {\n 4.         new C().set(List.of(1, 2, 3));\n 5.     }\n 6. }',
             choices: [
                 "「A」「B」「C」と表示される",
                 "「A」「B」と表示される",
@@ -233,7 +240,7 @@ const JAVA_SILVER_1Z0_815_JPN_13 = {
             ],
             answerIndex: 3,
             explanation:
-                "メソッドのオーバーライドが順に呼ばれる。C#set → B#set → A#set の順で呼ばれ、A→B→Cが順に出力される。",
+                "Cクラスのsetメソッド内で `super.super.set(collection);` という記述がありますが、Javaでは`super`は1階層上（親クラス）への参照しかできません。`super.super`という構文は存在せず、これは文法エラーとなります。\n\n親クラス（B）のsetメソッドを呼びたい場合は`super.set(collection);`と書きます。さらにその上のAクラスのsetメソッドを直接呼び出すことはできません（Bクラスでラップするなどの工夫が必要です）。\n\nこのため、Cクラスのsetメソッドの5行目でコンパイルエラーとなり、プログラムは正しくコンパイルできません。したがって正解は「コンパイルエラーが発生する」です。",
         },
         {
             id: 15,
@@ -278,7 +285,12 @@ const JAVA_SILVER_1Z0_815_JPN_13 = {
             ],
             answerIndex: [0, 4],
             explanation:
-                "配列初期化時にはnewが必要。Aのような宣言と分離したnewによる初期化、およびEのようなオブジェクト配列の初期化は正しい。",
+                "「int[] array; array = new int[] {};」は、配列の宣言と初期化を分けて書いており、newを使えば空配列も作成できるため正しい構文です。\n" +
+                "「Double[] array5 = {null, 1.0};」は、配列の宣言と同時に初期化リストを使ってDouble型の配列を作成しており、正しい構文です。\n" +
+                "「int[] array2 = new int[3]; array2 = {1, 2, 3};」は、配列の宣言時以外で初期化リスト（= {1, 2, 3}）を使うことはできないためコンパイルエラーです。\n" +
+                "「Double[] array3 = new Double[3] {};」は、配列の生成時に初期化リストを使う場合は new Double[]{...} のように書く必要があり、この構文は誤りです。\n" +
+                "「int[][] array4 = {array4[0], array4[1]};」は、array4の宣言時点ではarray4[0]やarray4[1]は未定義のため、初期化に使うことはできません。\n" +
+                "したがって、正常にコンパイルされるのは「int[] array; array = new int[] {};」と「Double[] array5 = {null, 1.0};」です。",
         },
         {
             id: 18,
@@ -305,11 +317,11 @@ const JAVA_SILVER_1Z0_815_JPN_13 = {
             difficulty: "初級",
             question:
                 "次のプログラムをコンパイルし、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: " 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         int a = 10;\n 4.         int b = 20;\n 5.         int c = b + a / 5;\n 6.         System.out.println(a + b + c);\n 7.     }\n 8. }",
+            code: " 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         int a = 10;\n 4.         int b = 20;\n 5.         int c = b += a / 5;\n 6.         System.out.println(a + b + c);\n 7.     }\n 8. }",
             choices: ["52が表示される", "54が表示される", "38が表示される", "46が表示される"],
             answerIndex: 1,
             explanation:
-                "a / 5 = 2 なので c = 22、a + b + c = 10 + 20 + 22 = 52。式の順序により52が出力される。",
+                "まず、a / 5 は 10 / 5 = 2 となる。\n次に b += a / 5 は b = b + (a / 5) と同じ意味であり、b = 20 + 2 = 22 となる。\n複合代入演算子（+=）の式全体の値は代入後の b の値（22）なので、c にも 22 が代入される。\nしたがって、a = 10, b = 22, c = 22 となる。\n最後に System.out.println(a + b + c); は 10 + 22 + 22 = 54 を出力する。\nよって正解は「54が表示される」。",
         },
         {
             id: 20,
@@ -539,7 +551,7 @@ const JAVA_SILVER_1Z0_815_JPN_13 = {
             ],
             answerIndex: 2,
             explanation:
-                "int[]はプリミティブ型配列なので、Object[]ではなくlong[]のオーバーロードが最も適用される。",
+                "testメソッドにはObject[]型、long[]型、Object型の3つのオーバーロードがあります。new int[3]はint型の配列であり、Object[]やlong[]には自動変換されませんが、配列はObjectのサブクラスなのでObject型の引数には代入できます。そのため、test(Object val)が呼び出され、「C」が表示されます。",
         },
         {
             id: 34,
@@ -631,11 +643,11 @@ const JAVA_SILVER_1Z0_815_JPN_13 = {
             difficulty: "初級",
             question:
                 "次のプログラムをコンパイルし、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: " 1. public class Sample {\n 2.     public static void main(String[] args) {\n 3.         int[] array = { 1, 2, 3, 4, 5 };\n 4.         int key = 3;\n 5.         int cnt = 0;\n 6.         for (int i : array) {\n 7.             if (i != key) {\n 8.                 continue;\n 9.             cnt++;\n10.             }\n11.         }\n12.         System.out.println(cnt);\n13.     }\n14. }",
+            code: " 1. public class Sample {\n 2.     public static void main(String[] args) {\n 3.         int[] array = { 1, 2, 3, 4, 5 };\n 4.         int key = 3;\n 5.         int cnt = 0;\n 6.         for (int i : array) {\n 7.             if (i != key) {\n 8.                 continue;\n 9.                 cnt++;\n10.             }\n11.         }\n12.         System.out.println(cnt);\n13.     }\n14. }",
             choices: ["3", "2", "1", "コンパイルエラーが発生する"],
             answerIndex: 3,
             explanation:
-                "配列 {1,2,3,4,5} に key=3 は1回だけ現れるため、カウンタは1となり「1」が出力される。",
+                "9行目のcnt++が8行目のcontinueにより到達不可能になるためコンパイルエラーが発生する。",
         },
         {
             id: 40,
