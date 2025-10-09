@@ -54,7 +54,7 @@ const JAVA_SILVER_1Z0_815_JPN_08 = {
             difficulty: "中級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: " 1. public class Sample {\n 2.     public static void main(String[] args) {\n 3.         int cnt = 0;\n 4.         Runnable r = () -> {\n 5.             for (cnt = 0; cnt < 10; cnt++) {\n 6.                 System.out.println(cnt++);\n 7.             }\n 8.         };\n 9.     new Thread(r).start();\n10.     }\n11. }",
+            code: " 1. public class Sample {\n 2.     public static void main(String[] args) {\n 3.         int cnt = 0;\n 4.         Runnable r = () -> {\n 5.             for (cnt = 0; cnt < 10; cnt++) {\n 6.                 System.out.println(cnt++);\n 7.             }\n 8.         };\n 9.         new Thread(r).start();\n10.     }\n11. }",
             choices: [
                 "0123456789が表示される",
                 "02468が表示される",

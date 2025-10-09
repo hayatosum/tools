@@ -82,7 +82,7 @@ const JAVA_SILVER_1Z0_815_JPN_07 = {
             ],
             answerIndex: 0,
             explanation:
-                "java.lang.Objectクラスに定義されているメソッドをインタフェースでデフォルトメソッドとしてオーバーライドすると、コンパイルエラーとなる。",
+                "インタフェースでdefaultメソッドとしてObjectクラス（toStringなど）に定義されているメソッドをオーバーライドすることはできません。Javaの仕様上、インタフェースのdefaultメソッドはObjectクラスのメソッドと競合するため、AインタフェースのtoString()定義でコンパイルエラーとなります。",
         },
         {
             id: 6,

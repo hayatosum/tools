@@ -157,7 +157,8 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
             ],
             answerIndex: [1, 4],
             explanation:
-                "依存関係の分析には jdeps を使用する。特に jdeps --list-deps はクラス/パッケージ/モジュールの依存を一覧表示できる。ランチャの java --show-module-resolution は起動時にモジュール解決の結果（どのモジュールがどれに依存し、どのバージョン/解決経路になったか）を表示し、依存関係の確認やトラブルシュートに用いられる。一方 jmod describe は jmod ファイルのメタ情報を表示するコマンドで依存一覧を出すものではない。jar --show-module-resolution というオプションは存在しない。java Hello.java はソースを実行するだけで依存関係の出力はしない。",
+                "クラスやモジュールの依存関係を調べるには、jdepsコマンドやjavaコマンドの--show-module-resolutionオプションを使います。jdeps --list-depsは、指定したクラスやJARファイルが依存しているパッケージやモジュールを一覧表示します。java --show-module-resolutionは、アプリケーション起動時にモジュールの解決結果（どのモジュールがどれに依存しているか）を表示します。\n" +
+                "jmod describeはjmodファイルの情報を表示するコマンドで、依存関係の一覧は出力しません。jar --show-module-resolutionというオプションは存在しません。java Hello.javaはソースファイルを直接実行するだけで依存関係の表示は行いません。",
         },
         {
             id: 10,
@@ -361,7 +362,7 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
             category: "総仕上げ問題①",
             difficulty: "上級",
             question: "次のプログラムの説明として、正しいものを選びなさい。（1つ選択）",
-            code: " 1. public class A {\n 2.     int num = 10;\n 3.     public double getValue() { return 0.0; }\n 4. }\n\n 1. public class B extends A {\n 2.     @Override\n 3.     public double getValue() { return 1.0; }\n 4. }\n\n 1. public class C extends B {\n 2.     @Override\n 3.     public double getValue() {\n 4.         System.out.println(super.num);\n 5.         return super.getValue();\n 6.     }\n 7. }",
+            code: " 1. public class A {\n 2.     int num = 10;\n 3.     public double getValue() {\n 4.         return 0.0;\n 5.     }\n 6. }\n\n 1. public class B extends A {\n 2.     @Override\n 3.     public double getValue() {\n 4.         // ...\n 5.         return 1.0;\n 6.     }\n 7. }\n\n 1. public class C extends B {\n 2.     @Override\n 3.     public double getValue() {\n 4.         System.out.println(super.num);\n 5.         return super.getValue();\n 6.     }\n 7. }",
             choices: [
                 "Bクラスのサブクラスでは、getValueメソッドでAクラスのフィールドにアクセスすることができる",
                 "Bクラスのサブクラスでは、Bクラスのメソッドを呼び出すためにsuper.getValue()を使えるが、Aクラスのフィールドにはアクセスできない",
@@ -370,7 +371,9 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
             ],
             answerIndex: 0,
             explanation:
-                "CはAを間接継承しているため、super.numでAクラスのフィールドへアクセス可能。メソッド呼び出しもsuper.getValue()で問題ない。",
+                "CクラスはBクラスを継承し、BクラスはAクラスを継承しています。Aクラスのフィールドnumはアクセス修飾子が指定されていないため（デフォルトでpackage-private）、同じパッケージ内であればCクラスからもsuper.numでアクセスできます。" +
+                "また、super.getValue()のようにスーパークラスのメソッドも呼び出せます。" +
+                "new.getValue()やpublic.getValue()という呼び出し方はJavaの文法として存在しません。",
         },
         {
             id: 23,
@@ -735,7 +738,10 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
             ],
             answerIndex: 4,
             explanation:
-                "コンストラクタ内の別コンストラクタ呼び出し（this(...)）は最初の文でなければならない。super(...) の後に this(price) を置いているため8行目でコンパイルエラー。",
+                "Javaのコンストラクタでは、super(...)やthis(...)による別コンストラクタ呼び出しは必ず最初の文でなければなりません。\n" +
+                "SubSample(String name, int num, int price)の8行目では、super(name, num);の後にthis(price);を呼び出しているため、コンパイルエラーとなります。\n" +
+                "また、SubSample(int price)のコンストラクタでは、明示的にスーパークラスのコンストラクタを呼び出していないため、暗黙的にsuper()が呼ばれますが、Sampleクラスには引数なしのコンストラクタが存在しないため、こちらもコンパイルエラーとなります。\n" +
+                "したがって、3行目と8行目の両方でコンパイルエラーが発生します。",
         },
         {
             id: 45,
@@ -904,7 +910,10 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
             ],
             answerIndex: 3,
             explanation:
-                "SubSampleImplではtest(int)をオーバーロードしているだけであり、オーバーライドではない。いずれもコンパイル可能。",
+                "SampleImplクラスはSampleインタフェースのtest()メソッドを正しく実装しています。" +
+                "SubSampleImplクラスではtest(int x)という引数付きのメソッドを定義していますが、これはオーバーロード（同名で引数違い）であり、オーバーライド（引数・戻り値・修飾子が同じ）ではありません。" +
+                "このため、SampleImplのtest()メソッドはそのまま継承され、SubSampleImplでtest(int x)を追加しても問題ありません。" +
+                "よって、すべて正常にコンパイル・実行できます。",
         },
         {
             id: 55,
@@ -1159,7 +1168,9 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
             ],
             answerIndex: 3,
             explanation:
-                "無限に要素を追加し続けるためヒープを使い切り OutOfMemoryError（Error）が発生する。catch しているのは Exception/RuntimeException であり Error は捕捉できないため、実行時に（エラーとして）スローされて終了する。",
+                "このプログラムは無限ループでリストに文字列を追加し続けるため、最終的にメモリ不足（OutOfMemoryError）が発生します。\n" +
+                "catch節ではRuntimeExceptionとExceptionを捕捉していますが、OutOfMemoryErrorはExceptionのサブクラスではなくErrorのサブクラスなので、これらのcatchでは捕捉できません。\n" +
+                "そのため、エラーがスローされてプログラムは異常終了します。",
         },
         {
             id: 70,
@@ -1297,7 +1308,8 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
             ],
             answerIndex: 4,
             explanation:
-                "変数 sub は SubSample 型、sample は Sample 型（サブタイプのインスタンスを指す）であり、sub = sample; はスーパタイプからサブタイプへの代入でコンパイル不可（明示キャストが必要）。",
+                "subはSubSample型、sampleはSample型ですが、sub = sample;の代入はSample型（スーパークラス）からSubSample型（サブクラス）への代入となり、これはコンパイルエラーとなります（明示的なキャストが必要）。" +
+                "したがって、このプログラムはコンパイルエラーとなります。",
         },
         {
             id: 78,

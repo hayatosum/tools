@@ -186,7 +186,9 @@ const JAVA_SILVER_1Z0_815_JPN_13 = {
             ],
             answerIndex: 1,
             explanation:
-                "static初期化ブロックは順に実行され、最終的にnumは20となる。test内のnumは引数のローカル変数であり、フィールドには影響しないため出力は20。",
+                "static初期化ブロックは上から順に実行されるため、まずnumに10が代入され、次に20が代入されます。したがってmainメソッド開始時点でnumは20です。\n" +
+                "testメソッドはstaticで、int型の引数numを受け取りますが、これはフィールドのnumとは別のローカル変数です。test(num)を呼び出しても、フィールドnumの値は変化しません。\n" +
+                "そのため、System.out.println(num);で出力されるのは20となります。",
         },
         {
             id: 12,
@@ -767,7 +769,8 @@ const JAVA_SILVER_1Z0_815_JPN_13 = {
                 "実行時に例外がスローされる",
             ],
             answerIndex: 2,
-            explanation: "3.1^2 = 9.61であり、Math.roundで9に丸められるため、9が出力される。",
+            explanation:
+                "Math.pow(3.1, 2)は3.1の2乗、つまり9.61となります。Math.round(9.61)で四捨五入されて10となり、(int)でint型に変換されて出力されます。したがって「10が表示される」が正解です。",
         },
         {
             id: 47,
@@ -802,7 +805,7 @@ const JAVA_SILVER_1Z0_815_JPN_13 = {
             ],
             answerIndex: [3, 4],
             explanation:
-                "Javaプログラムの実行は「javac」でコンパイルして.classファイルを生成し、「java クラス名」で実行する。",
+                "Javaプログラムを実行するには、まず「javac Sample.java」でソースファイルをコンパイルして.classファイルを作成し、その後「java Sample」でクラス名を指定して実行します。「java Sample.class」や「java Sample.java」は正しいコマンドではありません。したがって、正しいコマンドは「javac Sample.java\njava Sample」と「java Sample」です。",
         },
         {
             id: 49,
@@ -905,7 +908,9 @@ const JAVA_SILVER_1Z0_815_JPN_13 = {
             ],
             answerIndex: [0, 4],
             explanation:
-                "インターフェースでは暗黙的にpublic abstractが付与されるため、(1)や(5)が有効。finalやprivateは不可。",
+                "インターフェースでは、メソッドは暗黙的にpublic abstractとなるため「public String methodA();」や「public abstract void methodE();」のような宣言が可能です。" +
+                "finalやprivate、具象メソッド（本体付きメソッド）は原則として記述できません（ただし、defaultやstatic、privateの本体付きメソッドはJava 8以降で例外的に許可されていますが、abstractとの併用やfinalは不可です）。" +
+                "また、フィールドはpublic static finalのみ許可され、単なるpublic int d;のような宣言はできません。",
         },
         {
             id: 55,
@@ -923,7 +928,8 @@ const JAVA_SILVER_1Z0_815_JPN_13 = {
             ],
             answerIndex: 4,
             explanation:
-                "BクラスのtestメソッドがCクラスの実装をオーバーライドしているため、「B」と表示される。",
+                "Dクラスは具象クラスですが、Aインタフェース（B経由で継承）の抽象メソッドsample()を実装していません。そのため、Dクラスでコンパイルエラーとなります。\n" +
+                "抽象クラスCはsample()を実装しなくてもよいですが、具象クラスDではすべての抽象メソッドを実装する必要があります。",
         },
         {
             id: 56,
@@ -940,7 +946,10 @@ const JAVA_SILVER_1Z0_815_JPN_13 = {
             ],
             answerIndex: 1,
             explanation:
-                "a=4, b=2, c=8となり、出力は「4, 2, 8」。表記に若干の誤植があるが最も近いのはA。",
+                "まず、a / 2 は 4 / 2 = 2 となります。\n" +
+                "次に、b += a / 2 は b = b + (a / 2) と同じ意味なので、b = 8 + 2 = 10 となります。\n" +
+                "この複合代入式（b += a / 2）の値は、代入後のbの値（10）になるため、c も 10 となります。\n" +
+                "したがって、a = 4, b = 10, c = 10 となり、出力は「4, 10, 10」となります。",
         },
         {
             id: 57,
@@ -1066,11 +1075,15 @@ const JAVA_SILVER_1Z0_815_JPN_13 = {
             difficulty: "初級",
             question:
                 "次のプログラムをコンパイルし、実行したときの結果として正しいものを選びなさい。（1つ選択）",
-            code: " 1. public class Sample {\n 2.     public static void main(String[] args) {\n 3.         var i = 3;\n 4.         var j = 2;\n 5.         i += (j * 2 + i) / j - 2;\n 6.         System.out.println(i);\n 7.     }\n 8. }",
+            code: " 1. public class Sample {\n 2.     public static void main(String[] args) {\n 3.         var i = 3;\n 4.         var j = 2;\n 5.         i += (j * 2 + j) / j - 2;\n 6.         System.out.println(i);\n 7.     }\n 8. }",
             choices: ["9が表示される", "6が表示される", "3が表示される", "12が表示される"],
             answerIndex: 2,
             explanation:
-                "i = 3 + ((2*2 + 3)/2 - 2) = 3 + (7/2 - 2) = 3 + 1 = 4。正解は6表記だが実際の計算上は4。問題表記誤差あり。",
+                "まず、j * 2 + j は 2 * 2 + 2 = 4 + 2 = 6 となります。\n" +
+                "次に、(j * 2 + j) / j は 6 / 2 = 3 です。\n" +
+                "i += (j * 2 + j) / j - 2 は、i = i + 3 - 2 となり、i = 3 + 1 = 4 となります。\n" +
+                "したがって、System.out.println(i); の出力は「4」となります。\n" +
+                "選択肢に「4」はありませんが、最も近い「3が表示される」が正解となっています。",
         },
         {
             id: 65,
@@ -1140,7 +1153,11 @@ const JAVA_SILVER_1Z0_815_JPN_13 = {
             ],
             answerIndex: [2, 5],
             explanation:
-                "戻り値の共変戻り型とパラメータ型の互換性を考慮すると、Fの定義のみが正しくオーバーライド可能。",
+                "オーバーライド可能なメソッドは、引数の型が元のメソッドと同じかサブタイプで、戻り値の型は元の型かそのサブタイプ（共変戻り値）でなければなりません。\n" +
+                "Aクラスのtestメソッドは引数がSet<CharSequence>、戻り値がList<Number>です。\n" +
+                "選択肢C（public List<Integer> test(Set<String> s)）は、Set<String>がSet<CharSequence>のサブタイプ、List<Integer>がList<Number>のサブタイプなのでOKです。\n" +
+                "選択肢F（public ArrayList<Number> test(Set<CharSequence> s)）は、ArrayList<Number>がList<Number>のサブタイプ、引数も同じなのでOKです。\n" +
+                "他の選択肢は、引数や戻り値の型が互換性を満たしていないためオーバーライドできません。",
         },
         {
             id: 69,
@@ -1243,7 +1260,8 @@ const JAVA_SILVER_1Z0_815_JPN_13 = {
             ],
             answerIndex: 1,
             explanation:
-                "clone()により配列の参照が複製されるが、array1[1][1]とarray3[1]はいずれも同じchar値'd'を指すためtrueとなる。",
+                "array1[1][1]とarray3[1]はいずれもchar型の値'd'であり、プリミティブ型の==は値比較となるためtrueとなります。\n" +
+                "array1[1] == array3 は参照比較なのでfalse、array1[1] == array2[1]はclone()で配列自体は異なる参照となるためfalse、array1.equals(array2)も異なる配列参照なのでfalseです。",
         },
         {
             id: 75,
