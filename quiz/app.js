@@ -925,6 +925,16 @@ loadBtn.addEventListener("click", async () => {
 
         currentQuestions = pickQuestions(n);
         renderQuiz(currentQuestions);
+
+        setTimeout(() => {
+            const firstQ = document.querySelector(".card");
+            if (firstQ) {
+                firstQ.scrollIntoView({ behavior: "smooth", block: "start" });
+            } else {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+        }, 100);
+
         setStatus(
             `全 ${allQuestions.length}問中から ${currentQuestions.length}問を出題しました`,
             3000
@@ -1933,3 +1943,102 @@ async function importHistoryFromFile(file) {
         setStatus(`インポート失敗: ${e.message || e}`, 5000);
     }
 }
+
+// === Escキーでモーダルを閉じる ===
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" || e.key === "Esc") {
+        const overlay = document.querySelector(".modal-overlay");
+        if (overlay) {
+            overlay.remove();
+        }
+    }
+});
+
+// ==== キーボード操作（← → と 1,2,3...） ====
+
+// 入力中のときは無効化（検索ボックス等に配慮）
+function isTypingInForm(el) {
+    if (!el) return false;
+    const tag = el.tagName?.toLowerCase();
+    return tag === "input" || tag === "textarea" || tag === "select" || el.isContentEditable;
+}
+
+// 画面内の問題カード一覧
+function getCards() {
+    return Array.from(document.querySelectorAll(".card"));
+}
+
+// いま画面先頭（≒最上部に最も近い）にある問題カードの index を返す
+function getTopCardIndex() {
+    const y = window.scrollY;
+    const cards = getCards();
+    if (!cards.length) return -1;
+    // 現在のスクロール位置以下（少し余裕 8px）のうち、最も近いもの
+    let best = 0;
+    let bestDelta = Infinity;
+    cards.forEach((c, i) => {
+        const top = c.offsetTop;
+        const delta = Math.abs(top - y);
+        if (top <= y + 8 && delta < bestDelta) {
+            best = i;
+            bestDelta = delta;
+        }
+    });
+    return best;
+}
+
+// 指定 index のカードへスクロール
+function scrollToCard(idx, smooth = true) {
+    const cards = getCards();
+    if (!cards.length) return;
+    const i = Math.max(0, Math.min(cards.length - 1, idx));
+    cards[i].scrollIntoView({ behavior: smooth ? "smooth" : "auto", block: "start" });
+}
+
+// 先頭の問題（画面上端に最も近いカード）で n 番目のチェックボックスをトグル
+function toggleNthChoiceOnTopCard(n /* 1-based */) {
+    const cards = getCards();
+    if (!cards.length) return;
+    const idx = getTopCardIndex();
+    if (idx < 0) return;
+
+    const card = cards[idx];
+    const inputs = card.querySelectorAll(".choice input[type='checkbox']");
+    const target = inputs[n - 1]; // 1→0, 2→1…
+    if (!target) return;
+
+    target.checked = !target.checked;
+    // 既存の change ハンドラ（選択状態や採点有効化）を発火させる
+    target.dispatchEvent(new Event("change", { bubbles: true }));
+}
+
+// ← → で前後へ、数字で選択肢トグル
+document.addEventListener("keydown", (e) => {
+    if (isTypingInForm(document.activeElement)) return;
+
+    // 左右キーで前後の問題へ
+    if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
+        const cur = getTopCardIndex();
+        if (cur >= 0) {
+            e.preventDefault(); // 余計な横スクロールを抑止
+            const next = e.key === "ArrowRight" ? cur + 1 : cur - 1;
+            scrollToCard(next, true);
+        }
+        return;
+    }
+
+    // 数字キー（上段 or テンキー）で選択肢トグル
+    // '1'〜'9' および Numpad1〜Numpad9
+    const mapDigit = (() => {
+        if (/^Digit[1-9]$/.test(e.code)) return Number(e.code.replace("Digit", ""));
+        if (/^Numpad[1-9]$/.test(e.code)) return Number(e.code.replace("Numpad", ""));
+        // 一部環境では e.key が '1' などだけ入ることがある
+        if (/^[1-9]$/.test(e.key)) return Number(e.key);
+        return null;
+    })();
+
+    if (mapDigit != null) {
+        e.preventDefault();
+        toggleNthChoiceOnTopCard(mapDigit);
+    }
+});
