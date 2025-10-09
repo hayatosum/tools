@@ -815,14 +815,14 @@ const JAVA_SILVER_1Z0_815_JPN_13 = {
                 "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
             code: ' 1. public class Sample {\n 2.     int a, b;\n 3.     public Sample(int a, int b) {\n 4.         init(a, b);\n 5.     }\n 6.     public void init(int a, int b) {\n 7.         this.a = a * a;\n 8.         this.b = b * b;\n 9.     }\n10.     public static void main(String[] args) {\n11.         int a = 2, b = 3;\n12.         Sample s = new Sample(a, b);\n13.         System.out.println(a + ", " + b);\n14.     }\n15. }',
             choices: [
-                "「4,9」と表示される",
-                "「0,0」と表示される",
-                "「2,3」と表示される",
+                "「4, 9」と表示される",
+                "「0, 0」と表示される",
+                "「2, 3」と表示される",
                 "コンパイルエラーが発生する",
             ],
             answerIndex: 2,
             explanation:
-                "mainメソッド内のa,bはローカル変数であり、initで更新されるのはインスタンス変数a,b。出力はローカル変数の「2,3」。",
+                "mainメソッド内で宣言されているaとbはローカル変数であり、Sampleクラスのインスタンス変数aやbとは別物です。コンストラクタやinitメソッドでインスタンス変数aとbはそれぞれa*a, b*bで初期化されますが、mainメソッドで出力しているのはローカル変数aとbの値です。そのため、出力結果は2, 3となります。",
         },
         {
             id: 50,
