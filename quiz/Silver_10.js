@@ -18,7 +18,7 @@ const JAVA_SILVER_1Z0_815_JPN_10 = {
             ],
             answerIndex: 1,
             explanation:
-                "空配列に対して array[0] へ代入しようとして実行時に ArrayIndexOutOfBoundsException が発生し、catch 節で「error」を出力する。",
+                "空の配列に対してarray[0]に値を代入しようとすると、存在しないインデックスにアクセスすることになり、実行時にArrayIndexOutOfBoundsExceptionが発生する。この例外はcatch節で捕捉され、「error」と出力される。",
         },
         {
             id: 2,
@@ -111,7 +111,7 @@ const JAVA_SILVER_1Z0_815_JPN_10 = {
             ],
             answerIndex: 1,
             explanation:
-                "finally の return は catch/try の return を上書きするため、最終的に 20 が返る。",
+                "catch節やtry節でreturnがあっても、finally節でreturnが記述されている場合は、finally節のreturnが最終的な戻り値として採用される。そのため、catchで10を返そうとしても、finallyのreturn 20;によって20が返され、出力も20となる。",
         },
         {
             id: 7,

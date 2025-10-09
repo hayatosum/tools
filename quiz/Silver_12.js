@@ -121,7 +121,7 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
             ],
             answerIndex: 2,
             explanation:
-                "default節は最初に実行されるがbreakがないためcase0も続けて実行され「CA」となる。",
+                "switch文でdataが1の場合、default節が最初に実行されて「C」が出力される。その後、breakがないためcase 0の処理も続けて実行され、「A」が出力される。したがって、最終的な出力は「CA」となる。",
         },
         {
             id: 8,
@@ -574,7 +574,7 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
             choices: ["3が表示される", "b1が表示される", "1が表示される", "b2が表示される"],
             answerIndex: 0,
             explanation:
-                "case 'b' でbreakがないため、b→c→d→eまで実行され、iは3増加して「3」が表示される。",
+                "switch文で変数cが'b'の場合、case 'b'からbreakがないため、そのままcase 'c'、case 'd'、case 'e'の処理も続けて実行される。iはcase 'b'で1増え、case 'd'でさらに1増え、case 'e'でさらに1増えて合計3増加する。したがって、最終的に3が表示される。",
         },
         {
             id: 35,

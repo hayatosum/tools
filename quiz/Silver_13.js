@@ -156,7 +156,7 @@ const JAVA_SILVER_1Z0_815_JPN_13 = {
             ],
             answerIndex: 4,
             explanation:
-                "A型変数aでは可変長引数版setValue(String... values)は定義されていないため、コンパイル時にはAクラスのsetValue(String)のみが対象となる。そのため呼び出しが解決できずエラーとなる。",
+                "A型の変数aにはsetValue(String)メソッドしか定義されていません。BクラスでsetValue(String... values)という可変長引数のメソッドを追加していますが、A型の参照からはこのメソッドは見えません。そのため、a.setValue(args)の呼び出しはAクラスのsetValue(String)を探しますが、String型とString[]型（args）は一致しないため、メソッド呼び出しが解決できずコンパイルエラーとなります。",
         },
         {
             id: 10,
