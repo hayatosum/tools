@@ -751,7 +751,29 @@ function updateSelectedFileCount() {
     }
     const key = fileSelect.value;
     const cnt = countQuestionsInBuiltinSet(key);
-    fileCountEl.textContent = typeof cnt === "number" ? `（全 ${cnt} 問）` : "";
+
+    if (typeof cnt !== "number") {
+        fileCountEl.textContent = "";
+        return;
+    }
+
+    // --- 未出題件数を算出 ---
+    const store = window.BUILTIN_QUESTION_SETS || {};
+    const data = store[key];
+    let questions = [];
+    if (Array.isArray(data)) {
+        for (const block of data) {
+            if (Array.isArray(block.questions)) questions.push(...block.questions);
+        }
+    } else if (data && Array.isArray(data.questions)) {
+        questions = data.questions;
+    }
+
+    const seenSet = getSeenIdSetFromHistory();
+    const unseenCount = questions.filter((q) => !seenSet.has(q.id)).length;
+
+    // --- 表示を更新 ---
+    fileCountEl.textContent = `（全 ${cnt} 問 / 未出題 ${unseenCount} 問）`;
 }
 
 // 旧 validateQuestions を丸ごと置き換え
@@ -962,6 +984,7 @@ function loadHistory() {
         return [];
     }
 }
+
 function saveHistory(history) {
     localStorage.setItem(LS_KEY, JSON.stringify(history));
 }
@@ -1529,9 +1552,10 @@ function weightedSampleWithoutReplacement(items, weights, k) {
 function getSeenIdSetFromHistory() {
     const hist = loadHistory();
     const set = new Set();
-    hist.forEach((run) => {
-        if (!Array.isArray(run.items)) return;
-        run.items.forEach((it) => set.add(it.id));
+    hist.forEach((h) => {
+        if (Array.isArray(h.questionIds)) {
+            h.questionIds.forEach((id) => set.add(id));
+        }
     });
     return set;
 }
