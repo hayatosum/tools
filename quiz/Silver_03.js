@@ -294,7 +294,7 @@ const JAVA_SILVER_1Z0_815_JPN_03 = {
             id: 19,
             category: "演算子と判定構造",
             difficulty: "中級",
-            question: "switch文の条件式が戻せる型として正しいものをすべて選びなさい。（6つ選択）",
+            question: "switch文の条件式が戻せる型として正しいものをすべて選びなさい。",
             code: "",
             choices: ["char", "byte", "short", "int", "long", "String", "enum", "boolean"],
             answerIndex: [0, 1, 2, 3, 5, 6],
@@ -306,7 +306,7 @@ const JAVA_SILVER_1Z0_815_JPN_03 = {
             category: "演算子と判定構造",
             difficulty: "上級",
             question:
-                "次のプログラムをコンパイルしたときにエラーが発生するのは何行目か。（2つ選択）",
+                "次のプログラムをコンパイルしたときにエラーが発生するもの箇所をすべて選びなさい。",
             code: ' 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         final int NUM = 0;\n 4.         int num = 10;\n 5.         switch(num) {\n 6.             case "10": System.out.println("A");\n 7.             break;\n 8.             case num: System.out.println("B");\n 9.             break;\n10.             case 2*5: System.out.println("C");\n11.             break;\n12.             case NUM: System.out.println("D");\n13.             break;\n14.         }\n15.     }\n16. }',
             choices: ["6行目", "8行目", "10行目", "12行目"],
             answerIndex: [0, 1],
