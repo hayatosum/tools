@@ -622,7 +622,7 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
             ],
             answerIndex: [2, 4],
             explanation:
-                "void型でreturn;のみはOK、boolean型で条件式returnもOK、void型で値returnやchar型でString returnは不可、など戻り値型とreturn文の整合が取れているものが正しい定義です。",
+                "boolean型のメソッドは条件式の評価結果（trueまたはfalse）をそのままreturnできるため、条件式を返す定義は正しい。void型のメソッドでは、値を返さずreturn;のみ記述することができる。void型で値を返したり、戻り値型と異なる型をreturnする定義は誤りとなる。",
         },
         {
             id: 38,
@@ -681,7 +681,7 @@ const JAVA_SILVER_1Z0_815_JPN_12 = {
             category: "総仕上げ問題①",
             difficulty: "上級",
             question:
-                "次のプログラムを確認し、ロインタフェースでコンパイルエラーが発生する理由として考えられるものを選びなさい。（1つ選択）",
+                "次のプログラムを確認し、Dインタフェースでコンパイルエラーが発生する理由として考えられるものを選びなさい。（1つ選択）",
             code: "1. public interface A {\n2.     public Iterable a();\n3. }\n\n1. import java.util.Collection;\n2. public interface B extends A {\n3.     public Collection a();\n4. }\n\n1. import java.nio.file.Path;\n2. public interface C extends A {\n3.     public Path a();\n4. }\n\n1. public interface D extends B, C {\n2. }",
             choices: [
                 "Dインタフェースから2つ以上継承しているため",

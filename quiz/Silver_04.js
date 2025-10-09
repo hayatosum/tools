@@ -257,19 +257,12 @@ const JAVA_SILVER_1Z0_815_JPN_04 = {
             id: 16,
             category: "制御構造",
             difficulty: "上級",
-            question: "次の中から、ラベルが記述できるものを選びなさい。（1つ選択）",
+            question: "次の中から、ラベルが記述できるものをすべて選びなさい。（1つ選択）",
             code: "",
-            choices: [
-                "if文やswitch文",
-                "式",
-                "代入",
-                "return文",
-                "tryブロック",
-                "他の選択肢すべて",
-            ],
-            answerIndex: 0,
+            choices: ["if文", "switch文", "for文", "式", "代入", "return文", "tryブロック"],
+            answerIndex: [0, 1, 2],
             explanation:
-                "ラベルはループ系文やswitchに付与できる（例：label: for(...)）。式や代入・returnなどには付けられない。",
+                "ラベルは、if文・switch文・for文などの制御構造の直前に記述できるが、式や代入、return文、tryブロックには記述できない。主にbreakやcontinueと組み合わせて、複数の入れ子になったループやswitch文から一気に抜ける場合などに利用される。",
         },
         {
             id: 17,

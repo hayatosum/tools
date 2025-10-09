@@ -6,8 +6,8 @@ const JAVA_SILVER_1Z0_815_JPN_09 = {
             category: "API",
             difficulty: "中級",
             question:
-                "次の計算式を使い、毎年積立を行って複利運用したときの金額を計算したい。この計算を行うコードとして正しいものを選びなさい。（1つ選択）",
-            code: "n = m * ((1 + r)^x - 1) / r",
+                "次の計算式を使い、毎年積立を行って複利運用したときの金額を計算したい。この計算を行うコードとして正しいものを選びなさい。（1つ選択）\n![](img/1Z0-815-JPN_09-001_q.png)",
+            code: "",
             choices: [
                 "<code>n = (int) (m * (Math.pow((1 + r), x) - 1) / r);</code>",
                 "<code>n = (int) (m * (Math.pow(x, (1 + r)) - 1) / r);</code>",
