@@ -888,13 +888,13 @@ function formatExplanationHtml(explanation) {
             .split(fenceRegex)
             .map((part) => {
                 // プレーンテキスト部分もエスケープ
-                return part ? `<p>${escapeHtml(part)}</p>` : "";
+                return part ? `<p>${escapeHtml(part).replace(/\n/g, "<br>")}</p>` : "";
             })
             .join("");
     }
 
-    // フェンスがなければプレーンテキストとして表示
-    return `<p>${escapeHtml(text)}</p>`;
+    // フェンスがなければプレーンテキストとして表示（\n→<br>に変換）
+    return `<p>${escapeHtml(text).replace(/\n/g, "<br>")}</p>`;
 }
 
 // --- イベント ---
