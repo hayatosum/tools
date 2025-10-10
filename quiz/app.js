@@ -1,6 +1,6 @@
 // ==== 試験の種類 ====
 const examTypeEl = document.getElementById("examType");
-let currentExamType = examTypeEl?.value || "1Z0-815-JPN";
+window.currentExamType = examTypeEl?.value || "NONE";
 
 // ==== タブ切替 ====
 const ACTIVE_TAB_KEY = "ui.activeTab";
@@ -50,7 +50,7 @@ async function switchTab(to) {
             setStatus?.("出題範囲を再読込しました", 1500);
         } else {
             // 回答結果を分析 → 常に ALL を強制再読込（ローカルファイルは無視）
-            await loadAllQuestions("ALL");
+            await loadAllQuestions((window.currentExamType || "NONE") + "_ALL");
             // 分析系の再描画（履歴はそのまま）
             renderHistory?.();
             renderTrendChart?.();
@@ -74,10 +74,9 @@ tabAnalBtn?.addEventListener("click", () => switchTab("analytics"));
 let allQuestions = [];
 let currentQuestions = []; // 出題中の問題
 let userAnswers = new Map(); // key: q.id, value: choice index
-let currentFile = "ALL"; // デフォルト
+let currentFile = "NONE_ALL"; // デフォルト
 
 // --- 要素参照 ---
-const fileSelect = document.getElementById("fileSelect");
 const fileInput = document.getElementById("fileInput");
 const fileCountEl = document.getElementById("fileCount");
 const countInput = document.getElementById("questionCount");
@@ -103,10 +102,12 @@ const orderToEl = document.getElementById("orderTo");
 
 const timerEl = document.getElementById("timer"); // ← 追加
 
-// 出題範囲のセレクト
-fileSelect?.addEventListener("change", () => {
+const fileSelect = document.getElementById("fileSelect");
+
+// 出題範囲のセレクト変更で即時再読込
+fileSelect?.addEventListener("change", async () => {
     localStorage.setItem("opt.fileSelect", fileSelect.value);
-    // 既存の処理（件数更新など）はそのまま
+    await reloadQuestionsAfterRangeChange();
 });
 
 // 出題数
@@ -212,7 +213,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     // examType 復元 → 絞り込み → currentFile 補正 → 件数更新 ▼▼
     if (examTypeEl && savedExam) examTypeEl.value = savedExam;
     // 現在値を state に反映
-    window.currentExamType = examTypeEl ? examTypeEl.value : "1Z0-815-JPN";
+    window.currentExamType = examTypeEl ? examTypeEl.value : "NONE";
 
     // 出題範囲セレクトを examType で絞る（※この関数は後述または既存のものを利用）
     filterRangeOptionsByExamType();
@@ -228,6 +229,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     updateSelectedFileCount();
+
     try {
         await loadAllQuestions(); // ← 初期ロード
         renderHistory(); // 履歴も表示
@@ -248,35 +250,39 @@ function getExamTypeFromRangeKey(key) {
     const k = String(key ?? "");
     // "Q_" の直後から、次の "_" までが試験種別（ハイフンを含む）
     // 例: Q_1Z0-815-JPN_01 -> "1Z0-815-JPN"
-    const m = k.match(/^Q_([^_]+)_/);
+    const m = k.match(/^([^_]+)_/);
     return m ? m[1] : null;
 }
 
-// questionId から試験種別（例: "1Z0-815-JPN_10-002" → "1Z0-815-JPN"）
+// questionId から試験種別
+// 例1: "1Z0-815-JPN_10-002" → "1Z0-815-JPN"
+// 例2: "SAA-C03_00-001" → "SAA-C03"
 function getExamTypeFromQuestionId(id) {
-    const m = String(id ?? "").match(/^([A-Z0-9-]+-JPN)_/);
-    return m ? m[1] : null;
+    return extractBasePrefix(id);
 }
 
-// questionId から出題範囲キー（例: "1Z0-815-JPN_10-002" → "Q_1Z0-815-JPN_10"）
+// questionId から出題範囲キー
+// 例: "1Z0-815-JPN_10-002" → "Q_1Z0-815-JPN_10"
+// 例: "SAA-C03_00-001" → "SAA-C03_00"
 function getRangeKeyFromQuestionId(id) {
-    const m = String(id ?? "").match(/^([A-Z0-9-]+-JPN)_([0-9A-Za-z]+)-/);
-    return m ? `Q_${m[1]}_${m[2]}` : null;
+    const pf = extractPrefix(id); // "SAA-C03_00"
+    const us = pf.indexOf("_");
+    if (us > 0) return `${pf.slice(0, us)}_${pf.slice(us + 1)}`; // 既存互換
+    return pf; // "_" が無い形式にも対応
 }
 
-// 問題オブジェクト → "1Z0-815-JPN"（prefix/prefixBase/問題IDから推測）
+// 問題オブジェクト → 試験種別
 function getExamTypeFromQuestion(q) {
     if (!q) return null;
     if (q.prefixBase) return q.prefixBase; // 既に付与済みなら最優先
 
-    // 例: "1Z0-815-JPN_01"
+    // prefix が "SAA-C03_00" のような自由形式でもOKにする
     if (typeof q.prefix === "string") {
-        const m = q.prefix.match(/^([A-Z0-9-]+-JPN)_/);
-        if (m) return m[1];
+        const pf = q.prefix.split("_")[0] || "";
+        return pf || null;
     }
     if (typeof q.id === "string") {
-        const t = getExamTypeFromQuestionId(q.id);
-        if (t) return t;
+        return extractBasePrefix(q.id);
     }
     return null;
 }
@@ -308,12 +314,6 @@ function updateOrderModeUI() {
     randomControls?.querySelectorAll("input,select").forEach((el) => (el.disabled = !isRandom));
     orderedControls?.querySelectorAll("input,select").forEach((el) => (el.disabled = isRandom));
 }
-
-// --- ファイル切り替え ---
-fileSelect.addEventListener("change", () => {
-    currentFile = fileSelect.value;
-    updateSelectedFileCount();
-});
 
 // --- ユーティリティ ---
 const shuffle = (arr) =>
@@ -836,7 +836,7 @@ async function loadAllQuestions(forceKey = null) {
         data = JSON.parse(text);
     } else {
         // 2) 内蔵データ（questions_data.js）にあるならそれを使用
-        const builtin = (window.BUILTIN_QUESTION_SETS || {})[currentFile || "ALL"];
+        const builtin = (window.BUILTIN_QUESTION_SETS || {})[currentFile || "NONE_ALL"];
         if (builtin) {
             data = builtin;
         } else {
@@ -868,19 +868,24 @@ async function loadAllQuestions(forceKey = null) {
             merged = merged.concat(questions);
         });
     } else if (data.questions && data.prefix) {
-        // {prefix:"KS01",questions:[...]}
-        const prefix = data.prefix || "ZZ00";
-        const questions = data.questions || [];
-        validateQuestions(questions, prefix);
+        // 1) ベースとパートを汎用的に抽出（"-JPN" 前提を撤廃）
+        const raw = String(data.prefix || "ZZ00"); // 例: "SAA-C03" or "SAA-C03_00"
+        const base = raw.split("_")[0]; // → "SAA-C03"
+        const part = data.part ?? (raw.includes("_") ? raw.split("_")[1] : null); // → "00" or null
 
-        const baseMatch = String(prefix).match(/^([A-Z0-9-]+-JPN)_/);
-        const basePrefix = baseMatch ? baseMatch[1] : String(prefix); // "1Z0-815-JPN"
-        const partMatch = String(prefix).match(/_([0-9A-Za-z]+)$/);
-        const part = partMatch ? partMatch[1] : null; // "01" 等 or null
+        // 2) ID 生成用の fullPrefix を必ず作る
+        const fullPrefix = part ? `${base}_${part}` : base; // → "SAA-C03_00" / "SAA-C03"
+
+        const questions = data.questions || [];
+
+        // 3) ここで fullPrefix を渡すので、自動採番は "SAA-C03_00-001" になる
+        validateQuestions(questions, fullPrefix);
+
+        // 4) メタ付与も汎用ロジックに統一
         questions.forEach((q) => {
-            q.prefixBase = basePrefix;
-            q.part = part;
-            q.fullPrefix = prefix; // "1Z0-815-JPN_01"
+            q.prefixBase = base; // "SAA-C03"
+            q.part = part ?? null; // "00" or null
+            q.fullPrefix = fullPrefix; // "SAA-C03_00"
         });
 
         merged = questions;
@@ -1152,27 +1157,36 @@ loadBtn.addEventListener("click", async () => {
 // ====== 履歴（localStorage） ======
 const LS_KEY = "quizHistory.v1";
 
-// 履歴の読み書き
-function loadHistory() {
+// 履歴の取得（全件）
+function loadHistoryRaw() {
     try {
         const raw = localStorage.getItem(LS_KEY);
-        return getHistoryByExamType(raw ? JSON.parse(raw) : []);
+        return raw ? JSON.parse(raw) : [];
     } catch {
         return [];
     }
 }
 
-function saveHistory(history) {
-    localStorage.setItem(LS_KEY, JSON.stringify(history));
+// 履歴の取得（試験種別で絞り込み）
+function loadHistory() {
+    const all = loadHistoryRaw();
+    return getHistoryByExamType(all);
+}
+
+function saveHistory(historyAll) {
+    localStorage.setItem(LS_KEY, JSON.stringify(historyAll));
 }
 
 // 1件追加保存
 function appendHistoryEntry(entry) {
-    const hist = loadHistory();
-    hist.unshift(entry); // 新しい順に先頭へ
-    // 任意：上限（例：200件）
-    if (hist.length > 200) hist.length = 200;
-    saveHistory(hist);
+    // 全件取得した履歴に対して追加保存する
+    const all = loadHistoryRaw();
+    all.unshift(entry);
+
+    // 履歴件数の上限
+    const HISTORY_LIMIT = 1000;
+    if (all.length > HISTORY_LIMIT) all.length = HISTORY_LIMIT;
+    saveHistory(all);
 }
 
 // 履歴の描画
@@ -1332,14 +1346,46 @@ function renderHistory() {
 if (refreshHistoryBtn) {
     refreshHistoryBtn.addEventListener("click", () => renderHistory());
 }
+// ボタン：再読込・全削除（← 試験種別のみ削除に変更）
 if (clearHistoryBtn) {
     clearHistoryBtn.addEventListener("click", () => {
-        if (confirm("履歴をすべて削除します。よろしいですか？")) {
-            saveHistory([]);
-            renderHistory();
-            renderTrendChart();
-            analyzeHistoryAndRender();
+        const wanted = window.currentExamType; // 例: "SAA-C03" / "1Z0-815-JPN"
+        if (!wanted || wanted === "NONE") {
+            alert("試験種別を選択してください。");
+            return;
         }
+
+        const all = loadHistoryRaw(); // 全履歴
+        // getHistoryByExamType と同じ判定で「残すもの」を抽出
+        const remain = all.filter((h) => {
+            // 1) questionIds から判定
+            const firstId = Array.isArray(h.questionIds)
+                ? h.questionIds.find((x) => typeof x === "string")
+                : null;
+            if (firstId) {
+                return extractBasePrefix(firstId) !== wanted;
+            }
+            // 2) フォールバック: source 先頭トークン
+            if (h.source) {
+                const m = String(h.source).match(/^([A-Za-z0-9-]+)/);
+                if (m) return m[1] !== wanted;
+            }
+            // 判定不能なものは安全側で残す
+            return true;
+        });
+
+        const removed = all.length - remain.length;
+        if (removed === 0) {
+            alert(`「${wanted}」に該当する履歴はありません。`);
+            return;
+        }
+
+        if (!confirm(`「${wanted}」の履歴 ${removed} 件を削除します。よろしいですか？`)) return;
+
+        saveHistory(remain);
+        renderHistory();
+        renderTrendChart();
+        analyzeHistoryAndRender();
     });
 }
 
@@ -2142,13 +2188,11 @@ async function importHistoryFromFile(file) {
         const text = await file.text();
         let data = JSON.parse(text);
 
-        // 受け付ける形式：
-        // 1) { version, items: [...] }
-        // 2) 単なる配列 [...]
+        // 受け付ける形式： 1) { version, items: [...] } / 2) 単なる配列 [...]
         const imported = Array.isArray(data) ? data : Array.isArray(data.items) ? data.items : null;
         if (!imported) throw new Error("不正なJSON形式です（items配列が見つかりません）");
 
-        // 軽いバリデーション（ts/total/correct/rate など最低限）
+        // 最低限のバリデーション
         const cleaned = imported.filter(
             (x) =>
                 x &&
@@ -2157,22 +2201,34 @@ async function importHistoryFromFile(file) {
                 typeof x.total === "number" &&
                 typeof x.correct === "number"
         );
-
         if (cleaned.length === 0) throw new Error("取り込める履歴エントリがありません");
 
-        // 既存とマージ：ts＋questionIds＋rate 等を基準に簡易重複除去
-        const current = loadHistory();
-        const keyOf = (h) => `${h.ts}-${h.total}-${h.correct}-${h.rate ?? ""}-${h.source ?? ""}`;
+        // ★ 修正：全件でマージ（loadHistoryRaw）
+        const currentAll = loadHistoryRaw(); // ← 絞り込みなし（全履歴）  :contentReference[oaicite:4]{index=4}
+
+        // 重複キー（ts/total/correct/rate/source/先頭questionId）で簡易同一判定
+        const firstQ = (h) =>
+            Array.isArray(h.questionIds)
+                ? h.questionIds.find((s) => typeof s === "string") || ""
+                : "";
+        const keyOf = (h) =>
+            `${h.ts}-${h.total}-${h.correct}-${h.rate ?? ""}-${h.source ?? ""}-${firstQ(h)}`;
+
         const map = new Map();
-        [...current, ...cleaned].forEach((h) => {
-            map.set(keyOf(h), h);
-        });
+        // 既存を先に入れる（保持）
+        for (const h of currentAll) map.set(keyOf(h), h);
+        // 取り込み分で上書き/追加
+        for (const h of cleaned) map.set(keyOf(h), h);
 
-        // 新しい順にソートし、上限200件で切る（既存実装と整合）
-        const merged = [...map.values()].sort((a, b) => b.ts - a.ts).slice(0, 200);
-        saveHistory(merged);
+        // 新しい順に並べ、上限は既存ロジックに合わせて1000件に（HISTORY_LIMIT）
+        const HISTORY_LIMIT = 1000;
+        const merged = Array.from(map.values())
+            .sort((a, b) => b.ts - a.ts)
+            .slice(0, HISTORY_LIMIT);
 
-        // 画面更新
+        saveHistory(merged); // 全件保存  :contentReference[oaicite:5]{index=5}
+
+        // 画面更新（以降は既存のまま）
         renderHistory();
         renderTrendChart();
         analyzeHistoryAndRender();
@@ -2365,21 +2421,22 @@ function scrollToCardByIndex(zeroBasedIndex) {
 function filterRangeOptionsByExamType() {
     if (!window.fileSelect) return;
     const examTypeEl = document.getElementById("examType");
-    const currentExamType = examTypeEl ? examTypeEl.value : "1Z0-815-JPN";
+    const currentExamType = examTypeEl ? examTypeEl.value : "NONE";
 
     let firstVisible = null;
     [...fileSelect.options].forEach((opt) => {
         const val = String(opt.value ?? ""); // 例: "Q_1Z0-815-JPN_01"
-        const visible = val.startsWith(`Q_${currentExamType}_`);
+        const visible = val.startsWith(`${currentExamType}_`);
         opt.hidden = !visible;
         if (visible && !firstVisible) firstVisible = opt;
     });
 
     // 表示外を選んでいたら先頭の可視項目へ寄せる
     const cur = fileSelect.selectedOptions[0];
-    if ((!cur || cur.hidden) && firstVisible) {
-        fileSelect.value = firstVisible.value;
+    if (!cur || cur.hidden) {
+        fileSelect.value = (firstVisible && firstVisible.value) || `${currentExamType}_ALL`;
     }
+    currentFile = fileSelect.value;
 }
 
 // 試験の種類の変更
@@ -2412,29 +2469,48 @@ examTypeEl?.addEventListener("change", async () => {
         console.warn(e);
         setStatus(`エラー: ${e.message || e}`, 3000);
     }
+
+    await reloadQuestionsAfterRangeChange();
 });
 
 function getHistoryByExamType(entries) {
     if (!Array.isArray(entries)) return [];
-    const wanted = window.currentExamType; // 例: "1Z0-815-JPN"
+    const wanted = window.currentExamType; // 例: "SAA-C03"
     if (!wanted) return entries;
 
     return entries.filter((h) => {
-        // questionIds の先頭（最初に見つかった文字列）から判定
+        // 1) questionIds から判定（推奨）
         const firstId = Array.isArray(h.questionIds)
             ? h.questionIds.find((x) => typeof x === "string")
             : null;
         if (firstId) {
-            const t = getExamTypeFromQuestionId(firstId);
+            const t = extractBasePrefix(firstId); // ← 汎用化
             if (t === wanted) return true;
         }
 
-        // 念のためのフォールバック（履歴が古く questionIds が空の場合など）
+        // 2) フォールバック: source 文字列の先頭トークンで判定
+        //   - "SAA-C03_SAMPLE" / "1Z0-815-JPN_10" などに対応
         if (h.source) {
-            // "Q_1Z0-815-JPN_10" などの value やラベルが source に入っていれば拾える
-            const m = String(h.source).match(/^Q_([A-Z0-9-]+-JPN)_/);
+            const m = String(h.source).match(/^([A-Za-z0-9-]+)/);
             if (m && m[1] === wanted) return true;
         }
         return false;
     });
+}
+
+async function reloadQuestionsAfterRangeChange() {
+    // 画面状態を一旦リセットしてから再読込
+    try {
+        setStatus("出題範囲を再読込中…", 0);
+        currentFile = fileSelect?.value || currentFile;
+        await loadAllQuestions(); // ← 実データ再読込
+        refreshOrderRangeBounds(); // 番号順UIの上下限更新
+        updateSelectedFileCount?.(); // 件数/未出題数の再計算
+        resetState(); // 出題中状態をクリア（任意）
+        gradeArea.hidden = true; // 採点エリアは非表示に戻す（任意）
+        setStatus("出題範囲を再読込しました", 1200);
+    } catch (e) {
+        console.warn(e);
+        setStatus(`エラー: ${e.message || e}`, 4000);
+    }
 }
