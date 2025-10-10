@@ -1,4 +1,4 @@
-const JAVA_SILVER_1Z0_815_JPN_06 = {
+const Q_1Z0_815_JPN_06 = {
     prefix: "1Z0-815-JPN",
     part: "06",
     questions: [

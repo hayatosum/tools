@@ -38,7 +38,7 @@ async function switchTab(to) {
             setStatus?.("出題範囲を再読込しました", 1500);
         } else {
             // 回答結果を分析 → 常に ALL を強制再読込（ローカルファイルは無視）
-            await loadAllQuestions("JAVA_SILVER_1Z0_815_JPN_ALL");
+            await loadAllQuestions("ALL");
             // 分析系の再描画（履歴はそのまま）
             renderHistory?.();
             renderTrendChart?.();
@@ -758,7 +758,7 @@ async function loadAllQuestions(forceKey = null) {
         data = JSON.parse(text);
     } else {
         // 2) 内蔵データ（questions_data.js）にあるならそれを使用
-        const builtin = (window.BUILTIN_QUESTION_SETS || {})[currentFile];
+        const builtin = (window.BUILTIN_QUESTION_SETS || {})[currentFile || "ALL"];
         if (builtin) {
             data = builtin;
         } else {
