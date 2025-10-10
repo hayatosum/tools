@@ -258,7 +258,7 @@ const Q_1Z0_815_JPN_04 = {
             id: 16,
             category: "制御構造",
             difficulty: "上級",
-            question: "次の中から、ラベルが記述できるものをすべて選びなさい。（1つ選択）",
+            question: "次の中から、ラベルが記述できるものをすべて選びなさい。",
             code: "",
             choices: ["if文", "switch文", "for文", "式", "代入", "return文", "tryブロック"],
             answerIndex: [0, 1, 2],
