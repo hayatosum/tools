@@ -1001,6 +1001,9 @@ function formatExplanationHtml(explanation) {
 // --- イベント ---
 loadBtn.addEventListener("click", async () => {
     try {
+        if (wrongFixed) wrongFixed.classList.add("hidden");
+        if (wrongPanel) wrongPanel.classList.add("hidden");
+
         resetState();
         setStatus("問題を読み込み中…", 0);
         await loadAllQuestions();
@@ -1281,6 +1284,9 @@ gradeBtn.addEventListener("click", () => {
 resetBtn.addEventListener("click", () => {
     stopTimer();
 
+    if (wrongFixed) wrongFixed.classList.add("hidden");
+    if (wrongPanel) wrongPanel.classList.add("hidden");
+
     resetState();
     setStatus("リセットしました", 1500);
     gradeArea.hidden = true;
@@ -1375,8 +1381,12 @@ function renderAnalysisTable(rows, lowThreshold) {
 }
 
 function renderRanking(rows) {
-    const byRateDesc = [...rows].sort((a, b) => b.rate - a.rate || a.id.localeCompare(b.id));
-    const byRateAsc = [...rows].sort((a, b) => a.rate - b.rate || a.id.localeCompare(b.id));
+    const byRateDesc = [...rows].sort(
+        (a, b) => b.rate - a.rate || b.total - a.total || a.id.localeCompare(b.id)
+    );
+    const byRateAsc = [...rows].sort(
+        (a, b) => a.rate - b.rate || b.total - a.total || a.id.localeCompare(b.id)
+    );
 
     const topN = byRateDesc.slice(0, 10);
     const bottomN = byRateAsc.slice(0, 10);
@@ -2093,82 +2103,120 @@ function scrollToCard(idx, smooth = true) {
     cards[i].scrollIntoView({ behavior: smooth ? "smooth" : "auto", block: "start" });
 }
 
-// 先頭の問題（画面上端に最も近いカード）で n 番目のチェックボックスをトグル
-function toggleNthChoiceOnTopCard(n /* 1-based */) {
-    const cards = getCards();
-    if (!cards.length) return;
-    const idx = getTopCardIndex();
-    if (idx < 0) return;
-
-    const card = cards[idx];
-    const inputs = card.querySelectorAll(".choice input[type='checkbox']");
-    const target = inputs[n - 1]; // 1→0, 2→1…
-    if (!target) return;
-
-    target.checked = !target.checked;
-    // 既存の change ハンドラ（選択状態や採点有効化）を発火させる
-    target.dispatchEvent(new Event("change", { bubbles: true }));
-}
-
 // ← → で前後へ、数字で選択肢トグル
+// === ← →キーで前後の問題にスクロール（表示位置ベース＋Q1制限） ===
+// === 数字キーで表示中カードの選択肢にチェック（1〜9） ===
 document.addEventListener("keydown", (e) => {
-    if (isTypingInForm(document.activeElement)) return; // 入力中は無視
+    // 入力系にフォーカス中は邪魔しない
+    const tag = e.target && e.target.tagName ? e.target.tagName.toLowerCase() : "";
+    const isEditable =
+        tag === "input" ||
+        tag === "textarea" ||
+        tag === "select" ||
+        (e.target && e.target.isContentEditable);
+    if (isEditable) return;
 
-    // 左右キーで前後の問題へ
     if (!currentQuestions || currentQuestions.length === 0) return;
 
-    if (e.key === "ArrowLeft") {
-        e.preventDefault();
-        currentQuestionIndex = Math.max(0, currentQuestionIndex - 1);
-        scrollToCardByIndex(currentQuestionIndex);
-    } else if (e.key === "ArrowRight") {
-        e.preventDefault();
-        currentQuestionIndex = Math.min(currentQuestions.length - 1, currentQuestionIndex + 1);
-        scrollToCardByIndex(currentQuestionIndex);
+    const cards = Array.from(document.querySelectorAll(".card"));
+    if (cards.length === 0) return;
+
+    const viewportHeight = window.innerHeight;
+
+    // 現在、画面中央付近にあるカードを特定
+    let currentIndex = cards.findIndex((card) => {
+        const rect = card.getBoundingClientRect();
+        const centerY = rect.top + rect.height / 2;
+        return centerY > viewportHeight * 0.2 && centerY < viewportHeight * 0.8;
+    });
+
+    // 見つからない場合 → 一番近いカードを採用
+    if (currentIndex === -1) {
+        let minDist = Infinity;
+        cards.forEach((card, i) => {
+            const dist = Math.abs(card.getBoundingClientRect().top);
+            if (dist < minDist) {
+                minDist = dist;
+                currentIndex = i;
+            }
+        });
     }
 
-    // 数字キー（上段 or テンキー）で選択肢トグル
-    // '1'〜'9' および Numpad1〜Numpad9
-    const mapDigit = (() => {
-        if (/^Digit[1-9]$/.test(e.code)) return Number(e.code.replace("Digit", ""));
-        if (/^Numpad[1-9]$/.test(e.code)) return Number(e.code.replace("Numpad", ""));
-        // 一部環境では e.key が '1' などだけ入ることがある
-        if (/^[1-9]$/.test(e.key)) return Number(e.key);
-        return null;
-    })();
-
-    if (mapDigit != null) {
+    // --- →キー：次の問題 ---
+    if (e.key === "ArrowRight" || e.key === "+") {
         e.preventDefault();
-        toggleNthChoiceOnTopCard(mapDigit);
+        const next = cards[currentIndex + 1];
+        if (next) smoothScrollToCard(next);
+        return;
     }
+
+    // --- ←キー：前の問題（Q1で無効） ---
+    else if (e.key === "ArrowLeft" || e.key === "-") {
+        e.preventDefault();
+        // Q1より前にはスクロールしない
+        if (currentIndex <= 0) return;
+        const prev = cards[currentIndex - 1];
+        if (prev) smoothScrollToCard(prev);
+        return;
+    }
+
+    return;
+
+    // 採点後は無効（任意の運用）
+    if (document.body.classList.contains("graded")) return;
+
+    // 1〜9のみ（テンキーも含む）
+    const k = e.key;
+    if (!/^[1-9]$/.test(k)) return;
+
+    const idx = getVisibleCardIndex();
+    if (idx < 0) return;
+
+    const current = cards[idx];
+    if (!current) return;
+
+    // 表示中カード内の選択肢群を取得
+    const inputs = current.querySelectorAll(".choices .choice input[type='checkbox']");
+    const choiceIndex = parseInt(k, 10) - 1;
+    const target = inputs[choiceIndex];
+    if (!target) return; // その番号の選択肢が無ければ無視
+
+    e.preventDefault();
+
+    // トグル（複数選択想定）。単一選択運用なら全解除→当該のみONに変更してOK
+    target.checked = !target.checked;
+    // change イベントを発火して既存の選択状態・バリデーション処理を流用
+    target.dispatchEvent(new Event("change", { bubbles: true }));
 });
 
-// ==== 戻る／進むボタン無効化 ====
-window.addEventListener("popstate", function (event) {
-    history.pushState(null, "", location.href);
-});
+// === ユーティリティ：現在表示中カードのインデックスを取得 ===
+function getVisibleCardIndex() {
+    const cards = Array.from(document.querySelectorAll(".card"));
+    if (cards.length === 0) return -1;
+
+    const vh = window.innerHeight;
+    // 画面中央近辺に中心があるカードを優先
+    let idx = cards.findIndex((card) => {
+        const r = card.getBoundingClientRect();
+        const center = r.top + r.height / 2;
+        return center > vh * 0.2 && center < vh * 0.8;
+    });
+    // 見つからなければ、上端から最も近いカード
+    if (idx === -1) {
+        let best = Infinity;
+        cards.forEach((card, i) => {
+            const d = Math.abs(card.getBoundingClientRect().top);
+            if (d < best) {
+                best = d;
+                idx = i;
+            }
+        });
+    }
+    return idx;
+}
 
 // 初期状態を履歴に追加
 history.pushState(null, "", location.href);
-
-// ==== マウスボタン4/5で ←→ と同じ動作を行う ====
-document.addEventListener("mousedown", (e) => {
-    if (isTypingInForm(document.activeElement)) return;
-    // 左右キーで前後の問題へ
-    if (!currentQuestions || currentQuestions.length === 0) return;
-
-    // button 3: 戻る（マウスボタン4）
-    // button 4: 進む（マウスボタン5）
-    if (e.button === 3) {
-        e.preventDefault();
-        currentQuestionIndex = Math.max(0, currentQuestionIndex - 1);
-        scrollToCardByIndex(currentQuestionIndex);
-    } else if (e.button === 4) {
-        e.preventDefault();
-        currentQuestionIndex = Math.min(currentQuestions.length - 1, currentQuestionIndex + 1);
-        scrollToCardByIndex(currentQuestionIndex);
-    }
-});
 
 function scrollToCardByIndex(zeroBasedIndex) {
     const qnum = zeroBasedIndex + 1;

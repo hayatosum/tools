@@ -830,16 +830,15 @@ button:disabled {
 /* 固定ナビ（タイマー下） */
 .wrong-fixed {
     position: fixed;
-    right: 20px;
     top: 48px; /* タイマー（.timer-fixed）の下 */
+    right: 20px;
     z-index: 1000;
-    display: block;
-    align-items: flex-start;
     background: rgba(0, 0, 0, 0.75);
     color: #fff;
-    padding: 6px 8px;
+    padding: 6px 12px;
     border-radius: 8px;
-    backdrop-filter: saturate(140%) blur(2px);
+    font-weight: bold;
+    font-size: 14px;
 }
 .wrong-fixed .secondary {
     background: #fff;
@@ -854,11 +853,10 @@ button:disabled {
 
 /* トグルで開閉するパネル */
 .wrong-panel {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
     gap: 6px;
     max-width: min(52vw, 420px);
-    margin: 6px 0 2px 0;
+    margin: 6px 0 4px 0;
 }
 .wrong-panel.hidden {
     display: none;
