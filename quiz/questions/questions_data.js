@@ -28,6 +28,7 @@ window.BUILTIN_QUESTION_SETS = {
         Q_1Z0_815_JPN_12,
         Q_1Z0_815_JPN_13,
     ],
+    "1Z0-816-JPN_ALL": [],
     "1Z0-825-JPN_ALL": [],
     "SAA-C03_ALL": [Q_SAA_C03_SAMPLE],
     "SAA-C03_SAMPLE": Q_SAA_C03_SAMPLE,
