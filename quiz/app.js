@@ -1597,7 +1597,7 @@ function renderPrefixStats() {
     rows.forEach((r) => {
         html += `
             <tr>
-                <td>${r.prefix}</td>
+                <td>${PREFIX_LABELS[r.prefix] || r.prefix}</td>
                 <td>${r.total}</td>
                 <td>${r.correct}</td>
                 <td>${r.rate}%</td>
@@ -2153,6 +2153,8 @@ function scrollToCard(idx, smooth = true) {
 // === ← →キーで前後の問題にスクロール（表示位置ベース＋Q1制限） ===
 // === 数字キーで表示中カードの選択肢にチェック（1〜9） ===
 document.addEventListener("keydown", (e) => {
+    return;
+
     // 入力系にフォーカス中は邪魔しない
     const tag = e.target && e.target.tagName ? e.target.tagName.toLowerCase() : "";
     const isEditable =
@@ -2205,8 +2207,6 @@ document.addEventListener("keydown", (e) => {
         if (prev) smoothScrollToCard(prev);
         return;
     }
-
-    return;
 
     // 採点後は無効（任意の運用）
     if (document.body.classList.contains("graded")) return;
