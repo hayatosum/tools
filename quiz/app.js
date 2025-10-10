@@ -1,4 +1,10 @@
+// ==== 試験の種類 ====
+const examTypeEl = document.getElementById("examType");
+let currentExamType = examTypeEl?.value || "1Z0-815-JPN";
+
 // ==== タブ切替 ====
+const ACTIVE_TAB_KEY = "ui.activeTab";
+const isValidTab = (v) => v === "quiz" || v === "analytics";
 const tabQuizBtn = document.getElementById("tab-quiz");
 const tabAnalBtn = document.getElementById("tab-analytics");
 const panelQuiz = document.getElementById("panel-quiz");
@@ -14,6 +20,12 @@ let wrongCursor = 0; // 現在位置
 
 async function switchTab(to) {
     const toQuiz = to === "quiz";
+
+    // 最後に開いたタブを保存
+    try {
+        localStorage.setItem(ACTIVE_TAB_KEY, toQuiz ? "quiz" : "analytics");
+    } catch (_) {}
+
     // ボタンの状態
     tabQuizBtn.classList.toggle("active", toQuiz);
     tabAnalBtn.classList.toggle("active", !toQuiz);
@@ -144,6 +156,13 @@ document.addEventListener("DOMContentLoaded", async () => {
     let currentQuestionIndex = 0;
 
     // ▼ 設定の復元
+    // 試験の種類（復元）
+    const savedExam = localStorage.getItem("opt.examType");
+    if (examTypeEl && savedExam && EXAM_TYPES[savedExam]) {
+        currentExamType = savedExam;
+        examTypeEl.value = savedExam;
+    }
+
     // 出題範囲
     const savedFileKey = localStorage.getItem("opt.fileSelect");
     if (savedFileKey && fileSelect) {
@@ -190,6 +209,24 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (savedTo && orderToEl) orderToEl.value = savedTo;
     updateOrderModeUI();
 
+    // examType 復元 → 絞り込み → currentFile 補正 → 件数更新 ▼▼
+    if (examTypeEl && savedExam) examTypeEl.value = savedExam;
+    // 現在値を state に反映
+    window.currentExamType = examTypeEl ? examTypeEl.value : "1Z0-815-JPN";
+
+    // 出題範囲セレクトを examType で絞る（※この関数は後述または既存のものを利用）
+    filterRangeOptionsByExamType();
+
+    // 絞り込みの結果、現在選択が非表示になった場合に備えて currentFile を補正
+    if (fileSelect) {
+        const cur = fileSelect.selectedOptions[0];
+        if (!cur || cur.hidden) {
+            const firstVisible = [...fileSelect.options].find((o) => !o.hidden);
+            if (firstVisible) fileSelect.value = firstVisible.value;
+        }
+        currentFile = fileSelect.value;
+    }
+
     updateSelectedFileCount();
     try {
         await loadAllQuestions(); // ← 初期ロード
@@ -199,9 +236,50 @@ document.addEventListener("DOMContentLoaded", async () => {
         console.warn("初期ロードで問題を読み込めませんでした:", e);
     }
 
-    // 初期タブ
-    switchTab("quiz");
+    // 最後に開いていたタブを復元（不正値なら quiz）
+    const savedTab = localStorage.getItem(ACTIVE_TAB_KEY);
+    switchTab(isValidTab(savedTab) ? savedTab : "quiz");
 });
+
+// ===== 試験種別 ↔ 出題範囲/問題ID の抽出 =====
+
+// 出題範囲キー（例: "Q_1Z0-815-JPN_01"）→ "1Z0-815-JPN"
+function getExamTypeFromRangeKey(key) {
+    const k = String(key ?? "");
+    // "Q_" の直後から、次の "_" までが試験種別（ハイフンを含む）
+    // 例: Q_1Z0-815-JPN_01 -> "1Z0-815-JPN"
+    const m = k.match(/^Q_([^_]+)_/);
+    return m ? m[1] : null;
+}
+
+// questionId から試験種別（例: "1Z0-815-JPN_10-002" → "1Z0-815-JPN"）
+function getExamTypeFromQuestionId(id) {
+    const m = String(id ?? "").match(/^([A-Z0-9-]+-JPN)_/);
+    return m ? m[1] : null;
+}
+
+// questionId から出題範囲キー（例: "1Z0-815-JPN_10-002" → "Q_1Z0-815-JPN_10"）
+function getRangeKeyFromQuestionId(id) {
+    const m = String(id ?? "").match(/^([A-Z0-9-]+-JPN)_([0-9A-Za-z]+)-/);
+    return m ? `Q_${m[1]}_${m[2]}` : null;
+}
+
+// 問題オブジェクト → "1Z0-815-JPN"（prefix/prefixBase/問題IDから推測）
+function getExamTypeFromQuestion(q) {
+    if (!q) return null;
+    if (q.prefixBase) return q.prefixBase; // 既に付与済みなら最優先
+
+    // 例: "1Z0-815-JPN_01"
+    if (typeof q.prefix === "string") {
+        const m = q.prefix.match(/^([A-Z0-9-]+-JPN)_/);
+        if (m) return m[1];
+    }
+    if (typeof q.id === "string") {
+        const t = getExamTypeFromQuestionId(q.id);
+        if (t) return t;
+    }
+    return null;
+}
 
 function refreshOrderRangeBounds() {
     if (!orderFromEl || !orderToEl) return;
@@ -794,6 +872,17 @@ async function loadAllQuestions(forceKey = null) {
         const prefix = data.prefix || "ZZ00";
         const questions = data.questions || [];
         validateQuestions(questions, prefix);
+
+        const baseMatch = String(prefix).match(/^([A-Z0-9-]+-JPN)_/);
+        const basePrefix = baseMatch ? baseMatch[1] : String(prefix); // "1Z0-815-JPN"
+        const partMatch = String(prefix).match(/_([0-9A-Za-z]+)$/);
+        const part = partMatch ? partMatch[1] : null; // "01" 等 or null
+        questions.forEach((q) => {
+            q.prefixBase = basePrefix;
+            q.part = part;
+            q.fullPrefix = prefix; // "1Z0-815-JPN_01"
+        });
+
         merged = questions;
     } else if (Array.isArray(data)) {
         // 旧形式（単なる配列）
@@ -803,8 +892,10 @@ async function loadAllQuestions(forceKey = null) {
         throw new Error("不正なJSON形式です");
     }
 
-    allQuestions = merged;
+    // === 試験種別で絞り込み ===
+    merged = merged.filter((q) => q?.prefixBase === currentExamType);
 
+    allQuestions = merged;
     refreshOrderRangeBounds();
 }
 
@@ -1065,7 +1156,7 @@ const LS_KEY = "quizHistory.v1";
 function loadHistory() {
     try {
         const raw = localStorage.getItem(LS_KEY);
-        return raw ? JSON.parse(raw) : [];
+        return getHistoryByExamType(raw ? JSON.parse(raw) : []);
     } catch {
         return [];
     }
@@ -2269,4 +2360,81 @@ function scrollToCardByIndex(zeroBasedIndex) {
     const rect = card.getBoundingClientRect();
     const y = window.scrollY + rect.top - 12; // 少し余白
     window.scrollTo({ top: Math.max(0, y), behavior: "smooth" });
+}
+
+function filterRangeOptionsByExamType() {
+    if (!window.fileSelect) return;
+    const examTypeEl = document.getElementById("examType");
+    const currentExamType = examTypeEl ? examTypeEl.value : "1Z0-815-JPN";
+
+    let firstVisible = null;
+    [...fileSelect.options].forEach((opt) => {
+        const val = String(opt.value ?? ""); // 例: "Q_1Z0-815-JPN_01"
+        const visible = val.startsWith(`Q_${currentExamType}_`);
+        opt.hidden = !visible;
+        if (visible && !firstVisible) firstVisible = opt;
+    });
+
+    // 表示外を選んでいたら先頭の可視項目へ寄せる
+    const cur = fileSelect.selectedOptions[0];
+    if ((!cur || cur.hidden) && firstVisible) {
+        fileSelect.value = firstVisible.value;
+    }
+}
+
+// 試験の種類の変更
+examTypeEl?.addEventListener("change", async () => {
+    localStorage.setItem("opt.examType", examTypeEl.value);
+    window.currentExamType = examTypeEl.value;
+
+    filterRangeOptionsByExamType();
+
+    if (fileSelect) {
+        const cur = fileSelect.selectedOptions[0];
+        if (!cur || cur.hidden) {
+            const firstVisible = [...fileSelect.options].find((o) => !o.hidden);
+            if (firstVisible) fileSelect.value = firstVisible.value;
+        }
+        currentFile = fileSelect.value;
+    }
+
+    updateSelectedFileCount();
+
+    setStatus("試験種別を適用中…", 0);
+    try {
+        await loadAllQuestions();
+        renderQuiz?.(currentQuestions);
+        renderHistory?.();
+        renderTrendChart?.();
+        analyzeHistoryAndRender?.();
+        setStatus("試験種別を適用しました", 1200);
+    } catch (e) {
+        console.warn(e);
+        setStatus(`エラー: ${e.message || e}`, 3000);
+    }
+});
+
+function getHistoryByExamType(entries) {
+    if (!Array.isArray(entries)) return [];
+    const wanted = window.currentExamType; // 例: "1Z0-815-JPN"
+    if (!wanted) return entries;
+
+    return entries.filter((h) => {
+        // questionIds の先頭（最初に見つかった文字列）から判定
+        const firstId = Array.isArray(h.questionIds)
+            ? h.questionIds.find((x) => typeof x === "string")
+            : null;
+        if (firstId) {
+            const t = getExamTypeFromQuestionId(firstId);
+            if (t === wanted) return true;
+        }
+
+        // 念のためのフォールバック（履歴が古く questionIds が空の場合など）
+        if (h.source) {
+            // "Q_1Z0-815-JPN_10" などの value やラベルが source に入っていれば拾える
+            const m = String(h.source).match(/^Q_([A-Z0-9-]+-JPN)_/);
+            if (m && m[1] === wanted) return true;
+        }
+        return false;
+    });
 }

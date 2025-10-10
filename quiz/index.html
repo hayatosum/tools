@@ -2,7 +2,7 @@
 <html lang="ja">
     <head>
         <meta charset="UTF-8" />
-        <title>Java Silver 模擬問題</title>
+        <title>資格試験 演習問題</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet" href="./styles.css" />
     </head>
@@ -32,7 +32,15 @@
 
         <main class="container">
             <section class="controls">
-                <h2>Java Silver 模擬問題</h2>
+                <h2>資格試験 演習問題</h2>
+            </section>
+            <section class="controls">
+                <select id="examType">
+                    <option value="1Z0-815-JPN" selected>
+                        Java SE 11 Programmer I（1Z0-815-JPN）
+                    </option>
+                    <option value="1Z0-825-JPN">Java SE 17 Programmer I（1Z0-825-JPN）</option>
+                </select>
             </section>
 
             <nav class="tabs" role="tablist" aria-label="画面切替">
@@ -60,26 +68,27 @@
                 <section class="controls">
                     <label for="fileSelect">出題範囲：</label>
                     <select id="fileSelect">
-                        <option value="Q_1Z0_815_JPN_ALL" selected>全て</option>
-                        <option value="Q_1Z0_815_JPN_01">第1章 簡単なJavaプログラムの作成</option>
-                        <option value="Q_1Z0_815_JPN_02">
+                        <option value="Q_1Z0-815-JPN_ALL" selected>すべて</option>
+                        <option value="Q_1Z0-815-JPN_01">第1章 簡単なJavaプログラムの作成</option>
+                        <option value="Q_1Z0-815-JPN_02">
                             第2章 Javaの基本データ型と文字列操作
                         </option>
-                        <option value="Q_1Z0_815_JPN_03">第3章 演算子と判定構造</option>
-                        <option value="Q_1Z0_815_JPN_04">第4章 制御構造</option>
-                        <option value="Q_1Z0_815_JPN_05">第5章 配列の操作</option>
-                        <option value="Q_1Z0_815_JPN_06">第6章 インスタンスとメソッド</option>
-                        <option value="Q_1Z0_815_JPN_07">
+                        <option value="Q_1Z0-815-JPN_03">第3章 演算子と判定構造</option>
+                        <option value="Q_1Z0-815-JPN_04">第4章 制御構造</option>
+                        <option value="Q_1Z0-815-JPN_05">第5章 配列の操作</option>
+                        <option value="Q_1Z0-815-JPN_06">第6章 インスタンスとメソッド</option>
+                        <option value="Q_1Z0-815-JPN_07">
                             第7章 クラスの継承、インタフェース、抽象クラス
                         </option>
-                        <option value="Q_1Z0_815_JPN_08">
+                        <option value="Q_1Z0-815-JPN_08">
                             第8章 関数型インタフェース、ラムダ式
                         </option>
-                        <option value="Q_1Z0_815_JPN_09">第9章 API</option>
-                        <option value="Q_1Z0_815_JPN_10">第10章 例外処理</option>
-                        <option value="Q_1Z0_815_JPN_11">第11章 モジュールシステム</option>
-                        <option value="Q_1Z0_815_JPN_12">第12章 総仕上げ問題①</option>
-                        <option value="Q_1Z0_815_JPN_13">第13章 総仕上げ問題②</option>
+                        <option value="Q_1Z0-815-JPN_09">第9章 API</option>
+                        <option value="Q_1Z0-815-JPN_10">第10章 例外処理</option>
+                        <option value="Q_1Z0-815-JPN_11">第11章 モジュールシステム</option>
+                        <option value="Q_1Z0-815-JPN_12">第12章 総仕上げ問題①</option>
+                        <option value="Q_1Z0-815-JPN_13">第13章 総仕上げ問題②</option>
+                        <option value="Q_1Z0-825-JPN_ALL">すべて</option>
                     </select>
                     <input type="file" id="fileInput" accept=".json" hidden />
                     <span id="fileCount" class="sub"></span>
@@ -272,6 +281,7 @@
             </section>
         </main>
 
+        <script src="questions/exam_types.js"></script>
         <script src="questions/prefix_label.js"></script>
         <script src="questions/1Z0-815-JPN/part_01.js"></script>
         <script src="questions/1Z0-815-JPN/part_02.js"></script>
