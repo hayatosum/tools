@@ -658,7 +658,7 @@ button:disabled {
     border-color: var(--fg);
 }
 .tab-panel {
-    padding-top: 8px;
+    padding-top: 2px;
 }
 .tab-panel.hidden {
     display: none;
@@ -901,4 +901,8 @@ button:disabled {
 #heatmapFilter {
     margin-left: auto;
     height: fit-content;
+}
+
+#panel-analytics h2 {
+    margin-bottom: 4px;
 }
