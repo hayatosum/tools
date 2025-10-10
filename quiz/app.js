@@ -777,9 +777,16 @@ async function loadAllQuestions(forceKey = null) {
     if (Array.isArray(data)) {
         // [{prefix:"KS01",questions:[...]}, {prefix:"KS02",questions:[...]}]
         data.forEach((block) => {
-            const prefix = block.prefix || "ZZ00";
+            const basePrefix = block.prefix || "ZZ00";
+            const fullPrefix = block.part ? `${basePrefix}_${block.part}` : basePrefix;
             const questions = block.questions || [];
-            validateQuestions(questions, prefix);
+            validateQuestions(questions, fullPrefix);
+            // メタ（後工程で使えるように保持）
+            questions.forEach((q) => {
+                q.prefixBase = basePrefix; // "1Z0-815-JPN"
+                q.part = block.part ?? null; // "01" など（なければ null）
+                q.fullPrefix = fullPrefix; // "1Z0-815-JPN_01"
+            });
             merged = merged.concat(questions);
         });
     } else if (data.questions && data.prefix) {
@@ -1482,11 +1489,43 @@ function renderHeatmap(rows) {
 function analyzeHistoryAndRender() {
     const lowThreshold = Number(lowRateInput?.value ?? 50);
     const rows = gatherStatsFromHistory();
+
+    // ▼ ヒートマップ用フィルタ UI を更新
+    populateHeatmapFilter(rows);
+    const filtered = filterRowsByBasePrefix(rows);
+
     renderAnalysisTable(rows, lowThreshold);
     renderRanking(rows);
     renderBarChart(rows);
-    renderHeatmap(rows);
+    renderHeatmap(filtered);
     renderPrefixStats();
+}
+
+// 候補の投入（"すべて" + 観測された basePrefix を列挙）
+function populateHeatmapFilter(rows) {
+    const sel = document.getElementById("heatmapFilter");
+    if (!sel) return;
+    const before = sel.value; // ユーザーの選択維持
+    const set = new Set(rows.map((r) => extractBasePrefix(r.id)));
+    const vals = ["", ...[...set].sort()]; // ""=すべて
+    sel.innerHTML = vals
+        .map((v) => {
+            const label = v || "すべて";
+            const selected = v === before ? " selected" : "";
+            return `<option value="${v}"${selected}>${label}</option>`;
+        })
+        .join("");
+    // 初回は空→すべて
+    if (!sel.value) sel.value = "";
+    sel.onchange = () => analyzeHistoryAndRender(); // 変更で再描画
+}
+
+// 実データの絞り込み
+function filterRowsByBasePrefix(rows) {
+    const sel = document.getElementById("heatmapFilter");
+    const v = sel?.value || "";
+    if (!v) return rows; // すべて
+    return rows.filter((r) => extractBasePrefix(r.id) === v);
 }
 
 // ===== プレフィックス別 集計 =====
@@ -1497,6 +1536,13 @@ function extractPrefix(id) {
     const lastHyphen = str.lastIndexOf("-");
     // ハイフンがあれば、最後のハイフンより前をプレフィックスとみなす
     return lastHyphen > 0 ? str.slice(0, lastHyphen) : str;
+}
+
+// 例: "1Z0-815-JPN_01-001" → "1Z0-815-JPN"
+function extractBasePrefix(id) {
+    const pf = extractPrefix(id); // "1Z0-815-JPN_01"
+    const us = pf.indexOf("_");
+    return us > 0 ? pf.slice(0, us) : pf; // "_" があれば左側だけ
 }
 
 function gatherPrefixStatsFromHistory() {

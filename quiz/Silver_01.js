@@ -1,5 +1,6 @@
 const JAVA_SILVER_1Z0_815_JPN_01 = {
-    prefix: "1Z0-815-JPN_01",
+    prefix: "1Z0-815-JPN",
+    part: "01",
     questions: [
         {
             id: 1,
