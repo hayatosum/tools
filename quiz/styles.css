@@ -112,12 +112,12 @@ h3 {
 .controls input[type="file"] {
     width: 400px;
 }
-.controls select {
+select {
     border: 1px solid var(--border);
-    min-width: 280px;
+    min-width: 100px;
 }
 .controls input,
-.controls select {
+select {
     padding: 4px;
     border-radius: 4px;
 }
@@ -824,7 +824,11 @@ button:disabled {
     flex-wrap: wrap;
 }
 .order-range input[type="number"] {
-    width: 4rem;
+    width: 3rem;
+}
+#questionCount,
+#adaptiveStrength {
+    width: 3rem;
 }
 
 /* 固定ナビ（タイマー下） */
@@ -892,4 +896,9 @@ button:disabled {
     font-weight: 700;
     cursor: pointer;
     width: max-content;
+}
+
+#heatmapFilter {
+    margin-left: auto;
+    height: fit-content;
 }

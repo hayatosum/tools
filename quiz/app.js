@@ -1512,7 +1512,7 @@ function populateHeatmapFilter(rows) {
         .map((v) => {
             const label = v || "すべて";
             const selected = v === before ? " selected" : "";
-            return `<option value="${v}"${selected}>${label}</option>`;
+            return `<option value="${v}"${selected}>${PREFIX_LABELS[label] || label}</option>`;
         })
         .join("");
     // 初回は空→すべて
@@ -1588,7 +1588,6 @@ function renderPrefixStats() {
                     <th>出題回数</th>
                     <th>正解数</th>
                     <th>正答率</th>
-                    <th>可視化</th>
                 </tr>
             </thead>
             <tbody>
@@ -1597,10 +1596,9 @@ function renderPrefixStats() {
     rows.forEach((r) => {
         html += `
             <tr>
-                <td>${PREFIX_LABELS[r.prefix] || r.prefix}</td>
+                <td class="prefix-stats-label">${PREFIX_LABELS[r.prefix] || r.prefix}</td>
                 <td>${r.total}</td>
                 <td>${r.correct}</td>
-                <td>${r.rate}%</td>
                 <td>
                     <div class="mini-track" aria-hidden="true">
                         <div class="mini-fill" style="width:${r.rate}%"></div>
