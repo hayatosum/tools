@@ -336,14 +336,6 @@ function setStatus(msg, timeoutMs = 2000) {
     }
 }
 
-function validateAllAnswered() {
-    const allAnswered = currentQuestions.every((q) => {
-        const a = userAnswers.get(q.id);
-        return Array.isArray(a) && a.length > 0; // 1つ以上チェックされていれば回答済み
-    });
-    gradeBtn.disabled = !allAnswered;
-}
-
 // === 画像サポート ===
 function sanitizeImageSrc(src) {
     const s = String(src || "").trim();
@@ -456,11 +448,19 @@ function renderChoiceContent(raw) {
         if (plain) appendImages(wrap, plain);
 
         const body = m[1];
-        const pre = document.createElement("pre");
         const code = document.createElement("code");
         code.textContent = body;
-        pre.appendChild(code);
-        wrap.appendChild(pre);
+
+        // 改行を含む場合のみ <pre> で包む
+        if (/\r|\n/.test(body)) {
+            const pre = document.createElement("pre");
+            pre.appendChild(code);
+            wrap.appendChild(pre);
+        } else {
+            wrap.appendChild(code);
+            wrap.classList.add("choice-content-code");
+        }
+
         last = m.index + m[0].length;
     }
     if (found) {
@@ -583,7 +583,6 @@ function renderQuiz(questions) {
                     answers = answers.filter((v) => v !== cIdx);
                 }
                 userAnswers.set(q.id, answers);
-                validateAllAnswered();
 
                 // ★ クラス制御：label.choice 要素に .selected を付ける・外す
                 const lbl = input.closest(".choice");
@@ -627,6 +626,7 @@ function renderQuiz(questions) {
         card.appendChild(exp);
 
         quizArea.appendChild(card);
+        gradeBtn.disabled = false;
     });
 }
 
@@ -1144,7 +1144,6 @@ loadBtn.addEventListener("click", async () => {
             3000
         );
         resetBtn.disabled = false;
-        validateAllAnswered();
         gradeArea.hidden = false;
 
         startTimer();
