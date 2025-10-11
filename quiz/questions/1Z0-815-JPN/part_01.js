@@ -17,7 +17,7 @@ const Q_1Z0_815_JPN_01 = {
             ],
             answerIndex: [0, 2, 3],
             explanation:
-                "パッケージは名前空間やアクセス制御、クラスの分類を提供する。パッケージに属さないクラス（デフォルトパッケージ）もあるが、ドメイン名逆順の命名は推奨慣習であり必須ではない。",
+                "Javaのパッケージは、クラス名の重複を防ぐための名前空間を提供します。アクセス制御もパッケージ単位で行うことができ、関連するクラスをまとめて分類する役割もあります。\n\nパッケージ名にドメイン名を逆にしたものを使うのは推奨される慣習ですが、必須ではありません。また、パッケージ宣言のないクラスはデフォルトパッケージに属します。\n\nこのため、名前空間を提供すること、アクセス制御を提供すること、クラスの分類を可能にすることが正しい内容です。",
         },
         {
             id: 2,
@@ -30,10 +30,11 @@ const Q_1Z0_815_JPN_01 = {
                 "<code>import java.io.*;\npackage aaa;\npublic class Sample {}</code>",
                 "<code>package aaa;\nimport java.io.*;\npublic class Sample {}</code>",
                 "<code>import java.io.*;\npackage aaa {\n    public class Sample {}\n}</code>",
-                "<code>import java.io.*;\npackage aaa {\n    public class Sample {}\n}</code>",
+                "<code>import java.io.*;\npackage aaa {\n    public class Sample {}\n};</code>",
             ],
             answerIndex: 1,
-            explanation: "package文はソースコードの先頭に1回だけ書く必要があるため、Bが正解。",
+            explanation:
+                "Javaのpackage宣言は、ソースファイルの一番先頭に1回だけ記述する必要があります。\n\nimport文はpackage宣言の後に書き、その後にクラス定義を記述します。\n\npackage宣言より前にimport文を書くことや、package宣言の後に波括弧で囲む書き方はJavaの文法として誤りです。\n\n正しい記述は、package宣言が先頭、その後にimport文、クラス定義の順で記述されたものです。",
         },
         {
             id: 3,
@@ -50,7 +51,7 @@ const Q_1Z0_815_JPN_01 = {
             ],
             answerIndex: [0, 2],
             explanation:
-                "java.langパッケージ全体と、同じパッケージに属するクラスは自動的に利用可能。",
+                "インポート宣言をしなくても自動的に利用できるのは、java.langパッケージに属するクラスと、同じパッケージに属するクラスです。\n\njava.langパッケージにはStringやSystem、Mathなど多くの基本クラスが含まれており、明示的なimportなしで使うことができます。また、同じパッケージ内のクラス同士もimport不要で参照できます。\n\n一方、java.langパッケージの一部だけが自動でインポートされるわけではなく、サブパッケージのクラスは自動インポートされません。",
         },
         {
             id: 4,
@@ -67,7 +68,7 @@ const Q_1Z0_815_JPN_01 = {
             ],
             answerIndex: 2,
             explanation:
-                "protectedフィールドはサブクラスからアクセスできるが、staticでないフィールドをstaticなmainメソッドから直接参照することはできない。インスタンスを生成せずにnumを参照しようとするとコンパイルエラーになる。",
+                "protected修飾子が付いたフィールドは、サブクラスからアクセスできますが、staticでないフィールドをstaticメソッド（mainメソッド）から直接参照することはできません。\n\nmainメソッドはstaticなので、インスタンスを生成せずにnumを参照しようとするとコンパイルエラーになります。\n\nしたがって、正しい答えはコンパイルエラーが発生するです。",
         },
         {
             id: 5,
@@ -82,11 +83,11 @@ const Q_1Z0_815_JPN_01 = {
                 "1つのソースファイルに複数記述できる",
                 "戻り値型intであること",
                 "引数はString配列型もしくはString型の可変長引数であること",
-                "戻り値としてvoid、もしくはintを戻すこと",
+                "戻り値として0、もしくは1を戻すこと",
             ],
             answerIndex: [0, 1, 4],
             explanation:
-                "Javaのmainメソッドは「public static void main(String[] args)」で定義される。public、static、引数がString配列（または可変長String引数）が必須。戻り値はvoidである。",
+                "Javaアプリケーションのエントリーポイントとなるmainメソッドは、publicであり、staticであり、引数としてString型の配列または可変長引数を受け取る必要があります。\n\n戻り値の型はvoidでなければならず、int型や戻り値で0や1を返す必要はありません。\n\nmainメソッドは1つのソースファイルに複数記述することもできますが、正しいmainメソッドの条件には含まれません。",
         },
         {
             id: 6,
@@ -104,7 +105,7 @@ const Q_1Z0_815_JPN_01 = {
             ],
             answerIndex: 1,
             explanation:
-                'コマンド `java Main java one two` の場合、args[0]="java", args[1]="one" なので「java one」と表示される。',
+                'コマンドで指定した引数は、順番にargs配列に格納されます。\n\nこの場合、args[0]には"java"、args[1]には"one"が入ります。\n\nSystem.out.println(args[0] + \' \' + args[1]);の実行結果は「java one」となります。',
         },
         {
             id: 7,
@@ -114,16 +115,16 @@ const Q_1Z0_815_JPN_01 = {
                 "次のうち、Javaのクラスを実行するコマンドとして、正しいものを選びなさい。（2つ選択）",
             code: "",
             choices: [
-                "javac Test.java",
-                "java Test",
-                "java Test.java",
-                "javac Test",
-                "javap Test",
-                "jmod Test.java",
+                "<code>javac Test.java</code>",
+                "<code>java Test</code>",
+                "<code>java Test.java</code>",
+                "<code>javac Test</code>",
+                "<code>javap Test</code>",
+                "<code>jmod Test.java</code>",
             ],
             answerIndex: [1, 2],
             explanation:
-                "クラス実行は `java クラス名`。ソースコードをコンパイルするのは `javac Test.java`。`javac Test` や `java Test.java` は誤り。",
+                "Javaのクラスを実行する方法は次の通りです。\n\n・javacコマンドでコンパイルし、javaコマンドでクラス名を指定して実行\n　例：javac Test.java → java Test\n\n・Java SE 11以降では、javaコマンドだけでソースファイル（Test.java）を直接実行（ソースファイル単体実行）\n　例：java Test.java\n\nそのほかのコマンドについて：\n・javac Test　→　拡張子なしではコンパイルできません\n・javap Test　→　クラスの構造を調べるコマンドで、実行には使いません\n・jmod Test.java　→　モジュール操作用のコマンドで、クラスの実行には使いません",
         },
         {
             id: 8,
@@ -131,11 +132,11 @@ const Q_1Z0_815_JPN_01 = {
             difficulty: "上級",
             question:
                 "以下に示したSampleクラスを実行したときの結果として、正しいものを選びなさい。なお、実行時のコマンドは次のとおりとする。（1つ選択）",
-            code: '> java Sample a ¥* a¥* "a b c"\n\n 1. public class Sample {\n 2.     public static void main(String... args) {\n 3.         System.out.println(args.length);\n 4.     }\n 5. }',
+            code: '> java Sample a ¥" a¥" "a "b c\n\n 1. public class Sample {\n 2.     public static void main(String... args) {\n 3.         System.out.println(args.length);\n 4.     }\n 5. }',
             choices: ["4が表示される", "5が表示される", "6が表示される", "7が表示される"],
-            answerIndex: 0,
+            answerIndex: 1,
             explanation:
-                "引数は `a`, `¥*`, `a¥*`, `a b c` の4つとして渡されるため、args.lengthは4となる。",
+                'このプログラムは、コマンドライン引数の数（args.length）を表示します。\n\nコマンド\n> java Sample a ¥" a¥" "a b" c\nを実行した場合、引数は次のように分割されます。\n\n・a\n・¥"\n・a¥"\n・a b（ダブルクォートで囲まれているため、スペースを含んで1つの引数になる）\n・c\n\nつまり、引数は合計で5つです。\n\nダブルクォートで囲まれた部分は、スペースが含まれていても1つの引数として扱われる点がポイントです。\n\nしたがって、args.lengthの値は5となり、実行結果は「5が表示される」となります。',
         },
     ],
 };
