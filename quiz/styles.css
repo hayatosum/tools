@@ -268,6 +268,7 @@ button:disabled {
 }
 
 .choice > div {
+    display: flex;
     flex: 1;
     min-width: 0;
 }
@@ -905,4 +906,9 @@ button:disabled {
 
 #panel-analytics h2 {
     margin-bottom: 4px;
+}
+
+.choice-content-code {
+    display: inline-flex;
+    font-size: 1.12em;
 }
