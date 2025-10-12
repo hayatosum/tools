@@ -268,7 +268,7 @@ button:disabled {
 }
 
 .choice > div {
-    display: flex;
+    display: grid;
     flex: 1;
     min-width: 0;
 }
