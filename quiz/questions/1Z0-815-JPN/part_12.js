@@ -8,16 +8,16 @@ const Q_1Z0_815_JPN_12 = {
             difficulty: "初級",
             question:
                 "次の2つのコードのクラスファイルを生成するためのコマンドとして、正しいものを選びなさい。（1つ選択）",
-            code: "1. package b;\n2. public class B {\n3. }\n\n1. package a;\n2. import b.*;\n3. public class A {\n4.     public static void main(String[] args) {\n5.         B b = new B();\n6.     }\n7. }",
+            code: "1. package b;\n2. public class B {\n3. }\n\n1. package a;\n2. import b.B;\n3. public class A {\n4.     public static void main(String[] args) {\n5.         B b = new B();\n6.     }\n7. }",
             choices: [
-                "<code>java a/A.java</code>",
-                "<code>java b/B.java</code>",
+                "<code>java a/A.java\n</code>",
+                "<code>java b/B.java\n</code>",
                 "<code>javac b/B.java\njava a/A.java</code>",
                 "<code>javac a/A.java\njava a/A</code>",
             ],
             answerIndex: 3,
             explanation:
-                "コンパイル時には依存クラスBを先にコンパイルし、次にAをコンパイル・実行する。したがって「javac a/A.java」「java a/A」が正しい。",
+                "この問題では、aパッケージのAクラスがbパッケージのBクラスに依存しています。\n\nJavaのプログラムを実行するには、まず依存しているクラス（この場合はBクラス）を先にコンパイルし、その後Aクラスをコンパイルします。\n\nAクラスのmainメソッドを実行するには、コンパイル後にjavaコマンドでa/Aを指定します。\n\nしたがって、\n\njavac a/A.java\njava a/A\n\nの順でコマンドを実行するのが正しい手順です。\n\n依存関係のあるクラスは、必ず先にコンパイルしておく必要がある点に注意しましょう。",
         },
         {
             id: 2,
@@ -35,24 +35,24 @@ const Q_1Z0_815_JPN_12 = {
             ],
             answerIndex: 0,
             explanation:
-                "Javaのソースファイルは、最上部にpackage宣言、次にimport宣言、その後にクラスやインタフェースの宣言を書く必要があります。この順序以外ではコンパイルエラーとなります。",
+                "Javaのソースファイルでは、記述する順番が決まっています。\n\nまず最初にpackage宣言を書きます。\n次にimport宣言を書きます。\n最後にクラスやインタフェースの宣言を記述します。\n\nこの順序以外で記述すると、コンパイルエラーとなります。\n\n正しい順番は、package → import → class です。\n\nJavaの構文ルールとして、宣言の順序に注意しましょう。",
         },
         {
             id: 3,
             category: "総仕上げ問題①",
             difficulty: "中級",
             question:
-                "次のプログラムを確認し、Mainクラスの空欄に入るコードとして、正しいものを選びなさい。（1つ選択）",
+                "次のプログラムを確認し、Mainクラスの2行目の空欄に入るコードとして、正しいものを選びなさい。（1つ選択）",
             code: " 1. package com.sample;\n 2. public class Sample {\n 3.     public void sample() {\n 4.         // any code\n 5.     }\n 6. }\n\n 1. package com.sample.test;\n 2. public class Test {\n 3.     public void test(int num) {\n 4.         // any code\n 5.     }\n 6. }\n\n 1. package com;\n 2. __________\n 3. public class Main {\n 4.     public static void main(String[] args) {\n 5.         new Sample().sample();\n 6.         int num = Integer.parseInt(args[0]);\n 7.         new Test().test(num);\n 8.     }\n 9. }",
             choices: [
                 "<code>import java.lang.Integer;\nimport com.*;</code>",
-                "<code>import com.sample.*;</code>",
+                "<code>import com.sample.*;\n</code>",
                 "<code>import com.sample.Sample;\nimport com.sample.test.*;</code>",
-                "<code>import java.lang.*;</code>",
+                "<code>import java.lang.*;\n</code>",
             ],
             answerIndex: 2,
             explanation:
-                "MainクラスからSampleとTestを使用するためには、両パッケージをインポートする必要がある。",
+                "この問題では、Mainクラスからcom.sampleパッケージのSampleクラスと、com.sample.testパッケージのTestクラスを利用しています。\n\nJavaでは、他のパッケージに属するクラスを使う場合、import文でそのクラスやパッケージを明示的にインポートする必要があります。\n\nSampleクラスを使うにはcom.sample.Sample、Testクラスを使うにはcom.sample.testパッケージをインポートする必要があります。\n\nしたがって、\n\nimport com.sample.Sample;\nimport com.sample.test.*;\n\nのように記述することで、Mainクラス内でSampleとTestの両方を利用できるようになります。\n\n複数のパッケージにまたがるクラスを使う場合は、それぞれのパッケージを正しくimportする点に注意しましょう。",
         },
         {
             id: 4,
@@ -70,7 +70,7 @@ const Q_1Z0_815_JPN_12 = {
             ],
             answerIndex: 4,
             explanation:
-                "Javaのラムダ式内で参照するローカル変数は、finalまたは実質final（再代入されない）でなければなりません。i++で再代入しているため、コンパイルエラーとなります。",
+                "このプログラムでは、ラムダ式の中でローカル変数iを参照しています。\n\nJavaでは、ラムダ式内で使うローカル変数はfinal、または実質的にfinal（値が再代入されていない）でなければなりません。\n\nこのコードでは、i++によってiの値が変更されているため、iは実質finalではなくなります。\n\nそのため、コンパイル時にエラーとなります。\n\nラムダ式でローカル変数を使う場合は、値を変更しないことが条件である点に注意しましょう。",
         },
         {
             id: 5,
@@ -87,7 +87,7 @@ const Q_1Z0_815_JPN_12 = {
             ],
             answerIndex: 2,
             explanation:
-                "ローカル変数numが初期化される前に自分自身を参照しているためコンパイルエラー。",
+                "このプログラムでは、mainメソッド内でint num = num;と記述しています。\n\nこのとき、右辺のnumはローカル変数numを指しますが、まだ初期化されていないため、自分自身を参照することになります。\n\nJavaでは、ローカル変数は初期化される前に参照することはできません。\n\nそのため、このコードはコンパイルエラーとなります。\n\n同じ名前の変数がスコープ内に複数存在する場合、ローカル変数が優先される点と、初期化前の参照はエラーになる点に注意しましょう。",
         },
         {
             id: 6,
@@ -104,7 +104,7 @@ const Q_1Z0_815_JPN_12 = {
             ],
             answerIndex: [0, 3],
             explanation:
-                "Javaのモジュールシステムでは、2つのモジュールが互いにrequiresし合う循環依存は許可されておらず、コンパイルエラーとなります。",
+                "この問題の2つのモジュール設定ファイルでは、どちらのモジュールもexports句がないため、パッケージは外部に公開されません。\n\nまた、Javaのモジュールシステムでは、2つのモジュールが互いにrequiresし合う（循環依存）ことは許可されていません。\n\nこのような循環依存がある場合、コンパイルエラーとなります。\n\nモジュールの名前の長さや、java.baseモジュールの必須性は今回の正誤には関係ありません。\n\nモジュール間の依存関係や、exports句の有無に注意しましょう。",
         },
         {
             id: 7,
@@ -122,7 +122,7 @@ const Q_1Z0_815_JPN_12 = {
             ],
             answerIndex: 2,
             explanation:
-                "switch文でdataが1の場合、default節が最初に実行されて「C」が出力される。その後、breakがないためcase 0の処理も続けて実行され、「A」が出力される。したがって、最終的な出力は「CA」となる。",
+                'このプログラムでは、switch文でdataが1の場合にどのような出力になるかを問われています。\n\nswitch文のcaseに1がないため、default節が最初に実行されます。\n\ndefault節にはbreakが書かれていないため、そのまま次のcase 0の処理に進みます（これをfallthroughと呼びます）。\n\ncase 0のSystem.out.printで"A"が出力され、ここでbreakがあるためswitch文を抜けます。\n\nしたがって、最終的な出力は"C"と"A"が続けて表示されます。\n\nswitch文のfallthrough（breakがない場合に次のcaseに処理が流れる）に注意しましょう。',
         },
         {
             id: 8,
@@ -140,7 +140,7 @@ const Q_1Z0_815_JPN_12 = {
             ],
             answerIndex: 4,
             explanation:
-                "index=5の文字は'5'で数字。index=10に更新後substring(0,10)でhoge456tesを出力。",
+                'このプログラムでは、まず文字列strに"hoge456test"が代入され、indexは5で初期化されています。\n\nstr.charAt(index)は6文字目、つまり\'5\'となります。\n\nCharacter.isAlphabetic(str.charAt(index))はfalse、Character.isDigit(str.charAt(index))はtrueなので、indexは10に更新されます。\n\n次に、str.endsWith("test")がtrueなので、str.substring(0, index)が実行されます。\n\nsubstring(0, 10)は、先頭から10文字分（hoge456tes）を切り出します。\n\nそのため、最終的な出力は"hoge456tes"となります。\n\n条件分岐の流れとsubstringの動作に注意しましょう。',
         },
         {
             id: 9,
@@ -158,8 +158,7 @@ const Q_1Z0_815_JPN_12 = {
             ],
             answerIndex: [1, 4],
             explanation:
-                "クラスやモジュールの依存関係を調べるには、jdepsコマンドやjavaコマンドの--show-module-resolutionオプションを使います。jdeps --list-depsは、指定したクラスやJARファイルが依存しているパッケージやモジュールを一覧表示します。java --show-module-resolutionは、アプリケーション起動時にモジュールの解決結果（どのモジュールがどれに依存しているか）を表示します。\n" +
-                "jmod describeはjmodファイルの情報を表示するコマンドで、依存関係の一覧は出力しません。jar --show-module-resolutionというオプションは存在しません。java Hello.javaはソースファイルを直接実行するだけで依存関係の表示は行いません。",
+                "クラスやモジュールの依存関係を調べるには、jdepsコマンドやjavaコマンドの--show-module-resolutionオプションを使います。\n\njdeps --list-depsは、指定したクラスやJARファイルが依存しているパッケージやモジュールを一覧表示します。\n\njava --show-module-resolutionは、アプリケーション起動時にモジュールの解決結果（どのモジュールがどれに依存しているか）を表示します。\n\njmod describeはjmodファイルの情報を表示するコマンドで、依存関係の一覧は出力しません。\n\njar --show-module-resolutionというオプションは存在しません。\n\njava Hello.javaはソースファイルを直接実行するだけで依存関係の表示は行いません。\n\n依存関係の調査にはjdepsやjavaのオプションを活用しましょう。",
         },
         {
             id: 10,
@@ -170,13 +169,13 @@ const Q_1Z0_815_JPN_12 = {
             code: " 1. public interface A {\n 2.     abstract void x();\n 3. }\n\n 1. public abstract class B /* position 1 */ {\n 2.     /* position 2 */\n 3.     public void x() {}\n 4.     public abstract void z();\n 5. }\n\n 1. public class C extends B implements A {\n 2.     /* position 3 */\n 3. }",
             choices: [
                 "以下をposition 3に記述する\n<code>@Override\npublic void x() {}</code>",
-                "以下をposition 3に記述する\n<code>public void z() {}</code>",
-                "以下をposition 2に記述する\n<code>void x(){}</code>",
-                "以下をposition 1に記述する\n<code>implements A</code>",
+                "以下をposition 3に記述する\n<code>public void z() {}\n</code>",
+                "以下をposition 2に記述する\n<code>void x(){}\n</code>",
+                "以下をposition 1に記述する\n<code>implements A\n</code>",
             ],
             answerIndex: 1,
             explanation:
-                "Bは抽象メソッドz()を持つ抽象クラス、Cは非抽象クラスなので、Cでz()を実装する必要がある。x()はBですでにpublicで実装済みのため、Cでの再定義は必須ではない。position 1にimplements Aを付けてもCの未実装（z()）は解消しない。",
+                "この問題では、抽象クラスBが抽象メソッドz()を持っており、CはBを継承する具体クラスです。\n\n具体クラス（abstractでないクラス）は、継承した抽象メソッドをすべて実装しなければなりません。\n\nBのz()は抽象メソッドなので、Cでz()を実装する必要があります。\n\nx()メソッドはBクラスですでにpublicで実装されているため、Cで再定義する必要はありません。\n\nまた、Bにimplements Aを付けても、Cでz()の未実装は解消されません。\n\nしたがって、Cクラスのposition 3にz()の実装を追加することで、コンパイルが成功します。\n\n抽象クラスを継承した具体クラスでは、すべての抽象メソッドを実装する必要がある点に注意しましょう。",
         },
         {
             id: 11,
@@ -188,7 +187,7 @@ const Q_1Z0_815_JPN_12 = {
             choices: ["String", "String[]", "Character", "var"],
             answerIndex: 0,
             explanation:
-                "拡張for文の右辺はString...（= String[]）なので、繰り返し変数valueは配列要素型のStringになる。",
+                "このプログラムでは、mainメソッドの引数argsがString...（可変長引数）として宣言されています。\n\n可変長引数は内部的には配列（String[]）として扱われます。\n\n拡張for文（for-each文）でvar value : argsと書いた場合、valueの型は配列の要素型、つまりString型になります。\n\nvarは型推論のためのキーワードであり、実際の型は右辺から決まります。\n\nしたがって、この場合のvalueの型はStringです。\n\n拡張for文で配列や可変長引数を扱うときは、繰り返し変数の型に注意しましょう。",
         },
         {
             id: 12,
@@ -206,7 +205,7 @@ const Q_1Z0_815_JPN_12 = {
             ],
             answerIndex: 3,
             explanation:
-                'indexOf("ef")は3を返すが、substringの戻り値は捨てておりstr自体は不変。次のindexOf(" ")で空白の位置5が得られ、最終出力は元の文字列と5となる。',
+                'indexOfメソッドは、指定した文字列が最初に現れる位置のインデックスを返します。\nこの場合、"abcd ef gh"の中で"ef"が始まるのはインデックス5です。\n\nsubstringメソッドは、指定した位置から文字列を切り出しますが、\nこのプログラムでは戻り値を変数に代入していないため、str自体は変更されません。\n\nそのため、strは元の"abcd ef gh"のままです。\n\nSystem.out.println(str + " " + x); で出力されるのは、元の文字列"abcd ef gh"と5です。\n\nポイント：\n- Stringは不変（immutable）\n- substringの戻り値を代入しないと元の文字列は変わらない\n- indexOfは最初に見つかった位置（0始まり）を返す\n\nこのため、出力は「abcd ef gh 5」となります。',
         },
         {
             id: 13,
@@ -223,7 +222,7 @@ const Q_1Z0_815_JPN_12 = {
             ],
             answerIndex: 3,
             explanation:
-                "switchの式に使用しているstrはnullであり、Stringのswitchでnullを評価すると実行時にNullPointerExceptionが送出される。",
+                "このプログラムでは、static変数strは初期化されていないため、デフォルトでnullとなります。\n\nswitch文でnullを評価しようとすると、実行時にNullPointerExceptionが発生します。\n\nJavaのswitch文は、式がnullの場合に例外をスローする仕様です。\n\nそのため、このプログラムを実行すると、何も出力されずに例外で異常終了します。\n\nString型の変数をswitch文で使う場合は、nullでないことを事前に確認することが重要です。",
         },
         {
             id: 14,
@@ -235,7 +234,7 @@ const Q_1Z0_815_JPN_12 = {
             choices: ["List<Character>", "String", "char", "List<String>"],
             answerIndex: 1,
             explanation:
-                "listはList<String>であり、forEachのラムダパラメータxはコレクションの要素型を受けるためStringとなる。",
+                "ラムダ式のパラメータxの型は、listコレクションの要素型と一致します。\nこのプログラムでは、listはList<String>型であり、要素はすべてString型です。\nそのため、forEachのラムダ式で受け取るxもString型となります。\n\nList<Character>やchar型ではなく、コレクションの型に合わせてString型となる点がポイントです。",
         },
         {
             id: 15,
@@ -252,7 +251,7 @@ const Q_1Z0_815_JPN_12 = {
             ],
             answerIndex: 1,
             explanation:
-                "パッケージ付きクラスを実行するには、-dオプションで出力先を指定し、javaコマンド実行時に-cpでそのパスをクラスパスに追加して完全修飾名で実行する必要がある。",
+                "このプログラムはex15パッケージに属する2つのクラス（SampleとMain）で構成されています。\n\nパッケージを使う場合、コンパイル時に-dオプションでクラスファイルの出力先ディレクトリ（例: build）を指定する必要があります。\n\njavaコマンドで実行する際は、-cpオプションでクラスパスにbuildディレクトリを指定し、完全修飾クラス名（ex15.Main）で実行します。\n\n-dや-cpオプションを正しく使わないと、クラスが見つからずエラーになります。\n\nこのように、パッケージ構成のJavaプログラムでは、コンパイル・実行時のコマンド指定が重要です。",
         },
         {
             id: 16,
@@ -260,7 +259,7 @@ const Q_1Z0_815_JPN_12 = {
             difficulty: "中級",
             question:
                 "次のプログラムをコンパイルし、実行した結果として、正しいものを選びなさい。（1つ選択）",
-            code: ' 1. import java.time.LocalDate;\n 2. import static java.time.DayOfWeek.*;\n 3.\n 4. public class Sample {\n 5.     public static void main(String[] args) {\n 6.         var today = LocalDate.now().with(TUESDAY).getDayOfWeek();\n 7.         switch (today) {\n 8.             case SUNDAY:\n 9.             case SATURDAY:\n10.                 System.out.println("weekend");\n11.                 break;\n12.             case MONDAY:\n13.             case FRIDAY:\n14.                 System.out.println("working");\n15.             default:\n16.                 System.out.println("other");\n17.         }\n18.     }\n19. }',
+            code: ' 1. import java.time.LocalDate;\n 2. import static java.time.DayOfWeek.*;\n 3.\n 4. public class Sample {\n 5.     public static void main(String[] args) {\n 6.         var today = LocalDate.now().with(TUESDAY).getDayOfWeek();\n 7.         switch (today) {\n 8.             case SUNDAY:\n 9.             case SATURDAY:\n10.                 System.out.println("weekend");\n11.                 break;\n12.             case MONDAY:\n13.                  FRIDAY:\n14.                 System.out.println("working");\n15.             default:\n16.                 System.out.println("other");\n17.         }\n18.     }\n19. }',
             choices: [
                 "「working」と表示される",
                 "「working」「other」と表示される",
@@ -269,7 +268,7 @@ const Q_1Z0_815_JPN_12 = {
             ],
             answerIndex: 3,
             explanation:
-                "LocalDate#with(TUESDAY)により日付が火曜日に設定され、switchにはTUESDAYのcaseが存在しないため、default節が実行され「other」と出力される。",
+                "LocalDate#with(TUESDAY)によって、todayは必ず火曜日（TUESDAY）になります。\n\nswitch文では、TUESDAYに対応するcaseがありません。\nそのため、どのcaseにも該当せず、default節が実行されます。\n\n結果として「other」と表示されます。\n\nこのように、switch文で列挙型を使う場合、すべての値に対応するcaseがないとdefaultが実行される点に注意が必要です。",
         },
         {
             id: 17,
@@ -286,7 +285,7 @@ const Q_1Z0_815_JPN_12 = {
             ],
             answerIndex: [0, 4],
             explanation:
-                "ローカル変数にはfinalを付けて再代入を防げる。インナークラスはクラススコープ内でpublic修飾も可能。protectedインタフェースやprivate抽象メソッドは不正である。",
+                "ローカル変数にはfinal修飾子を付けることができ、これにより再代入が禁止されます。\n\nインナークラス（クラスの中に定義されたクラス）は、public修飾子を付けて宣言することが可能です。\n\n一方、インタフェースはprotected修飾子を付けて宣言できません。\nまた、抽象メソッドにprivate修飾子を付けることもできません（抽象メソッドはサブクラスでの実装が前提のため）。\n\nインスタンス変数にstaticを付けると、それはインスタンス変数ではなくクラス変数（static変数）となります。\n\nこのように、修飾子の使い方にはそれぞれ制約があるため、正しい組み合わせを理解しておくことが重要です。",
         },
         {
             id: 18,
@@ -303,7 +302,7 @@ const Q_1Z0_815_JPN_12 = {
             ],
             answerIndex: 3,
             explanation:
-                "requires com.logging / com.xml / com.sql が明示的に依存関係として宣言されているため、モジュールグラフでは com.sample からこれら3つに矢印が伸びる構造となる。",
+                "この問題は、モジュールの依存関係とグラフの読み取りがポイントです。\n\nコマンド出力から、com.sampleモジュールはcom.loggingとcom.xmlにtransitive依存しています。\njava.baseは全てのモジュールが暗黙的に依存するため、明示的にrequiresしなくてもよいモジュールです。\n\nしたがって、com.sampleモジュールの設定で明示的に依存を宣言する必要があるのはcom.loggingとcom.xmlのみです。\n\nexportsはパッケージ公開の宣言であり、依存関係のグラフには直接影響しません。\nusesはサービス利用の宣言であり、依存関係の矢印にはなりません。\n\nポイント：\n- java.baseは全モジュールが暗黙的に依存\n- requiresで明示的に依存するモジュールのみグラフに矢印\n- exportsやusesは依存関係の矢印にはならない\n\nこのため、com.sampleからcom.loggingとcom.xmlに矢印が伸びるグラフが正解です。",
         },
         {
             id: 19,
@@ -321,7 +320,7 @@ const Q_1Z0_815_JPN_12 = {
             ],
             answerIndex: 3,
             explanation:
-                "A型変数で宣言されているため、Aクラスに存在しないbye()メソッドはコンパイル時に解決できず、コンパイルエラーとなる。",
+                "Mainクラスのmainメソッドでは、A型の変数aにBのインスタンスを代入しています。\n\nしかし、a.bye()の呼び出しはコンパイルエラーとなります。\n理由は、変数aの型がAであり、Aクラスにはbye()メソッドが定義されていないためです。\n\nたとえ実体がBであっても、参照型であるAに存在しないメソッドは呼び出せません。\n\nこのように、参照型に存在しないメソッドを呼び出そうとすると、コンパイル時にエラーとなります。",
         },
         {
             id: 20,
@@ -338,7 +337,7 @@ const Q_1Z0_815_JPN_12 = {
             ],
             answerIndex: 3,
             explanation:
-                'app.test("A") の引数が1つしかないため、定義された test(char,int) に一致せず、コンパイルエラーとなる。',
+                "testメソッドは引数を2つ（char型とint型）受け取るように定義されています。\n\nmainメソッド内でapp.test('A')と呼び出していますが、引数が1つしか渡されていません。\nこのため、引数の数が一致せず、メソッド呼び出し時にコンパイルエラーとなります。\n\nJavaでは、メソッドの引数の数や型が一致しない場合、オーバーロードの解決ができずコンパイルエラーになります。\n\nしたがって、このプログラムはコンパイルエラーとなります。",
         },
         {
             id: 21,
@@ -348,19 +347,15 @@ const Q_1Z0_815_JPN_12 = {
                 "多次元配列のインスタンス化と初期化のコードとして、正しいものを選びなさい。（2つ選択）",
             code: "",
             choices: [
-                "<code>int[][] array = {{1,2,3},{4,5,6}};</code>",
-                "<code>int[][][] array = {{{1,2},{3,4},{5,6}}};</code>",
-                "<code>int[][] array = {0,1};</code>",
+                "<code>int[][] array = {{1,2,3},{4,5,6}};\n</code>",
+                "<code>int[][][] array = {{1,2},{3,4},{5,6}};\n</code>",
+                "<code>int[][] array = {0,1};\n</code>",
                 "<code>int[][] array = new int[][2];\narray[0][0] = 1;\narray[0][1] = 2;\narray[1][0] = 3;\narray[1][1] = 4;</code>",
                 "<code>int[] array = {0,1};\nint[][][] array2 = new int[2][2][2];\narray2[0][0] = array;\narray2[0][1] = array;\narray2[1][0] = array;\narray2[1][1] = array;</code>",
             ],
             answerIndex: [0, 4],
             explanation:
-                "多次元配列の初期化や代入について、Javaでは配列リテラルや既存配列の参照を使った代入が正しく行えます。\n" +
-                "たとえば、int[][] array = {{1,2,3},{4,5,6}}; のように、2次元配列をリテラルで初期化する書き方は正しい構文です。\n" +
-                "また、int[] array = {0,1}; と1次元配列を作成し、int[][][] array2 = new int[2][2][2]; の各要素に array を代入することも、配列の型や次元が一致していれば問題ありません。\n" +
-                "一方で、int[][] array = {0,1}; のように2次元配列に1次元配列リテラルを直接代入したり、int[][] array = new int[][2]; のように配列のサイズ指定が不完全な場合は文法エラーとなります。\n" +
-                "配列の初期化や代入では、宣言した型や次元、リテラルや参照の形が一致しているかどうかが重要です。",
+                "多次元配列の初期化や代入について、Javaでは配列リテラルや既存配列の参照を使った代入が正しく行えます。\n\nint[][] array = {{1,2,3},{4,5,6}}; のように、2次元配列をリテラルで初期化する書き方は正しい構文です。\n\nまた、int[] array = {0,1}; と1次元配列を作成し、int[][][] array2 = new int[2][2][2]; の各要素に array を代入することも、配列の型や次元が一致していれば問題ありません。\n\n一方で、int[][] array = {0,1}; のように2次元配列に1次元配列リテラルを直接代入したり、int[][] array = new int[][2]; のように配列のサイズ指定が不完全な場合は文法エラーとなります。\n\nこのように、配列の初期化や代入は、型や次元が正しく一致しているかどうかがポイントです。",
         },
         {
             id: 22,
@@ -376,16 +371,14 @@ const Q_1Z0_815_JPN_12 = {
             ],
             answerIndex: 0,
             explanation:
-                "CクラスはBクラスを継承し、BクラスはAクラスを継承しています。Aクラスのフィールドnumはアクセス修飾子が指定されていないため（デフォルトでpackage-private）、同じパッケージ内であればCクラスからもsuper.numでアクセスできます。" +
-                "また、super.getValue()のようにスーパークラスのメソッドも呼び出せます。" +
-                "new.getValue()やpublic.getValue()という呼び出し方はJavaの文法として存在しません。",
+                "CクラスはBクラスを継承し、BクラスはAクラスを継承しています。\n\nAクラスのフィールドnumはアクセス修飾子が指定されていないため（デフォルトでpackage-private）、同じパッケージ内であればCクラスからもsuper.numでアクセスできます。\n\nまた、CクラスのgetValueメソッド内でsuper.getValue()を呼び出すことで、BクラスのgetValueメソッドを利用できます。\n\nこのように、継承関係にあるクラスでは、上位クラスのフィールドやメソッドにアクセスできる場合があります（アクセス修飾子の制約に注意）。",
         },
         {
             id: 23,
             category: "総仕上げ問題①",
             difficulty: "上級",
             question: "次のプログラムの説明として、正しいものを選びなさい。（3つ選択）",
-            code: ' 1. import java.util.Collection;\n 2. public class A {\n 3.     public void sample(Collection arg) {\n 4.         System.out.println("A");\n 5.     }\n 6. }\n\n 1. import java.util.List;\n 2. public class B extends A {\n 3.     public void sample(Collection arg) {\n 4.         System.out.println("B");\n 5.     }\n 6.     public void sample(List arg) {\n 7.         System.out.println("C");\n 8.     }\n 9. }\n\n 1. import java.util.*;\n 2. public class Main {\n 3.     public static void main(String[] args) {\n 4.         A a1 = new A();\n 5.         A a2 = new B();\n 6.         B b1 = new B();\n 7.         List<String> list = new ArrayList<>();\n 8.         // do something\n 9.     }\n10. }',
+            code: ' 1. import java.util.Collection;\n 2. public class A {\n 3.     public void sample(Collection arg) {\n 4.         System.out.println("A");\n 5.     }\n 6. }\n\n 1. import java.util.Collection; 2. import java.util.List;\n 3. public class B extends A {\n 4.     public void sample(Collection arg) {\n 5.         System.out.println("B");\n 6.     }\n 7.     public void sample(List arg) {\n 8.         System.out.println("C");\n 9.     }\n10. }\n\n 1. import java.util.*;\n 2. public class Main {\n 3.     public static void main(String[] args) {\n 4.         A a1 = new A();\n 5.         A a2 = new B();\n 6.         B b1 = new B();\n 7.         List<String> list = new ArrayList<>();\n 8.         // do something\n 9.     }\n10. }',
             choices: [
                 "a1.sample(list) を実行すると A が表示される",
                 "a2.sample(list) を実行すると A が表示される",
@@ -395,7 +388,7 @@ const Q_1Z0_815_JPN_12 = {
             ],
             answerIndex: [0, 2, 4],
             explanation:
-                "オーバーロードとオーバーライドの関係：a1は宣言型がAであるためA#sample(Collection)が呼ばれる。a2は宣言型がAであるがB#sample(Collection)でオーバーライドしているためB#sample(Collection)が呼ばれる。b1はB型でList引数が一致するためCが表示される。",
+                "この問題は、メソッドのオーバーライドとオーバーロードの動作を問うものです。\n\na1はA型なので、a1.sample(list)はAクラスのsample(Collection)が呼ばれ、『A』と表示されます。\n\na2はA型の変数ですが、実体はBなので、Bクラスでオーバーライドされたsample(Collection)が呼ばれ、『B』と表示されます。\n\nb1はB型で、引数にListを渡すと、Bクラスのsample(List)（オーバーロード）が最も適合するため、『C』と表示されます。\n\nこのように、オーバーライドは実体のクラスで決まり、オーバーロードは引数の型で最も適合するメソッドが選ばれます。",
         },
         {
             id: 24,
@@ -411,7 +404,7 @@ const Q_1Z0_815_JPN_12 = {
             ],
             answerIndex: 3,
             explanation:
-                "複数のdefaultメソッドを継承した場合、どちらを採用するか曖昧になるためDクラスで明示的にオーバーライドしない限りコンパイルエラーとなる。",
+                "DクラスはBインタフェースとCインタフェースの両方からdefaultメソッドsample()を継承しています。\n\nこの場合、どちらのdefaultメソッドを使うか曖昧になるため、Dクラスで明示的にsample()をオーバーライドしなければコンパイルエラーとなります。\n\nまた、Dクラスのsample()内でsuper.sample()を呼び出そうとしていますが、インタフェースのdefaultメソッドはsuperで直接呼び出すことはできません。\n\nこのように、複数のインタフェースから同名のdefaultメソッドを継承した場合は、必ず自分で実装を明示する必要があります。",
         },
         {
             id: 25,
@@ -428,7 +421,7 @@ const Q_1Z0_815_JPN_12 = {
             ],
             answerIndex: 2,
             explanation:
-                "抽象メソッドvoid sample()を正しくオーバーライドしていないため、コンパイルエラーとなる。",
+                "Aクラスの抽象メソッドvoid sample()は、Bクラスで必ず同じシグネチャ（引数なし）でオーバーライドする必要があります。\n\nしかし、Bクラスではvoid sample(int i)という別のメソッドを定義しており、引数の有無が異なるためオーバーライドになっていません。\n\nこのため、Bクラスは抽象メソッドを実装していないことになり、コンパイルエラーとなります。\n\nJavaでは、抽象メソッドを持つクラスを継承した場合、すべての抽象メソッドを正しくオーバーライドしなければなりません。",
         },
         {
             id: 26,
@@ -440,13 +433,13 @@ const Q_1Z0_815_JPN_12 = {
             choices: [
                 "<code>List<A> listA = new ArrayList<>();\nlistA.add(new D());</code>",
                 "<code>List<B> listB = new ArrayList<>();\nlistB.add(new C());</code>",
-                "<code>List<C> listC = new ArrayList<>();\nlistC.add(new D());</code>",
+                "<code>List<B> listC = new ArrayList<>();\nlistC.add(new D());</code>",
                 "<code>List<D> listD = new ArrayList<>();\nlistD.add(new C());</code>",
                 "<code>List<A> listE = new ArrayList<>();\nlistE.add(new C());</code>",
             ],
             answerIndex: 3,
             explanation:
-                "List<D> に C 型のインスタンスは追加できないため、コンパイルエラーとなる。",
+                "List<D>はD型のインスタンスのみを格納できるリストです。\n\nCはDのスーパークラスですが、List<D>にC型のインスタンスを追加することはできません。\n\nJavaのジェネリクスでは、リストの型パラメータが一致しない限り、異なる型のインスタンスを追加することはできず、コンパイルエラーとなります。\n\nこのように、リストの型と追加するインスタンスの型の関係に注意が必要です。",
         },
         {
             id: 27,
@@ -463,7 +456,7 @@ const Q_1Z0_815_JPN_12 = {
             ],
             answerIndex: 1,
             explanation:
-                "最初の呼び出しではint→test(int,int)、次の呼び出しではdouble→test(double,double)が選ばれる。",
+                "メソッドのオーバーロードでは、引数の型が最も適合するものが選ばれます。\n\nmainメソッドのtest(10, 20)は、int型のリテラルなのでtest(int a, int b)が呼ばれ、『D』と表示されます。\n\ntest(10.0, 20.0)はdouble型のリテラルなのでtest(double a, double b)が呼ばれ、『B』と表示されます。\n\nこのように、Javaのメソッド呼び出しでは、引数の型に最も合致するメソッドが選択されます。",
         },
         {
             id: 28,
@@ -481,7 +474,7 @@ const Q_1Z0_815_JPN_12 = {
             ],
             answerIndex: [0, 1, 5],
             explanation:
-                "BはAを実装しておりAのサブタイプである。インターフェースはfinalにできない。",
+                "インターフェース（A）はfinalにできません。finalにすると継承や実装ができなくなり、インターフェースの役割を果たせなくなるためです。\n\nBはAを実装しているので、BはAのサブタイプです。\n\nまた、Bはabstractにできません。なぜなら、BはAの抽象メソッドをすべて実装しているため、抽象クラスにする必要がありません。\n\nこのように、インターフェースやクラスの修飾子や継承関係には制約があるため、正しい組み合わせを理解しておくことが重要です。",
         },
         {
             id: 29,
@@ -496,7 +489,8 @@ const Q_1Z0_815_JPN_12 = {
                 "アプリケーションの堅牢性が向上する",
             ],
             answerIndex: [0, 3],
-            explanation: "モジュール化により依存関係が明確になり、セキュリティと保守性が高まる。",
+            explanation:
+                "JDKをモジュール化することで、各モジュール間の依存関係が明確になり、不要なモジュールを除外しやすくなります。\n\nこれにより、アプリケーションモジュールとJDKのモジュールのリンクが容易に構築できるようになります。\n\nまた、モジュールごとにアクセス制御が強化されるため、セキュリティやメンテナンス性も向上します。\n\nこのように、モジュール化は依存関係の明確化とセキュリティ・保守性の向上に寄与します。",
         },
         {
             id: 30,
@@ -513,7 +507,7 @@ const Q_1Z0_815_JPN_12 = {
             ],
             answerIndex: 2,
             explanation:
-                "継承関係により、A→B→Cの順でコンストラクタが呼ばれるため「ABC」と表示される。",
+                "クラスCのインスタンスを生成すると、まず親クラスであるBのコンストラクタが呼ばれ、そのBの親であるAのコンストラクタが最初に呼ばれます。\n\nJavaでは、サブクラスのコンストラクタが呼ばれる前に、必ずスーパークラスのコンストラクタが順に呼び出される仕組みです。\n\nそのため、A→B→Cの順でコンストラクタが実行され、『ABC』と表示されます。\n\nこのように、継承関係のあるクラスでインスタンスを生成すると、親クラスから順にコンストラクタが呼ばれる点がポイントです。",
         },
         {
             id: 31,
@@ -521,7 +515,7 @@ const Q_1Z0_815_JPN_12 = {
             difficulty: "中級",
             question:
                 "次のプログラムをコンパイルし、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: ' 1. import java.util.ArrayList;\n 2. import java.util.Arrays;\n 3. public class Main {\n 4.     public static void main(String[] args) {\n 5.         var alphabet = new ArrayList<>(\n 6.             Arrays.asList("A", "B", "C", "D", "E")\n 7.         );\n 8.         alphabet.sort((var a, var b) -> -a.compareTo(b));\n 9.         alphabet.forEach(System.out::println);\n10.     }\n11. }',
+            code: ' 1. import java.util.ArrayList;\n 2. import java.util.Arrays;\n 3. public class Main {\n 4.     public static void main(String[] args) {\n 5.         var alphabet = new ArrayList<>(\n 6.             Arrays.asList( new String[] {"A", "B", "C", "D", "E"} )\n 7.         );\n 8.         alphabet.sort((var a, var b) -> -a.compareTo(b));\n 9.         alphabet.forEach(System.out::println);\n10.     }\n11. }',
             choices: [
                 "何も表示されない",
                 "「A」「B」「C」「D」「E」と表示される",
@@ -530,7 +524,7 @@ const Q_1Z0_815_JPN_12 = {
             ],
             answerIndex: 2,
             explanation:
-                "通常は昇順ソートが行われるが、設問のコードではマイナス演算子がついているため、「EDCBA」と降順でソートが行われる。",
+                'alphabetリストは、"A"から"E"までの文字列を持つArrayListとして初期化されます。\n\nsortメソッドのラムダ式では、-a.compareTo(b)とすることで、通常の昇順ソートの結果を逆転させています。\n\nそのため、リストは降順（E, D, C, B, A）に並び替えられ、forEachで1つずつ出力されます。\n\nこのように、比較結果にマイナスを付けることで、簡単に降順ソートが実現できます。',
         },
         {
             id: 32,
@@ -542,10 +536,11 @@ const Q_1Z0_815_JPN_12 = {
                 "<code>abstract class Item {\n    public abstract int calcPrice(Item item);\n    public void print(Item item) { /* do something */ }\n}</code>",
                 "<code>abstract class Item {\n    public int calcPrice(Item item);\n    public void print(Item item);\n}</code>",
                 "<code>abstract class Item {\n    public int calcPrice(Item item);\n    public final void print(Item item) { /* do something */ }\n}</code>",
-                "<code>abstract class Item {\n    public abstract int calcPrice(Item item);\n    public abstract void print(Item item);\n}</code>",
+                "<code>abstract class Item {\n    public abstract int calcPrice(Item item) { /* do something */ }\n    public abstract void print(Item item) { /* do something */ }\n}</code>",
             ],
             answerIndex: 0,
-            explanation: "抽象メソッドを1つ以上含み、クラスをabstractとして定義しているAが正しい。",
+            explanation:
+                "抽象クラスは、abstract修飾子を付けて定義し、抽象メソッド（本体のないメソッド）を1つ以上持つことができます。\n\n抽象メソッドは、メソッド本体（{}）を持たず、セミコロンで終わる必要があります。\n\n選択肢の中で、抽象クラスと抽象メソッドの定義が正しいのは、abstract class Item { public abstract int calcPrice(Item item); public void print(Item item) { /* do something */ } } です。\n\nこのように、抽象クラスには抽象メソッドと具象メソッドの両方を定義できます。",
         },
         {
             id: 33,
@@ -563,7 +558,7 @@ const Q_1Z0_815_JPN_12 = {
             ],
             answerIndex: 4,
             explanation:
-                "List.of()で生成されたリストは不変のため、keys.clear()でUnsupportedOperationExceptionがスローされる。",
+                "List.of()で生成されたリストは不変（immutable）であり、要素の追加や削除、clear()などの変更操作はサポートされていません。\n\nそのため、keys.clear()を実行するとUnsupportedOperationExceptionがスローされ、プログラムは異常終了します。\n\nこのように、不変リストに対して変更操作を行うと例外が発生する点に注意が必要です。",
         },
         {
             id: 34,
@@ -571,11 +566,11 @@ const Q_1Z0_815_JPN_12 = {
             difficulty: "初級",
             question:
                 "次のプログラムをコンパイルし、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: " 1. public class Sample {\n 2.     public static void main(String[] args) {\n 3.         char c = 'b';\n 4.         int i = 0;\n 5.         switch (c) {\n 6.             case 'a':\n 7.                 i++;\n 8.                 break;\n 9.             case 'b':\n10.                 i++;\n11.             case 'c':\n12.             case 'd':\n13.                 i++;\n14.             case 'e':\n15.                 i++;\n16.                 break;\n17.             case 'f':\n18.                 i++;\n19.                 break;\n20.             default:\n21.                 System.out.println(c);\n22.         }\n23.         System.out.println(i);\n24.     }\n }",
+            code: " 1. public class Sample {\n 2.     public static void main(String[] args) {\n 3.         char c = 'b';\n 4.         int i = 0;\n 5.         switch (c) {\n 6.             case 'a':\n 7.                 i++;\n 8.                 break;\n 9.             case 'b':\n10.                 i++;\n11.             case 'c' | 'D':\n12.                 i++;\n13.             case 'e':\n14.                 i++;\n15.                 break;\n16.             case 'f':\n17.                 i++;\n18.                 break;\n19.             default:\n20.                 System.out.println(c);\n21.         }\n22.         System.out.println(i);\n23.     }\n }",
             choices: ["3が表示される", "b1が表示される", "1が表示される", "b2が表示される"],
             answerIndex: 0,
             explanation:
-                "switch文で変数cが'b'の場合、case 'b'からbreakがないため、そのままcase 'c'、case 'd'、case 'e'の処理も続けて実行される。iはcase 'b'で1増え、case 'd'でさらに1増え、case 'e'でさらに1増えて合計3増加する。したがって、最終的に3が表示される。",
+                "switch文でchar型の変数cが'b'の場合、case 'b'に一致し、i++が実行されますがbreakがないため次のcase 'c' | 'D'に進み、さらにi++が実行されます。\nその後、case 'e'にもbreakがないためi++がもう一度実行され、合計でiは3増えます。\n\nしたがって、最終的に「3」が表示されます。\n\nこのように、switch文でbreakがない場合は次のcaseに処理が続く（フォールスルー）点に注意が必要です。",
         },
         {
             id: 35,
@@ -592,7 +587,7 @@ const Q_1Z0_815_JPN_12 = {
             ],
             answerIndex: 0,
             explanation:
-                "privateメソッドはサブクラスからオーバーライドされず、それぞれのクラス内でのみ有効です。AクラスのaメソッドはAクラスのprintメソッドを呼び出し、BクラスのbメソッドはBクラスのprintメソッドを呼び出します。そのため、a()の呼び出しで「A」、b()の呼び出しで「B」と表示されます。",
+                "privateメソッドはサブクラスからオーバーライドされず、それぞれのクラス内でのみ有効です。\n\nAクラスのaメソッドはAクラスのprintメソッドを呼び出し、BクラスのbメソッドはBクラスのprintメソッドを呼び出します。\n\nそのため、b.a()の呼び出しで『A』、b.b()の呼び出しで『B』と表示されます。\n\nこのように、privateメソッドは継承されず、同名のメソッドがあっても別物として扱われる点に注意が必要です。",
         },
         {
             id: 36,
@@ -607,7 +602,8 @@ const Q_1Z0_815_JPN_12 = {
                 "<code>for (int d = 0; d < 10; d++) {\n    System.out.print(d++);\n}</code>",
             ],
             answerIndex: 0,
-            explanation: "後置インクリメントx++の挙動に一致するのは、a++を使用したfor文である。",
+            explanation:
+                "元のwhile文は、xが0から9までの値を後置インクリメントx++で出力しています。\n\n選択肢のfor文のうち、for (int a = 0; a < 10; ) { System.out.print(a); a++; } は、aが0から9まで出力され、a++でインクリメントされるため、while文と同じ動作になります。\n\n他の選択肢は、前置インクリメントや無限ループ、インクリメントの位置が異なるため、出力結果が異なります。\n\nこのように、後置インクリメントの挙動を正しく再現できるfor文を選ぶことがポイントです。",
         },
         {
             id: 37,
@@ -623,7 +619,7 @@ const Q_1Z0_815_JPN_12 = {
             ],
             answerIndex: [2, 4],
             explanation:
-                "boolean型のメソッドは条件式の評価結果（trueまたはfalse）をそのままreturnできるため、条件式を返す定義は正しい。void型のメソッドでは、値を返さずreturn;のみ記述することができる。void型で値を返したり、戻り値型と異なる型をreturnする定義は誤りとなる。",
+                "boolean型のメソッドは、条件式の評価結果（trueまたはfalse）をそのままreturnできるため、条件式を返す定義は正しいです。\n\nvoid型のメソッドでは、値を返さずreturn;のみ記述することができます。\n\n一方、void型で値を返したり、戻り値型と異なる型をreturnする定義は誤りとなります。\n\nこのように、メソッドの戻り値型とreturn文の使い方に注意することが重要です。",
         },
         {
             id: 38,
@@ -640,7 +636,7 @@ const Q_1Z0_815_JPN_12 = {
             ],
             answerIndex: 3,
             explanation:
-                "List.of()で生成されたリストは不変であり、list.add()でUnsupportedOperationExceptionがスローされる。",
+                "List.of()で生成されたリストは不変（immutable）であり、要素の追加や削除などの変更操作はできません。\n\nそのため、list.add('a')を実行した時点でUnsupportedOperationExceptionがスローされ、プログラムは異常終了します。\n\nこのように、不変リストに対して変更操作を行うと例外が発生する点に注意が必要です。",
         },
         {
             id: 39,
@@ -658,7 +654,7 @@ const Q_1Z0_815_JPN_12 = {
             ],
             answerIndex: 1,
             explanation:
-                'コマンド行引数 "A B", "A", "B" がそのまま順に出力されるため、「ABAB」と表示される。',
+                "コマンドライン引数の指定 java A \"A B\" A B では、引数は順に『A B』『A』『B』となります。\n\nmainメソッドのargs配列には、['A B', 'A', 'B'] が格納されます。\n\nfor文で順に出力すると、『A B』『A』『B』が連続して表示されるため、『A BAB』となります。\n\nこのように、コマンドライン引数でダブルクォートで囲んだ部分は1つの引数として扱われる点に注意が必要です。",
         },
         {
             id: 40,
@@ -668,14 +664,14 @@ const Q_1Z0_815_JPN_12 = {
                 "次のプログラムをコンパイルし、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
             code: ' 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         String[] array = {"A", "B", "C", "D"};\n 4.         for (int i = 0; i < array.length; i++) {\n 5.             System.out.print(array[i] + " ");\n 6.             if (array[i].equals("C")) {\n 7.                 continue;\n 8.             }\n 9.             System.out.println("end");\n10.             break;\n11.         }\n12.     }\n13. }',
             choices: [
-                "A B C end と表示される",
-                "A B C D end と表示される",
-                "A end と表示される",
+                "「A B C end」と表示される",
+                "「A B C D end」と表示される",
+                "「A end」と表示される",
                 "コンパイルエラーが発生する",
             ],
             answerIndex: 2,
             explanation:
-                '最初のループで array[0] が "A" のため "A end" が出力され、breakで終了する。',
+                'for文の最初のループでarray[0]は"A"なので、System.out.printで"A "が出力されます。\n\nif文の条件(array[i].equals("C"))はfalseなので、continueは実行されず、次のSystem.out.println("end")が実行されます。\n\nその後、breakでループが終了するため、出力は『A end』となります。\n\nこのように、breakやcontinueの位置によってループの挙動が変わる点に注意が必要です。',
         },
         {
             id: 41,
@@ -692,7 +688,7 @@ const Q_1Z0_815_JPN_12 = {
             ],
             answerIndex: 2,
             explanation:
-                "BとCが同名メソッドa()を持つが戻り値型が不整合のため、Dでコンパイルエラーが発生する。",
+                "BインタフェースとCインタフェースは、どちらもa()という同名のメソッドを持っていますが、戻り値の型が異なります（Collection型とPath型）。\n\nこのように、複数のインタフェースから同名で戻り値型が異なるメソッドを継承しようとすると、どちらを採用すべきか曖昧になり、コンパイルエラーとなります。\n\nインタフェースの多重継承では、同名メソッドの戻り値型が一致していない場合に注意が必要です。",
         },
         {
             id: 42,
@@ -709,7 +705,7 @@ const Q_1Z0_815_JPN_12 = {
             ],
             answerIndex: 2,
             explanation:
-                "フィールドxはオーバーライドされないため、型Aの参照ではA.xが出力され「A」となる。",
+                "フィールドxはメソッドと異なり、オーバーライド（動的バインディング）の対象にはなりません。\n\nA型の参照aでa.xとアクセスすると、Aクラスで定義されたxフィールドが参照されます。\n\nそのため、実体がBクラスであっても、出力されるのはAクラスのxの値『A』となります。\n\nこのように、フィールドの参照は参照型で決まり、サブクラスで同名のフィールドを定義しても上書きにはならない点に注意が必要です。",
         },
         {
             id: 43,
@@ -726,7 +722,7 @@ const Q_1Z0_815_JPN_12 = {
             ],
             answerIndex: 3,
             explanation:
-                "AクラスのisValueメソッドはprivateで定義されているため、Bクラスからは呼び出すことができません。Bクラスのtestメソッド内でisValue(num)を呼び出そうとすると、アクセス修飾子の制約によりコンパイルエラーとなります。privateメソッドは定義されたクラス内からのみアクセス可能であり、サブクラスからは継承もアクセスもできません。",
+                "AクラスのisValueメソッドはprivateで定義されているため、Bクラスからは呼び出すことができません。\n\nBクラスのtestメソッド内でisValue(num)を呼び出そうとすると、アクセス修飾子の制約によりコンパイルエラーとなります。\n\nprivateメソッドは定義されたクラス内からのみアクセス可能であり、サブクラスからは継承もアクセスもできません。\n\nこのように、privateメソッドはサブクラスから利用できない点に注意が必要です。",
         },
         {
             id: 44,
@@ -744,10 +740,7 @@ const Q_1Z0_815_JPN_12 = {
             ],
             answerIndex: 4,
             explanation:
-                "Javaのコンストラクタでは、super(...)やthis(...)による別コンストラクタ呼び出しは必ず最初の文でなければなりません。\n" +
-                "SubSample(String name, int num, int price)の8行目では、super(name, num);の後にthis(price);を呼び出しているため、コンパイルエラーとなります。\n" +
-                "また、SubSample(int price)のコンストラクタでは、明示的にスーパークラスのコンストラクタを呼び出していないため、暗黙的にsuper()が呼ばれますが、Sampleクラスには引数なしのコンストラクタが存在しないため、こちらもコンパイルエラーとなります。\n" +
-                "したがって、3行目と8行目の両方でコンパイルエラーが発生します。",
+                "このプログラムは、サブクラスのコンストラクタ呼び出し規則がポイントです。\n\nSubSampleクラスの3行目のコンストラクタでは、明示的にsuper(...)を呼び出していません。\nJavaでは、サブクラスのコンストラクタ内でsuper(...)またはthis(...)のいずれかを最初に呼び出す必要があります。\n呼び出しがない場合、暗黙的に親クラスのデフォルトコンストラクタ（引数なし）が呼ばれますが、\n親クラスSampleには引数なしのコンストラクタが定義されていないため、3行目でコンパイルエラーとなります。\n\nまた、8行目のthis(price)の呼び出しも、super(...)より前に記述されていないため、コンパイルエラーとなります。\n\nこのように、SubSampleクラスの3行目と8行目の両方でコンパイルエラーが発生します。\n\nポイント：\n- サブクラスのコンストラクタではsuper(...)またはthis(...)の呼び出しが必須\n- 親クラスにデフォルトコンストラクタがない場合は明示的なsuper(...)が必要\n- this(...)やsuper(...)の呼び出し位置にも注意\n\nこのため、3行目と8行目の両方でコンパイルエラーになります。",
         },
         {
             id: 45,
@@ -763,7 +756,7 @@ const Q_1Z0_815_JPN_12 = {
             ],
             answerIndex: 1,
             explanation:
-                "BはSampleを実装していないのに@Overrideを付けているためコンパイルエラー。他は有効（Cは抽象オーバーライド可）。",
+                "SampleTest2はSampleインタフェースを実装していないにもかかわらず、@Overrideアノテーションを付けてtestメソッドを定義しています。\n\n@Overrideは、親クラスやインタフェースのメソッドを正しくオーバーライドしている場合にのみ使うべきアノテーションです。\n\nインタフェースを実装していないクラスで@Overrideを付けると、コンパイルエラーとなります。\n\n他の選択肢は、インタフェースの実装や抽象クラスでの抽象メソッドのオーバーライドとして正しい定義です。",
         },
         {
             id: 46,
@@ -773,15 +766,15 @@ const Q_1Z0_815_JPN_12 = {
                 "次のプログラムをコンパイル・実行した結果として正しいものを選びなさい。なお、現在の日付は2019年8月14日とする。（1つ選択）",
             code: " 1. import java.time.LocalDate;\n 2. public class Diary {\n 3.     private LocalDate now = LocalDate.now();\n 4.     public LocalDate getNow() {\n 5.         return this.now;\n 6.     }\n 7. }\n\n 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         Diary d = new Diary();\n 4.         System.out.println(d.getNow());\n 5.     }\n 6. }",
             choices: [
-                "[2019-08-14] と表示される",
-                "[08-14-2019] と表示される",
-                "[14-08-2019] と表示される",
-                "[08-14] と表示される",
-                "[2019-08] と表示される",
+                "「2019-08-14」と表示される",
+                "「08-14-2019」と表示される",
+                "「14-08-2019」と表示される",
+                "「08-14」と表示される",
+                "「2019-08」と表示される",
             ],
             answerIndex: 0,
             explanation:
-                "LocalDate#toString は ISO-8601 形式（YYYY-MM-DD）で出力するため、2019-08-14。",
+                "LocalDate#toStringは、日付をISO-8601形式（YYYY-MM-DD）で出力します。\n\n設問のプログラムでは、LocalDate.now()で現在の日付（2019年8月14日）が取得され、そのままtoStringで出力されるため『2019-08-14』と表示されます。\n\nこのように、LocalDateの標準出力はISO形式である点に注意が必要です。",
         },
         {
             id: 47,
@@ -791,13 +784,14 @@ const Q_1Z0_815_JPN_12 = {
                 "次の数式を表したコードとして、正しいものを選びなさい。（1つ選択）\n![](img/1Z0-815-JPN_12-047_q.png)",
             code: "",
             choices: [
-                "<code>a = b * c * Math.pow(1 + c, n) / (Math.pow(1 + c, n) - 1);</code>",
+                "<code>a = b * (c * Math.pow(1 + c, n) / (Math.pow(1 + c, n) - 1));</code>",
                 "<code>a = b * c * Math.pow(1 + c, n) / Math.pow(1 + c, n) - 1;</code>",
                 "<code>a = b * c + (Math.pow(1 + c, n) / (Math.pow(1 + c, n) - 1));</code>",
                 "<code>a = b * Math.pow(1 + c, n) - 1 / (c * Math.pow(1 + c, n));</code>",
             ],
             answerIndex: 0,
-            explanation: "べき乗は Math.pow、分母全体に括弧が必要。Aのみ数式どおり。",
+            explanation:
+                "べき乗の計算にはMath.powを使い、分母全体を括弧で囲む必要があります。\n\n選択肢の中で、a = b * (c * Math.pow(1 + c, n) / (Math.pow(1 + c, n) - 1)); は、数式の構造を正しくJavaコードで表現しています。\n\n他の選択肢は、演算子の優先順位や括弧の位置が異なり、数式どおりの計算になりません。\n\nこのように、数式をコードに落とし込む際は、括弧の使い方や演算順序に注意することが重要です。",
         },
         {
             id: 48,
@@ -814,7 +808,7 @@ const Q_1Z0_815_JPN_12 = {
             ],
             answerIndex: 0,
             explanation:
-                "argsは[a,b,c]。ループごとに先頭でiを出力後インクリメントするため1〜3で出力。",
+                "コマンドライン引数として渡された値は、args配列に順に格納されます（この場合はa, b, c）。\n\nfor文でargsの各要素を取り出し、iを出力してからインクリメントしているため、1) a、2) b、3) c の順で出力されます。\n\nMainというクラス名は引数には含まれません。\n\nこのように、コマンドライン引数はmainメソッドのargs配列に格納され、for文で順に処理されます。",
         },
         {
             id: 49,
@@ -832,7 +826,7 @@ const Q_1Z0_815_JPN_12 = {
             ],
             answerIndex: 0,
             explanation:
-                "setD(10)が10を返しd=10に。代入は右から左に評価され、c,b,aが順に10となる。",
+                "setAll(10)の呼び出しでは、setD(10)が実行され、dに10が代入され、10が返されます。\n\n代入式 a = b = this.c = setD(x); は右から左に評価されるため、まずcに10が代入され、次にbに10、最後にaに10が代入されます。\n\nそのため、すべてのフィールドa, b, c, dが10となり、Sample [a=10, b=10, c=10, d=10]と表示されます。\n\nこのように、連続した代入式は右から左に評価される点に注意が必要です。",
         },
         {
             id: 50,
@@ -849,7 +843,7 @@ const Q_1Z0_815_JPN_12 = {
             ],
             answerIndex: 3,
             explanation:
-                "num==1でcontinueし、その後条件(num<1)が偽となりループ終了。出力は発生しない。",
+                "このプログラムはdo-while文を使っています。\n\nnumは0から始まり、ループの最初で1にインクリメントされます。\nnumが1のとき、continue文でSystem.out.println(num);がスキップされます。\nその後、whileの条件(num < 1)は偽となり、ループは1回で終了します。\n\nこのため、画面には何も表示されません。\n\nポイント：\n- do-while文は必ず1回は実行される\n- continue文で以降の処理がスキップされる\n- ループ条件が偽になった時点で終了する",
         },
         {
             id: 51,
@@ -866,7 +860,7 @@ const Q_1Z0_815_JPN_12 = {
             ],
             answerIndex: [0, 2],
             explanation:
-                "tryブロックは複数のcatchブロックを持つことができ、catchの順序は上位型（例：Exception）より下位型（例：IOException）を後ろに書く必要があります。finallyブロックはtryまたはcatchの直後に配置します。",
+                "・finallyブロックは、tryブロックまたはcatchブロックの直後に必ず配置します。\n\n・tryブロックは複数のcatchブロックを持つことができ、異なる例外型ごとに個別に処理できます。\ncatchブロックの順序は、特定の例外型（下位型）を先に、より一般的な型（上位型）を後に書く必要があります。\n\n・try-with-resources構文では、finallyブロックが実行された後にリソースのclose()が呼ばれます。\n\n・catchやfinallyブロックは必須ではなく、tryブロック単体で使うことはできませんが、catchまたはfinallyのどちらか一方があれば構文上は成立します。\n\nこの問題のポイントは、finallyブロックの配置場所とcatchブロックの複数定義、catchの順序、try-with-resourcesの動作です。",
         },
         {
             id: 52,
@@ -883,15 +877,15 @@ const Q_1Z0_815_JPN_12 = {
             ],
             answerIndex: 2,
             explanation:
-                "Arrays.mismatchは初めて異なる位置のインデックス（2）を返し、Arrays.compareはarray1が小さい場合-1を返す。したがって出力は「2:-1」。",
+                "Arrays.mismatchは、2つの配列を先頭から比較し、最初に異なる要素のインデックスを返します。\nこの場合、array1とarray2はインデックス2の要素（3と4）が異なるため、result1は2になります。\n\nArrays.compareは、配列を辞書順で比較し、最初に異なる要素で大小を判定します。\narray1[2]=3、array2[2]=4なので、array1の方が小さいと判定され、result2は-1になります。\n\nしたがって、出力は「2:-1」となります。\n\nポイント：\n- mismatchは最初に異なるインデックスを返す\n- compareは最初に異なる要素で大小を判定し、同じなら長さで判定する",
         },
         {
             id: 53,
             category: "総仕上げ問題①",
             difficulty: "初級",
             question:
-                "次のプログラムを実行したときに「2.5」と表示されるようにしたい。空欄に入るコードとして、正しいものを選びなさい。（1つ選択）",
-            code: " 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         byte x = 5, y = 2;\n 4.         // ここにコードを記述\n 5.         System.out.println(a);\n 6.     }\n 7. }",
+                "次のプログラムを実行したときに「2.5」と表示されるようにしたい。4行目の空欄に入るコードとして、正しいものを選びなさい。（1つ選択）",
+            code: " 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         byte x = 5, y = 2;\n 4.         __________\n 5.         System.out.println(a);\n 6.     }\n 7. }",
             choices: [
                 "<code>float a = Math.round((float) x / y * 100) / (float) 100;</code>",
                 "<code>float a = (float)(Math.round((float) x / y * 100) / 100);</code>",
@@ -900,7 +894,7 @@ const Q_1Z0_815_JPN_12 = {
             ],
             answerIndex: 0,
             explanation:
-                "浮動小数点の除算を行い、100倍→四捨五入→100で割ることで小数第2位までを表示できる。",
+                "この問題は、2つのbyte型変数xとyを使って「2.5」と表示する方法を問うものです。\n\n整数同士の除算では小数点以下が切り捨てられるため、(float)で型変換してから計算する必要があります。\n\nMath.round((float) x / y * 100) で小数第2位までを四捨五入し、最後に100で割ることで「2.5」という結果が得られます。\n\nポイント：\n- 整数同士の除算は小数点以下が切り捨てられる\n- (float)で型変換してから計算する\n- 小数第2位まで表示したい場合は100倍→四捨五入→100で割る\n\nこの手順で正しい結果が得られます。",
         },
         {
             id: 54,
@@ -916,10 +910,7 @@ const Q_1Z0_815_JPN_12 = {
             ],
             answerIndex: 3,
             explanation:
-                "SampleImplクラスはSampleインタフェースのtest()メソッドを正しく実装しています。" +
-                "SubSampleImplクラスではtest(int x)という引数付きのメソッドを定義していますが、これはオーバーロード（同名で引数違い）であり、オーバーライド（引数・戻り値・修飾子が同じ）ではありません。" +
-                "このため、SampleImplのtest()メソッドはそのまま継承され、SubSampleImplでtest(int x)を追加しても問題ありません。" +
-                "よって、すべて正常にコンパイル・実行できます。",
+                "このプログラムは、インタフェースの実装とメソッドのオーバーライド、オーバーロードに関する問題です。\n\nSampleImplクラスは、Sampleインタフェースのvoid test()メソッドを正しくオーバーライドしています。\nSubSampleImplクラスでは、引数付きのvoid test(int x)メソッドを定義していますが、これはオーバーロード（同名で引数違い）となり、\n親クラスのvoid test()メソッドも継承されます。\n\nどのクラスもインタフェースの契約を守っており、コンパイルエラーは発生しません。\n\nポイント：\n- オーバーライドはシグネチャ（引数・戻り値）が完全一致\n- オーバーロードは同名で引数違いのメソッド追加\n- インタフェースのメソッドは実装クラスで必ず実装されていること\n\nこのため、正常にコンパイル・実行できます。",
         },
         {
             id: 55,
@@ -930,7 +921,7 @@ const Q_1Z0_815_JPN_12 = {
             choices: [
                 "<code>int[][] a = {{1,1},{2,2}};</code>",
                 "<code>short b = (short)'A';</code>",
-                "<code>byte c1 = 10;\nchar c2 = c1;</code>",
+                "<code>byte c1 = 10; char c2 = c1;</code>",
                 "<code>boolean d = (10 == 10);</code>",
                 "<code>float e = 1.99;</code>",
                 "<code>int f = 12_34;</code>",
@@ -938,13 +929,7 @@ const Q_1Z0_815_JPN_12 = {
             ],
             answerIndex: [0, 1, 3, 5],
             explanation:
-                "int[][] a = {{1,1},{2,2}}; は2次元配列のリテラル初期化として正しい構文です。\n" +
-                "short b = (short)'A'; はchar型をshort型に明示的にキャストしており、問題ありません。\n" +
-                "boolean d = (10 == 10); は比較演算の結果をboolean型に代入しており、正しいです。\n" +
-                "int f = 12_34; は数値リテラルの途中にアンダースコアを使うことができるため、正しい構文です。\n" +
-                "byte c1 = 10; char c2 = c1; はbyte型からchar型への暗黙的な型変換ができないためコンパイルエラーになります。\n" +
-                "float e = 1.99; は小数リテラルがdouble型として扱われるため、float型に代入するには末尾にfを付ける必要があります。\n" +
-                "String g = 'a'; はシングルクォートで囲まれた'a'がchar型となり、String型には代入できないためコンパイルエラーです。",
+                "・int[][] a = {{1,1},{2,2}}; は2次元配列の正しい初期化方法です。\n\n・short b = (short)'A'; は、char型（'A'）をshort型にキャストして代入できるため正しいです。\n\n・boolean d = (10 == 10); は、比較演算の結果（true/false）をboolean型に代入しており正しいです。\n\n・int f = 12_34; は、数値リテラルの途中にアンダースコアを入れることができるため正しいです。\n\n【不正解の選択肢のポイント】\n- byte c1 = 10; char c2 = c1; は、byteからcharへの暗黙変換はできません。\n- float e = 1.99; は、floatリテラルには末尾にfが必要です。\n- String g = 'a'; は、'a'はchar型リテラルなのでStringには代入できません。\n\nこのように、Javaの型変換やリテラルのルールを理解しているかが問われる問題です。",
         },
         {
             id: 56,
@@ -952,16 +937,16 @@ const Q_1Z0_815_JPN_12 = {
             difficulty: "中級",
             question:
                 "次のプログラムをコンパイルし、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: ' 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         String[][] array = {\n 4.             { "A", "B" },\n 5.             { "C" },\n 6.             { "D", "E", "F", "G" }\n 7.         };\n 8.         for (int i = 0; i < array.length; i++) {\n 9.             int j = 0;\n10.             while (j < array[i].length) {\n11.                 System.out.println("[" + i + "," + j + "]=" + array[i][j]);\n12.                 j++;\n13.             }\n14.         }\n15.     }\n16. }',
+            code: ' 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         String[][] array = {\n 4.             { "A", "B" },\n 5.             { "C" },\n 6.             { "D", "E", "F", "G" }\n 7.         };\n 8.         for (int i = 0; i < array.length; i++) {\n 9.             int j = 0;\n10.             for (; j < array[i].length; j++) {\n11.                 System.out.print("[" + i + "," + j + "]=" + array[i][j] + " ");\n12.             }\n13.         }\n14.     }\n15. }',
             choices: [
-                "[0,0]=A\n[0,1]=B\n[1,0]=C\n[1,1]=D\n[2,0]=E\n[2,1]=F\n[2,2]=G",
-                "[0,0]=A\n[0,1]=B\n[1,0]=C\n[2,0]=D\n[2,1]=E\n[2,2]=F\n[2,3]=G",
-                "[0,0]=A\n[0,1]=B\n[1,0]=C\n[1,1]=D\n[2,0]=E\n[2,1]=F\n[3,0]=G",
-                "[0,0]=A\n[0,1]=B\n[0,2]=C\n[1,0]=D\n[1,1]=E\n[1,2]=F\n[1,3]=G",
+                "<code>[0,0]=A [0,1]=B [1,0]=C [1,1]=D [2,0]=E [2,1]=F [2,2]=G </code>",
+                "<code>[0,0]=A [0,1]=B [1,0]=C [2,0]=D [2,1]=E [2,2]=F [2,3]=G </code>",
+                "<code>[0,0]=A [0,1]=B [1,0]=C [1,1]=D [2,0]=E [2,1]=F [3,0]=G </code>",
+                "<code>[0,0]=A [0,1]=B [0,2]=C [1,0]=D [1,1]=E [1,2]=F [1,3]=G </code>",
             ],
             answerIndex: 1,
             explanation:
-                "配列の構造から、出力は[0,0]=A, [0,1]=B, [1,0]=C, [1,1]=D, [2,0]=E, [2,1]=F, [2,2]=Gのようになる。",
+                'このプログラムは、2次元配列arrayの各要素をfor文で順に出力しています。\n\narrayの構造は次の通りです：\n- 0行目: "A", "B"\n- 1行目: "C"\n- 2行目: "D", "E", "F", "G"\n\nfor文の外側は行（i）、内側は列（j）を回しており、array[i][j]の値を出力します。\n\n出力は、各行・各列の要素が順に\n[0,0]=A [0,1]=B [1,0]=C [2,0]=D [2,1]=E [2,2]=F [2,3]=G\nとなります。\n\nポイント：\n- 2次元配列は行ごとに要素数が異なる場合がある\n- for文でarray[i].lengthを使うことで各行の要素数に合わせてループできる\n\nこのため、正しい出力は「[0,0]=A [0,1]=B [1,0]=C [2,0]=D [2,1]=E [2,2]=F [2,3]=G 」となります。',
         },
         {
             id: 57,
@@ -978,7 +963,7 @@ const Q_1Z0_815_JPN_12 = {
             ],
             answerIndex: 2,
             explanation:
-                "catchブロックの順序が不正。RuntimeExceptionはExceptionのサブクラスのため、上にcatch(Exception)があると到達不能コードとなりコンパイルエラー。",
+                "このプログラムはcatchブロックの順序に関する問題です。\n\ncatch(Exception e)の後にcatch(RuntimeException e)が続いていますが、RuntimeExceptionはExceptionのサブクラスです。\nそのため、先にcatch(Exception)で全ての例外が捕捉されてしまい、catch(RuntimeException)には絶対に到達できません。\n\nJavaでは、到達不能なcatchブロックがあるとコンパイルエラーになります。\n\nポイント：\n- catchブロックは、特定の例外型（下位型）を先に、一般的な型（上位型）を後に書く必要がある\n- 到達不能なcatchブロックはコンパイルエラー\n\nこのため、このプログラムはコンパイルエラーとなります。",
         },
         {
             id: 58,
@@ -994,7 +979,8 @@ const Q_1Z0_815_JPN_12 = {
                 "コンパイルエラーが発生する",
             ],
             answerIndex: 0,
-            explanation: "num=9は10より小さいためif文の条件がtrueとなり、「9」が表示される。",
+            explanation:
+                "このプログラムは、インクリメント演算子（num++）の動作がポイントです。\n\nif文の条件でnum++ < 10を判定しています。\nnum++は「比較後にnumを1増やす」ため、まずnum（9）と10を比較し、条件はtrueになります。\n比較の後、numは10になります。\n\nそのため、if文の中でSystem.out.println(num);が実行され、出力は「10」となります。\n\nポイント：\n- num++は「比較後にインクリメント」される（後置）\n- if文の条件判定時は元の値で比較される\n- 条件がtrueなので、インクリメント後の値が出力される\n\nこのため、画面には「10」と表示されます。",
         },
         {
             id: 59,
@@ -1011,7 +997,7 @@ const Q_1Z0_815_JPN_12 = {
             ],
             answerIndex: 0,
             explanation:
-                "文字列結合は左から順に処理されるため、「a + b = 6, b + a = 42」と出力される。",
+                'このプログラムは、文字列結合と演算の順序がポイントです。\n\nSystem.out.println(a + b = " = (a + b) = " + a + b);\nは、左から順に評価されます。\n\nまず a + b で 6 となり、\n次に " = (a + b) = " という文字列が結合され、\nその後 a（4）が文字列として結合され、さらに b（2）が結合されます。\n\nつまり、6 = (a + b) = 42 という文字列が出力されます。\n\nポイント：\n- + 演算子は、左から右へ順に評価される\n- 途中で文字列型が現れると、以降はすべて文字列結合になる\n\nこのため、画面には「6 = (a + b) = 42」と表示されます。',
         },
         {
             id: 60,
@@ -1029,7 +1015,7 @@ const Q_1Z0_815_JPN_12 = {
             ],
             answerIndex: 2,
             explanation:
-                "加算の結果はLong型だが、それをStringにキャストすることはできないため6行目でコンパイルエラー。",
+                "このプログラムは、型変換（キャスト）と自動ボクシング・アンボクシングの動作がポイントです。\n\n5行目の (long) s1 + s2 は、s1がlong型に変換され、s2（Integer型）は自動的にアンボクシングされてint型となり、\nlong + int の計算結果はlong型となります。これをLong型の変数s3に代入するのは問題ありません。\n\n6行目の (String) (s3 + s2) ですが、s3はLong型、s2はInteger型で、加算結果はlong型です。\nこのlong型の値をString型にキャストすることはできないため、ここでコンパイルエラーとなります。\n\nポイント：\n- プリミティブ型とラッパークラスの自動変換（ボクシング・アンボクシング）\n- 異なる型同士の加算結果の型\n- 不適切なキャストはコンパイルエラー\n\nこのため、6行目でコンパイルエラーが発生します。",
         },
         {
             id: 61,
@@ -1038,15 +1024,15 @@ const Q_1Z0_815_JPN_12 = {
             question: "次のプログラムを実行した結果として、正しいものを選びなさい。（1つ選択）",
             code: ' 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         String s1 = new String("Java");\n 4.         String s2 = "Java";\n 5.         String s3 = s2.intern();\n 6.         System.out.print((s1 == s2) + ", ");\n 7.         System.out.print((s2 == s3) + ", ");\n 8.         System.out.println(s1 == s3);\n 9.     }\n10. }',
             choices: [
-                "[false, true, false] と表示される",
-                "[true, true, true] と表示される",
-                "[true, false, false] と表示される",
-                "[true, true, false] と表示される",
-                "[false, false, false] と表示される",
+                "「false, true, false」と表示される",
+                "「true, true, true」と表示される",
+                "「true, false, false」と表示される",
+                "「true, true, false」と表示される",
+                "「false, false, false」と表示される",
             ],
             answerIndex: 0,
             explanation:
-                'new String()は別オブジェクトを生成するためs1とs2は異なる。intern()でs3はリテラル"Java"を参照しs2と同じになる。',
+                'このプログラムは、Stringの生成方法と==演算子、intern()メソッドの動作がポイントです。\n\ns1はnew String("Java")で生成されるため、ヒープ上の新しいオブジェクトです。\ns2は文字列リテラルなので、文字列プール上の"Java"を参照します。\ns3はs2.intern()で、これも文字列プール上の"Java"を参照します。\n\n==演算子は参照の同一性を比較します。\n- s1 == s2 は、異なるオブジェクトなのでfalse\n- s2 == s3 は、どちらも文字列プール上の同じ"Java"を参照するのでtrue\n- s1 == s3 も、異なるオブジェクトなのでfalse\n\nこのため、出力は「false, true, false」となります。\n\nポイント：\n- new String()は新しいオブジェクトを生成\n- 文字列リテラルやintern()は文字列プールを参照\n- ==は参照の同一性を比較する',
         },
         {
             id: 62,
@@ -1056,14 +1042,14 @@ const Q_1Z0_815_JPN_12 = {
                 "次のプログラムをコンパイルし、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
             code: " 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         char[][] arrays = {{'a', 'd'}, {'b', 'e'}, {'c', 'f'}};\n 4.         for (char[] array : arrays) {\n 5.             for (char c : array) {\n 6.                 System.out.print(c);\n 7.             }\n 8.             System.out.print(\" \");\n 9.         }\n10.     }\n11. }",
             choices: [
-                "[ad be cf] と表示される",
-                "[abc def] と表示される",
-                "[a b c d e f] と表示される",
-                "[abd ecf] と表示される",
+                "「ad be cf 」と表示される",
+                "「abc def 」と表示される",
+                "「a b c d e f 」と表示される",
+                "「adb ecf 」と表示される",
             ],
             answerIndex: 0,
             explanation:
-                "配列を二重ループで出力しているため、各文字が順に出力されて「abcdef」となる。",
+                "このプログラムは、2次元char配列を拡張for文で出力しています。\n\n外側のfor文で各行（char[]）を取り出し、内側のfor文でその行の各要素（char）を順に出力します。\n1行ごとにスペースも出力されるため、\n- 1行目: 'a', 'd' → ad\n- 2行目: 'b', 'e' → be\n- 3行目: 'c', 'f' → cf\nとなり、最終的な出力は「ad be cf 」となります。\n\nポイント：\n- 2次元配列の拡張for文の使い方\n- 各行ごとにスペースが入る\n\nこのため、画面には「ad be cf 」と表示されます。",
         },
         {
             id: 63,
@@ -1071,16 +1057,16 @@ const Q_1Z0_815_JPN_12 = {
             difficulty: "初級",
             question:
                 "次のプログラムをコンパイルし、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: ' 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         int y;\n 4.         int x = 3;\n 5.         if (y > 2) {\n 6.             x = ++y;\n 7.             y = x + 5;\n 8.         } else {\n 9.             y++;\n10.         }\n11.         System.out.println(x + ", " + y);\n12.     }\n13. }',
+            code: ' 1. public class Main {\n 2.     public static void main(String[] args) {\n 3.         int x;\n 4.         int y = 3;\n 5.         if (y > 2) {\n 6.             x = ++y;\n 7.             y = x + 5;\n 8.         } else {\n 9.             y++;\n10.         }\n11.         System.out.println(x + ", " + y);\n12.     }\n13. }',
             choices: [
-                "4, 9 と表示される",
-                "3, 8 と表示される",
+                "「4, 9」と表示される",
+                "「3, 8」と表示される",
                 "コンパイルエラーが発生する",
                 "実行時に例外がスローされる",
             ],
             answerIndex: 2,
             explanation:
-                "変数yが初期化されていないまま条件式で使用されており、コンパイルエラーとなる。",
+                "このプログラムは、変数の初期化に関する問題です。\n\n変数xはif文のブロック内でのみ初期化されています。\nifの条件がtrueの場合はxに値が代入されますが、else側ではxに何も代入されません。\n\nif-else文の外でxを使用しているため、Javaのコンパイラは「xが初期化されていない可能性がある」と判断し、コンパイルエラーとなります。\n\nポイント：\n- ローカル変数は必ず初期化してから使う必要がある\n- if-elseのどちらかで初期化されないパスがあるとエラー\n\nこのため、このプログラムはコンパイルエラーになります。",
         },
         {
             id: 64,
@@ -1098,7 +1084,7 @@ const Q_1Z0_815_JPN_12 = {
             ],
             answerIndex: 2,
             explanation:
-                "Javaのエントリーポイントはmain(String[] args)のみであり、実行時にはこのメソッドが呼び出されるため「C」と表示される。",
+                "このプログラムにはmainメソッドが3つ定義されていますが、Javaのエントリーポイントとして認識されるのは、\npublic static void main(String[] args) だけです。\n\nコマンドラインからjava Main 1 2 3で実行すると、必ずmain(String[] args)が呼び出されます。\n他のmain(int[] args)やmain(Object[] args)は、エントリーポイントとしては無視されます。\n\nそのため、画面には「C」と表示されます。\n\nポイント：\n- Javaのエントリーポイントはmain(String[] args)のみ\n- 他のシグネチャのmainメソッドは呼び出されない\n- コマンドライン引数はString型の配列として渡される\n\nこのため、正しい出力は「C」となります。",
         },
         {
             id: 65,
@@ -1115,7 +1101,7 @@ const Q_1Z0_815_JPN_12 = {
             ],
             answerIndex: 0,
             explanation:
-                "呼び出し順はB() → this(4) → B(int) → A() → this(2)の順に動作し、出力は「2143」となる。",
+                'このプログラムは、コンストラクタの呼び出し順序がポイントです。\n\nBクラスの引数なしコンストラクタが呼ばれると、最初にthis(4)でB(int)が呼ばれます。\nB(int)の中で4が出力され、B(int)の処理が終わるとB()の残り（System.out.print("3")）が実行され、3が出力されます。\n\nBクラスのコンストラクタの先頭でsuper()が暗黙的に呼ばれ、Aクラスの引数なしコンストラクタが呼ばれます。\nA()の中でthis(2)によりA(int)が呼ばれ、2が出力されます。その後A()の残り（System.out.print("1")）が実行され、1が出力されます。\n\n呼び出しの流れをまとめると、2→1→4→3の順で出力されます。\n\nポイント：\n- コンストラクタの呼び出しは、親クラス→子クラスの順\n- this()やsuper()の使い方\n- 出力の順序は呼び出しの流れに依存\n\nこのため、画面には「2143」と表示されます。',
         },
         {
             id: 66,
@@ -1123,10 +1109,15 @@ const Q_1Z0_815_JPN_12 = {
             difficulty: "初級",
             question: "次のプログラムの空欄に入るコードとして、正しいものを選びなさい。（1つ選択）",
             code: " 1. public class Sample {\n 2.     public static void print(Integer num) {\n 3.         System.out.println(num);\n 4.     }\n 5. }\n\n 6. import java.util.List;\n 7. public class Main {\n 8.     public static void main(String[] args) {\n 9.         List<Integer> list = List.of(1, 2, 3);\n10.         list.forEach(＿＿＿＿＿＿＿);\n11.     }\n12. }",
-            choices: ["new Sample()::print", "Sample.print", "Sample:print", "Sample::print"],
+            choices: [
+                "<code>new Sample()::print</code>",
+                "<code>Sample.print</code>",
+                "<code>Sample:print</code>",
+                "<code>Sample::print</code>",
+            ],
             answerIndex: 3,
             explanation:
-                "メソッド参照ではクラス名::メソッド名の形式を用いる。したがって正解はSample::print。",
+                "この問題は、メソッド参照の正しい記法が問われています。\n\nlist.forEach(＿＿＿＿＿＿＿); の部分には、リストの各要素を引数にして呼び出せるメソッド参照を指定します。\n\nSampleクラスのprintメソッドはstaticメソッドなので、\nクラス名::メソッド名（Sample::print）という形式でメソッド参照が可能です。\n\nポイント：\n- staticメソッドの参照は「クラス名::メソッド名」\n- インスタンスメソッドの場合は「インスタンス名::メソッド名」\n- Sample.printやSample:printは正しい記法ではない\n\nこのため、正しい記述はSample::printとなります。",
         },
         {
             id: 67,
@@ -1143,7 +1134,7 @@ const Q_1Z0_815_JPN_12 = {
             ],
             answerIndex: 0,
             explanation:
-                "JDKは各OSごとに提供されるため、環境に応じたインストーラを選択してセットアップを行う必要がある。",
+                "JDK（Java Development Kit）は、WindowsやmacOS、Linuxなど、各オペレーティングシステムごとに専用のインストーラが提供されています。\nそのため、自分の使っているOSに合ったJDKを選んでインストールする必要があります。\n\nJavaの開発環境は、JDKをインストールすることでセットアップされます。\nJRE（Java実行環境）は実行のみで、開発にはJDKが必要です。\n\nIDE（統合開発環境）はJDKがインストールされていないとJavaの開発ができません。\n\nポイント：\n- JDKはOSごとに用意されている\n- 開発にはJDKが必要\n- IDEだけではJava開発環境は整わない\n\nこのため、正しい説明は「JDKをインストールするときには、特定のオペレーティングシステム用のJava開発環境をセットアップする」です。",
         },
         {
             id: 68,
@@ -1162,7 +1153,7 @@ const Q_1Z0_815_JPN_12 = {
             ],
             answerIndex: [0, 4],
             explanation:
-                "フィールドに代入するには this.array に String[] を渡す必要がある。A はそのまま代入でき、E は可変長引数が実体として String[] なので代入できる。B と D はパラメータに自己代入しておりフィールドを更新しない。C は String を String[] に代入できず、F は Object[] を String[] に代入できない。",
+                "この問題は、フィールドへの正しい代入方法と型の一致がポイントです。\n\n・public Sample(String[] array) { this.array = array; }\n引数のarrayはString[]型で、フィールドarrayもString[]型なので、そのまま代入できます。\n\n・public Sample(String... array) { this.array = array; }\n可変長引数（String...）は実体としてString[]型になるため、フィールドにそのまま代入できます。\n\n【不正解の選択肢のポイント】\n- パラメータに自己代入しているだけでフィールドが更新されないもの\n- String型やObject[]型はString[]型に直接代入できない\n\nポイント：\n- フィールドと引数の型が一致しているか\n- 可変長引数はString[]として扱える\n- this.array = ... でフィールドに代入しているか\n\nこのため、正しいのは「this.array = array;」で代入している2つです。",
         },
         {
             id: 69,
@@ -1180,9 +1171,7 @@ const Q_1Z0_815_JPN_12 = {
             ],
             answerIndex: 3,
             explanation:
-                "このプログラムは無限ループでリストに文字列を追加し続けるため、最終的にメモリ不足（OutOfMemoryError）が発生します。\n" +
-                "catch節ではRuntimeExceptionとExceptionを捕捉していますが、OutOfMemoryErrorはExceptionのサブクラスではなくErrorのサブクラスなので、これらのcatchでは捕捉できません。\n" +
-                "そのため、エラーがスローされてプログラムは異常終了します。",
+                "このプログラムは、無限ループでリストに要素を追加し続けることで、最終的にメモリ不足（OutOfMemoryError）になります。\n\ncatch (RuntimeException e) では、OutOfMemoryErrorは捕捉できません。\nなぜなら、OutOfMemoryErrorはExceptionやRuntimeExceptionのサブクラスではなく、Errorクラスのサブクラスだからです。\n\ncatch (Exception e) も同様にErrorは捕捉できません。\n\nそのため、どちらのcatch節も実行されず、エラーがスローされてプログラムは異常終了します。\n\nポイント：\n- OutOfMemoryErrorはErrorクラスのサブクラス\n- catch (Exception) や catch (RuntimeException) ではErrorは捕捉できない\n- throws宣言がなくてもコンパイルエラーにはならない\n\nこのため、実行時に例外（エラー）がスローされます。",
         },
         {
             id: 70,
@@ -1199,7 +1188,7 @@ const Q_1Z0_815_JPN_12 = {
             ],
             answerIndex: 2,
             explanation:
-                "モジュールとして起動するには --module-path でモジュールパスを指定し、-m モジュール/メインクラス を用いる。",
+                "Javaのモジュールシステムでmainメソッドを持つクラスを実行する場合、\n--module-pathでモジュールが格納されているディレクトリ（例: mods）を指定し、\n-m オプションで「モジュール名/メインクラス名」の形式で指定します。\n\nこの場合、com.exampleモジュール内のcom.sample.Mainクラスを実行するには、\njava --module-path mods -m com.example/com.sample.Main\nとします。\n\nポイント：\n- --module-pathでモジュールの場所を指定\n- -mで「モジュール名/クラス名」を指定\n- クラスパス指定やクラス名だけではモジュールとして実行できない\n\nこのため、正しいコマンドは「java --module-path mods -m com.example/com.sample.Main」です。",
         },
         {
             id: 71,
@@ -1209,14 +1198,14 @@ const Q_1Z0_815_JPN_12 = {
                 "次のプログラムを実行し、「abcd」と表示したい。「// insert code here」に入るコードとして正しいものを選びなさい。（1つ選択）",
             code: ' 1. public class Sample {\n 2.     public static void main(String[] args) {\n 3.         String[][] array = new String[2][2];\n 4.         array[0][0] = "a";\n 5.         array[0][1] = "b";\n 6.         array[1][0] = "c";\n 7.         array[1][1] = "d";\n 8.         // insert code here\n 9.     }\n10. }',
             choices: [
-                "<code>for (int i = 1; i < 2; ++i) {\n    for (int j = 1; j < 2; ++j) {\n        System.out.print(array[i][j]);\n    }\n}</code>",
+                "<code>for (int i = 1; i < 2; i++) {\n    for (int j = 1; j < 2; j++) {\n        System.out.print(array[i][j]);\n    }\n}</code>",
                 "<code>for (int i = 0; i < 2; ++i) {\n    for (int j = 0; j < i; ++j) {\n        System.out.print(array[i][j]);\n    }\n}</code>",
                 "<code>for (String a : array) {\n    for (String b : array) {\n        System.out.println(b);\n    }\n}</code>",
                 "<code>for (int i = 0; i < 2; ) {\n    for (int j = 0; j < 2; ) {\n        System.out.print(array[i][j]);\n        j++;\n    }\n    i++;\n}</code>",
             ],
             answerIndex: 3,
             explanation:
-                "2×2 の配列の全要素を先頭から順に出力すればよい。D は i, j をループ本体でインクリメントする形だが、0,0→0,1→1,0→1,1 の順に出力できる。他の選択肢は走査範囲が不足、または型不一致/出力が改行付きで不適切。",
+                'この問題は、2次元配列の全要素を順に出力するループの書き方がポイントです。\n\n正しい選択肢は、iとjを0から始めて、ループ本体でインクリメントする方法です。\nこのループでは、array[0][0]→array[0][1]→array[1][0]→array[1][1]の順にアクセスし、\n"a" "b" "c" "d"が順に出力され、結果として「abcd」となります。\n\n他の選択肢は、ループ範囲が不足していたり、型不一致や出力が改行付きになるなど、\n全要素を正しく出力できません。\n\nポイント：\n- 2次元配列の全要素を順に出力するには、2重ループでiとjを0から始めて全範囲を回す\n- ループ変数のインクリメント位置に注意\n\nこのため、正しいコードは「for (int i = 0; i < 2; ) { for (int j = 0; j < 2; ) { System.out.print(array[i][j]); j++; } i++; }」です。',
         },
         {
             id: 72,
@@ -1233,7 +1222,7 @@ const Q_1Z0_815_JPN_12 = {
             ],
             answerIndex: 1,
             explanation:
-                "StringBuilder#replace は [start, end) を X に置換する。B の範囲は「B」の位置から「C」の位置（排他的）であり、B だけが X に置き換わって「AXCD」になる。A は挿入、C と D は置換範囲が広すぎる。",
+                'この問題は、StringBuilder#replaceメソッドの使い方がポイントです。\n\nreplace(start, end, str)は、start以上end未満の範囲をstrで置き換えます。\n\nsb.indexOf("B")は1、sb.indexOf("C")は2なので、\nsb.replace(1, 2, "X")となり、インデックス1（B）だけがXに置き換わります。\n\n結果として、"AXCD"が出力されます。\n\n他の選択肢は、置換範囲が不適切だったり、何も置換されなかったりします。\n\nポイント：\n- replaceは[開始位置, 終了位置)で置換\n- indexOfで正しい範囲を指定する\n\nこのため、正しいコードはsb.replace(sb.indexOf("B"), sb.indexOf("C"), "X");です。',
         },
         {
             id: 73,
@@ -1250,7 +1239,7 @@ const Q_1Z0_815_JPN_12 = {
             ],
             answerIndex: 1,
             explanation:
-                "要素 0,2,4 を順に出力すれば 1,3,5 となる。よって i を 0 から 2 ずつ増やす。",
+                "この問題は、配列の特定の要素（1, 3, 5）だけを順に出力するfor文の条件がポイントです。\n\n配列arrayのインデックス0, 2, 4の要素を出力すれば、1, 3, 5が表示されます。\n\nint i = 0; i < 5; i += 2\nとすることで、iは0, 2, 4と増加し、array[0], array[2], array[4]が順に出力されます。\n\n他の選択肢は、範囲外アクセスや不要な要素も出力してしまうため不適切です。\n\nポイント：\n- for文の初期値・条件・増分を工夫して必要な要素だけを出力\n- 配列のインデックス範囲に注意\n\nこのため、正しいfor文は「int i = 0; i < 5; i += 2」です。",
         },
         {
             id: 74,
@@ -1267,7 +1256,7 @@ const Q_1Z0_815_JPN_12 = {
             ],
             answerIndex: 3,
             explanation:
-                "配列の各要素は初期値 null。最初のループで str[0].concat(...) を呼び出した時点で NullPointerException が発生する。",
+                'このプログラムは、配列の初期値とnull参照の扱いがポイントです。\n\nString[] str = new String[2]; で作成した配列の各要素は初期値nullです。\n\nfor文の中でstr[i].concat("e" + i);を実行していますが、str[i]はnullなので、\nnullに対してconcatメソッドを呼び出すとNullPointerExceptionが発生します。\n\nこのため、プログラムは実行時に例外がスローされます。\n\nポイント：\n- 参照型配列の初期値はnull\n- nullに対してメソッドを呼び出すとNullPointerException\n- 例外が発生した時点で以降の処理は実行されない\n\nこのため、正しい答えは「実行時に例外がスローされる」です。',
         },
         {
             id: 75,
@@ -1284,7 +1273,7 @@ const Q_1Z0_815_JPN_12 = {
             ],
             answerIndex: 1,
             explanation:
-                "a から b を参照するには requires b。外部に com.sample を公開するには exports com.sample を宣言する。",
+                "この問題は、Javaのモジュールシステムにおける依存関係とパッケージ公開の記述方法がポイントです。\n\nモジュールaがモジュールbに依存する場合、module-info.javaで「requires b」と記述します。\nまた、com.sampleパッケージを他のすべてのモジュールからアクセス可能にするには「exports com.sample」と記述します。\n\nimportやexportというキーワードはmodule-info.javaでは使いません。\n\nポイント：\n- requiresで依存モジュールを指定\n- exportsで外部に公開するパッケージを指定\n- importやexportはmodule-info.javaでは使わない\n\nこのため、正しいmodule-info.javaの記述は「requires b;」「exports com.sample;」です。",
         },
         {
             id: 76,
@@ -1302,7 +1291,7 @@ const Q_1Z0_815_JPN_12 = {
             ],
             answerIndex: 1,
             explanation:
-                "main の引数は String[]。オーバーロード解決は最も適合する test(String[]) が選ばれるため「B」が表示される。",
+                "このプログラムは、メソッドのオーバーロードと引数の型の一致がポイントです。\n\nmainメソッドの引数argsはString[]型です。\nnew Main().test(args); で呼び出されるtestメソッドは、\n- test(Object[] array)\n- test(String[] array)\n- test(Object obj)\nの3つが定義されています。\n\nJavaのオーバーロード解決では、最も引数型が一致するメソッドが選ばれます。\nこの場合、test(String[] array)が最も適合するため、「B」が表示されます。\n\nポイント：\n- オーバーロードは引数型が最も一致するものが選ばれる\n- mainの引数はString[]型\n- Object[]やObject型よりString[]型が優先される\n\nこのため、画面には「B」と表示されます。",
         },
         {
             id: 77,
@@ -1320,16 +1309,15 @@ const Q_1Z0_815_JPN_12 = {
             ],
             answerIndex: 4,
             explanation:
-                "subはSubSample型、sampleはSample型ですが、sub = sample;の代入はSample型（スーパークラス）からSubSample型（サブクラス）への代入となり、これはコンパイルエラーとなります（明示的なキャストが必要）。" +
-                "したがって、このプログラムはコンパイルエラーとなります。",
+                "このプログラムは、クラスの継承と型変換（代入）のルールがポイントです。\n\nsubはSubSample型、sampleはSample型です。\nsub = sample; の代入は、スーパークラス（Sample型）からサブクラス（SubSample型）への代入となります。\n\nJavaでは、サブクラス型の変数にスーパークラス型のインスタンスを代入するには明示的なキャストが必要です。\nこのままではコンパイルエラーとなります。\n\nポイント：\n- サブクラス型 ← スーパークラス型 の代入は明示的なキャストが必要\n- 暗黙的な代入はできない\n- 継承関係と型変換のルール\n\nこのため、このプログラムはコンパイルエラーとなります。",
         },
         {
             id: 78,
             category: "総仕上げ問題①",
             difficulty: "中級",
             question:
-                "次のプログラムを確認し、B クラスの空欄に入るコードとして正しいものを選びなさい。（2つ選択）",
-            code: " 1. package ex78.a;\n 2. public abstract class A {\n 3.     protected abstract void test();\n 4. }\n\n 1. package ex78.b;\n 2. import ex78.a.A;\n 3. public class B extends A {\n 4.     // insert code here\n 5. }",
+                "次のプログラムを確認し、Bクラスの4行目の空欄に入るコードとして正しいものを選びなさい。（2つ選択）",
+            code: " 1. package ex78.a;\n 2. public abstract class A {\n 3.     protected abstract void test();\n 4. }\n\n 1. package ex78.b;\n 2. import ex78.a.A;\n 3. public class B extends A {\n 4.     __________\n 5. }",
             choices: [
                 "<code>public void test() {}</code>",
                 "<code>private void test() {}</code>",
@@ -1338,7 +1326,7 @@ const Q_1Z0_815_JPN_12 = {
             ],
             answerIndex: [0, 3],
             explanation:
-                "A の抽象メソッドは protected。サブクラス（かつ別パッケージ）でのオーバーライドは同じく protected 以上（public も可）でなければならない。",
+                "この問題は、抽象メソッドのオーバーライド時のアクセス修飾子がポイントです。\n\nAクラスの抽象メソッドtestはprotectedです。\nサブクラスBでオーバーライドする際、アクセス修飾子は同じprotectedか、より公開範囲の広いpublicにする必要があります。\n\nprivateやデフォルト（package-private）は、protectedよりも公開範囲が狭くなるため、オーバーライドとしては不適切です。\n\nポイント：\n- オーバーライド時は元のアクセス修飾子以上の公開範囲にできる\n- protectedのメソッドはprotectedまたはpublicでオーバーライド可能\n- privateやデフォルトは不可\n\nこのため、正しいのは「public void test() {}」と「protected void test() {}」です。",
         },
         {
             id: 79,
@@ -1354,7 +1342,7 @@ const Q_1Z0_815_JPN_12 = {
             ],
             answerIndex: [0, 1],
             explanation:
-                "基本 API は java.base に含まれる。--module-path / -m でモジュール形式で実行するにはモジュールとして構成する必要がある。A は誤り（--add-exports などで可能）、C も誤り。",
+                "この問題は、Javaのモジュールシステムに関する知識が問われています。\n\n・コマンドラインからモジュールのエクスポート設定（--add-exportsなど）は可能ですが、通常はmodule-info.javaで管理するのが望ましいです。\n\n・Javaの基本API（StringやSystemなど）はjava.baseモジュールに含まれており、すべてのモジュールが自動的に依存します。\n\n・JDKがモジュール化されてもAPI自体が非推奨になったわけではありません。\n\n・アプリケーションはモジュールとして構造化しなくても動作します（従来のクラスパス形式も利用可能）。\n\nポイント：\n- --add-exports等でコマンドラインからエクスポート設定は可能\n- java.baseは全ての基本APIを含む\n- モジュール化は必須ではない\n- APIが非推奨になったわけではない\n\nこのため、正しい説明は「コマンドラインからモジュールのエクスポートを設定することはできるが望ましくない」「Java の基本 API は java.base モジュールにある」です。",
         },
         {
             id: 80,
@@ -1372,7 +1360,7 @@ const Q_1Z0_815_JPN_12 = {
             ],
             answerIndex: 0,
             explanation:
-                "内側のループ条件が b < array.length になっており、行ごとの長さではなく外側配列の長さ（2）で回している。a=0 のとき b=0,1 は妥当だが b=2 に達して array[0][2] へアクセスしようとして ArrayIndexOutOfBoundsException が発生する。",
+                "このプログラムは、2次元配列の各行の長さとループ条件がポイントです。\n\narray[0]は長さ2、array[1]は長さ5ですが、内側のfor文の条件がb < array.length（2）となっており、\n各行の長さではなく外側配列の長さでループしています。\n\nそのため、a=0のときb=0,1はarray[0][0], array[0][1]にアクセスできて問題ありません。\nしかしa=1のときb=0,1はarray[1][0], array[1][1]にアクセスできますが、array[1][2]以降はループしません。\n\n結果として、array[1][2]～array[1][4]はnullのままです。\n出力は「97 98」「99 100 null null null」となります。\n\nポイント：\n- 2次元配列は行ごとに長さが異なる場合がある\n- ループ条件に注意（各行の長さで回すにはarray[a].lengthを使う）\n- 初期化されていない要素はnull\n\nこのため、正しい出力は「97 98\\n99 100 null null null」です。",
         },
     ],
 };
