@@ -19,7 +19,7 @@ const Q_1Z0_815_JPN_10 = {
             ],
             answerIndex: 1,
             explanation:
-                "空の配列に対してarray[0]に値を代入しようとすると、存在しないインデックスにアクセスすることになり、実行時にArrayIndexOutOfBoundsExceptionが発生する。この例外はcatch節で捕捉され、「error」と出力される。",
+                '空の配列を作成し、その最初の要素に値を代入しようとしています。\n\nしかし、配列には要素がひとつもないため、存在しないインデックスにアクセスしようとした時点で例外（ArrayIndexOutOfBoundsException）が発生します。\n\nこの例外はcatch節で捕捉され、catch節の中の処理が実行されます。\n\nそのため、"finish"は出力されず、catch節のSystem.out.printlnで"error"だけが表示されます。\n\ntry-catch構文を使うことで、例外発生時の処理を安全に分岐できる点に注意しましょう。',
         },
         {
             id: 2,
@@ -38,7 +38,7 @@ const Q_1Z0_815_JPN_10 = {
             ],
             answerIndex: 1,
             explanation:
-                "引数は空配列なので length==0 が真となり「A」を出力し、その後 finally で必ず「C」を出力する。",
+                'このプログラムは、mainメソッドの引数argsに何も値を渡さずに実行されます。\n\nargsは空配列となるため、args.length == 0 の条件が成立し、tryブロック内で"A"が出力されます。\n\n例外は発生しないためcatch節の処理は実行されません。\n\nfinally節は、例外の有無にかかわらず必ず実行されるため、最後に"C"が出力されます。\n\nそのため、実行結果として"A"と"C"がこの順番で表示されます。\n\nコマンドライン引数が空配列であること、try-catch-finallyの実行順序に注意しましょう。',
         },
         {
             id: 3,
@@ -57,7 +57,7 @@ const Q_1Z0_815_JPN_10 = {
             ],
             answerIndex: 4,
             explanation:
-                "最初の sample() で SampleException が送出され、最初の catch に捕捉されるため、SubSampleException が catch されることがなく到達できないコードとなりコンパイルエラーが発生する。",
+                "このプログラムでは、2つの例外クラスが継承関係にあります。\n\ncatch節の順序に注意が必要です。\n\n親クラスの例外（SampleException）を先にcatchしてしまうと、子クラスの例外（SubSampleException）はすべて親クラスのcatchで捕捉されてしまいます。\n\nそのため、子クラスのcatch節には制御が到達せず、コンパイルエラーとなります。\n\n例外の継承関係がある場合は、必ず子クラスのcatchを先に書き、親クラスのcatchを後に書く必要があります。\n\ncatch節の順序と例外の継承関係に注意しましょう。",
         },
         {
             id: 4,
@@ -75,7 +75,7 @@ const Q_1Z0_815_JPN_10 = {
             ],
             answerIndex: 3,
             explanation:
-                "try の直後に finally、その後に catch と書かれており構文違反。finally は catch 群の後に 1 回だけ記述できる。",
+                "このプログラムは、tryの直後にfinally、その後にcatchが記述されています。\n\nJavaでは、catch節はtryの直後に書き、finally節はcatch群の後に1回だけ記述できます。\n\nこのようにfinallyの後にcatchを書くことはできないため、構文エラーとなります。\n\n例外処理の構文ルールとして、catchとfinallyの記述順に注意しましょう。",
         },
         {
             id: 5,
@@ -94,7 +94,7 @@ const Q_1Z0_815_JPN_10 = {
             ],
             answerIndex: 2,
             explanation:
-                '内側の try で NPE を捕捉し "A" を返すが、その前に finally で「B」を出力。main の println で "A" が表示されるため順に「B」「A」。',
+                'このプログラムでは、mainメソッドからtestメソッドにnullを渡して呼び出しています。\n\ntryブロック内でobj.toString()を実行しようとしますが、objがnullのため、ここでNullPointerExceptionが発生します。\n\nこの例外はcatch節で捕捉され、catch節のreturn文によって文字列が返されます。\n\nただし、catchやtryでreturnがあっても、finally節は必ず実行されるため、まずfinally節の中で"B"が出力されます。\n\nその後、catch節で返された値がmainメソッドのprintlnで出力されます。\n\nそのため、実行結果として"B"と"A"がこの順番で表示されます。\n\nfinally節はreturnよりも先に必ず実行される点に注意しましょう。',
         },
         {
             id: 6,
@@ -112,7 +112,7 @@ const Q_1Z0_815_JPN_10 = {
             ],
             answerIndex: 1,
             explanation:
-                "catch節やtry節でreturnがあっても、finally節でreturnが記述されている場合は、finally節のreturnが最終的な戻り値として採用される。そのため、catchで10を返そうとしても、finallyのreturn 20;によって20が返され、出力も20となる。",
+                "sampleメソッド内で例外が発生しcatch節で値を返そうとしても、finally節でreturnが記述されている場合は、finally節のreturnが最終的な戻り値として必ず採用されます。\n\nこのプログラムでは、catch節で10を返そうとしていますが、finally節のreturn 20;によって20が返されます。\n\nそのため、出力は20となります。\n\nfinally節にreturnを書くとcatchやtryのreturnは無視される点に注意しましょう。",
         },
         {
             id: 7,
@@ -130,7 +130,7 @@ const Q_1Z0_815_JPN_10 = {
             ],
             answerIndex: 1,
             explanation:
-                "catch の return 値は finally 実行前に評価済み。finally でローカル変数を変更しても戻り値は 10 のまま。",
+                "catch節でvalに10を代入しreturnしていますが、catchのreturnはfinally節の実行前に戻り値として一時保存されます。\n\nfinally節ではvalに10を加えていますが、これはローカル変数valの値を変更しているだけで、catchでreturnされた値には影響しません。\n\nそのため、最終的に返される値はcatch節でreturnされた10となります。\n\nfinally節でローカル変数を変更しても、catchやtryのreturn値には反映されない点に注意しましょう。",
         },
         {
             id: 8,
@@ -148,7 +148,7 @@ const Q_1Z0_815_JPN_10 = {
             ],
             answerIndex: 3,
             explanation:
-                "1つの try に対して finally は 1 つだけ。finally を連続して宣言しており構文エラー。",
+                "このプログラムでは、1つのtry文に対してfinally節が2つ連続して記述されています。\n\nJavaの構文ルールでは、try文に対応できるfinally節は1つだけです。\n\nfinally節を複数記述することはできないため、このコードは構文エラー（コンパイルエラー）となります。\n\n例外処理の構文ルールとして、finally節は1つしか書けない点に注意しましょう。",
         },
         {
             id: 9,
@@ -168,7 +168,7 @@ const Q_1Z0_815_JPN_10 = {
             ],
             answerIndex: 1,
             explanation:
-                "内側の catch が例外を処理し「D」、続いて内側 finally の「E」、外側 finally の「G」の順で出力される。",
+                'このプログラムは、try-catch-finally構文が入れ子になっています。\n\n内側のtryブロックで配列の存在しないインデックス（array[3]）にアクセスしようとするため、ArrayIndexOutOfBoundsExceptionが発生します。\n\nこの例外はすぐ内側のcatch節で捕捉され、まず"D"が出力されます。\n\ncatch節の後、内側のfinally節が必ず実行されるため、続けて"E"が出力されます。\n\n例外は内側で処理されているため、外側のcatch節は実行されません。\n\n最後に、外側のfinally節が必ず実行され、"G"が出力されます。\n\nそのため、実行結果は"D"、"E"、"G"の順に表示されます。\n\n入れ子のtry-catch-finally構文では、例外が内側で処理された場合でも両方のfinally節が必ず実行される点に注意しましょう。',
         },
         {
             id: 10,
@@ -176,7 +176,7 @@ const Q_1Z0_815_JPN_10 = {
             difficulty: "中級",
             question:
                 "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）",
-            code: ' 1. import java.io.FileInputStream;\n 2. import java.io.FileNotFoundException;\n 3. \n 4. public class Sample {\n 5.     public static void main(String[] args) {\n 6.         try (FileInputStream is = new FileInputStream("sample.txt")) {\n 7.             throw new FileNotFoundException();\n 8.         } catch (Exception e) {\n 9.             System.out.println("A");\n10.         } finally {\n11.             if (is != null) {\n12.                 is.close();\n13.             }\n14.         }\n15.         System.out.println("B");\n16.     }\n17. }',
+            code: ' 1. import java.io.FileInputStream;\n 2. import java.io.FileNotFoundException;\n 3. \n 4. public class Sample {\n 5.     public static void main(String[] args) {\n 6.         try (FileInputStream is = new FileInputStream("sample.txt")) {\n 7.             throw new FileNotFoundException();\n 8.         } catch (Exception e) {\n 9.             System.out.println("A");\n10.         } finally {\n11.             if (is != null) {\n12.                 is.close();\n13.             }\n14.         System.out.println("B");\n15.         }\n16.     }\n17. }',
             choices: [
                 "「A」と表示される",
                 "「B」と表示される",
@@ -186,7 +186,7 @@ const Q_1Z0_815_JPN_10 = {
             ],
             answerIndex: 4,
             explanation:
-                "try-with-resources で宣言した変数 is のスコープは try 節内のみ。finally で is を参照しておりコンパイルエラー。",
+                "このプログラムでは、try-with-resources構文を使ってFileInputStream型の変数を宣言しています。\n\ntry-with-resourcesで宣言した変数のスコープはtryブロック内だけです。そのため、finally節でこの変数を参照しようとすると、スコープ外参照となりコンパイルエラーになります。\n\nまた、finally節でリソースのクローズ処理を手動で書く必要はなく、try-with-resourcesを使えば自動的にクローズされます。\n\nこのように、try-with-resourcesで宣言した変数はfinally節では使えない点と、リソースの自動解放の仕組みに注意しましょう。",
         },
         {
             id: 11,
@@ -196,15 +196,15 @@ const Q_1Z0_815_JPN_10 = {
                 "次の Sample クラスの2行目の空欄に入るコードとして、正しいものを選びなさい。（2つ選択）",
             code: ' 1. public class SampleException extends Exception {}\n\n 1. public class TestException extends RuntimeException {}\n\n 1. public class Sample {\n 2.     public void hello(String name) _________ {\n 3.         if (name == null) {\n 4.             throw new SampleException();\n 5.         }\n 6.         if ("".equals(name)) {\n 7.             throw new TestException();\n 8.         }\n 9.         // do something\n10.     }\n11. }',
             choices: [
-                "throws SampleException, TestException",
-                "throws SampleException; TestException",
-                "throws TestException",
-                "throws SampleException",
-                "何も記述しなくてもよい",
+                "<code>throws SampleException, TestException</code>",
+                "<code>throws SampleException; TestException</code>",
+                "<code>throws TestException</code>",
+                "<code>throws SampleException</code>",
+                "<code>何も記述しなくてもよい</code>",
             ],
             answerIndex: [0, 3],
             explanation:
-                "チェック例外である SampleException を送出するためメソッド宣言に throws SampleException が必須。RuntimeException 系は任意なので同時に列挙してもよい。",
+                "このメソッドでは、2種類の例外をスローする可能性があります。\n\nSampleExceptionはExceptionを継承したチェック例外なので、メソッド宣言にthrows SampleExceptionと明記する必要があります。\n\n一方、TestExceptionはRuntimeExceptionを継承した例外（非チェック例外）なので、throws句に書いても書かなくても構いません。\n\nそのため、throws SampleExceptionだけ、または両方をカンマ区切りで列挙したthrows SampleException, TestExceptionのどちらも正しい記述となります。\n\nチェック例外と非チェック例外の違い、throws句の記述ルールに注意しましょう。",
         },
         {
             id: 12,
@@ -220,7 +220,7 @@ const Q_1Z0_815_JPN_10 = {
             ],
             answerIndex: 3,
             explanation:
-                "Error も Throwable であり try-catch で捕捉することは可能（推奨はされない）。したがって「例外処理を記述できない」は誤り。",
+                "エラー（Error）は、プログラムの実行環境で重大な異常が発生したときにスローされる特別な例外です。\n\nErrorクラスを継承した型であり、通常の例外（Exception）とは区別されます。\n\nエラーはthrows句に宣言する必要はありませんが、try-catch文で捕捉することは可能です（ただし推奨はされません）。\n\nしたがって「エラーは例外処理を記述できない」という説明は誤りです。\n\nErrorもThrowableのサブクラスであり、catch節で捕捉できる点に注意しましょう。",
         },
         {
             id: 13,
@@ -237,7 +237,7 @@ const Q_1Z0_815_JPN_10 = {
             ],
             answerIndex: 2,
             explanation:
-                "引数なしで実行すると args[0] が存在せず、配列境界外アクセスの ArrayIndexOutOfBoundsException。",
+                "このプログラムは、コマンドライン引数を指定せずに実行した場合の動作を問う問題です。\n\nmainメソッドの引数argsは空配列となります。そのため、args[0]にアクセスしようとすると、配列の要素が存在しないためArrayIndexOutOfBoundsExceptionが発生します。\n\nこの例外は、配列の範囲外のインデックスにアクセスしたときにスローされる例外です。\n\nnullや0が表示されることはなく、またNullPointerExceptionも発生しません。\n\nコマンドライン引数の扱いと、配列アクセス時の例外に注意しましょう。",
         },
         {
             id: 14,
@@ -254,7 +254,7 @@ const Q_1Z0_815_JPN_10 = {
             ],
             answerIndex: 0,
             explanation:
-                "空のリストで get(0) を呼び出すと IndexOutOfBoundsException が送出される。",
+                "このプログラムでは、空のArrayListを生成し、list.get(0)で要素を取得しようとしています。\n\nリストに要素が1つも存在しない状態でインデックス0を指定してアクセスすると、IndexOutOfBoundsExceptionがスローされます。\n\nこの例外は、リストやコレクションの範囲外インデックスにアクセスした場合に発生します。\n\n配列の場合はArrayIndexOutOfBoundsExceptionですが、Listインターフェースの実装（ArrayListなど）ではIndexOutOfBoundsExceptionが使われる点に注意しましょう。",
         },
         {
             id: 15,
@@ -271,7 +271,7 @@ const Q_1Z0_815_JPN_10 = {
             ],
             answerIndex: 3,
             explanation:
-                "A#equals で obj を A にキャストしており、B インスタンスを渡すと ClassCastException が発生する。",
+                "このプログラムでは、AクラスとBクラスがそれぞれequalsメソッドを独自に実装しています。\n\nA#equalsでは、引数objをA型にキャストして比較していますが、実際にはB型のインスタンスが渡される場合があります。\n\nこのとき、A型へのキャストが失敗し、ClassCastException（実行時例外）が発生します。\n\nこのように、equalsメソッドで型チェックを行わずにキャストすると、異なる型のオブジェクトを比較した際に例外が発生する点に注意しましょう。\n\n安全なequals実装には、instanceofによる型チェックが推奨されます。",
         },
         {
             id: 16,
@@ -287,7 +287,8 @@ const Q_1Z0_815_JPN_10 = {
                 "NullPointerExceptionが発生する",
             ],
             answerIndex: 3,
-            explanation: "str が null のため equals 呼び出し時点で NullPointerException。",
+            explanation:
+                'このプログラムでは、str変数にnullが代入されています。\n\nif文でstr.equals("")と呼び出していますが、strがnullのため、equalsメソッドを呼び出した時点でNullPointerExceptionが発生します。\n\nnull参照でメソッドを呼び出すと、必ずNullPointerExceptionとなる点に注意しましょう。\n\n"blank"や"null"が表示されることはありません。',
         },
         {
             id: 17,
@@ -304,7 +305,7 @@ const Q_1Z0_815_JPN_10 = {
             ],
             answerIndex: 1,
             explanation:
-                "再帰的に main を呼び出し続けるためスタックが枯渇し StackOverflowError が送出される。",
+                "このプログラムは、mainメソッドの中で自分自身（main）を再び呼び出しています。\n\nこのように、終了条件のない再帰呼び出しが続くと、呼び出しのたびにメモリ上のスタック領域が消費されていきます。\n\n最終的にスタック領域がいっぱいになると、Java仮想マシンによってStackOverflowErrorがスローされます。\n\n何も表示されることなく、プログラムはエラーで異常終了します。\n\n再帰呼び出しには必ず終了条件を設ける必要がある点に注意しましょう。",
         },
     ],
 };

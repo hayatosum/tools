@@ -16,7 +16,7 @@ const Q_1Z0_815_JPN_11 = {
             ],
             answerIndex: [0, 1],
             explanation:
-                "module-info.java はモジュール宣言のために必須であり、公開するパッケージを `exports` で指定する。",
+                "Javaのモジュールシステムでは、モジュールの設定をmodule-info.javaファイルに記述します。\n\nこのファイルには、そのモジュールがどのパッケージを外部に公開するか（exports）を明示的に記述します。\n\nモジュールの設定で利用するパッケージ（requires）は、他のモジュールへの依存関係を記述するものであり、パッケージ単位ではなくモジュール単位で指定します。\n\nmodule-info.javaが存在しない場合、そのコードはモジュールとして認識されません。\n\nしたがって、module-info.javaに記述し、公開するパッケージを指定することが正しい内容です。\n\nモジュールシステムの基本として、module-info.javaの役割とexportsの使い方を理解しておきましょう。",
         },
         {
             id: 2,
@@ -34,7 +34,7 @@ const Q_1Z0_815_JPN_11 = {
             ],
             answerIndex: 3,
             explanation:
-                "モジュール実行時には `--module-path` でモジュールパスを指定し、`-m <モジュール名>/<クラス名>` の形式でエントリーポイントを指定する。",
+                "Javaのモジュールを実行する際は、まず--module-pathオプションでモジュールが格納されているディレクトリ（ここではlib）を指定します。\n\n次に、-mオプションで実行したいモジュール名とエントリーポイントとなるクラス名を<モジュール名>/<クラス名>の形式で指定します。\n\nこの問題の場合、sampleモジュールのcom.test.Helloクラスをエントリーポイントとして実行したいので、\n\njava --module-path lib -m sample/com.test.Hello\n\nというコマンドが正しい指定方法となります。\n\n--module-pathでモジュールの場所を指定し、-mでモジュール名とクラス名をスラッシュで区切って記述する点に注意しましょう。",
         },
         {
             id: 3,
@@ -51,7 +51,7 @@ const Q_1Z0_815_JPN_11 = {
             ],
             answerIndex: 3,
             explanation:
-                "`exports com.sample;` により公開し、`requires test;` により依存するモジュールを指定する。",
+                "module-info.javaでは、モジュールが外部に公開するパッケージをexportsで指定し、依存する他のモジュールをrequiresで指定します。\n\nこの問題では、sampleモジュールがcom.sampleパッケージを公開し、testモジュールを利用しています。\n\n正しい記述は、\n\nexports com.sample;\nrequires test;\n\nとなります。\n\nexportsでパッケージ名（com.sample）を指定し、requiresで依存するモジュール名（test）を指定する点に注意しましょう。\n\nexportやパッケージ名の間違い、requiresの使い方に注意してmodule-info.javaを記述することが大切です。",
         },
         {
             id: 4,
@@ -68,7 +68,7 @@ const Q_1Z0_815_JPN_11 = {
             ],
             answerIndex: 3,
             explanation:
-                "`requires transitive` によって依存関係を伝播させることができるため、module2がmodule3を `requires transitive` で宣言する必要がある。",
+                "モジュールグラフがmodule1 → module2 → module3のようになっている場合、\nmodule1からmodule3のクラスを直接利用したいときは、\n\nmodule2がmodule3に対してrequires transitiveを使って依存関係を宣言する必要があります。\n\nrequires transitiveを使うことで、module2を利用するmodule1も自動的にmodule3を利用できるようになります。\n\nもしtransitiveを付けずに単にrequiresとした場合、module1はmodule3を明示的にrequiresしなければなりません。\n\n依存関係を伝播させたい場合は、requires transitiveを使う点に注意しましょう。",
         },
         {
             id: 5,
@@ -80,7 +80,7 @@ const Q_1Z0_815_JPN_11 = {
             choices: ["java.lang", "java.base", "jdk.lang", "jdk.base"],
             answerIndex: 1,
             explanation:
-                "Java 9以降、`java.base` モジュールはすべてのモジュールに自動的に読み込まれる。",
+                "Java 9以降のモジュールシステムでは、java.baseモジュールが標準で組み込まれています。\n\nこのモジュールには、StringやSystem、Mathなど、Javaの基本的なクラスが含まれており、すべてのモジュールが自動的にjava.baseに依存します。\n\nそのため、特別な指定をしなくても、java.baseのクラスや機能は常に利用できます。\n\n他のモジュール（例：java.langやjdk.baseなど）は存在しないか、標準で自動的に組み込まれるものではありません。\n\n標準で必ず利用できるのはjava.baseモジュールである点に注意しましょう。",
         },
         {
             id: 6,
@@ -95,9 +95,9 @@ const Q_1Z0_815_JPN_11 = {
                 "<code>jmod describe</code>",
                 "<code>java --show-module-resolution</code>",
             ],
-            answerIndex: [0, 3],
+            answerIndex: [0, 2],
             explanation:
-                "モジュール情報を確認するには `java --describe-module` と `java --show-module-resolution` が使用される。`jdeps` は依存関係分析、`jmod` はモジュールパッケージの操作。",
+                "module-info.javaに設定したモジュールの情報を調べるには、いくつかのコマンドが用意されています。\n\njava --describe-module\nこのコマンドは、指定したモジュールの内容や依存関係、エクスポートしているパッケージなどの詳細情報を表示します。\n\njmod describe\nこのコマンドは、jmodファイル（モジュールパッケージ）の内容や属性を確認するために使います。\n\n一方、jdepsは依存関係の分析ツールであり、--list-depsは依存モジュールの一覧を表示しますが、module-info.javaの内容そのものを直接表示するものではありません。\n\njava --show-module-resolutionは、モジュール解決の過程を表示するコマンドです。\n\nmodule-info.javaの設定内容やモジュールの詳細を確認したい場合は、java --describe-moduleやjmod describeを使うのが適切です。",
         },
         {
             id: 7,
@@ -109,12 +109,12 @@ const Q_1Z0_815_JPN_11 = {
             choices: [
                 "<code>--add-exports</code>",
                 "<code>--exports</code>",
-                "<code>--add</code>",
+                "<code>-add</code>",
                 "<code>--add-modules</code>",
             ],
             answerIndex: 0,
             explanation:
-                "非公開パッケージを一時的に利用するためには `--add-exports` オプションを使用する。",
+                "module-info.javaでexportsされていない（非公開の）パッケージを、特定のモジュールやコンパイル時だけ一時的に利用したい場合、\n\n--add-exportsオプションを使います。\n\nこのオプションを使うことで、通常はアクセスできないパッケージを一時的に他のモジュールに公開できます。\n\nたとえば、\n\n--add-exports モジュール名/パッケージ名=ターゲットモジュール\n\nのように指定します。\n\n--exportsや--add-modulesなどの他のオプションでは、exportsされていないパッケージを一時的に公開することはできません。\n\n一時的なアクセス制御のためには--add-exportsを使う点に注意しましょう。",
         },
     ],
 };
