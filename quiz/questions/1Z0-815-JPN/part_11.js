@@ -58,8 +58,8 @@ const Q_1Z0_815_JPN_11 = {
             category: "モジュールシステム",
             difficulty: "中級",
             question:
-                "次の図のようなモジュールグラフがあったとき、module1でmodule3に属するパッケージのクラスを利用する際の説明として正しいものを選びなさい。（1つ選択）",
-            code: "module1 → module2 → module3",
+                "次の図のようなモジュールグラフがあったとき、module1でmodule3に属するパッケージのクラスを利用する際の説明として正しいものを選びなさい。（1つ選択）\n![](img/1Z0-815-JPN_11-004_q.png)",
+            code: "",
             choices: [
                 "module1のmodule-info.javaで、module2をrequiresで宣言する",
                 "module1のmodule-info.javaで、module2をrequires transitiveで宣言する",
