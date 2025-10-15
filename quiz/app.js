@@ -1225,7 +1225,7 @@ function renderHistory() {
         title.textContent = `#${String(hist.length - (start + idx)).padStart(2, "0")}`;
         head.appendChild(title);
 
-        // ★ 追加：正答率のプログレスバー
+        // 正答率のプログレスバー
         const prog = document.createElement("div");
         prog.className = "history-progress";
         // ミニトラック & フィル & 値
@@ -1244,6 +1244,19 @@ function renderHistory() {
             fillEl.style.background = rateToColor(h.rate);
         }
         head.appendChild(prog);
+
+        // 追加：削除ボタン
+        const delBtn = document.createElement("button");
+        delBtn.className = "ghost danger small"; // 見た目はゴースト＋赤文字（後述CSS）
+        delBtn.textContent = "削除";
+        delBtn.title = "この履歴を1件だけ削除";
+        delBtn.addEventListener("click", () => {
+            if (confirm("この履歴を削除します。よろしいですか？")) {
+                deleteHistoryByTs(h.ts);
+            }
+        });
+        head.appendChild(delBtn);
+
         div.appendChild(head);
 
         const src = document.createElement("div");
@@ -2425,5 +2438,21 @@ async function reloadQuestionsAfterRangeChange() {
     } catch (e) {
         console.warn(e);
         setStatus(`エラー: ${e.message || e}`, 4000);
+    }
+}
+
+// 履歴1件削除（tsで特定）
+function deleteHistoryByTs(ts) {
+    const all = loadHistoryRaw();
+    const idx = all.findIndex((h) => Number(h?.ts) === Number(ts));
+    if (idx >= 0) {
+        all.splice(idx, 1);
+        saveHistory(all);
+        renderHistory();
+        renderTrendChart?.();
+        analyzeHistoryAndRender?.();
+        setStatus?.("履歴を1件削除しました", 2000);
+    } else {
+        alert("該当する履歴が見つかりませんでした。");
     }
 }

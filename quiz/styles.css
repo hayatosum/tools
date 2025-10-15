@@ -912,3 +912,18 @@ button:disabled {
     display: inline-flex;
     font-size: 1.12em;
 }
+
+button.danger {
+    color: var(--ng);
+    border-color: var(--border);
+    background: #fff;
+}
+button.danger:hover {
+    background: #fff5f5;
+    border-color: var(--ng);
+}
+
+button.small {
+    padding: 4px 8px;
+    font-size: 0.8em;
+}
