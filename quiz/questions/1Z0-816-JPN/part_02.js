@@ -1,0 +1,152 @@
+const Q_1Z0_816_JPN_02 = {
+    prefix: "1Z0-816-JPN",
+    part: "02",
+    questions: [
+        {
+            id: "1",
+            category: "関数型インタフェースとラムダ式",
+            difficulty: "初級",
+            question:
+                "java.util.function.Supplierインタフェースで宣言されている抽象メソッドとして、正しいものを選びなさい。なお、Tはジェネリクスの型パラメータとする。（1つ選択）",
+            choices: ["T get();", "T set();", "void put(T t);", "void add(T t);"],
+            answerIndex: "",
+            explanation: "",
+        },
+        {
+            id: "2",
+            category: "関数型インタフェースとラムダ式",
+            difficulty: "中級",
+            question: "次のコードのうち、正しく記述されているものを選びなさい。（1つ選択）",
+            choices: [
+                '<code>Supplier&lt;String&gt; s = (str) -&gt; System.out.println(str);\ns.get("test");</code>',
+                '<code>Supplier&lt;String&gt; s = (str) -&gt; "test" + str;\nSystem.out.println(s.get());</code>',
+                '<code>Supplier&lt;String&gt; s = () -&gt; "test";\nSystem.out.println(s.get());</code>',
+                '<code>Supplier&lt;String&gt; s = () -&gt; "test";\nSystem.out.println(s.apply());</code>',
+            ],
+            answerIndex: "",
+            explanation: "",
+        },
+        {
+            id: "3",
+            category: "関数型インタフェースとラムダ式",
+            difficulty: "初級",
+            question:
+                "java.util.function.Consumerインタフェースで宣言されている抽象メソッドとして、正しいものを選びなさい。（1つ選択）",
+            choices: ["void spend(T t);", "void accept(T t);", "T purchase();", "T refund();"],
+            answerIndex: "",
+            explanation: "",
+        },
+        {
+            id: "6",
+            category: "関数型インタフェースとラムダ式",
+            difficulty: "初級",
+            question:
+                "java.util.function.Predicateインタフェースに定義されている抽象メソッドとして、正しいものを選びなさい。（1つ選択）",
+            choices: ["get", "apply", "accept", "test"],
+            answerIndex: "",
+            explanation: "",
+        },
+        {
+            id: "7",
+            category: "関数型インタフェースとラムダ式",
+            difficulty: "中級",
+            question:
+                "次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）\n<code> 1.  import java.util.function.Predicate;\n 2.  public class Q7 {\n 3.      public static void main(String[] args) {\n 4.          Predicate&lt;Integer&gt; p1 = x -&gt; x &gt; 0;\n 5.          Predicate&lt;Integer&gt; p2 = x -&gt; x &lt; 100;\n 6.          System.out.println(p1.or(p2).test(100));\n 7.      }\n 8.  }</code>",
+            choices: [
+                "「true」と表示される",
+                "「false」と表示される",
+                "コンパイルエラーが発生する",
+                "実行時に例外がスローされる",
+            ],
+            answerIndex: "",
+            explanation: "",
+        },
+        {
+            id: "8",
+            category: "関数型インタフェースとラムダ式",
+            difficulty: "中級",
+            question: "次のコードのうち、正しく記述されているものを選びなさい。（1つ選択）",
+            choices: [
+                "<code>BiPredicate&lt;Integer, Integer&gt; p = (a, b) -&gt; a + b;</code>",
+                "<code>BiPredicate&lt;Integer, Integer&gt; p = (a, b) -&gt; a == b;</code>",
+                "<code>BiPredicate&lt;Integer&gt; p = (a) -&gt; a &gt; 0;</code>",
+                "<code>BiPredicate&lt;Integer&gt; p = (a) -&gt; a == 0;</code>",
+            ],
+            answerIndex: "",
+            explanation: "",
+        },
+        {
+            id: "9",
+            category: "関数型インタフェースとラムダ式",
+            difficulty: "初級",
+            question:
+                "java.util.function.Functionインタフェースに定義されている抽象メソッドとして、正しいものを選びなさい。（1つ選択）",
+            choices: ["get", "accept", "apply", "test"],
+            answerIndex: "",
+            explanation: "",
+        },
+        {
+            id: "10",
+            category: "関数型インタフェースとラムダ式",
+            difficulty: "中級",
+            question:
+                "次のようなコードがある。\n<code>Function&lt;Integer, Integer&gt; a = x -&gt; x + 2;\nFunction&lt;Integer, Integer&gt; b = x -&gt; x * 2;</code>\nこれらを組み合わせて「22」という結果をコンソールに表示したい。正しいコードを選びなさい。（1つ選択）",
+            choices: [
+                "<code>System.out.println(a.compose(b).apply(10));</code>",
+                "<code>System.out.println(a.andThen(b).apply(10));</code>",
+                "<code>System.out.println(a.after(b).apply(10));</code>",
+                "<code>System.out.println(a.before(b).apply(10));</code>",
+            ],
+            answerIndex: "",
+            explanation: "",
+        },
+        {
+            id: "11",
+            category: "関数型インタフェースとラムダ式",
+            difficulty: "中級",
+            question: "次のコードのうち、正しく記述されているものを選びなさい。（1つ選択）",
+            choices: [
+                "<code>BiFunction&lt;Integer, Integer, String&gt; test = (a, b) -&gt; a + b;</code>",
+                "<code>BiFunction&lt;Integer, Integer, String&gt; test = (a, b) -&gt; Integer.toString(a + b);</code>",
+                "<code>BiFunction&lt;Integer, String&gt; test = (a, b) -&gt; a + b;</code>",
+                "<code>BiFunction&lt;Integer, String&gt; test = (a, b) -&gt; Integer.toString(a + b);</code>",
+            ],
+            answerIndex: "",
+            explanation: "",
+        },
+        {
+            id: "12",
+            category: "関数型インタフェースとラムダ式",
+            difficulty: "初級",
+            question:
+                "java.util.function.UnaryOperatorインタフェースで宣言されている抽象メソッドとして、正しいものを選びなさい。（1つ選択）",
+            choices: ["execute", "do", "get", "apply"],
+            answerIndex: "",
+            explanation: "",
+        },
+        {
+            id: "13",
+            category: "関数型インタフェースとラムダ式",
+            difficulty: "初級",
+            question:
+                "リストで扱っているコレクションに対して、一律に処理を実行したい。使用する関数型インタフェースとして、最も適切なものを選びなさい。（1つ選択）",
+            choices: ["Function", "Consumer", "UnaryOperator", "Supplier"],
+            answerIndex: "",
+            explanation: "",
+        },
+        {
+            id: "14",
+            category: "関数型インタフェースとラムダ式",
+            difficulty: "中級",
+            question: "次のコードのうち、正しく記述されているものを選びなさい。（1つ選択）",
+            choices: [
+                "<code>BinaryOperator op = (a, b) -&gt; a + b;</code>",
+                "<code>BinaryOperator&lt;Integer&gt; op = (a, b) -&gt; a + b;</code>",
+                "<code>BinaryOperator&lt;Integer, Integer&gt; op = (a, b) -&gt; a + b;</code>",
+                "<code>BinaryOperator&lt;Integer, Integer, Integer&gt; op = (a, b) -&gt; a + b;</code>",
+            ],
+            answerIndex: "",
+            explanation: "",
+        },
+    ],
+};
