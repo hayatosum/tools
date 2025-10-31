@@ -9,9 +9,23 @@
         "service_worker": "background.js",
         "type": "module"
     },
-    "host_permissions": ["https://pokepast.es/*", "https://*.firebaseapp.com/*", "https://*.googleapis.com/*", "https://accounts.google.com/*"],
+    "host_permissions": [
+        "https://pokepast.es/*",
+        "https://*.firebaseapp.com/*",
+        "https://*.googleapis.com/*",
+        "https://accounts.google.com/*",
+        "https://identitytoolkit.googleapis.com/*",
+        "https://securetoken.googleapis.com/*",
+        "https://hayatosum.github.io/*"
+    ],
     "content_security_policy": {
         "extension_pages": "script-src 'self'; object-src 'self'"
     },
+    "web_accessible_resources": [
+        {
+            "resources": ["*.js", "*.css"],
+            "matches": ["<all_urls>"]
+        }
+    ],
     "permissions": ["activeTab", "tabs", "storage", "identity"]
 }

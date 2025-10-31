@@ -22,9 +22,9 @@ const Popup: React.FC = () => {
     // 認証状態表示用
     const getUserDisplayText = () => {
         if (isAuthenticated && user) {
-            return `👤 ${user.displayName}`;
+            return `✅ ${user.displayName}`;
         }
-        return "🔒 Not logged in";
+        return "❌ ログインしていません";
     };
 
     // ダークテーマの色定義
@@ -50,6 +50,25 @@ const Popup: React.FC = () => {
 
     // 初期化処理
     useEffect(() => {
+        // 認証状態を読み込み
+        const loadAuthState = async () => {
+            try {
+                const result = await chrome.storage.local.get(["currentUser", "isAuthenticated"]);
+                if (result.currentUser && result.isAuthenticated) {
+                    setUser(result.currentUser);
+                    setIsAuthenticated(true);
+                } else {
+                    setUser(null);
+                    setIsAuthenticated(false);
+                }
+            } catch (error) {
+                console.error("Error loading auth state:", error);
+                setUser(null);
+                setIsAuthenticated(false);
+            }
+        };
+
+        // 現在のタブ情報を取得
         chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
             if (chrome.runtime.lastError) {
                 return;
@@ -61,6 +80,21 @@ const Popup: React.FC = () => {
                 setIsPokePastSite(activeTab.url.includes("pokepast.es"));
             }
         });
+
+        loadAuthState();
+
+        // ストレージの変更を監視
+        const handleStorageChange = (changes: { [key: string]: chrome.storage.StorageChange }) => {
+            if (changes.currentUser || changes.isAuthenticated) {
+                loadAuthState();
+            }
+        };
+
+        chrome.storage.onChanged.addListener(handleStorageChange);
+
+        return () => {
+            chrome.storage.onChanged.removeListener(handleStorageChange);
+        };
     }, []);
 
     // URL一覧を読み込み
@@ -101,25 +135,20 @@ const Popup: React.FC = () => {
                 return;
             }
 
-            if (!response) {
-                setStatus("❌ レスポンスなし");
-                return;
-            }
-
             if (typeof response === "object" && response !== null) {
                 const responseObj = response as Record<string, unknown>;
                 if ("success" in responseObj && responseObj.success === true) {
-                    const message = "message" in responseObj && typeof responseObj.message === "string" ? responseObj.message : "URL保存完了";
-                    const url = "url" in responseObj && typeof responseObj.url === "string" ? responseObj.url : "";
-
-                    setStatus(`✅ ${message}${url ? `\nURL: ${url}` : ""}`);
-                    loadSavedUrls();
+                    setStatus("✅ URLを保存しました！");
+                    if (showList) {
+                        loadSavedUrls();
+                    }
+                } else if ("error" in responseObj && typeof responseObj.error === "string") {
+                    setStatus(`❌ エラー: ${responseObj.error}`);
                 } else {
-                    const errorMsg = "error" in responseObj && typeof responseObj.error === "string" ? responseObj.error : "保存に失敗しました";
-                    setStatus(`❌ ${errorMsg}`);
+                    setStatus("❌ 予期しない応答形式です");
                 }
             } else {
-                setStatus("❌ 不正なレスポンス形式");
+                setStatus("❌ 無効な応答です");
             }
         });
     };
@@ -132,23 +161,21 @@ const Popup: React.FC = () => {
         setShowList(!showList);
     };
 
-    // ログインハンドラ
+    // ログインハンドラー
     const handleLogin = (userProfile: UserProfile) => {
         setUser(userProfile);
         setIsAuthenticated(true);
-        setStatus(`✅ Logged in as ${userProfile.displayName}`);
     };
 
-    // ログアウトハンドラ
+    // ログアウトハンドラー
     const handleLogout = () => {
         setUser(null);
         setIsAuthenticated(false);
-        setStatus("👋 Logged out");
     };
 
-    // 日時フォーマット
-    const formatDate = (timestamp: number) => {
-        return new Date(timestamp).toLocaleDateString("ja-JP", {
+    // 日付フォーマット
+    const formatDate = (timestamp: number): string => {
+        return new Date(timestamp).toLocaleString("ja-JP", {
             year: "numeric",
             month: "2-digit",
             day: "2-digit",
@@ -190,12 +217,13 @@ const Popup: React.FC = () => {
                             fontWeight: "600",
                         }}
                     >
-                        🌙 PokePast Extension
+                        PokePast Extension
                     </h2>
                     <div
                         style={{
                             fontSize: "11px",
-                            color: darkTheme.onSurfaceVariant,
+                            color: isAuthenticated ? darkTheme.success : darkTheme.warning,
+                            fontWeight: "600",
                         }}
                     >
                         {getUserDisplayText()}
@@ -206,259 +234,263 @@ const Popup: React.FC = () => {
             {/* ログインコンポーネント */}
             <LoginComponent onLogin={handleLogin} onLogout={handleLogout} darkTheme={darkTheme} />
 
-            {/* 現在のURL表示 */}
-            <div
-                style={{
-                    marginBottom: "12px",
-                    padding: "10px",
-                    backgroundColor: darkTheme.surface,
-                    borderRadius: "6px",
-                    border: `1px solid ${darkTheme.border}`,
-                }}
-            >
-                <div
-                    style={{
-                        fontSize: "12px",
-                        color: darkTheme.onSurface,
-                        fontWeight: "500",
-                        marginBottom: "6px",
-                    }}
-                >
-                    📍 Current URL:
-                </div>
-                <div
-                    style={{
-                        wordBreak: "break-all",
-                        backgroundColor: darkTheme.surfaceVariant,
-                        padding: "6px 8px",
-                        borderRadius: "4px",
-                        fontSize: "11px",
-                        color: darkTheme.onSurface,
-                        border: `1px solid ${darkTheme.borderLight}`,
-                    }}
-                >
-                    {currentUrl || "Loading..."}
-                </div>
-            </div>
-
-            {/* メインボタン */}
-            <div style={{ marginBottom: "12px" }}>
-                <div
-                    style={{
-                        display: "flex",
-                        alignItems: "center",
-                        marginBottom: "8px",
-                        padding: "6px 10px",
-                        backgroundColor: isPokePastSite ? `${darkTheme.success}20` : `${darkTheme.error}20`,
-                        borderRadius: "5px",
-                        border: `1px solid ${isPokePastSite ? darkTheme.success : darkTheme.error}40`,
-                    }}
-                >
-                    <span
-                        style={{
-                            width: "10px",
-                            height: "10px",
-                            borderRadius: "50%",
-                            backgroundColor: isPokePastSite ? darkTheme.success : darkTheme.error,
-                            marginRight: "8px",
-                            boxShadow: `0 0 6px ${isPokePastSite ? darkTheme.success : darkTheme.error}60`,
-                        }}
-                    ></span>
-                    <span
-                        style={{
-                            fontSize: "13px",
-                            color: isPokePastSite ? darkTheme.success : darkTheme.error,
-                            fontWeight: "500",
-                        }}
-                    >
-                        {isPokePastSite ? "✓ PokePast site detected" : "✗ Not a PokePast site"}
-                    </span>
-                </div>
-
-                <button
-                    onClick={handleAddClick}
-                    disabled={!isPokePastSite || isLoading}
-                    style={{
-                        width: "100%",
-                        padding: "10px 20px",
-                        backgroundColor: isPokePastSite && !isLoading ? darkTheme.success : darkTheme.surfaceVariant,
-                        color: isPokePastSite && !isLoading ? "#ffffff" : darkTheme.onSurfaceVariant,
-                        border: `1px solid ${isPokePastSite && !isLoading ? darkTheme.success : darkTheme.border}`,
-                        borderRadius: "6px",
-                        fontSize: "14px",
-                        fontWeight: "600",
-                        cursor: isPokePastSite && !isLoading ? "pointer" : "not-allowed",
-                        transition: "all 0.2s ease",
-                        boxShadow: isPokePastSite && !isLoading ? `0 3px 8px ${darkTheme.success}40` : "none",
-                    }}
-                >
-                    {isLoading ? "⏳ 処理中..." : isPokePastSite ? "📝 URLを追加" : "❌ 無効"}
-                </button>
-
-                {!isPokePastSite && (
+            {/* 認証時のみ表示される機能 */}
+            {isAuthenticated && (
+                <div>
+                    {/* 現在のURL表示 */}
                     <div
                         style={{
-                            marginTop: "6px",
-                            padding: "6px 8px",
-                            fontSize: "11px",
-                            color: darkTheme.warning,
-                            backgroundColor: `${darkTheme.warning}20`,
-                            border: `1px solid ${darkTheme.warning}40`,
-                            borderRadius: "4px",
-                            textAlign: "center",
+                            marginBottom: "12px",
+                            padding: "10px",
+                            backgroundColor: darkTheme.surface,
+                            borderRadius: "6px",
+                            border: `1px solid ${darkTheme.border}`,
                         }}
                     >
-                        💡 このボタンは pokepast.es サイトでのみ有効です
-                    </div>
-                )}
-            </div>
-
-            {/* ステータス表示 */}
-            {status && (
-                <div
-                    style={{
-                        marginTop: "12px",
-                        padding: "10px",
-                        backgroundColor: status.includes("✅") ? `${darkTheme.success}20` : `${darkTheme.error}20`,
-                        border: `1px solid ${status.includes("✅") ? darkTheme.success : darkTheme.error}40`,
-                        borderRadius: "6px",
-                        fontSize: "12px",
-                        color: status.includes("✅") ? darkTheme.success : darkTheme.error,
-                        whiteSpace: "pre-line",
-                        fontWeight: "500",
-                    }}
-                >
-                    {status}
-                </div>
-            )}
-
-            {/* URL一覧 */}
-            <div
-                style={{
-                    marginTop: "16px",
-                    borderTop: `1px solid ${darkTheme.border}`,
-                    paddingTop: "12px",
-                }}
-            >
-                <button
-                    onClick={handleToggleList}
-                    style={{
-                        width: "100%",
-                        padding: "8px 14px",
-                        backgroundColor: darkTheme.primary,
-                        color: darkTheme.background,
-                        border: "none",
-                        borderRadius: "5px",
-                        fontSize: "13px",
-                        fontWeight: "500",
-                        cursor: "pointer",
-                        transition: "all 0.2s ease",
-                        boxShadow: `0 3px 8px ${darkTheme.primary}30`,
-                    }}
-                    onMouseEnter={(e) => {
-                        e.currentTarget.style.backgroundColor = darkTheme.primaryVariant;
-                        e.currentTarget.style.transform = "translateY(-1px)";
-                    }}
-                    onMouseLeave={(e) => {
-                        e.currentTarget.style.backgroundColor = darkTheme.primary;
-                        e.currentTarget.style.transform = "translateY(0)";
-                    }}
-                >
-                    {showList ? "📁 リストを非表示" : "📂 保存されたURLを表示"}
-                </button>
-
-                {showList && (
-                    <div style={{ marginTop: "12px" }}>
-                        <h3
+                        <div
                             style={{
-                                margin: "0 0 8px 0",
-                                fontSize: "14px",
+                                fontSize: "12px",
                                 color: darkTheme.onSurface,
+                                fontWeight: "500",
+                                marginBottom: "6px",
                             }}
                         >
-                            💾 保存されたURL ({savedUrls.length}件)
-                        </h3>
+                            Current URL:
+                        </div>
+                        <div
+                            style={{
+                                wordBreak: "break-all",
+                                backgroundColor: darkTheme.surfaceVariant,
+                                padding: "6px 8px",
+                                borderRadius: "4px",
+                                fontSize: "11px",
+                                color: darkTheme.onSurface,
+                                border: `1px solid ${darkTheme.borderLight}`,
+                            }}
+                        >
+                            {currentUrl || "Loading..."}
+                        </div>
+                    </div>
 
-                        {savedUrls.length === 0 ? (
+                    {/* メインボタン */}
+                    <div style={{ marginBottom: "12px" }}>
+                        <div
+                            style={{
+                                display: "flex",
+                                alignItems: "center",
+                                marginBottom: "8px",
+                                padding: "6px 10px",
+                                backgroundColor: isPokePastSite ? `${darkTheme.success}20` : `${darkTheme.error}20`,
+                                borderRadius: "5px",
+                                border: `1px solid ${isPokePastSite ? darkTheme.success : darkTheme.error}40`,
+                            }}
+                        >
+                            <span
+                                style={{
+                                    width: "10px",
+                                    height: "10px",
+                                    borderRadius: "50%",
+                                    backgroundColor: isPokePastSite ? darkTheme.success : darkTheme.error,
+                                    marginRight: "8px",
+                                    boxShadow: `0 0 6px ${isPokePastSite ? darkTheme.success : darkTheme.error}60`,
+                                }}
+                            ></span>
+                            <span
+                                style={{
+                                    fontSize: "13px",
+                                    color: isPokePastSite ? darkTheme.success : darkTheme.error,
+                                    fontWeight: "500",
+                                }}
+                            >
+                                {isPokePastSite ? "PokePast site detected" : "Not a PokePast site"}
+                            </span>
+                        </div>
+
+                        <button
+                            onClick={handleAddClick}
+                            disabled={!isPokePastSite || isLoading}
+                            style={{
+                                width: "100%",
+                                padding: "10px 20px",
+                                backgroundColor: isPokePastSite && !isLoading ? darkTheme.success : darkTheme.surfaceVariant,
+                                color: isPokePastSite && !isLoading ? "#ffffff" : darkTheme.onSurfaceVariant,
+                                border: `1px solid ${isPokePastSite && !isLoading ? darkTheme.success : darkTheme.border}`,
+                                borderRadius: "6px",
+                                fontSize: "14px",
+                                fontWeight: "600",
+                                cursor: isPokePastSite && !isLoading ? "pointer" : "not-allowed",
+                                transition: "all 0.2s ease",
+                                boxShadow: isPokePastSite && !isLoading ? `0 3px 8px ${darkTheme.success}40` : "none",
+                            }}
+                        >
+                            {isLoading ? "処理中..." : isPokePastSite ? "URLを追加" : "無効"}
+                        </button>
+
+                        {!isPokePastSite && (
                             <div
                                 style={{
-                                    padding: "12px",
+                                    marginTop: "6px",
+                                    padding: "6px 8px",
+                                    fontSize: "11px",
+                                    color: darkTheme.warning,
+                                    backgroundColor: `${darkTheme.warning}20`,
+                                    border: `1px solid ${darkTheme.warning}40`,
+                                    borderRadius: "4px",
                                     textAlign: "center",
-                                    color: darkTheme.onSurfaceVariant,
-                                    fontStyle: "italic",
-                                    backgroundColor: darkTheme.surface,
-                                    border: `1px solid ${darkTheme.border}`,
-                                    borderRadius: "6px",
                                 }}
                             >
-                                📝 保存されたURLはありません
-                            </div>
-                        ) : (
-                            <div
-                                style={{
-                                    maxHeight: "250px",
-                                    overflowY: "auto",
-                                    border: `1px solid ${darkTheme.border}`,
-                                    borderRadius: "6px",
-                                    backgroundColor: darkTheme.surface,
-                                }}
-                            >
-                                {savedUrls.map((item) => (
-                                    <div
-                                        key={item.id}
-                                        style={{
-                                            padding: "8px 10px",
-                                            borderBottom: `1px solid ${darkTheme.border}`,
-                                            cursor: "pointer",
-                                            transition: "all 0.2s ease",
-                                            backgroundColor: "transparent",
-                                        }}
-                                        onMouseEnter={(e) => {
-                                            e.currentTarget.style.backgroundColor = darkTheme.surfaceVariant;
-                                            e.currentTarget.style.transform = "translateX(2px)";
-                                        }}
-                                        onMouseLeave={(e) => {
-                                            e.currentTarget.style.backgroundColor = "transparent";
-                                            e.currentTarget.style.transform = "translateX(0)";
-                                        }}
-                                        onClick={() => openUrl(item.url)}
-                                    >
-                                        <div
-                                            style={{
-                                                fontWeight: "bold",
-                                                fontSize: "11px",
-                                                color: darkTheme.onSurface,
-                                                marginBottom: "3px",
-                                                wordBreak: "break-all",
-                                            }}
-                                        >
-                                            🔗 {item.title}
-                                        </div>
-                                        <div
-                                            style={{
-                                                fontSize: "9px",
-                                                color: darkTheme.primary,
-                                                marginBottom: "3px",
-                                                wordBreak: "break-all",
-                                            }}
-                                        >
-                                            {item.url}
-                                        </div>
-                                        <div
-                                            style={{
-                                                fontSize: "9px",
-                                                color: darkTheme.onSurfaceVariant,
-                                            }}
-                                        >
-                                            🕐 {formatDate(item.timestamp)}
-                                        </div>
-                                    </div>
-                                ))}
+                                このボタンは pokepast.es サイトでのみ有効です
                             </div>
                         )}
                     </div>
-                )}
-            </div>
+
+                    {/* ステータス表示 */}
+                    {status && (
+                        <div
+                            style={{
+                                marginTop: "12px",
+                                padding: "10px",
+                                backgroundColor: status.includes("✅") ? `${darkTheme.success}20` : `${darkTheme.error}20`,
+                                border: `1px solid ${status.includes("✅") ? darkTheme.success : darkTheme.error}40`,
+                                borderRadius: "6px",
+                                fontSize: "12px",
+                                color: status.includes("完了") || status.includes("保存") ? darkTheme.success : darkTheme.error,
+                                whiteSpace: "pre-line",
+                                fontWeight: "500",
+                            }}
+                        >
+                            {status}
+                        </div>
+                    )}
+
+                    {/* URL一覧 */}
+                    <div
+                        style={{
+                            marginTop: "16px",
+                            borderTop: `1px solid ${darkTheme.border}`,
+                            paddingTop: "12px",
+                        }}
+                    >
+                        <button
+                            onClick={handleToggleList}
+                            style={{
+                                width: "100%",
+                                padding: "8px 14px",
+                                backgroundColor: darkTheme.primary,
+                                color: darkTheme.background,
+                                border: "none",
+                                borderRadius: "5px",
+                                fontSize: "13px",
+                                fontWeight: "500",
+                                cursor: "pointer",
+                                transition: "all 0.2s ease",
+                                boxShadow: `0 3px 8px ${darkTheme.primary}30`,
+                            }}
+                            onMouseEnter={(e) => {
+                                e.currentTarget.style.backgroundColor = darkTheme.primaryVariant;
+                                e.currentTarget.style.transform = "translateY(-1px)";
+                            }}
+                            onMouseLeave={(e) => {
+                                e.currentTarget.style.backgroundColor = darkTheme.primary;
+                                e.currentTarget.style.transform = "translateY(0)";
+                            }}
+                        >
+                            {showList ? "リストを非表示" : "保存されたURLを表示"}
+                        </button>
+
+                        {showList && (
+                            <div style={{ marginTop: "12px" }}>
+                                <h3
+                                    style={{
+                                        margin: "0 0 8px 0",
+                                        fontSize: "14px",
+                                        color: darkTheme.onSurface,
+                                    }}
+                                >
+                                    保存されたURL ({savedUrls.length}件)
+                                </h3>
+                                {savedUrls.length === 0 ? (
+                                    <div
+                                        style={{
+                                            padding: "12px",
+                                            textAlign: "center",
+                                            color: darkTheme.onSurfaceVariant,
+                                            fontStyle: "italic",
+                                            backgroundColor: darkTheme.surface,
+                                            border: `1px solid ${darkTheme.border}`,
+                                            borderRadius: "6px",
+                                        }}
+                                    >
+                                        保存されたURLはありません
+                                    </div>
+                                ) : (
+                                    <div
+                                        style={{
+                                            maxHeight: "250px",
+                                            overflowY: "auto",
+                                            border: `1px solid ${darkTheme.border}`,
+                                            borderRadius: "6px",
+                                            backgroundColor: darkTheme.surface,
+                                        }}
+                                    >
+                                        {savedUrls.map((item) => (
+                                            <div
+                                                key={item.id}
+                                                style={{
+                                                    padding: "8px 10px",
+                                                    borderBottom: `1px solid ${darkTheme.border}`,
+                                                    cursor: "pointer",
+                                                    transition: "all 0.2s ease",
+                                                    backgroundColor: "transparent",
+                                                }}
+                                                onMouseEnter={(e) => {
+                                                    e.currentTarget.style.backgroundColor = darkTheme.surfaceVariant;
+                                                    e.currentTarget.style.transform = "translateX(2px)";
+                                                }}
+                                                onMouseLeave={(e) => {
+                                                    e.currentTarget.style.backgroundColor = "transparent";
+                                                    e.currentTarget.style.transform = "translateX(0)";
+                                                }}
+                                                onClick={() => openUrl(item.url)}
+                                            >
+                                                <div
+                                                    style={{
+                                                        fontWeight: "bold",
+                                                        fontSize: "11px",
+                                                        color: darkTheme.onSurface,
+                                                        marginBottom: "3px",
+                                                        wordBreak: "break-all",
+                                                    }}
+                                                >
+                                                    {item.title}
+                                                </div>
+                                                <div
+                                                    style={{
+                                                        fontSize: "9px",
+                                                        color: darkTheme.primary,
+                                                        marginBottom: "3px",
+                                                        wordBreak: "break-all",
+                                                    }}
+                                                >
+                                                    {item.url}
+                                                </div>
+                                                <div
+                                                    style={{
+                                                        fontSize: "9px",
+                                                        color: darkTheme.onSurfaceVariant,
+                                                    }}
+                                                >
+                                                    {formatDate(item.timestamp)}
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+                        )}
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

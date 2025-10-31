@@ -1,8 +1,9 @@
-// Firebase認証サービス
-import { signInWithPopup, signOut, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+// Firebase認証サービス（シンプル版）
+import { signOut, onAuthStateChanged } from "firebase/auth";
 import type { User } from "firebase/auth";
-import { doc, setDoc, getDoc } from "firebase/firestore";
-import { auth, googleProvider, db } from "./config";
+import { doc, setDoc } from "firebase/firestore";
+import { auth, db } from "./config";
+import { isEmailAllowed } from "../config/allowedUsers";
 
 export interface UserProfile {
     uid: string;
@@ -13,57 +14,108 @@ export interface UserProfile {
     lastLoginAt: number;
 }
 
+interface AuthMessage {
+    type: "AUTH_SUCCESS" | "AUTH_ERROR";
+    user?: {
+        uid: string;
+        email: string;
+        displayName: string;
+        photoURL?: string;
+    };
+    error?: string;
+}
+
 class AuthService {
-    // Googleログイン
+    // 外部認証ページでのログイン
     async signInWithGoogle(): Promise<UserProfile | null> {
         try {
-            const result = await signInWithPopup(auth, googleProvider);
-            const user = result.user;
+            // GitHub Pages の認証URL
+            const authUrl = `https://hayatosum.github.io/tools/extension/auth.html?extension=true`;
 
-            if (user) {
-                const userProfile = await this.createOrUpdateUserProfile(user);
-                return userProfile;
-            }
-            return null;
+            // 新しいタブで認証ページを開く
+            const authTab = await chrome.tabs.create({
+                url: authUrl,
+                active: true,
+            });
+
+            // 認証完了を待つ
+            return new Promise((resolve, reject) => {
+                const messageListener = (message: AuthMessage, sender: chrome.runtime.MessageSender) => {
+                    if (sender.tab?.id === authTab.id && message.type === "AUTH_SUCCESS") {
+                        chrome.runtime.onMessage.removeListener(messageListener);
+                        chrome.tabs.remove(authTab.id!);
+
+                        // 認証成功時の処理
+                        this.handleAuthSuccess(message.user).then(resolve).catch(reject);
+                    } else if (sender.tab?.id === authTab.id && message.type === "AUTH_ERROR") {
+                        chrome.runtime.onMessage.removeListener(messageListener);
+                        chrome.tabs.remove(authTab.id!);
+                        reject(new Error(message.error));
+                    }
+                };
+
+                chrome.runtime.onMessage.addListener(messageListener);
+
+                // タイムアウト処理（5分）
+                setTimeout(() => {
+                    chrome.runtime.onMessage.removeListener(messageListener);
+                    if (authTab.id) {
+                        chrome.tabs.remove(authTab.id);
+                    }
+                    reject(new Error("認証がタイムアウトしました"));
+                }, 300000);
+            });
         } catch (error) {
             console.error("Google login error:", error);
             throw error;
         }
     }
 
-    // メール・パスワードでログイン
-    async signInWithEmail(email: string, password: string): Promise<UserProfile | null> {
+    // 認証成功時の処理
+    private async handleAuthSuccess(user: AuthMessage["user"]): Promise<UserProfile | null> {
         try {
-            const result = await signInWithEmailAndPassword(auth, email, password);
-            const user = result.user;
-
-            if (user) {
-                const userProfile = await this.createOrUpdateUserProfile(user);
-                return userProfile;
+            if (!user) {
+                throw new Error("ユーザー情報が取得できませんでした");
             }
-            return null;
+
+            // メールアドレスが許可されているかチェック
+            if (!user.email || !(await isEmailAllowed(user.email))) {
+                throw new Error("このメールアドレスはログインが許可されていません。管理者にお問い合わせください。");
+            }
+
+            // ユーザープロファイルを作成
+            const userProfile: UserProfile = {
+                uid: user.uid,
+                email: user.email,
+                displayName: user.displayName || user.email.split("@")[0],
+                photoURL: user.photoURL || undefined,
+                createdAt: Date.now(),
+                lastLoginAt: Date.now(),
+            };
+
+            // Firestoreに保存
+            await this.saveUserProfileToFirestore(userProfile);
+
+            // Chrome拡張機能のストレージに保存
+            await chrome.storage.local.set({
+                currentUser: userProfile,
+                isAuthenticated: true,
+            });
+
+            return userProfile;
         } catch (error) {
-            console.error("Email login error:", error);
+            console.error("Auth success handling error:", error);
             throw error;
         }
     }
 
-    // メール・パスワードでアカウント作成
-    async createAccount(email: string, password: string, displayName: string): Promise<UserProfile | null> {
+    // Firestoreにユーザープロファイルを保存
+    private async saveUserProfileToFirestore(userProfile: UserProfile): Promise<void> {
         try {
-            const result = await createUserWithEmailAndPassword(auth, email, password);
-            const user = result.user;
-
-            if (user) {
-                // プロフィールを更新
-                await updateProfile(user, { displayName });
-
-                const userProfile = await this.createOrUpdateUserProfile(user);
-                return userProfile;
-            }
-            return null;
+            const userDocRef = doc(db, "users", userProfile.uid);
+            await setDoc(userDocRef, userProfile, { merge: true });
         } catch (error) {
-            console.error("Account creation error:", error);
+            console.error("Error saving user profile:", error);
             throw error;
         }
     }
@@ -72,9 +124,33 @@ class AuthService {
     async signOut(): Promise<void> {
         try {
             await signOut(auth);
+            // Chrome拡張機能のストレージからも削除
+            await chrome.storage.local.remove(["currentUser", "isAuthenticated"]);
         } catch (error) {
             console.error("Logout error:", error);
             throw error;
+        }
+    }
+
+    // Chrome拡張機能用：現在のユーザー情報を取得
+    async getCurrentUserFromStorage(): Promise<UserProfile | null> {
+        try {
+            const result = await chrome.storage.local.get(["currentUser"]);
+            return result.currentUser || null;
+        } catch (error) {
+            console.error("Error getting user from storage:", error);
+            return null;
+        }
+    }
+
+    // Chrome拡張機能用：認証状態を取得
+    async getAuthStateFromStorage(): Promise<boolean> {
+        try {
+            const result = await chrome.storage.local.get(["isAuthenticated"]);
+            return result.isAuthenticated || false;
+        } catch (error) {
+            console.error("Error getting auth state from storage:", error);
+            return false;
         }
     }
 
@@ -86,41 +162,6 @@ class AuthService {
     // 現在のユーザーを取得
     getCurrentUser(): User | null {
         return auth.currentUser;
-    }
-
-    // ユーザープロフィールをFirestoreに保存/更新
-    private async createOrUpdateUserProfile(user: User): Promise<UserProfile> {
-        const userRef = doc(db, "users", user.uid);
-        const userSnap = await getDoc(userRef);
-
-        const now = Date.now();
-
-        if (userSnap.exists()) {
-            // 既存ユーザーの場合、最終ログイン時刻を更新
-            const userData = userSnap.data() as UserProfile;
-            const updatedProfile: UserProfile = {
-                ...userData,
-                lastLoginAt: now,
-                displayName: user.displayName || userData.displayName,
-                photoURL: user.photoURL || userData.photoURL,
-            };
-
-            await setDoc(userRef, updatedProfile);
-            return updatedProfile;
-        } else {
-            // 新規ユーザーの場合、プロフィールを作成
-            const newProfile: UserProfile = {
-                uid: user.uid,
-                email: user.email || "",
-                displayName: user.displayName || "Unknown User",
-                photoURL: user.photoURL || undefined,
-                createdAt: now,
-                lastLoginAt: now,
-            };
-
-            await setDoc(userRef, newProfile);
-            return newProfile;
-        }
     }
 
     // PokePastデータをユーザーに関連付けて保存

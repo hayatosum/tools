@@ -24,40 +24,49 @@ interface LoginComponentProps {
 const LoginComponent: React.FC<LoginComponentProps> = ({ onLogin, onLogout, darkTheme }) => {
     const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
     const [user, setUser] = useState<User | null>(null);
-    const [showEmailLogin, setShowEmailLogin] = useState<boolean>(false);
-    const [showCreateAccount, setShowCreateAccount] = useState<boolean>(false);
-    const [email, setEmail] = useState<string>("");
-    const [password, setPassword] = useState<string>("");
-    const [displayName, setDisplayName] = useState<string>("");
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [error, setError] = useState<string>("");
 
     useEffect(() => {
-        const unsubscribe = authService.onAuthStateChanged(async (user) => {
-            setUser(user);
-            setIsAuthenticated(!!user);
-
-            if (user) {
-                try {
-                    // ユーザープロフィールを取得してコールバックを呼ぶ
-                    const userProfile: UserProfile = {
-                        uid: user.uid,
-                        email: user.email || "",
-                        displayName: user.displayName || "Unknown User",
-                        photoURL: user.photoURL || undefined,
-                        createdAt: Date.now(),
-                        lastLoginAt: Date.now(),
-                    };
-                    onLogin(userProfile);
-                } catch (error) {
-                    console.error("Error getting user profile:", error);
+        // Chrome拡張機能のストレージから認証状態を読み込み
+        const loadAuthState = async () => {
+            try {
+                const result = await chrome.storage.local.get(["currentUser", "isAuthenticated"]);
+                if (result.currentUser && result.isAuthenticated) {
+                    setIsAuthenticated(true);
+                    setUser({
+                        uid: result.currentUser.uid,
+                        email: result.currentUser.email,
+                        displayName: result.currentUser.displayName,
+                        photoURL: result.currentUser.photoURL || null,
+                    } as User);
+                    onLogin(result.currentUser);
+                } else {
+                    setIsAuthenticated(false);
+                    setUser(null);
+                    onLogout();
                 }
-            } else {
+            } catch (error) {
+                console.error("Error loading auth state:", error);
+                setIsAuthenticated(false);
+                setUser(null);
                 onLogout();
             }
-        });
+        };
 
-        return () => unsubscribe();
+        // ストレージの変更を監視
+        const handleStorageChange = (changes: { [key: string]: chrome.storage.StorageChange }) => {
+            if (changes.currentUser || changes.isAuthenticated) {
+                loadAuthState();
+            }
+        };
+
+        loadAuthState();
+        chrome.storage.onChanged.addListener(handleStorageChange);
+
+        return () => {
+            chrome.storage.onChanged.removeListener(handleStorageChange);
+        };
     }, [onLogin, onLogout]);
 
     const handleGoogleLogin = async () => {
@@ -65,44 +74,13 @@ const LoginComponent: React.FC<LoginComponentProps> = ({ onLogin, onLogout, dark
         setError("");
 
         try {
-            await authService.signInWithGoogle();
+            const userProfile = await authService.signInWithGoogle();
+            if (userProfile) {
+                // 成功時にストレージ変更イベントが発火されるため、UIは自動的に更新される
+                console.log("Login successful:", userProfile);
+            }
         } catch (error) {
             setError(error instanceof Error ? error.message : "Google login failed");
-        } finally {
-            setIsLoading(false);
-        }
-    };
-
-    const handleEmailLogin = async (e: React.FormEvent) => {
-        e.preventDefault();
-        setIsLoading(true);
-        setError("");
-
-        try {
-            await authService.signInWithEmail(email, password);
-            setShowEmailLogin(false);
-            setEmail("");
-            setPassword("");
-        } catch (error) {
-            setError(error instanceof Error ? error.message : "Email login failed");
-        } finally {
-            setIsLoading(false);
-        }
-    };
-
-    const handleCreateAccount = async (e: React.FormEvent) => {
-        e.preventDefault();
-        setIsLoading(true);
-        setError("");
-
-        try {
-            await authService.createAccount(email, password, displayName);
-            setShowCreateAccount(false);
-            setEmail("");
-            setPassword("");
-            setDisplayName("");
-        } catch (error) {
-            setError(error instanceof Error ? error.message : "Account creation failed");
         } finally {
             setIsLoading(false);
         }
@@ -112,6 +90,7 @@ const LoginComponent: React.FC<LoginComponentProps> = ({ onLogin, onLogout, dark
         setIsLoading(true);
         try {
             await authService.signOut();
+            // ストレージ変更イベントが発火されるため、UIは自動的に更新される
         } catch (error) {
             setError(error instanceof Error ? error.message : "Logout failed");
         } finally {
@@ -125,9 +104,9 @@ const LoginComponent: React.FC<LoginComponentProps> = ({ onLogin, onLogout, dark
                 style={{
                     padding: "12px",
                     marginBottom: "16px",
-                    backgroundColor: darkTheme.surface,
+                    backgroundColor: `${darkTheme.success}20`,
                     borderRadius: "6px",
-                    border: `1px solid ${darkTheme.border}`,
+                    border: `1px solid ${darkTheme.success}40`,
                 }}
             >
                 <div style={{ display: "flex", alignItems: "center", marginBottom: "8px" }}>
@@ -151,7 +130,7 @@ const LoginComponent: React.FC<LoginComponentProps> = ({ onLogin, onLogout, dark
                                 color: darkTheme.onSurface,
                             }}
                         >
-                            👋 {user.displayName || "Unknown User"}
+                            {user.displayName || "Unknown User"}
                         </div>
                         <div
                             style={{
@@ -162,6 +141,17 @@ const LoginComponent: React.FC<LoginComponentProps> = ({ onLogin, onLogout, dark
                             {user.email}
                         </div>
                     </div>
+                </div>
+                <div
+                    style={{
+                        fontSize: "12px",
+                        color: darkTheme.success,
+                        fontWeight: "600",
+                        marginBottom: "8px",
+                        textAlign: "center",
+                    }}
+                >
+                    ✅ ログイン成功！すべての機能が利用可能です
                 </div>
                 <button
                     onClick={handleLogout}
@@ -178,7 +168,7 @@ const LoginComponent: React.FC<LoginComponentProps> = ({ onLogin, onLogout, dark
                         opacity: isLoading ? 0.6 : 1,
                     }}
                 >
-                    {isLoading ? "⏳ Logging out..." : "🚪 Logout"}
+                    {isLoading ? "Logging out..." : "Logout"}
                 </button>
             </div>
         );
@@ -202,7 +192,7 @@ const LoginComponent: React.FC<LoginComponentProps> = ({ onLogin, onLogout, dark
                     textAlign: "center",
                 }}
             >
-                🔐 Login to sync your data
+                Login to sync your data
             </h3>
 
             {error && (
@@ -217,234 +207,39 @@ const LoginComponent: React.FC<LoginComponentProps> = ({ onLogin, onLogout, dark
                         color: darkTheme.error,
                     }}
                 >
-                    ❌ {error}
+                    {error}
                 </div>
             )}
 
-            {!showEmailLogin && !showCreateAccount && (
-                <div>
-                    <button
-                        onClick={handleGoogleLogin}
-                        disabled={isLoading}
-                        style={{
-                            width: "100%",
-                            padding: "8px 12px",
-                            backgroundColor: "#4285f4",
-                            color: "#ffffff",
-                            border: "none",
-                            borderRadius: "4px",
-                            fontSize: "12px",
-                            marginBottom: "8px",
-                            cursor: isLoading ? "not-allowed" : "pointer",
-                            opacity: isLoading ? 0.6 : 1,
-                        }}
-                    >
-                        {isLoading ? "⏳ Signing in..." : "🚀 Sign in with Google"}
-                    </button>
-
-                    <div style={{ textAlign: "center", margin: "8px 0" }}>
-                        <span style={{ fontSize: "11px", color: darkTheme.onSurfaceVariant }}>or</span>
-                    </div>
-
-                    <button
-                        onClick={() => setShowEmailLogin(true)}
-                        style={{
-                            width: "100%",
-                            padding: "6px 12px",
-                            backgroundColor: darkTheme.surfaceVariant,
-                            color: darkTheme.onSurface,
-                            border: `1px solid ${darkTheme.border}`,
-                            borderRadius: "4px",
-                            fontSize: "11px",
-                            marginBottom: "4px",
-                            cursor: "pointer",
-                        }}
-                    >
-                        📧 Email & Password
-                    </button>
-
-                    <button
-                        onClick={() => setShowCreateAccount(true)}
-                        style={{
-                            width: "100%",
-                            padding: "6px 12px",
-                            backgroundColor: "transparent",
-                            color: darkTheme.primary,
-                            border: `1px solid ${darkTheme.primary}`,
-                            borderRadius: "4px",
-                            fontSize: "11px",
-                            cursor: "pointer",
-                        }}
-                    >
-                        ✨ Create Account
-                    </button>
+            <div>
+                <button
+                    onClick={handleGoogleLogin}
+                    disabled={isLoading}
+                    style={{
+                        width: "100%",
+                        padding: "8px 12px",
+                        backgroundColor: "#4285f4",
+                        color: "#ffffff",
+                        border: "none",
+                        borderRadius: "4px",
+                        fontSize: "12px",
+                        cursor: isLoading ? "not-allowed" : "pointer",
+                        opacity: isLoading ? 0.6 : 1,
+                    }}
+                >
+                    {isLoading ? "Signing in..." : "Sign in with Google"}
+                </button>
+                <div
+                    style={{
+                        fontSize: "11px",
+                        color: darkTheme.onSurfaceVariant,
+                        textAlign: "center",
+                        marginTop: "8px",
+                    }}
+                >
+                    管理者によって許可されたGoogleアカウントのみログイン可能です
                 </div>
-            )}
-
-            {showEmailLogin && (
-                <form onSubmit={handleEmailLogin}>
-                    <input
-                        type="email"
-                        placeholder="Email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        style={{
-                            width: "100%",
-                            padding: "8px",
-                            marginBottom: "8px",
-                            backgroundColor: darkTheme.surfaceVariant,
-                            color: darkTheme.onSurface,
-                            border: `1px solid ${darkTheme.border}`,
-                            borderRadius: "4px",
-                            fontSize: "12px",
-                        }}
-                        required
-                    />
-                    <input
-                        type="password"
-                        placeholder="Password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        style={{
-                            width: "100%",
-                            padding: "8px",
-                            marginBottom: "8px",
-                            backgroundColor: darkTheme.surfaceVariant,
-                            color: darkTheme.onSurface,
-                            border: `1px solid ${darkTheme.border}`,
-                            borderRadius: "4px",
-                            fontSize: "12px",
-                        }}
-                        required
-                    />
-                    <div style={{ display: "flex", gap: "8px" }}>
-                        <button
-                            type="submit"
-                            disabled={isLoading}
-                            style={{
-                                flex: 1,
-                                padding: "8px",
-                                backgroundColor: darkTheme.primary,
-                                color: "#ffffff",
-                                border: "none",
-                                borderRadius: "4px",
-                                fontSize: "11px",
-                                cursor: isLoading ? "not-allowed" : "pointer",
-                                opacity: isLoading ? 0.6 : 1,
-                            }}
-                        >
-                            {isLoading ? "⏳" : "🔑 Login"}
-                        </button>
-                        <button
-                            type="button"
-                            onClick={() => setShowEmailLogin(false)}
-                            style={{
-                                flex: 1,
-                                padding: "8px",
-                                backgroundColor: darkTheme.surfaceVariant,
-                                color: darkTheme.onSurface,
-                                border: `1px solid ${darkTheme.border}`,
-                                borderRadius: "4px",
-                                fontSize: "11px",
-                                cursor: "pointer",
-                            }}
-                        >
-                            ❌ Cancel
-                        </button>
-                    </div>
-                </form>
-            )}
-
-            {showCreateAccount && (
-                <form onSubmit={handleCreateAccount}>
-                    <input
-                        type="text"
-                        placeholder="Display Name"
-                        value={displayName}
-                        onChange={(e) => setDisplayName(e.target.value)}
-                        style={{
-                            width: "100%",
-                            padding: "8px",
-                            marginBottom: "8px",
-                            backgroundColor: darkTheme.surfaceVariant,
-                            color: darkTheme.onSurface,
-                            border: `1px solid ${darkTheme.border}`,
-                            borderRadius: "4px",
-                            fontSize: "12px",
-                        }}
-                        required
-                    />
-                    <input
-                        type="email"
-                        placeholder="Email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        style={{
-                            width: "100%",
-                            padding: "8px",
-                            marginBottom: "8px",
-                            backgroundColor: darkTheme.surfaceVariant,
-                            color: darkTheme.onSurface,
-                            border: `1px solid ${darkTheme.border}`,
-                            borderRadius: "4px",
-                            fontSize: "12px",
-                        }}
-                        required
-                    />
-                    <input
-                        type="password"
-                        placeholder="Password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        style={{
-                            width: "100%",
-                            padding: "8px",
-                            marginBottom: "8px",
-                            backgroundColor: darkTheme.surfaceVariant,
-                            color: darkTheme.onSurface,
-                            border: `1px solid ${darkTheme.border}`,
-                            borderRadius: "4px",
-                            fontSize: "12px",
-                        }}
-                        required
-                    />
-                    <div style={{ display: "flex", gap: "8px" }}>
-                        <button
-                            type="submit"
-                            disabled={isLoading}
-                            style={{
-                                flex: 1,
-                                padding: "8px",
-                                backgroundColor: darkTheme.success,
-                                color: "#ffffff",
-                                border: "none",
-                                borderRadius: "4px",
-                                fontSize: "11px",
-                                cursor: isLoading ? "not-allowed" : "pointer",
-                                opacity: isLoading ? 0.6 : 1,
-                            }}
-                        >
-                            {isLoading ? "⏳" : "✨ Create"}
-                        </button>
-                        <button
-                            type="button"
-                            onClick={() => setShowCreateAccount(false)}
-                            style={{
-                                flex: 1,
-                                padding: "8px",
-                                backgroundColor: darkTheme.surfaceVariant,
-                                color: darkTheme.onSurface,
-                                border: `1px solid ${darkTheme.border}`,
-                                borderRadius: "4px",
-                                fontSize: "11px",
-                                cursor: "pointer",
-                            }}
-                        >
-                            ❌ Cancel
-                        </button>
-                    </div>
-                </form>
-            )}
+            </div>
         </div>
     );
 };
