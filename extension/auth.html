@@ -124,15 +124,32 @@
 
                     // Chrome拡張にメッセージを送信
                     if (window.chrome && chrome.runtime) {
-                        chrome.runtime.sendMessage(chrome.runtime.id, {
+                        const userProfile = {
+                            uid: user.uid,
+                            email: user.email,
+                            displayName: user.displayName || user.email.split("@")[0],
+                            photoURL: user.photoURL,
+                            createdAt: Date.now(),
+                            lastLoginAt: Date.now(),
+                        };
+
+                        // Chrome拡張のIDを取得してメッセージ送信
+                        const extensionId = new URLSearchParams(window.location.search).get("extensionId") || chrome.runtime.id;
+
+                        chrome.runtime.sendMessage(extensionId, {
                             type: "AUTH_SUCCESS",
-                            user: {
-                                uid: user.uid,
-                                email: user.email,
-                                displayName: user.displayName,
-                                photoURL: user.photoURL,
-                            },
+                            user: userProfile,
                         });
+
+                        // 直接Chrome拡張のストレージに保存も試行
+                        try {
+                            chrome.storage.local.set({
+                                currentUser: userProfile,
+                                isAuthenticated: true,
+                            });
+                        } catch (storageError) {
+                            console.log("Direct storage access failed, relying on message passing");
+                        }
                     }
 
                     // 3秒後にタブを閉じる
