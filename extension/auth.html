@@ -119,86 +119,52 @@
                         throw new Error("このメールアドレスはログインが許可されていません");
                     }
 
-                    // 成功時：Chrome拡張にメッセージを送信
+                    // 成功時：認証情報を一時保存
                     showStatus("認証成功！拡張機能に戻ります...", false);
 
-                    // Chrome拡張にメッセージを送信
-                    if (window.chrome && chrome.runtime) {
-                        const userProfile = {
-                            uid: user.uid,
-                            email: user.email,
-                            displayName: user.displayName || user.email.split("@")[0],
-                            photoURL: user.photoURL,
-                            createdAt: Date.now(),
-                            lastLoginAt: Date.now(),
-                        };
+                    const userProfile = {
+                        uid: user.uid,
+                        email: user.email,
+                        displayName: user.displayName || user.email.split("@")[0],
+                        photoURL: user.photoURL,
+                        createdAt: Date.now(),
+                        lastLoginAt: Date.now(),
+                    };
 
-                        // Chrome拡張のIDを取得してメッセージ送信
-                        const extensionId = new URLSearchParams(window.location.search).get("extensionId") || chrome.runtime.id;
+                    console.log("Saving auth data temporarily:", userProfile);
 
-                        console.log("Sending message to extension:", extensionId, userProfile);
-
-                        // 複数の方法でメッセージを送信
-                        try {
-                            // 方法1: 直接拡張機能にメッセージ送信
-                            chrome.runtime.sendMessage(
-                                extensionId,
-                                {
-                                    type: "AUTH_SUCCESS",
-                                    user: userProfile,
-                                },
-                                (response) => {
-                                    console.log("Direct message response:", response);
-                                    if (chrome.runtime.lastError) {
-                                        console.error("Direct message error:", chrome.runtime.lastError);
-                                    }
-                                }
-                            );
-                        } catch (error) {
-                            console.error("Direct message failed:", error);
-                        }
-
-                        // 方法2: postMessageでopenerに送信（ポップアップの場合）
-                        if (window.opener) {
-                            window.opener.postMessage(
-                                {
-                                    type: "AUTH_SUCCESS",
-                                    user: userProfile,
-                                },
-                                "*"
-                            );
-                            console.log("Posted message to opener");
-                        }
-
-                        // 方法3: 親ウィンドウにメッセージ送信
-                        window.parent.postMessage(
+                    // Chrome拡張機能のストレージに一時保存
+                    try {
+                        // 直接Chrome拡張のストレージに保存を試行
+                        chrome.storage.local.set(
                             {
-                                type: "AUTH_SUCCESS",
-                                user: userProfile,
+                                tempAuthSuccess: true,
+                                tempAuthUser: userProfile,
                             },
-                            "*"
-                        );
-                        console.log("Posted message to parent");
-
-                        // 直接Chrome拡張のストレージに保存も試行
-                        try {
-                            console.log("Attempting direct storage save:", userProfile);
-                            chrome.storage.local.set(
-                                {
-                                    currentUser: userProfile,
-                                    isAuthenticated: true,
-                                },
-                                () => {
-                                    if (chrome.runtime.lastError) {
-                                        console.error("Storage save error:", chrome.runtime.lastError);
-                                    } else {
-                                        console.log("Direct storage save successful");
-                                    }
+                            () => {
+                                if (chrome.runtime.lastError) {
+                                    console.error("Storage save error:", chrome.runtime.lastError);
+                                } else {
+                                    console.log("Auth data saved to extension storage");
                                 }
-                            );
-                        } catch (storageError) {
-                            console.log("Direct storage access failed, relying on message passing:", storageError);
-                        }
+                            }
+                        );
+
+                        // URLに成功フラグを追加してページを更新
+                        const url = new URL(window.location.href);
+                        url.searchParams.set("authSuccess", "true");
+                        url.searchParams.set("timestamp", Date.now().toString());
+
+                        // 成功メッセージを表示してからリダイレクト
+                        setTimeout(() => {
+                            window.location.href = url.toString();
+                        }, 1000);
+                    } catch (error) {
+                        console.error("Error saving auth data:", error);
+                        // フォールバック：直接タブを閉じる
+                        setTimeout(() => {
+                            window.close();
+                        }, 2000);
                     }
 
                     // 5秒後にタブを閉じる（メッセージ処理の時間を確保）
@@ -225,6 +191,17 @@
             if (urlParams.get("extension") === "true") {
                 document.body.style.background = "#e3f2fd";
                 showStatus("Chrome拡張からのアクセスを検出しました", false);
+            }
+
+            // 認証成功後の処理
+            if (urlParams.get("authSuccess") === "true") {
+                showStatus("認証が完了しました！タブを閉じます...", false);
+                console.log("Auth success detected, closing tab");
+
+                // 少し待ってからタブを閉じる
+                setTimeout(() => {
+                    window.close();
+                }, 2000);
             }
         </script>
     </body>
