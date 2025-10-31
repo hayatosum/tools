@@ -136,26 +136,76 @@
                         // Chrome拡張のIDを取得してメッセージ送信
                         const extensionId = new URLSearchParams(window.location.search).get("extensionId") || chrome.runtime.id;
 
-                        chrome.runtime.sendMessage(extensionId, {
-                            type: "AUTH_SUCCESS",
-                            user: userProfile,
-                        });
+                        console.log("Sending message to extension:", extensionId, userProfile);
+
+                        // 複数の方法でメッセージを送信
+                        try {
+                            // 方法1: 直接拡張機能にメッセージ送信
+                            chrome.runtime.sendMessage(
+                                extensionId,
+                                {
+                                    type: "AUTH_SUCCESS",
+                                    user: userProfile,
+                                },
+                                (response) => {
+                                    console.log("Direct message response:", response);
+                                    if (chrome.runtime.lastError) {
+                                        console.error("Direct message error:", chrome.runtime.lastError);
+                                    }
+                                }
+                            );
+                        } catch (error) {
+                            console.error("Direct message failed:", error);
+                        }
+
+                        // 方法2: postMessageでopenerに送信（ポップアップの場合）
+                        if (window.opener) {
+                            window.opener.postMessage(
+                                {
+                                    type: "AUTH_SUCCESS",
+                                    user: userProfile,
+                                },
+                                "*"
+                            );
+                            console.log("Posted message to opener");
+                        }
+
+                        // 方法3: 親ウィンドウにメッセージ送信
+                        window.parent.postMessage(
+                            {
+                                type: "AUTH_SUCCESS",
+                                user: userProfile,
+                            },
+                            "*"
+                        );
+                        console.log("Posted message to parent");
 
                         // 直接Chrome拡張のストレージに保存も試行
                         try {
-                            chrome.storage.local.set({
-                                currentUser: userProfile,
-                                isAuthenticated: true,
-                            });
+                            console.log("Attempting direct storage save:", userProfile);
+                            chrome.storage.local.set(
+                                {
+                                    currentUser: userProfile,
+                                    isAuthenticated: true,
+                                },
+                                () => {
+                                    if (chrome.runtime.lastError) {
+                                        console.error("Storage save error:", chrome.runtime.lastError);
+                                    } else {
+                                        console.log("Direct storage save successful");
+                                    }
+                                }
+                            );
                         } catch (storageError) {
-                            console.log("Direct storage access failed, relying on message passing");
+                            console.log("Direct storage access failed, relying on message passing:", storageError);
                         }
                     }
 
-                    // 3秒後にタブを閉じる
+                    // 5秒後にタブを閉じる（メッセージ処理の時間を確保）
                     setTimeout(() => {
-                        window.close();
-                    }, 3000);
+                        console.log("Closing auth tab");
+                        // window.close();
+                    }, 5000);
                 } catch (error) {
                     console.error("認証エラー:", error);
                     showStatus(`エラー: ${error.message}`, true);
