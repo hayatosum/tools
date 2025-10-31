@@ -18,10 +18,6 @@ self.addEventListener("unhandledrejection", (event) => {
     event.preventDefault();
 });
 
-interface BackgroundMessage {
-    action: string;
-}
-
 interface PokePastItem {
     url: string;
     title: string;
@@ -29,14 +25,62 @@ interface PokePastItem {
     id: string;
 }
 
+// 認証成功時の処理
+async function handleAuthSuccess(user: any, sendResponse: (response?: unknown) => void) {
+    console.log("handleAuthSuccess called with user:", user);
+    try {
+        const userProfile = {
+            uid: user.uid,
+            email: user.email,
+            displayName: user.displayName || user.email.split("@")[0],
+            photoURL: user.photoURL,
+            createdAt: user.createdAt || Date.now(),
+            lastLoginAt: user.lastLoginAt || Date.now(),
+        };
+
+        console.log("Saving user profile to storage:", userProfile);
+
+        // Chrome拡張機能のストレージに保存
+        await chrome.storage.local.set({
+            currentUser: userProfile,
+            isAuthenticated: true,
+        });
+
+        // 保存確認
+        const result = await chrome.storage.local.get(["currentUser", "isAuthenticated"]);
+        console.log("Storage verification:", result);
+
+        console.log("Authentication successful, user profile saved:", userProfile);
+        sendResponse({ success: true, user: userProfile });
+    } catch (error) {
+        console.error("Error handling auth success:", error);
+        sendResponse({ success: false, error: "認証の処理中にエラーが発生しました" });
+    }
+}
+
 // メッセージを受信したときの処理
-chrome.runtime.onMessage.addListener((request: BackgroundMessage, _sender: chrome.runtime.MessageSender, sendResponse: (response?: unknown) => void) => {
+chrome.runtime.onMessage.addListener((request: any, sender: chrome.runtime.MessageSender, sendResponse: (response?: unknown) => void) => {
+    console.log("Background received message:", request, "from:", sender);
+
     // 初期化されていない場合は初期化を実行
     if (!isInitialized) {
         initializeExtension();
     }
 
     try {
+        // 認証メッセージの場合
+        if (request && request.type === "AUTH_SUCCESS" && request.user) {
+            console.log("Processing AUTH_SUCCESS message:", request.user);
+            handleAuthSuccess(request.user, sendResponse);
+            return true;
+        }
+
+        if (request && request.type === "AUTH_ERROR") {
+            console.error("Authentication error:", request.error);
+            sendResponse({ success: false, error: request.error });
+            return true;
+        }
+
         if (!request || typeof request.action !== "string") {
             sendResponse({
                 success: false,

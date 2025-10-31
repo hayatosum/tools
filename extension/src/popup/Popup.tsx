@@ -53,11 +53,16 @@ const Popup: React.FC = () => {
         // 認証状態を読み込み
         const loadAuthState = async () => {
             try {
+                console.log("Loading auth state from storage...");
                 const result = await chrome.storage.local.get(["currentUser", "isAuthenticated"]);
+                console.log("Storage result:", result);
+
                 if (result.currentUser && result.isAuthenticated) {
+                    console.log("User authenticated:", result.currentUser);
                     setUser(result.currentUser);
                     setIsAuthenticated(true);
                 } else {
+                    console.log("User not authenticated");
                     setUser(null);
                     setIsAuthenticated(false);
                 }
@@ -85,7 +90,9 @@ const Popup: React.FC = () => {
 
         // ストレージの変更を監視
         const handleStorageChange = (changes: { [key: string]: chrome.storage.StorageChange }) => {
+            console.log("Storage changed:", changes);
             if (changes.currentUser || changes.isAuthenticated) {
+                console.log("Auth-related storage changed, reloading auth state");
                 loadAuthState();
             }
         };

@@ -157,14 +157,14 @@
                         console.error("Error saving auth data:", error);
                         // フォールバック：直接タブを閉じる
                         setTimeout(() => {
-                            // window.close();
+                            window.close();
                         }, 2000);
                     }
 
                     // 5秒後にタブを閉じる（メッセージ処理の時間を確保）
                     setTimeout(() => {
                         console.log("Closing auth tab");
-                        // window.close();
+                        window.close();
                     }, 5000);
                 } catch (error) {
                     console.error("認証エラー:", error);
@@ -194,7 +194,7 @@
 
                 // 少し待ってからタブを閉じる
                 setTimeout(() => {
-                    // window.close();
+                    window.close();
                 }, 2000);
             }
         </script>

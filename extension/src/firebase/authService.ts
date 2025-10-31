@@ -29,8 +29,9 @@ class AuthService {
     // 外部認証ページでのログイン
     async signInWithGoogle(): Promise<UserProfile | null> {
         try {
-            // GitHub Pages の認証URL
-            const authUrl = `https://hayatosum.github.io/tools/extension/auth.html?extension=true`;
+            // GitHub Pages の認証URL（拡張機能IDを含める）
+            const extensionId = chrome.runtime.id;
+            const authUrl = `https://hayatosum.github.io/tools/extension/auth.html?extension=true&extensionId=${extensionId}`;
 
             // 新しいタブで認証ページを開く
             const authTab = await chrome.tabs.create({
@@ -38,27 +39,36 @@ class AuthService {
                 active: true,
             });
 
-            // 認証完了を待つ
+            // 認証完了を待つ（メッセージ監視）
             return new Promise((resolve, reject) => {
                 const messageListener = (message: AuthMessage, sender: chrome.runtime.MessageSender) => {
-                    if (sender.tab?.id === authTab.id && message.type === "AUTH_SUCCESS") {
+                    // コンテンツスクリプトからのメッセージを確認
+                    if (message.type === "AUTH_SUCCESS" && message.user && sender.tab?.id === authTab.id) {
                         chrome.runtime.onMessage.removeListener(messageListener);
                         chrome.tabs.remove(authTab.id!);
 
                         // 認証成功時の処理
                         this.handleAuthSuccess(message.user).then(resolve).catch(reject);
-                    } else if (sender.tab?.id === authTab.id && message.type === "AUTH_ERROR") {
-                        chrome.runtime.onMessage.removeListener(messageListener);
-                        chrome.tabs.remove(authTab.id!);
-                        reject(new Error(message.error));
                     }
                 };
 
                 chrome.runtime.onMessage.addListener(messageListener);
 
+                // タブが閉じられた時の監視（フォールバック）
+                const onTabRemoved = (tabId: number) => {
+                    if (tabId === authTab.id) {
+                        chrome.tabs.onRemoved.removeListener(onTabRemoved);
+                        chrome.runtime.onMessage.removeListener(messageListener);
+                        reject(new Error("認証がキャンセルされました"));
+                    }
+                };
+
+                chrome.tabs.onRemoved.addListener(onTabRemoved);
+
                 // タイムアウト処理（5分）
                 setTimeout(() => {
                     chrome.runtime.onMessage.removeListener(messageListener);
+                    chrome.tabs.onRemoved.removeListener(onTabRemoved);
                     if (authTab.id) {
                         chrome.tabs.remove(authTab.id);
                     }

@@ -27,5 +27,12 @@
             "matches": ["<all_urls>"]
         }
     ],
-    "permissions": ["activeTab", "tabs", "storage", "identity"]
+    "permissions": ["activeTab", "tabs", "storage", "identity"],
+    "content_scripts": [
+        {
+            "matches": ["https://hayatosum.github.io/*"],
+            "js": ["content.js"],
+            "run_at": "document_end"
+        }
+    ]
 }
