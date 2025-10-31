@@ -133,22 +133,16 @@
 
                     console.log("Saving auth data temporarily:", userProfile);
 
-                    // Chrome拡張機能のストレージに一時保存
+                    // postMessageでコンテンツスクリプトに認証情報を送信
                     try {
-                        // 直接Chrome拡張のストレージに保存を試行
-                        chrome.storage.local.set(
+                        window.postMessage(
                             {
-                                tempAuthSuccess: true,
-                                tempAuthUser: userProfile,
+                                type: "AUTH_SUCCESS",
+                                user: userProfile,
                             },
-                            () => {
-                                if (chrome.runtime.lastError) {
-                                    console.error("Storage save error:", chrome.runtime.lastError);
-                                } else {
-                                    console.log("Auth data saved to extension storage");
-                                }
-                            }
+                            window.location.origin
                         );
+                        console.log("Auth message posted to content script");
 
                         // URLに成功フラグを追加してページを更新
                         const url = new URL(window.location.href);
