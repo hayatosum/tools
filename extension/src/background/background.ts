@@ -1,5 +1,36 @@
 // Chrome拡張のバックグラウンドスクリプト
+import { initializeApp } from "firebase/app";
+import { getFirestore, collection, addDoc, getDocs, query, where, orderBy } from "firebase/firestore";
+
+// Firebase設定
+const firebaseConfig = {
+    apiKey: "AIzaSyBv5r-nE0C5yEo9ZTCa2PaS-A5q4x8XXXX",
+    authDomain: "sample-9dde3.firebaseapp.com",
+    projectId: "sample-9dde3",
+    storageBucket: "sample-9dde3.firebasestorage.app",
+    messagingSenderId: "434283491779",
+    appId: "1:434283491779:web:56a18cfeb70f89e2a2cd76",
+};
+
+// Firebase初期化
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
 let isInitialized = false;
+
+// 現在のユーザーを取得
+async function getCurrentUser() {
+    try {
+        const result = await chrome.storage.local.get(["currentUser", "isAuthenticated"]);
+        if (result.currentUser && result.isAuthenticated) {
+            return result.currentUser;
+        }
+        return null;
+    } catch (error) {
+        console.error("Error getting current user:", error);
+        return null;
+    }
+}
 
 // 拡張機能の初期化
 function initializeExtension() {
@@ -18,7 +49,7 @@ self.addEventListener("unhandledrejection", (event) => {
     event.preventDefault();
 });
 
-interface PokePastItem {
+interface PokePasteItem {
     url: string;
     title: string;
     timestamp: number;
@@ -89,13 +120,13 @@ chrome.runtime.onMessage.addListener((request: any, sender: chrome.runtime.Messa
             return false;
         }
 
-        if (request.action === "addPokePast") {
-            handleAddPokePast(sendResponse);
+        if (request.action === "addPokePaste") {
+            handleAddPokePaste(sendResponse);
             return true; // 非同期レスポンスを示す
         }
 
-        if (request.action === "getPokePastList") {
-            handleGetPokePastList(sendResponse);
+        if (request.action === "getPokePasteList") {
+            handleGetPokePasteList(sendResponse);
             return true; // 非同期レスポンスを示す
         }
 
@@ -122,8 +153,8 @@ chrome.runtime.onMessage.addListener((request: any, sender: chrome.runtime.Messa
         });
         return false;
     }
-}); // PokePast URL追加の処理
-async function handleAddPokePast(sendResponse: (response?: unknown) => void) {
+}); // PokePaste URL追加の処理
+async function handleAddPokePaste(sendResponse: (response?: unknown) => void) {
     try {
         // アクティブなタブの情報を取得
         const tabs = await new Promise<chrome.tabs.Tab[]>((resolve) => {
@@ -149,55 +180,56 @@ async function handleAddPokePast(sendResponse: (response?: unknown) => void) {
             return;
         }
 
-        // 新しいアイテムを作成
-        const newItem: PokePastItem = {
-            url: activeTab.url,
-            title: activeTab.title || "No title",
-            timestamp: Date.now(),
-            id: `${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
-        };
-
-        // 既存のURLを取得
-        const result = await new Promise<{ pokepastUrls?: PokePastItem[] }>((resolve) => {
-            chrome.storage.local.get(["pokepastUrls"], (items) => {
-                resolve(items as { pokepastUrls?: PokePastItem[] });
-            });
-        });
-
-        const existingUrls: PokePastItem[] = result.pokepastUrls || [];
-
-        // 重複チェック
-        const isDuplicate = existingUrls.some((item) => item.url === newItem.url);
-
-        if (isDuplicate) {
+        // 現在のユーザーを取得
+        const currentUser = await getCurrentUser();
+        if (!currentUser) {
             sendResponse({
                 success: false,
-                error: "This URL is already saved",
-                url: newItem.url,
+                error: "User not authenticated. Please login first.",
             });
             return;
         }
 
-        // 新しいアイテムを追加
-        const updatedUrls = [newItem, ...existingUrls];
+        // 新しいアイテムを作成
+        const newItem = {
+            url: activeTab.url,
+            title: activeTab.title || "No title",
+            timestamp: Date.now(),
+            userId: currentUser.uid,
+        };
 
-        // ストレージに保存
-        await new Promise<void>((resolve, reject) => {
-            chrome.storage.local.set({ pokepastUrls: updatedUrls }, () => {
-                if (chrome.runtime.lastError) {
-                    reject(chrome.runtime.lastError);
-                } else {
-                    resolve();
-                }
+        try {
+            // Firestoreで重複チェック
+            const pokepastesRef = collection(db, "pokepastes");
+            const duplicateQuery = query(pokepastesRef, where("url", "==", newItem.url), where("userId", "==", currentUser.uid));
+            const duplicateSnapshot = await getDocs(duplicateQuery);
+
+            if (!duplicateSnapshot.empty) {
+                sendResponse({
+                    success: false,
+                    error: "This URL is already saved",
+                    url: newItem.url,
+                });
+                return;
+            }
+
+            // Firestoreに保存
+            const docRef = await addDoc(pokepastesRef, newItem);
+            console.log("Document written with ID: ", docRef.id);
+
+            sendResponse({
+                success: true,
+                url: newItem.url,
+                title: newItem.title,
+                message: "URLをFirebaseに保存しました",
             });
-        });
-
-        sendResponse({
-            success: true,
-            url: newItem.url,
-            title: newItem.title,
-            message: "URLを保存しました",
-        });
+        } catch (error) {
+            console.error("Error saving to Firestore:", error);
+            sendResponse({
+                success: false,
+                error: "Failed to save URL to database",
+            });
+        }
     } catch (error) {
         sendResponse({
             success: false,
@@ -207,21 +239,41 @@ async function handleAddPokePast(sendResponse: (response?: unknown) => void) {
 }
 
 // 保存されたURL一覧取得の処理
-async function handleGetPokePastList(sendResponse: (response?: unknown) => void) {
+async function handleGetPokePasteList(sendResponse: (response?: unknown) => void) {
     try {
-        const result = await new Promise<{ pokepastUrls?: PokePastItem[] }>((resolve) => {
-            chrome.storage.local.get(["pokepastUrls"], (items) => {
-                resolve(items as { pokepastUrls?: PokePastItem[] });
+        // 現在のユーザーを取得
+        const currentUser = await getCurrentUser();
+        if (!currentUser) {
+            sendResponse({
+                success: false,
+                error: "User not authenticated. Please login first.",
+            });
+            return;
+        }
+
+        // Firestoreからユーザーの保存URLを取得
+        const pokepastesRef = collection(db, "pokepastes");
+        const userQuery = query(pokepastesRef, where("userId", "==", currentUser.uid), orderBy("timestamp", "desc"));
+
+        const querySnapshot = await getDocs(userQuery);
+        const savedUrls: PokePasteItem[] = [];
+
+        querySnapshot.forEach((doc) => {
+            const data = doc.data();
+            savedUrls.push({
+                id: doc.id,
+                url: data.url as string,
+                title: data.title as string,
+                timestamp: data.timestamp as number,
             });
         });
-
-        const savedUrls: PokePastItem[] = result.pokepastUrls || [];
 
         sendResponse({
             success: true,
             data: savedUrls,
         });
     } catch (error) {
+        console.error("Error getting PokePaste list from Firestore:", error);
         sendResponse({
             success: false,
             error: `取得エラー: ${error instanceof Error ? error.message : "不明なエラー"}`,

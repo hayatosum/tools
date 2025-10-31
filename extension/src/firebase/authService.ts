@@ -174,14 +174,14 @@ class AuthService {
         return auth.currentUser;
     }
 
-    // PokePastデータをユーザーに関連付けて保存
-    async savePokePastForUser(url: string, title: string): Promise<void> {
+    // PokePasteデータをユーザーに関連付けて保存
+    async savePokePasteForUser(url: string, title: string): Promise<void> {
         const user = this.getCurrentUser();
         if (!user) {
             throw new Error("User not authenticated");
         }
 
-        const pokePastData = {
+        const pokePasteData = {
             url,
             title,
             timestamp: Date.now(),
@@ -189,8 +189,8 @@ class AuthService {
             userId: user.uid,
         };
 
-        const pokePastRef = doc(db, "pokepasts", pokePastData.id);
-        await setDoc(pokePastRef, pokePastData);
+        const pokePasteRef = doc(db, "pokepastes", pokePasteData.id);
+        await setDoc(pokePasteRef, pokePasteData);
     }
 }
 

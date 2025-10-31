@@ -10,10 +10,13 @@ export default defineConfig({
             input: {
                 popup: resolve(__dirname, "index.html"),
                 background: resolve(__dirname, "src/background/background.ts"),
+                "pokepast-content": resolve(__dirname, "src/content/pokepast-content.ts"),
             },
             output: {
                 entryFileNames: (chunkInfo) => {
-                    return chunkInfo.name === "background" ? "background.js" : "[name].js";
+                    if (chunkInfo.name === "background") return "background.js";
+                    if (chunkInfo.name === "pokepast-content") return "pokepast-content.js";
+                    return "[name].js";
                 },
             },
         },

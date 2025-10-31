@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import LoginComponent from "../components/LoginComponent";
 import type { UserProfile } from "../firebase/authService";
 
-interface PokePastItem {
+interface PokePasteItem {
     url: string;
     title: string;
     timestamp: number;
@@ -14,7 +14,7 @@ const Popup: React.FC = () => {
     const [isPokePastSite, setIsPokePastSite] = useState<boolean>(false);
     const [status, setStatus] = useState<string>("");
     const [isLoading, setIsLoading] = useState<boolean>(false);
-    const [savedUrls, setSavedUrls] = useState<PokePastItem[]>([]);
+    const [savedUrls, setSavedUrls] = useState<PokePasteItem[]>([]);
     const [showList, setShowList] = useState<boolean>(false);
     const [user, setUser] = useState<UserProfile | null>(null);
     const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
@@ -106,7 +106,7 @@ const Popup: React.FC = () => {
 
     // URL一覧を読み込み
     const loadSavedUrls = () => {
-        chrome.runtime.sendMessage({ action: "getPokePastList" }, (response: unknown) => {
+        chrome.runtime.sendMessage({ action: "getPokePasteList" }, (response: unknown) => {
             if (chrome.runtime.lastError || !response) {
                 setSavedUrls([]);
                 return;
@@ -134,7 +134,7 @@ const Popup: React.FC = () => {
         setIsLoading(true);
         setStatus("");
 
-        chrome.runtime.sendMessage({ action: "addPokePast" }, (response: unknown) => {
+        chrome.runtime.sendMessage({ action: "addPokePaste" }, (response: unknown) => {
             setIsLoading(false);
 
             if (chrome.runtime.lastError) {
@@ -224,7 +224,7 @@ const Popup: React.FC = () => {
                             fontWeight: "600",
                         }}
                     >
-                        PokePast Extension
+                        PokePaste Extension
                     </h2>
                     <div
                         style={{
@@ -309,7 +309,7 @@ const Popup: React.FC = () => {
                                     fontWeight: "500",
                                 }}
                             >
-                                {isPokePastSite ? "PokePast site detected" : "Not a PokePast site"}
+                                {isPokePastSite ? "PokePaste site detected" : "Not a PokePaste site"}
                             </span>
                         </div>
 

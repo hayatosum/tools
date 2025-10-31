@@ -1,7 +1,8 @@
 {
     "manifest_version": 3,
-    "name": "Extension",
+    "name": "PokePaste Manager Extension",
     "version": "1.0.0",
+    "description": "Save and manage your PokePaste teams from pokepast.es",
     "action": {
         "default_popup": "index.html"
     },
@@ -9,9 +10,16 @@
         "service_worker": "background.js",
         "type": "module"
     },
-    "host_permissions": ["https://www.googleapis.com/*", "https://www.gstatic.com/*"],
+    "content_scripts": [
+        {
+            "matches": ["https://pokepast.es/*"],
+            "js": ["pokepast-content.js"],
+            "run_at": "document_end"
+        }
+    ],
+    "host_permissions": ["https://www.googleapis.com/*", "https://www.gstatic.com/*", "https://pokepast.es/*"],
     "content_security_policy": {
         "extension_pages": "script-src 'self'; object-src 'self'"
     },
-    "permissions": ["storage"]
+    "permissions": ["storage", "activeTab", "tabs"]
 }
